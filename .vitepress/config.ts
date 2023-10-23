@@ -33,6 +33,10 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/nimiq" },
       { icon: "twitter", link: "https://twitter.com/nimiq" },
     ],
+
+    search: {
+      provider: "local",
+    }
   },
   vite: {
     plugins: [
@@ -50,7 +54,6 @@ export default defineConfig({
         resolvers: [ElementPlusResolver({ ssr: true })],
       }),
       UnoCSS({
-
         safelist: ["root"],
         presets: [
           presetUno(),
@@ -64,27 +67,22 @@ export default defineConfig({
             },
           }),
         ],
-        preflights: [
-          {
-            getCSS: ({ theme }) => `
-              html.dark {
-                --vp-c-bg: ${theme.colors["dark-blue"]};
-              }
-              :root {
-                --vp-font-family-base: Mulish,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-               --vp-font-family-mono: 'Fira Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
-              }
-            `,
-          },
-        ],
         theme: {
           colors: {
-            "dark-blue": "#1f2348",
+            darkblue: {
+              DEFAULT: "#1f2348",
+              6: '#ededf0',
+              15: '#cdcdd5',
+              20: '#d2d3da',
+              40: '#a5a7b6',
+              50: '#8f91a3',
+              60: '#797b91',
+              80: '#4c4f6d',
+              1000: '#12163C'
+            },
+            yellow: "#E9B213"
           },
         },
-        shortcuts: [
-          ["root", "html.dark:[--vp-c-bg:#1f2348]"],
-        ],
       }),
     ],
     resolve: {
