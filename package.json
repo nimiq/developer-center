@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.28",
+    "@unocss/postcss": "^0.57.0",
     "@unocss/preset-web-fonts": "^0.57.0",
     "eslint": "^8.52.0",
     "unocss": "^0.57.0",
