@@ -163,8 +163,36 @@
   --vp-c-brand-1: var(--colors-darkblue);
   --vp-c-bg-soft: var(--colors-darkblue-6);
 
-  --vp-font-family-base: Mulish, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --vp-font-family-mono: 'Fira Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  &.dark {
+    --vp-c-brand-1: var(--colors-yellow);
+    --vp-c-bg-soft: var(--colors-darkblue-900);
+  }
+
+  --vp-font-family-base: Mulish,
+  ui-sans-serif,
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  Segoe UI,
+  Roboto,
+  Helvetica Neue,
+  Arial,
+  Noto Sans,
+  sans-serif,
+  Apple Color Emoji,
+  Segoe UI Emoji,
+  Segoe UI Symbol,
+  Noto Color Emoji;
+  --vp-font-family-mono: 'Fira Code',
+  ui-monospace,
+  SFMono-Regular,
+  'SF Mono',
+  Menlo,
+  Monaco,
+  Consolas,
+  'Liberation Mono',
+  'Courier New',
+  monospace;
 }
 
 html {
@@ -202,6 +230,7 @@ h1 {
 
 h2 {
   font-size: 40px;
+  max-width: 520px;
   line-height: 52px;
   font-weight: 700;
 }
@@ -223,6 +252,7 @@ h4 {
   margin-top: 24px;
   line-height: 1.5;
   color: var(--colors-darkblue-60);
+  max-width: 520px;
 }
 
 
@@ -232,18 +262,18 @@ h4 {
 .VPNavBar {
   padding: 0 !important;
   --vp-c-gutter: var(--colors-darkblue-10);
-  background-color: var(--colors-lightgray);
+  background-color: var(--colors-white);
   border-bottom: 1px solid var(--colors-darkblue-10) !important;
 
   .dark & {
-    border-color: var(--colors-darkblue-94);
+    border-color: var(--colors-darkblue-94) !important;
   }
-  
+
   .dark & {
     --vp-c-gutter: var(--colors-darkblue-94);
-    background-color: var(--colors-darkblue-900);
+    background-color: var(--colors-darkblue-1000);
   }
-  
+
   >.container {
     padding: 0 32px;
 
@@ -266,7 +296,6 @@ h4 {
 
       .search {
         width: 100%;
-        padding-left: 40px;
 
         @media (max-width: 768px) {
           display: flex;
@@ -298,6 +327,22 @@ h4 {
         }
       }
     }
+
+    .VPLink {
+      :is(&, .VPFlyout>button>span) {
+        font-weight: 700;
+        opacity: 0.6;
+        color: var(--colors-darkblue);
+
+        .dark & {
+          color: var(--colors-white);
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 
@@ -305,13 +350,17 @@ h4 {
  * Aside CSS
  * -------------------------------------------------------------------------- */
 .VPSidebar {
-  --vp-sidebar-bg-color: var(--colors-gray);
-  
+
+  --vp-sidebar-bg-color: var(--colors-white);
+  border-right: 1px solid var(--colors-darkblue-10);
+
   .dark & {
-    --vp-sidebar-bg-color: var(--colors-darkblue-900);
+    --vp-sidebar-bg-color: var(--colors-darkblue-1000);
+    border-color: var(--colors-darkblue-94);
   }
-  
-  @media (width >= 960px) {
+
+
+  @media (width >=960px) {
     margin-top: 64px;
     padding-top: 0px !important;
   }

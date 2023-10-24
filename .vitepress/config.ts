@@ -17,19 +17,53 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
-    ],
-
-    sidebar: [
+      { text: "Learn", link: "/learn/" },
+      { text: "Build", link: "/build/" },
       {
-        text: "Examples",
+        text: 'Contribute',
         items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
+          {
+            text: 'Comunity Projects',
+            items: [
+              { text: 'Nimtrix', link: '...' },
+              { text: 'Space Nimiq', link: '...' }
+            ]
+          },
+          {
+            text: 'Contribute to Nimiq',
+            items: [
+              { text: 'Nimiq Core', link: '...' },
+              { text: 'Nimiq Hub', link: '...' },
+              { text: 'The good old Nimiq Safe', link: '...' },
+            ]
+          }
+        ]
       },
     ],
+    
+    sidebar: {
+      '/learn/': [
+        {
+          text: 'Guide',
+          items: [
+            { text: 'Index', link: '/guide/' },
+            { text: 'One', link: '/guide/one' },
+            { text: 'Two', link: '/guide/two' }
+          ]
+        }
+      ],
+
+      '/build/': [
+        {
+          text: 'Config',
+          items: [
+            { text: 'Index', link: '/config/' },
+            { text: 'Three', link: '/config/three' },
+            { text: 'Four', link: '/config/four' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: "github", link: "https://github.com/nimiq" },
