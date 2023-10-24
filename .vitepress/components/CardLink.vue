@@ -32,7 +32,7 @@ defineProps({
   }" transition hover="-translate-y-6 shadow" class="group">
     <div text="darkblue/40 dark:white/80" :class="{
       'absolute inset-y-50 right-0 w-[15vw] children:w-full children:h-full text-white/40 opacity-40': !item.centered,
-      'children:h-96 children:w-96 mb-56 group-hover:text-darkblue group-hover:dark:text-white': item.centered
+      'children:h-96 children:w-96 mb-56 group-hover:text-darkblue dark:group-hover:text-white': item.centered
     }" v-if="item.icon">
       <div :class="item.icon" />
     </div>
