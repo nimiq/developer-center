@@ -1,5 +1,4 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 links:
@@ -8,7 +7,7 @@ links:
     label: 'Build'
     title: 'Get Started with Nimiq'
     description:  'Create an app on Nimiq and have it running in 5 minutes.'
-    href: '/build/'
+    href: 'build/'
     layout: lg
     span: 3
   - bgColor: green
@@ -16,7 +15,7 @@ links:
     label: 'Learn'
     title: 'The underlying technology'
     description: 'Learn what makes Nimiq a truly unique blockchain.'
-    href: '/learn/'
+    href: 'learn/'
     span: 3
     layout: lg
   - title: '3 steps to become part of the validator list'

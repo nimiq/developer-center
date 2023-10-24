@@ -226,6 +226,10 @@ h1 {
   .dark & {
     color: var(--colors-white);
   }
+
+  &.title {
+    margin: 0 auto;
+  }
 }
 
 h2 {
