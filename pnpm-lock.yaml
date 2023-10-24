@@ -16,9 +16,12 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: 1.0.0-beta.28
     version: 1.0.0-beta.28(eslint@8.52.0)(typescript@5.2.2)(vitest@0.34.6)
-  '@unocss/postcss':
+  '@iconify/utils':
+    specifier: ^2.1.11
+    version: 2.1.11
+  '@unocss/preset-rem-to-px':
     specifier: ^0.57.0
-    version: 0.57.0(postcss@8.4.31)
+    version: 0.57.0
   '@unocss/preset-web-fonts':
     specifier: ^0.57.0
     version: 0.57.0
@@ -1034,6 +1037,12 @@ packages:
       '@unocss/core': 0.57.0
       '@unocss/extractor-arbitrary-variants': 0.57.0
       '@unocss/rule-utils': 0.57.0
+    dev: true
+
+  /@unocss/preset-rem-to-px@0.57.0:
+    resolution: {integrity: sha512-QS89/Awx7rU2GDZckj2iljeOP7HiwsuOZq4shEBslTDp8xNzQ6HxlvJ5cSU2xzTl/htMNmrM6bLqf850vqIw8w==}
+    dependencies:
+      '@unocss/core': 0.57.0
     dev: true
 
   /@unocss/preset-tagify@0.57.0:
