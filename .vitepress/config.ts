@@ -1,3 +1,5 @@
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders';
+import presetRemToPx from '@unocss/preset-rem-to-px';
 import presetWebFonts from '@unocss/preset-web-fonts';
 import { fileURLToPath, URL } from "node:url";
 import { presetAttributify, presetIcons, presetUno } from "unocss";
@@ -5,9 +7,7 @@ import UnoCSS from "unocss/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
-import { defineConfig } from "vitepress";
-import presetRemToPx from '@unocss/preset-rem-to-px'
-import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
+import { defineConfig, postcssIsolateStyles } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -73,9 +73,6 @@ export default defineConfig({
           presetUno(),
           presetAttributify(),
           presetIcons({
-            customizations: {
-              customize: (p) => p,
-            },
             collections: {
               "nimiq": FileSystemIconLoader('./assets/icons', svg => svg),
             }
@@ -87,7 +84,7 @@ export default defineConfig({
               mono: 'Fira Code:400'
             },
           }),
-          presetRemToPx({baseFontSize: 4}),
+          presetRemToPx({ baseFontSize: 4 }),
         ],
         theme: {
           colors: {
@@ -131,13 +128,14 @@ export default defineConfig({
             new URL("./components/HeaderLogo.vue", import.meta.url),
           ),
         },
-        {
-          find: /^.*\/VPHome\.vue$/,
-          replacement: fileURLToPath(
-            new URL("./components/Home.vue", import.meta.url),
-          ),
-        }
       ],
     },
+    css: {
+      postcss: {
+        plugins: [
+          postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] }),
+        ]
+      }
+    }
   },
 });
