@@ -128,13 +128,13 @@ export default defineConfig({
         {
           find: /^.*\/VPNavBarTitle\.vue$/,
           replacement: fileURLToPath(
-            new URL("./components/header/CustomTitle.vue", import.meta.url),
+            new URL("./components/HeaderLogo.vue", import.meta.url),
           ),
         },
         {
           find: /^.*\/VPHome\.vue$/,
           replacement: fileURLToPath(
-            new URL("./components/CustomHome.vue", import.meta.url),
+            new URL("./components/Home.vue", import.meta.url),
           ),
         }
       ],

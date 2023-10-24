@@ -18,7 +18,7 @@ const props = defineProps({
 function hasProp(name: string) {
   return !!props.item[name]
 }
-console.log(props.item)
+
 const hasColors = computed(() => props.item.bgColor && ['blue', 'green'].includes(props.item.bgColor))
 const centered = computed(() => !hasColors.value && hasProp('icon'))
 const size = computed(() => centered.value ? 'lg' : hasColors.value ? 'md' : 'sm')
