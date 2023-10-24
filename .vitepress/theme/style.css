@@ -139,6 +139,7 @@
  * -------------------------------------------------------------------------- */
 :root {
   --colors-gray: #f8f8f8;
+  --colors-lightgray: #fbfbfb;
   --colors-white: white;
 
   --colors-darkblue: #1f2348;
@@ -167,7 +168,7 @@
 }
 
 html {
-  --vp-c-bg: var(--colors-gray);
+  --vp-c-bg: var(--colors-lightgray);
 
   &.dark {
     --vp-c-bg: var(--colors-darkblue-1000);
@@ -230,8 +231,13 @@ h4 {
  * -------------------------------------------------------------------------- */
 .VPNavBar {
   padding: 0 !important;
-
   --vp-c-gutter: var(--colors-darkblue-10);
+  background-color: var(--colors-lightgray);
+  border-bottom: 1px solid var(--colors-darkblue-10) !important;
+
+  .dark & {
+    border-color: var(--colors-darkblue-94);
+  }
   
   .dark & {
     --vp-c-gutter: var(--colors-darkblue-94);
@@ -240,11 +246,6 @@ h4 {
   
   >.container {
     padding: 0 32px;
-    border-bottom: 1px solid var(--colors-darkblue-10);
-    
-    .dark & {
-      border-color: var(--colors-darkblue-94);
-    }
 
     >.title {
       display: flex;
@@ -300,12 +301,23 @@ h4 {
   }
 }
 
+/**
+ * Aside CSS
+ * -------------------------------------------------------------------------- */
 .VPSidebar {
-  --vp-sidebar-bg-color: var(--colors-darkblue-900);
+  --vp-sidebar-bg-color: var(--colors-gray);
+  
+  .dark & {
+    --vp-sidebar-bg-color: var(--colors-darkblue-900);
+  }
   
   @media (width >= 960px) {
     margin-top: 64px;
     padding-top: 0px !important;
   }
 
+}
+
+.VPHome {
+  padding: 96px;
 }
