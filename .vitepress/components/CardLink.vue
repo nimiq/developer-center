@@ -12,17 +12,12 @@ export interface Item {
 }
 </script>
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   item: {
     type: Object as PropType<Item>,
     required: true,
   },
 })
-
-function hasProp(name: string) {
-  return !!props.item[name]
-}
-
 </script>
 
 <template>
@@ -36,19 +31,19 @@ function hasProp(name: string) {
     'items-center': item.centered,
   }" transition hover="-translate-y-6 shadow" class="group">
     <div text="darkblue/40 dark:white/80" :class="{
-      'absolute inset-y-50 right-0 w-[15vw] children:w-full children:h-full text-white/40 opacity-40': item.layout === 'square',
+      'absolute inset-y-50 right-0 w-[15vw] children:w-full children:h-full text-white/40 opacity-40': !item.centered,
       'children:h-96 children:w-96 mb-56 group-hover:text-darkblue group-hover:dark:text-white': item.centered
-    }" v-if="hasProp('icon')">
+    }" v-if="item.icon">
       <div :class="item.icon" />
     </div>
-    <span v-if="hasProp('label')" text="darkblue/40 dark:white/40 inverted:white/60" label mb-8>
+    <span v-if="item.label" text="darkblue/40 dark:white/40 inverted:white/60" label mb-8>
       {{ item.label }}
     </span>
-    <component :is="item.layout === 'square' ? 'h3' : 'h4'" v-if="hasProp('title')" text="darkblue/80 dark:white/80 inverted:white"
+    <component :is="item.layout === 'square' ? 'h3' : 'h4'" v-if="item.title" text="darkblue/80 dark:white/80 inverted:white"
       inverted:max-w-256>
       {{ item.title }}
     </component>
-    <p v-if="hasProp('description')" text="darkblue-50 inverted:white/60" mt-20 inverted:max-w-256 :class="{'text-center': item.centered}">
+    <p v-if="item.description" text="darkblue-50 inverted:white/60" mt-20 inverted:max-w-256 :class="{'text-center': item.centered}">
       {{ item.description }}
     </p>
   </a>

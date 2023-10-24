@@ -24,7 +24,7 @@ const items = computed(() => {
 
 <template>
   <ul class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_auto] gap-32">
-    <li v-for="item in items" :class="item.layout === 'lg' ? 'md:col-span-3' : 'md:col-span-2'">
+    <li v-for="item in items" :style="`grid-column: span ${item.span || 2}`">
       <CardLink :item="item" />
     </li>
   </ul>
