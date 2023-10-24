@@ -43,7 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -92,17 +92,13 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
+      #bd34fe 30%,
+      #41d1ff);
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #bd34fe 50%,
-    #47caff 50%
-  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+      #bd34fe 50%,
+      #47caff 50%);
   --vp-home-hero-image-filter: blur(40px);
 }
 
@@ -140,7 +136,7 @@
 
 /**
  * Custom CSS
- * -------------------------------------------------------------------------- */ 
+ * -------------------------------------------------------------------------- */
 :root {
   --colors-gray: #f8f8f8;
   --colors-white: white;
@@ -157,22 +153,24 @@
   --colors-darkblue-80: #4c4f6d;
   --colors-darkblue-90: #35395a;
   --colors-darkblue-94: #2c3053;
+
+  --colors-darkblue-900: #0d102c;
   --colors-darkblue-1000: #12163c;
 
-  --colors-yellow:#E9B213; 
+  --colors-yellow: #E9B213;
 
   --vp-c-brand-1: var(--colors-darkblue);
   --vp-c-bg-soft: var(--colors-darkblue-6);
-  
-  --vp-font-family-base: Mulish,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+
+  --vp-font-family-base: Mulish, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --vp-font-family-mono: 'Fira Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 html {
-  --vp-c-bg: var(--colors-gray); 
+  --vp-c-bg: var(--colors-gray);
 
   &.dark {
-    --vp-c-bg: var(--colors-darkblue-1000); 
+    --vp-c-bg: var(--colors-darkblue-1000);
     --vp-c-bg-soft: var(--colors-darkblue);
     --vp-c-bg-elv: var(--colors-darkblue);
     --vp-c-divider: var(--colors-darkblue-80);
@@ -181,7 +179,7 @@ html {
   }
 }
 
-:is(h1,h2,h3,h4) {
+:is(h1, h2, h3, h4) {
   text-wrap: balance;
 }
 
@@ -219,7 +217,7 @@ h4 {
   font-weight: 600;
 }
 
-:is(h1, h2) ~ p {
+:is(h1, h2)+p {
   font-size: 24px;
   margin-top: 24px;
   line-height: 1.5;
@@ -229,26 +227,42 @@ h4 {
 
 /**
  * Header CSS
- * -------------------------------------------------------------------------- */ 
+ * -------------------------------------------------------------------------- */
 .VPNavBar {
   padding: 0 !important;
 
-  --vp-c-gutter: var(--colors-darkblue-10); 
-  border-bottom: 1px solid var(--colors-darkblue-10);
-
+  --vp-c-gutter: var(--colors-darkblue-10);
+  
   .dark & {
-    --vp-c-gutter: var(--colors-darkblue-94); 
-    border-color: var(--colors-darkblue-94);
+    --vp-c-gutter: var(--colors-darkblue-94);
+    background-color: var(--colors-darkblue-900);
   }
-
-  > .container {
+  
+  >.container {
     padding: 0 32px;
+    border-bottom: 1px solid var(--colors-darkblue-10);
     
-    > .title {
+    .dark & {
+      border-color: var(--colors-darkblue-94);
+    }
+
+    >.title {
       display: flex;
     }
 
-    > .content {
+    >.content {
+      >.curtain {
+        display: none;
+      }
+
+      >.content-body {
+        background-color: transparent !important;
+      }
+
+      .dark & {
+        border-color: var(--colors-darkblue-94);
+      }
+
       .search {
         width: 100%;
         padding-left: 40px;
@@ -263,18 +277,18 @@ h4 {
           width: 100%;
           max-width: 296px;
 
-          :is(.dark,html) & button.DocSearch-Button {
+          :is(.dark, html) & button.DocSearch-Button {
             background: transparent;
             height: 34px;
 
             @media (min-width: 768px) {
               border-radius: 999px;
               border: 1.5px solid var(--colors-darkblue-15);
-              
+
               .dark & {
                 border-color: var(--colors-darkblue-80);
               }
-              
+
               .DocSearch-Button-Keys {
                 margin-left: auto;
               }
@@ -284,4 +298,14 @@ h4 {
       }
     }
   }
+}
+
+.VPSidebar {
+  --vp-sidebar-bg-color: var(--colors-darkblue-900);
+  
+  @media (width >= 960px) {
+    margin-top: 64px;
+    padding-top: 0px !important;
+  }
+
 }

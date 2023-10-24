@@ -13,10 +13,11 @@
     "@unocss/preset-rem-to-px": "^0.57.0",
     "@unocss/preset-web-fonts": "^0.57.0",
     "eslint": "^8.52.0",
+    "postcss": "^8.4.31",
     "unocss": "^0.57.0",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
-    "vitepress": "^1.0.0-rc.23"
+    "vitepress": "^1.0.0-rc.24"
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",

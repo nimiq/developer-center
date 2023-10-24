@@ -12,12 +12,14 @@ links:
     title: 'Get Started with Nimiq'
     description:  'Create an app on Nimiq and have it running in 5 minutes.'
     href: '/'
+    layout: lg
   - bgColor: green
     icon: 'i-nimiq:cubes'
     label: 'Learn'
     title: 'The underlying technology'
     description: 'Learn what makes Nimiq a truly unique blockchain.'
-    href: '/'
+    href: '/learn'
+    layout: lg
   - title: '3 steps to become part of the validator list'
     label: 'Run a validator'
     href: '/'
