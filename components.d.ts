@@ -7,8 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CardLink: typeof import('./.vitepress/components/CardLink.vue')['default']
     CustomCardLink: typeof import('./.vitepress/components/CustomCardLink.vue')['default']
     CustomHome: typeof import('./.vitepress/components/CustomHome.vue')['default']
-    CustomTitle: typeof import('./.vitepress/components/header/CustomTitle.vue')['default']
+    CustomTitle: typeof import('./.vitepress/components/CustomTitle.vue')['default']
+    GridLinks: typeof import('./.vitepress/components/GridLinks.vue')['default']
+    HeaderLogo: typeof import('./.vitepress/components/HeaderLogo.vue')['default']
+    Home: typeof import('./.vitepress/components/Home.vue')['default']
   }
 }
