@@ -16,7 +16,6 @@ export default defineConfig({
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Learn", link: "/learn/" },
       { text: "Build", link: "/build/" },
