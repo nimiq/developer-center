@@ -11,6 +11,7 @@ import { defineConfig, postcssIsolateStyles } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/nimiq-developer-center/',
   title: "Nimiq Developer Center",
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
@@ -26,6 +27,7 @@ export default defineConfig({
             text: 'Comunity Projects',
             items: [
               { text: 'Nimtrix', link: '...' },
+
               { text: 'Space Nimiq', link: '...' }
             ]
           },
