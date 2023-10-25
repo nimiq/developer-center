@@ -56,7 +56,18 @@ export default defineConfig({
 
       '/build/': [
         {
-          text: 'Config',
+          items: [{ text: 'Onverview', link: '/'}]
+        },
+        {
+          text: 'RPC',
+          items: [
+            { text: 'Index', link: '/config/' },
+            { text: 'Three', link: '/config/three' },
+            { text: 'Four', link: '/config/four' }
+          ]
+        },
+        {
+          text: 'Web Client',
           items: [
             { text: 'Index', link: '/config/' },
             { text: 'Three', link: '/config/three' },
@@ -161,6 +172,12 @@ export default defineConfig({
           find: /^.*\/VPNavBarTitle\.vue$/,
           replacement: fileURLToPath(
             new URL("./components/HeaderLogo.vue", import.meta.url),
+          ),
+        },
+        {
+          find: /^.*\/VPSidebar\.vue$/,
+          replacement: fileURLToPath(
+            new URL("./components/Sidebar.vue", import.meta.url),
           ),
         },
       ],
