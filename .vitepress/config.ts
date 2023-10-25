@@ -9,6 +9,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig, postcssIsolateStyles } from "vitepress";
 
+// @unocss-include
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/nimiq-developer-center/',
@@ -56,22 +57,47 @@ export default defineConfig({
 
       '/build/': [
         {
-          items: [{ text: 'Onverview', link: '/' }]
+          text: `
+            <div mt-8 flex gap-x-8 mb-24 items-center>
+              <div w-24 h-24 i-nimiq:tools></div>
+              <span text="24 darkblue dark:white">Build</span>
+            </div>
+          `,
+          items: [
+            { text: 'Overview', link: '/' },
+            { text: 'Good practices', link: '/' }
+          ],
         },
         {
-          text: 'RPC',
+          text: `
+            <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
+            <div mt-8 flex gap-x-8 mb-24 items-center>
+              <div w-20 h-20 i-nimiq:nodes></div>
+              <span text="20 darkblue dark:white">RCP</span>
+            </div>`,
           items: [
-            { text: 'Index', link: '/config/' },
-            { text: 'Three', link: '/config/three' },
-            { text: 'Four', link: '/config/four' }
+            {
+              text: '<span class="label">Tutorials</span>',
+              collapsed: false,
+              items: [
+                { text: 'Tutorial 1', link: '/config/' },
+                { text: 'Tutorial 2', link: '/config/' },
+                { text: 'Tutorial 3', link: '/config/' },
+              ]
+            }
           ]
         },
         {
-          text: 'Web Client',
+          text: `
+            <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
+            <div mt-8 flex gap-x-8 mb-24 items-center>
+              <div w-20 h-20 i-nimiq:globe></div>
+              <span text="20 darkblue dark:white">Web Client</span>
+            </div>`,
           items: [
-            { text: 'Index', link: '/config/' },
-            { text: 'Three', link: '/config/three' },
-            { text: 'Four', link: '/config/four' }
+            { text: 'The WASM client', link: '/config/' },
+            { text: 'Another useful resource', link: '/config/three' },
+            { text: 'Finally the end', link: '/config/four' }
           ]
         }
       ]
@@ -108,6 +134,9 @@ export default defineConfig({
         resolvers: [ElementPlusResolver({ ssr: true })],
       }),
       UnoCSS({
+        content: {
+          filesystem: ['.vitepress/config.ts']
+        },
         variants: [
           (matcher) => {
             if (!matcher.startsWith('inverted:'))
@@ -180,7 +209,7 @@ export default defineConfig({
           ),
         },
         {
-          find: /^.*\/VPSidebar\.vue$/,
+          find: /^.*\/VPSiadebar\.vue$/,
           replacement: fileURLToPath(
             new URL("./theme/components/Sidebar.vue", import.meta.url),
           ),

@@ -56,8 +56,8 @@ function containsActiveLink(
   return isActive(path, items.link)
     ? true
     : items.items
-    ? hasActiveLink(path, items.items)
-    : false
+      ? hasActiveLink(path, items.items)
+      : false
 }
 
 const item = ref(props.item)
@@ -67,17 +67,17 @@ const isLink = computed(() => !!item.value.link)
 const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 const isActiveLink = ref(false)
 const hasActiveLink = computed(() => isActiveLink.value && item.value.items
-   ? containsActiveLink(page.value.relativePath, item.value.items) : false)
+  ? containsActiveLink(page.value.relativePath, item.value.items) : false)
 const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
 const isOpen = ref(false)
-const toggle = () => isOpen.value = !isOpen.value 
+const toggle = () => isOpen.value = !isOpen.value
 const hasChildren = computed(() => !!(item.value.items && item.value.items.length))
 const textTag = computed(() => {
   return !hasChildren.value
     ? 'p'
     : props.depth + 2 === 7
-    ? 'p'
-    : `h${props.depth + 2}`
+      ? 'p'
+      : `h${props.depth + 2}`
 })
 
 const itemRole = computed(() => (isLink.value ? undefined : 'button'))
@@ -105,53 +105,30 @@ function onCaretClick() {
 
 <template>
   <component :is="sectionTag" class="VPSidebarItem" :class="classes">
-    <div
-      v-if="item.text"
-      class="item"
-      :role="itemRole"
-      v-on="
-        item.items
-          ? { click: onItemInteraction, keydown: onItemInteraction }
-          : {}
-      "
-      :tabindex="item.items && 0"
-    >
+    <div v-if="item.text" class="item" :role="itemRole" v-on="item.items
+        ? { click: onItemInteraction, keydown: onItemInteraction }
+        : {}
+      " :tabindex="item.items && 0">
       <div class="indicator" />
 
-      <component
-        v-if="item.link"
-        :is="linkTag"
-        class="link"
-        :href="item.link"
-        :target="/^[a-z]+:/i.test(item.link) ? '_blank' : undefined"
-        :rel="/^[a-z]+:/i.test(item.link) ? 'noopener noreferrer' : undefined"
-      >
-        <component :is="textTag" class="text" v-html="item.text" />
-      </component>
-      <component v-else :is="textTag" class="text" v-html="item.text" />
-
-      <div
-        v-if="item.collapsed != null"
-        class="caret"
-        role="button"
-        aria-label="toggle section"
-        @click="onCaretClick"
-        @keydown.enter="onCaretClick"
-        tabindex="0"
-      >
+      <div v-if="item.collapsed != null" class="caret" role="button" aria-label="toggle section" @click="onCaretClick"
+        @keydown.enter="onCaretClick" tabindex="0">
         <!-- <VPIconChevronRight class="caret-icon" /> -->
         >
       </div>
+      <component v-if="item.link" :is="linkTag" class="link" href="item.link"
+        :target="/^[a-z]+:/i.test(item.link) ? '_blank' : undefined"
+        :rel="/^[a-z]+:/i.test(item.link) ? 'noopener noreferrer' : undefined">
+        <component :is="textTag" class="text" :class="item.collapsed !== null ? 'label text-pink' : ''" :v-html="item.text" />
+      </component>
+      <component v-else :is="textTag" class="text" v-html="item.text" />
+
+
     </div>
 
     <div v-if="item.items && item.items.length" class="items">
       <template v-if="depth < 5">
-        <SidebarItem
-          v-for="i in item.items"
-          :key="i.text"
-          :item="i"
-          :depth="depth + 1"
-        />
+        <SidebarItem v-for="i in item.items" :key="i.text" :item="i" :depth="depth + 1" />
       </template>
     </div>
   </component>
@@ -159,7 +136,7 @@ function onCaretClick() {
 
 <style scoped>
 .VPSidebarItem.level-0 {
-  padding-bottom: 24px;
+  padding: 40px 0;
 }
 
 .VPSidebarItem.collapsed.level-0 {
@@ -172,7 +149,7 @@ function onCaretClick() {
   width: 100%;
 }
 
-.VPSidebarItem.collapsible > .item {
+.VPSidebarItem.collapsible>.item {
   cursor: pointer;
 }
 
@@ -186,10 +163,10 @@ function onCaretClick() {
   transition: background-color 0.25s;
 }
 
-.VPSidebarItem.level-2.is-active > .item > .indicator,
-.VPSidebarItem.level-3.is-active > .item > .indicator,
-.VPSidebarItem.level-4.is-active > .item > .indicator,
-.VPSidebarItem.level-5.is-active > .item > .indicator {
+.VPSidebarItem.level-2.is-active>.item>.indicator,
+.VPSidebarItem.level-3.is-active>.item>.indicator,
+.VPSidebarItem.level-4.is-active>.item>.indicator,
+.VPSidebarItem.level-5.is-active>.item>.indicator {
   background-color: var(--vp-c-brand-1);
 }
 
@@ -221,36 +198,36 @@ function onCaretClick() {
   color: var(--vp-c-text-2);
 }
 
-.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
+.VPSidebarItem.level-0.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-1.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-2.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-3.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-4.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-5.is-link>.item>.link:hover .text {
   color: var(--vp-c-brand-1);
 }
 
-.VPSidebarItem.level-0.has-active > .item > .text,
-.VPSidebarItem.level-1.has-active > .item > .text,
-.VPSidebarItem.level-2.has-active > .item > .text,
-.VPSidebarItem.level-3.has-active > .item > .text,
-.VPSidebarItem.level-4.has-active > .item > .text,
-.VPSidebarItem.level-5.has-active > .item > .text,
-.VPSidebarItem.level-0.has-active > .item > .link > .text,
-.VPSidebarItem.level-1.has-active > .item > .link > .text,
-.VPSidebarItem.level-2.has-active > .item > .link > .text,
-.VPSidebarItem.level-3.has-active > .item > .link > .text,
-.VPSidebarItem.level-4.has-active > .item > .link > .text,
-.VPSidebarItem.level-5.has-active > .item > .link > .text {
+.VPSidebarItem.level-0.has-active>.item>.text,
+.VPSidebarItem.level-1.has-active>.item>.text,
+.VPSidebarItem.level-2.has-active>.item>.text,
+.VPSidebarItem.level-3.has-active>.item>.text,
+.VPSidebarItem.level-4.has-active>.item>.text,
+.VPSidebarItem.level-5.has-active>.item>.text,
+.VPSidebarItem.level-0.has-active>.item>.link>.text,
+.VPSidebarItem.level-1.has-active>.item>.link>.text,
+.VPSidebarItem.level-2.has-active>.item>.link>.text,
+.VPSidebarItem.level-3.has-active>.item>.link>.text,
+.VPSidebarItem.level-4.has-active>.item>.link>.text,
+.VPSidebarItem.level-5.has-active>.item>.link>.text {
   color: var(--vp-c-text-1);
 }
 
-.VPSidebarItem.level-0.is-active > .item .link > .text,
-.VPSidebarItem.level-1.is-active > .item .link > .text,
-.VPSidebarItem.level-2.is-active > .item .link > .text,
-.VPSidebarItem.level-3.is-active > .item .link > .text,
-.VPSidebarItem.level-4.is-active > .item .link > .text,
-.VPSidebarItem.level-5.is-active > .item .link > .text {
+.VPSidebarItem.level-0.is-active>.item .link>.text,
+.VPSidebarItem.level-1.is-active>.item .link>.text,
+.VPSidebarItem.level-2.is-active>.item .link>.text,
+.VPSidebarItem.level-3.is-active>.item .link>.text,
+.VPSidebarItem.level-4.is-active>.item .link>.text,
+.VPSidebarItem.level-5.is-active>.item .link>.text {
   color: var(--vp-c-brand-1);
 }
 
