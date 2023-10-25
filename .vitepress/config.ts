@@ -41,7 +41,7 @@ export default defineConfig({
         ]
       },
     ],
-    
+
     sidebar: {
       '/learn/': [
         {
@@ -56,7 +56,7 @@ export default defineConfig({
 
       '/build/': [
         {
-          items: [{ text: 'Onverview', link: '/'}]
+          items: [{ text: 'Onverview', link: '/' }]
         },
         {
           text: 'RPC',
@@ -87,11 +87,16 @@ export default defineConfig({
     }
   },
   vite: {
+    optimizeDeps: {
+      exclude: ['vitepress'],
+    },
+    server: {
+      hmr: { overlay: false },
+    },
     plugins: [
       Components({
-        dirs: ["components", ".vitepress/components"],
-        include: [/\.vue$/, /\.md$/],
-        resolvers: [ElementPlusResolver({ ssr: true })],
+        dirs: [".vitepress/theme/components"],
+        include: [/\.vue$/, /\.vue\?vue/, /\.md$/,],
       }),
       AutoImport({
         imports: [
@@ -171,13 +176,13 @@ export default defineConfig({
         {
           find: /^.*\/VPNavBarTitle\.vue$/,
           replacement: fileURLToPath(
-            new URL("./components/HeaderLogo.vue", import.meta.url),
+            new URL("./theme/components/HeaderLogo.vue", import.meta.url),
           ),
         },
         {
           find: /^.*\/VPSidebar\.vue$/,
           replacement: fileURLToPath(
-            new URL("./components/Sidebar.vue", import.meta.url),
+            new URL("./theme/components/Sidebar.vue", import.meta.url),
           ),
         },
       ],
