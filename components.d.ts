@@ -14,5 +14,7 @@ declare module 'vue' {
     GridLinks: typeof import('./.vitepress/components/GridLinks.vue')['default']
     HeaderLogo: typeof import('./.vitepress/components/HeaderLogo.vue')['default']
     Home: typeof import('./.vitepress/components/Home.vue')['default']
+    Sidebar: typeof import('./.vitepress/components/Sidebar.vue')['default']
+    SidebarItem: typeof import('./.vitepress/components/SidebarItem.vue')['default']
   }
 }
