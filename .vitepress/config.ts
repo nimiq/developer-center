@@ -177,7 +177,7 @@ export default defineConfig({
               <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
                 <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>
               `
-            } else return `</div>`
+            } else return `</div>\n`
           }
         }
       ])
