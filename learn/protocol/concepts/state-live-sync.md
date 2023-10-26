@@ -24,7 +24,7 @@ Hash values are propagated up the tree from lower to higher levels until the sta
 
 <p align="center">
 
-  <img src="/protocol/accounts-tree-1.png" alt="Alt Text" width="500" height="250">
+  <img src="/assets/images/protocol/accounts-tree-1.png" alt="Alt Text" width="500" height="250">
 </p>
 
 <br/>
@@ -90,7 +90,7 @@ When building the partial tree, the node needs to keep track of the chunks assoc
 
 <p align="center">
 
-  <img src="/protocol/accounts-tree-2.png" alt="Alt Text" width="700" height="350">
+  <img src="/assets/images/protocol/accounts-tree-2.png" alt="Alt Text" width="700" height="350">
 </p>
 
 <br/>

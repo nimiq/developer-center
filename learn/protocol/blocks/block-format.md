@@ -53,7 +53,7 @@ Note that only one of those is added as justification. The block producer signs 
 <br/>
 
 <p align="center">
-  <img src="/public/protocol/blockformat-1.png" alt="Alt Text" width="600" height="3000">
+  <img src="/assets/images/protocol/blockformat-1.png" alt="Alt Text" width="600" height="3000">
 </p>
 
 <br/>
@@ -113,7 +113,7 @@ The following figure demonstrates the structure of a macro block and how two mac
 <br/>
 
 <p align="center">
-  <img src="/public/protocol/blockformat-2.png" alt="Alt Text" width="500" height="250">
+  <img src="/assets/images/protocol/blockformat-2.png" alt="Alt Text" width="500" height="250">
 </p>
 
 <br/>
@@ -127,7 +127,7 @@ The following figure demonstrates how the connection between a macro block and a
 <br/>
 
 <p align="center">
-  <img src="/public/protocol/blockformat-3.png" alt="Alt Text" width="500" height="250">
+  <img src="/assets/images/protocol/blockformat-3.png" alt="Alt Text" width="500" height="250">
 </p>
 
 <br/>
@@ -152,7 +152,7 @@ The following figure illustrates how the blockchain is divided.
 
 <p align="center">
 
-  <img src="/public/protocol/blockformat-4.png" alt="Alt Text" width="650" height="325">
+  <img src="/assets/images/protocol/blockformat-4.png" alt="Alt Text" width="650" height="325">
 </p>
 
 <br/>

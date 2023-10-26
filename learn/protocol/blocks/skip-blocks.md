@@ -16,7 +16,7 @@ As for the justification, it attests that _x_ validator slots received and signe
 
 <br/>
 
-![micro and skip.png](/public/protocol/micro_and_skip.png)
+![micro and skip.png](/assets/images/protocol/micro_and_skip.png)
 
 <br/>
 
@@ -41,9 +41,9 @@ Skip blocks can be added at any point in a batch and can also be added multiple 
 
 <br/>
 
-![skip block beginning.drawio.png](/public/protocol/skip_block_beginning.png)
+![skip block beginning.drawio.png](/assets/images/protocol/skip_block_beginning.png)
 
-![skip block end.drawio.png](/public/protocol/skip_block_end.png)
+![skip block end.drawio.png](/assets/images/protocol/skip_block_end.png)
 
 <br/>
 

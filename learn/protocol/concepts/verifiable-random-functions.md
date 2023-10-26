@@ -36,7 +36,7 @@ The prove and extract functions allow a chain of seeds since generating a new ra
 
 <br/>
 
-![Figure 1](/public/protocol/VRF_seed.png)
+![Figure 1](/assets/images/protocol/VRF_seed.png)
 
 <br/>
 

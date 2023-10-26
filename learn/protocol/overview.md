@@ -10,7 +10,7 @@ Nimiq PoS is a proof-of-stake blockchain that, instead of miners mining blocks, 
 
 ### Validators
 
-Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the [validator selection](slots.md) rules. We have 512 validators per batch ready to produce blocks.
+Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the [validator selection](./concepts/slots.md) rules. We have 512 validators per batch ready to produce blocks.
 
 <br/>
 
@@ -50,7 +50,7 @@ Misbehaving validators get punished and get added to the punishment sets. In the
 
 <br/>
 
-### [Punishments](punishments.md)
+### [Punishments](./concepts/punishments.md)
 
 Since our protocol assumes misbehaving validators, we structured measures to punish malicious acts:
 

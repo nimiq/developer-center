@@ -93,7 +93,7 @@ In the following figure, we explain three different scenarios where validators h
 <br/>
 
 <p align="center">
-  <img src="/public/protocol/punishments.png" alt="Alt Text" width="600" height="300">
+  <img src="/assets/images/protocol/punishments.png" alt="Alt Text" width="600" height="300">
 </p>
 
 <br/>

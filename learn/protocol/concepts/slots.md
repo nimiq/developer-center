@@ -40,7 +40,7 @@ Lastly, the addresses are ordered alphabetically, creating a slot range for the 
 <br/>
 
 <p align="center">
-    <img src="/public/protocol/slots.png" alt="Alt Text" width="250" height="125">
+    <img src="/assets/images/protocol/slots.png" alt="Alt Text" width="250" height="125">
 </p>
 
 <br/>
