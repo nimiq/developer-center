@@ -34,7 +34,7 @@ outline: false
 Nimiq is made for people to build on it.<br/>You just need a browser and Internet.
 
 <Tags mt-24 :tags="new Set($frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean))" />
-<GridLinks mt-64 :items="$frontmatter.links" />
+<Grid mt-64 :items="$frontmatter.links" />
 
 <div label mb-8 mt-136 text-darkblue-50>Assets</div>
 
@@ -42,5 +42,5 @@ Nimiq is made for people to build on it.<br/>You just need a browser and Interne
 
 Resources to help you build stuff
 
-<GridLinks mt-64 :items="$frontmatter.assetsLinks" />
+<Grid mt-64 :items="$frontmatter.assetsLinks" />
 :::

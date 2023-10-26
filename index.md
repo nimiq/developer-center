@@ -47,11 +47,11 @@ buildTogetherLinks:
 
 Get guides, resources and tips on how to create with Nimiq.
 
-<GridLinks my-64 :items="$frontmatter.links" />
+<Grid my-64 :items="$frontmatter.links" />
 
 ## Let's build together
 
 Create apps, contribute to the network or run a validator.
 
-<GridLinks mt-64 :items="$frontmatter.buildTogetherLinks" />
+<Grid mt-64 :items="$frontmatter.buildTogetherLinks" />
 :::
