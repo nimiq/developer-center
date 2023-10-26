@@ -63,7 +63,7 @@ export default defineConfig({
           text: `
             <div m="t-8 b-24" flex gap-x-8 items-center>
               <div w-24 h-24 i-nimiq:bulb></div>
-              <span text="24 darkblue dark:white">Learn</span>
+              <span text="24 darkblue-90 dark:white/90">Learn</span>
             </div>
           `,
           items: [
@@ -75,7 +75,7 @@ export default defineConfig({
             <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
             <div mt-8 flex gap-x-8 mb-24 items-center>
               <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue dark:white">Protocol</span>
+              <span text="20 darkblue-80 dark:white/80">Protocol</span>
             </div>`,
           items: [
             {
@@ -95,7 +95,7 @@ export default defineConfig({
             <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
             <div mt-8 flex gap-x-8 mb-24 items-center>
               <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue dark:white">Other</span>
+              <span text="20 darkblue-80 dark:white/80">Other</span>
             </div>`,
           items: [
             {
@@ -113,7 +113,7 @@ export default defineConfig({
           text: `
             <div m="t-8 b-24" flex gap-x-8 items-center>
               <div w-24 h-24 i-nimiq:tools></div>
-              <span text="24 darkblue dark:white">Build</span>
+              <span text="24 darkblue-90 dark:white/90">Build</span>
             </div>
           `,
           items: [
@@ -126,7 +126,7 @@ export default defineConfig({
             <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
             <div mt-8 flex gap-x-8 mb-24 items-center>
               <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue dark:white">RCP</span>
+              <span text="20 darkblue-80 dark:white/80">RCP</span>
             </div>`,
           items: [
             {
@@ -145,7 +145,7 @@ export default defineConfig({
             <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
             <div mt-8 flex gap-x-8 mb-24 items-center>
               <div w-20 h-20 i-nimiq:globe></div>
-              <span text="20 darkblue dark:white">Web Client</span>
+              <span text="20 darkblue-80 dark:white/80">Web Client</span>
             </div>`,
           items: [
             { text: 'The WASM client', link: '/config/' },
