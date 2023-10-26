@@ -1,5 +1,5 @@
 <script lang="ts">
-export interface Item {
+export interface Card {
   icon?: string
   label?: string
   layout?: 'sm' | 'square' | 'lg'
@@ -16,7 +16,7 @@ export interface Item {
 <script setup lang="ts">
 defineProps({
   item: {
-    type: Object as PropType<Item>,
+    type: Object as PropType<Card>,
     required: true,
   },
 })
