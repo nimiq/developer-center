@@ -1,6 +1,6 @@
 # Prover node
 
-A prover node is a particular type of node that generates zero-knowledge proofs (zkp). A zero-knowledge proof is a method of proving a statement between two parties - a prover and a verifier. For a detailed description of zero-knowledge proofs, [click here](/protocol/ZKP-and-SNARKs).
+A prover node is a particular type of node that generates zero-knowledge proofs (zkp). A zero-knowledge proof is a method of proving a statement between two parties - a prover and a verifier. For a detailed description of zero-knowledge proofs, [click here](ZKP-and-SNARKs).
 
 <br/>
 

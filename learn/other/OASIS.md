@@ -61,7 +61,7 @@ To start the transaction, both sender and recipient must exchange their public k
 
 <br/>
 
-![AND-OR.png](/public/protocol/oasis-AND-OR.png)
+![AND-OR.png](/assets/images/protocol/oasis-AND-OR.png)
 
 <br/>
 
@@ -107,7 +107,7 @@ Here's how they would proceed to an atomic swap:
 
 <br/>
 
-![Atomic Swap.png](/public/protocol/atomic-swap.png)
+![Atomic Swap.png](/assets/images/protocol/atomic-swap.png)
 
 <br/>
 
@@ -164,15 +164,15 @@ Taking Alice and Bob as an example again, they want to exchange NIM for EUR, res
 
 <br/>
 
-![1.png](/public/protocol/oasis-1.png)
+![1.png](/assets/images/protocol/oasis-1.png)
 
-![2.png](/public/protocol/oasis-2.png)
+![2.png](/assets/images/protocol/oasis-2.png)
 
-![3.png](/public/protocol/oasis-3.png)
+![3.png](/assets/images/protocol/oasis-3.png)
 
-![4.png](/public/protocol/oasis-4.png)
+![4.png](/assets/images/protocol/oasis-4.png)
 
-![5.png](/public/protocol/oasis-5.png)
+![5.png](/assets/images/protocol/oasis-5.png)
 
 <br/>
 

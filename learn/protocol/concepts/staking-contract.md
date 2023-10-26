@@ -28,7 +28,7 @@ If a node doesn't have the resources, knowledge, or availability to be a validat
 
 <br/>
 
-![trie staking contract.drawio.png](/public/protocol/trie_staking_contract.png)
+![trie staking contract.drawio.png](/assets/images/protocol/trie_staking_contract.png)
 
 <br/>
 
@@ -126,7 +126,7 @@ The validator’s signing key is used for the following transactions:
 
 <br/>
 
-![validator txs.drawio.png](/public/protocol/validator_txs.png)
+![validator txs.drawio.png](/assets/images/protocol/validator_txs.png)
 
 <br/>
 

@@ -28,7 +28,7 @@ Either way, validators can submit a **fork proof** to attest to the split upon 
 <br/>
 
 <p align="center">
-  <img src="/protocol/fork-proof-1.png" alt="Alt Text" width="500" height="250">
+  <img src="/assets/images/protocol/fork-proof-1.png" alt="Alt Text" width="500" height="250">
 </p>
 
 <br/>
@@ -52,7 +52,7 @@ Using the illustration below as a reference, we consider several validators have
 <br/>
 
 <p align="center">
-  <img src="/protocol/fork-proof-2.png" alt="Alt Text" width="400" height="100">
+  <img src="/assets/images/protocol/fork-proof-2.png" alt="Alt Text" width="400" height="100">
 </p>
 
 <br/>
@@ -88,5 +88,5 @@ According to our consensus algorithm security assumption, given the validator li
 As indicated in the table below, the probability declines rapidly:
 
 <p align="center">
-  <img src="/protocol/fork-probability.png" alt="Alt Text" width="400" height="250">
+  <img src="/assets/images/protocol/fork-probability.png" alt="Alt Text" width="400" height="250">
 </p>

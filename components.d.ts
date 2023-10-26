@@ -7,19 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Badge: typeof import('./.vitepress/theme/components/Badge.vue')['default']
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
-    CardLink: typeof import('./.vitepress/theme/components/CardLink.vue')['default']
-    CustomCard: typeof import('./.vitepress/components/CustomCard.vue')['default']
-    CustomHome: typeof import('./.vitepress/components/CustomHome.vue')['default']
-    CustomTitle: typeof import('./.vitepress/components/CustomTitle.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
-    Home: typeof import('./.vitepress/components/Home.vue')['default']
-    Links: typeof import('./.vitepress/theme/components/Links.vue')['default']
-    Sidebar: typeof import('./.vitepress/theme/components/Sidebar.vue')['default']
-    SidebarItem: typeof import('./.vitepress/theme/components/SidebarItem.vue')['default']
-    Tag: typeof import('./.vitepress/theme/components/Tag.vue')['default']
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
   }
 }

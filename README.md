@@ -13,8 +13,8 @@ Build and learn anything with Nimiq.
 <p>
 
 <p align="center">
-<a href="https://nimiq.com/" target="__blank"><img src="https://img.shields.io/badge/Nimiq%202.0-WIP-blue?style=flat&colorA=002438&colorB=41c399" alt="Nimiq 2.0"></a>
-<a href="https://nimiq.com/" target="__blank"><img src="https://img.shields.io/badge/Nimiq%20UI-WIP-blue?style=flat&colorA=002438&colorB=41c399" alt="Nimiq UI"></a>
+  <a href="https://nimiq.com/" target="__blank"><img src="https://img.shields.io/badge/Nimiq%202.0-WIP-blue?style=flat&colorA=002438&colorB=41c399" alt="Nimiq 2.0"></a>
+  <a href="https://nimiq.com/" target="__blank"><img src="https://img.shields.io/badge/Nimiq%20UI-WIP-blue?style=flat&colorA=002438&colorB=41c399" alt="Nimiq UI"></a>
 </p>
 
 <p align="center">

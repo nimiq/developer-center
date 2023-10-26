@@ -59,7 +59,7 @@ After the two mempools are fed with transactions respecting the verification pro
 Follows an illustration of how validators choose transactions to add to the block:
 
 <p align="center">
-  <img src="/public/protocol/mempool1.png" alt="Alt Text" width="500" height="250">
+  <img src="/assets/images/protocol/mempool1.png" alt="Alt Text" width="500" height="250">
 </p>
 
 <br/>

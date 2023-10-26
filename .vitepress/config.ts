@@ -26,6 +26,7 @@ function getFilesItemsFromFolder(folder: string) {
 export default defineConfig({
   base: '/nimiq-developer-center/',
   title: "Nimiq Developer Center",
+  srcExclude: ['**/README.md'],
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
   themeConfig: {
@@ -65,6 +66,9 @@ export default defineConfig({
               <span text="24 darkblue dark:white">Learn</span>
             </div>
           `,
+          items: [
+            { text: 'Overview', link: '/learn/protocol/overview' },
+          ]
         },
         {
           text: `
@@ -167,13 +171,14 @@ export default defineConfig({
     config: (md) => {
       md.use(...[
         container, 'goal', {
-          render(tokens, idx, _options) {
+          render(tokens, idx) {
+            return ''
             if (tokens[idx].nesting === 1) {
               return `
               <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
-                <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>\n
+                <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>
               `
-            } else return `</div>\n`
+            } else return `</div>`
           }
         }
       ])

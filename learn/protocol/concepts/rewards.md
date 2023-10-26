@@ -30,7 +30,7 @@ The following illustration serves for visualization purposes only. Validators th
 
 <br/>
 
-![rewards distribution.drawio.png](/public/protocol//rewards_distribution.png)
+![rewards distribution.drawio.png](/assets/images/protocol//rewards_distribution.png)
 
 <br/>
 
