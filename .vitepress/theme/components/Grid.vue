@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
   items: {
-    type: Object as PropType<Item[]>,
+    type: Object as PropType<Card[]>,
     required: true,
   },
 })

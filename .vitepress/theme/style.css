@@ -228,7 +228,7 @@ h4 {
   font-weight: 600;
 }
 
-:is(h1, h2)+p {
+.vp-raw :is(h1, h2)+p {
   font-size: 24px;
   margin-top: 24px;
   line-height: 1.5;
@@ -331,6 +331,23 @@ h4 {
  * Aside CSS
  * -------------------------------------------------------------------------- */
 .VPSidebar {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.375rem;
+    margin: 2px;
+    scrollbar-gutter: stable;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-clip: padding-box;
+    border: 2px transparent solid;
+    background-color: #4b4b5c60;
+
+    .dark & {
+      background-color: #3b4c6a7d;
+    }
+  }
 
   border-right: 1px solid var(--colors-darkblue-10);
 
@@ -352,4 +369,16 @@ h4 {
   padding-top: 96px;
   max-width: calc(var(--vp-layout-max-width) - 64px);
   margin: 0 auto;
+}
+
+.custom-block {
+  border-radius: 6px;
+  padding: 24px;
+  padding-bottom: 14px;
+  font-size: 16px;
+
+  & > p:first-child {
+    margin-bottom: 12px !important;
+    --at-apply: label;
+  }
 }

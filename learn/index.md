@@ -27,5 +27,5 @@ aside: false
 
 Everybody should be a peer: The basic idea of the Nimiq Blockchain.
 
-<GridLinks mt-64 :items="$frontmatter.links" />
+<Grid mt-64 :items="$frontmatter.links" />
 :::

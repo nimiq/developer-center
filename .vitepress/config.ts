@@ -10,8 +10,18 @@ import Components from "unplugin-vue-components/vite";
 import { defineConfig, postcssIsolateStyles } from "vitepress";
 import fs from 'node:fs'
 import path from 'node:path'
+import container from 'markdown-it-container'
+import transformerDirectives from '@unocss/transformer-directives'
 
 // @unocss-include
+
+function getFilesItemsFromFolder(folder: string) {
+  return fs.readdirSync(path.join(__dirname, `../${folder}`)).map(file => ({
+    text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
+    link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
+  }))
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/nimiq-developer-center/',
@@ -20,6 +30,7 @@ export default defineConfig({
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
   themeConfig: {
     nav: [
+      { text: "Markdown examples", link: "/markdown-examples" },
       { text: "Learn", link: "/learn/" },
       { text: "Build", link: "/build/" },
       {
@@ -66,18 +77,12 @@ export default defineConfig({
             {
               text: '<span class="label">Concepts</span>',
               collapsed: false,
-              items: fs.readdirSync(path.join(__dirname, '../learn/protocol/concepts')).map(file => ({
-                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
-                link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
-              }))
+              items: getFilesItemsFromFolder('learn/protocol/concepts')
             },
             {
               text: '<span class="label">Blocks</span>',
               collapsed: false,
-              items: fs.readdirSync(path.join(__dirname, '../learn/protocol/blocks')).map(file => ({
-                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
-                link: `/learn/protocol/blocks/${path.basename(file, path.extname(file))}`
-              }))
+              items: getFilesItemsFromFolder('learn/protocol/blocks')
             }
           ]
         },
@@ -92,14 +97,11 @@ export default defineConfig({
             {
               text: '<span class="label">OASIS</span>',
               collapsed: false,
-              items: fs.readdirSync(path.join(__dirname, '../learn/other')).map(file => ({
-                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
-                link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
-              }))
-            } 
+              items: getFilesItemsFromFolder('learn/other')
+            }
           ]
         },
-        
+
       ],
 
       '/build/': [
@@ -158,7 +160,26 @@ export default defineConfig({
     search: {
       provider: "local",
     }
+  }, 
+
+  markdown: {
+    // Add :: goal custom markdown-it plugins
+    config: (md) => {
+      md.use(...[
+        container, 'goal', {
+          render(tokens, idx, _options) {
+            if (tokens[idx].nesting === 1) {
+              return `
+              <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
+                <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>\n
+              `
+            } else return `</div>\n`
+          }
+        }
+      ])
+    }
   },
+
   vite: {
     optimizeDeps: {
       exclude: ['vitepress'],
@@ -195,7 +216,10 @@ export default defineConfig({
           },
         ],
 
-        safelist: ["root"],
+        transformers: [
+          transformerDirectives(),
+        ],
+
         presets: [
           presetUno(),
           presetAttributify(),
@@ -226,13 +250,26 @@ export default defineConfig({
               40: '#a5a7b6',
               50: '#8f91a3',
               60: '#797b91',
+              70: '#62657f',
               80: '#4c4f6d',
               90: '#35395a',
               94: '#2c3053',
               1000: '#12163C',
               dimmed: '#292d51'
             },
-            yellow: "#E9B213"
+            yellow: "#E9B213",
+            green: {
+              DEFAULT: '#13b59d',
+              10: '#e3f2f0',
+              20: '#d0f0eb',
+              30: '#b8e9e2',
+              40: '#a1e1d8',
+              50: '#89dace',
+              60: '#71d2c4',
+              70: '#5acbba',
+              80: '#42c3b0',
+              90: '#13b59d',
+            }
           },
         },
         rules: [
