@@ -172,7 +172,6 @@ export default defineConfig({
       md.use(...[
         container, 'goal', {
           render(tokens, idx) {
-            return ''
             if (tokens[idx].nesting === 1) {
               return `
               <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
