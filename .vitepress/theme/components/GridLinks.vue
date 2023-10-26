@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { Item } from './CardLink.vue';
-
 const props = defineProps({
   items: {
-    type: Object as PropType<object[]>,
+    type: Object as PropType<Item[]>,
     required: true,
   },
 })
@@ -25,7 +23,7 @@ const items = computed(() => {
 <template>
   <ul class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_auto] gap-32">
     <li v-for="item in items" :style="`grid-column: span ${item.span || 2}`">
-      <CardLink :item="item" />
+      <Card :item="item" />
     </li>
   </ul>
 </template>

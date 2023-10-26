@@ -8,6 +8,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig, postcssIsolateStyles } from "vitepress";
+import fs from 'node:fs'
+import path from 'node:path'
 
 // @unocss-include
 // https://vitepress.dev/reference/site-config
@@ -46,19 +48,64 @@ export default defineConfig({
     sidebar: {
       '/learn/': [
         {
-          text: 'Guide',
+          text: `
+            <div m="t-8 b-24" flex gap-x-8 items-center>
+              <div w-24 h-24 i-nimiq:bulb></div>
+              <span text="24 darkblue dark:white">Learn</span>
+            </div>
+          `,
+        },
+        {
+          text: `
+            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
+            <div mt-8 flex gap-x-8 mb-24 items-center>
+              <div w-20 h-20 i-nimiq:nodes></div>
+              <span text="20 darkblue dark:white">Protocol</span>
+            </div>`,
           items: [
-            { text: 'Index', link: '/guide/' },
-            { text: 'One', link: '/guide/one' },
-            { text: 'Two', link: '/guide/two' }
+            {
+              text: '<span class="label">Concepts</span>',
+              collapsed: false,
+              items: fs.readdirSync(path.join(__dirname, '../learn/protocol/concepts')).map(file => ({
+                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
+                link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
+              }))
+            },
+            {
+              text: '<span class="label">Blocks</span>',
+              collapsed: false,
+              items: fs.readdirSync(path.join(__dirname, '../learn/protocol/blocks')).map(file => ({
+                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
+                link: `/learn/protocol/blocks/${path.basename(file, path.extname(file))}`
+              }))
+            }
           ]
-        }
+        },
+        {
+          text: `
+            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
+            <div mt-8 flex gap-x-8 mb-24 items-center>
+              <div w-20 h-20 i-nimiq:nodes></div>
+              <span text="20 darkblue dark:white">Other</span>
+            </div>`,
+          items: [
+            {
+              text: '<span class="label">OASIS</span>',
+              collapsed: false,
+              items: fs.readdirSync(path.join(__dirname, '../learn/other')).map(file => ({
+                text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
+                link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
+              }))
+            } 
+          ]
+        },
+        
       ],
 
       '/build/': [
         {
           text: `
-            <div mt-8 flex gap-x-8 mb-24 items-center>
+            <div m="t-8 b-24" flex gap-x-8 items-center>
               <div w-24 h-24 i-nimiq:tools></div>
               <span text="24 darkblue dark:white">Build</span>
             </div>
@@ -174,6 +221,7 @@ export default defineConfig({
               10: '#e9e9ed',
               15: '#cdcdd5',
               20: '#d2d3da',
+              25: '#c7c8d1',
               30: '#bcbdc8',
               40: '#a5a7b6',
               50: '#8f91a3',

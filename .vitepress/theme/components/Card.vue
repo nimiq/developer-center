@@ -9,6 +9,8 @@ export interface Item {
   'bg-color'?: 'gray' | 'blue' | 'green'
   centered: boolean
   hasColors: boolean
+  tag?: Tag 
+  duration: string
 }
 </script>
 <script setup lang="ts">
@@ -27,7 +29,7 @@ defineProps({
     'bg-radial-green': item.bgColor === 'green',
     'p-24': item.layout === 'sm',
     'p-40 pb-80': item.layout === 'square',
-    'p-64': item.layout === 'lg',
+    'p-40': item.layout === 'lg',
     'items-center': item.centered,
   }" transition hover="-translate-y-6 shadow" class="group">
     <div text="darkblue/40 dark:white/80" :class="{
@@ -46,5 +48,13 @@ defineProps({
     <p v-if="item.description" text="darkblue-50 inverted:white/60" mt-20 inverted:max-w-256 :class="{'text-center': item.centered}">
       {{ item.description }}
     </p>
+
+    <div v-if="item.tag || item.duration" flex items-center flex-wrap gap-24 mt-14>
+      <Tags v-if="item.tag" :tags="[item.tag]" />
+      <div flex gap-x-10 items-center>
+        <div i-nimiq:watch text="darkblue-40 inverted:white/60" w-16 h-16></div>
+        <span v-if="item.duration" text="16 darkblue-50 inverted:white/70">{{ item.duration }}</span>
+      </div>
+    </div>
   </a>
 </template>
