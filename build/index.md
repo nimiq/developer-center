@@ -8,7 +8,11 @@ links:
     href: '/'
     layout: lg
     span: 6
+    tag: RPC
+    duration: 10-30 min
   - title: Set up a user interface
+    tag: Web Client
+    duration: 10-30 min
   - title: Create a transaction
   - title: Create a wallet
 assetsLinks:
@@ -29,6 +33,7 @@ outline: false
 
 Nimiq is made for people to build on it.<br/>You just need a browser and Internet.
 
+<Tags mt-24 :tags="new Set($frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean))" />
 <GridLinks mt-64 :items="$frontmatter.links" />
 
 <div label mb-8 mt-136 text-darkblue-50>Assets</div>
