@@ -261,6 +261,10 @@ export default defineConfig({
               1000: '#12163C',
               dimmed: '#292d51'
             },
+            blue: {
+              DEFAULT: '#0582CA',
+              10: '#e6f3fa',
+            },  
             yellow: "#E9B213",
             green: {
               DEFAULT: '#13b59d',
