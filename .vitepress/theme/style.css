@@ -393,7 +393,11 @@ h4 {
       --at-apply: border-none w-max;
        
       > :is(span.title) {
-        --at-apply: bg-blue-10 text-blue font-bold rounded-full py-6 px-16 w-max hover:(transition-shadow ring-1 ring-blue) focus:(transition-shadow ring-1 ring-blue);
+        --at-apply: "bg-blue-10 text-blue font-bold rounded-full py-6 px-16 w-max hover:(transition-shadow ring-1 ring-blue dark:ring-white) focus:(transition-shadow ring-1 ring-blue dark:ring-white)";
+
+        .dark & {
+          --at-apply: "bg-white/30 text-white";
+        }
       }
       
       > :is(span.desc) {
