@@ -393,10 +393,18 @@ h4 {
       --at-apply: border-none w-max;
        
       > :is(span.title) {
-        --at-apply: "bg-blue-10 text-blue font-bold rounded-full py-6 px-16 w-max hover:(transition-shadow ring-1 ring-blue) focus:(transition-shadow ring-1 ring-blue)";
+        --at-apply: bg-blue-10 text-blue font-bold rounded-full py-6 px-16 w-max;
+
+        :is(&:hover, &:focus) {
+          --at-apply: transition-shadow ring-1 ring-blue;
+        }
 
         .dark & {
-          --at-apply: "bg-white/30 text-white hover:ring-white/50 focus:ring-white/50";
+          --at-apply: bg-white/30 text-white;
+
+          :is(&:hover, &:focus) {
+            --at-apply: ring-white/50;
+          }
         }
       }
       
@@ -405,7 +413,11 @@ h4 {
       }
 
       &.prev .title, &.next .title {
-        --at-apply: relative before:(i-nimiq-arrow absolute content-[''] top-[9px]);
+        --at-apply: relative;
+
+        &:before {
+          --at-apply: i-nimiq-arrow absolute content-[''] top-[9px];
+        }
       } 
 
       &.prev .title {
