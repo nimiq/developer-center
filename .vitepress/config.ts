@@ -174,6 +174,8 @@ export default defineConfig({
   }, 
 
   markdown: {
+    math: true, // Allow latex math
+
     // Add ::: goal ::: custom markdown-it plugins
     config: (md) => {
       md.use(...[
