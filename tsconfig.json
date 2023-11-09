@@ -4,7 +4,8 @@
     "jsx": "preserve",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "types": ["vite/client", "node"]
   },
   "exclude": [
     "**/dist/**"
