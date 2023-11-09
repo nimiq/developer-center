@@ -15,12 +15,19 @@ import transformerDirectives from '@unocss/transformer-directives'
 
 // @unocss-include
 
+const IGNORED_FILES = ['learn/other/OASIS.md', 'learn/protocol/blocks/block-format.md']
+
 function getFilesItemsFromFolder(folder: string) {
-  return fs.readdirSync(path.join(__dirname, `../${folder}`)).map(file => ({
+  const files = fs.readdirSync(path.join(__dirname, `../${folder}`))
+  const notIgnoredFiles = files.filter(file => !IGNORED_FILES.includes(`${folder}/${file}`))
+  const items = notIgnoredFiles.map(file => ({
     text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
-    link: `/learn/protocol/concepts/${path.basename(file, path.extname(file))}`
+    link: `/${folder}/${path.basename(file, path.extname(file))}`
   }))
+  return items
 }
+
+const isDev = process.env.NODE_ENV === 'dev'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -31,7 +38,7 @@ export default defineConfig({
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
   themeConfig: {
     nav: [
-      { text: "Markdown examples", link: "/markdown-examples" },
+      ...(isDev ? [{ text: "Markdown examples", link: "/markdown-examples" }] : []),
       { text: "Learn", link: "/learn/" },
       { text: "Build", link: "/build/" },
       {
@@ -167,7 +174,7 @@ export default defineConfig({
   }, 
 
   markdown: {
-    // Add :: goal custom markdown-it plugins
+    // Add ::: goal ::: custom markdown-it plugins
     config: (md) => {
       md.use(...[
         container, 'goal', {
