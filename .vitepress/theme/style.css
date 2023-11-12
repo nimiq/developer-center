@@ -59,10 +59,10 @@
   --vp-c-tip-3: var(--vp-c-brand-3);
   --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  --vp-c-warning-1: var(--vp-c-yellow-1);
-  --vp-c-warning-2: var(--vp-c-yellow-2);
-  --vp-c-warning-3: var(--vp-c-yellow-3);
-  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+  --vp-c-warning-1: var(--vp-c-gold-1);
+  --vp-c-warning-2: var(--vp-c-gold-2);
+  --vp-c-warning-3: var(--vp-c-gold-3);
+  --vp-c-warning-soft: var(--vp-c-gold-soft);
 
   --vp-c-danger-1: var(--vp-c-red-1);
   --vp-c-danger-2: var(--vp-c-red-2);
@@ -159,13 +159,13 @@
   --colors-darkblue-900: #0d102c;
   --colors-darkblue-1000: #12163c;
 
-  --colors-yellow: #E9B213;
+  --colors-gold: #E9B213;
 
   --vp-c-brand-1: var(--colors-darkblue);
   --vp-c-bg-soft: var(--colors-darkblue-6);
 
   &.dark {
-    --vp-c-brand-1: var(--colors-yellow);
+    --vp-c-brand-1: var(--colors-gold);
     --vp-c-bg-soft: var(--colors-darkblue-900);
   }
 
