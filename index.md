@@ -43,7 +43,7 @@ buildTogetherLinks:
 ---
 
 :::raw
-# Welcome to the Nimiq Developer Center
+# Welcome to the Nimiq Developer Centre
 
 Get guides, resources and tips on how to create with Nimiq.
 
@@ -55,3 +55,110 @@ Create apps, contribute to the network or run a validator.
 
 <Grid mt-64 :items="$frontmatter.buildTogetherLinks" />
 :::
+
+
+<script setup>
+const isDev = import.meta.env.DEV
+</script>
+
+<div v-if="isDev">
+
+::: info
+Only shown in development mode.
+:::
+
+## Markdown Extension Examples
+
+This page demonstrates some of the built-in markdown extensions provided by VitePress.
+
+### Syntax Highlighting
+
+VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+
+**Input**
+
+````
+```js{4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+````
+
+**Output**
+
+```js{4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+
+### Custom Containers
+
+**Input**
+
+```md
+::: info
+This is an info box.
+:::
+
+::: tip
+This is a tip.
+:::
+
+::: warning
+This is a warning.
+:::
+
+::: danger
+This is a dangerous warning.
+:::
+
+::: details
+This is a details block.
+:::
+
+::: goal 
+Getting started by building a minimal...
+:::
+```
+
+**Output**
+
+::: info
+This is an info box.
+:::
+
+::: tip
+This is a tip.
+:::
+
+::: warning
+This is a warning.
+:::
+
+::: danger
+This is a dangerous warning.
+:::
+
+::: details
+This is a details block.
+:::
+
+::: goal 
+Getting started by building a minimal app that connects to the Nimiq network and establishes consensus.
+:::
+
+### More
+
+Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+
+</div>

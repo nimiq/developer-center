@@ -17,28 +17,38 @@ import transformerDirectives from '@unocss/transformer-directives'
 
 const IGNORED_FILES = ['learn/other/OASIS.md', 'learn/protocol/blocks/block-format.md']
 
-function getFilesItemsFromFolder(folder: string) {
+/**
+ * Retrieves file items from a specified folder, ordered by a given order.
+ * 
+ * @param folder The folder from which to retrieve file items.
+ * @param order The order in which to arrange the retrieved file items.
+ * @returns An array of file items from the specified folder, ordered by the given order.
+ */
+function getFilesItemsFromFolder(folder: string, order: string[] = []) {
   const files = fs.readdirSync(path.join(__dirname, `../${folder}`))
   const notIgnoredFiles = files.filter(file => !IGNORED_FILES.includes(`${folder}/${file}`))
-  const items = notIgnoredFiles.map(file => ({
-    text: path.basename(file, path.extname(file)).charAt(0).toUpperCase() + file.slice(1, -path.extname(file).length).replace(/-/g, ' '),
-    link: `/${folder}/${path.basename(file, path.extname(file))}`
-  }))
+  const orderedFiles = order.map(file => file.includes('.') ? file : `${file}.md`)
+  const unorderedFiles = notIgnoredFiles.filter(file => !orderedFiles.includes(file))
+  const items = [...orderedFiles, ...unorderedFiles].map(file => {
+    const fileName = path.basename(file, path.extname(file));
+    const text = fileName.replace(/-/g, ' ');
+    return {
+      text: text.charAt(0).toUpperCase() + text.slice(1),
+      link: `/${folder}/${fileName}` // Use the original filename for the link
+    }
+  })
   return items
 }
 
-const isDev = process.env.NODE_ENV === 'dev'
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/nimiq-developer-center/',
-  title: "Nimiq Developer Center",
+  base: '/nimiq-developer-centre/',
+  title: "Nimiq Developer Centre",
   srcExclude: ['**/README.md'],
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
   themeConfig: {
     nav: [
-      ...(isDev ? [{ text: "Markdown examples", link: "/markdown-examples" }] : []),
       { text: "Learn", link: "/learn/" },
       { text: "Build", link: "/build/" },
       {
@@ -125,39 +135,54 @@ export default defineConfig({
           `,
           items: [
             { text: 'Overview', link: '/' },
-            { text: 'Good practices', link: '/' }
           ],
         },
+        // {
+        //   text: `
+        //     <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
+        //     <div mt-8 flex gap-x-8 mb-24 items-center>
+        //       <div w-20 h-20 i-nimiq:nodes></div>
+        //       <span text="20 darkblue-80 dark:white/80">RCP</span>
+        //     </div>`,
+        //   items: [
+        //     {
+        //       text: '<span class="label">Tutorials</span>',
+        //       collapsed: false,
+        //       items: [
+        //         { text: 'Tutorial 1', link: '/config/' },
+        //         { text: 'Tutorial 2', link: '/config/' },
+        //         { text: 'Tutorial 3', link: '/config/' },
+        //       ]
+        //     }
+        //   ]
+        // },
+        // {
+        //   text: `
+        //     <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
+        //     <div mt-8 flex gap-x-8 mb-24 items-center>
+        //       <div w-20 h-20 i-nimiq:globe></div>
+        //       <span text="20 darkblue-80 dark:white/80">Web Client</span>
+        //     </div>`,
+        //   items: [
+        //     { text: 'The WASM client', link: '/config/' },
+        //     { text: 'Another useful resource', link: '/config/three' },
+        //     { text: 'Finally the end', link: '/config/four' }
+        //   ]
+        // },
         {
           text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue-80 dark:white/80">RCP</span>
-            </div>`,
-          items: [
-            {
-              text: '<span class="label">Tutorials</span>',
-              collapsed: false,
-              items: [
-                { text: 'Tutorial 1', link: '/config/' },
-                { text: 'Tutorial 2', link: '/config/' },
-                { text: 'Tutorial 3', link: '/config/' },
-              ]
-            }
-          ]
-        },
-        {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
+            <div text="14 darkblue/50 dark:white/50" pt-20>Using Nimiq's</div>
             <div mt-8 flex gap-x-8 mb-24 items-center>
               <div w-20 h-20 i-nimiq:globe></div>
-              <span text="20 darkblue-80 dark:white/80">Web Client</span>
+              <span text="20 darkblue-80 dark:white/80">UI</span>
             </div>`,
           items: [
-            { text: 'The WASM client', link: '/config/' },
-            { text: 'Another useful resource', link: '/config/three' },
-            { text: 'Finally the end', link: '/config/four' }
+            { text: '<div flex items-center gap-x-8 mb-4><div i-logos:figma h-16 w-16 text-white></div> Style Guide</div>', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0' },
+            {
+              text: '<span label>CSS Framework</span>',
+              collapsed: false,
+              items: getFilesItemsFromFolder('build/ui/css-framework', ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'])
+            }
           ]
         }
       ]
@@ -188,8 +213,20 @@ export default defineConfig({
               `
             } else return `</div>\n`
           }
-        }
+        },
       ])
+      md.use(...[
+        container, 'tip', {
+          render(tokens, idx) {
+            if (tokens[idx].nesting === 1) {
+              return `
+              <div class="custom-block" bg="gold/10" text="gold">
+                <p flex gap-x-8><div i-nimiq:bulb></div><span>Tip</span></p>
+              `
+            } else return `</div>\n`
+          }
+        }]
+      )
     }
   },
 
@@ -239,6 +276,7 @@ export default defineConfig({
           presetIcons({
             collections: {
               "nimiq": FileSystemIconLoader('./assets/icons', svg => svg),
+              "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
             }
           }),
           presetWebFonts({
@@ -273,8 +311,20 @@ export default defineConfig({
             blue: {
               DEFAULT: '#0582CA',
               10: '#e6f3fa',
+              60: '#69b4df',
             },  
-            yellow: "#E9B213",
+            gold: {
+              DEFAULT: "#E9B213",
+              10: '#fcf7e6',
+              20: '#faf0ce',
+              30: '#f6e8b6',
+              40: '#f3e09e',
+              50: '#f1d884',
+              60: '#eed06a',
+              70: '#ecc850',
+              80: '#e8c033',
+              90: '#e6b909',
+            },
             green: {
               DEFAULT: '#13b59d',
               10: '#e3f2f0',
@@ -299,6 +349,7 @@ export default defineConfig({
 
         shortcuts: {
           'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px]',
+          'css-framework-card': 'flex justify-center flex-col',
         }
       }),
     ],
@@ -308,12 +359,6 @@ export default defineConfig({
           find: /^.*\/VPNavBarTitle\.vue$/,
           replacement: fileURLToPath(
             new URL("./theme/components/HeaderLogo.vue", import.meta.url),
-          ),
-        },
-        {
-          find: /^.*\/VPSiadebar\.vue$/,
-          replacement: fileURLToPath(
-            new URL("./theme/components/Sidebar.vue", import.meta.url),
           ),
         },
       ],

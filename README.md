@@ -1,11 +1,11 @@
 <br />
 <p align="center">
-  <a href="https://github.com/nimiq/nimiq-developer-center">
-    <img src="assets/developer-center-logo.png" alt="Logo" width="130" />
+  <a href="https://github.com/nimiq/nimiq-developer-centre">
+    <img src="assets/developer-centre-logo.png" alt="Logo" width="130" />
   </a>
 
 <h1 align="center">
-Nimiq's Developer Center
+Nimiq's Developer Centre
 </h1>
 <p align="center">
 The Official documentation for the Nimiq ecosystem.<br>
@@ -37,8 +37,8 @@ Feel free to contribute if you want to improve any part of the docs. PRs all wel
 ## Set up
 
 ```bash
-git clone https://github.com/onmax/nimiq-developer-center # Clone repo. You can also fork it and clone from your fork
-cd nimiq-developer-center
+git clone https://github.com/onmax/nimiq-developer-centre # Clone repo. You can also fork it and clone from your fork
+cd nimiq-developer-centre
 pnpm install # Install pnpm first if you don't have it -> https://pnpm.io/installation
 pnpm dev # Start dev server
 ```
