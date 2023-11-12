@@ -1,19 +1,6 @@
-<script lang="ts">
-export interface Card {
-  icon?: string
-  label?: string
-  layout?: 'sm' | 'square' | 'lg'
-  title: string
-  description?: string
-  href: string
-  'bg-color'?: 'gray' | 'blue' | 'green'
-  centered: boolean
-  hasColors: boolean
-  tag?: Tag 
-  duration: string
-}
-</script>
 <script setup lang="ts">
+import { Card } from "./types";
+
 defineProps({
   item: {
     type: Object as PropType<Card>,
@@ -24,9 +11,9 @@ defineProps({
 
 <template>
   <a :href="item.href" :data-inverted="item.hasColors ? '' : undefined" flex flex-col relative h-full cursor-pointer rounded-6 :class="{
-    'bg-darkblue-6 dark:bg-darkblue-dimmed hover:bg-white hover:dark:bg-darkblue-90': !item.bgColor || item.bgColor === 'gray',
-    'bg-radial-lightblue': item.bgColor === 'blue',
-    'bg-radial-green': item.bgColor === 'green',
+    'bg-darkblue-6 dark:bg-darkblue-dimmed hover:bg-white hover:dark:bg-darkblue-90': !item['bg-color'] || item['bg-color'] === 'gray',
+    'bg-radial-lightblue': item['bg-color'] === 'blue',
+    'bg-radial-green': item['bg-color'] === 'green',
     'p-24': item.layout === 'sm',
     'p-40 pb-80': item.layout === 'square',
     'p-40': item.layout === 'lg',
