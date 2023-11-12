@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Card } from "./Card.vue"
+import type { Card } from "./types"
 
 const props = defineProps({
   items: {
     type: Object as PropType<Card[]>,
-    required: true,
+    default: []
   },
 })
 
