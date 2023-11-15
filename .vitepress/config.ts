@@ -34,6 +34,13 @@ import transformerDirectives from '@unocss/transformer-directives'
   // Rebuild docs
   console.log('Generating Web-Client docs...')
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
+
+  // Update entry file with frontmatter to disable the "next" footer button
+  const entryFile = path.join(__dirname, '../build/web-client/index.md')
+  let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
+  entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
+  fs.writeFileSync(entryFile, entryFileContent)
+
   // Write version file for generated docs
   fs.writeFileSync(versionFile, packageVersion)
 })()
@@ -171,7 +178,7 @@ export default defineConfig({
           `,
           items: [
             {
-              text: 'Readme',
+              text: '<span class="label">Readme</span>',
               link: '/build/web-client/index',
             },
             {
