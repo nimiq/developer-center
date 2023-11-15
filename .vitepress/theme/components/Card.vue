@@ -1,27 +1,33 @@
 <script setup lang="ts">
+import { computed, type PropType } from "vue";
 import { Card } from "./types";
 
-defineProps({
+const props = defineProps({
   item: {
     type: Object as PropType<Card>,
     required: true,
   },
 })
+
+const layout = computed(() => props.item.layout || props.item.color ? "square" : "lg")
 </script>
 
 <template>
-  <a :href="item.href" :data-inverted="item.hasColors ? '' : undefined" flex flex-col relative h-full cursor-pointer rounded-6 :class="{
-    'bg-darkblue-6 dark:bg-darkblue-dimmed hover:bg-white hover:dark:bg-darkblue-90': !item['bg-color'] || item['bg-color'] === 'gray',
-    'bg-radial-lightblue': item['bg-color'] === 'blue',
-    'bg-radial-green': item['bg-color'] === 'green',
+  <a :href="item.href" :data-inverted="item.hasColors ? '' : undefined" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden :class="{
+    'bg-darkblue-6 dark:bg-darkblue-dimmed hover:bg-white hover:dark:bg-darkblue-90': !item['color'] || item['color'] === 'gray',
+    'bg-radial-lightblue': item['color'] === 'blue',
+    'bg-radial-green': item['color'] === 'green',
     'p-24': item.layout === 'sm',
-    'p-40 pb-80': item.layout === 'square',
+    'p-40 pb-80': layout === 'square',
     'p-40': item.layout === 'lg',
     'items-center': item.centered,
   }" transition hover="-translate-y-6 shadow" class="group">
-    <div text="darkblue/40 dark:white/80" :class="{
-      'absolute inset-y-50 right-0 w-[15vw] children:w-full children:h-full text-white/40 opacity-40': !item.centered,
-      'children:h-96 children:w-96 mb-56 group-hover:text-darkblue dark:group-hover:text-white': item.centered
+    <div :class="{
+      'absolute inset-y-50 sm:-right-16 lg:-right-32 -right-64 w-[15vw] children:w-full children:h-full': !item.centered,
+      'text-[#0E65C9]': item.color === 'blue',
+      'text-[#1DA186]': item.color === 'green',
+      'text-white/40 opacity-40 darkblue/40 dark:white/80': !item.hasColors,
+      'darkblue/40 dark:white/80 children:h-96 children:w-96 mb-56 group-hover:text-darkblue dark:group-hover:text-white': item.centered
     }" v-if="item.icon">
       <div :class="item.icon" />
     </div>
@@ -32,7 +38,7 @@ defineProps({
       inverted:max-w-256>
       {{ item.title }}
     </component>
-    <p v-if="item.description" text="darkblue-50 inverted:white/60" mt-20 inverted:max-w-256 :class="{'text-center': item.centered}">
+    <p v-if="item.description" text="darkblue-50 inverted:white/60" mt-20 z-10 inverted:max-w-256 :class="{'text-center': item.centered}">
       {{ item.description }}
     </p>
 

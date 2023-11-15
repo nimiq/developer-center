@@ -86,7 +86,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/learn/protocol/overview' },
           ]
-        },
+        }, 
         {
           text: `
             <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
@@ -136,6 +136,35 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/' },
           ],
+        },
+        {
+          text: `
+            <div m="t-8 b-24" flex gap-x-8 items-center>
+              <div w-24 h-24 i-nimiq:bulb></div>
+              <span text="24 darkblue-90 dark:white/90">Web client!</span>
+            </div>
+          `,
+          items: [
+            {
+              text: 'Getting started',
+              link: '/build/web-client-docs/index',
+            },
+            {
+              text: '<span class="label">Classes</span>',
+              items: getFilesItemsFromFolder('build/web-client-docs/classes'),
+              collapsed: true
+            },
+            {
+              text: '<span class="label">Enums</span>',
+              items: getFilesItemsFromFolder('build/web-client-docs/enums'),
+              collapsed: true
+            },
+            {
+              text: '<span class="label">Interfaces</span>',
+              items: getFilesItemsFromFolder('build/web-client-docs/interfaces'),
+              collapsed: true
+            }
+          ]
         },
         // {
         //   text: `
@@ -336,7 +365,7 @@ export default defineConfig({
               70: '#5acbba',
               80: '#42c3b0',
               90: '#13b59d',
-            }
+            },
           },
         },
         rules: [

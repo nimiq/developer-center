@@ -10,7 +10,7 @@ const props = defineProps({
 
 const items = computed(() => {
   return props.items.map(i => {
-    const hasColors = i["bg-color"] && ['blue', 'green'].includes(i["bg-color"])
+    const hasColors = i.color && ['blue', 'green'].includes(i.color)
 
     return {
       hasColors,
@@ -24,7 +24,7 @@ const items = computed(() => {
 
 <template>
   <ul class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_auto] gap-32">
-    <li v-for="item in items" :key="item.name" :style="`grid-column: span ${item.span || 2}`">
+    <li v-for="item in items" :key="item.name" :class="`cols-span-[${item.span || 2}]`">
       <Card :item="item" />
     </li>
   </ul>
