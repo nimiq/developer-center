@@ -8,10 +8,35 @@ import AutoImport from "unplugin-auto-import/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig, postcssIsolateStyles } from "vitepress";
+import { execSync } from 'node:child_process';
 import fs from 'node:fs'
 import path from 'node:path'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
+
+// Build dynamic docs
+(function buildWebClientDocs() {
+  // Read installed package version of @nimiq/core-web
+  const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
+
+  // Read package version of generated docs, if already built
+  const versionFile = path.join(__dirname, '../build/web-client/_version')
+  if (fs.existsSync(versionFile)) {
+    const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
+
+    // Skip build if package version and generated version match
+    if (packageVersion === generatedVersion) {
+      console.log('Web-Client docs already generated')
+      return
+    }
+  }
+
+  // Rebuild docs
+  console.log('Generating Web-Client docs...')
+  execSync('pnpm run build:web-client', { stdio: 'inherit' })
+  // Write version file for generated docs
+  fs.writeFileSync(versionFile, packageVersion)
+})()
 
 // @unocss-include
 
@@ -19,7 +44,7 @@ const IGNORED_FILES = ['learn/other/OASIS.md', 'learn/protocol/blocks/block-form
 
 /**
  * Retrieves file items from a specified folder, ordered by a given order.
- * 
+ *
  * @param folder The folder from which to retrieve file items.
  * @param order The order in which to arrange the retrieved file items.
  * @returns An array of file items from the specified folder, ordered by the given order.
@@ -86,7 +111,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/learn/protocol/overview' },
           ]
-        }, 
+        },
         {
           text: `
             <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
@@ -141,27 +166,27 @@ export default defineConfig({
           text: `
             <div m="t-8 b-24" flex gap-x-8 items-center>
               <div w-24 h-24 i-nimiq:bulb></div>
-              <span text="24 darkblue-90 dark:white/90">Web client!</span>
+              <span text="24 darkblue-90 dark:white/90">Web client</span>
             </div>
           `,
           items: [
             {
-              text: 'Getting started',
-              link: '/build/web-client-docs/index',
+              text: 'Readme',
+              link: '/build/web-client/index',
             },
             {
               text: '<span class="label">Classes</span>',
-              items: getFilesItemsFromFolder('build/web-client-docs/classes'),
+              items: getFilesItemsFromFolder('build/web-client/classes'),
               collapsed: true
             },
             {
               text: '<span class="label">Enums</span>',
-              items: getFilesItemsFromFolder('build/web-client-docs/enums'),
+              items: getFilesItemsFromFolder('build/web-client/enums'),
               collapsed: true
             },
             {
               text: '<span class="label">Interfaces</span>',
-              items: getFilesItemsFromFolder('build/web-client-docs/interfaces'),
+              items: getFilesItemsFromFolder('build/web-client/interfaces').filter(item => item.text !== 'InitOutput'),
               collapsed: true
             }
           ]
@@ -225,7 +250,7 @@ export default defineConfig({
     search: {
       provider: "local",
     }
-  }, 
+  },
 
   markdown: {
     math: true, // Allow latex math
@@ -341,7 +366,7 @@ export default defineConfig({
               DEFAULT: '#0582CA',
               10: '#e6f3fa',
               60: '#69b4df',
-            },  
+            },
             gold: {
               DEFAULT: "#E9B213",
               10: '#fcf7e6',
