@@ -42,8 +42,8 @@ function getFilesItemsFromFolder(folder: string, order: string[] = []) {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/nimiq-developer-centre/',
-  title: "Nimiq Developer Centre",
+  base: '/nimiq-developer-center/',
+  title: "Nimiq Developer Center",
   srcExclude: ['**/README.md'],
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",

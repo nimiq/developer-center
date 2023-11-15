@@ -30,7 +30,7 @@ links:
 ---
 
 :::raw
-# Welcome to the Nimiq Developer Centre
+# Welcome to the Nimiq Developer Center
 
 Get guides, resources and tips on how to create with Nimiq.
 
