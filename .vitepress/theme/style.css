@@ -173,7 +173,7 @@
   --vp-font-family-mono: 'Fira Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   --vp-sidebar-width: 258px;
-  --vp-sidebar-bg-color: var(--colors-white);
+  --vp-sidebar-color: var(--colors-white);
 }
 
 html {
@@ -185,7 +185,7 @@ html {
     --vp-c-bg-elv: var(--colors-darkblue);
     --vp-c-divider: var(--colors-darkblue-80);
     --vp-c-neutral-inverse: var(--colors-darkblue-80);
-    --vp-input-switch-bg-color: var(--colors-darkblue);
+    --vp-input-switch-color: var(--colors-darkblue);
   }
 }
 
@@ -356,7 +356,7 @@ h4 {
   border-right: 1px solid var(--colors-darkblue-10);
 
   .dark & {
-    --vp-sidebar-bg-color: var(--colors-darkblue-1000);
+    --vp-sidebar-color: var(--colors-darkblue-1000);
     border-color: var(--colors-darkblue-94);
   }
 

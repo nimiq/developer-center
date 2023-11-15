@@ -5,7 +5,7 @@ export interface Card {
   title: string
   description?: string
   href: string
-  'bg-color'?: 'gray' | 'blue' | 'green'
+  'color'?: 'gray' | 'blue' | 'green'
   centered: boolean
   hasColors: boolean
   tag?: Tag
