@@ -178,7 +178,7 @@ export default defineConfig({
           `,
           items: [
             {
-              text: '<span class="label">Readme</span>',
+              text: 'Getting started',
               link: '/build/web-client/index',
             },
             {
@@ -336,8 +336,12 @@ export default defineConfig({
           presetAttributify(),
           presetIcons({
             collections: {
-              "nimiq": FileSystemIconLoader('./assets/icons', svg => svg),
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
+                nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res =>  {
+                  const json = await res.json()
+                  console.log(json)
+                  return json
+                }),
             }
           }),
           presetWebFonts({
