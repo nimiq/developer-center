@@ -1,7 +1,7 @@
 {
-    "files": ["node_modules/@nimiq/core-web/types/index.d.ts"],
+    "files": ["node_modules/@nimiq/core-web/types.d.ts"],
     "typedocOptions": {
-      "entryPoints": ["node_modules/@nimiq/core-web/types/index.d.ts"],
+      "entryPoints": ["node_modules/@nimiq/core-web/types.d.ts"],
       "out": "build/web-client"
     }
   }
