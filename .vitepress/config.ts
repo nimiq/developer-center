@@ -187,13 +187,8 @@ export default defineConfig({
               collapsed: true
             },
             {
-              text: '<span class="label">Enums</span>',
-              items: getFilesItemsFromFolder('build/web-client/enums'),
-              collapsed: true
-            },
-            {
-              text: '<span class="label">Interfaces</span>',
-              items: getFilesItemsFromFolder('build/web-client/interfaces').filter(item => item.text !== 'InitOutput'),
+              text: '<span class="label">Modules</span>',
+              items: getFilesItemsFromFolder('build/web-client/modules').filter(item => item.text !== 'InitOutput'),
               collapsed: true
             }
           ]
