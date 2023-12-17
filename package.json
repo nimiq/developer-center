@@ -9,29 +9,29 @@
     "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --entryDocument index.md --hideBreadcrumbs"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.28",
-    "@iconify-json/logos": "^1.1.37",
-    "@iconify/json": "^2.2.140",
-    "@iconify/utils": "^2.1.11",
-    "@nimiq/core-web": "next",
-    "@types/node": "^20.9.0",
-    "@unocss/preset-rem-to-px": "^0.57.3",
-    "@unocss/preset-web-fonts": "^0.57.3",
-    "@unocss/transformer-directives": "^0.57.3",
-    "eslint": "^8.53.0",
-    "markdown-it-container": "^3.0.0",
-    "postcss": "^8.4.31",
-    "typedoc": "^0.25.3",
+    "@antfu/eslint-config": "2.4.6",
+    "@iconify-json/logos": "^1.1.41",
+    "@iconify/json": "^2.2.158",
+    "@iconify/utils": "^2.1.13",
+    "@nimiq/core-web": "^1.6.2",
+    "@types/node": "^20.10.4",
+    "@unocss/preset-rem-to-px": "^0.58.0",
+    "@unocss/preset-web-fonts": "^0.58.0",
+    "@unocss/transformer-directives": "^0.58.0",
+    "eslint": "^8.56.0",
+    "markdown-it-container": "^4.0.0",
+    "postcss": "^8.4.32",
+    "typedoc": "^0.25.4",
     "typedoc-plugin-markdown": "^3.17.1",
-    "unocss": "^0.57.3",
-    "unplugin-auto-import": "^0.16.7",
-    "unplugin-vue-components": "^0.25.2",
-    "vitepress": "1.0.0-rc.25"
+    "unocss": "^0.58.0",
+    "unplugin-auto-import": "^0.17.2",
+    "unplugin-vue-components": "^0.26.0",
+    "vitepress": "1.0.0-rc.32"
   },
   "dependencies": {
     "@nimiq/style": "^0.8.5",
-    "@vueuse/core": "^10.6.0",
+    "@vueuse/core": "^10.7.0",
     "markdown-it-mathjax3": "^4.3.2",
-    "vue": "^3.3.8"
+    "vue": "^3.3.12"
   }
 }

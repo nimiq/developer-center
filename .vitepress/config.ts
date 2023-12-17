@@ -26,13 +26,13 @@ import transformerDirectives from '@unocss/transformer-directives'
 
     // Skip build if package version and generated version match
     if (packageVersion === generatedVersion) {
-      console.log('Web-Client docs already generated')
+      console.log(`Web-Client docs ${packageVersion} already generated`)
       return
     }
   }
 
   // Rebuild docs
-  console.log('Generating Web-Client docs...')
+  console.log(`Generating Web-Client docs ${packageVersion} ...`)
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
   // Update entry file with frontmatter to disable the "next" footer button
@@ -339,7 +339,6 @@ export default defineConfig({
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
                 nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res =>  {
                   const json = await res.json()
-                  console.log(json)
                   return json
                 }),
             }
@@ -413,7 +412,7 @@ export default defineConfig({
         ],
 
         shortcuts: {
-          'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px]',
+          'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
           'css-framework-card': 'flex justify-center flex-col',
         }
       }),
