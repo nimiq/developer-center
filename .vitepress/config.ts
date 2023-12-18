@@ -90,14 +90,20 @@ export default defineConfig({
         },
         {
           text: SidebarSectionHeader({ text: 'Web client', icon: 'bulb' }),
-          items: [
-            {
-              text: 'Getting started',
-              link: '/build/web-client/index',
-            },
-            Accordion({ path: 'build/web-client/classes' }),
-            Accordion({ path: 'build/web-client/modules' }),
-          ]
+
+          // Needs to be dynamic. The first time the developer does run the project in needs to run the 
+          // plugin to generate the docs first. After that it should just use the generated docs.
+          get items() {
+            return [
+              {
+                text: 'Getting started',
+                link: '/build/web-client/index',
+              },
+              Accordion({ path: 'build/web-client/classes' }),
+              Accordion({ path: 'build/web-client/enums' }),
+              Accordion({ path: 'build/web-client/interfaces' }),
+            ]
+          }
         },
         // {
         //   text: `
@@ -310,6 +316,7 @@ export default defineConfig({
       }),
       {
         name: 'build-dynamic-web-client',
+        enforce: 'pre',
         async buildStart() {
           // Read installed package version of @nimiq/core-web
           const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
