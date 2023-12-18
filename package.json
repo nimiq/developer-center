@@ -11,10 +11,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "2.4.6",
     "@iconify-json/logos": "^1.1.41",
-    "@iconify/json": "^2.2.158",
+    "@iconify/json": "^2.2.159",
     "@iconify/utils": "^2.1.13",
     "@nimiq/core-web": "^1.6.2",
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.5",
     "@unocss/preset-rem-to-px": "^0.58.0",
     "@unocss/preset-web-fonts": "^0.58.0",
     "@unocss/transformer-directives": "^0.58.0",
