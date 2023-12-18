@@ -13,64 +13,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
-
-// Build dynamic docs
-(function buildWebClientDocs() {
-  // Read installed package version of @nimiq/core-web
-  const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
-
-  // Read package version of generated docs, if already built
-  const versionFile = path.join(__dirname, '../build/web-client/_version')
-  if (fs.existsSync(versionFile)) {
-    const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
-
-    // Skip build if package version and generated version match
-    if (packageVersion === generatedVersion) {
-      console.log(`Web-Client docs ${packageVersion} already generated`)
-      return
-    }
-  }
-
-  // Rebuild docs
-  console.log(`Generating Web-Client docs ${packageVersion} ...`)
-  execSync('pnpm run build:web-client', { stdio: 'inherit' })
-
-  // Update entry file with frontmatter to disable the "next" footer button
-  const entryFile = path.join(__dirname, '../build/web-client/index.md')
-  let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
-  entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
-  fs.writeFileSync(entryFile, entryFileContent)
-
-  // Write version file for generated docs
-  fs.writeFileSync(versionFile, packageVersion)
-})()
+import { SidebarSectionHeader, Accordion, getItem } from './theme/utils/sidebar';
 
 // @unocss-include
-
-const IGNORED_FILES = ['learn/other/OASIS.md', 'learn/protocol/blocks/block-format.md']
-
-/**
- * Retrieves file items from a specified folder, ordered by a given order.
- *
- * @param folder The folder from which to retrieve file items.
- * @param order The order in which to arrange the retrieved file items.
- * @returns An array of file items from the specified folder, ordered by the given order.
- */
-function getFilesItemsFromFolder(folder: string, order: string[] = []) {
-  const files = fs.readdirSync(path.join(__dirname, `../${folder}`))
-  const notIgnoredFiles = files.filter(file => !IGNORED_FILES.includes(`${folder}/${file}`))
-  const orderedFiles = order.map(file => file.includes('.') ? file : `${file}.md`)
-  const unorderedFiles = notIgnoredFiles.filter(file => !orderedFiles.includes(file))
-  const items = [...orderedFiles, ...unorderedFiles].map(file => {
-    const fileName = path.basename(file, path.extname(file));
-    const text = fileName.replace(/-/g, ' ');
-    return {
-      text: text.charAt(0).toUpperCase() + text.slice(1),
-      link: `/${folder}/${fileName}` // Use the original filename for the link
-    }
-  })
-  return items
-}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -109,49 +54,28 @@ export default defineConfig({
     sidebar: {
       '/learn/': [
         {
-          text: `
-            <div m="t-8 b-24" flex gap-x-8 items-center>
-              <div w-24 h-24 i-nimiq:bulb></div>
-              <span text="24 darkblue-90 dark:white/90">Learn</span>
-            </div>
-          `,
+          // text: `
+          //   <div m="t-8 b-24" flex gap-x-8 items-center>
+          //     <div w-24 h-24 i-nimiq:bulb></div>
+          //     <span text="24 darkblue-90 dark:white/90">learn</span>
+          //   </div>
+          // `,
+          text: SidebarSectionHeader({ text: 'Learn', icon: 'bulb' }),
           items: [
             { text: 'Overview', link: '/learn/protocol/overview' },
           ]
         },
         {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue-80 dark:white/80">Protocol</span>
-            </div>`,
+          text: SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' }),
           items: [
-            {
-              text: '<span class="label">Concepts</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/protocol/concepts')
-            },
-            {
-              text: '<span class="label">Blocks</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/protocol/blocks')
-            }
+            Accordion({ path: 'learn/protocol/concepts' }),
+            Accordion({ path: 'learn/protocol/blocks' }),
           ]
         },
         {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue-80 dark:white/80">Other</span>
-            </div>`,
+          text: SidebarSectionHeader({ text: 'Other', icon: 'nodes', prefix: 'About the' }),
           items: [
-            {
-              text: '<span class="label">OASIS</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/other')
-            }
+            Accordion({ path: 'learn/other' }),
           ]
         },
 
@@ -159,38 +83,20 @@ export default defineConfig({
 
       '/build/': [
         {
-          text: `
-            <div m="t-8 b-24" flex gap-x-8 items-center>
-              <div w-24 h-24 i-nimiq:tools></div>
-              <span text="24 darkblue-90 dark:white/90">Build</span>
-            </div>
-          `,
+          text: SidebarSectionHeader({ text: 'Build', icon: 'tools' }),
           items: [
             { text: 'Overview', link: '/' },
           ],
         },
         {
-          text: `
-            <div m="t-8 b-24" flex gap-x-8 items-center>
-              <div w-24 h-24 i-nimiq:bulb></div>
-              <span text="24 darkblue-90 dark:white/90">Web client</span>
-            </div>
-          `,
+          text: SidebarSectionHeader({ text: 'Web client', icon: 'bulb' }),
           items: [
             {
               text: 'Getting started',
               link: '/build/web-client/index',
             },
-            {
-              text: '<span class="label">Classes</span>',
-              items: getFilesItemsFromFolder('build/web-client/classes'),
-              collapsed: true
-            },
-            {
-              text: '<span class="label">Modules</span>',
-              items: getFilesItemsFromFolder('build/web-client/modules').filter(item => item.text !== 'InitOutput'),
-              collapsed: true
-            }
+            Accordion({ path: 'build/web-client/classes' }),
+            Accordion({ path: 'build/web-client/modules' }),
           ]
         },
         // {
@@ -226,19 +132,10 @@ export default defineConfig({
         //   ]
         // },
         {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>Using Nimiq's</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:globe></div>
-              <span text="20 darkblue-80 dark:white/80">UI</span>
-            </div>`,
+          text: SidebarSectionHeader({ text: 'UI', icon: 'globe', prefix: 'Using Nimiq\'s' }),
           items: [
-            { text: '<div flex items-center gap-x-8 mb-4><div i-logos:figma h-16 w-16 text-white></div> Style Guide</div>', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0' },
-            {
-              text: '<span label>CSS Framework</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('build/ui/css-framework', ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'])
-            }
+            getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
+            Accordion({ path: 'build/ui/css-framework', order: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
           ]
         }
       ]
@@ -309,7 +206,7 @@ export default defineConfig({
       }),
       UnoCSS({
         content: {
-          filesystem: ['.vitepress/config.ts']
+          filesystem: ['.vitepress/config.ts', '.vitepress/theme/utils/sidebar.ts'],
         },
         variants: [
           (matcher) => {
@@ -332,10 +229,10 @@ export default defineConfig({
           presetIcons({
             collections: {
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
-                nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res =>  {
-                  const json = await res.json()
-                  return json
-                }),
+              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res => {
+                const json = await res.json()
+                return json
+              }),
             }
           }),
           presetWebFonts({
@@ -411,6 +308,38 @@ export default defineConfig({
           'css-framework-card': 'flex justify-center flex-col',
         }
       }),
+      {
+        name: 'build-dynamic-web-client',
+        async buildStart() {
+          // Read installed package version of @nimiq/core-web
+          const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
+
+          // Read package version of generated docs, if already built
+          const versionFile = path.join(__dirname, '../build/web-client/_version')
+          if (fs.existsSync(versionFile)) {
+            const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
+
+            // Skip build if package version and generated version match
+            if (packageVersion === generatedVersion) {
+              console.log(`Web-Client docs ${packageVersion} already generated`)
+              return
+            }
+          }
+
+          // Rebuild docs
+          console.log(`Generating Web-Client docs ${packageVersion} ...`)
+          execSync('pnpm run build:web-client', { stdio: 'inherit' })
+
+          // Update entry file with frontmatter to disable the "next" footer button
+          const entryFile = path.join(__dirname, '../build/web-client/index.md')
+          let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
+          entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
+          fs.writeFileSync(entryFile, entryFileContent)
+
+          // Write version file for generated docs
+          fs.writeFileSync(versionFile, packageVersion)
+        }
+      }
     ],
     resolve: {
       alias: [

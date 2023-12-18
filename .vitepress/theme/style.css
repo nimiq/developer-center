@@ -186,6 +186,7 @@ html {
     --vp-c-divider: var(--colors-darkblue-80);
     --vp-c-neutral-inverse: var(--colors-darkblue-80);
     --vp-input-switch-color: var(--colors-darkblue);
+    --vp-sidebar-bg-color: var(--colors-darkblue-1000);
   }
 }
 

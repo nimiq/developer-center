@@ -11,6 +11,7 @@ declare module 'vue' {
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
+    SidebarSectionHeader: typeof import('./.vitepress/theme/components/SidebarSectionHeader.ts')['default']
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
   }
 }
