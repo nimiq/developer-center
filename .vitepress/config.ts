@@ -15,7 +15,7 @@ import transformerDirectives from '@unocss/transformer-directives'
 
 // @unocss-include
 
-const IGNORED_FILES = ['learn/other/OASIS.md', 'learn/protocol/blocks/block-format.md']
+const IGNORED_FILES = ['learn/protocol/rewards.md', 'learn/protocol/overview.md', 'learn/protocol/optimistic-and-pessimistic-mode.md', 'learn/protocol/security-analysis.md', 'learn/protocol/messages-and-requests.md', 'learn/protocol/fork-proofs.md']
 
 /**
  * Retrieves file items from a specified folder, ordered by a given order.
@@ -95,33 +95,34 @@ export default defineConfig({
               <span text="20 darkblue-80 dark:white/80">Protocol</span>
             </div>`,
           items: [
+            ...getFilesItemsFromFolder("learn/protocol", ['overview', 'glossary']),
             {
-              text: '<span class="label">Concepts</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/protocol/concepts')
+              text: '<span class="label">Sync protocol</span>',
+              collapsed: true,
+              items: getFilesItemsFromFolder('learn/protocol/sync-protocol', ['nodes-and-sync'])
             },
             {
-              text: '<span class="label">Blocks</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/protocol/blocks')
-            }
+              text: '<span class="label">Validators</span>',
+              collapsed: true,
+              items: getFilesItemsFromFolder('learn/protocol/validators'),
+            },
           ]
         },
-        {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue-80 dark:white/80">Other</span>
-            </div>`,
-          items: [
-            {
-              text: '<span class="label">OASIS</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('learn/other')
-            }
-          ]
-        },
+        // {
+        //   text: `
+        //     <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
+        //     <div mt-8 flex gap-x-8 mb-24 items-center>
+        //       <div w-20 h-20 i-nimiq:nodes></div>
+        //       <span text="20 darkblue-80 dark:white/80">Other</span>
+        //     </div>`,
+        //   items: [
+        //     {
+        //       text: '<span class="label">OASIS</span>',
+        //       collapsed: false,
+        //       items: getFilesItemsFromFolder('learn/other')
+        //     }
+        //   ]
+        // },
 
       ],
 
