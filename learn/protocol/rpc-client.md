@@ -13,7 +13,7 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 
 <br/>
 
-1. Open a new terminal and change to the repository directory with `cd core-rs-albatross`
+1. Open a new terminal and move to the repository directory with `cd core-rs-albatross`
 2. Run `cargo build` to install and compile all the necessary dependencies to build your Nimiq Client. This might take a while and will use your full CPU
 3. Run `cargo run --bin nimiq-client -- -c ".nimiq/client.toml”` to run your client and get consensus. You will be able to interact with Nimiq’s blockchain in a second terminal.
 4. Open a second terminal, move to `cd core-rs-albatross`, and then move to `cd target/debug`. All the requests can be made in this terminal.
@@ -27,6 +27,8 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 <br/>
 
 Listed below are the commands grouped by subject and a few examples of the usage of the RPC client.
+
+[Policy](RPC-policy.md)
 
 <br/>
 

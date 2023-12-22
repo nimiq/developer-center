@@ -46,7 +46,7 @@ Given our supply formula, the coinbase is the number of new coins printed at the
 
 ### **Commitment**
 
-A commitment is a cryptographic primitive that enables a node to commit to a value without revealing it, resulting in less data to the endpoint. The value on which the node committed remains private, but its accuracy can be proven without revealing the value itself. The value is part of the proof, and nodes can verify that the value matches the commitment. In our consensus algortihm, we use commitments in three areas: commitments to specific parts of the blockchain, such as transactions in a block and accounts in the current state, state commitments as input to the zero-knowledge proofs in the light sync, and commitments to secret values in our multi-sig scheme. Ultimately, using commitments enables data compaction by using hashes and Merkle trees. For instance, it allows light clients to sync without downloading the entire blockchain while preserving the integrity of the blockchain.
+A commitment is a cryptographic primitive that enables a node to commit to a value without revealing it, resulting in less data to the endpoint. The value on which the node committed remains private, but its accuracy can be proven without revealing the value itself. The value is part of the proof, and nodes can verify that the value matches the commitment. In our consensus algortihm, the blockchain uses commitments in three areas: commitments to specific parts of the blockchain, such as transactions in a block and accounts in the current state, state commitments as input to the zero-knowledge proofs in the light sync, and commitments to secret values in our multi-sig scheme. Ultimately, using commitments enables data compaction by using hashes and Merkle trees. For instance, it allows light clients to sync without downloading the entire blockchain while preserving the integrity of the blockchain.
 
 ### **Compressed signature**
 
@@ -66,7 +66,7 @@ A type of macro block. These blocks mark the end of an epoch and is where a new 
 
 ### Entropy
 
-The measure of unpredictability of a random value. We use the entropy of the random seed present in a block, hash it and produce a new random seed. The more random the value, the higher the entropy. Thus, by taking the entropy of a random seed, we can produce a random, unpredictable, and secure value.
+The measure of unpredictability of a random value. Using the entropy of the random seed present in a block, the process involves hashing and generating a new random seed. The more random the value, the higher the entropy. Thus, by taking the entropy of a random seed, a random, unpredictable, and secure value can be produced.
 
 ### **Epoch**
 
@@ -91,6 +91,10 @@ A validator becomes inactive in two cases: when they send a retire transaction o
 ### **Inherent**
 
 An inherent is a type of data that is intrinsic to the block. Unlike transactions, inherents are applied at specific times and serve different purposes, depending on their type. Inherents can be used to differentiate between a checkpoint block and an election block, for instance.
+
+### **Jailing**
+
+Jailing refers to the validator state characterized by incurring severe penalties, for actions such as forking or continuing on a fork. When a validator is in a jailed state, it is temporarily locked and cannot be re-elected during this period. Additionally, all the validator’s rewards are burned.
 
 ### **Justification**
 

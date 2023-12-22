@@ -1,66 +1,52 @@
 # Overview
 
-Nimiq Proof-of-Stake is the novel consensus protocol from Nimiq, inspired by speculative BFT algorithms. This document intends to provide a summary of our protocol and its features. We explain how and who produces blocks, the format of the blockchain, the behavior modes, and how we handle misbehaving validators.
+::: info
+
+🚧 Work in Progress 🚧
+Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
+
+:::
 
 <br/>
 
-Nimiq PoS is a proof-of-stake blockchain that, instead of miners mining blocks, as in the Nimiq 1.0 blockchain, we have validators that produce and verify blocks. A recurring assumption of PBFT algorithms is taking into account the presence of malicious validators. In our algorithm, we assume that out of 3*f*+1 validators, at maximum _f_ are malicious. This assumption allows reaching a consensus among validators to ensure a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously.
+Welcome to the Nimiq Proof-of-Stake documentation. Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features. Covering key aspects, we provide essential insights into Nimiq's Proof-of-Stake.
 
 <br/>
 
-### Validators
+## **Validators and Stakers**
 
-Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the [validator selection](./concepts/slots.md) rules. We have 512 validators per batch ready to produce blocks.
-
-<br/>
-
-### Block format
-
-Our blockchain is composed of micro and macro blocks. Micro blocks are produced by validators and contain transactions, and macro blocks are proposed by validators and mark the end of a batch or epoch. Also, each micro block is produced by a validator, and macro blocks are proposed by a validator through the Tendermint protocol, and these latter blocks offer finality.
+Validators play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at maximum f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. Slots determine block producers, with random selection ensuring fairness.
 
 <br/>
 
-There are two types of macro blocks: checkpoint and election. The validator list remains the same in a checkpoint macro block, and no election of validators occurs. In an election macro block, a new validator list is elected to produce the blocks of the next epoch. Ultimately, a batch is the time between two checkpoint macro blocks, and an epoch is the interval between two election macro blocks.
+Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 validators per batch ready to produce blocks.
 
 <br/>
 
-### Behavior modes
-
-We assume the presence of malicious validators, we consider two modes of behavior: optimistic mode and pessimistic mode.
+Participants lacking the resources or expertise to become validators can delegate funds as stakers. Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Stakers face penalties if their validator misbehaves, but their stake is secure. Validator rewards for stakers are processed off-chain.
 
 <br/>
 
-In the optimistic mode, validators don’t misbehave and produce blocks accordingly to the protocol rules. In this mode, block production occurs without delay or attempt to tamper with the chain.
+## **Blockchain Structure**
+
+### **Epochs and Batches**
+
+The Nimiq PoS blockchain is organized into epochs and batches. An epoch, comprising multiple batches, ends with a closing election macro block. While validators remain constant within an epoch, the election macro block selects new validators for the next epoch.
 
 <br/>
 
-On the other hand, in the pessimistic mode, we consider malicious validators. This type of validator can tamper with the blockchain by:
+### **Micro Blocks**
 
-- Delaying the block production
-- Attempt to create a fork in the chain
-- Produce invalid blocks
+Produced by selected validators, micro blocks contain user transactions. A skip block may replace a delayed micro block, signed by over two-thirds of validators in the current epoch.
 
 <br/>
 
-Misbehaving validators get punished and get added to the punishment sets. In the pessimistic mode, the blockchain resumes its normal behavior in three ways:
+### **Macro Blocks**
 
-- Invalid blocks are ignored.
-- Once a rational validator adds a skip block in place of a micro block, the blockchain can resume its behavior.
-- Forks are reverted once a rational validator submits a fork proof.
+After a set number of micro blocks, a macro block finalizes the batch. Randomly proposed by a leader, macro blocks undergo a two-step voting process. Election blocks provide periodic finality, renewing the validator set, while checkpoint blocks retain the validator set.
 
 <br/>
 
-### [Punishments](./concepts/punishments.md)
+## **Dealing with Malicious Behavior**
 
-Since our protocol assumes misbehaving validators, we structured measures to punish malicious acts:
-
-1. When a malicious validator doesn’t produce the micro block in the expected time, a validator from the validator list can add a skip block, shortening the delay. If 2f+1 validators sign the skip block, this block is added, and the misbehaving validator gets punished.
-2. If a malicious validator attempts to create a fork in the chain, as soon a rational validator notices the fork, it returns the block production according to the chain selection and submits a fork proof. Then, the misbehaving validator gets punished.
-
-<br/>
-
-Malicious validators get punished by being added to the punishment sets in the staking contract. It gets its rewards of the batch slashed at the next batch and disabled to produce blocks until it sends an unparked transaction.
-
-<br/>
-
-Note that skip blocks and forks can only occur in micro blocks since macro blocks are proposed via Tendermint, and if a proposal isn’t received in _t_ time, a new validator is elected. Plus, macro blocks have finality and thus are forkless.
+Validators face rewards for contributions and penalties for consensus violations, varying by severity. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a jail state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
