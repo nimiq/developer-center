@@ -6,7 +6,7 @@ Nimiq Proof-of-Stake has two modes for consensus: optimistic and pessimistic mod
 
 **Optimistic mode** - Considering all validators are rational and don’t attempt to tamper with the blockchain, we demonstrate how the validators would perform to produce and propose blocks:
 
-1. In every new epoch, a new validator list is selected randomly. Validators are chosen proportionally to their stake. The higher the stake, the higher the probability of owning more [slots](slots.md).
+1. In every new epoch, a new validator list is selected randomly. Validators are chosen proportionally to their stake. The higher the stake, the higher the probability of owning more [slots](validators/slots.md).
 2. Using a [VRF seed](verifiable-random-functions.md) present in every block, a validator is chosen to produce the next micro block.
 3. The validator chooses which transactions to include in the micro block and produces the new VRF seed that will be used to select the next validator slot.
 4. This validator includes the transactions, updates the current state, adds the new VRF seed in the micro block, signs, and broadcasts it.

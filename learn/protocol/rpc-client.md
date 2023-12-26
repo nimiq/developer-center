@@ -28,7 +28,8 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 
 Listed below are the commands grouped by subject and a few examples of the usage of the RPC client.
 
-[Policy](RPC-policy.md)
+<!-- TODO RPC-policy.md does not exists -->
+<!-- [Policy](RPC-policy.md) -->
 
 <br/>
 
