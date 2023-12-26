@@ -1,22 +1,16 @@
 ---
 links:
   - title: What is Nimiq?
+    href: '/'
     label: Get started
-    href: '/'
     bgColor: green
-    layout: sm
-  - title: Concept 2 
-    href: '/'
-    description: A short description
-  - title: Concept 3
-    description: A short description
-    href: '/'
-  - title: Concept 4
-    description: A short description
-    href: '/'
-  - title: Concept 5
-    description: A short description
-    href: '/'
+  - title: How does it work?
+    href: '/how-it-works/'
+    label: Learn more
+  - title: What can I do with it?
+    href: '/use-cases/'
+    label: Use cases
+    bgColor: blue
 prev: false
 next: false
 aside: false

@@ -43,17 +43,17 @@ buildTogetherLinks:
 ---
 
 :::raw
-# Welcome to the Nimiq Developer Centre
+# Welcome to the Nimiq Developer Center
 
 Get guides, resources and tips on how to create with Nimiq.
 
-<Grid my-64 :items="$frontmatter.links" />
+<Grid :items="$frontmatter.links" />
 
 ## Let's build together
 
 Create apps, contribute to the network or run a validator.
 
-<Grid mt-64 :items="$frontmatter.buildTogetherLinks" />
+<Grid :items="$frontmatter.buildTogetherLinks" />
 :::
 
 
