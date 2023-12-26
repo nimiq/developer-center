@@ -14,6 +14,9 @@ dependencies:
   markdown-it-mathjax3:
     specifier: ^4.3.2
     version: 4.3.2
+  medium-zoom:
+    specifier: ^1.1.0
+    version: 1.1.0
   vue:
     specifier: ^3.3.13
     version: 3.3.13(typescript@5.3.3)
@@ -3508,6 +3511,10 @@ packages:
   /mdn-data@2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
     dev: true
+
+  /medium-zoom@1.1.0:
+    resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
+    dev: false
 
   /mensch@0.3.4:
     resolution: {integrity: sha512-IAeFvcOnV9V0Yk+bFhYR07O3yNina9ANIN5MoXBKYJ/RLYPurd2d0yw14MDhpr9/momp0WofT1bPUh3hkzdi/g==}
