@@ -47,9 +47,10 @@ Using the illustration below as a reference, we consider several validators have
 
 <br/>
 
-<p align="center">
+<!-- TODO: Image not found -->
+<!-- <p align="center">
   <img src="/assets/images/protocol/fork-proof-1.png" alt="Alt Text" width="500" height="250">
-</p>
+</p> -->
 
 <br/>
 
@@ -84,6 +85,7 @@ $P(d)=(\frac{1}{3})^d$
 
 As indicated in the table below, the probability declines rapidly:
 
-<p align="center">
+<!-- TODO: Image not found -->
+<!-- <p align="center">
   <img src="/assets/images/protocol/fork-probability.png" alt="Alt Text" width="400" height="250">
-</p>
+</p> -->

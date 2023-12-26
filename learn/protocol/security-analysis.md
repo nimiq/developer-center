@@ -99,9 +99,10 @@ If any disruption or split happens in the network, the protocol may continue to 
 
 <br/>
 
-<p align="center">
+<!-- TODO: Image not found -->
+<!-- <p align="center">
   <img src="/assets/images/protocol/network_partition.png" alt="Alt Text" width="300" height="150">
-</p>
+</p> -->
 
 <br/>
 
@@ -142,7 +143,8 @@ The following figure illustrates a chain. According to the table above and the c
 
 <br/>
 
-![fork in finality.png](/assets/images/protocol//fork_in_finality.png)
+<!-- TODO: Image not found -->
+<!-- ![fork in finality.png](/assets/images/protocol//fork_in_finality.png) -->
 
 <br/>
 
