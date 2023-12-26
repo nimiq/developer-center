@@ -11,7 +11,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "2.4.6",
     "@iconify-json/logos": "^1.1.41",
-    "@iconify/json": "^2.2.159",
+    "@iconify/json": "^2.2.161",
     "@iconify/utils": "^2.1.13",
     "@nimiq/core-web": "next",
     "@types/node": "^20.10.5",
@@ -20,20 +20,19 @@
     "@unocss/transformer-directives": "^0.58.0",
     "eslint": "^8.56.0",
     "markdown-it-container": "^4.0.0",
+    "micromatch": "^4.0.5",
     "postcss": "^8.4.32",
     "typedoc": "^0.25.4",
     "typedoc-plugin-markdown": "^3.17.1",
     "unocss": "^0.58.0",
     "unplugin-auto-import": "^0.17.2",
     "unplugin-vue-components": "^0.26.0",
-    "vitepress": "1.0.0-rc.32"
+    "vitepress": "1.0.0-rc.33"
   },
   "dependencies": {
     "@nimiq/style": "^0.8.5",
     "@vueuse/core": "^10.7.0",
-    "fast-glob": "^3.3.2",
     "markdown-it-mathjax3": "^4.3.2",
-    "micromatch": "^4.0.5",
-    "vue": "^3.3.12"
+    "vue": "^3.3.13"
   }
 }
