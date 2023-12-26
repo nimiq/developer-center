@@ -1,31 +1,39 @@
 <script setup lang="ts">
-import type { Card } from "./types"
+import { CardType, type Card } from "./types"
+import { computed, type PropType } from 'vue'
 
 const props = defineProps({
   items: {
-    type: Object as PropType<Card[]>,
+    type: Object as PropType<Omit<Card, 'type'>[]>,
     default: []
   },
 })
 
-const items = computed(() => {
-  return props.items.map(i => {
-    const hasColors = i["bg-color"] && ['blue', 'green'].includes(i["bg-color"])
-
-    return {
-      hasColors,
-      centered: !hasColors && !!i.icon,
-      layout: i.layout || (!hasColors && !!i.icon) ? 'lg' : hasColors ? 'square' : 'sm',
-      ...i,
-    }
+const items = computed<Card[]>(() => props.items.map(i => {
+    const { bgColor, icon } = i
+    if (bgColor) return { ...i, type: CardType.Bg } as Card
+    if (icon) return { ...i, type: CardType.Icon } as Card 
+    return { ...i, type: CardType.Normal } as Card
   })
-})
+)
+
+const gridLg = computed(() => items.value.filter(item => item.type === CardType.Bg && item.icon))
+const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(item)))
 </script>
 
 <template>
-  <ul class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_auto] gap-32">
-    <li v-for="item in items" :key="item.name" :style="`grid-column: span ${item.span || 2}`">
-      <Card :item="item" />
-    </li>
-  </ul>
+  <div flex="~ col gap-32" my-64>
+    <!-- Grid with items with background color -->
+    <ul flex="~ flex-wrap gap-32">
+      <li v-for="item in gridLg" :key="item!.title" class="flex-1">
+        <Card :item="item" />
+      </li>
+    </ul>
+    
+    <ul grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-32">
+      <li v-for="item in gridSm" :key="item!.title">
+        <Card :item="item" />
+      </li>
+    </ul>
+  </div>
 </template>

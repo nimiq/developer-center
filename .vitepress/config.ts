@@ -8,42 +8,25 @@ import AutoImport from "unplugin-auto-import/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig, postcssIsolateStyles } from "vitepress";
+import { execSync } from 'node:child_process';
 import fs from 'node:fs'
 import path from 'node:path'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
+import { SidebarSectionHeader, Accordion, getItem, getFilesItemsFromFolder } from './theme/utils/sidebar';
 
 // @unocss-include
 
-const IGNORED_FILES = ['learn/protocol/rewards.md', 'learn/protocol/overview.md', 'learn/protocol/optimistic-and-pessimistic-mode.md', 'learn/protocol/security-analysis.md', 'learn/protocol/messages-and-requests.md', 'learn/protocol/fork-proofs.md']
-
-/**
- * Retrieves file items from a specified folder, ordered by a given order.
- * 
- * @param folder The folder from which to retrieve file items.
- * @param order The order in which to arrange the retrieved file items.
- * @returns An array of file items from the specified folder, ordered by the given order.
- */
-function getFilesItemsFromFolder(folder: string, order: string[] = []) {
-  const files = fs.readdirSync(path.join(__dirname, `../${folder}`))
-  const notIgnoredFiles = files.filter(file => !IGNORED_FILES.includes(`${folder}/${file}`))
-  const orderedFiles = order.map(file => file.includes('.') ? file : `${file}.md`)
-  const unorderedFiles = notIgnoredFiles.filter(file => !orderedFiles.includes(file))
-  const items = [...orderedFiles, ...unorderedFiles].map(file => {
-    const fileName = path.basename(file, path.extname(file));
-    const text = fileName.replace(/-/g, ' ');
-    return {
-      text: text.charAt(0).toUpperCase() + text.slice(1),
-      link: `/${folder}/${fileName}` // Use the original filename for the link
-    }
-  })
-  return items
-}
+// Files to ignore when generating the sidebar
+// We use micromatch to match the files: https://github.com/micromatch/micromatch
+export const IGNORED_FILES = [
+  '**/learn/protocol/{overview,rewards,optimistic-and-pessimistic-mode,security-analysis,messages-and-requests,fork-proofs}.md',
+]
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/nimiq-developer-centre/',
-  title: "Nimiq Developer Centre",
+  base: '/nimiq-developer-center/',
+  title: "Nimiq Developer Center",
   srcExclude: ['**/README.md'],
   description:
     "Nimiq's official documentation to interact with the Nimiq ecosystem",
@@ -77,113 +60,50 @@ export default defineConfig({
     sidebar: {
       '/learn/': [
         {
-          text: `
-            <div m="t-8 b-24" flex gap-x-8 items-center>
-              <div w-24 h-24 i-nimiq:bulb></div>
-              <span text="24 darkblue-90 dark:white/90">Learn</span>
-            </div>
-          `,
+          text: SidebarSectionHeader({ text: 'Learn', icon: 'bulb' }),
           items: [
             { text: 'Overview', link: '/learn/protocol/overview' },
           ]
         },
         {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:nodes></div>
-              <span text="20 darkblue-80 dark:white/80">Protocol</span>
-            </div>`,
+          text: SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' }),
           items: [
             ...getFilesItemsFromFolder("learn/protocol", ['overview', 'glossary']),
-            {
-              text: '<span class="label">Sync protocol</span>',
-              collapsed: true,
-              items: getFilesItemsFromFolder('learn/protocol/sync-protocol', ['nodes-and-sync'])
-            },
-            {
-              text: '<span class="label">Validators</span>',
-              collapsed: true,
-              items: getFilesItemsFromFolder('learn/protocol/validators'),
-            },
+            Accordion({ path: 'learn/protocol/sync-protocol', order: ['nodes-and-sync'] }),
+            Accordion({ path: 'learn/protocol/validators' }),
           ]
         },
-        // {
-        //   text: `
-        //     <div text="14 darkblue/50 dark:white/50" pt-20>About the</div>
-        //     <div mt-8 flex gap-x-8 mb-24 items-center>
-        //       <div w-20 h-20 i-nimiq:nodes></div>
-        //       <span text="20 darkblue-80 dark:white/80">Other</span>
-        //     </div>`,
-        //   items: [
-        //     {
-        //       text: '<span class="label">OASIS</span>',
-        //       collapsed: false,
-        //       items: getFilesItemsFromFolder('learn/other')
-        //     }
-        //   ]
-        // },
-
       ],
 
       '/build/': [
         {
-          text: `
-            <div m="t-8 b-24" flex gap-x-8 items-center>
-              <div w-24 h-24 i-nimiq:tools></div>
-              <span text="24 darkblue-90 dark:white/90">Build</span>
-            </div>
-          `,
+          text: SidebarSectionHeader({ text: 'Build', icon: 'tools' }),
           items: [
             { text: 'Overview', link: '/' },
           ],
         },
-        // {
-        //   text: `
-        //     <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
-        //     <div mt-8 flex gap-x-8 mb-24 items-center>
-        //       <div w-20 h-20 i-nimiq:nodes></div>
-        //       <span text="20 darkblue-80 dark:white/80">RCP</span>
-        //     </div>`,
-        //   items: [
-        //     {
-        //       text: '<span class="label">Tutorials</span>',
-        //       collapsed: false,
-        //       items: [
-        //         { text: 'Tutorial 1', link: '/config/' },
-        //         { text: 'Tutorial 2', link: '/config/' },
-        //         { text: 'Tutorial 3', link: '/config/' },
-        //       ]
-        //     }
-        //   ]
-        // },
-        // {
-        //   text: `
-        //     <div text="14 darkblue/50 dark:white/50" pt-20>Build on it via</div>
-        //     <div mt-8 flex gap-x-8 mb-24 items-center>
-        //       <div w-20 h-20 i-nimiq:globe></div>
-        //       <span text="20 darkblue-80 dark:white/80">Web Client</span>
-        //     </div>`,
-        //   items: [
-        //     { text: 'The WASM client', link: '/config/' },
-        //     { text: 'Another useful resource', link: '/config/three' },
-        //     { text: 'Finally the end', link: '/config/four' }
-        //   ]
-        // },
         {
-          text: `
-            <div text="14 darkblue/50 dark:white/50" pt-20>Using Nimiq's</div>
-            <div mt-8 flex gap-x-8 mb-24 items-center>
-              <div w-20 h-20 i-nimiq:globe></div>
-              <span text="20 darkblue-80 dark:white/80">UI</span>
-            </div>`,
+          text: SidebarSectionHeader({ text: 'Web client', icon: 'bulb' }),
+
+          // Needs to be dynamic. The first time the developer does run the project in needs to run the 
+          // plugin to generate the docs first. After that it should just use the generated docs.
+          get items() {
+            return [
+              {
+                text: 'Getting started',
+                link: '/build/web-client/index',
+              },
+              Accordion({ path: 'build/web-client/classes' }),
+              Accordion({ path: 'build/web-client/enums' }),
+              Accordion({ path: 'build/web-client/interfaces' }),
+            ]
+          }
+        },
+        {
+          text: SidebarSectionHeader({ text: 'UI', icon: 'globe', prefix: 'Using Nimiq\'s' }),
           items: [
-            { text: '<div flex items-center gap-x-8 mb-4><div i-logos:figma h-16 w-16 text-white></div> Style Guide</div>', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0' },
-            {
-              text: '<span label>CSS Framework</span>',
-              collapsed: false,
-              items: getFilesItemsFromFolder('build/ui/css-framework', ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'])
-            }
+            getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
+            Accordion({ path: 'build/ui/css-framework', order: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
           ]
         }
       ]
@@ -197,7 +117,7 @@ export default defineConfig({
     search: {
       provider: "local",
     }
-  }, 
+  },
 
   markdown: {
     math: true, // Allow latex math
@@ -254,7 +174,7 @@ export default defineConfig({
       }),
       UnoCSS({
         content: {
-          filesystem: ['.vitepress/config.ts']
+          filesystem: ['.vitepress/config.ts', '.vitepress/theme/utils/sidebar.ts'],
         },
         variants: [
           (matcher) => {
@@ -276,8 +196,11 @@ export default defineConfig({
           presetAttributify(),
           presetIcons({
             collections: {
-              "nimiq": FileSystemIconLoader('./assets/icons', svg => svg),
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
+              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res => {
+                const json = await res.json()
+                return json
+              }),
             }
           }),
           presetWebFonts({
@@ -313,7 +236,7 @@ export default defineConfig({
               DEFAULT: '#0582CA',
               10: '#e6f3fa',
               60: '#69b4df',
-            },  
+            },
             gold: {
               DEFAULT: "#E9B213",
               10: '#fcf7e6',
@@ -337,7 +260,7 @@ export default defineConfig({
               70: '#5acbba',
               80: '#42c3b0',
               90: '#13b59d',
-            }
+            },
           },
         },
         rules: [
@@ -349,10 +272,43 @@ export default defineConfig({
         ],
 
         shortcuts: {
-          'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px]',
+          'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
           'css-framework-card': 'flex justify-center flex-col',
         }
       }),
+      {
+        name: 'build-dynamic-web-client',
+        enforce: 'pre',
+        async buildStart() {
+          // Read installed package version of @nimiq/core-web
+          const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
+
+          // Read package version of generated docs, if already built
+          const versionFile = path.join(__dirname, '../build/web-client/_version')
+          if (fs.existsSync(versionFile)) {
+            const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
+
+            // Skip build if package version and generated version match
+            if (packageVersion === generatedVersion) {
+              console.log(`Web-Client docs ${packageVersion} already generated`)
+              return
+            }
+          }
+
+          // Rebuild docs
+          console.log(`Generating Web-Client docs ${packageVersion} ...`)
+          execSync('pnpm run build:web-client', { stdio: 'inherit' })
+
+          // Update entry file with frontmatter to disable the "next" footer button
+          const entryFile = path.join(__dirname, '../build/web-client/index.md')
+          let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
+          entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
+          fs.writeFileSync(entryFile, entryFileContent)
+
+          // Write version file for generated docs
+          fs.writeFileSync(versionFile, packageVersion)
+        }
+      }
     ],
     resolve: {
       alias: [
