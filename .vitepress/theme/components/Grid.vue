@@ -10,11 +10,11 @@ const props = defineProps({
 })
 
 const items = computed<Card[]>(() => props.items.map(i => {
-    const { bgColor, icon } = i
-    if (bgColor) return { ...i, type: CardType.Bg } as Card
-    if (icon) return { ...i, type: CardType.Icon } as Card 
-    return { ...i, type: CardType.Normal } as Card
-  })
+  const { bgColor, icon } = i
+  if (bgColor) return { ...i, type: CardType.Bg } as Card
+  if (icon) return { ...i, type: CardType.Icon } as Card
+  return { ...i, type: CardType.Normal } as Card
+})
 )
 
 const gridLg = computed(() => items.value.filter(item => item.type === CardType.Bg && item.icon))
@@ -24,12 +24,12 @@ const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(
 <template>
   <div flex="~ col gap-32" my-64>
     <!-- Grid with items with background color -->
-    <ul flex="~ flex-wrap gap-32">
+    <ul flex="~ col md:row md:flex-wrap gap-32">
       <li v-for="item in gridLg" :key="item!.title" class="flex-1">
         <Card :item="item" />
       </li>
     </ul>
-    
+
     <ul grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-32">
       <li v-for="item in gridSm" :key="item!.title">
         <Card :item="item" />
