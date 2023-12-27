@@ -197,7 +197,7 @@ export default defineConfig({
           presetIcons({
             collections: {
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
-              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/icons/dist/icons.json').then(async res => {
+              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(async res => {
                 const json = await res.json()
                 return json
               }),
@@ -272,7 +272,7 @@ export default defineConfig({
         ],
 
         shortcuts: {
-          'label': 'font-bold text-14 leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
+          'label': 'font-bold text-12 leading:12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
           'css-framework-card': 'flex justify-center flex-col',
         }
       }),

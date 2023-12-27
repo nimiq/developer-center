@@ -127,7 +127,7 @@ This is a details block.
 :::
 
 ::: goal 
-Getting started by building a minimal...
+Getting started by building...
 :::
 ```
 
