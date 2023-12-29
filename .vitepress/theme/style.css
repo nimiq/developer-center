@@ -484,3 +484,11 @@ h4 {
     }
   }
 }
+
+.btn {
+  --uno: border border-base rounded shadow-sm outline-none px-16 py-4 text-gray-600 transition-all bg-base hover-(bg-gray-50 shadow) dark-(border-dark-200 text-gray-300) dark-hover-(border-primary bg-dark-100 text-primary) focus-(shadow outline-none);
+}
+
+.btn.small {
+  --uno: px-8 py-4 text-12;
+}

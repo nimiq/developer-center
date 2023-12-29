@@ -4,7 +4,7 @@ import { PropType } from 'vue'
 import { Tag } from "./types"
 
 defineProps({
-  tags: Array as PropType<Tag[]>,
+  tags: Set as PropType<Set<Tag>>,
 })
 
 const icons = {
