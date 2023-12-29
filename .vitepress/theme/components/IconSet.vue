@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Icon, listIcons, addCollection } from '@iconify/vue';
 import { onMounted, ref, watch } from 'vue';
-import { getIconSnippet } from '../composables/icon';
-import { useClipboard, useElementSize, useTimeAgo } from '@vueuse/core';
+import { getIconSnippet } from '../composables/icons/icon';
+import { downloadBlob, downloadIconFont, downloadSVGSprite, downloadZip } from '../composables/icons/pack';
+import { useClipboard, useElementSize, useScriptTag, useTimeAgo } from '@vueuse/core';
 import { Slider, Popover, Toast } from 'radix-vue/namespaced'
 
 const icons = ref<string[]>([]);
@@ -40,12 +41,7 @@ async function download(type: string) {
   const ext = (type === 'solid' || type === 'qwik') ? 'tsx' : type
   const name = `${selectedIcon.value}.${ext}`
   const blob = new Blob([name], { type: 'text/plain;charset=utf-8' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = name
-  a.click()
-  a.remove()
+  downloadBlob(blob, name)
 }
 
 const copySections = {
@@ -58,6 +54,8 @@ const copySections = {
 watch(selectedIcon, () => document.querySelector('footer.VPDocFooter')?.classList.toggle('hidden', !!selectedIcon.value))
 
 const iconSize = ref([18])
+
+useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 </script>
 
 <template>
@@ -79,13 +77,13 @@ const iconSize = ref([18])
 
               <h4 label text-12 opacity-75>Download</h4>
               <ul mt-10 text-12 flex="~ wrap gap-x-12">
-                <li><button underline opacity-70>ZIP</button></li>
-                <li><button underline opacity-70>Icon fonts</button></li>
-                <li><button underline opacity-70>SVG Sprite</button></li>
+                <li><button underline opacity-70 @click="downloadZip(icons, 'nimiq-icons')">ZIP</button></li>
+                <li><button underline opacity-70 @click="downloadIconFont(icons)">Icon fonts</button></li>
+                <li><button underline opacity-70 @click="downloadSVGSprite(icons)">SVG Sprite</button></li>
               </ul>
 
               <h4 label text-12 mt-16 opacity-75>Size</h4>
-              <Slider.Root v-model="iconSize" relative flex="~ items-center" select-none touch-none w-sm h-6 mt-12 w-full
+              <Slider.Root v-model="iconSize" relative flex="~ items-center" select-none touch-none h-6 mt-12 w-full
                 :max="48" :min="8" :step="1">
                 <Slider.Track bg="darkblue-20 dark:white/20" relative grow rounded-full h-4>
                   <Slider.Range absolute bg="darkblue dark:white/80" rounded-full h-full />

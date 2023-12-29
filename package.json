@@ -36,10 +36,12 @@
     "@vueuse/core": "^10.7.0",
     "eslint-plugin-prettier-vue": "^5.0.0",
     "iconify-icon": "^1.0.8",
+    "jszip": "^3.10.1",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
     "prettier": "^3.1.1",
     "radix-vue": "^1.2.5",
+    "svg-packer": "^0.0.3",
     "vue": "^3.3.13"
   }
 }
