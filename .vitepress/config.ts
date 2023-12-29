@@ -14,6 +14,7 @@ import path from 'node:path'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
 import { SidebarSectionHeader, Accordion, getItem, getFilesItemsFromFolder } from './theme/utils/sidebar';
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 // @unocss-include
 
@@ -103,6 +104,7 @@ export default defineConfig({
           text: SidebarSectionHeader({ text: 'UI', icon: 'globe', prefix: 'Using Nimiq\'s' }),
           items: [
             getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
+            Accordion({ path: 'build/ui/icons', order: ['explorer', 'getting-started'] }),
             Accordion({ path: 'build/ui/css-framework', order: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
           ]
         }
@@ -197,10 +199,7 @@ export default defineConfig({
           presetIcons({
             collections: {
               "logos": FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
-              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(async res => {
-                const json = await res.json()
-                return json
-              }),
+              nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json()),
             }
           }),
           presetWebFonts({
@@ -262,6 +261,13 @@ export default defineConfig({
               90: '#13b59d',
             },
           },
+          breakpoints: {
+            'sm': '640px',
+            'md': '768px',
+            'md2': '960px',
+            'lg': '1024px',
+            'xl': '1280px',
+          }
         },
         rules: [
           ['bg-radial-lightblue', { 'background-image': 'radial-gradient(100% 100% at 100% 100%, #265DD7 0%, #0582CA 100%)' }],
@@ -272,10 +278,12 @@ export default defineConfig({
         ],
 
         shortcuts: {
-          'label': 'font-bold text-12 leading:12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
-          'css-framework-card': 'flex justify-center flex-col',
+          'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
+          'border-base': 'border-[1.5px] border-solid border-darkblue-20 dark:border-white/20',
         }
       }),
+      // https://github.com/webfansplz/vite-plugin-vue-devtools
+      VueDevTools(),
       {
         name: 'build-dynamic-web-client',
         enforce: 'pre',

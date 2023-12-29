@@ -27,7 +27,9 @@ export function SidebarSectionHeader({ icon, text, prefix }: { icon: string, tex
 
 export function getItem({ text, link, icon }: { text: string, link: string, icon?: string }) {
   return {
-    text: `<div flex items-center gap-x-8 mb-4>${icon ? `<div ${icon} h-16 w-16 text-white></div>` : ''} ${text}</div>`,
+    text: icon
+      ? `<div flex items-center gap-x-8 mb-4>${icon ? `<div ${icon} h-16 w-16 text-white></div>` : ''} ${text}</div>`
+      : text,
     link
   }
 }

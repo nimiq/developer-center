@@ -28,7 +28,7 @@ const centered = computed(() => isIcon.value)
       'items-center': centered,
     }" transition hover="-translate-y-6 shadow" class="group">
     <div :class="{
-      'absolute inset-y-50 -right-24 min-w-100 w-[15vw] children:w-full children:h-full': !centered,
+      'absolute inset-y-50 -right-24 md:-right-40 min-w-100 w-[15vw] children:w-full children:h-full': !centered,
       'text-[#0E65C9]': item.bgColor === 'blue',
       'text-[#1DA186]': item.bgColor === 'green',
       'text-white/40 opacity-40 darkblue/40 dark:white/80': !hasBg,

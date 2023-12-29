@@ -2,10 +2,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
+    "lib": [
+      "es2021"
+    ],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
-    "types": ["vite/client", "node"]
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "**/dist/**"
