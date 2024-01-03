@@ -45,24 +45,24 @@ Any rational validator that witnesses one of these behaviors can report it by in
 As these are more severe offenses that interfere with the blockchain, the consequences are also more severe. When a validator is jailed:
 
 - It is immediately removed from the `active_validators` set, and all its slots are marked as penalized in the `punished_slots` set in the staking contract.
-- It gets immediately locked for 8 epochs, which means it cannot participate in the consensus during that period and inhibits it from withdrawing its deposit.
+- It gets locked for 8 epochs. However, it is required to continue the block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
 - It loses its rewards for the jail period.
 
 <br/>
 
-While validators shift from active to jailed when proof of the offense is submitted, the staking contract sets are only updated at different periods. The `active_validators` set changes at every election block, where the validators list is renewed; the `punished_slots` set changes at every batch.
+The `active_validators` and `punished_slots` sets are updated at every block in the [staking contract](validators/staking-contract.md). However, if a validator shifts from active to inactive or jailed, it is required to produce blocks until the current batch concludes, as it remains included in the validator slot list for that batch. However, it is no longer considered to produce blocks for further batches starting at the next checkpoint block.
 
 <br/>
 
-The validator is marked as jailed, but as there is no replacement for its slots, it is still expected to participate in specific tasks, which is the case for voting in Tendermint proposals. Once the next election comes in, the malicious validator will not be considered for election for the following epochs.
+In the context of Tendermint votes, a validator that shifts to inactive or jailed mid-epoch must vote until the end of the epoch. This is because there are no mid-epoch elections to replace the slots of the inactive or jailed validator. Thus, it must participate in the entire epoch's voting process to maintain the necessary validator count for consensus.
 
 <br/>
 
-Once the validator is out of jail, it moves to the inactive state. Validators that have within their configuration the `automatic_reactivate` feature on they will reactivate upon release. Furthermore, even if the validator activates itself right after being released, it will only be considered again to participate in the consensus at the next epoch.
+Once the validator is out of jail, it moves to the inactive state. Validators with the `automatic_reactivate` feature set to `true` within their configuration will reactivate upon release. Furthermore, even if the validator activates itself right after being released, it will only be considered again to participate in the consensus at the next epoch upon election.
 
 <br/>
 
-If a validator wants to withdraw its deposit after being released, it can do so immediately if it does not reactivate. If the validator becomes active again, it must be inactive for a set of time that accounts for possible new misbehaviors.
+If a validator wants to withdraw its deposit after being released, it can do so immediately if it does not reactivate. If the validator becomes active again, it must be inactive for a predetermined time to account for possible new misbehaviors.
 
 <br/>
 
