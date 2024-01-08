@@ -1,6 +1,6 @@
 # Staking Contract
 
-The staking contract is a special contract serving as a central repository for the data related to validators, stakers, and the staking process. It is initially hardcoded at the genesis block, and thereon, any modification in the balances or state of validators and stakers is updated in the staking contract by validators. Any node on Nimiq's blockchain with a wallet and stake can propose to become a validator or a staker.
+The staking contract is a special contract serving as a central repository for the data related to validators, stakers, and the staking process. It is initially hardcoded at the genesis block, and thereon, any modification in the balances or state of validators and stakers is updated at every block by validators. Any node on Nimiq's blockchain with a wallet and stake can propose to become a validator or a staker.
 
 <br/>
 
@@ -22,7 +22,12 @@ The `balance` field represents the total amount of coins staked within the `Stak
 
 ### Active validators
 
-The elected and active validators for each epoch. The use of a binary tree map efficiently organizes active validators and their corresponding balances. This structure ensures that only eligible validators, those qualified to receive slots, are included. In cases of misbehavior, validators can either be deactivated or jailed based on the severity of their offense, leading to their removal from the `active_validators` set.
+Validators marked as active. All the validator nodes in the network that *can* be elected as block producers for upcoming epochs, as well as the ones that are actively participating in the block production.
+
+<br/>
+
+This set is stored in a binary tree map that efficiently organizes active validators and their corresponding balances. This structure ensures that only eligible validators, those qualified to receive slots, are included. In cases of misbehavior, validators can either be deactivated or jailed based on the severity of their offense, leading to their removal from this set. Nonetheless, a validator can be excluded from this set and continue to participate in block production until the epoch concludes, as there is no mid-epoch voting process to substitute the validator slots necessary for the consensus.
+
 
 <br/>
 
@@ -32,7 +37,7 @@ The slots marked as punished. Depending on the nature of their misbehavior, vali
 
 <br/>
 
-In the reward distribution phase, the staking contract cross-verifies slots from the previous batch's `punished_slots` to identify and burn rewards linked to those specific slots. Additionally, at every macro block, the staking contract determines the block producers for the next batch. Slots marked as punished are excluded from consideration in the selection of block producers for the subsequent batch.
+In the reward distribution phase, the staking contract cross-verifies slots from the previous batch's `punished_slots` to identify and burn rewards linked to those specific slots. Additionally, at every macro block, the staking contract determines the block producers for the next batch. Slots marked as punished are excluded from consideration in the selection of block producers for subsequent batches.
 
 <br/>
 
