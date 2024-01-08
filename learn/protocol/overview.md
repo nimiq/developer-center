@@ -19,7 +19,7 @@ Validators play a crucial role in the Proof-of-Stake consensus mechanism as bloc
 
 <br/>
 
-Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 validators per batch ready to produce blocks.
+Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 slots per batch ready to produce blocks.
 
 <br/>
 

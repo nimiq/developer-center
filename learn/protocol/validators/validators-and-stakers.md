@@ -4,7 +4,7 @@ Validators are the block producers of PoS blockchains. They are responsible for 
 
 <br/>
 
-Validators are rewarded for maintaining the consensus and participating in the network through transaction fees and block rewards. Any attempt to disrupt or infringe on the consensus results in [punishment](/learn/protocol/penalties.md) for the malicious validator.
+Validators are rewarded for maintaining the consensus and participating in the network through transaction fees and block rewards. Any attempt to disrupt or infringe on the consensus results in [penalties](/learn/protocol/penalties.md) for the malicious validator.
 
 <br/>
 
@@ -45,11 +45,11 @@ Validators send transactions to update data or change their state deliberately. 
 
 | Transaction | Description | Starting point | Type of transaction |
 | --- | --- | --- | --- |
-| Create | Creates a new validator and places it in the active state. It will be eligible for the next election block. | Immediately | Incoming |
+| Create | Creates a new validator and places it in the active state. It will be eligible for the next election block | Immediately | Incoming |
 | Update | Updates the information about a validator (signing key, voting key, rewards address and/or signal data) | Immediately | Incoming |
-| Deactivate | Temporarily deactivates a validator and moves it to the inactive state. This action is reversible. | Immediately | Incoming |
+| Deactivate | Temporarily deactivates a validator and moves it to the inactive state. This action is reversible | Immediately | Incoming |
 | Reactivate | Reactivates a validator that has been deactivated; if the validator is jailed, it cannot reactivate | Immediately | Incoming |
-| Retire | Transitions a validator into retirement. To delete afterward, retirement must last the reporting window time. | Immediately | Incoming |
+| Retire | Transitions a validator into retirement. To delete afterward, retirement must last the reporting window time | Immediately | Incoming |
 | Delete | Deletes a validator after the retired state. | After the cooldown period | Outgoing |
 
 <br/>
@@ -63,10 +63,10 @@ Validators send transactions to update data or change their state deliberately. 
 
 | State | Description |
 | --- | --- |
-| Active | The validator is participating in the consensus process and earning rewards |
-| Inactive | The validator is not participating in the consensus process, but their stake is still active and can be withdrawn at the end of the reporting window |
-| Jailed | The validator has been penalized for violating the network's rules. They cannot participate in the consensus process or earn rewards for 8 epochs |
-| Retired | The validator has withdrawn their stake from the network after waiting for the reporting window time |
+| Active | The validator is marked as active and is either available for selection or is already actively participating in the consensus process |
+| Inactive | The validator is marked as inactive, either by choice or due to misbehavior. While marked as inactive in the staking contract and removed from the `active_validators` set, the validator may still be involved until the end of the epoch where the validator list is renewed at the next election block |
+| Jailed | The validator has been penalized for violating the network's rules. They cannot participate in the consensus process or earn rewards for 8 epochs. See [jail](/learn/protocol/penalties.md#jail) |
+| Retired | The validator has withdrawn their stake from the network after waiting for the reporting window time (spans from the block following the offense to the end of the epoch after the next election block). Once retired, the validator can only delete its validator |
 
 <br/>
 
