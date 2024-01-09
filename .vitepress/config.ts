@@ -70,7 +70,7 @@ export default defineConfig({
             ...getFilesItemsFromFolder("learn/protocol", { include: ['overview', 'glossary', 'block-format'] }),
             Accordion({ path: 'learn/protocol/validators' }),
             ...getFilesItemsFromFolder("learn/protocol", { include: ['skip-blocks', 'penalties', 'accounts', 'transactions', 'mempool'] }),
-            Accordion({ path: 'learn/protocol/sync-protocol', order: ['nodes-and-sync'] }),
+            Accordion({ path: 'learn/protocol/sync-protocol', sort: ['nodes-and-sync'] }),
             ...getFilesItemsFromFolder("learn/protocol", { include: ['ZKP-and-recursive-SNARKs', 'prover-node', 'migration', 'verifiable-random-functions'] }),
           ]
         },
@@ -104,8 +104,8 @@ export default defineConfig({
           text: SidebarSectionHeader({ text: 'UI', icon: 'globe', prefix: 'Using Nimiq\'s' }),
           items: [
             getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
-            Accordion({ path: 'build/ui/icons', order: ['explorer', 'getting-started'] }),
-            Accordion({ path: 'build/ui/css-framework', order: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
+            Accordion({ path: 'build/ui/icons', sort: ['explorer', 'getting-started'] }),
+            Accordion({ path: 'build/ui/css-framework', sort: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
           ]
         }
       ]
