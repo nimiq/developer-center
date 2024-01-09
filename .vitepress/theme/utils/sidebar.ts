@@ -54,29 +54,46 @@ export function Accordion({ path, label, collapsed = true, order = [] }: { path:
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path, order),
+    items: getFilesItemsFromFolder(path, { order }),
     collapsed
   }
 }
 
+interface GetFilesItemsFromFolder {
+  // The order in which to arrange the retrieved file items.
+  order?: string[]
+
+  // The files to show. If not specified, all files are shown. If specified, only the specified files are shown
+  // and the order option is not used, the order of the files is the order in which they are specified.
+  include?: string[]
+
+}
 
 /**
  * Retrieves file items from a specified folder, ordered by a given order.
  *
  * @param {string} folder - The folder from which to retrieve file items.
- * @param {string[]} [order=[]] - The order in which to arrange the retrieved file items.
+ * @param {object} params - The parameters for the file items.
  * @returns {object[]} An array of file items from the specified folder, ordered by the given order.
  */
-export function getFilesItemsFromFolder(folder: string, order: string[] = []) {
-  const basePath = path.join(__dirname, `../../../${folder}`);
-  const files = fs.readdirSync(basePath)
+export function getFilesItemsFromFolder(folder: string, { order, include }: GetFilesItemsFromFolder = {}) {
+  const basePath = path.join(__dirname, `../../../${folder}`)
+
+  // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
+  let files = fs.readdirSync(basePath)
     .filter(file => !micromatch.isMatch(path.join(basePath, file), IGNORED_FILES)) // Exclude ignored files
     .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
-    .sort((a, b) => order.indexOf(a) - order.indexOf(b)) // Sort by order
-
-  return files.map(file => {
-    const fileName = path.basename(file, path.extname(file));
-    const text = fileName.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase());
-    return { text, link: `/${folder}/${fileName}` };
-  });
+    .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
+    .map(file => {
+      const filePath = path.basename(file, path.extname(file));
+      const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()); // Capitalize file name
+      const link = `/${folder}/${file}`;
+      return { file, filePath, text, link };
+    })
+    .filter(({ file }) => !include || include.some(includeFile => file.startsWith(includeFile)))
+    
+  // Sort files by order
+  const sortBy = order && order.length > 0 ? order : (include || [])
+  files.sort(({filePath: fileA}, {filePath: fileB}) => sortBy.indexOf(fileA) - sortBy.indexOf(fileB)); // Sort by order
+  return files
 }

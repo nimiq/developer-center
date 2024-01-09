@@ -20,9 +20,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // Files to ignore when generating the sidebar
 // We use micromatch to match the files: https://github.com/micromatch/micromatch
-export const IGNORED_FILES = [
-  '**/learn/protocol/{overview,rewards,optimistic-and-pessimistic-mode,security-analysis,messages-and-requests,fork-proofs}.md',
-]
+export const IGNORED_FILES = []
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -63,15 +61,17 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'Learn', icon: 'bulb' }),
           items: [
-            { text: 'Overview', link: '/learn/protocol/overview' },
+            { text: 'Getting started', link: '/learn/index' },
           ]
         },
         {
           text: SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' }),
           items: [
-            ...getFilesItemsFromFolder("learn/protocol", ['overview', 'glossary']),
-            Accordion({ path: 'learn/protocol/sync-protocol', order: ['nodes-and-sync'] }),
+            ...getFilesItemsFromFolder("learn/protocol", { include: ['overview', 'glossary', 'block-format'] }),
             Accordion({ path: 'learn/protocol/validators' }),
+            ...getFilesItemsFromFolder("learn/protocol", { include: ['skip-blocks', 'penalties', 'accounts', 'transactions', 'mempool'] }),
+            Accordion({ path: 'learn/protocol/sync-protocol', order: ['nodes-and-sync'] }),
+            ...getFilesItemsFromFolder("learn/protocol", { include: ['ZKP-and-recursive-SNARKs', 'prover-node', 'migration', 'verifiable-random-functions'] }),
           ]
         },
       ],
