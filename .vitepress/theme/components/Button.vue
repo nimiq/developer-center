@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   href: {
@@ -17,5 +17,4 @@ const tag = computed(() => (isExternalLink.value) ? 'a' : (props.href) ? 'nuxt-l
     <slot />
     <slot name="post" w="10" text="blue dark:white" />
   </component>
-
 </template>

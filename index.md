@@ -37,7 +37,7 @@ buildTogetherLinks:
     icon: i-nimiq:tools
     href:  '/'
   - title: Run a Validator
-    description: Collect stake, blocks and earn. 
+    description: Collect stake, blocks and earn.
     icon: i-nimiq:verified
     href:  '/'
 ---
@@ -55,7 +55,6 @@ Create apps, contribute to the network or run a validator.
 
 <Grid :items="$frontmatter.buildTogetherLinks" />
 :::
-
 
 <script setup>
 const isDev = import.meta.env.DEV
@@ -126,7 +125,7 @@ This is a dangerous warning.
 This is a details block.
 :::
 
-::: goal 
+::: goal
 Getting started by building...
 :::
 ```
@@ -153,7 +152,7 @@ This is a dangerous warning.
 This is a details block.
 :::
 
-::: goal 
+::: goal
 Getting started by building a minimal app that connects to the Nimiq network and establishes consensus.
 :::
 

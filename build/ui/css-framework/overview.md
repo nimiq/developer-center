@@ -8,7 +8,6 @@ prev: false
 Nimiq's CSS framework is a set of styles and components that can be used to build Nimiq apps.
 :::
 
-
 ## Installation
 
 You can install the Nimiq's CSS framework using your favorite package manager.
@@ -41,13 +40,11 @@ Then import the style into your CSS or module files:
 
 To use icons, you need to link to the icon sprite:
 
-
 ```css
 <svg class="nq-icon">
     <use xlink:href="node_modules/@nimiq/style/nimiq-style.icons.svg#nq-hexagon"/>
 </svg>
 ```
-
 
 ### From CDN
 

@@ -36,7 +36,6 @@ The Nimiq's CSS Framework color palette is designed to be accessible and to work
 <p class="nq-brown">Nimiq Brown</p>
 ```
 
-
 ## Color for backgrounds
 
 <div grid="~ cols-2" gap-32 mb-48>

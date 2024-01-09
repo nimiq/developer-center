@@ -50,7 +50,6 @@ In Nimiq PoS chain, recursive SNARKs are employed to prove the current state of 
 
 To streamline the proof generation for connecting to the network, a specialized type of node is introduced - the [prover node](prover-node.md). Prover nodes are designed to efficiently generate the proofs required for establishing the validity of the blockchain's state without the need for the entire software download.
 
-
 <br/>
 
 **Why use recursive SNARKs?**

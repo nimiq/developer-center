@@ -16,7 +16,6 @@ When the syncing node first connects to the network, it starts at the genesis bl
 
 The syncing node initiates by sending the genesis block's hash to a history node, specifying the desired quantity of election blocks. The history node responds with hashes of all election macro blocks since the genesis block and the latest checkpoint block, if any.
 
-
 <br/>
 
 **Requesting the batch set**

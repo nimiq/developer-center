@@ -29,7 +29,7 @@ outline: false
 ---
 
 ::: raw
-# Build with Nimiq 
+# Build with Nimiq
 
 Nimiq is made for people to build on it.<br/>You just need a browser and Internet.
 

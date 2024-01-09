@@ -2,7 +2,6 @@
 
 The state live sync method applies to both light nodes and full nodes. The state sync is the second component these nodes use, following their synchronization with the macro chain. After completing this synchronization process, the nodes are up-to-date.
 
-
 <br/>
 
 The state of the blockchain consists of all the accounts and corresponding balances. The accounts are stored in the accounts tree or state tree. Nodes fetch parts of the state tree present in every block to build their state tree and add it to their local storage.
@@ -10,7 +9,6 @@ The state of the blockchain consists of all the accounts and corresponding balan
 <br/>
 
 A Merkle tree (more precisely, a _[Merkle-Radix-Tree](https://en.wikipedia.org/wiki/Radix_tree)_) is used to store the accounts, with the account tree root stored in each block header, and each account functioning as a leaf node within the Merkle tree.
-
 
 <br/>
 
@@ -79,7 +77,6 @@ As the node needs the response to use it to make the following request, nodes ca
 <br/>
 
 When building the partial tree, the node needs to keep track of the chunks associated with each block to detect any mismatched chunks. This can happen due to malicious behavior from validators, and blocks may have to be reverted. If a block is reverted, the node updates the affected chunk in its tree before downloading and adding new chunks. This approach ensures that the node is building a valid tree.
-
 
 <br/>
 

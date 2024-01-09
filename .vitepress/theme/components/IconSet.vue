@@ -3,7 +3,7 @@ import { Icon, listIcons, addCollection } from '@iconify/vue';
 import { onMounted, ref, watch } from 'vue';
 import { getIconSnippet } from '../composables/icons/icon';
 import { downloadBlob, downloadIconFont, downloadSVGSprite, downloadZip } from '../composables/icons/pack';
-import { useClipboard, useElementSize, useScriptTag, useTimeAgo } from '@vueuse/core';
+import { useClipboard, useElementSize, useLocalStorage, useScriptTag, useTimeAgo } from '@vueuse/core';
 import { Slider, Popover, Toast } from 'radix-vue/namespaced'
 
 const icons = ref<string[]>([]);
@@ -53,13 +53,13 @@ const copySections = {
 
 watch(selectedIcon, () => document.querySelector('footer.VPDocFooter')?.classList.toggle('hidden', !!selectedIcon.value))
 
-const iconSize = ref([18])
+const iconSize = useLocalStorage('iconSize', [18])
 
 useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 </script>
 
 <template>
-  <div :style="`padding-bottom: ${selectedIcon ? height + 48 + 1 : 0}px`">
+  <div :style="`padding-bottom: ${selectedIcon ? height + 48 + 1 : 0}px`" @keydown.esc.prevent="selectedIcon = undefined">
 
     <div mb-16 flex>
       <input type="text" rounded-full border-base placeholder="Search an icon..." px-12 py-6 leading-none>
@@ -101,8 +101,8 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
     </div>
 
     <ul pl-0 flex flex-wrap select-none text-2xl class="vp-raw -ml-8">
-      <li flex m-8 v-for="icon in icons" :key="icon" w-max>
-        <button @click="selectedIcon = icon" :style="`font-size: ${iconSize[0]}px`">
+      <li flex v-for="icon in icons" :key="icon">
+        <button p-8 @click="selectedIcon = icon" w-max :style="`font-size: ${iconSize[0]}px`">
           <Icon :icon="icon" text="darkblue dark:white/80" />
         </button>
       </li>
