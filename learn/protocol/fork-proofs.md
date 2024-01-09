@@ -70,7 +70,6 @@ Based on the figure above, when submitting a fork proof for block 4, the validat
 | `justification1` | The signature of the block producer of block 1 |
 | `justification2` | The signature of the block producer of block 2 |
 
-
 <br/>
 
 ### Continuing on a fork

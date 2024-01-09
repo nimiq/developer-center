@@ -20,7 +20,6 @@ As for the justification, it attests that _x_ validator slots received and signe
     <img src="/assets/images/protocol/skip-block.png" alt="Alt Text" width="200" height="80">
 </p>
 
-
 Mind these differentiating aspects:
 
 - What distinguishes a skip block from a micro block consists of the justification. The skip block is signed by multiple validators, whereas a micro block is signed by its block producer.

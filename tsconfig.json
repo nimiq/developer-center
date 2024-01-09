@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "jsx": "preserve",
     "lib": [
       "es2021"
     ],
+    "baseUrl": ".",
     "paths": {
       "~/*": [
         "./src/*"

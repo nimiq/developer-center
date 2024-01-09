@@ -57,7 +57,7 @@ This is a dangerous warning.
 This is a details block.
 :::
 
-::: goal 
+::: goal
 Getting started by building a minimal...
 :::
 ```
@@ -84,7 +84,7 @@ This is a dangerous warning.
 This is a details block.
 :::
 
-::: goal 
+::: goal
 Getting started by building a minimal app that connects to the Nimiq network and establishes consensus.
 :::
 

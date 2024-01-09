@@ -57,12 +57,10 @@ History nodes rely on other history nodes to sync through two mechanisms:
 - [History Macro Sync](history-macro-sync.md)
 - [Block Live Sync](block-live-sync.md)
 
-
 <br/>
 
 In addition to the node types outlined, Nimiq PoS also features [prover nodes](/learn/protocol/prover-node.md) and [validator nodes](/learn/protocol/validators/validators-and-stakers.md):
 
 - Prover nodes play a crucial role in blockchain networks by generating zero-knowledge proofs that allow both light and full nodes to sync. While zero-knowledge proofs are small and easy to verify, generating them requires significant computational resources. Prover nodes are, therefore, responsible for generating these proofs and must have the necessary resources.
-
 
 - Validator nodes are the block producers. Any node in the network that desires to participate in the consensus and produce blocks can propose as a validator, and depending on the amount of NIM staked, they can increase their voting power.

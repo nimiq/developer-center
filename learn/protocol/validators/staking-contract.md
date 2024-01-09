@@ -28,7 +28,6 @@ Validators marked as active. All the validator nodes in the network that *can* b
 
 This set is stored in a binary tree map that efficiently organizes active validators and their corresponding balances. This structure ensures that only eligible validators, those qualified to receive slots, are included. In cases of misbehavior, validators can either be deactivated or jailed based on the severity of their offense, leading to their removal from this set. Nonetheless, a validator can be excluded from this set and continue to participate in block production until the epoch concludes, as there is no mid-epoch voting process to substitute the validator slots necessary for the consensus.
 
-
 <br/>
 
 ### Punished slots

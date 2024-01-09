@@ -33,7 +33,6 @@ Feel free to contribute if you want to improve any part of the docs. PRs all wel
 - Join our [Telegram](https://t.me/joinchat/AAAAAEJW-ozFwo7Er9jpHw) or [Discord](https://discord.gg/cMHemg8)
 - Open an [issue](/issues/new)
 
-
 ## Set up
 
 ```bash
@@ -71,14 +70,12 @@ Learn about Frontmatter [here](https://jekyllrb.com/docs/front-matter/). Frontma
 > Usually, you might want to use the [Links](#links) component instead of this one.
 
 This component is used to create a single card. It receives a JSON object defined by the type `Card` which you can see in the [Card.vue](/.vitepress/theme/components/Card.vue) file.
- 
+
 #### Links
 
 This component is used to create a grid of cards with links to other pages. It receives a list of cards which should be defined in the frontmatter section.
 
-
 You can see an example in the [Home Page](/index.md).
-
 
 #### Tags
 
@@ -90,7 +87,6 @@ A simple component to display a list of tag(s). It receives a list of tags which
 ```
 
 The list of valid tags is defined in the [Tags.vue](/.vitepress/theme/components/Tags.vue) file.
-
 
 ## Configuration
 
@@ -109,9 +105,8 @@ We are using UnoCSS with [Attributify preset](https://unocss.dev/presets/attribu
 <div i-nimiq:bulb></div>
 ```
 
-
 ### Why not just use TailwindCSS?
 
-Basically, TailwindCSS scan 
+Basically, TailwindCSS scan
 
 For more details, this [post](https://antfu.me/posts/windicss-and-tailwind-jit) is recommended.

@@ -16,9 +16,7 @@ Every block has a predetermined storage capacity for transactions. Validators ar
 
 Users are encouraged to offer higher fees to accelerate the addition of their transactions to the blockchain. The result of a transaction being added to the mempool is to be then added to the block. The mempool serves the dual purpose of filtering transactions and enabling validators to disregard invalid ones.
 
-
 <br/>
-
 
 ---
 
@@ -58,11 +56,9 @@ After the two mempools are fed with transactions respecting the verification pro
 
 <br/>
 
-
 <p align="center">
     <img src="/assets/images/protocol/mempool-1.png" alt="Alt Text" width="450" height="225">
 </p>
-
 
 <br/>
 

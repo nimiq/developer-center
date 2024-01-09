@@ -52,11 +52,10 @@ The Nimiq's CSS Framework provides a set of buttons that can be used in your web
 <button class="nq-button gold">Gold button</button>
 ```
 
-
 ## Small buttons
 
 <div flex flex-col mt-16>
-  <div bg-white p-16 rounded-t-8 flex flex-wrap gap-8 justify-center>	
+  <div bg-white p-16 rounded-t-8 flex flex-wrap gap-8 justify-center>
     <button class="nq-button-s">Small button</button>
     <button class="nq-button-s" disabled>Disabled small button</button>
   </div>
@@ -78,11 +77,11 @@ The Nimiq's CSS Framework provides a set of buttons that can be used in your web
 ### With colors (or Pill buttons)
 
 <div flex flex-col mt-16>
-  <div bg-white p-16 rounded-t-8 flex flex-wrap gap-8>	
+  <div bg-white p-16 rounded-t-8 flex flex-wrap gap-8>
     <button class="nq-button-pill" w-max>Pill button</button>
   </div>
 
-  <div bg-white p-16 flex flex-wrap gap-8>	
+  <div bg-white p-16 flex flex-wrap gap-8>
     <button class="nq-button-pill light-blue">Light-blue button</button>
     <button class="nq-button-pill green">Green button</button>
     <button class="nq-button-pill orange">Orange button</button>

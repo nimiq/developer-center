@@ -14,7 +14,6 @@ To become a validator in the Nimiq blockchain network, a node must possess a Nim
 
 Each validator has its account. Once it sends a transaction to create an account in the staking contract as a validator, the validator receives the following object:
 
-
 | Data | Type | Description |
 | --- | --- | --- |
 | `address` | `Address` | The address and identifier of the validator, which can be used for signing create, update, and delete transactions. |

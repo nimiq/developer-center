@@ -54,9 +54,7 @@ To calculate the coinbase, we have a formula that predicts the supply at any giv
 
 The supply formula is the following:
 
-
 $S(t)=S_0+\frac{V_0}{\beta}(1-e^{-\beta t})$
-
 
 <br/>
 

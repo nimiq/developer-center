@@ -85,7 +85,6 @@ There are two types of macro blocks: election and checkpoint. A new validator li
 
 <br/>
 
-
 **Macro body**
 
 | Data field | Description |
@@ -105,7 +104,6 @@ Checkpoint or election macro blocks contain a `TendermintProof` as justification
 | `round`    | The specific round where the block was accepted.                         |
 | `sig`      | Aggregated signatures of the validators that have signed precommit for the block. |
 
-
 <br/>
 
 The following figure demonstrates the connection between a macro block and a micro block. Every block, macro or micro, is connected to the previous one by the parent hash and the random seed.
@@ -115,7 +113,6 @@ The following figure demonstrates the connection between a macro block and a mic
 <p align="center">
   <img src="/assets/images/protocol/macro-micro.png" alt="Alt Text" width="500" height="250">
 </p>
-
 
 <br/>
 
@@ -131,10 +128,7 @@ Epoch: The interval between two election macro blocks marks an epoch. It starts 
 
 The following figure illustrates how the blockchain is divided.
 
-
 <p align="center">
 
   <img src="/assets/images/protocol/blockchain-struct.png" alt="Alt Text" width="1000" height="500">
 </p>
-
-

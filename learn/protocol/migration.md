@@ -24,7 +24,6 @@ The transition begins by establishing the first validator list for the PoS block
 
 To become a validator, users must have three essential components: a validator account, a signing key, and a voting key. Additionally, the user must pay the validator minimum deposit. If a validator chooses to contribute an amount exceeding the specified deposit during the registration phase, any excess will be subject to burning.
 
-
 <br/>
 
 This phase involves a series of six transactions to generate the validator account and an additional one to confirm and pay the deposit for the validator. Users must complete the entire sequence of transactions, and failing to do so means the validator won’t be registered, and the entire deposit will be burned.
@@ -51,12 +50,11 @@ The validator generation transactions include the following data:
 | Data | Validator keys encoded in 64 bytes |
 | Validity Window | Registration |
 
-
 A nominal fee is charged as an anti-spam mechanism to avoid overloading the network with registration transactions.
 
 <br/>
 
-Due to the limited data capacity of a regular Nimiq PoW transaction of 64 bytes, our validator keys, which are larger in size, are serialized and distributed across six transactions. The initial transaction transmits both the signing key and the validator's address. Subsequent transactions are used to progressively send the remainder of the data, particularly the voting key. This serialization process ensures the secure transmission and reconstruction of the complete validator keys. Mind that only the public key is included in the data field of the transaction. The private key component is meant to be stored safely. 
+Due to the limited data capacity of a regular Nimiq PoW transaction of 64 bytes, our validator keys, which are larger in size, are serialized and distributed across six transactions. The initial transaction transmits both the signing key and the validator's address. Subsequent transactions are used to progressively send the remainder of the data, particularly the voting key. This serialization process ensures the secure transmission and reconstruction of the complete validator keys. Mind that only the public key is included in the data field of the transaction. The private key component is meant to be stored safely.
 
 <br/>
 
@@ -67,10 +65,6 @@ The registration window takes place within a specific range of blocks. The count
 <p align="center">
     <img src="/assets/images/protocol/migration-txs.png" alt="Alt Text" width="600" height="300">
 </p>
-
-
-
-
 
 <br/>
 
