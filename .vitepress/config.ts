@@ -279,7 +279,7 @@ export default defineConfig({
 
         shortcuts: {
           'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
-          'border-base': 'border-[1.5px] border-solid border-darkblue-20 dark:border-white/20',
+          'border-base': 'border-[1.5px] border-solid border-darkblue-10 dark:border-darkblue-94',
         }
       }),
       // https://github.com/webfansplz/vite-plugin-vue-devtools
