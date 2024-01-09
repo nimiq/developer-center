@@ -46,37 +46,37 @@ export const Label = (text: string) => `<span class="label">${text}</span>`
  * @param {string} params.path - The path for the accordion.
  * @param {string} [params.label] - The label for the accordion.
  * @param {boolean} [params.collapsed=true] - Whether the accordion is collapsed by default.
- * @param {string[]} [params.order=[]] - The order of the items in the accordion.
+ * @param {string[]} [params.sort=[]] - The order of the items in the accordion.
  * @returns {object} The accordion with its text, items, and collapsed state.
  */
-export function Accordion({ path, label, collapsed = true, order = [] }: { path: string, label?: string, collapsed?: boolean, order?: string[] }) {
+export function Accordion({ path, label, collapsed = true, sort = [] }: { path: string, label?: string, collapsed?: boolean, sort?: string[] }) {
   const text = Label(label || path.split('/').at(-1) || path).replace(/-/g, ' ')
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path, { order }),
+    items: getFilesItemsFromFolder(path, { sort }),
     collapsed
   }
 }
 
 interface GetFilesItemsFromFolder {
-  // The order in which to arrange the retrieved file items.
-  order?: string[]
+  // The sort in which to arrange the retrieved file items.
+  sort?: string[]
 
   // The files to show. If not specified, all files are shown. If specified, only the specified files are shown
-  // and the order option is not used, the order of the files is the order in which they are specified.
+  // and the sort option is not used, the order of the files is the order in which they are specified.
   include?: string[]
 
 }
 
 /**
- * Retrieves file items from a specified folder, ordered by a given order.
+ * Retrieves file items from a specified folder, sorted by a given order.
  *
  * @param {string} folder - The folder from which to retrieve file items.
  * @param {object} params - The parameters for the file items.
- * @returns {object[]} An array of file items from the specified folder, ordered by the given order.
+ * @returns {object[]} An array of file items from the specified folder, sorted by the given order.
  */
-export function getFilesItemsFromFolder(folder: string, { order, include }: GetFilesItemsFromFolder = {}) {
+export function getFilesItemsFromFolder(folder: string, { sort, include }: GetFilesItemsFromFolder = {}) {
   const basePath = path.join(__dirname, `../../../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
@@ -92,8 +92,8 @@ export function getFilesItemsFromFolder(folder: string, { order, include }: GetF
     })
     .filter(({ file }) => !include || include.some(includeFile => file.startsWith(includeFile)))
     
-  // Sort files by order
-  const sortBy = order && order.length > 0 ? order : (include || [])
-  files.sort(({filePath: fileA}, {filePath: fileB}) => sortBy.indexOf(fileA) - sortBy.indexOf(fileB)); // Sort by order
+  // Sort files by sort
+  const sortBy = sort && sort.length > 0 ? sort : (include || [])
+  files.sort(({filePath: fileA}, {filePath: fileB}) => sortBy.indexOf(fileA) - sortBy.indexOf(fileB)); // Sort by sort
   return files
 }
