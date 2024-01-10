@@ -61,6 +61,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.10.8
     version: 20.10.8
+  '@unocss/preset-icons':
+    specifier: ^0.58.3
+    version: 0.58.3
   '@unocss/preset-rem-to-px':
     specifier: ^0.58.3
     version: 0.58.3
