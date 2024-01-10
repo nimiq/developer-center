@@ -2,7 +2,6 @@ import { URL, fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
-import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
@@ -14,7 +13,7 @@ import { defineConfig, postcssIsolateStyles } from 'vitepress'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder, getItem } from './theme/utils/sidebar'
+import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder } from './theme/utils/sidebar'
 
 // @unocss-include
 
@@ -78,13 +77,13 @@ export default defineConfig({
 
       '/build/': [
         {
-          text: SidebarSectionHeader({ text: 'Build', icon: 'tools' }),
+          text: SidebarSectionHeader({ text: 'Build', icon: 'i-nimiq:tools' }),
           items: [
             { text: 'Overview', link: '/' },
           ],
         },
         {
-          text: SidebarSectionHeader({ text: 'Web client', icon: 'bulb' }),
+          text: SidebarSectionHeader({ text: 'Web client', icon: 'i-nimiq:icons-lg-bulb' }),
 
           // Needs to be dynamic. The first time the developer does run the project in needs to run the
           // plugin to generate the docs first. After that it should just use the generated docs.
@@ -101,13 +100,12 @@ export default defineConfig({
           },
         },
         {
-          text: SidebarSectionHeader({ text: 'UI', icon: 'globe', prefix: 'Using Nimiq\'s' }),
+          text: SidebarSectionHeader({ text: 'UI', icon: 'i-nimiq:globe', prefix: 'Using Nimiq\'s' }),
           items: [
-            getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
+            Accordion({ path: 'build/ui/design-system' }),
             Accordion({
               path: 'build/ui/icons',
-              sort: ['explorer', 'getting-started'],
-
+              sort: ['getting-started'],
             }),
             Accordion({ path: 'build/ui/css-framework', sort: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
           ],
@@ -130,37 +128,39 @@ export default defineConfig({
 
     // Add ::: goal ::: custom markdown-it plugins
     config: (md) => {
-      md.use(...[
-        container,
-        'goal',
-        {
-          render(tokens, idx) {
-            if (tokens[idx].nesting === 1) {
-              return `
+      md.use(...[container, 'goal', {
+        render(tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return `
               <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
                 <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>
               `
-            }
-            else { return `</div>\n` }
-          },
+          }
+          else { return `</div>\n` }
         },
-      ])
-      md.use(...[
-        container,
-        'tip',
-        {
-          render(tokens, idx) {
-            if (tokens[idx].nesting === 1) {
-              return `
+      }])
+      md.use(...[container, 'warning', {
+        render(tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return `
+              <div class="custom-block" bg="yellow/10 dark:yellow/20" text="orange dark:yellow-60">
+                <p flex gap-x-8><div i-nimiq:tools text="orange dark:yellow-60"></div><span>Warning</span></p>
+              `
+          }
+          else { return `</div>\n` }
+        },
+      }])
+      md.use(...[container, 'tip', {
+        render(tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return `
               <div class="custom-block" bg="gold/10" text="gold">
                 <p flex gap-x-8><div i-nimiq:bulb></div><span>Tip</span></p>
               `
-            }
-            else { return `</div>\n` }
-          },
+          }
+          else { return `</div>\n` }
         },
-      ],
-      )
+      }])
     },
   },
 
@@ -209,7 +209,7 @@ export default defineConfig({
           presetAttributify(),
           presetIcons({
             collections: {
-              logos: FileSystemIconLoader('./node_modules/@iconify-json/logos/icons', svg => svg),
+              logos: () => import('../node_modules/@iconify-json/logos/icons.json').then(res => res.default as any),
               nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json()),
             },
           }),

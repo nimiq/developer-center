@@ -1,8 +1,7 @@
 # Overview
 
-::: info
+::: warning Work in progress
 
-🚧 Work in Progress 🚧
 Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
 
 :::

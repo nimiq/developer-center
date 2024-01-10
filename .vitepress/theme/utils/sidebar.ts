@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { IGNORED_FILES } from '../../config'
 import micromatch from 'micromatch'
+import { IGNORED_FILES } from '../../config'
 
 // @unocss-include
 
@@ -19,7 +19,7 @@ export function SidebarSectionHeader({ icon, text, prefix }: { icon: string, tex
   return `
     ${prefix ? `<div text="14 darkblue/50 dark:white/50" pt-20>${prefix}</div>` : ''}
     <div mt-8 flex gap-x-8 mb-24 items-center>
-      <div ${large ? 'w-24 h-24' : 'w-20 h-20'} i-nimiq:${icon}></div>
+      <div ${large ? 'w-24 h-24' : 'w-20 h-20'} ${icon}></div>
       <span text="${large ? '24' : '20'} darkblue-80 dark:white/80">${text}</span>
     </div>
   `
@@ -30,14 +30,12 @@ export function getItem({ text, link, icon }: { text: string, link: string, icon
     text: icon
       ? `<div flex items-center gap-x-8 mb-4>${icon ? `<div ${icon} h-16 w-16 text-white></div>` : ''} ${text}</div>`
       : text,
-    link
+    link,
   }
 }
 
-
 // Wraps a text with a label class.
 export const Label = (text: string) => `<span class="label">${text}</span>`
-
 
 /**
  * Creates an accordion for the sidebar.
@@ -45,8 +43,8 @@ export const Label = (text: string) => `<span class="label">${text}</span>`
  * @param {object} params - The parameters for the accordion.
  * @param {string} params.path - The path for the accordion.
  * @param {string} [params.label] - The label for the accordion.
- * @param {boolean} [params.collapsed=true] - Whether the accordion is collapsed by default.
- * @param {string[]} [params.sort=[]] - The order of the items in the accordion.
+ * @param {boolean} [params.collapsed] - Whether the accordion is collapsed by default.
+ * @param {string[]} [params.sort] - The order of the items in the accordion.
  * @returns {object} The accordion with its text, items, and collapsed state.
  */
 export function Accordion({ path, label, collapsed = true, sort = [] }: { path: string, label?: string, collapsed?: boolean, sort?: string[] }) {
@@ -55,7 +53,7 @@ export function Accordion({ path, label, collapsed = true, sort = [] }: { path: 
   return {
     text: capitalize(text),
     items: getFilesItemsFromFolder(path, { sort }),
-    collapsed
+    collapsed,
   }
 }
 
@@ -80,20 +78,20 @@ export function getFilesItemsFromFolder(folder: string, { sort, include }: GetFi
   const basePath = path.join(__dirname, `../../../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
-  let files = fs.readdirSync(basePath)
+  const files = fs.readdirSync(basePath)
     .filter(file => !micromatch.isMatch(path.join(basePath, file), IGNORED_FILES)) // Exclude ignored files
     .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
     .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
-    .map(file => {
-      const filePath = path.basename(file, path.extname(file));
-      const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()); // Capitalize file name
-      const link = `/${folder}/${file}`;
-      return { file, filePath, text, link };
+    .map((file) => {
+      const filePath = path.basename(file, path.extname(file))
+      const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) // Capitalize file name
+      const link = `/${folder}/${file}`
+      return { file, filePath, text, link }
     })
     .filter(({ file }) => !include || include.some(includeFile => file.startsWith(includeFile)))
-    
+
   // Sort files by sort
   const sortBy = sort && sort.length > 0 ? sort : (include || [])
-  files.sort(({filePath: fileA}, {filePath: fileB}) => sortBy.indexOf(fileA) - sortBy.indexOf(fileB)); // Sort by sort
+  files.sort(({ filePath: fileA }, { filePath: fileB }) => sortBy.indexOf(fileA) - sortBy.indexOf(fileB)) // Sort by sort
   return files
 }
