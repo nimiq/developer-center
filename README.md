@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/nimiq/nimiq-developer-center">
-    <img src="assets/developer-center-logo.png" alt="Logo" width="130" />
+    <img src="assets/developer-center-logo.jpg" alt="Logo" width="130" />
   </a>
 
 <h1 align="center">
