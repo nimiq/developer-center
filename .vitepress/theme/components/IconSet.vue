@@ -89,11 +89,9 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 <template>
   <div :style="`padding-bottom: ${selectedIcon ? height + 48 + 1 : 0}px`" @keydown.esc.prevent="selectedIcon = undefined">
     <div mb-16 flex="~ gap-16 wrap vp-raw">
-      <input type="text" rounded-full border-base placeholder="Search an icon..." px-12 py-6 leading-none>
+      <PillSelector v-model="activeVariant" :options="variantsTitles" />
 
       <div flex-1 />
-
-      <PillSelector v-model="activeVariant" :options="variantsTitles" />
 
       <Popover.Root>
         <Popover.Trigger aria-label="Icons options" flex="~ items-center gap-4" border-base rounded-full px-12 py-3>
