@@ -295,39 +295,6 @@ export default defineConfig({
       }),
       // https://github.com/webfansplz/vite-plugin-vue-devtools
       VueDevTools(),
-      {
-        name: 'build-dynamic-web-client',
-        enforce: 'pre',
-        async buildStart() {
-          // Read installed package version of @nimiq/core-web
-          const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
-
-          // Read package version of generated docs, if already built
-          const versionFile = path.join(__dirname, '../build/web-client/_version')
-          if (fs.existsSync(versionFile)) {
-            const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
-
-            // Skip build if package version and generated version match
-            if (packageVersion === generatedVersion) {
-              console.log(`Web-Client docs ${packageVersion} already generated`)
-              return
-            }
-          }
-
-          // Rebuild docs
-          console.log(`Generating Web-Client docs ${packageVersion} ...`)
-          execSync('pnpm run build:web-client', { stdio: 'inherit' })
-
-          // Update entry file with frontmatter to disable the "next" footer button
-          const entryFile = path.join(__dirname, '../build/web-client/index.md')
-          let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
-          entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
-          fs.writeFileSync(entryFile, entryFileContent)
-
-          // Write version file for generated docs
-          fs.writeFileSync(versionFile, packageVersion)
-        },
-      },
     ],
     resolve: {
       alias: [
@@ -348,3 +315,35 @@ export default defineConfig({
     },
   },
 })
+
+;(async () => {
+  // Read installed package version of @nimiq/core-web
+  const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
+
+  // Read package version of generated docs, if already built
+  const versionFile = path.join(__dirname, '../build/web-client/_version')
+  if (fs.existsSync(versionFile)) {
+    const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
+
+    // Skip build if package version and generated version match
+    if (packageVersion === generatedVersion) {
+      // eslint-disable-next-line no-console
+      console.log(`Web-Client docs ${packageVersion} already generated`)
+      return
+    }
+  }
+
+  // Rebuild docs
+  // eslint-disable-next-line no-console
+  console.log(`Generating Web-Client docs ${packageVersion} ...`)
+  execSync('pnpm run build:web-client', { stdio: 'inherit' })
+
+  // Update entry file with frontmatter to disable the "next" footer button
+  const entryFile = path.join(__dirname, '../build/web-client/index.md')
+  let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
+  entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
+  fs.writeFileSync(entryFile, entryFileContent)
+
+  // Write version file for generated docs
+  fs.writeFileSync(versionFile, packageVersion)
+})()
