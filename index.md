@@ -3,7 +3,7 @@ layout: home
 
 links:
   - bgColor: blue
-    icon: 'i-nimiq:build'
+    icon: 'i-nimiq:icons-lg-browsermesh'
     label: 'Build'
     title: 'Get Started with Nimiq'
     description:  'Create an app on Nimiq and have it running in 5 minutes.'
@@ -11,7 +11,7 @@ links:
     layout: lg
     span: 3
   - bgColor: green
-    icon: 'i-nimiq:cubes'
+    icon: 'i-nimiq:icons-lg-cubes'
     label: 'Learn'
     title: 'The underlying technology'
     description: 'Learn what makes Nimiq a truly unique blockchain.'
@@ -30,15 +30,15 @@ links:
 buildTogetherLinks:
   - title: Learn
     description: Learn about the basic and advanced concepts.
-    icon: i-nimiq:bulb
+    icon: i-nimiq:icons-lg-bulb
     href:  '/'
   - title: Build
     description: Create apps that connect to the blockchain.
-    icon: i-nimiq:tools
+    icon: i-nimiq:icons-lg-tools
     href:  '/'
   - title: Run a Validator
     description: Collect stake, blocks and earn.
-    icon: i-nimiq:verified
+    icon: i-nimiq:icons-lg-verified
     href:  '/'
 ---
 

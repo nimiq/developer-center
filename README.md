@@ -179,7 +179,7 @@ The sidebar and the navigation can be editted from the [config.ts](/.vitepress/c
 We are using UnoCSS with [Attributify preset](https://unocss.dev/presets/attributify) and the [Icons preset](https://unocss.dev/presets/icons) which allow us to have the [icons](assets/icons) and then we can use them like:
 
 ```html
-<div i-nimiq:bulb></div>
+<div i-nimiq:iconst-lg-bulb></div>
 ```
 
 ### Why not just use TailwindCSS?

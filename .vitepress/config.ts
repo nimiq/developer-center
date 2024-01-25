@@ -77,7 +77,7 @@ export default defineConfig({
 
       '/build/': [
         {
-          text: SidebarSectionHeader({ text: 'Build', icon: 'i-nimiq:tools' }),
+          text: SidebarSectionHeader({ text: 'Build', icon: 'i-nimiq:icons-lg-tools' }),
           items: [
             { text: 'Overview', link: '/' },
           ],
@@ -144,7 +144,7 @@ export default defineConfig({
           if (tokens[idx].nesting === 1) {
             return `
               <div class="custom-block" bg="yellow/10 dark:yellow/20" text="orange dark:yellow-60">
-                <p flex gap-x-8><div i-nimiq:tools text="orange dark:yellow-60"></div><span>Warning</span></p>
+                <p flex gap-x-8><div i-nimiq:icons-lg-tools text="orange dark:yellow-60"></div><span>Warning</span></p>
               `
           }
           else { return `</div>\n` }
@@ -155,7 +155,7 @@ export default defineConfig({
           if (tokens[idx].nesting === 1) {
             return `
               <div class="custom-block" bg="gold/10" text="gold">
-                <p flex gap-x-8><div i-nimiq:bulb></div><span>Tip</span></p>
+                <p flex gap-x-8><div i-nimiq:icons-lg-bulb></div><span>Tip</span></p>
               `
           }
           else { return `</div>\n` }

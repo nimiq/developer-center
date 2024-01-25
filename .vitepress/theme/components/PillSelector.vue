@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 defineProps<{
   options: Record<string, { label: string, disabled?: boolean }>
