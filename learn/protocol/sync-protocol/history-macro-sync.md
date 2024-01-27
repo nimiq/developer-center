@@ -27,7 +27,7 @@ The node requests batch sets for each epoch using received election block hashes
 
 **Requesting history chunks**
 
-TThe syncing node requests and incorporates history chunks from multiple history nodes since the genesis block. Each history chunk, consisting of a set number of history items, is fetched by specifying the epoch number, chunk index, and the closing macro block. The node repeats this request until it reaches the most recent history item.
+The syncing node requests and incorporates history chunks from multiple history nodes since the genesis block. Each history chunk, consisting of a set number of history items, is fetched by specifying the epoch number, chunk index, and the closing macro block. The node repeats this request until it reaches the most recent history item.
 
 <br/>
 
