@@ -22,7 +22,9 @@ import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder } from './them
 const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
 const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
 const commitUrl = `${repoUrl}/commit/${commitHash}`
-const buildMode = env.NODE_ENV || 'development'
+
+console.log('OMAGI ______________', { mode: env.NODE_ENV })
+const buildMode = env.NODE_ENV
 
 // Files to ignore when generating the sidebar
 // We use micromatch to match the files: https://github.com/micromatch/micromatch
