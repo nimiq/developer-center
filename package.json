@@ -44,6 +44,6 @@
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vite-plugin-vue-devtools": "1.0.0-rc.8",
-    "vitepress": "1.0.0-rc.33"
+    "vitepress": "1.0.0-rc.40"
   }
 }
