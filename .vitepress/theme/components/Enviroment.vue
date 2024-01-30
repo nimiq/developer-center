@@ -8,7 +8,7 @@ const timeAgo = useTimeAgo(now)
 const repoLastCommitUrl = __REPO_LAST_COMMIT_URL__
 const repoLastCommitHash = __REPO_LAST_COMMIT_HASH__
 const version = __DEVELOPER_CENTER_VERSION__
-const buildEnvironment = __BUILD_ENVIRONMENT__
+const buildEnvironment = import.meta.env.MODE
 </script>
 
 <template>
