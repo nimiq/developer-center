@@ -22,6 +22,7 @@ import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder } from './them
 const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
 const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
 const commitUrl = `${repoUrl}/commit/${commitHash}`
+const buildMode = env.NODE_ENV || 'development'
 
 // Files to ignore when generating the sidebar
 // We use micromatch to match the files: https://github.com/micromatch/micromatch
@@ -34,10 +35,10 @@ export default defineConfig({
   srcExclude: ['**/README.md'],
   description:
     'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
+
+  cleanUrls: true,
   themeConfig: {
-    footer: {
-      message: 'Nimiq Developer Center is maintained by the Nimiq Community.',
-    },
+
     nav: [
       { text: 'Learn', link: '/learn/' },
       { text: 'Build', link: '/build/' },
@@ -62,6 +63,7 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' }),
           items: [
+            { text: 'Overview', link: '/learn' },
             ...getFilesItemsFromFolder('learn/protocol', { include: ['overview', 'glossary', 'block-format'] }),
             Accordion({ path: 'learn/protocol/validators' }),
             ...getFilesItemsFromFolder('learn/protocol', { include: ['skip-blocks', 'penalties', 'accounts', 'transactions', 'mempool'] }),
@@ -173,7 +175,7 @@ export default defineConfig({
       __REPO_LAST_COMMIT_HASH__: JSON.stringify(commitHash),
       __REPO_URL__: JSON.stringify(repoUrl),
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
-      __BUILD_ENVIRONMENT__: JSON.stringify(env.NODE_ENV),
+      __BUILD_ENVIRONMENT__: JSON.stringify(buildMode),
     },
 
     plugins: [
