@@ -59,9 +59,9 @@ const centered = computed(() => isIcon.value)
 
     <div v-if="item.tags?.length || 0 > 0 || item.duration" flex items-center flex-wrap gap-24 mt-14>
       <Tags v-if="item.tags" :tags="item.tags" />
-      <div flex gap-x-10 items-center>
+      <div v-if="item.duration" flex gap-x-10 items-center>
         <div i-nimiq:watch text="darkblue-40 inverted:white/60" w-16 h-16 />
-        <span v-if="item.duration" text="16 darkblue-50 inverted:white/70">{{ item.duration }}</span>
+        <span text="16 darkblue-50 inverted:white/70">{{ item.duration }}</span>
       </div>
     </div>
   </a>

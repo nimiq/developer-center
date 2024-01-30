@@ -54,7 +54,7 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'Learn', icon: 'i-nimiq:icons-lg-bulb' }),
           items: [
-            { text: 'Getting started', link: '/learn/index/' },
+            { text: 'Overview', link: '/learn/' },
           ],
         },
         {
@@ -101,7 +101,7 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'Build', icon: 'i-nimiq:icons-lg-tools' }),
           items: [
-            { text: 'Overview', link: '/' },
+            { text: 'Overview', link: '/build/' },
           ],
         },
         {
@@ -133,7 +133,7 @@ export default defineConfig({
                     { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' },
                   ],
                 })
-              : undefined,
+              : {},
             {
               text: Label('CSS framework'),
               collapsed: true,

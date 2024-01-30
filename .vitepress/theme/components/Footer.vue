@@ -15,7 +15,7 @@ const fileUrl = `${repoUrl}/blob/main/${page.value.filePath}`
 </script>
 
 <template>
-  <nav grid="~ cols-2 rows-2 justify-between">
+  <nav grid="~ cols-2 rows-2 justify-between" mt-96>
     <a :href="fileUrl" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 group>
       Edit this page on GitHub
       <div i-nimiq:arrow-top-right w-8 op70 group-hover="translate-x-2 translate-y--2" duration-100ms />
