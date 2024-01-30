@@ -18,28 +18,19 @@ links:
     href: 'learn/'
     span: 3
     layout: lg
-  - title: '3 steps to become part of the validator list'
-    label: 'Run a validator'
-    href: '/'
-  - title: 'Accept USDC Polygon now, see how'
-    label: 'Cryptopayment Link'
-    href: '/'
-  - title: 'Find bugs and get paid in our Bug bounty program'
-    label: 'Contribute'
-    href: '/'
 buildTogetherLinks:
   - title: Learn
     description: Learn about the basic and advanced concepts.
     icon: i-nimiq:icons-lg-bulb
-    href:  '/'
+    href:  'learn/'
   - title: Build
     description: Create apps that connect to the blockchain.
     icon: i-nimiq:icons-lg-tools
-    href:  '/'
-  - title: Run a Validator
-    description: Collect stake, blocks and earn.
-    icon: i-nimiq:icons-lg-verified
-    href:  '/'
+    href:  'build/'
+  # - title: Run a Validator
+  #   description: Collect stake, blocks and earn.
+  #   icon: i-nimiq:icons-lg-verified
+  #   href:  '/'
 ---
 
 :::raw
@@ -47,13 +38,13 @@ buildTogetherLinks:
 
 Get guides, resources and tips on how to create with Nimiq.
 
-<Grid :items="$frontmatter.links" />
+<Grid my-64 :items="$frontmatter.links" />
 
 ## Let's build together
 
 Create apps, contribute to the network or run a validator.
 
-<Grid :items="$frontmatter.buildTogetherLinks" />
+<Grid my-64 :items="$frontmatter.buildTogetherLinks" />
 :::
 
 <script setup>

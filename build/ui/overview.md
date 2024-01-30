@@ -36,5 +36,5 @@ Get guides, resources and tips on how to create with Nimiq.
 
 Create apps, contribute to the network or run a validator.
 
-<Grid mt-64 :items="$frontmatter.buildTogetherLinks" />
+<Grid my-64 :items="$frontmatter.buildTogetherLinks" />
 :::
