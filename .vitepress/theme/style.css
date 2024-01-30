@@ -284,26 +284,29 @@ h4 {
 .VPNavBar {
   padding: 0 !important;
   --vp-c-gutter: var(--colors-darkblue-10);
-  background-color: var(--colors-lightgray);
-  border-bottom: 1px solid var(--colors-darkblue-10) !important;
 
-
-  .dark & {
-    border-color: var(--colors-darkblue-94) !important;
-  }
 
   .dark & {
     --vp-c-gutter: var(--colors-darkblue-94);
-    background-color: var(--colors-darkblue-1000);
   }
 
-  > .divider {
+  >.divider {
     display: none;
   }
 
   >.wrapper {
-    > .container {
-      padding: 0 36px;
+    border-bottom: 1px solid var(--colors-darkblue-10) !important;
+    background-color: var(--colors-lightgray);
+
+    .dark & {
+      border-color: var(--colors-darkblue-94) !important;
+      background-color: var(--colors-darkblue-1000);
+    }
+
+    >.container {
+      @media screen and (min-width: 960px) {
+        padding: 0 36px;
+      }
 
       >.title {
         display: flex;
@@ -316,6 +319,11 @@ h4 {
         }
 
         >.content-body {
+          @media screen and (max-width: 760px) {
+            right: 16px;
+            position: relative;
+          }
+
           background-color: transparent !important;
         }
 
