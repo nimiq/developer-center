@@ -23,6 +23,9 @@ const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
 const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
 const commitUrl = `${repoUrl}/commit/${commitHash}`
 
+const { hash: albatrossCommitHash, date: albatrossCommitDate } = await fetch('https://api.github.com/repos/nimiq/core-rs-albatross/commits?per_page=1')
+  .then(res => res.json()).then(res => ({ hash: res[0].sha.slice(0, 7), date: res[0].commit.author.date }))
+
 const buildMode = env.NODE_ENV || 'development'
 
 // https://vitepress.dev/reference/site-config
@@ -214,6 +217,8 @@ export default defineConfig({
     define: {
       __REPO_LAST_COMMIT_URL__: JSON.stringify(commitUrl),
       __REPO_LAST_COMMIT_HASH__: JSON.stringify(commitHash),
+      __ALBATROSS_COMMIT_HASH__: JSON.stringify(albatrossCommitHash),
+      __ALBATROSS_COMMIT_DATE__: JSON.stringify(albatrossCommitDate.toString()),
       __REPO_URL__: JSON.stringify(repoUrl),
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
       __BUILD_ENVIRONMENT__: JSON.stringify(buildMode),
