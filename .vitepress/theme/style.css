@@ -163,45 +163,7 @@
 
   --vp-c-brand-1: var(--colors-darkblue);
   --vp-c-bg-soft: var(--colors-darkblue-6);
-
-  &.dark {
-    --vp-c-brand-1: var(--colors-gold);
-    --vp-c-bg-soft: var(--colors-darkblue-900);
-  }
-
-  --vp-font-family-base: Mulish,
-  ui-sans-serif,
-  system-ui,
-  -apple-system,
-  BlinkMacSystemFont,
-  Segoe UI,
-  Roboto,
-  Helvetica Neue,
-  Arial,
-  Noto Sans,
-  sans-serif,
-  Apple Color Emoji,
-  Segoe UI Emoji,
-  Segoe UI Symbol,
-  Noto Color Emoji;
-  --vp-font-family-mono: 'Fira Code',
-  ui-monospace,
-  SFMono-Regular,
-  'SF Mono',
-  Menlo,
-  Monaco,
-  Consolas,
-  'Liberation Mono',
-  'Courier New',
-  monospace;
-
-  --vp-sidebar-width: 258px;
-  --vp-sidebar-color: var(--colors-white);
-}
-
-html {
-  --vp-c-bg: var(--colors-lightgray);
-
+  
   &.dark {
     --vp-c-bg: var(--colors-darkblue-1000);
     --vp-c-bg-soft: var(--colors-darkblue);
@@ -210,7 +172,39 @@ html {
     --vp-c-neutral-inverse: var(--colors-darkblue-80);
     --vp-input-switch-color: var(--colors-darkblue);
     --vp-sidebar-bg-color: var(--colors-darkblue-1000);
+    --vp-c-brand-1: var(--colors-gold);
+    --vp-c-bg-soft: var(--colors-darkblue-900);
   }
+
+  --vp-font-family-base: Mulish,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+    --vp-font-family-mono: 'Fira Code',
+    ui-monospace,
+    SFMono-Regular,
+    'SF Mono',
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
+
+  --vp-sidebar-width: 258px;
+  --vp-sidebar-bg-color: var(--colors-lightgray);
+  --vp-c-bg: var(--colors-lightgray);
 }
 
 :is(h1, h2, h3, h4) {
@@ -290,7 +284,7 @@ h4 {
 .VPNavBar {
   padding: 0 !important;
   --vp-c-gutter: var(--colors-darkblue-10);
-  background-color: var(--colors-white);
+  background-color: var(--colors-lightgray);
   border-bottom: 1px solid var(--colors-darkblue-10) !important;
 
   .dark & {
