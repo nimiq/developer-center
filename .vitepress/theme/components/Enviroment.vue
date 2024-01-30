@@ -14,7 +14,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
 <template>
   <TooltipProvider>
     <TooltipRoot>
-      <TooltipTrigger label md:ml-24 shadow text-11 border="base orange" rounded-full px-8 py-3 bg-orange text-white aria-label="View build information">
+      <TooltipTrigger label md:ml-24 text-11 border="base orange" rounded-full px-8 py-3 bg-orange text-white aria-label="View build information">
         {{ version }}
       </TooltipTrigger>
       <TooltipPortal>
