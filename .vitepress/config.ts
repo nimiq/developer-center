@@ -34,26 +34,18 @@ export default defineConfig({
   description:
     'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
   themeConfig: {
+    footer: {
+      message: 'Nimiq Developer Center is maintained by the Nimiq Community.',
+    },
     nav: [
       { text: 'Learn', link: '/learn/' },
       { text: 'Build', link: '/build/' },
       {
-        text: `v${version}`,
+        text: 'Contributing',
         items: [
-          {
-            text: 'Contributing',
-            items: [
-              { text: 'Nimiq Core RS Albatross', link: 'https://github.com/nimiq/core-rs-albatross#contributing' },
-              { text: 'Nimiq Wallet', link: 'https://github.com/nimiq/wallet' },
-              { text: 'Nimiq Core JS', link: 'https://github.com/nimiq/core-js' },
-            ],
-          },
-          {
-            // print days ago
-            items: [
-              { text: `Built commit ${commitHash}`, link: commitUrl },
-            ],
-          },
+          { text: 'Nimiq Core RS Albatross', link: 'https://github.com/nimiq/core-rs-albatross#contributing' },
+          { text: 'Nimiq Wallet', link: 'https://github.com/nimiq/wallet' },
+          { text: 'Nimiq Core JS', link: 'https://github.com/nimiq/core-js' },
         ],
       },
     ],
@@ -175,6 +167,14 @@ export default defineConfig({
       hmr: { overlay: false },
     },
 
+    define: {
+      __REPO_LAST_COMMIT_URL__: JSON.stringify(commitUrl),
+      __REPO_LAST_COMMIT_HASH__: JSON.stringify(commitHash),
+      __REPO_URL__: JSON.stringify(repoUrl),
+      __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
+      __BUILD_ENVIRONMENT__: JSON.stringify('Preview'),
+    },
+
     plugins: [
       Components({
         dirs: ['.vitepress/theme/components'],
@@ -209,7 +209,7 @@ export default defineConfig({
         ],
 
         presets: [
-          presetUno(),
+          presetUno({ attributifyPseudo: true }),
           presetAttributify(),
           presetIcons({
             collections: {
@@ -308,6 +308,13 @@ export default defineConfig({
             new URL('./theme/components/HeaderLogo.vue', import.meta.url),
           ),
         },
+        {
+          find: /^.*\/VPDocFooter\.vue$/,
+          replacement: fileURLToPath(
+            new URL('./theme/components/Footer.vue', import.meta.url),
+          ),
+        },
+
       ],
     },
     css: {

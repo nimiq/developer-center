@@ -210,7 +210,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       >Iconify</a>.
       <br>
       <span opacity-60>
-        Last update: {{ timeBuild }} ({{ timeAgo }})
+        The icon set has been updated {{ timeAgo }} on {{ timeBuild }}
       </span>
     </p>
   </div>
