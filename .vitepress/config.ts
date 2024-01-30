@@ -2,6 +2,7 @@ import { URL, fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { env } from 'node:process'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
@@ -172,7 +173,7 @@ export default defineConfig({
       __REPO_LAST_COMMIT_HASH__: JSON.stringify(commitHash),
       __REPO_URL__: JSON.stringify(repoUrl),
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
-      __BUILD_ENVIRONMENT__: JSON.stringify('Preview'),
+      __BUILD_ENVIRONMENT__: JSON.stringify(env.NODE_ENV),
     },
 
     plugins: [

@@ -14,19 +14,19 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
 <template>
   <PopoverRoot>
     <PopoverTrigger label ml-24 shadow text-11 border="base orange" rounded-full px-8 py-3 bg-orange text-white aria-label="View build information">
-      {{ buildEnvironment }}
+      {{ version }}
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent z-100 side="bottom" :side-offset="5" :collision-padding="8" align="right" bg-darkblue text-white p-20 pb-12 shadow rounded-8 max-w-350 text-14>
         <div flex="~ items-center gap-8" mb-6>
-          <div i-nimiq:tools />
-          <p label mt-1>
-            {{ version }}
+          <p text-13 label>
+            {{ buildEnvironment }} environment
           </p>
         </div>
-        <p mt-12 op70>
+
+        <div mb-6 op70>
           Work heavily in progress. You might find errors or missing information.
-        </p>
+        </div>
 
         <p op70 flex="~ items-center gap-6">
           Give us feedback on <a href="https://t.me/nimiq" target="_blank" rel="noopener" group flex="~ items-center gap-6">
