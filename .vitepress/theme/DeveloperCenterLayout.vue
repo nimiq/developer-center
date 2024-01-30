@@ -2,7 +2,7 @@
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
-import Enviroment from './components/Enviroment.vue'
+import Environment from './components/Environment.vue'
 
 /**
  * Credit to [@hooray](https://github.com/hooray)
@@ -61,7 +61,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 <template>
   <DefaultTheme.Layout>
     <template #nav-bar-content-after>
-      <Enviroment />
+      <Environment />
     </template>
   </DefaultTheme.Layout>
 </template>

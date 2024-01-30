@@ -10,6 +10,7 @@ declare module 'vue' {
     Button: typeof import('./.vitepress/theme/components/Button.vue')['default']
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
     Enviroment: typeof import('./.vitepress/theme/components/Enviroment.vue')['default']
+    Environment: typeof import('./.vitepress/theme/components/Environment.vue')['default']
     Footer: typeof import('./.vitepress/theme/components/Footer.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
