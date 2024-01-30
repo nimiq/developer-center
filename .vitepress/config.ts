@@ -130,7 +130,7 @@ export default defineConfig({
                   collapsed: true,
                   items: [
                     { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
-                    { text: 'Nimiq Icons', link: '/build/ui/design-kit/nimiq-icons' },
+                    { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' },
                   ],
                 })
               : undefined,
