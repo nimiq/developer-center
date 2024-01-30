@@ -236,7 +236,7 @@ h1 {
     color: var(--colors-white);
   }
 
-  &.title {
+  &.title { 
     margin: 0 auto;
   }
 }
@@ -307,6 +307,7 @@ h4 {
 
     >.title {
       display: flex;
+      align-items: center;
     }
 
     >.content {

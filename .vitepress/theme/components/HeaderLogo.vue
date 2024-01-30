@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const baseUrl = import.meta.env.BASE_URL
+</script>
+
 <template>
-  <a href="/nimiq-developer-center" flex items-center gap-x-10>
+  <a :href="baseUrl" flex items-center gap-x-10>
     <svg h-24 flex-1 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 25">
       <path
         fill="url(#a)"

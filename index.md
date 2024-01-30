@@ -58,6 +58,7 @@ Create apps, contribute to the network or run a validator.
 
 <script setup>
 const isDev = import.meta.env.DEV
+console.log(import.meta)
 </script>
 
 <div v-if="isDev">

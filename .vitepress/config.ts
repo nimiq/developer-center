@@ -13,9 +13,14 @@ import { defineConfig, postcssIsolateStyles } from 'vitepress'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { version } from '../package.json'
 import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder } from './theme/utils/sidebar'
 
 // @unocss-include
+
+const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
+const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
+const commitUrl = `${repoUrl}/commit/${commitHash}`
 
 // Files to ignore when generating the sidebar
 // We use micromatch to match the files: https://github.com/micromatch/micromatch
@@ -33,22 +38,20 @@ export default defineConfig({
       { text: 'Learn', link: '/learn/' },
       { text: 'Build', link: '/build/' },
       {
-        text: 'Contribute',
+        text: `v${version}`,
         items: [
           {
-            text: 'Comunity Projects',
+            text: 'Contributing',
             items: [
-              { text: 'Nimtrix', link: '...' },
-
-              { text: 'Space Nimiq', link: '...' },
+              { text: 'Nimiq Core RS Albatross', link: 'https://github.com/nimiq/core-rs-albatross#contributing' },
+              { text: 'Nimiq Wallet', link: 'https://github.com/nimiq/wallet' },
+              { text: 'Nimiq Core JS', link: 'https://github.com/nimiq/core-js' },
             ],
           },
           {
-            text: 'Contribute to Nimiq',
+            // print days ago
             items: [
-              { text: 'Nimiq Core', link: '...' },
-              { text: 'Nimiq Hub', link: '...' },
-              { text: 'The good old Nimiq Safe', link: '...' },
+              { text: `Built commit ${commitHash}`, link: commitUrl },
             ],
           },
         ],
@@ -171,6 +174,7 @@ export default defineConfig({
     server: {
       hmr: { overlay: false },
     },
+
     plugins: [
       Components({
         dirs: ['.vitepress/theme/components'],
