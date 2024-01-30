@@ -16,6 +16,7 @@ const hash = isWebClientDoc ? __ALBATROSS_COMMIT_HASH__ : __REPO_LAST_COMMIT_HAS
 const lastUrl = isWebClientDoc ? webClientRepoUrl : __REPO_LAST_COMMIT_URL__
 
 const date = computed(() => new Date(isWebClientDoc ? __ALBATROSS_COMMIT_DATE__ : page.value.lastUpdated || Date.now()))
+console.log({ data: useData(), isWebClientDoc, date: date.value, albatrossDate: __ALBATROSS_COMMIT_DATE__, lastUpdated: page.value.lastUpdated })
 
 const builtTime = new Intl.DateTimeFormat(navigator.language, { dateStyle: 'short', timeStyle: 'short' }).format(date.value)
 const timeAgo = useTimeAgo(date.value)
