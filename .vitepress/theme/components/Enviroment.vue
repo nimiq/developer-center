@@ -31,7 +31,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
 
           <p op70 flex="~ items-center gap-6">
             Give us feedback on <a href="https://t.me/nimiq" target="_blank" rel="noopener" group flex="~ items-center gap-6">
-              <div text-white i-nimiq:logos-telegram />
+              <div class="i-nimiq:logos-telegram" />
               Telegram
               <div i-nimiq:arrow-top-right w-8 op70 group-hover="translate-x-2 translate-y--2" duration-100ms />
             </a>

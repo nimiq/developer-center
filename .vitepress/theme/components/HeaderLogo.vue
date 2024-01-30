@@ -23,6 +23,6 @@ const baseUrl = import.meta.env.BASE_URL
         </radialGradient>
       </defs>
     </svg>
-    <span max-md:hidden md:text-20>Developer Center</span>
+    <span max-lg:hidden md:text-20>Developer Center</span>
   </a>
 </template>

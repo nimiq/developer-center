@@ -60,34 +60,6 @@ It will create an element with the text and icon passed as parameters.
 SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' })
 ```
 
-#### Sidebar Items
-
-It will create a list of items from the files in the folder passed as parameter. It receives an object of type `SidebarItemsOptions` which you can see in the [sidebar.ts](/.vitepress/theme/utils/sidebar.ts) file. You need to use the spread operator(`...`).
-
-```ts
-// Using the include option: it will display ONLY the files passed in the array
-items: [...getFilesItemsFromFolder('learn/protocol', { include: ['overview', 'glossary', 'block-format'] })]
-
-// Using the sort option: it will sort the files passed in the array and then it will include the rest of files in the folder
-items: [...getFilesItemsFromFolder('learn/protocol', { sort: ['overview', 'glossary', 'block-format'] })]
-```
-
-#### Sidebar Accordion
-
-It will create an expandable item with the files in the folder passed as parameter. It receives an object of type `SidebarAccordionOptions` which you can see in the [sidebar.ts](/.vitepress/theme/utils/sidebar.ts) file. The name it will be the folder name.
-
-```ts
-Accordion({ path: 'learn/protocol/validators' })
-```
-
-#### Single item with an icon
-
-If you want to add a single item with an icon, you can use the `getItem` function. It receives an object of type `SidebarItem` which you can see in the [sidebar.ts](/.vitepress/theme/utils/sidebar.ts) file.
-
-```ts
-getItem({ text: 'Style Guide', link: 'https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&node-id=0-1&mode=design&t=kLhdbJNNEnvBZrxV-0', icon: 'i-logos:figma' }),
-```
-
 ### Markdown
 
 Learn about basic Markdown syntax [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).

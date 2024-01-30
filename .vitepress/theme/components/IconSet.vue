@@ -2,7 +2,7 @@
 import { Icon, addCollection, listIcons } from '@iconify/vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useClipboard, useElementSize, useLocalStorage, useScriptTag, useTimeAgo } from '@vueuse/core'
-import { Popover, Slider, Toast } from 'radix-vue/namespaced'
+import { Dialog, Popover, Slider, Toast } from 'radix-vue/namespaced'
 import { getIconSnippet } from '../composables/icons/icon'
 import { downloadBlob, downloadIconFont, downloadSVGSprite, downloadZip } from '../composables/icons/pack'
 
@@ -20,6 +20,8 @@ const variants = ref<Record<Variant, string[]>>({
   [Variant.Flags]: [],
 })
 const icons = ref<string[]>([])
+
+const helpOpen = ref(false)
 
 const lastUpdated = ref<Date>(new Date(Date.now()))
 const timeBuild = ref('')
@@ -88,7 +90,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 
 <template>
   <div :style="`padding-bottom: ${selectedIcon ? height + 48 + 1 : 0}px`" @keydown.esc.prevent="selectedIcon = undefined">
-    <div mb-16 flex="~ gap-16 wrap vp-raw">
+    <div my-16 flex="~ gap-16 wrap">
       <PillSelector v-model="activeVariant" :options="variantsTitles" />
 
       <div flex-1 />
@@ -166,7 +168,9 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
               i-{{ selectedIcon }}
             </h3>
 
-            <a href="./" class="text-12 text-darkblue-40 underline">How can I use it?</a>
+            <button class="text-12 text-darkblue-40 underline" @click="() => helpOpen = true">
+              How can I use it?
+            </button>
           </div>
           <div ml-auto>
             <button p-6 @click="selectedIcon = undefined">
@@ -214,6 +218,22 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </span>
     </p>
   </div>
+
+  <Dialog.Root v-model:open="helpOpen">
+    <Dialog.Portal>
+      <Dialog.Overlay bg-darkblue op20 fixed inset-0 z-1000 />
+      <Dialog.Content fixed rounded-6 bg-white focus="outline-none" top="50%" left="50%" translate="x--50% y--50%" pl-40 z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~ col" shadow>
+        <Dialog.Title>How can I use it?</Dialog.Title>
+        <Dialog.Description>Learn how to use the Nimiq Icons in your project.</Dialog.Description>
+        <Dialog.Close absolute right-24 top-24 bg="darkblue-6 hover:darkblue/20" p-10 rounded-full transition-colors>
+          <div i-nimiq:cross />
+        </Dialog.Close>
+        <div overflow-y-auto pr-40>
+          <slot mt-16 name="learn-how-to-use-the-icons" />
+        </div>
+      </Dialog.Content>
+    </Dialog.Portal>
+  </Dialog.Root>
 </template>
 
 <style>
