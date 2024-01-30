@@ -5,7 +5,7 @@ import path from 'node:path'
 import { env } from 'node:process'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
-import { presetAttributify, presetIcons, presetUno } from 'unocss'
+import { presetAttributify, presetIcons, presetTypography, presetUno } from 'unocss'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -15,7 +15,7 @@ import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { version } from '../package.json'
-import { Accordion, SidebarSectionHeader, getFilesItemsFromFolder } from './theme/utils/sidebar'
+import { Accordion, Label, SidebarSectionHeader } from './theme/utils/sidebar'
 
 // @unocss-include
 
@@ -23,12 +23,7 @@ const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
 const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
 const commitUrl = `${repoUrl}/commit/${commitHash}`
 
-console.log('OMAGI ______________', { mode: env.NODE_ENV })
-const buildMode = env.NODE_ENV
-
-// Files to ignore when generating the sidebar
-// We use micromatch to match the files: https://github.com/micromatch/micromatch
-export const IGNORED_FILES = []
+const buildMode = env.NODE_ENV || 'development'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -57,20 +52,47 @@ export default defineConfig({
     sidebar: {
       '/learn/': [
         {
-          text: SidebarSectionHeader({ text: 'Learn', icon: 'bulb' }),
+          text: SidebarSectionHeader({ text: 'Learn', icon: 'i-nimiq:icons-lg-bulb' }),
           items: [
-            { text: 'Getting started', link: '/learn/index' },
+            { text: 'Getting started', link: '/learn/index/' },
           ],
         },
         {
-          text: SidebarSectionHeader({ text: 'Protocol', icon: 'nodes', prefix: 'About the' }),
+          text: SidebarSectionHeader({ text: 'Protocol', icon: 'i-nimiq:icons-lg-nodes', prefix: 'About the' }),
           items: [
-            { text: 'Overview', link: '/learn' },
-            ...getFilesItemsFromFolder('learn/protocol', { include: ['overview', 'glossary', 'block-format'] }),
-            Accordion({ path: 'learn/protocol/validators' }),
-            ...getFilesItemsFromFolder('learn/protocol', { include: ['skip-blocks', 'penalties', 'accounts', 'transactions', 'mempool'] }),
-            Accordion({ path: 'learn/protocol/sync-protocol', sort: ['nodes-and-sync'] }),
-            ...getFilesItemsFromFolder('learn/protocol', { include: ['ZKP-and-recursive-SNARKs', 'prover-node', 'migration', 'verifiable-random-functions'] }),
+            { text: 'Overview', link: '/learn/protocol/overview' },
+            { text: 'Glossary', link: '/learn/protocol/glossary' },
+            { text: 'Block format', link: '/learn/protocol/block-format' },
+            {
+              text: Label('Validators'),
+              collapsed: true,
+              items: [
+                { text: 'Slots', link: '/learn/protocol/validators/slots' },
+                { text: 'Staking contract', link: '/learn/protocol/validators/staking-contract' },
+                { text: 'Validator Keys', link: '/learn/protocol/validators/validator-keys' },
+                { text: 'Validator and stakers', link: '/learn/protocol/validators/validators-and-stakers' },
+              ],
+            },
+            { text: 'Skip blocks', link: '/learn/protocol/skip-blocks' },
+            { text: 'Penalties', link: '/learn/protocol/penalties' },
+            { text: 'Accounts', link: '/learn/protocol/accounts' },
+            { text: 'Transactions', link: '/learn/protocol/transactions' },
+            { text: 'Mempool', link: '/learn/protocol/mempool' },
+            {
+              text: Label('Sync protocol'),
+              collapsed: true,
+              items: [
+                { text: 'Block live sync', link: '/learn/protocol/sync-protocol/block-live-sync' },
+                { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
+                { text: 'Light macro sync', link: '/learn/protocol/sync-protocol/light-macro-sync' },
+                { text: 'State live sync', link: '/learn/protocol/sync-protocol/state-live-sync' },
+                { text: 'Nodes and sync', link: '/learn/protocol/sync-protocol/nodes-and-sync' },
+              ],
+            },
+            { text: 'ZKP and recursive SNARKs', link: '/learn/protocol/ZKP-and-recursive-SNARKs' },
+            { text: 'Prover node', link: '/learn/protocol/prover-node' },
+            { text: 'Migration', link: '/learn/protocol/migration' },
+            { text: 'Verifiable random functions', link: '/learn/protocol/verifiable-random-functions' },
           ],
         },
       ],
@@ -102,12 +124,29 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'UI', icon: 'i-nimiq:globe', prefix: 'Using Nimiq\'s' }),
           items: [
-            Accordion({ path: 'build/ui/design-system' }),
-            Accordion({
-              path: 'build/ui/icons',
-              sort: ['getting-started'],
-            }),
-            Accordion({ path: 'build/ui/css-framework', sort: ['overview', 'fonts', 'typography', 'colors', 'buttons', 'inputs', 'cards'] }),
+            buildMode !== 'production'
+              ? ({
+                  text: Label('Design kit'),
+                  collapsed: true,
+                  items: [
+                    { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
+                    { text: 'Nimiq Icons', link: '/build/ui/design-kit/nimiq-icons' },
+                  ],
+                })
+              : undefined,
+            {
+              text: Label('CSS framework'),
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/build/ui/css-framework/overview' },
+                { text: 'Fonts', link: '/build/ui/css-framework/fonts' },
+                { text: 'Typography', link: '/build/ui/css-framework/typography' },
+                { text: 'Colors', link: '/build/ui/css-framework/colors' },
+                { text: 'Buttons', link: '/build/ui/css-framework/buttons' },
+                { text: 'Inputs', link: '/build/ui/css-framework/inputs' },
+                { text: 'Cards', link: '/build/ui/css-framework/cards' },
+              ],
+            },
           ],
         },
       ],
@@ -215,6 +254,7 @@ export default defineConfig({
 
         presets: [
           presetUno({ attributifyPseudo: true }),
+          presetTypography(),
           presetAttributify(),
           presetIcons({
             collections: {
