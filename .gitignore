@@ -4,3 +4,5 @@ node_modules
 
 # Ignore dynamically built web-client docs
 build/web-client
+
+components.d.ts
