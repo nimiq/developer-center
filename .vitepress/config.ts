@@ -175,8 +175,8 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/nimiq' },
-      { icon: 'twitter', link: 'https://twitter.com/nimiq' },
+      { icon: 'github', link: 'https://github.com/nimiq', ariaLabel: 'Nimiq on GitHub' },
+      { icon: 'twitter', link: 'https://twitter.com/nimiq', ariaLabel: 'Nimiq on Twitter' },
     ],
 
     search: {
