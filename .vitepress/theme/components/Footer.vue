@@ -2,6 +2,7 @@
 import { useTimeAgo } from '@vueuse/core'
 import { computed } from 'vue'
 import { useData } from '../composables/useData'
+import { usePrevNext } from '../composables/usePrevNext'
 
 const { page, frontmatter } = useData()
 
@@ -21,10 +22,12 @@ const date = computed(() => new Date(isWebClientDoc.value ? __ALBATROSS_COMMIT_D
 
 const builtTime = computed(() => new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(date.value))
 const timeAgo = useTimeAgo(date)
+
+const nav = usePrevNext()
 </script>
 
 <template>
-  <nav v-if="frontmatter.footer !== false" grid="~ cols-[auto_auto] rows-2 justify-between" mt-96>
+  <nav v-if="frontmatter.footer !== false" grid="~ cols-[auto_auto] rows-2 justify-between gap-40" mt-96>
     <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 group>
       <template v-if="!isWebClientDoc">
         Edit this page on GitHub
@@ -46,5 +49,15 @@ const timeAgo = useTimeAgo(date)
         </template>
       </p>
     </div>
+
+    <a v-if="nav.prev" :href="nav.prev.link" bg="blue-10 dark-blue" text-blue pill group>
+      <div i-nimiq:arrow-left w-10 group-hover="translate-x--2" duration-100ms />
+      {{ nav.prev.text }}
+    </a>
+
+    <a v-if="nav.next" :href="nav.next.link" bg="blue-10 dark-blue" justify-self-end text-blue pill group>
+      {{ nav.next.text }}
+      <div i-nimiq:arrow-right w-10 group-hover="translate-x-2" duration-100ms />
+    </a>
   </nav>
 </template>
