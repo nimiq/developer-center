@@ -10,6 +10,8 @@ Nimiq's Developer Center
 <p align="center">
 The Official documentation for the Nimiq ecosystem.<br>
 Build and learn anything with Nimiq.
+
+🚧 Work in progress 🚧
 <p>
 
 <p align="center">
