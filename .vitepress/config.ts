@@ -1,7 +1,7 @@
 import { URL, fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
-import path from 'node:path'
+import path, { basename, dirname } from 'node:path'
 import { env } from 'node:process'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
@@ -14,6 +14,7 @@ import { defineConfig, postcssIsolateStyles } from 'vitepress'
 import container from 'markdown-it-container'
 import transformerDirectives from '@unocss/transformer-directives'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { spawn } from 'cross-spawn'
 import { version } from '../package.json'
 import { Accordion, Label, SidebarSectionHeader } from './theme/utils/sidebar'
 
@@ -38,6 +39,25 @@ export default defineConfig({
 
   lastUpdated: true,
   cleanUrls: true,
+
+  async transformPageData(pageData) {
+    function getCommitHash(file: string): Promise<string | undefined> {
+      return new Promise<string | undefined>((resolve, reject) => {
+        const cwd = dirname(file)
+        if (!fs.existsSync(cwd))
+          return resolve(undefined)
+        const fileName = basename(file)
+        const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
+        let output = ''
+        child.stdout.on('data', d => (output += String(d)))
+        child.on('close', () => resolve(output.trim().replace(/"/g, '')))
+        child.on('error', reject)
+      })
+    }
+
+    // @ts-expect-error Not sure why is giving me error :/
+    pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
+  },
 
   themeConfig: {
     nav: [
