@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useTimeAgo } from '@vueuse/core'
-import { useData } from 'vitepress'
 import { computed } from 'vue'
+import { useData } from '../composables/useData'
 
-const { page } = useData()
+const { page, frontmatter } = useData()
 
 const webClientRepoUrl = 'https://github.com/nimiq/core-rs-albatross/tree/albatross/web-client'
 const isWebClientDoc = page.value.filePath.startsWith('build/web-client')
@@ -22,7 +22,7 @@ const timeAgo = useTimeAgo(date.value)
 </script>
 
 <template>
-  <nav grid="~ cols-[auto_auto] rows-2 justify-between" mt-96>
+  <nav v-if="frontmatter.footer !== false" grid="~ cols-[auto_auto] rows-2 justify-between" mt-96>
     <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 group>
       <template v-if="!isWebClientDoc">
         Edit this page on GitHub
