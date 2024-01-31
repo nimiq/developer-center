@@ -14,7 +14,7 @@ The outcome of calculating multiple signatures into a single signature. Aggregat
 
 ### **Albatross**
 
-Nimiq proof-of-stake algorithm. It is an algorithm inspired by the BFT protocol, assuming that 3*f*+1 validators, at maximum *f*, are malicious. Nimiq PoS protocol achieves probabilistic finality by combining micro blocks and macro blocks. Micro blocks are produced and signed by a single validator, while macro blocks mark the end of an epoch and are produced using Tendermint, which ensures finality as they are agreed upon by at least 2f+1 validators.
+Nimiq proof-of-stake algorithm. It is an algorithm inspired by the BFT protocol, assuming that 3*f*+1 validators, at maximum *f*, are malicious. Nimiq PoS protocol achieves probabilistic finality by combining micro blocks and macro blocks. Micro blocks are produced and signed by a single validator, while macro blocks mark the end of an epoch and are produced using Tendermint, which ensures finality as they are agreed upon by at least 2f+1 validators.
 
 ### **BLS signature**
 
@@ -158,7 +158,7 @@ A digital signature that authenticates a message by comprising three functions: 
 
 ### **Slot**
 
-A validator receives *x* slots when selected to participate in the consensus, distributed in a range. Validators use their slots to produce, propose and sign blocks. The number of slots a validator gets depends on the amount of stake they have deposited in the staking contract.
+A validator receives *x* slots when selected to participate in the consensus, distributed in a range. Validators use their slots to produce, propose and sign blocks. The number of slots a validator gets depends on the amount of stake they have deposited in the staking contract.
 
 ### Slot owner
 

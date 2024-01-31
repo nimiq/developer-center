@@ -4,8 +4,8 @@ import { type Card, CardType } from './types'
 
 const props = defineProps({
   items: {
-    type: Object as PropType<Omit<Card, 'type'>[]>,
-    default: [],
+    type: Array as PropType<Omit<Card, 'type'>[]>,
+    default: () => [],
   },
 })
 

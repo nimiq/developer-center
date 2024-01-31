@@ -1,9 +1,8 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
 import 'uno.css'
-import { nextTick, onMounted, watch } from 'vue'
+import { h, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 import DeveloperCenterLayout from './DeveloperCenterLayout.vue'

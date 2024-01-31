@@ -46,8 +46,8 @@ Both the coinbase and transaction fees are variable. Whereas, in Bitcoin, for in
 
 To calculate the coinbase, we have a formula that predicts the supply at any given time, given three parameters:
 
-- Initial supply: the supply that Nimiq PoS will start with, denoted by *S₀*
-- Initial velocity: a constant parameter that determines the number of NIM created initially by unit of time represented by *V₀*
+- Initial supply: the supply that Nimiq PoS will start with, denoted by *S₀*
+- Initial velocity: a constant parameter that determines the number of NIM created initially by unit of time represented by *V₀*
 - Decay: a constant that dictates the percentage of the velocity decrease, denoted by β
 
 <br/>
@@ -58,7 +58,7 @@ $S(t)=S_0+\frac{V_0}{\beta}(1-e^{-\beta t})$
 
 <br/>
 
-Additionally, 𝑡 is the time elapsed since the genesis block, and *e* is the exponential function. The formula is hard-coded and returns the supply of the coinbase at any given time in seconds, and it is distributed in Lunas (1 NIM = 100 000 Lunas).
+Additionally, 𝑡 is the time elapsed since the genesis block, and *e* is the exponential function. The formula is hard-coded and returns the supply of the coinbase at any given time in seconds, and it is distributed in Lunas (1 NIM = 100 000 Lunas).
 
 <br/>
 
