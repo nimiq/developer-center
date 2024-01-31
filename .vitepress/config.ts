@@ -38,8 +38,8 @@ export default defineConfig({
 
   lastUpdated: true,
   cleanUrls: true,
-  themeConfig: {
 
+  themeConfig: {
     nav: [
       { text: 'Learn', link: '/learn/' },
       { text: 'Build', link: '/build/' },
@@ -128,16 +128,16 @@ export default defineConfig({
         {
           text: SidebarSectionHeader({ text: 'UI', icon: 'i-nimiq:globe', prefix: 'Using Nimiq\'s' }),
           items: [
-            buildMode !== 'production'
-              ? ({
-                  text: Label('Design kit'),
-                  collapsed: true,
-                  items: [
-                    { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
-                    { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' },
-                  ],
-                })
-              : {},
+            {
+              text: Label('Design kit'),
+              collapsed: true,
+              items: [
+                { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
+                buildMode !== 'production'
+                  ? { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' }
+                  : {},
+              ],
+            },
             {
               text: Label('CSS framework'),
               collapsed: true,
@@ -169,7 +169,7 @@ export default defineConfig({
   markdown: {
     math: true, // Allow latex math
 
-    // Add ::: goal ::: custom markdown-it plugins
+    // Add ::: goal|warning ::: custom markdown-it plugins
     config: (md) => {
       md.use(...[container, 'goal', {
         render(tokens, idx) {
