@@ -21,7 +21,7 @@ import { Accordion, Label, SidebarSectionHeader } from './theme/utils/sidebar'
 
 const repoUrl = execSync('git config --get remote.origin.url').toString().trim()
 const commitHash = execSync('git rev-parse --short HEAD').toString().trim()
-const commitUrl = `${repoUrl}/commit/${commitHash}`
+const commitUrl = `${repoUrl}/tree/${commitHash}`
 
 const { hash: albatrossCommitHash, date: albatrossCommitDate } = await fetch('https://api.github.com/repos/nimiq/core-rs-albatross/commits?per_page=1')
   .then(res => res.json()).then(res => ({ hash: res[0].sha.slice(0, 7), date: res[0].commit.author.date }))
@@ -36,6 +36,7 @@ export default defineConfig({
   description:
     'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
 
+  lastUpdated: true,
   cleanUrls: true,
   themeConfig: {
 
