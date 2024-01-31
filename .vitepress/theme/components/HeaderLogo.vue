@@ -1,9 +1,20 @@
 <script setup lang="ts">
 const baseUrl = import.meta.env.BASE_URL
+
+// Redirect the user to the design kit page when they right click on the logo
+// unless they are already on the design kit page
+const designKitUrl = `${baseUrl}build/ui/design-kit/guidelines`
+function onRightClick(e: MouseEvent) {
+  if (window.location.pathname === designKitUrl)
+    return
+
+  e.preventDefault()
+  window.location.pathname = designKitUrl
+}
 </script>
 
 <template>
-  <a :href="baseUrl" flex items-center gap-x-10>
+  <a :href="baseUrl" flex items-center gap-x-10 @click.right="onRightClick">
     <svg h-24 flex-1 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 25">
       <path
         fill="url(#a)"
@@ -26,3 +37,4 @@ const baseUrl = import.meta.env.BASE_URL
     <span max-lg:hidden md:text-20>Developer Center</span>
   </a>
 </template>
+  }
