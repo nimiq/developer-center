@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "jsx": "preserve",
     "lib": [
-      "es2021", "dom"
+      "es2022", "dom"
     ],
     "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
     "paths": {
       "~/*": [
         "./src/*"
       ]
     },
+    "resolveJsonModule": true,
     "types": [
       "node"
     ]
   },
+  "include": ["vitepress-extension.d.ts", ".vitepress/**/*"],
   "exclude": [
     "**/dist/**"
   ]

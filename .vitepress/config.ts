@@ -1,7 +1,7 @@
 import { URL, fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
-import fs from 'node:fs'
-import path, { basename, dirname } from 'node:path'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { basename, dirname, join } from 'node:path'
 import { env } from 'node:process'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
@@ -44,7 +44,7 @@ export default defineConfig({
     function getCommitHash(file: string): Promise<string | undefined> {
       return new Promise<string | undefined>((resolve, reject) => {
         const cwd = dirname(file)
-        if (!fs.existsSync(cwd))
+        if (!existsSync(cwd))
           return resolve(undefined)
         const fileName = basename(file)
         const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
@@ -54,8 +54,6 @@ export default defineConfig({
         child.on('error', reject)
       })
     }
-
-    // @ts-expect-error Not sure why is giving me error :/
     pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
   },
 
@@ -400,12 +398,12 @@ export default defineConfig({
 
 ;(async () => {
   // Read installed package version of @nimiq/core-web
-  const packageVersion = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
+  const packageVersion = JSON.parse(readFileSync(join(__dirname, '../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
 
   // Read package version of generated docs, if already built
-  const versionFile = path.join(__dirname, '../build/web-client/_version')
-  if (fs.existsSync(versionFile)) {
-    const generatedVersion = fs.readFileSync(versionFile, 'utf-8')
+  const versionFile = join(__dirname, '../build/web-client/_version')
+  if (existsSync(versionFile)) {
+    const generatedVersion = readFileSync(versionFile, 'utf-8')
 
     // Skip build if package version and generated version match
     if (packageVersion === generatedVersion) {
@@ -421,11 +419,11 @@ export default defineConfig({
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
   // Update entry file with frontmatter to disable the "next" footer button
-  const entryFile = path.join(__dirname, '../build/web-client/index.md')
-  let entryFileContent = fs.readFileSync(entryFile, 'utf-8')
+  const entryFile = join(__dirname, '../build/web-client/index.md')
+  let entryFileContent = readFileSync(entryFile, 'utf-8')
   entryFileContent = `---\nnext: false\n---\n${entryFileContent}`
-  fs.writeFileSync(entryFile, entryFileContent)
+  writeFileSync(entryFile, entryFileContent)
 
   // Write version file for generated docs
-  fs.writeFileSync(versionFile, packageVersion)
+  writeFileSync(versionFile, packageVersion)
 })()
