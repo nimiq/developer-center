@@ -5,7 +5,7 @@ links:
     label: 'Build'
     title: 'Get Started with the Web Client'
     description:  'Get a Nimiq App up and running in the browser under 5 minutes.'
-    href: '/'
+    href: 'web-client/'
     layout: lg
     span: 6
     tags:
