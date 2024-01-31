@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTimeAgo } from '@vueuse/core'
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'radix-vue'
 
 const now = new Date(Date.now())
