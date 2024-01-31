@@ -13,7 +13,7 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 
 <br/>
 
-1. Open a new terminal and move to the repository directory with `cd core-rs-albatross`
+1. Open a new terminal and move to the repository directory with `cd core-rs-albatross`
 2. Run `cargo build` to install and compile all the necessary dependencies to build your Nimiq Client. This might take a while and will use your full CPU
 3. Run `cargo run --bin nimiq-client -- -c ".nimiq/client.toml”` to run your client and get consensus. You will be able to interact with Nimiq’s blockchain in a second terminal.
 4. Open a second terminal, move to `cd core-rs-albatross`, and then move to `cd target/debug`. All the requests can be made in this terminal.
@@ -37,8 +37,8 @@ Listed below are the commands grouped by subject and a few examples of the usage
 
 ## 1. Get the current block number
 
-```json
-xxx@xxx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc block-number
+bash
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc block-number
 
 /// response
 RPCData {
@@ -53,9 +53,9 @@ To get further data on the current block, run the command `block`
 
 To sign a message, the client must create or import an existing account, unlock the account and only then, sign the message.
 
-```json
+bash
 ///create an account
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc new
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc new
 
 ///response
 RPCData {
@@ -70,9 +70,9 @@ RPCData {
 }
 ```
 
-```json
+bash
 ///unlock the account
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc unlock "cf689d7524f62d8ce4d76ff7ba60d4be05aec035"
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc unlock "cf689d7524f62d8ce4d76ff7ba60d4be05aec035"
 
 ///response
 RPCData {
@@ -81,9 +81,9 @@ RPCData {
 }
 ```
 
-```json
+bash
 ///sign a message
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc sign --message "test" --address "cf689d7524f62d8ce4d76ff7ba60d4be05aec035"
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc sign --message "test" --address "cf689d7524f62d8ce4d76ff7ba60d4be05aec035"
 
 ///response
 RPCData {
@@ -118,16 +118,16 @@ RPCData {
 
 The client wants to follow the following events: `transfer`, `payout-reward`, and `stake`, using the following command:
 
-```json
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc follow-logs-of-addresses-and-types --log-types transfer --log-types payout-reward --log-types stake --addresses "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --addresses "NQ46 U66M JNLD 0DJ7 0E9P Q7XR V9KV H976 813A"
+bash
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc follow-logs-of-addresses-and-types --log-types transfer --log-types payout-reward --log-types stake --addresses "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --addresses "NQ46 U66M JNLD 0DJ7 0E9P Q7XR V9KV H976 813A"
 ```
 
 This command will subscribe the client to the events regarding transfers, payout rewards, and stakes to the validator with the provided address. The RPC will output a stream of continuous data, as shown in step 5, showing the data related to the events subscribed.
 
 ### 2. Send a staking transaction
 
-```json
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc stake --sender-wallet "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE" --staker-address "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --value 1000
+bash
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc stake --sender-wallet "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE" --staker-address "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --value 1000
 ///response
 Error: JSON-RPC protocol error: The server responded with an error: JSON-RPC error: code=-32603: Internal error
 ```
@@ -138,9 +138,9 @@ RPC returns an error as to send the staking transaction, the sender wallet must 
 
 Due to the above error, the client needs to import the account, unlock it, and can also verify if it was successfully unlocked.
 
-```json
+bash
 ///import the account
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc import "1ef7aad365c195462ed04c275d47189d5362bbfe36b5e93ce7ba2f3add5f439b"
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc import "1ef7aad365c195462ed04c275d47189d5362bbfe36b5e93ce7ba2f3add5f439b"
 ///response
 RPCData {
     data: Address(
@@ -150,9 +150,9 @@ RPCData {
 }
 ```
 
-```json
+bash
 ///unlock the account
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc unlock "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE"
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc unlock "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE"
 ///response
 RPCData {
     data: true,
@@ -160,9 +160,9 @@ RPCData {
 }
 ```
 
-```json
+bash
 ///verify if the account was successfully unlocked
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc is-unlocked "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE"
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc is-unlocked "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE"
 ///response
 RPCData {
     data: true,
@@ -174,8 +174,8 @@ RPCData {
 
 As the sender’s wallet was unlocked, the client can successfully submit the staking transaction.
 
-```json
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc
+bash
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc
 stake --sender-wallet "NQ40 GCAA U3UX 8BKD GUN0 PG3T 17HA 4X5H TXVE" --staker-address "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --value 1000
 ///response
 RPCData {
@@ -186,8 +186,8 @@ RPCData {
 
 ### 5. Follow the stake event corresponding to the sent staking transaction
 
-```json
-xx@xx:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc follow-logs-of-addresses-and-types --log-types transfer --log-types payout-reward --log-types stake --addresses "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --addresses "NQ46 U66M JNLD 0DJ7 0E9P Q7XR V9KV H976 813A"
+bash
+x@x:~/core-rs/core-rs-albatross/target/debug$ ./nimiq-rpc follow-logs-of-addresses-and-types --log-types transfer --log-types payout-reward --log-types stake --addresses "NQ20 TSB0 DFSM UH9C 15GQ GAGJ TTE4 D3MA 859E" --addresses "NQ46 U66M JNLD 0DJ7 0E9P Q7XR V9KV H976 813A"
 ///response
 RPCData {
     data: AppliedBlock {

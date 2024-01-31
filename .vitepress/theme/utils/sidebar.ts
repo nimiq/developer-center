@@ -28,9 +28,6 @@ export const Label = (text: string) => `<span class="label">${text}</span>`
 
 /**
  * Creates an accordion for the sidebar.
- *
- * @param {object} params - The parameters for the accordion.
- * @param {string} params.path - The path for the accordion.
  */
 export function Accordion({ path }: { path: string, label?: string, collapsed?: boolean, sort?: string[] }) {
   const text = Label(path.split('/').at(-1) || path).replace(/-/g, ' ')
@@ -44,9 +41,6 @@ export function Accordion({ path }: { path: string, label?: string, collapsed?: 
 
 /**
  * Retrieves file items from a specified folder, sorted by a given order.
- *
- * @param {string} folder - The folder from which to retrieve file items.
- * @returns {object[]} An array of file items from the specified folder, sorted by the given order.
  */
 export function getFilesItemsFromFolder(folder: string) {
   const basePath = path.join(__dirname, `../../../${folder}`)

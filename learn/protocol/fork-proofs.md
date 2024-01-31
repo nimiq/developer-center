@@ -21,7 +21,7 @@ Forks can end in two ways:
 - The next block in the chain is a macro block, produced according to the Tendermint algorithm. In this case, at least 2*f*+1 validators must agree on the block proposal before it is added to the blockchain; thus, there is no way for two macro blocks to be produced.
 - The next block producer is a rational validator that follows the consensus rules. Rational validators would not produce or continue on a fork, as they know it would result in getting their rewards slashed.
 
-Either way, validators can submit a **fork proof** to attest to the split upon noticing a fork in the chain. Validators submit a fork proof that will include the two blocks with the same block height and signed by the same validator, proving the fork occurred.
+Either way, validators can submit a **fork proof** to attest to the split upon noticing a fork in the chain. Validators submit a fork proof that will include the two blocks with the same block height and signed by the same validator, proving the fork occurred.
 
 <br/>
 

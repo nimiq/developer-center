@@ -1,5 +1,5 @@
-import { getIcon } from '@iconify/vue';
-import { buildIcon, loadIcon } from 'iconify-icon'
+import { getIcon } from '@iconify/vue'
+import { buildIcon } from 'iconify-icon'
 import type { BuiltInParserName } from 'prettier'
 
 const API_ENTRY = 'https://api.iconify.design'

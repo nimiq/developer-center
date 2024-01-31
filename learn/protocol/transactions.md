@@ -32,18 +32,18 @@ Transactions cannot have the same sender and recipient, except for staking-relat
 | --- | --- |
 | `sender` | The sender's address. |
 | `sender_type` | The type of account of the sender. |
-| `sender_data` | The sender_data field serves a purpose based on the transaction's sender_type. It is currently only used for extra information in transactions from the staking contract. |
+| `sender_data` | The sender_data field serves a purpose based on the transaction's sender_type. It is currently only used for extra information in transactions from the staking contract. |
 | `recipient` | The recipient’s address. |
 | `recipient_type` | The type of account of the sender. |
-| `recipient_data` | The recipient_data field serves a purpose based on the transaction's recipient_type. It is currently only used for extra information in transactions from the staking contract, but also HTLCs and vesting contracts. |
-| `value` | Amount of NIM to transfer. This field can be zero for transactions without any value. In such cases, the data to transact is filled in the data field. |
+| `recipient_data` | The recipient_data field serves a purpose based on the transaction's recipient_type. It is currently only used for extra information in transactions from the staking contract, but also HTLCs and vesting contracts. |
+| `value` | Amount of NIM to transfer. This field can be zero for transactions without any value. In such cases, the data to transact is filled in the data field. |
 | `fee` | Fees for the transaction. The sender pays fees of their choice. Fees are part of the rewards, ensuring validators are rewarded for their work. |
 | `validity_start_height` | The expiration date for a specific transaction. Validators has a window of x blocks to upload the transaction. If included after that window, the transaction is disregarded. |
 | `network_id` | Specifies the ID of the network. When the sender sends a transaction, they must include the particular network to which the transaction is sent. |
 | `flags` | A flag signaling the type of transaction. There are two types of flags: contract creation and signaling. |
 | `proof` | The information above is hashed and calculated with the sender’s private key, resulting in the proof of the transaction. This proof authenticates the sender of the transaction.|
 
-A transaction must be valid. Once the transaction is validated, the boolean variable `valid` is set to `true`. This way, anyone can verify the transaction has been authenticated.
+A transaction must be valid. Once the transaction is validated, the boolean variable `valid` is set to `true`. This way, anyone can verify the transaction has been authenticated.
 
 ---
 

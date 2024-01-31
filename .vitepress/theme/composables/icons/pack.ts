@@ -1,4 +1,4 @@
-import { SvgToJSX, SvgToTSX, SvgToVue, getSvg, getSvgSymbol } from "./icon"
+import { SvgToJSX, SvgToTSX, SvgToVue, getSvg, getSvgSymbol } from './icon'
 
 export async function downloadBlob(blob: Blob, name: string) {
   const url = URL.createObjectURL(blob)
@@ -47,7 +47,7 @@ export async function downloadIconFont(icons: string[]) {
     return
   const data = await LoadIconSvgs(icons)
 
-  // @ts-ignore
+  // @ts-expect-error - SvgPacker is not typed
   const result = await window.SvgPacker({
     fontName: 'Nimiq Icons',
     fileName: 'nimiq-icons',

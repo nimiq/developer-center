@@ -11,7 +11,6 @@ const props = defineProps({
 })
 
 const isNormal = computed(() => props.item.type === CardType.Normal)
-const hasBg = computed(() => props.item.type === CardType.Bg)
 const hasBgIcon = computed(() => props.item.type === CardType.Bg && props.item.icon)
 const isIcon = computed(() => props.item.type === CardType.Icon)
 const centered = computed(() => isIcon.value)
