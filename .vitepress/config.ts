@@ -57,6 +57,10 @@ export default defineConfig({
     pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
   },
 
+  head: [
+    ['script', { 'src': 'https://openpreviews.com/widget.js', 'type': 'text/javascript', 'data-repository': 'onmax/nimiq-developer-center', 'data-category-id': '1', 'async': '' }],
+  ],
+
   themeConfig: {
     nav: [
       { text: 'Learn', link: '/learn/' },
