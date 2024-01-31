@@ -6,19 +6,19 @@ import { useData } from '../composables/useData'
 const { page, frontmatter } = useData()
 
 const webClientRepoUrl = 'https://github.com/nimiq/core-rs-albatross/tree/albatross/web-client'
-const isWebClientDoc = page.value.filePath.startsWith('build/web-client')
+const isWebClientDoc = computed(() => page.value.filePath.startsWith('build/web-client'))
 
-const editThisLink = isWebClientDoc
+const editThisLink = computed(() => isWebClientDoc.value
   ? webClientRepoUrl
-  : `${__REPO_URL__}/blob/main/${page.value.filePath}`
+  : `${__REPO_URL__}/blob/main/${page.value.filePath}`)
 
-const hash = isWebClientDoc ? __ALBATROSS_COMMIT_HASH__ : __REPO_LAST_COMMIT_HASH__
-const lastUrl = isWebClientDoc ? webClientRepoUrl : __REPO_LAST_COMMIT_URL__
+const hash = computed(() => isWebClientDoc.value ? __ALBATROSS_COMMIT_HASH__ : __REPO_LAST_COMMIT_HASH__)
+const lastUrl = computed(() => isWebClientDoc.value ? webClientRepoUrl : __REPO_LAST_COMMIT_URL__)
 
-const date = computed(() => new Date(isWebClientDoc ? __ALBATROSS_COMMIT_DATE__ : page.value.lastUpdated || Date.now()))
+const date = computed(() => new Date(isWebClientDoc.value ? __ALBATROSS_COMMIT_DATE__ : page.value.lastUpdated || Date.now()))
 
-const builtTime = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(date.value)
-const timeAgo = useTimeAgo(date.value)
+const builtTime = computed(() => new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(date.value))
+const timeAgo = useTimeAgo(date)
 </script>
 
 <template>
