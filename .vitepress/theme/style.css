@@ -270,11 +270,11 @@ h4 {
 }
 
 .medium-zoom-overlay {
-  z-index: 20;
+  z-index: 20000;
 }
 
 .medium-zoom-image {
-  z-index: 21;
+  z-index: 20001;
 }
 
 
