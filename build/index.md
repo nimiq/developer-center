@@ -23,6 +23,7 @@ prev: false
 next: false
 aside: false
 outline: false
+footer: false
 ---
 
 ::: raw

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
+import { useData } from './composables/useData'
 import Environment from './components/Environment.vue'
 
 /**

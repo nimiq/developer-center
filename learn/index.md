@@ -14,6 +14,7 @@
 prev: false
 next: false
 aside: false
+footer: false
 ---
 
 ::: raw
