@@ -222,10 +222,10 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
   <Dialog.Root v-model:open="helpOpen">
     <Dialog.Portal>
       <Dialog.Overlay bg-darkblue op20 fixed inset-0 z-1000 />
-      <Dialog.Content fixed rounded-6 bg-white focus="outline-none" top="50%" left="50%" translate="x--50% y--50%" pl-40 z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~ col" shadow>
+      <Dialog.Content fixed rounded-6 bg="white dark:darkblue" focus="outline-none" top="50%" left="50%" translate="x--50% y--50%" pl-40 z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~ col" shadow>
         <Dialog.Title>How can I use it?</Dialog.Title>
         <Dialog.Description>Learn how to use the Nimiq Icons in your project.</Dialog.Description>
-        <Dialog.Close absolute right-24 top-24 bg="darkblue-6 hover:darkblue/20" p-10 rounded-full transition-colors>
+        <Dialog.Close absolute right-24 top-24 bg="darkblue-6 hover:darkblue/20 dark:white/6 hover:white/10" p-10 rounded-full transition-colors>
           <div i-nimiq:cross />
         </Dialog.Close>
         <div overflow-y-auto pr-40>
