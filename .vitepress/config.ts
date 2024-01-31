@@ -364,7 +364,7 @@ export default defineConfig({
         shortcuts: {
           'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
           'border-base': 'border-[1.5px] border-solid border-darkblue-10 dark:border-darkblue-94',
-          'pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold',
+          'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
         },
       }),
       // https://github.com/webfansplz/vite-plugin-vue-devtools

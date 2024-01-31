@@ -50,12 +50,12 @@ const nav = usePrevNext()
       </p>
     </div>
 
-    <a v-if="nav.prev" :href="nav.prev.link" bg="blue-10 dark-blue" text-blue pill group>
+    <a v-if="nav.prev" :href="nav.prev.link" blue-pill group>
       <div i-nimiq:arrow-left w-10 group-hover="translate-x--2" duration-100ms />
       {{ nav.prev.text }}
     </a>
 
-    <a v-if="nav.next" :href="nav.next.link" bg="blue-10 dark-blue" justify-self-end text-blue pill group>
+    <a v-if="nav.next" :href="nav.next.link" justify-self-end blue-pill group>
       {{ nav.next.text }}
       <div i-nimiq:arrow-right w-10 group-hover="translate-x-2" duration-100ms />
     </a>
