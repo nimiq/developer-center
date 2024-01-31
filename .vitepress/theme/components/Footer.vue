@@ -8,12 +8,14 @@ const { page, frontmatter } = useData()
 const webClientRepoUrl = 'https://github.com/nimiq/core-rs-albatross/tree/albatross/web-client'
 const isWebClientDoc = computed(() => page.value.filePath.startsWith('build/web-client'))
 
+const repoUrl = __REPO_URL__
+
 const editThisLink = computed(() => isWebClientDoc.value
   ? webClientRepoUrl
-  : `${__REPO_URL__}/blob/main/${page.value.filePath}`)
+  : `${repoUrl}/blob/main/${page.value.filePath}`)
 
-const hash = computed(() => isWebClientDoc.value ? __ALBATROSS_COMMIT_HASH__ : __REPO_LAST_COMMIT_HASH__)
-const lastUrl = computed(() => isWebClientDoc.value ? webClientRepoUrl : __REPO_LAST_COMMIT_URL__)
+const hash = computed(() => isWebClientDoc.value ? __ALBATROSS_COMMIT_HASH__ : page.value.updatedCommitHash.slice(0, 7))
+const lastUrl = computed(() => isWebClientDoc.value ? webClientRepoUrl : `${repoUrl}/tree/${page.value.updatedCommitHash}/${page.value.filePath}`)
 
 const date = computed(() => new Date(isWebClientDoc.value ? __ALBATROSS_COMMIT_DATE__ : page.value.lastUpdated || Date.now()))
 
