@@ -24,12 +24,12 @@
     "vue": "^3.4.15"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.4.6",
+    "@antfu/eslint-config": "2.6.3",
     "@iconify-json/logos": "^1.1.42",
     "@iconify/json": "^2.2.176",
     "@iconify/utils": "^2.1.20",
-    "@nimiq/core-web": "next",
-    "@types/node": "^20.11.10",
+    "@nimiq/core-web": "2.0.0-alpha.18",
+    "@types/node": "^20.11.13",
     "@unocss/preset-icons": "^0.58.4",
     "@unocss/preset-rem-to-px": "^0.58.4",
     "@unocss/preset-web-fonts": "^0.58.4",
@@ -43,7 +43,7 @@
     "unocss": "^0.58.4",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
-    "vite-plugin-vue-devtools": "1.0.0-rc.8",
+    "vite-plugin-vue-devtools": "7.0.13",
     "vitepress": "1.0.0-rc.40"
   }
 }
