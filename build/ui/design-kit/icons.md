@@ -1,10 +1,11 @@
 ---
 aside: false
+next: false
 ---
 
 # Nimiq Icons
 
-<IconSet mt-32>
+<IconSet class="mt-32 pb-96">
   <template #learn-how-to-use-the-icons>
 
 ### Installing via NPM
