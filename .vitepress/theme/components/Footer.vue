@@ -17,7 +17,7 @@ const lastUrl = isWebClientDoc ? webClientRepoUrl : __REPO_LAST_COMMIT_URL__
 
 const date = computed(() => new Date(isWebClientDoc ? __ALBATROSS_COMMIT_DATE__ : page.value.lastUpdated || Date.now()))
 
-const builtTime = new Intl.DateTimeFormat(navigator.language, { dateStyle: 'short', timeStyle: 'short' }).format(date.value)
+const builtTime = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(date.value)
 const timeAgo = useTimeAgo(date.value)
 </script>
 

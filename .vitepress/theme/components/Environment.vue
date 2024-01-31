@@ -3,7 +3,7 @@ import { useTimeAgo } from '@vueuse/core'
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'radix-vue'
 
 const now = new Date(Date.now())
-const builtTime = new Intl.DateTimeFormat(navigator.language, { dateStyle: 'short', timeStyle: 'short' }).format(now)
+const builtTime = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(now)
 const timeAgo = useTimeAgo(now)
 
 const repoLastCommitUrl = __REPO_LAST_COMMIT_URL__

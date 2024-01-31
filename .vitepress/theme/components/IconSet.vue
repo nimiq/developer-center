@@ -39,7 +39,7 @@ onMounted(async () => {
   variants.value[Variant.Flags] = listIcons().filter(icon => icon.startsWith(`nimiq:${Variant.Flags}-`))
 
   lastUpdated.value = new Date(json.lastModified * 1000)
-  timeBuild.value = new Intl.DateTimeFormat(navigator.language, { dateStyle: 'short', timeStyle: 'short' }).format(lastUpdated.value)
+  timeBuild.value = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(lastUpdated.value)
 })
 
 const timeAgo = useTimeAgo(lastUpdated)
