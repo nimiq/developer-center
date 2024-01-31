@@ -35,9 +35,11 @@
     "@unocss/preset-web-fonts": "^0.58.4",
     "@unocss/transformer-directives": "^0.58.4",
     "eslint": "^8.56.0",
+    "lint-staged": "^15.2.0",
     "markdown-it-container": "^4.0.0",
     "micromatch": "^4.0.5",
     "postcss": "^8.4.33",
+    "simple-git-hooks": "^2.9.0",
     "typedoc": "^0.25.7",
     "typedoc-plugin-markdown": "^3.17.1",
     "unocss": "^0.58.4",
@@ -45,5 +47,11 @@
     "unplugin-vue-components": "^0.26.0",
     "vite-plugin-vue-devtools": "7.0.13",
     "vitepress": "1.0.0-rc.40"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
