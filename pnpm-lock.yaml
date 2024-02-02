@@ -61,6 +61,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.13
     version: 20.11.13
+  '@unocss/extractor-arbitrary-variants':
+    specifier: ^0.58.4
+    version: 0.58.4
   '@unocss/preset-icons':
     specifier: ^0.58.4
     version: 0.58.4

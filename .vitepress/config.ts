@@ -5,7 +5,7 @@ import { basename, dirname, join } from 'node:path'
 import { env } from 'node:process'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
-import { presetAttributify, presetIcons, presetTypography, presetUno } from 'unocss'
+import { presetAttributify, presetIcons, presetMini, presetTypography, presetUno } from 'unocss'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -16,7 +16,7 @@ import transformerDirectives from '@unocss/transformer-directives'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { spawn } from 'cross-spawn'
 import { version } from '../package.json'
-import { Accordion, Label, SidebarSectionHeader } from './theme/utils/sidebar'
+import { Accordion } from './theme/utils/sidebar'
 
 // @unocss-include
 
@@ -58,11 +58,12 @@ export default defineConfig({
   },
 
   themeConfig: {
+
     nav: [
       { text: 'Learn', link: '/learn/' },
       { text: 'Build', link: '/build/' },
       {
-        text: 'Contributing',
+        text: 'Contribute',
         items: [
           { text: 'Nimiq Core RS Albatross', link: 'https://github.com/nimiq/core-rs-albatross#contributing' },
           { text: 'Nimiq Wallet', link: 'https://github.com/nimiq/wallet' },
@@ -74,20 +75,24 @@ export default defineConfig({
     sidebar: {
       '/learn/': [
         {
-          text: SidebarSectionHeader({ text: 'Learn', icon: 'i-nimiq:icons-lg-bulb' }),
+          text: 'Learn',
+          icon: 'i-nimiq:icons-lg-bulb',
+          prefix: 'Learn about the Nimiq ecosystem',
           items: [
             { text: 'Overview', link: '/learn/' },
           ],
         },
         {
-          text: SidebarSectionHeader({ text: 'Protocol', icon: 'i-nimiq:icons-lg-nodes', prefix: 'About the' }),
+          prefix: 'About the',
+          text: 'Protocol',
+          icon: 'i-nimiq:icons-lg-nodes',
           items: [
             { text: 'Overview', link: '/learn/protocol/overview' },
             { text: 'Glossary', link: '/learn/protocol/glossary' },
             { text: 'Block format', link: '/learn/protocol/block-format' },
             {
-              text: Label('Validators'),
-              collapsed: true,
+              text: 'Validators',
+              collapsed: false,
               items: [
                 { text: 'Slots', link: '/learn/protocol/validators/slots' },
                 { text: 'Staking contract', link: '/learn/protocol/validators/staking-contract' },
@@ -101,8 +106,8 @@ export default defineConfig({
             { text: 'Transactions', link: '/learn/protocol/transactions' },
             { text: 'Mempool', link: '/learn/protocol/mempool' },
             {
-              text: Label('Sync protocol'),
-              collapsed: true,
+              text: 'Sync protocol',
+              collapsed: false,
               items: [
                 { text: 'Block live sync', link: '/learn/protocol/sync-protocol/block-live-sync' },
                 { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
@@ -121,13 +126,15 @@ export default defineConfig({
 
       '/build/': [
         {
-          text: SidebarSectionHeader({ text: 'Build', icon: 'i-nimiq:icons-lg-tools' }),
+          text: 'Build',
+          icon: 'i-nimiq:icons-lg-tools',
           items: [
             { text: 'Overview', link: '/build/' },
           ],
         },
         {
-          text: SidebarSectionHeader({ text: 'Web client', icon: 'i-nimiq:icons-lg-bulb' }),
+          text: 'Web client',
+          icon: 'i-nimiq:icons-lg-bulb',
 
           // Needs to be dynamic. The first time the developer does run the project in needs to run the
           // plugin to generate the docs first. After that it should just use the generated docs.
@@ -144,11 +151,13 @@ export default defineConfig({
           },
         },
         {
-          text: SidebarSectionHeader({ text: 'UI', icon: 'i-nimiq:globe', prefix: 'Using Nimiq\'s' }),
+          text: 'UI',
+          icon: 'i-nimiq:globe',
+          prefix: 'Using Nimiq\'s',
           items: [
             {
-              text: Label('Design kit'),
-              collapsed: true,
+              text: 'Design kit',
+              collapsed: false,
               items: [
                 { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
                 buildMode !== 'production'
@@ -157,8 +166,8 @@ export default defineConfig({
               ],
             },
             {
-              text: Label('CSS framework'),
-              collapsed: true,
+              text: 'CSS framework',
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/build/ui/css-framework/overview' },
                 { text: 'Fonts', link: '/build/ui/css-framework/fonts' },
@@ -277,6 +286,7 @@ export default defineConfig({
         ],
 
         presets: [
+          presetMini(),
           presetUno({ attributifyPseudo: true }),
           presetTypography(),
           presetAttributify(),
@@ -344,6 +354,12 @@ export default defineConfig({
               80: '#42c3b0',
               90: '#13b59d',
             },
+            gray: {
+              DEFAULT: '#f8f8f8',
+            },
+            lightgray: {
+              DEFAULT: '#fbfbfb',
+            },
           },
           breakpoints: {
             sm: '640px',
@@ -361,13 +377,16 @@ export default defineConfig({
           [/^rounded-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
         ],
 
-        shortcuts: {
-          'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
-          'border-base': 'border-[1.5px] border-solid border-darkblue-10 dark:border-darkblue-94',
-          'border-top': 'border-t-[1.5px] border-t-solid border-darkblue-10 dark:border-darkblue-94',
-          'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
-        },
+        shortcuts: [
+          {
+            'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
+            'border-base': 'border-[1.5px] border-solid border-darkblue-10 dark:border-darkblue-94',
+            'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
+          },
+          [/^border-base-(.*)$/, ([,c]) => `border-${c}-[1.5px] border-${c}-solid border-darkblue-10 dark:border-darkblue-94`],
+        ],
       }),
+
       // https://github.com/webfansplz/vite-plugin-vue-devtools
       VueDevTools(),
     ],
@@ -375,21 +394,19 @@ export default defineConfig({
       alias: [
         {
           find: /^.*\/VPNavBarTitle\.vue$/,
-          replacement: fileURLToPath(
-            new URL('./theme/components/HeaderLogo.vue', import.meta.url),
-          ),
+          replacement: fileURLToPath(new URL('./theme/components/HeaderLogo.vue', import.meta.url)),
+        },
+        {
+          find: /^.*\/VPSidebar\.vue$/,
+          replacement: fileURLToPath(new URL('./theme/components/Sidebar.vue', import.meta.url)),
         },
         {
           find: /^.*\/VPDocFooter\.vue$/,
-          replacement: fileURLToPath(
-            new URL('./theme/components/DocFooter.vue', import.meta.url),
-          ),
+          replacement: fileURLToPath(new URL('./theme/components/DocFooter.vue', import.meta.url)),
         },
         {
           find: /^.*\/VPFooter\.vue$/,
-          replacement: fileURLToPath(
-            new URL('./theme/components/Footer.vue', import.meta.url),
-          ),
+          replacement: fileURLToPath(new URL('./theme/components/Footer.vue', import.meta.url)),
         },
 
       ],

@@ -30,7 +30,7 @@ export const Label = (text: string) => `<span class="label">${text}</span>`
  * Creates an accordion for the sidebar.
  */
 export function Accordion({ path }: { path: string, label?: string, collapsed?: boolean, sort?: string[] }) {
-  const text = Label(path.split('/').at(-1) || path).replace(/-/g, ' ')
+  const text = (path.split('/').at(-1) || path).replace(/-/g, ' ')
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),

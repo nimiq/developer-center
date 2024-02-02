@@ -17,6 +17,7 @@ declare module 'vue' {
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
     IconSet: typeof import('./.vitepress/theme/components/IconSet.vue')['default']
     PillSelector: typeof import('./.vitepress/theme/components/PillSelector.vue')['default']
+    Sidebar: typeof import('./.vitepress/theme/components/Sidebar.vue')['default']
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
   }
 }
