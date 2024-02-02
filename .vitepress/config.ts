@@ -29,9 +29,11 @@ const { hash: albatrossCommitHash, date: albatrossCommitDate } = await fetch('ht
 
 const buildMode = env.NODE_ENV || 'development'
 
+const baseUrl = '/nimiq-developer-center/'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/nimiq-developer-center/',
+  base: baseUrl,
   title: 'Nimiq Developer Center',
   srcExclude: ['**/README.md'],
   description:
@@ -233,6 +235,18 @@ export default defineConfig({
     },
   },
 
+  head: [
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}assets/favicons/apple-touch-icon.png` }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}assets/favicons/favicon-32x32.png` }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}assets/favicons/favicon-16x16.png` }],
+    ['link', { rel: 'manifest', href: `${baseUrl}assets/favicons/site.webmanifest` }],
+    ['link', { rel: 'mask-icon', href: `${baseUrl}asset/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+    ['link', { rel: 'shortcut icon', href: '/assets/favicons/favicon.ico' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
+    ['meta', { name: 'theme-color', content: '#ffffff' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+  ],
+
   vite: {
     optimizeDeps: {
       exclude: ['vitepress'],
@@ -388,6 +402,7 @@ export default defineConfig({
 
       // https://github.com/webfansplz/vite-plugin-vue-devtools
       VueDevTools(),
+
     ],
     resolve: {
       alias: [

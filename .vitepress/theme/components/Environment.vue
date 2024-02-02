@@ -47,7 +47,11 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
               <div i-nimiq:arrow-top-right w-8 op70 group-hover="translate-x-2 translate-y--2" duration-100ms />
             </a>
           </div>
-          <TooltipArrow fill-darkblue />
+          <TooltipArrow as-child>
+            <div bg-pink>
+              <div i-nimiq:tooltip-triangle fill-darkblue w-100 />
+            </div>
+          </TooltipArrow>
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>
