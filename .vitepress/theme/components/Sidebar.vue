@@ -106,8 +106,8 @@ function onSectionTitleClicked(i: number) {
       <span id="sidebar-aria-label" sr-only>Sidebar Navigation</span>
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
-        <div w-full border-base-t sticky top-0 bottom--1 class="pl-[var(--pl)]" z-100 bg="lightgray dark:darkblue-1000" pt-16 cursor-pointer @click="onSectionTitleClicked(i)">
-          <div pb-8>
+        <div w-full border-base-t sticky top-0 bottom--1 class="pl-[var(--pl)]" z-100 bg="lightgray dark:darkblue-1000" cursor-pointer @click="onSectionTitleClicked(i)">
+          <div pt-20 pb-16>
             <button ref="buttons" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
               <p v-if="group.prefix" text-16 op50 font-semibold relative>
                 {{ group.prefix }}
