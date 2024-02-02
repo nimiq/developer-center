@@ -420,31 +420,22 @@ h4 {
   --uno: px-8 py-4 text-12;
 }
 
-.scroll {
-  background-color: pink !important;
-}
-.scroll-darkblue::-webkit-scrollbar,
-.scroll-gray::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.375rem;
-  margin: 2px;
-  scrollbar-gutter: stable;
+*::-webkit-scrollbar{
+  --uno: w-8 h-6 m-2 scrollbar-gutter-stable;
 }
 
-.scroll-darkblue::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background-color: #4b4b5c60;
-  background-clip: padding-box;
-  border: 2px transparent solid;
+* {
+  scrollbar-width: 2px;
+  scrollbar-color: var(--colors-darkblue-10);
+  .dark & {
+    scrollbar-color: var(--colors-darkblue-80);
+  }
 }
 
-.scroll-gray::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  background-color: #3b4c6a7d;
-  background-clip: padding-box;
-  border: 2px transparent solid;
-}
+*::-webkit-scrollbar-thumb {
+  --uno: bg-darkblue-20 rounded-8 bg-clip-padding border-2 border-transparent border-solid;
 
-.scroll-gray::-webkit-scrollbar-track {
-  background-color: #3b4c6a33;
+}
+.dark *::-webkit-scrollbar-thumb {
+  --uno: bg-white/20;
 }
