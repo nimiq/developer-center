@@ -164,6 +164,9 @@
   --vp-c-brand-1: var(--colors-darkblue);
   --vp-c-bg-soft: var(--colors-darkblue-6);
 
+  --vp-backdrop-bg-color: rgba(31, 35, 72, 0.6);
+  
+  
   &.dark {
     --vp-c-bg: var(--colors-darkblue-1000);
     --vp-c-bg-soft: var(--colors-darkblue);
@@ -174,6 +177,7 @@
     --vp-sidebar-bg-color: var(--colors-darkblue-1000);
     --vp-c-brand-1: var(--colors-gold);
     --vp-c-bg-soft: var(--colors-darkblue-900);
+    --vp-backdrop-bg-color: rgba(31, 35, 72, 0.7);
   }
 
   --vp-font-family-base: Mulish,
@@ -202,7 +206,7 @@
   'Courier New',
   monospace;
 
-  --vp-sidebar-width: 258px;
+  --vp-sidebar-width: 300px;
   --vp-sidebar-bg-color: var(--colors-lightgray);
   --vp-c-bg: var(--colors-lightgray);
 }
@@ -213,6 +217,9 @@
 
 p {
   text-wrap: pretty;
+  &:empty {
+    display: none; /* Hide empty paragraphs. This is mostly for the markdown */
+  }
 }
 
 h1 {
@@ -386,43 +393,6 @@ h4 {
   }
 }
 
-/**
- * Aside CSS
- * -------------------------------------------------------------------------- */
-.VPSidebar {
-  &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.375rem;
-    margin: 2px;
-    scrollbar-gutter: stable;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-clip: padding-box;
-    border: 2px transparent solid;
-    background-color: #4b4b5c60;
-
-    .dark & {
-      background-color: #3b4c6a7d;
-    }
-  }
-
-  border-right: 1px solid var(--colors-darkblue-10);
-
-  .dark & {
-    --vp-sidebar-color: var(--colors-darkblue-1000);
-    border-color: var(--colors-darkblue-94);
-  }
-
-
-  @media (width >=960px) {
-    margin-top: 64px;
-    padding-top: 0px !important;
-  }
-
-}
-
 .VPHome {
   padding: 36px;
   padding-top: 96px;
@@ -442,67 +412,39 @@ h4 {
   }
 }
 
-.VPDoc {
-  .VPDocFooter {
-    .pager a {
-      --at-apply: border-none w-max;
-
-      > :is(span.title) {
-        --at-apply: bg-blue-10 text-blue font-bold rounded-full py-6 px-16 w-max;
-
-        :is(&:hover, &:focus) {
-          --at-apply: transition-shadow ring-1 ring-blue;
-        }
-
-        .dark & {
-          --at-apply: bg-white/30 text-white;
-
-          :is(&:hover, &:focus) {
-            --at-apply: ring-white/50;
-          }
-        }
-      }
-
-      > :is(span.desc) {
-        --at-apply: pb-16 px-4;
-      }
-
-      &.prev .title,
-      &.next .title {
-        --at-apply: relative;
-
-        &:before {
-          --at-apply: i-nimiq-arrow absolute content-[''] top-[9px];
-        }
-      }
-
-      &.prev .title {
-        --at-apply: pl-32;
-
-        &::before {
-          --at-apply: left-12 scale-[0.9] rotate-180;
-        }
-      }
-
-      &.next .title {
-        --at-apply: pr-32;
-
-        &::before {
-          --at-apply: right-12 scale-[0.9];
-        }
-      }
-    }
-
-    > .container > .content {
-      padding-bottom: 0 !important;
-    }
-  }
-}
-
 .btn {
   --uno: border border-base rounded shadow-sm outline-none px-16 py-4 text-gray-600 transition-all bg-base hover-(bg-gray-50 shadow) dark-(border-dark-200 text-gray-300) dark-hover-(border-primary bg-dark-100 text-primary) focus-(shadow outline-none);
 }
 
 .btn.small {
   --uno: px-8 py-4 text-12;
+}
+
+.scroll {
+  background-color: pink !important;
+}
+.scroll-darkblue::-webkit-scrollbar,
+.scroll-gray::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.375rem;
+  margin: 2px;
+  scrollbar-gutter: stable;
+}
+
+.scroll-darkblue::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #4b4b5c60;
+  background-clip: padding-box;
+  border: 2px transparent solid;
+}
+
+.scroll-gray::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #3b4c6a7d;
+  background-clip: padding-box;
+  border: 2px transparent solid;
+}
+
+.scroll-gray::-webkit-scrollbar-track {
+  background-color: #3b4c6a33;
 }

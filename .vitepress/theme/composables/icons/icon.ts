@@ -189,10 +189,12 @@ export async function getIconSnippet(icon: string, type: string, snippet = true,
       return SvgToJSX(await getSvg(icon, undefined, color), toComponentName(icon), snippet)
 
       // Links
-    case 'URL':
-      return url
+    // case 'URL':
+      // return url
     case 'Data URL':
       return `data:image/svg+xml;base64,${Base64.encode(await getSvg(icon, undefined, color))}`
+    case 'Figma':
+      return 'https://www.figma.com/file/iyfVJafk18HfrYLXukpf0n/Nimiq-Icons';
 
 
     // Components

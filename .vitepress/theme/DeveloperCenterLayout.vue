@@ -2,7 +2,6 @@
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
 import { useData } from './composables/useData'
-import Environment from './components/Environment.vue'
 
 /**
  * Credit to [@hooray](https://github.com/hooray)
@@ -70,11 +69,7 @@ watch(page, () => {
 </script>
 
 <template>
-  <DefaultTheme.Layout>
-    <template #nav-bar-content-after>
-      <Environment />
-    </template>
-  </DefaultTheme.Layout>
+  <DefaultTheme.Layout />
 </template>
 
 <style>

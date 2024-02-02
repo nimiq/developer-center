@@ -1,4 +1,5 @@
 import type { DefaultTheme } from 'vitepress'
+import { isActive } from './useIsActive'
 
 export interface SidebarLink {
   text: string
@@ -71,4 +72,46 @@ export function getFlatSideBarLinks(sidebar: SidebarItem[]): SidebarLink[] {
   recursivelyExtractLinks(sidebar)
 
   return links
+}
+
+/**
+ * Get or generate sidebar group from the given sidebar items.
+ */
+export function getSidebarGroups(sidebar: SidebarItem[]): SidebarItem[] {
+  const groups: SidebarItem[] = []
+
+  let lastGroupIndex: number = 0
+
+  for (const index in sidebar) {
+    const item = sidebar[index]
+
+    if (item.items) {
+      lastGroupIndex = groups.push(item)
+      continue
+    }
+
+    if (!groups[lastGroupIndex])
+      groups.push({ items: [] })
+
+    groups[lastGroupIndex]!.items!.push(item)
+  }
+
+  return groups
+}
+
+/**
+ * Check if the given sidebar item contains any active link.
+ */
+export function hasActiveLink(
+  path: string,
+  items: SidebarItem | SidebarItem[],
+): boolean {
+  if (Array.isArray(items))
+    return items.some(item => hasActiveLink(path, item))
+
+  return isActive(path, items.link)
+    ? true
+    : items.items
+      ? hasActiveLink(path, items.items)
+      : false
 }
