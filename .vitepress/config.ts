@@ -77,7 +77,6 @@ export default defineConfig({
         {
           text: 'Learn',
           icon: 'i-nimiq:icons-lg-bulb',
-          prefix: 'Learn about the Nimiq ecosystem',
           items: [
             { text: 'Overview', link: '/learn/' },
           ],
