@@ -1,6 +1,12 @@
 {
+  "name": "nimiq-developer-center",
   "type": "module",
   "version": "0.0.1-alpha",
+  "description": "The Nimiq Developer Center is the central place for developers to learn about Nimiq, its technology, and how to build with it.",
+  "author": {
+    "name": "Nimiq",
+    "url": "https://nimiq.com"
+  },
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
