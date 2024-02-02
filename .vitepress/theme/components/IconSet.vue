@@ -174,9 +174,15 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
           <div flex="~ gap-32">
             <Icon :icon="selectedIcon || ''" text="96 darkblue dark:white" />
             <div>
-              <h3 text="22 darkblue-80 dark:white/90" leading-none mt-6>
-                i-{{ selectedIcon }}
-              </h3>
+              <div flex="~ items-center gap-4" text="22 darkblue-80 dark:white/90">
+                <h3 leading-none mt-6>
+                  i-{{ selectedIcon }}
+                </h3>
+
+                <button p-8 rounded-6 hover="bg-darkblue-6 dark:bg-white/20" @click="copyToClipboard(`i-${selectedIcon}`)">
+                  <div i-nimiq:copy text-16 />
+                </button>
+              </div>
 
               <button class="text-12 text-darkblue-40 underline" @click="() => helpOpen = true">
                 How can I use it?
