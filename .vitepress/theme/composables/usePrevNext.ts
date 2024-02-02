@@ -16,14 +16,13 @@ export function usePrevNext() {
 
     const hideFromFrontmatter = frontmatter.value.docFooter === false
     const hide = hideFromFrontmatter || (theme.value.docFooter?.[direction] === false && !frontmatter.value[direction]) || frontmatter.value[direction] === false
-    if (!hide) {
-      if (typeof t === 'string')
-        return { text: t, link: undefined }
-      else if (typeof t === 'object')
-        return t
-      else
-        return { text: candidates[index + 1]?.docFooterText ?? candidates[index + 1]?.text, link: candidates[index + 1]?.link }
-    }
+    if (hide)
+      return
+    if (t)
+      return typeof t === 'string' ? { text: t, link: undefined } : t
+
+    const candidate = candidates.at(direction === 'prev' ? index - 1 : index + 1)
+    return { text: candidate?.docFooterText ?? candidate?.text, link: candidate?.link }
   }
 
   const next = computed(() => getItem('next'))
