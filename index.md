@@ -39,19 +39,23 @@ buildTogetherLinks:
   #   href:  '/'
 ---
 
-:::raw
-# Welcome to the Nimiq Developer Center
+<Headline :items="$frontmatter.links" h1>
+  <template #headline>
+    Welcome to the Nimiq Developer Center
+  </template>
+  <template #subline>
+    Get guides, resources and tips on how to create with Nimiq.
+  </template>
+</Headline>
 
-Get guides, resources and tips on how to create with Nimiq.
-
-<Grid my-64 :items="$frontmatter.links" />
-
-## Let's build together
-
-Create apps, contribute to the network or run a validator.
-
-<Grid my-64 :items="$frontmatter.buildTogetherLinks" />
-:::
+<Headline :items="$frontmatter.buildTogetherLinks">
+  <template #headline>
+    Let's build together
+  </template>
+  <template #subline>
+    Create apps, contribute to the network or run a validator.
+  </template>
+</Headline>
 
 <script setup>
 const isDev = import.meta.env.DEV

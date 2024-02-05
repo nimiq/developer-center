@@ -5,6 +5,7 @@ import 'uno.css'
 import { h, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
 import mediumZoom from 'medium-zoom'
+import { createHead } from '@unhead/vue'
 import DeveloperCenterLayout from './DeveloperCenterLayout.vue'
 
 export default {
@@ -12,9 +13,10 @@ export default {
   Layout: () => {
     return h(DeveloperCenterLayout)
   },
-  // enhanceApp({ app, router, siteData }) {
-  //   // ...
-  // },
+  enhanceApp({ app }) {
+    const head = createHead()
+    app.use(head)
+  },
   setup() {
     const route = useRoute()
     const initZoom = () => {
