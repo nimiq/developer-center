@@ -8,7 +8,7 @@ A key pair consists of public and private keys, mathematically linked. The priva
 
 <br/>
 
-For a node to become a validator, it must generate an address and the key set. Validators also own a fee key unrelated to this set, which has the sole purpose of paying transaction fees. To learn how to generate these keys, click here.
+For a node to become a validator, it must generate an address and a set of keypairs. Validators also own a fee key from a basic account, which has the sole purpose of paying `automatic_reactivate` transaction fees. To learn how to generate these keys, click here.
 
 <br/>
 
@@ -19,14 +19,14 @@ The [Schnorr](https://en.wikipedia.org/wiki/Schnorr_signature) signature scheme 
 ### Cold key
 
 - The validator’s address is derived from the cold public key
-- The cold private key is used for the validator to sign create, update, retire, and delete transactions
+- The cold private key is used for the validator to sign create, update and delete transactions
 
 <br/>
 
 ### Warm key
 
 - The warm public key is stored in the validator as the `signing_key`
-- The warm private key is used for the validator to sign unpark, reactivate, and deactivate transactions
+- The warm private key is used for the validator to sign reactivate, and deactivate transactions
 - The warm private key is also used for the validator to sign micro blocks, macro block proposals and generate random seeds
 
 <br/>
@@ -48,4 +48,4 @@ The terminology of hot, warm, and cold keys outlines the frequency of key usage.
 
 <br/>
 
-The `update` transaction allows the validator to update its keys in case they are compromised. The cold key is immutable, and, by extension, so is the validator’s address.
+The `update` transaction allows the validator to update its keys in case they are compromised. However, the cold key is immutable, and, by extension, so is the validator’s address.

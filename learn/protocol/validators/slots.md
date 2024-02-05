@@ -12,14 +12,12 @@ Validators use their slots in the following way:
 
 - One slot is used to produce one micro block
 - One slot is used to propose a macro block
-- All validators’ slots are used to vote for a macro block proposal
+- All validators’ slots are used to vote for a macro block proposal or a [skip block](/learn/protocol/skip-blocks.md)
 
 <br/>
 
-### Slot allocation
-
 <p>
-    <img src="/assets/images/protocol/slots.png" alt="Alt Text" width="250" height="125">
+    <img src="/assets/images/protocol/slots.png" alt="Alt Text" width="400" height="225">
 </p>
 
 <br/>

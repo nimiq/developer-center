@@ -37,7 +37,7 @@ Validators send transactions to update data or change their state deliberately. 
 <br/>
 
 <p align="center">
-  <img src="/assets/images/protocol/validator-state.png" alt="Alt Text" width="700" height="350">
+  <img src="/assets/images/protocol/validator-state.png" alt="Alt Text" width="600" height="300">
 </p>
 
 <br/>
