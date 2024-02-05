@@ -96,7 +96,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Slots', link: '/learn/protocol/validators/slots' },
-                { text: 'Staking contract', link: '/learn/protocol/validators/staking-contract' },
+                { text: 'Staking Contract', link: '/learn/protocol/validators/staking-contract' },
                 { text: 'Validator Keys', link: '/learn/protocol/validators/validator-keys' },
                 { text: 'Validator and stakers', link: '/learn/protocol/validators/validators-and-stakers' },
               ],

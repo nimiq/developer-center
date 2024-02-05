@@ -130,5 +130,5 @@ The following figure illustrates how the blockchain is divided.
 
 <p align="center">
 
-  <img src="/assets/images/protocol/blockchain-struct.png" alt="Alt Text" width="1000" height="500">
+  <img src="/assets/images/protocol/block-struct-3.png" alt="Alt Text" width="1000" height="500">
 </p>
