@@ -18,7 +18,8 @@ footer: false
 
 ---
 
-<Headline :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links">
+<!-- <Headline :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links"> -->
+<Headline>
   <template #headline>
     Nimiq - a blockchain built from scratch
   </template>
