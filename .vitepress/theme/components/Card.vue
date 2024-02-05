@@ -36,14 +36,14 @@ const greenShadow = '0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(
         'bg-radial-lightblue ring-lightblue/20': item.bgColor === 'blue',
         'bg-radial-green ring-green/20': item.bgColor === 'green',
         'p-12 md:p-24': isNormal || !hasBgIcon,
-        'p-24 md:p-40 md:pb-80': hasBgIcon,
+        'p-24 md:p-40': hasBgIcon,
         'p-20 md:p-40': isIcon,
         'items-center': centered,
       }"
     >
       <div
         v-if="item.icon" :class="{
-          'absolute inset-y-50 -right-24 md:-right-40 min-w-100 w-[15vw] children:w-full children:h-full': !centered,
+          'absolute inset-y-50 -right-12 md:-right-16 min-w-100 text-100 sm:text-202': !centered,
           'text-[#0E65C9]': item.bgColor === 'blue',
           'text-[#1DA186]': item.bgColor === 'green',
           'text-darkblue/40 dark:text-white/50 children:h-96 children:w-96 mb-56 group-hover:text-darkblue dark:group-hover:text-white transition-colors': centered,
