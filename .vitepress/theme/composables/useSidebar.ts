@@ -171,7 +171,7 @@ export function useSidebarControl(
   })
 
   const hasChildren = computed(() => {
-    return !!(item.value.items && item.value.items.length)
+    return (item.value.items?.length || 0) > 0
   })
 
   watchEffect(() => {

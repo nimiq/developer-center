@@ -10,6 +10,8 @@ export const inBrowser = typeof document !== 'undefined'
 export function isActive(currentPath: string, matchPath?: string, asRegex: boolean = false): boolean {
   if (matchPath === undefined)
     return false
+  if (matchPath.endsWith('/index'))
+    matchPath = matchPath.replace('/index', '/')
 
   currentPath = normalize(`/${currentPath}`)
 
