@@ -39,7 +39,7 @@ buildTogetherLinks:
   #   href:  '/'
 ---
 
-<Hero :items="$frontmatter.links" h1>
+<Hero :items="$frontmatter.links">
   <template #headline>
     Welcome to the Nimiq Developer Center
   </template>
@@ -48,7 +48,7 @@ buildTogetherLinks:
   </template>
 </Hero>
 
-<Hero :items="$frontmatter.buildTogetherLinks">
+<Hero :items="$frontmatter.buildTogetherLinks" h2>
   <template #headline>
     Let's build together
   </template>

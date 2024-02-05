@@ -5,7 +5,7 @@ import type { CardType, Tag } from './types'
 const props = defineProps<{
   tags?: Array<Tag>
   items: Omit<CardType, 'type'>[]
-  h1: boolean
+  h2: boolean
 }>()
 
 const slots = defineSlots<{
@@ -17,7 +17,7 @@ const headlineStr = computed(() => slots.headline?.()?.[0]?.children)
 const sublineStr = computed(() => slots.subline?.()?.[0]?.children)
 
 watchEffect(async () => {
-  if (!props.h1)
+  if (props.h2)
     return
   useHead({
     title: headlineStr.value,
@@ -35,7 +35,7 @@ watchEffect(async () => {
 
 <template>
   <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb-136' : 'mb-64'">
-    <component :is="h1 ? 'h1' : 'h2'" text="darkblue dark:white">
+    <component :is="h2 ? 'h2' : 'h1'" text="darkblue dark:white">
       <slot name="headline" />
     </component>
 
