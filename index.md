@@ -18,6 +18,12 @@ links:
     href: 'learn/'
     span: 3
     layout: lg
+  - label: 'Learn'
+    title: 'The underlying technology'
+    description: 'Learn what makes Nimiq a truly unique blockchain.'
+    href: 'learn/'
+    span: 3
+    layout: lg
 buildTogetherLinks:
   - title: Learn
     description: Learn about the basic and advanced concepts.

@@ -386,7 +386,13 @@ export default defineConfig({
           ['bg-radial-lightblue', { 'background-image': 'radial-gradient(100% 100% at 100% 100%, #265DD7 0%, #0582CA 100%)' }],
           ['bg-radial-green', { 'background-image': 'radial-gradient(100% 100% at 100% 100%, #41A38E 0%, #21BCA5 100%)' }],
           ['shadow', { 'box-shadow': '0px 18px 38px rgba(31, 35, 72, 0.07), 0px 7px 8.5px rgba(31, 35, 72, 0.04), 0px 2px 2.5px rgba(31, 35, 72, 0.02)' }],
-
+          // [/^shadow-(.*)$/, ([,c]) => {
+          //   const [r, g, b] = {
+          //     blue: [5, 130, 202],
+          //     green: [19, 181, 157],
+          //   }[c]
+          //   return { 'box-shadow': `0px 18px 38px rgba(${r}, ${g}, ${b}, 0.07), 0px 7px 8.5px rgba((${r}, ${g}, ${b}, 0.04), 0px 2px 2.5px rgba((${r}, ${g}, ${b}, 0.02);` }
+          // }],
           [/^rounded-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
         ],
 
