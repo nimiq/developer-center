@@ -26,14 +26,14 @@ outline: false
 footer: false
 ---
 
-<Headline :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links">
+<Hero :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links">
   <template #headline>
     Let's build together
   </template>
   <template #subline>
     Nimiq is made for people to build on it.<br/>You just need a browser and Internet.
   </template>
-</Headline>
+</Hero>
 
 <!-- <div label mb-8 mt-136 text-darkblue-50>Assets</div> -->
 

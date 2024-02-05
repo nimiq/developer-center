@@ -18,15 +18,15 @@ footer: false
 
 ---
 
-<!-- <Headline :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links"> -->
-<Headline>
+<!-- <Hero :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links"> -->
+<Hero>
   <template #headline>
     Nimiq - a blockchain built from scratch
   </template>
   <template #subline>
     Everybody should be a peer: The basic idea of the Nimiq Blockchain.
   </template>
-</Headline>
+</Hero>
 
 ::: warning Work in progress
 
