@@ -42,6 +42,7 @@ watchEffect(async () => {
     <p v-if="slots.subline" mt-24 text-24 lh="36" text="darkblue-60" max-w-520>
       <slot name="subline" />
     </p>
+
     <Tags :tags="tags" mt-24 />
     <Grid :items="items" mt-64 />
   </div>

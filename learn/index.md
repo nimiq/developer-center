@@ -15,6 +15,7 @@ prev: false
 next: false
 aside: false
 footer: false
+
 ---
 
 <Headline :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links">
@@ -31,5 +32,3 @@ footer: false
 Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
 
 :::
-
-<!-- <Grid my-64 :items="$frontmatter.links" /> -->
