@@ -3,7 +3,6 @@ import { useScrollLock } from '@vueuse/core'
 import type { DefaultTheme } from 'vitepress'
 import { inBrowser } from 'vitepress'
 import { ref, watch } from 'vue'
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from 'radix-vue'
 import { useSidebar } from '../composables/useSidebar'
 
 const props = defineProps<{
@@ -28,67 +27,6 @@ watch(
   },
   { immediate: true, flush: 'post' },
 )
-
-const EXTERNAL_URL_RE = /^(?:[a-z]+:|\/\/)/i
-
-function isExternal(path: string): boolean {
-  return EXTERNAL_URL_RE.test(path)
-}
-
-const KNOWN_EXTENSIONS = new Set()
-
-function treatAsHtml(filename: string): boolean {
-  if (KNOWN_EXTENSIONS.size === 0) {
-    const extraExts
-      = (typeof process === 'object' && process.env.VITE_EXTRA_EXTENSIONS)
-      || (import.meta as any).env?.VITE_EXTRA_EXTENSIONS
-      || ''
-
-    // md, html? are intentionally omitted
-    ;(
-      `3g2,3gp,aac,ai,apng,au,avif,bin,bmp,cer,class,conf,crl,css,csv,dll,`
-      + `doc,eps,epub,exe,gif,gz,ics,ief,jar,jpe,jpeg,jpg,js,json,jsonld,m4a,`
-      + `man,mid,midi,mjs,mov,mp2,mp3,mp4,mpe,mpeg,mpg,mpp,oga,ogg,ogv,ogx,`
-      + `opus,otf,p10,p7c,p7m,p7s,pdf,png,ps,qt,roff,rtf,rtx,ser,svg,t,tif,`
-      + `tiff,tr,ts,tsv,ttf,txt,vtt,wav,weba,webm,webp,woff,woff2,xhtml,xml,`
-      + `yaml,yml,zip${
-      extraExts && typeof extraExts === 'string' ? `,${extraExts}` : ''}`
-    )
-      .split(',')
-      .forEach(ext => KNOWN_EXTENSIONS.add(ext))
-  }
-
-  const ext = filename.split('.').pop()
-
-  return ext == null || !KNOWN_EXTENSIONS.has(ext.toLowerCase())
-}
-
-function normalizeLink(url: string): string {
-  const { pathname, search, hash, protocol } = new URL(url, 'http://a.com')
-
-  if (
-    isExternal(url)
-    || url.startsWith('#')
-    || !protocol.startsWith('http')
-    || !treatAsHtml(pathname)
-  )
-    return url
-
-  const { site } = useData()
-
-  const normalizedPath
-    = pathname.endsWith('/') || pathname.endsWith('.html')
-      ? url
-      : url.replace(
-        /(?:(^\.+)\/)?.*$/,
-          `$1${pathname.replace(
-            /(\.md)?$/,
-            site.value.cleanUrls ? '' : '.html',
-          )}${search}${hash}`,
-      )
-
-  return withBase(normalizedPath)
-}
 
 const buttons = ref<HTMLButtonElement[]>([])
 
@@ -124,30 +62,8 @@ function onSectionTitleClicked(i: number) {
         </div>
 
         <ul class="pl-[var(--pl)]" pb-20 mt-16>
-          <li v-for="item in group.items" :key="item.text" :class="item.items ? 'my-32' : 'my-8'">
-            <a v-if="!item.items" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" op80>
-              {{ item.text }}
-            </a>
-
-            <AccordionRoot v-else type="multiple" :collapsible="true">
-              <AccordionItem :value="item.text">
-                <AccordionHeader as="div">
-                  <AccordionTrigger class="group" flex="~ items-center gap-8">
-                    <div i-nimiq:chevron-down text-10 op70 transition-transform duration-300 rotate="-90 group-data-[state=open]:!0" />
-                    <span label op80>{{ item.text }}</span>
-                  </AccordionTrigger>
-                </AccordionHeader>
-                <AccordionContent class="accordion-content" of-hidden>
-                  <ul mt-16 bottom--8 relative>
-                    <li v-for="sub in item.items " :key="sub.text" py-8>
-                      <a v-if="!sub.items" :rel="sub.rel" :href="normalizeLink(sub.link)" :target="sub.target" op80>
-                        {{ sub.text }}
-                      </a>
-                    </li>
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            </AccordionRoot>
+          <li v-for="item in group.items" :key="item.text">
+            <SidebarItem :item="item" :depth="0" :class="item.items ? 'my-32' : 'my-8'" />
           </li>
         </ul>
       </template>

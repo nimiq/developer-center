@@ -145,9 +145,9 @@ export default defineConfig({
                 text: 'Getting started',
                 link: '/build/web-client/index',
               },
-              Accordion({ path: 'build/web-client/classes' }),
-              Accordion({ path: 'build/web-client/enums' }),
-              Accordion({ path: 'build/web-client/interfaces' }),
+              Accordion({ path: 'build/web-client/classes', collapsed: false }),
+              Accordion({ path: 'build/web-client/enums', collapsed: true }),
+              Accordion({ path: 'build/web-client/interfaces', collapsed: true }),
             ]
           },
         },
