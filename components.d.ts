@@ -15,6 +15,7 @@ declare module 'vue' {
     Footer: typeof import('./.vitepress/theme/components/Footer.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
+    Headline: typeof import('./.vitepress/theme/components/Headline.vue')['default']
     IconSet: typeof import('./.vitepress/theme/components/IconSet.vue')['default']
     PillSelector: typeof import('./.vitepress/theme/components/PillSelector.vue')['default']
     Sidebar: typeof import('./.vitepress/theme/components/Sidebar.vue')['default']

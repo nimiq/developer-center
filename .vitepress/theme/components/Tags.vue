@@ -2,9 +2,11 @@
 import type { PropType } from 'vue'
 import { Tag } from './types'
 
-defineProps({
-  tags: Set as PropType<Set<Tag>>,
+const props = defineProps({
+  tags: Array as PropType<Tag[]>,
 })
+
+const tags = computed(() => new Set(props.tags || []))
 
 const icons = {
   [Tag.RPC]: 'i-nimiq:icons-lg-nodes',
@@ -13,7 +15,7 @@ const icons = {
 </script>
 
 <template>
-  <div flex gap-x-16 flex-wrap>
+  <div v-if="tags.size > 0" flex gap-x-16 flex-wrap>
     <div
       v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8"
       border="1 solid darkblue-25 dark:darkblue-70 inverted:white/35" rounded-6 leading-1
