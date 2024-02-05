@@ -186,7 +186,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/nimiq', ariaLabel: 'Nimiq on GitHub' },
-      { icon: 'twitter', link: 'https://twitter.com/nimiq', ariaLabel: 'Nimiq on Twitter' },
+      { icon: 'x', link: 'https://twitter.com/nimiq', ariaLabel: 'Nimiq on Twitter' },
       { icon: { svg: '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="18" fill="none"><g clip-path="url(#a)"><path fill="currentColor" fill-rule="evenodd" d="M14.3 18c.6 0 1.156-.32 1.456-.844l4.207-7.312a1.687 1.687 0 0 0 .002-1.688L15.76.844A1.685 1.685 0 0 0 14.3 0H5.905a1.689 1.689 0 0 0-1.456.84L.748 7.248l-.523.908a1.695 1.695 0 0 0 0 1.684l4.224 7.313A1.68 1.68 0 0 0 5.905 18h8.396Zm-5.416-5.107a5.643 5.643 0 0 0 1.62.232c2.687 0 4.878-1.875 4.878-4.125s-2.191-4.125-4.878-4.125C7.818 4.875 5.627 6.75 5.627 9a3.749 3.749 0 0 0 1.35 2.85l-.974 1.995a.225.225 0 0 0 .09.292.212.212 0 0 0 .187 0l2.604-1.245Z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20.19v18H0z"/></clipPath></defs></svg>' }, ariaLabel: 'Nimiq Forum', link: 'https://forum.nimiq.community/' },
     ],
 
