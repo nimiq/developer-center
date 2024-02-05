@@ -42,6 +42,9 @@ onMounted(async () => {
   timeBuild.value = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(lastUpdated.value)
 })
 
+const logosMono = computed(() => variants.value[Variant.Logos].filter(icon => icon.endsWith('-mono')))
+const logosColor = computed(() => variants.value[Variant.Logos].filter(icon => !icon.endsWith('-mono')))
+
 const timeAgo = useTimeAgo(lastUpdated)
 
 const selectedIcon = ref<string>()
@@ -158,12 +161,25 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </div>
 
       <ul v-for="variant in Object.keys(variants)" :key="variant" pl-0 flex flex-wrap select-none text-2xl class="vp-raw -ml-8">
-        <li v-for="icon in variants[variant]" v-show="variant === activeVariant" :key="icon" flex>
+        <li v-for="icon in variant !== Variant.Logos ? variants[variant] : logosColor" v-show="variant === activeVariant" :key="icon" flex>
           <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
             <Icon :icon="icon" text="darkblue dark:white/80" />
           </button>
         </li>
       </ul>
+
+      <details v-if="Variant.Logos === activeVariant" my-40>
+        <summary label op70 mt-32>
+          Monochromatic
+        </summary>
+        <ul pl-0 flex flex-wrap select-none text-2xl class="vp-raw -ml-8">
+          <li v-for="icon in logosMono" v-show="activeVariant === activeVariant" :key="icon" flex>
+            <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
+              <Icon :icon="icon" text="darkblue dark:white/80" />
+            </button>
+          </li>
+        </ul>
+      </details>
 
       <div
         ref="modal" fixed :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }" transition-bottom
