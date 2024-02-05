@@ -34,7 +34,7 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div mb-136 class="vp-raw">
+  <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb-136' : 'mb-64'">
     <component :is="h1 ? 'h1' : 'h2'" text="darkblue dark:white">
       <slot name="headline" />
     </component>
@@ -43,7 +43,7 @@ watchEffect(async () => {
       <slot name="subline" />
     </p>
 
-    <Tags :tags="tags" mt-24 />
-    <Grid :items="items" mt-64 />
+    <Tags v-if="tags?.length > 0 " :tags="tags" mt-24 />
+    <Grid v-if="items?.length > 0" :items="items" mt-64 />
   </div>
 </template>
