@@ -61,7 +61,7 @@ watchEffect(() => {
     params.set('icon', selectedIcon.value)
   else
     params.delete('icon')
-  globalThis.history.replaceState({}, '', `${globalThis.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`)
+  globalThis.history?.replaceState({}, '', `${globalThis.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`)
 })
 
 const { copy: copyToClipboard, copied } = useClipboard({ copiedDuring: 3000 })

@@ -18,10 +18,10 @@ watch(model, setPill, { immediate: true })
 
 const pillStyles = ref({ left: '0px', width: '0px' })
 function setPill() {
-  const selectedLabel = document.querySelector(`#${randomName}-${model.value}`)?.parentElement as HTMLLabelElement
+  const selectedLabel = globalThis.document?.querySelector(`#${randomName}-${model.value}`)?.parentElement as HTMLLabelElement
   if (!selectedLabel)
     return
-  window.requestAnimationFrame(() => {
+  globalThis.window?.requestAnimationFrame(() => {
     pillStyles.value = { left: `${selectedLabel.offsetLeft}px`, width: `${selectedLabel.offsetWidth}px` }
   })
 }
