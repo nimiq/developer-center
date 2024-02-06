@@ -16,13 +16,13 @@ links:
     href: learn/
   - label: Validators and Stakers
     title: Learn about the pillars of Albatross PoS
-    href: protocol/validators/validators-and-stakers
+    href: learn/protocol/validators/validators-and-stakers
   - label: Staking contract
     title: Everything for validators, stakers, and staking.
-    href: protocol/validators/staking-contract
+    href: learn/protocol/validators/staking-contract
   - label: Block format
     title: Everything about micro and macro blocks.
-    href: protocol/block-format
+    href: learn/protocol/block-format
 buildTogetherLinks:
   - title: Start building
     icon: i-nimiq:icons-lg-tools
