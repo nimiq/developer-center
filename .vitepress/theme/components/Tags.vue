@@ -10,7 +10,7 @@ const tags = computed(() => new Set(props.tags || []))
 
 const icons = {
   [Tag.RPC]: 'i-nimiq:icons-lg-nodes',
-  [Tag.WebClient]: 'i-nimiq:icons-lg-globe',
+  [Tag.WebClient]: 'i-nimiq:globe',
   [Tag.Validator]: 'i-nimiq:icons-lg-verified',
   [Tag.Design]: 'i-nimiq:icons-lg-palette',
 }
