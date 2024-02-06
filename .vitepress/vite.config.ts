@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import { postcssIsolateStyles } from 'vitepress'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { version } from '../package.json'
 import { generateWebClientDocs } from './scripts/web-client'
 import { getGitStats } from './scripts/git-stats'
@@ -51,6 +52,8 @@ export default defineConfig(async ({ mode }) => {
 
       // https://github.com/webfansplz/vite-plugin-vue-devtools
       VueDevTools(),
+
+      ViteImageOptimizer(),
 
     ],
     resolve: {
