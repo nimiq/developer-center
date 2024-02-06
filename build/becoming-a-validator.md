@@ -2,7 +2,7 @@
 
 ## 1. Setup
 
-This guide assumes the proof-of-stake network client (the node) has been compiled, or that you are running the node through other means, such as Docker. Check [this guide](../README.md#installation) for more information on compiling the code yourself.
+This guide assumes the proof-of-stake network client (the node) has been compiled, or that you are running the node through other means, such as Docker. Check [this guide](https://github.com/nimiq/core-rs-albatross/blob/albatross/README.md#installation) for more information on compiling the code yourself.
 
 This guide provides two methods for sending JSON-RPC commands to your node:
 
