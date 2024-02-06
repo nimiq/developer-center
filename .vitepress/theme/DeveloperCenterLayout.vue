@@ -41,12 +41,13 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     `polygon(${getHexagonPoints(x, y, maxDistance)})`,
   ]
 
-  await document.startViewTransition(async () => {
+  // @ts-expect-error Type not updated
+  await globalThis.document.startViewTransition(async () => {
     isDark.value = !isDark.value
     await nextTick()
   }).ready
 
-  document.documentElement.animate(
+  globalThis.document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
