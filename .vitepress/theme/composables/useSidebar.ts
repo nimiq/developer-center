@@ -27,7 +27,7 @@ export interface SidebarControl {
   isActiveLink: Ref<boolean>
   hasActiveLink: ComputedRef<boolean>
   hasChildren: ComputedRef<boolean>
-  toggle(): void
+  toggle: () => void
 }
 
 export function useSidebar() {
