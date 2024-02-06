@@ -11,7 +11,8 @@ import { version } from '../package.json'
 import { generateWebClientDocs } from './scripts/web-client'
 import { getGitStats } from './scripts/git-stats'
 
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(async ({ mode, isPreview }) => {
+  const environment = isPreview ? 'Preview' : mode
   await generateWebClientDocs()
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()
 
@@ -30,7 +31,7 @@ export default defineConfig(async ({ mode }) => {
       __ALBATROSS_COMMIT_DATE__: JSON.stringify(albatrossCommitDate.toString()),
       __REPO_URL__: JSON.stringify(repoUrl),
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
-      __BUILD_ENVIRONMENT__: JSON.stringify(mode),
+      __BUILD_ENVIRONMENT__: JSON.stringify(environment),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     },
 
