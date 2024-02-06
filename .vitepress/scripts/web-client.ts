@@ -26,6 +26,8 @@ export async function generateWebClientDocs() {
 
   // Update entry file with frontmatter to disable the "next" footer button
   const entryFile = join(__dirname, '../../build/web-client/index.md')
+  console.log(`Web-Client docs entry file: ${entryFile}`) // eslint-disable-line no-console
+
   let entryFileContent = readFileSync(entryFile, 'utf-8')
   entryFileContent = `---\ndocFooter: false\n---\n${entryFileContent}`
   writeFileSync(entryFile, entryFileContent)
