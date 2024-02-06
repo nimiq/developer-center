@@ -14,20 +14,15 @@ const isNormal = computed(() => props.item.type === CardType.Normal)
 const hasBgIcon = computed(() => props.item.type === CardType.Bg && props.item.icon)
 const isIcon = computed(() => props.item.type === CardType.Icon)
 const centered = computed(() => isIcon.value)
-
-// const [r, g, b] = {
-//     blue: [5, 130, 202],
-//     green: [19, 181, 157],
-//   }[c]
-const blueShadow = '0px 18px 38px rgba(5, 130, 202, 0.07), 0px 7px 8.5px rgba(5, 130, 202, 0.04), 0px 2px 2.5px rgba(19,181,157, 0.02)'
-const greenShadow = '0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(19, 181, 157, 0.04), 0px 2px 2.5px rgba(19, 181, 157, 0.02)'
 </script>
 
 <template>
   <div
-    transition hover="-translate-y-6" class="group" rounded-6 shadow
-    :style="{
-      boxShadow: item.bgColor === 'blue' ? blueShadow : item.bgColor === 'green' ? greenShadow : undefined,
+    transition hover="-translate-y-6" class="group" rounded-6
+    :class="{
+      'hover:shadow': !item.bgColor,
+      'hover:blue-shadow': item.bgColor === 'blue',
+      'hover:green-shadow': item.bgColor === 'green',
     }"
   >
     <a
@@ -78,3 +73,13 @@ const greenShadow = '0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(
     </a>
   </div>
 </template>
+
+<style scoped>
+.green-shadow {
+  box-shadow: 0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(19, 181, 157, 0.04), 0px 2px 2.5px rgba(19, 181, 157, 0.02);
+}
+
+.blue-shadow {
+  box-shadow: 0px 18px 38px rgba(5, 130, 202, 0.07), 0px 7px 8.5px rgba(5, 130, 202, 0.04), 0px 2px 2.5px rgba(19,181,157, 0.02);
+}
+</style>
