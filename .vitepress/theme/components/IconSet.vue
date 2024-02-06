@@ -27,7 +27,7 @@ const lastUpdated = ref<Date>(new Date(Date.now()))
 const timeBuild = ref('')
 const variantsTitles = ref(Object.fromEntries(Object.entries(Variant).map(([key, value]) => [value, { label: key }])) as Record<Variant, { label: string }>)
 
-const initialIcon = new URLSearchParams(globalThis.location.search).get('icon') || ''
+const initialIcon = new URLSearchParams(globalThis.location?.search).get('icon') || ''
 const initialVariant = initialIcon.startsWith('nimiq:logos')
   ? Variant.Logos
   : initialIcon.startsWith('nimiq:flags')
@@ -56,7 +56,7 @@ const timeAgo = useTimeAgo(lastUpdated)
 
 const selectedIcon = ref<string>(initialIcon)
 watchEffect(() => {
-  const params = new URLSearchParams(globalThis.location.search)
+  const params = new URLSearchParams(globalThis.location?.search)
   if (selectedIcon.value)
     params.set('icon', selectedIcon.value)
   else
