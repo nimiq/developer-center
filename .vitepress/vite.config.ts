@@ -30,6 +30,7 @@ export default defineConfig(async ({ mode }) => {
       __REPO_URL__: JSON.stringify(repoUrl),
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
       __BUILD_ENVIRONMENT__: JSON.stringify(mode),
+      __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     },
 
     plugins: [

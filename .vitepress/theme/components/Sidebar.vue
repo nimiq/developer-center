@@ -45,7 +45,7 @@ function onSectionTitleClicked(i: number) {
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
         <div w-full border-base-t sticky top-0 bottom--1 class="pl-[var(--pl)]" z-100 bg="lightgray dark:darkblue-1000" cursor-pointer @click="onSectionTitleClicked(i)">
-          <div pt-20 pb-16>
+          <div pt-24 pb-16>
             <button ref="buttons" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
               <p v-if="group.prefix" text-16 op50 font-semibold relative text-left>
                 {{ group.prefix }}
@@ -61,9 +61,9 @@ function onSectionTitleClicked(i: number) {
           </div>
         </div>
 
-        <ul class="pl-[var(--pl)]" pb-20 mt-16>
+        <ul class="pl-[var(--pl)]" pb-20>
           <li v-for="item in group.items" :key="item.text">
-            <SidebarItem :item="item" :depth="0" :class="item.items ? 'my-32' : 'my-8'" />
+            <SidebarItem :item="item" :depth="0" :class="item.items ? 'my-32' : ''" />
           </li>
         </ul>
       </template>

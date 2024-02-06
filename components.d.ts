@@ -9,13 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./.vitepress/theme/components/Button.vue')['default']
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
-    copy: typeof import('./.vitepress/theme/components/DocFooter copy.vue')['default']
     DocFooter: typeof import('./.vitepress/theme/components/DocFooter.vue')['default']
     Environment: typeof import('./.vitepress/theme/components/Environment.vue')['default']
     Footer: typeof import('./.vitepress/theme/components/Footer.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
-    Headline: typeof import('./.vitepress/theme/components/Headline.vue')['default']
     Hero: typeof import('./.vitepress/theme/components/Hero.vue')['default']
     IconSet: typeof import('./.vitepress/theme/components/IconSet.vue')['default']
     PillSelector: typeof import('./.vitepress/theme/components/PillSelector.vue')['default']
