@@ -13,8 +13,8 @@ import { generateWebClientDocs } from './scripts/web-client'
 import { getGitStats } from './scripts/git-stats'
 
 export default defineConfig(async ({ mode }) => {
-  const environment = env.NODE_ENV || mode
-  console.log(`Building for ${environment}. ${JSON.stringify({ nodeEnv: env.NODE_ENV, mode })}`) // eslint-disable-line no-console
+  const environment = env.DEPLOYMENT_ENV || mode
+  console.log(`Building for ${environment}. ${JSON.stringify({ env: env.DEPLOYMENT_ENV, mode })}`) // eslint-disable-line no-console
 
   await generateWebClientDocs()
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()
