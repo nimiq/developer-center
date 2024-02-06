@@ -31,6 +31,7 @@ buildTogetherLinks:
   - title: Run a validator
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
+    href: build/becoming-a-validator
   - title: Use our designs
     href: build/ui/css-framework/overview
     description: Use our components to build something awesome
