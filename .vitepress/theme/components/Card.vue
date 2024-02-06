@@ -18,7 +18,7 @@ const centered = computed(() => isIcon.value)
 
 <template>
   <div
-    transition hover="-translate-y-6" class="group" rounded-6
+    transition hover="-translate-y-6" group rounded-6
     :class="{
       'hover:shadow': !item.bgColor,
       'hover:blue-shadow': item.bgColor === 'blue',
