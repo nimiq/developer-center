@@ -60,7 +60,7 @@ async function copySnippet(type: string) {
     return
 
   if (type === 'Figma') {
-    const a = globalThis?.createElement('a')
+    const a = globalThis.document?.createElement('a')
     if (!a)
       return
     a.href = str
@@ -89,7 +89,7 @@ const copySections = {
   Download: ['Vue', 'Vue TS', 'React', 'React TS', 'Svelte', 'Qwik', 'Solid', 'Astro', 'Unplugin Icons'],
 }
 
-watch(selectedIcon, () => globalThis?.querySelector('footer.VPDocFooter')?.classList.toggle('hidden', !!selectedIcon.value))
+watch(selectedIcon, () => globalThis.document?.querySelector('footer.VPDocFooter')?.classList.toggle('hidden', !!selectedIcon.value))
 
 const iconSize = useLocalStorage('iconSize', [18])
 const sizes = computed(() => ({
