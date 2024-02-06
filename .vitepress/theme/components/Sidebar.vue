@@ -44,7 +44,10 @@ function onSectionTitleClicked(i: number) {
       <span id="sidebar-aria-label" sr-only>Sidebar Navigation</span>
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
-        <div w-full border-base-t sticky top-0 bottom--1 class="pl-[var(--pl)]" z-100 bg="lightgray dark:darkblue-1000" cursor-pointer @click="onSectionTitleClicked(i)">
+        <div
+          w-full border-base-t sticky top-0 bottom--1 z-100 bg="lightgray dark:darkblue-1000" cursor-pointer
+          @click="onSectionTitleClicked(i)"
+        >
           <div pt-24 pb-16>
             <button ref="buttons" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
               <p v-if="group.prefix" text-16 op50 font-semibold relative text-left>
@@ -57,11 +60,14 @@ function onSectionTitleClicked(i: number) {
                 </h3>
               </div>
             </button>
-            <div absolute inset-x-0 bottom--16 bg-gradient-to-b h-16 pointer-events-none from="lightgray dark:darkblue-1000" to-transparent />
+            <div
+              absolute inset-x-0 bottom--16 bg-gradient-to-b h-16 pointer-events-none
+              from="lightgray dark:darkblue-1000" to-transparent
+            />
           </div>
         </div>
 
-        <ul class="pl-[var(--pl)]" pb-20>
+        <ul pb-20>
           <li v-for="item in group.items" :key="item.text">
             <SidebarItem :item="item" :depth="0" :class="item.items ? 'my-32' : ''" />
           </li>
@@ -78,7 +84,7 @@ aside {
   bottom: 0;
   left: 0;
   z-index: var(--vp-z-index-sidebar);
-  width: 100vw;
+  width: calc(100vw - 64px);
   max-width: 480px;
   background-color: var(--vp-sidebar-bg-color);
   opacity: 0;
@@ -88,18 +94,7 @@ aside {
   transform: translateX(-100%);
   transition: opacity 0.5s, transform 0.25s ease;
   overscroll-behavior: contain;
-
-  nav {
-    --pl: 40px;
-  }
-
-  &.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-    transition: opacity 0.25s,
-      transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+  padding-left: 40px;
 
   @media (min-width: 960px) {
     margin-top: var(--vp-nav-height);
@@ -113,8 +108,16 @@ aside {
   }
 
   @media (min-width: 1440px) {
-    --pl: max(40px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
     width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+  }
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: opacity 0.25s,
+      transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .dark & {
@@ -132,7 +135,12 @@ aside {
 }
 
 @keyframes slideDown {
-  from { height: 0 ;}
-  to { height: var(--radix-collapsible-content-height); }
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
 }
 </style>
