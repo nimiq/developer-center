@@ -26,7 +26,14 @@ const helpOpen = ref(false)
 const lastUpdated = ref<Date>(new Date(Date.now()))
 const timeBuild = ref('')
 const variantsTitles = ref(Object.fromEntries(Object.entries(Variant).map(([key, value]) => [value, { label: key }])) as Record<Variant, { label: string }>)
-const activeVariant = ref<string>(Variant.Regular)
+
+const initialIcon = new URLSearchParams(globalThis.location.search).get('icon') || ''
+const initialVariant = initialIcon.startsWith('nimiq:logos')
+  ? Variant.Logos
+  : initialIcon.startsWith('nimiq:flags')
+    ? Variant.Flags
+    : initialIcon.startsWith('nimiq:icons-lg') ? Variant.Large : Variant.Regular
+const activeVariant = ref<string>(initialVariant)
 
 onMounted(async () => {
   const json = await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json())
@@ -47,7 +54,15 @@ const logosColor = computed(() => variants.value[Variant.Logos].filter(icon => !
 
 const timeAgo = useTimeAgo(lastUpdated)
 
-const selectedIcon = ref<string>()
+const selectedIcon = ref<string>(initialIcon)
+watchEffect(() => {
+  const params = new URLSearchParams(globalThis.location.search)
+  if (selectedIcon.value)
+    params.set('icon', selectedIcon.value)
+  else
+    params.delete('icon')
+  globalThis.history.replaceState({}, '', `${globalThis.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`)
+})
 
 const { copy: copyToClipboard, copied } = useClipboard({ copiedDuring: 3000 })
 
