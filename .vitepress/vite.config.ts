@@ -1,4 +1,5 @@
 import { URL, fileURLToPath } from 'node:url'
+import { env } from 'node:process'
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -11,8 +12,9 @@ import { version } from '../package.json'
 import { generateWebClientDocs } from './scripts/web-client'
 import { getGitStats } from './scripts/git-stats'
 
-export default defineConfig(async ({ mode, isPreview }) => {
-  const environment = isPreview ? 'Preview' : mode
+export default defineConfig(async ({ mode }) => {
+  const environment = env.NODE_ENV || mode
+
   await generateWebClientDocs()
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()
 
