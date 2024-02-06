@@ -9,6 +9,7 @@ const props = defineProps<{
 }>()
 
 const slots = defineSlots<{
+  label: () => void
   headline: () => void
   subline: () => void
 }>()
@@ -35,6 +36,12 @@ watchEffect(async () => {
 
 <template>
   <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb-136' : 'mb-64'">
+    <div v-if="slots.label" mb-8>
+      <span label op50>
+        <slot name="label" />
+      </span>
+    </div>
+
     <component :is="h2 ? 'h2' : 'h1'" text="darkblue dark:white">
       <slot name="headline" />
     </component>

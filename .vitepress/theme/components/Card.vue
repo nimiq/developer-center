@@ -25,7 +25,7 @@ const greenShadow = '0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(
 
 <template>
   <div
-    transition hover="-translate-y-6" class="group" shadow
+    transition hover="-translate-y-6" class="group" rounded-6 shadow
     :style="{
       boxShadow: item.bgColor === 'blue' ? blueShadow : item.bgColor === 'green' ? greenShadow : undefined,
     }"
@@ -62,8 +62,8 @@ const greenShadow = '0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(
         {{ item.title }}
       </component>
       <p
-        v-if="item.description" text="darkblue-50 inverted:white/60" mt-20 z-10 inverted:max-w-256
-        :class="{ 'text-center': centered }"
+        v-if="item.description" text="darkblue-50 inverted:white/60" z-10 inverted:max-w-256
+        :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt-20' : 'mt-12']"
       >
         {{ item.description }}
       </p>

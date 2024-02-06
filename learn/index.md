@@ -1,16 +1,21 @@
 ---
-# links:
-  # - title: What is Nimiq?
-  #   href: '/'
-  #   label: Get started
-  #   bgColor: green
-  # - title: How does it work?
-  #   href: '/how-it-works/'
-  #   label: Learn more
-  # - title: What can I do with it?
-  #   href: '/use-cases/'
-  #   label: Use cases
-  #   bgColor: blue
+links:
+  - title: Validators and Stakers
+    description: Learn about the pillars of Albatross PoS
+    href: 'protocol/validators/validators-and-stakers'
+    bgColor: green
+  - title: Staking contract
+    description:  The repository of data for validators, stakers, and staking.
+    href: 'protocol/validators/staking-contract'
+  - title: Block format
+    description: Everything about micro and macro blocks.
+    href: 'protocol/block-format'
+becomeValidator:
+  - title: Run a validator
+    description: Start earning by validating blocks and securing the network.
+    bgColor: blue
+    icon: 'i-nimiq:icons-lg-verified'
+    duration: '30-45 min'
 prev: false
 next: false
 aside: false
@@ -18,8 +23,13 @@ footer: false
 
 ---
 
-<!-- <Hero :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links"> -->
-<Hero>
+::: warning Work in progress
+
+Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
+
+:::
+
+<Hero mt-64 :items="$frontmatter.links">
   <template #headline>
     Nimiq - a blockchain built from scratch
   </template>
@@ -28,8 +38,12 @@ footer: false
   </template>
 </Hero>
 
-::: warning Work in progress
-
-Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
-
-:::
+<Hero mt-32 h2 :items="$frontmatter.becomeValidator">
+  <template #label>Build</template>
+  <template #headline>
+    Become a validator
+  </template>
+  <template #subline>
+    Setting your own validator is easy.
+  </template>
+</Hero>
