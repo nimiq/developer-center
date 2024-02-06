@@ -48,9 +48,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
             </a>
           </div>
           <TooltipArrow as-child>
-            <div bg-pink>
-              <div i-nimiq:tooltip-triangle fill-darkblue w-100 />
-            </div>
+            <div i-nimiq:tooltip-triangle text-darkblue text-64 relative h-4 rotate-180 />
           </TooltipArrow>
         </TooltipContent>
       </TooltipPortal>
