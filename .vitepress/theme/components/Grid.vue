@@ -28,15 +28,15 @@ const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(
     <!-- Grid with items with background color -->
     <ul v-if="gridLg.length > 0" flex="~ col md:row md:flex-wrap gap-x-32">
       <li v-for="item in gridLg" :key="item!.title" class="flex-1" max-md="mt-32">
-        <Card :item="item" />
+        <Card :item="item" h-full />
       </li>
     </ul>
 
     <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-x-32">
       <li
-        v-for="item in gridSm" :key="item!.title" :class="{ 'mt-32': gridLg.length > 0 }"
+        v-for="item in gridSm" :key="item!.title" :class="{ 'mt-32': gridLg.length > 0 }" max-md="mt-32"
       >
-        <Card :item="item" />
+        <Card :item="item" h-full />
       </li>
     </ul>
   </div>

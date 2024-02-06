@@ -1,24 +1,25 @@
 ---
 links:
   - bgColor: blue
-    icon: 'i-nimiq:icons-lg-browsermesh'
-    label: 'Build'
-    title: 'Get Started with the Web Client'
-    description:  'Get a Nimiq App up and running in the browser under 5 minutes.'
-    href: 'web-client/'
+    icon: i-nimiq:icons-lg-browsermesh
+    label: Build
+    title: Get Started with the Web Client
+    description:  Get a Nimiq App up and running in the browser under 5 minutes.
+    href: web-client/
     layout: lg
     span: 6
     tags:
       - Web Client
-#   - title: Create a transaction
-#   - title: Create a wallet
-assetsLinks: []
-#   - title: Nimiq Style
-#     description: Creating a Nimiq App? Use our style guide.
-#   - title: Nimiq Icons
-#     description: Use our icons in your app.
-#   - title: Nimiq Logos
-#     description: Use our logos in your app.
+  - label: Run a validator
+    title: Collect stake, validate blocks and earn.
+    tags: [Validator]
+  - label: Our design rules
+    title: Design something awesome
+    href: https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0
+    tags: [Design]
+  - label: Nimiq 1.0
+    title: The first version of Nimiq
+    href: build/web-client
 prev: false
 next: false
 aside: false
@@ -26,7 +27,7 @@ outline: false
 footer: false
 ---
 
-<Hero :tags="$frontmatter.links.map(l => l.tag).concat($frontmatter.assetsLinks.map(l => l.tag)).filter(Boolean)" :items="$frontmatter.links">
+<Hero :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" :items="$frontmatter.links">
   <template #headline>
     Let's build together
   </template>

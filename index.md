@@ -3,43 +3,47 @@ layout: home
 
 links:
   - bgColor: blue
-    icon: 'i-nimiq:icons-lg-browsermesh'
-    label: 'Build'
-    title: 'Get Started with Nimiq'
-    description:  'Create an app on Nimiq and have it running in 5 minutes.'
-    href: 'build/'
-    layout: lg
-    span: 3
+    icon: i-nimiq:icons-lg-browsermesh
+    label: Build
+    title: Get Started with Nimiq
+    description:  Create an app on Nimiq and have it running in 5 minutes.
+    href: build/
   - bgColor: green
-    icon: 'i-nimiq:icons-lg-cubes'
-    label: 'Learn'
-    title: 'The underlying technology'
-    description: 'Learn what makes Nimiq a truly unique blockchain.'
-    href: 'learn/'
-    span: 3
-    layout: lg
-  - label: 'Learn'
-    title: 'The underlying technology'
-    description: 'Learn what makes Nimiq a truly unique blockchain.'
-    href: 'learn/'
-    span: 3
-    layout: lg
+    icon: i-nimiq:icons-lg-cubes
+    label: Learn
+    title: The underlying technology
+    description: Learn what makes Nimiq a truly unique blockchain.
+    href: learn/
+  - label: Validators and Stakers
+    title: Learn about the pillars of Albatross PoS
+    href: protocol/validators/validators-and-stakers
+  - label: Staking contract
+    title: Everything for validators, stakers, and staking.
+    href: protocol/validators/staking-contract
+  - label: Block format
+    title: Everything about micro and macro blocks.
+    href: protocol/block-format
 buildTogetherLinks:
-  - title: Learn
-    description: Learn about the basic and advanced concepts.
-    icon: i-nimiq:icons-lg-bulb
-    href:  'learn/'
-  - title: Build
-    description: Create apps that connect to the blockchain.
+  - title: Start building
     icon: i-nimiq:icons-lg-tools
-    href:  'build/'
-  # - title: Run a Validator
-  #   description: Collect stake, blocks and earn.
-  #   icon: i-nimiq:icons-lg-verified
-  #   href:  '/'
+    description: Connect and interact with the Albatross using JS
+    href: build/web-client
+  - title: Run a validator
+    icon: i-nimiq:icons-lg-verified
+    description: Collect stake, validate blocks and earn.
+  - title: Use our designs
+    href: build/ui/css-framework/overview
+    description: Use our components to build something awesome
+    icon: i-nimiq:icons-lg-palette
 ---
 
-<Hero :items="$frontmatter.links">
+::: warning Work in progress
+
+Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
+
+:::
+
+<Hero mt-64 :items="$frontmatter.links">
   <template #headline>
     Welcome to the Nimiq Developer Center
   </template>
@@ -53,7 +57,7 @@ buildTogetherLinks:
     Let's build together
   </template>
   <template #subline>
-    Create apps, contribute to the network or run a validator.
+    Create apps, run a validator or craft something delightful with Nimiq.
   </template>
 </Hero>
 

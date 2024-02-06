@@ -204,11 +204,9 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 How can I use it?
               </button>
             </div>
-            <div ml-auto>
-              <button p-6 @click="selectedIcon = undefined">
-                <div i-nimiq:cross text="12 darkblue-40 dark:white/60" />
-              </button>
-            </div>
+            <button ml-auto p-6 @click="selectedIcon = undefined">
+              <div i-nimiq:cross text="12 darkblue-40 dark:white/60" />
+            </button>
           </div>
 
           <div mt-24 flex flex-wrap gap-y-16 gap-x-24>
