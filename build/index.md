@@ -18,9 +18,6 @@ links:
     title: Design something awesome
     href: https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0
     tags: [Design]
-  - label: Nimiq 1.0
-    title: The first version of Nimiq
-    href: build/web-client
 prev: false
 next: false
 aside: false
