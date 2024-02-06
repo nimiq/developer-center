@@ -115,6 +115,9 @@ devDependencies:
   unplugin-vue-components:
     specifier: ^0.26.0
     version: 0.26.0(vue@3.4.15)
+  vite:
+    specifier: ^5.0.12
+    version: 5.0.12(@types/node@20.11.13)
   vite-plugin-vue-devtools:
     specifier: 7.0.13
     version: 7.0.13(vite@5.0.12)
