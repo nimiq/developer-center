@@ -85,7 +85,7 @@ function treatAsHtml(filename: string): boolean {
 
 <template>
   <div>
-    <a v-if="!hasChildren" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" op80 flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink }" transition-all>
+    <a v-if="!hasChildren" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" op80 flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink }" transition-all py-8>
       <div w-2 h-19 rounded-2 :bg="isActiveLink ? 'blue' : 'transparent'" transition-colors />
       {{ item.text }}
     </a>
@@ -98,9 +98,9 @@ function treatAsHtml(filename: string): boolean {
             <span label op80>{{ item.text }}</span>
           </AccordionTrigger>
         </AccordionHeader>
-        <AccordionContent class="accordion-content" of-hidden>
-          <ul mt-16 bottom--8 relative>
-            <li v-for="sub in item.items " :key="sub.text" py-8>
+        <AccordionContent class="accordion-content" of-hidden pl-8>
+          <ul mt-4 bottom--8 relative>
+            <li v-for="sub in item.items " :key="sub.text">
               <SidebarItem :item="sub" :depth="depth + 1" />
             </li>
           </ul>

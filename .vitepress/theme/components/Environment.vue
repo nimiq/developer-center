@@ -2,9 +2,9 @@
 import { useTimeAgo } from '@vueuse/core'
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'radix-vue'
 
-const now = new Date(Date.now())
-const builtTime = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(now)
-const timeAgo = useTimeAgo(now)
+const buildTimeDate = new Date(__BUILD_TIME__)
+const builtTime = new Intl.DateTimeFormat('en', { dateStyle: 'short', timeStyle: 'short' }).format(buildTimeDate)
+const timeAgo = useTimeAgo(buildTimeDate)
 
 const repoLastCommitUrl = __REPO_LAST_COMMIT_URL__
 const repoLastCommitHash = __REPO_LAST_COMMIT_HASH__
@@ -32,7 +32,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
 
           <p op70 flex="~ items-center gap-6">
             Give us feedback on <a href="https://t.me/nimiq" target="_blank" rel="noopener" group flex="~ items-center gap-6">
-              <div class="i-nimiq:logos-telegram" />
+              <div class="i-nimiq:logos-telegram-mono" />
               Telegram
               <div i-nimiq:arrow-top-right w-8 op70 group-hover="translate-x-2 translate-y--2" duration-100ms />
             </a>

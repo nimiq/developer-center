@@ -5,3 +5,4 @@ declare const __ALBATROSS_COMMIT_DATE__: string
 declare const __REPO_URL__: string
 declare const __DEVELOPER_CENTER_VERSION__: string
 declare const __BUILD_ENVIRONMENT__: string
+declare const __BUILD_TIME__: string
