@@ -48,7 +48,7 @@ jobs:
           touch .vitepress/dist/.nojekyll
       - name: Test
         run: |
-          ls build/web-client
+          find . -name 'node_modules' -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
