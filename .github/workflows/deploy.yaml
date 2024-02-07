@@ -43,8 +43,8 @@ jobs:
         run: pnpm install
       - name: Build with VitePress
         run: |
-          ls build/web-client
           DEPLOYMENT_ENV=Preview pnpm build
+          ls build/web-client
           touch .vitepress/dist/.nojekyll
       - name: Test
         run: |
