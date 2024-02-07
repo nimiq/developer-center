@@ -70,9 +70,9 @@ The output must be saved because it will be needed later in this guide.
 ### 2.2 Configuration
 
 Run the node once. It will generate an example configuration file in the default config folder. On Linux, that's `~/.nimiq`.
-You need to copy `~/.nimiq/client.toml.example` to `~/.nimiq/client.toml`. You can leave most configuration options as they are for now to start a basic full node.
+You need to copy `~/.nimiq/client.toml.example` to `~/.nimiq/client.toml`. You can leave most configuration options as they are for now to start a basic full node.
 
-To be able to control your node and to stake and validate, you need to enable the JSON-RPC server in your `client.toml`. Make sure the RPC section called `[rpc-server]` in the configuration file is enabled by uncommenting it.
+To be able to control your node and to stake and validate, you need to enable the JSON-RPC server in your `client.toml`. Make sure the RPC section called `[rpc-server]` in the configuration file is enabled by uncommenting it.
 
 Note that you can also configure your node to use `history` as the `sync_mode`. For that, you could change the `consensus` section of your config file to set `sync_mode` like in the following example:
 
@@ -127,7 +127,7 @@ certificates = "/path/to/full_certificates_file.pem"
 
 ### 2.4 Start your node and sync the blockchain
 
-After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run —release —bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
+After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run —release —bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
 
 ::: info Note
 When running your node through other means, such as a Docker container, refer to their respective documentation on how to start you node with your own config.
