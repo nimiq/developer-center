@@ -43,8 +43,12 @@ jobs:
         run: pnpm install
       - name: Build with VitePress
         run: |
+          ls build/web-client
           DEPLOYMENT_ENV=Preview pnpm build
           touch .vitepress/dist/.nojekyll
+      - name: Test
+        run: |
+          ls build/web-client
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
