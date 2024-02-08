@@ -41,14 +41,6 @@ Micro blocks contain user transactions, and each micro block is produced and sig
 
 Note that only one of those is added as justification. The block producer signs the block when the micro block is produced within the expected time. But when the micro block isn't produced in the expected time, a `SkipBlockProof` is added instead.
 
-<br/>
-
-<p align="center">
-  <img src="/assets/images/protocol/micro-block.png" alt="Alt Text" width="200" height="100">
-</p>
-
-<br/>
-
 ### Macro Blocks
 
 There are two types of macro blocks: election and checkpoint. A new validator list is elected in every election macro block, and the staking contract is updated accordingly. Macro blocks are produced with Tendermint, where a random validator is chosen to propose the new macro block. User transactions are not included in macro blocks.
