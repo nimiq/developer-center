@@ -68,9 +68,7 @@ Stakers delegate their stake to validators, but validators are not aware of thei
 | `retired_balance` | `Coin` | The staker's retired balance. Retired balance can be withdrawn immediately. |
 | `delegation` | `Option<Address>` | The address of the validator the staker is delegating its stake to. |
 
-<br/>
-
-************************Transactions************************
+### Transactions
 
 Stakers can also send transactions to the network to update their validators or change the state of their stake.
 

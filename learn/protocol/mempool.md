@@ -38,13 +38,7 @@ After the two mempools are fed with transactions respecting the verification pro
 - Transactions with higher fees have priority against transactions with lower fees (mind that this is not the rule. While high fees encourage validators to add the transaction to the block, nothing in the protocol prevents the validator from adding a transaction with low fees)
 - New transactions have priority over older ones.
 
-<br/>
-
-<p align="center">
-    <img src="/assets/images/protocol/mempool-1.png" alt="Alt Text" width="450" height="225">
-</p>
-
-<br/>
+![Alt Text](/assets/images/protocol/mempool.png)
 
 > 💡 Note that once the transactions are added to the micro block, they aren’t ordered. The order is made in the mempool.
 
