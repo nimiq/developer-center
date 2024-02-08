@@ -2,8 +2,6 @@
 
 Nimiq Proof-of-Stake has two modes for consensus: optimistic and pessimistic mode. The optimistic mode considers that all validators are honest and won't misbehave. But, the pessimistic mode considers having misbehaving validators.
 
-<br/>
-
 **Optimistic mode** - Considering all validators are rational and don’t attempt to tamper with the blockchain, we demonstrate how the validators would perform to produce and propose blocks:
 
 1. In every new epoch, a new validator list is selected randomly. Validators are chosen proportionally to their stake. The higher the stake, the higher the probability of owning more [slots](validators/slots.md).
@@ -14,8 +12,6 @@ Nimiq Proof-of-Stake has two modes for consensus: optimistic and pessimistic mod
 6. The macro block leader is selected with the VRF seed present in the previous micro block.
 7. The macro block leader proposes a new macro block that doesn’t include any transactions. If the macro block marks the end of a batch, the validators list remains the same. If the macro block marks the end of an epoch, a new validator list is selected with a VRF seed.
 8. To accept a macro block, the block leader and the rest of the validators list must sign the proposal and broadcast it.
-
-<br/>
 
 **Pessimist mode** - We can also anticipate that some validators can maliciously behave. Validators that act maliciously get punished. Nimiq PoS blockchain is inspired by the BFT algorithm, so it tolerates up to one-third of the validators misbehaving. Even considering this case, we can still achieve a decent block production performance. Next, we explain how to achieve the expected performance with malicious validators on:
 
@@ -28,8 +24,6 @@ Nimiq Proof-of-Stake has two modes for consensus: optimistic and pessimistic mod
   <br/>
 
 In either case, the malicious validators are punished according to the punishment rules of the consensus algorithm.
-
-<br/>
 
 - Macro blocks: Macro blocks have finality, meaning that they are forkless. Yet, the elected leader can fail with the macro block proposal. There are two ways to attempt to tamper with macro blocks:
   - Failing to make a macro block proposal. If a validator doesn’t propose a macro block in the expected time, Tendermint has its procedure to select a new macro block leader.
