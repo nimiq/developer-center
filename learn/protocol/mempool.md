@@ -57,7 +57,7 @@ After the two mempools are fed with transactions respecting the verification pro
 <br/>
 
 <p align="center">
-    <img src="/assets/images/protocol/mempool-1.png" alt="Alt Text" width="450" height="225">
+    <img src="/assets/images/protocol/mempool.png" alt="Alt Text" width="450" height="225">
 </p>
 
 <br/>
