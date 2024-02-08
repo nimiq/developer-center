@@ -8,7 +8,7 @@ The Nimiq Proof-of-Stake consensus algorithm has micro and macro blocks. Validat
 
 ## Micro Blocks
 
-Micro blocks contain user transactions, and each micro block is produced and signed by a validator according to the validator selection. There is also another type of micro block, that is produced when there is a delay in the block production - a [skip block](skip-blocks.md).
+Micro blocks contain user transactions, and each micro block is produced and signed by a validator according to the validator selection. There is also another type of micro block, that is produced when there is a delay in the block production - a [skip block](/learn/protocol/validators/skip-blocks.md).
 
 ### Micro header
 
