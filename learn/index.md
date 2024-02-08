@@ -4,16 +4,17 @@ links:
     description: Learn about the pillars of Albatross PoS
     href: 'protocol/validators/validators-and-stakers'
     bgColor: green
-  - title: Staking contract
+  - title: Staking Contract
     description:  The repository of data for validators, stakers, and staking.
     href: 'protocol/validators/staking-contract'
-  - title: Block format
+  - title: Block Format
     description: Everything about micro and macro blocks.
     href: 'protocol/block-format'
 becomeValidator:
   - title: Run a validator
     description: Start earning by validating blocks and securing the network.
     bgColor: blue
+    href: '/nimiq-developer-center/build/becoming-a-validator'
     icon: 'i-nimiq:icons-lg-verified'
     duration: '30-45 min'
 prev: false
