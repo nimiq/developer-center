@@ -30,7 +30,7 @@ Micro blocks contain user transactions, and each micro block is produced and sig
 | Data field | Description |
 | --- | --- |
 | `equivocation_proofs` | Equivocation proofs for this block. This field could be empty as equivocation proofs aren't present in every block. |
-| `transactions` | Contains all the transactions of the block. This field might be empty in blocks without any transactions. (see [skip blocks](skip-blocks.md)). |
+| `transactions` | Contains all the transactions of the block. This field might be empty in blocks without any transactions. (see [skip blocks](/learn/protocol/validators/skip-blocks.md)). |
 
 ### Micro justification
 
