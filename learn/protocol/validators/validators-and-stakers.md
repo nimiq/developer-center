@@ -85,15 +85,16 @@ Stakers delegate their stake to validators, but validators are not aware of thei
 
 | Data | Type | Description |
 | --- | --- | --- |
-| `address` | `Address` | The address and identifier of the staker, which can be used for all transactions (except for the stake one, which any address can make) |
-| `balance` | `Coin` | The staker active balance; the staker can withdraw its stake after the reporting window period passes |
-| `inactive_balance` | `Coin` | The staker inactive balance |
-| `inactive_from` | `Option<32>` | The block height at which the staker’s validator got jailed |
-| `delegation` | `Option<Address>` | The address of the validator for which the staker delegated its stake. |
+| `address` | `Address` | The address of the staker. Used for most transactions, except AddStake which accepts any address. |
+| `active_balance` | `Coin` | The staker's active balance. |
+| `inactive_balance` | `Coin` | The staker's inactive balance. Only released inactive balance can be withdrawn. |
+| `inactive_from` | `Option<u32>` | The block number at which the inactive balance was last inactivated (it becomes effectively inactive on the next election block). |
+| `retired_balance` | `Coin` | The staker's retired balance. Retired balance can be withdrawn immediately. |
+| `delegation` | `Option<Address>` | The address of the validator the staker is delegating its stake to. |
 
 <br/>
 
-************************Transactions************************
+**Transactions**
 
 Stakers can also send transactions to the network to update their validators or change the state of their stake.
 
@@ -101,8 +102,9 @@ Stakers can also send transactions to the network to update their validators or 
 
 | Transaction | Description |
 | --- | --- |
-| Create | Creates a new staker |
-| Stake | Adds staeke from an outside address to the staker’s account |
-| SetInactiveState | Sets a specific amount of stake as inactive and restarts the locking period for this stake. The stake becomes inactive at the release block |
-| Update | Updates the validator address the stake is delegated to |
-| Unstake | Removes coins from the staker’s balance |
+| Create | Creates a new staker. |
+| AddStake | Adds coins from any outside address to the staker’s active balance. |
+| SetActiveStake | Re-balances between active and inactive stake by setting the amount of active stake. Indirectly, setting the active balance also sets the inactive balance. |
+| Update | Updates the validator address the stake is delegated to. |
+| RetireStake | Permanently marks a given balance for future withdrawal. Only inactive funds can be retired. |
+| RemoveStake | Removes the retired balance from a staker to outside of the staking contract. |
