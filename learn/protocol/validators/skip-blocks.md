@@ -8,7 +8,7 @@ A skip block is a [micro block](/learn/protocol/block-format.md) with some diffe
 
 As for the justification, it attests that _x_ validator slots received and signed the skip block, and resuming the block production is unanimous among validators. The remainder data fields are similar to a micro block. The following images illustrate their differences:
 
-![Alt Text](/assets/images/protocol/skip-block.png)
+![Alt Text](/assets/images/protocol/skip-block.png) {align=center}
 
 Mind these differentiating aspects:
 
@@ -25,16 +25,17 @@ The chain selection is not affected by skip blocks, unlike forks. Since skip blo
 
 Note that when a validator doesn’t produce the micro block in the expected time, he will be added to the punishment set for attempting to delay the block production. Plus, the skip blocks get a slash inherent that confirms that the delayed validators didn't produce the micro block in the expected time. The slash inherent will then be used for the reward distribution at the end of the batch.
 
+Validators can produce the skip block locally since any variants that would make skip blocks different have been fixed to a value. Therefore, validators only need to send out their signatures to their peers because it’s guaranteed to be the same block.
+
 ### How the skip block is added to the chain:
 
 1. The elected validator doesn’t produce the micro block in the expected time
-2. Any validator in the validator list, upon noticing the missing block, can produce a skip block without being elected to do so
-3. The validator that produces the skip block broadcasts it to the rest of the validator list, and the skip block stays on hold
-4. The rest of the validator list receives the info on the skip block and signs it
-5. When the skip block receives at least 2*f*+1 signatures from the validator list, it’s then added to the chain with a proof in the justification of the block that consists of the aggregated signatures from the validators who signed the skip block (note that the skip block is only added if at least 2*f*+1 validators signed it)
-6. After the block is added, the chain can resume standard production, which means:
-   1. a validator is selected accordingly to the validator selection rules to produce the next micro block
-   2. if the validator elected to produce the next micro block is also delaying the block production, a new skip block is added, and the process above is repeated
+2. Any validator in the validator list, upon noticing the missing block, can produce a skip block without being specifically selected to do so
+3. Validators produces a skip block locally and sign it; they can then relay their signature among their peers and aggregate them
+4. When at least 2*f*+1 signatures have been aggregated, the skip block is added to the chain with a proof in the justification of the block that consists of the aggregated signatures from the validators who signed the skip block
+5. After the block is added, the chain can resume standard production, which means:
+    1. a validator is selected accordingly to the validator selection rules to produce the next micro block
+    2. if the validator elected to produce the next micro block is also delaying the block production, a new skip block is added, and the process above is repeated
 
 There are only two outcomes for a delayed micro block:
 
