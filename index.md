@@ -26,7 +26,7 @@ links:
 buildTogetherLinks:
   - title: Start building
     icon: i-nimiq:icons-lg-tools
-    description: Connect and interact with the Albatross using JS
+    description: Connect and interact with Albatross using JS
     href: build/web-client/
   - title: Run a validator
     icon: i-nimiq:icons-lg-verified
