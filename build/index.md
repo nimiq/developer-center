@@ -10,8 +10,11 @@ links:
     span: 6
     tags:
       - Web Client
-  - label: Run a validator
-    title: Collect stake, validate blocks and earn.
+  - title: Run a validator
+    bgColor: green
+    label: Connect
+    icon: i-nimiq:icons-lg-verified
+    description: Collect stake, validate blocks and earn.
     tags: [Validator]
     href: becoming-a-validator
   - label: Our design rules
