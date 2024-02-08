@@ -1,10 +1,10 @@
 # Skip blocks
 
-Our consensus protocol adapts to the presence of validators who intend to [act maliciously](penalties.md) and disrupt the standard behavior of the blockchain. A single validator is enough to delay block production. In Nimiq consensus algorithm, when a validator doesn't produce a micro block in the expected time, any validator can add a skip block to the chain.
+Our consensus protocol adapts to the presence of validators who intend to [act maliciously](/learn/protocol/penalties.md) and disrupt the standard behavior of the blockchain. A single validator is enough to delay block production. In Nimiq consensus algorithm, when a validator doesn't produce a micro block in the expected time, any validator can add a skip block to the chain.
 
 Despite the cause of the delay, which could be for various reasons such as the validator going offline or wanting to delay the block production purposely, including a skip block avoids a significant delay. Instead of waiting for the delayed validator, any active validator can produce a skip block in place of the expected micro block.
 
-A skip block is a [micro block](block-format.md#micro-blocks) with some differences: it doesn't hold transactions, and consequently, neither a body nor a body root; the VRF seed of this block is the entropy of the random seed of the previous block, as for a new seed to be generated would require a new block leader, and the skip block is leaderless.
+A skip block is a [micro block](/learn/protocol/block-format.md) with some differences: it doesn't hold transactions, and consequently, neither a body nor a body root; the VRF seed of this block is the entropy of the random seed of the previous block, as for a new seed to be generated would require a new block leader, and the skip block is leaderless.
 
 As for the justification, it attests that _x_ validator slots received and signed the skip block, and resuming the block production is unanimous among validators. The remainder data fields are similar to a micro block. The following images illustrate their differences:
 
@@ -17,7 +17,7 @@ Mind these differentiating aspects:
 - The `timestamp` is the previous block timestamp plus the block producer timeout (approximately 10 seconds);
 - Skip blocks have an empty body, as they don’t contain transactions or fork proofs, so the `body_root` of the block’s header is also empty.
 - The `extra_data` field must be empty.
-- Besides the [VRF seed](verifiable-random-functions.md), the entropy of that same seed is used to evenly apply skip blocks across all branches of a malicious fork, while avoiding interference with branching due to skip blocks.
+- Besides the [VRF seed](/learn/protocol/verifiable-random-functions.md), the entropy of that same seed is used to evenly apply skip blocks across all branches of a malicious fork, while avoiding interference with branching due to skip blocks.
 
 The chain resumes the expected performance once the skip block is added. This means that if the slot owner of the next block is also from the delayed validator, another skip block can be added by any active validator, preventing a significant delay. Mind that there is always a delay in the block production, even by adding a skip block, but adding a skip block will shorten the period of the chain without a block.
 
