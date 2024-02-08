@@ -1,6 +1,6 @@
 # Becoming a Validator on the Proof-of-Stake Testnet
 
-## 1. Setup
+## Setup
 
 This guide assumes the proof-of-stake network client (the node) has been compiled, or that you are running the node through other means, such as Docker. Check [this guide](https://github.com/nimiq/core-rs-albatross/blob/albatross/README.md#installation) for more information on compiling the code yourself.
 
@@ -25,9 +25,9 @@ If the `curl` command is not already installed on your machine, try installing i
 
 :::
 
-## 2. Configure and run your node
+## Configure and run your node
 
-### 2.1 Generating your validator address and keys
+### Generating your validator address and keys
 
 For running a validator you need the following items wich we are generating now:
 - A validator address: Nimiq address
@@ -36,14 +36,18 @@ For running a validator you need the following items wich we are generating now:
 - Optionally a fee keypair: Schnorr keypair
 
 Note that we will use these in the following steps to configure your validator.
+
+::: tip
 Keep your public and private keys accessible by writing them down or saving them on your computer.
+Make sure you save the private keys securely, there is no way to recover them!
+:::
 
 <!--
 > **Note**<br>
 > For maximum security, generate and keep your validator address on an offline computer.
 -->
 
-We are generating these keys with utilities included in the `nimiq/core-rs-albatross` repository. Refer to [Setup](#1_setup) above for installation instructions.
+We are generating these keys with utilities included in the `nimiq/core-rs-albatross` repository. Refer to [Setup](#setup) above for installation instructions.
 
 To generate the Schnorr keypairs and the validator address, you can use:
 
@@ -67,7 +71,7 @@ cargo run --release --bin nimiq-bls
 The output must be saved because it will be needed later in this guide.
 :::
 
-### 2.2 Configuration
+### Configuration
 
 Run the node once. It will generate an example configuration file in the default config folder. On Linux, that's `~/.nimiq`.
 You need to copy `~/.nimiq/client.toml.example` to `~/.nimiq/client.toml`. You can leave most configuration options as they are for now to start a basic full node.
@@ -81,7 +85,10 @@ Note that you can also configure your node to use `history` as the `sync_mode`. 
 sync_mode = "history"
 ```
 
-History sync mode uses much more storage (disk) space.
+::: info Note
+History sync mode uses much more storage (disk) space and can take very long to sync.
+As such, we recommend opting for a full node setup to get started quicker.
+:::
 
 The next step is to set up your validator address and keys in the `[validator]` section of your config file:
 
@@ -111,7 +118,7 @@ As previously mentioned, if you are creating a new validator from scratch, and y
 The `fee_key` is used to pay the fees for automatic reactivate transactions (if enabled). Since these fees default to 0 NIM, having the node auto-generate a fee key is safe.
 :::
 
-### 2.3 TLS Certificate
+### TLS Certificate
 
 It is strongly recommended to set up a TLS certificate for your node, because the browser-based Nimiq Wallet can only connect to it via secure connections. In order to maintain a healthy decentralization level within the network, it is advisable for the Nimiq Wallet to connect to as many diverse nodes as possible.
 
@@ -125,7 +132,7 @@ private_key = "/path/to/private_key_file.pem"
 certificates = "/path/to/full_certificates_file.pem"
 ```
 
-### 2.4 Start your node and sync the blockchain
+### Start your node and sync the blockchain
 
 After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run —release —bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
 
@@ -133,7 +140,7 @@ After you finish your configuration, run the client from inside the `core-rs-alb
 When running your node through other means, such as a Docker container, refer to their respective documentation on how to start you node with your own config.
 :::
 
-### 2.5 Check your status with JSON-RPC
+### Check your status with JSON-RPC
 
 If you enabled the JSON-RPC Server in your node’s configuration, you can query your node and send commands with `arpl` or `curl`, as installed in step 1.
 
@@ -198,7 +205,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 
 :::
 
-## 3. Become a Validator
+## Become a Validator
 
 To become a validator, you need to register it in the staking contract by sending a `create_validator` transaction.
 For that you need to have an account with at least the validator deposit fee (100 000 NIM). This guide assumes that this amount is already present in the validator address. To check if that is the case, use this command:
@@ -224,7 +231,7 @@ Note that the `balance` returned is in Luna. Devide by 100'000 to get NIM.
 
 :::
 
-### 3.1 Import your validator keypair
+### Import your validator keypair
 
 To sign and send transactions from your validator account, you need to import its keypair.
 
@@ -268,7 +275,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 In case you are wondering, the `null` as the second parameter is an optional password. You can set a password to lock the account when you import it, which you then need to provide during unlocking, too. The other `null` as the third parameter for unlocking is an unused duration parameter, that nontheless needs to be provided.
 :::
 
-### 3.2 Send a validator-creation transaction
+### Send a validator-creation transaction
 
 Finally, to register your validator, run this with all the keys generated in the beginning:
 
@@ -307,11 +314,15 @@ Your node must have established consensus and be up-to-date with the blockchain 
 Remember, you can check your node's status with the `status` command.
 :::
 
+::: info 💡
+When sending the create transaction, the validator deposit will be deducted from the wallet linked to the validator address.
+:::
+
 ::: info Note
 Validators are only selected to produce blocks at the start of every epoch (every election block), so it may take some time for your validator to be elected to produce blocks.
 :::
 
-### 3.3 Query your validator state
+### Query your validator state
 
 You can now query the staking contract for your validator registration:
 
@@ -338,7 +349,7 @@ It will tell your the public keys of your registered signing and voting keys, as
 If the command responds with an error, your validator creation transaction was likely not successfull. You can ask for support in our Telegram channels, in our Github, or in the community forum.
 :::
 
-## 4. Add stake to your validator
+## Add stake to your validator
 
 A validator itself can only maintain the validator deposit as stake. To stake more than that, you need to _add stake_ to your validator as a staker.
 
@@ -346,11 +357,11 @@ A validator itself can only maintain the validator deposit as stake. To stake mo
 You can stake your NIM on behalf of any registered validator. Your staked NIM then count towards that validator's stake, increasing their (randomly) assigned number of block production slots and thus rewards. Importantly, all staking rewards are received by the validator's reward address, not the stakers. The arrangement of distributing rewards among a validator's stakers is made off-chain and is usually handled by a pool operator or the people who are operating the validator themselves.
 :::
 
-### 4.1. Stake from the Nimiq Wallet
+### Stake from the Nimiq Wallet
 
 You can stake with your validator from the Nimiq Wallet. Go to the staking menu in your NIM address and search for and select your validator's address from the list of validators. Then assign as much NIM to it as you like.
 
-### 4.2 Stake from your node with JSON-RPC
+### Stake from your node with JSON-RPC
 
 You can also send the staking transactions from your node with JSON-RPC. For that, you need to import and unlock the account that holds the NIM you want to stake. Then run the following command to start staking:
 
