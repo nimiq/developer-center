@@ -116,6 +116,7 @@ export default async () => {
             icon: 'i-nimiq:icons-lg-tools',
             items: [
               { text: 'Overview', link: '/build/' },
+              { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
             ],
           },
           {
