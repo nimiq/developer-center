@@ -5,13 +5,9 @@
 - Rust and its package manager Cargo (installation instructions [here](https://www.rust-lang.org/learn/get-started))
 - Clone the Albatross source code from [GitHub](https://github.com/nimiq/core-rs-albatross) and follow the [installation instructions](https://github.com/nimiq/core-rs-albatross#installation)
 
-<br/>
-
 # Usage
 
 The usage of the RPC client is exclusive to Nimiq clients. To interact with the blockchain not using the RPC client, you can read the RPC interface documentation here.
-
-<br/>
 
 1. Open a new terminal and move to the repository directory with `cd core-rs-albatross`
 2. Run `cargo build` to install and compile all the necessary dependencies to build your Nimiq Client. This might take a while and will use your full CPU
@@ -20,18 +16,12 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 5. Run `./nimiq-rpc` to fetch a list of all available commands
 6. For a detailed description of a command usage, add the desired command followed by `--help`
 
-<br/>
-
 > 👉 Commands may require additional arguments and/or allow further options as input. Commands with available options work without the option added; however, commands with arguments return an error if the argument is not added.
-
-<br/>
 
 Listed below are the commands grouped by subject and a few examples of the usage of the RPC client.
 
 <!-- TODO RPC-policy.md does not exists -->
 <!-- [Policy](RPC-policy.md) -->
-
-<br/>
 
 # Examples of using RPC
 
