@@ -1,7 +1,5 @@
 # Transactions
 
-<br/>
-
 Transactions serve as the means to interact with the blockchain. A transaction modifies the state of the blockchain in accordance with the established rules. These transactions are stored in the [micro block](block-format.md#micro-blocks) body. The Nimiq blockchain features four types of [accounts](accounts.md) tailored to serve distinct purposes and thus enable a node to send and receive transactions:
 
 - Basic account
@@ -9,22 +7,14 @@ Transactions serve as the means to interact with the blockchain. A transaction m
 - Vesting contract
 - [Staking contract](validators/staking-contract.md)
 
-<br/>
-
 Once transactions are sent, they are temporarily held in the mempool, where they remain until a validator includes them in the blockchain. The transaction is included once the validator confirms and validates the transaction.
-
-<br/>
 
 The blockchain includes 2 mempools catered to different purposes:
 
 - **Regular mempool** includes Basic, HTLC, and Vesting transactions
 - **Control mempool** includes transactions associated with the staking contract, which are prioritized over regular mempool transactions.
 
-<br/>
-
 Transactions cannot have the same sender and recipient, except for staking-related transactions, where validators and stakers can send a transaction from the staking contract to the staking contract.
-
-<br/>
 
 ## Transaction data
 
@@ -45,19 +35,13 @@ Transactions cannot have the same sender and recipient, except for staking-relat
 
 A transaction must be valid. Once the transaction is validated, the boolean variable `valid` is set to `true`. This way, anyone can verify the transaction has been authenticated.
 
----
-
-### Failing transactions
+## Failing transactions
 
 The validator's responsibility is to ensure that senders have enough balance (at least to pay the transaction fees) to send a transaction before the transaction enters the mempool. Once the validator establishes that the sender has sufficient funds to cover the transaction fees, the transaction is considered valid and is then added to the mempool.
-
-<br/>
 
 Hence, when a validator includes a transaction to the micro block, it may succeed or fail, depending on the sender’s balance:
 
 - **Succeed**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated.
 - **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted.
-
-<br/>
 
 > 💡 Let's consider a scenario where Alice, with 100 NIM in her balance, sends two transactions. In the first transaction (transaction 1), she intends to send 80 NIM to Bob. Following the succeed-fail principle mentioned above, transaction 1 succeeds. However, immediately after, Alice attempts to send 50 NIM to Charlie in transaction 2, which fails due to insufficient balance. Both transactions are recorded in the blockchain. Transaction 1 is logged as a successful transaction, whereas transaction 2 is marked as fail. Our protocol accommodates failed transactions, deducting the associated fees even in cases of failure.
