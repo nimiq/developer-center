@@ -2,7 +2,6 @@ import { URL, fileURLToPath } from 'node:url'
 import { env } from 'node:process'
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { postcssIsolateStyles } from 'vitepress'
 import VueDevTools from 'vite-plugin-vue-devtools'
@@ -48,7 +47,6 @@ export default defineConfig(async ({ mode }) => {
           'vitepress',
         ],
         vueTemplate: true,
-        resolvers: [ElementPlusResolver({ ssr: true })],
       }),
       UnoCSS({ configFile: './.vitepress/uno.config.ts' }),
 

@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetMini, presetTypography, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetMini, presetUno } from 'unocss'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
 import transformerDirectives from '@unocss/transformer-directives'
@@ -25,7 +25,6 @@ export default defineConfig({
   presets: [
     presetMini(),
     presetUno({ attributifyPseudo: true }),
-    presetTypography(),
     presetAttributify(),
     presetIcons({
       collections: {

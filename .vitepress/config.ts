@@ -234,6 +234,9 @@ export default async () => {
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+
+      // TODO Move to a lib
+      ['link', { rel: 'stylesheet', href: 'https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/typography/typography.css' }],
     ],
   })
 }
