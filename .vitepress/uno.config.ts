@@ -58,7 +58,7 @@ export default defineConfig({
         80: '#4c4f6d',
         90: '#35395a',
         94: '#2c3053',
-        1000: '#12163C',
+        1000: '#1b1d33',
         dimmed: '#292d51',
       },
       blue: {

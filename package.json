@@ -45,6 +45,7 @@
     "eslint": "^8.56.0",
     "lint-staged": "^15.2.2",
     "markdown-it-container": "^4.0.0",
+    "node-html-parser": "^6.1.12",
     "postcss": "^8.4.34",
     "sharp": "^0.33.2",
     "simple-git-hooks": "^2.9.0",
