@@ -15,12 +15,28 @@ const baseUrl = '/nimiq-developer-center/'
 export default async () => {
   await generateWebClientDocs()
 
+  function getDevOnly(isDev: boolean) {
+    if (!isDev)
+      return []
+
+    return [
+      { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' },
+      {
+        text: 'Nimiq Typography',
+        items: [
+          { text: 'Getting started', link: '/build/ui/design-kit/typography/' },
+          { text: 'Demo', link: '/build/ui/design-kit/typography/demo' },
+        ],
+      },
+    ]
+  }
+
   return defineConfig({
     base: baseUrl,
     title: 'Nimiq Developer Center',
     srcExclude: ['**/README.md'],
     description:
-      'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
+    'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
 
     lastUpdated: true,
     cleanUrls: true,
@@ -147,9 +163,7 @@ export default async () => {
                 collapsed: false,
                 items: [
                   { text: 'Design Guidelines', link: '/build/ui/design-kit/guidelines' },
-                  env.ENV_MODE !== 'production'
-                    ? { text: 'Nimiq Icons', link: '/build/ui/design-kit/icons' }
-                    : {},
+                  ...getDevOnly(env.ENV_MODE !== 'production'),
                 ],
               },
               {
