@@ -29,6 +29,9 @@ dependencies:
   medium-zoom:
     specifier: ^1.1.0
     version: 1.1.0
+  nimiq-typography:
+    specifier: 0.0.1
+    version: 0.0.1
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -4671,6 +4674,10 @@ packages:
   /next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
+
+  /nimiq-typography@0.0.1:
+    resolution: {integrity: sha512-PZ6m7cMFkNgLut63apRKSY6dF3rfbq84Ax+t3G24zodRHn+CSXlmQyPzEYunsfuShh8PyaHt+uYISmbjfBzOfg==}
+    dev: false
 
   /node-fetch-native@1.6.1:
     resolution: {integrity: sha512-bW9T/uJDPAJB2YNYEpWzE54U5O3MQidXsOyTfnbKYtTtFexRvGzb1waphBN4ZwP6EcIvYYEOwW0b72BpAqydTw==}

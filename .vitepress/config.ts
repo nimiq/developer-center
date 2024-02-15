@@ -20,7 +20,7 @@ export default async () => {
     title: 'Nimiq Developer Center',
     srcExclude: ['**/README.md'],
     description:
-    'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
+      'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
 
     lastUpdated: true,
     cleanUrls: true,
@@ -234,9 +234,6 @@ export default async () => {
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-
-      // TODO Move to a lib
-      ['link', { rel: 'stylesheet', href: 'https://raw.githack.com/onmax/nimiq-ui/main/packages/typography/typography.css' }],
     ],
   })
 }

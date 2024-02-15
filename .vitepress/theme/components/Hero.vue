@@ -5,7 +5,7 @@ import type { CardType, Tag } from './types'
 const props = defineProps<{
   tags?: Array<Tag>
   items: Omit<CardType, 'type'>[]
-  h2: boolean
+  h2: { type: boolean, required: false }
 }>()
 
 const slots = defineSlots<{
@@ -35,7 +35,7 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb-136' : 'mb-64'">
+  <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb136' : 'mb64'">
     <div v-if="slots.label" mb-8>
       <span label op50>
         <slot name="label" />
