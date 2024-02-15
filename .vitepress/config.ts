@@ -236,7 +236,7 @@ export default async () => {
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
 
       // TODO Move to a lib
-      ['link', { rel: 'stylesheet', href: 'https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/typography/typography.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://raw.githack.com/onmax/nimiq-ui/main/packages/typography/typography.css' }],
     ],
   })
 }

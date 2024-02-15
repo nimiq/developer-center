@@ -6,12 +6,12 @@ import { h, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 import { createHead } from '@unhead/vue'
-import DeveloperCenterLayout from './DeveloperCenterLayout.vue'
+import MainLayout from './MainLayout.vue'
 
 export default {
   extends: Theme,
   Layout: () => {
-    return h(DeveloperCenterLayout)
+    return h(MainLayout)
   },
   enhanceApp({ app }) {
     const head = createHead()
