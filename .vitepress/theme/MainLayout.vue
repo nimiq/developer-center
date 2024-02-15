@@ -70,7 +70,9 @@ watch(page, () => {
 }, { immediate: true })
 
 useMutationObserver(globalThis.document.querySelector('#app') as HTMLDivElement, () => {
-  globalThis.document.querySelector('main.main > div')?.classList.add('vp-raw', 'prose')
+  const parent = globalThis.document.querySelector('main.main > div > div')
+  parent?.classList.add('vp-raw', 'prose')
+  parent.querySelectorAll('.vp-raw').forEach(el => el.classList.add('not-prose'))
 }, {
   subtree: true,
   childList: true,
