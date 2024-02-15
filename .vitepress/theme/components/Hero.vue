@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import type { CardType, Tag } from './types'
+import type { Card, Tag } from './types'
 
 const props = defineProps<{
   tags?: Array<Tag>
-  items: Omit<CardType, 'type'>[]
+  items: Omit<Card, 'type'>[]
   h2: { type: boolean, required: false }
 }>()
 

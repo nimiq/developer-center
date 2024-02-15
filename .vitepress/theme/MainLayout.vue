@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
-import { useMutationObserver } from '@vueuse/core'
 import { useData } from './composables/useData'
 
 /**
@@ -68,15 +67,6 @@ watch(page, () => {
     theme.value.socialLinks = theme.value.socialLinks.filter(({ icon }) => icon !== 'npm')
   }
 }, { immediate: true })
-
-useMutationObserver(globalThis.document.querySelector('#app') as HTMLDivElement, () => {
-  const parent = globalThis.document.querySelector('main.main > div > div')
-  parent?.classList.add('vp-raw', 'prose')
-  parent.querySelectorAll('.vp-raw').forEach(el => el.classList.add('not-prose'))
-}, {
-  subtree: true,
-  childList: true,
-})
 </script>
 
 <template>
