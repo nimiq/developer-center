@@ -177,7 +177,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         </Popover.Root>
       </div>
 
-      <ul v-for="variant in Object.keys(variants)" :key="variant" pl-0 flex flex-wrap select-none text-2xl class="vp-raw -ml-8">
+      <ul v-for="variant in Object.keys(variants)" :key="variant" pl-0 flex flex-wrap select-none text-2xl class="-ml-8">
         <li v-for="icon in variant !== Variant.Logos ? variants[variant] : logosColor" v-show="variant === activeVariant" :key="icon" flex>
           <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
             <Icon :icon="icon" text="darkblue dark:white/80" />
@@ -189,7 +189,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         <summary label op70 mt-32>
           Monochromatic
         </summary>
-        <ul pl-0 flex flex-wrap select-none text-2xl class="vp-raw -ml-8">
+        <ul pl-0 flex flex-wrap select-none text-2xl class="-ml-8">
           <li v-for="icon in logosMono" v-show="activeVariant === activeVariant" :key="icon" flex>
             <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
               <Icon :icon="icon" text="darkblue dark:white/80" />
@@ -203,7 +203,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         ease-in-out duration-300 right-0 bg="lightgray dark:darkblue-1000" mt-32 border="base x-none b-none" px-32 z-10 py-24
         class="w-full md2:w-[calc(100vw-max(calc(var(--vp-sidebar-width)),calc((100%-(var(--vp-layout-max-width)-64px))/2+var(--vp-sidebar-width)-32px)))]"
       >
-        <div relative class="vp-raw">
+        <div relative>
           <div flex="~ gap-32">
             <Icon :icon="selectedIcon || ''" text="96 darkblue dark:white" />
             <div>

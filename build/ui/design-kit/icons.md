@@ -1,4 +1,5 @@
 ---
+prose: false
 aside: false
 next: false
 ---

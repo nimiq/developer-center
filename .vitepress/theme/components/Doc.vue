@@ -5,7 +5,7 @@ import { useData } from '../composables/useData'
 import { useSidebar } from '../composables/useSidebar'
 import { MarkdownContent } from './MarkdownContent'
 
-const { theme } = useData()
+const { theme, frontmatter } = useData()
 
 const route = useRoute()
 const { hasSidebar, hasAside, leftAside } = useSidebar()
@@ -38,8 +38,8 @@ const pageName = computed(() =>
           <slot name="doc-before" />
           <main class="main">
             <MarkdownContent
-              class="prose vp-raw"
               :class="[
+                frontmatter.layout === 'home' || frontmatter.prose === false ? 'not-prose' : 'prose',
                 pageName,
                 theme.externalLinkIcon && 'external-link-icon-enabled',
               ]"
@@ -60,19 +60,19 @@ const pageName = computed(() =>
 
 <style scoped>
 .VPDoc {
-  padding: 32px 24px 96px;
+  padding: 32px 0 96px;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .VPDoc {
-    padding: 48px 32px 128px;
+    padding: 48px 0 128px;
   }
 }
 
 @media (min-width: 960px) {
   .VPDoc {
-    padding: 48px 32px 0;
+    padding: 48px 0 0;
   }
 
   .VPDoc:not(.has-sidebar) .container {

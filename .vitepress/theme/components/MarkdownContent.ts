@@ -14,7 +14,7 @@ export const MarkdownContent = defineComponent({
     return () =>
       h(
         props.as,
-        { class: 'prose vp-raw' },
+        null,
         [
           route.component
             ? h(route.component, {
