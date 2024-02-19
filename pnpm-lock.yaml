@@ -30,8 +30,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   nimiq-typography:
-    specifier: 0.0.1
-    version: 0.0.1
+    specifier: 0.0.5
+    version: 0.0.5
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -4675,8 +4675,8 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /nimiq-typography@0.0.1:
-    resolution: {integrity: sha512-PZ6m7cMFkNgLut63apRKSY6dF3rfbq84Ax+t3G24zodRHn+CSXlmQyPzEYunsfuShh8PyaHt+uYISmbjfBzOfg==}
+  /nimiq-typography@0.0.5:
+    resolution: {integrity: sha512-Y/cTV5Gozz2L/XjAJZJUavwJyiA6OKsLLHfkMADjuXBZPTYP9ZNVWzFPhbq0P1efybMaM2K4AuJ3Lj4x2Xyg0w==}
     dev: false
 
   /node-fetch-native@1.6.1:

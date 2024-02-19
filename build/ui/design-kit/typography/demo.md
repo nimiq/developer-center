@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+const showTypography = ref(true)
+</script>
+
+<label flex="~ gap-12" class="not-prose" bg="darkblue/20 dark:darkblue-dimmed" w-max px-16 py-6 rounded-6>
+<input type="checkbox" id="showTypography" v-model="showTypography" accent="darkblue dark:white" />
+<span select-none font-mono>Packaged enabled</span>
+</label>
+
+<article :class="{'not-prose': !showTypography }">
+
 # The Adventurous Journey of Pixel the Crypto Explorer
 
 ## Chapter 1: The Quest Begins
@@ -75,3 +87,5 @@ As Pixel returned home, the adventure was far from over. With a heart full of me
 <img src="/assets/images/build/design-kit/typography/scripto.webp" alt="Pixel the Crypto Explorer" />
 <figcaption>Pixel the Crypto Explorer</figcaption>
 </figure>
+
+</article>

@@ -17,7 +17,7 @@ const icons = {
 </script>
 
 <template>
-  <div v-if="tags.size > 0" flex gap-x-16 flex-wrap>
+  <div v-if="tags.size > 0" flex="~ gap-16 wrap" w-max ml-0>
     <div
       v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8"
       border="1 solid darkblue-25 dark:darkblue-70 inverted:white/35" rounded-6 leading-1

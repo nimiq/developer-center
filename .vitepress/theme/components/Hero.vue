@@ -35,7 +35,7 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb136' : 'mb64'">
+  <div class="not-prose" :class=" tags?.length > 0 || items?.length > 0 ? 'mb136' : 'mb64'">
     <div v-if="slots.label" mb-8>
       <span label op50>
         <slot name="label" />
