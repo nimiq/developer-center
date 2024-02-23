@@ -169,7 +169,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 </Slider.Track>
                 <Slider.Thumb
                   block w-12 h-12 bg="darkblue dark:white/80" rounded-8
-                  class="after:w-20 after:h-20 after:absolute" aria-label="Size"
+                  class="after:w20 after:h20 after:absolute" aria-label="Size"
                 />
               </Slider.Root>
             </Popover.Content>
@@ -180,7 +180,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       <ul v-for="variant in Object.keys(variants)" :key="variant" pl-0 flex flex-wrap select-none text-2xl class="-ml-8">
         <li v-for="icon in variant !== Variant.Logos ? variants[variant] : logosColor" v-show="variant === activeVariant" :key="icon" flex>
           <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
-            <Icon :icon="icon" text="darkblue dark:white/80" />
+            <Icon :icon="icon" text-neutral />
           </button>
         </li>
       </ul>

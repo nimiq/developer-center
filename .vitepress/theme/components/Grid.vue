@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type PropType, computed } from 'vue'
-import { type Card, CardType } from './types'
+import { type Card, CardType } from '../utils/types'
 
 const props = defineProps({
   items: {
@@ -34,7 +34,7 @@ const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(
 
     <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-x-32">
       <li
-        v-for="item in gridSm" :key="item!.title" :class="{ 'mt-32': gridLg.length > 0 }" max-md="mt-32"
+        v-for="item in gridSm" :key="item!.title" :class="{ mt32: gridLg.length > 0 }" max-md="mt-32"
       >
         <Card :item="item" h-full />
       </li>

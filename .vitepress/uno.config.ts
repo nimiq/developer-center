@@ -1,7 +1,7 @@
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetUno } from 'unocss'
-import presetRemToPx from '@unocss/preset-rem-to-px'
-import presetWebFonts from '@unocss/preset-web-fonts'
 import transformerDirectives from '@unocss/transformer-directives'
+import { presetNimiq } from 'nimiq-css'
+import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
   content: {
@@ -28,16 +28,13 @@ export default defineConfig({
     presetAttributify(),
     presetIcons({
       collections: {
-        logos: () => import('../node_modules/@iconify-json/logos/icons.json').then(res => res.default as any),
+        carbon: () => import('../node_modules/@iconify-json/carbon/icons.json').then(res => res.default as any),
         nimiq: () => fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json()),
       },
     }),
-    presetWebFonts({
-      provider: 'bunny',
-      fonts: {
-        sans: 'Mulish:400,600,700',
-        mono: 'Fira Code:400',
-      },
+    presetNimiq({
+      components: true,
+      typography: true,
     }),
     presetRemToPx({ baseFontSize: 4 }),
   ],
@@ -115,7 +112,7 @@ export default defineConfig({
   shortcuts: [
     {
       'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
-      'border-base': 'border-[1.5px] border-solid border-darkblue-10 dark:border-darkblue-94',
+      'border-base': 'border-[1.5px] border-solid border-neutral-300',
       'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
     },
     [/^border-base-(.*)$/, ([,c]) => `border-${c}-[1.5px] border-${c}-solid border-darkblue-10 dark:border-darkblue-94`],

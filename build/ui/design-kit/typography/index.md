@@ -21,14 +21,14 @@ Now you can use the `prose` class to add sensible typography styles to any vanil
 
 ### Undoing typography styles
 
-If you have a block of markup embedded in some content that shouldn’t inherit the prose styles, use the not-prose class to sandbox it:
+If you have a block of markup embedded in some content that shouldn’t inherit the prose styles, use the `raw` class to sandbox it:
 
 ```html
 <article class="prose">
   <h1>My Heading</h1>
   <p>...</p>
 
-  <div class="not-prose">
+  <div class="raw">
     <!-- Some example or demo that needs to be prose-free -->
   </div>
 

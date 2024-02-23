@@ -3,12 +3,12 @@ import { ref } from 'vue'
 const showTypography = ref(true)
 </script>
 
-<label flex="~ gap-12" class="not-prose" bg="darkblue/20 dark:darkblue-dimmed" w-max px-16 py-6 rounded-6>
+<label flex="~ gap-12" class="raw" bg="darkblue/20 dark:darkblue-dimmed" w-max px-16 py-6 rounded-6>
 <input type="checkbox" id="showTypography" v-model="showTypography" accent="darkblue dark:white" />
 <span select-none font-mono>Packaged enabled</span>
 </label>
 
-<article :class="{'not-prose': !showTypography }">
+<article :class="{'raw': !showTypography }">
 
 # The Adventurous Journey of Pixel the Crypto Explorer
 
@@ -84,7 +84,7 @@ As Pixel returned home, the adventure was far from over. With a heart full of me
 *Remember, in the world of cryptocurrency, knowledge is the currency of the realm.*
 
 <figure>
-<img src="/assets/images/build/design-kit/typography/scripto.webp" alt="Pixel the Crypto Explorer" />
+<img src="/assets/images/build/ui/design-kit/typography/scripto.webp" alt="Pixel the Crypto Explorer" />
 <figcaption>Pixel the Crypto Explorer</figcaption>
 </figure>
 

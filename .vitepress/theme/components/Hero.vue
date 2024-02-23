@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import type { Card, Tag } from './types'
+import type { Card, Tag } from '../utils/types'
 
 const props = defineProps<{
   tags?: Array<Tag>
@@ -35,7 +35,9 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div class="not-prose" :class=" tags?.length > 0 || items?.length > 0 ? 'mb136' : 'mb64'">
+  <div class="vp-raw" :class=" tags?.length > 0 || items?.length > 0 ? 'mb136' : 'mb64'">
+    <slot />
+
     <div v-if="slots.label" mb-8>
       <span label op50>
         <slot name="label" />

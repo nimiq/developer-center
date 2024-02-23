@@ -25,4 +25,5 @@ export enum Tag {
   WebClient = 'Web Client',
   Validator = 'Validator',
   Design = 'Design',
+  NimiqBrandKit = 'Nimiq Brand Kit',
 }

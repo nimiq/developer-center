@@ -29,14 +29,18 @@ outline: false
 footer: false
 ---
 
-<Hero :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" :items="$frontmatter.links">
-  <template #headline>
-    Let's build together
-  </template>
-  <template #subline>
-    Nimiq is made for people to build on it.<br/>You just need a browser and Internet.
-  </template>
-</Hero>
+::: warning Work in progress
+
+Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
+
+:::
+
+# Let's build together{.mt-64}
+
+Nimiq is made for people to build on it. You just need a browser and Internet.{.subline}
+
+<Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
+<Grid  :items="$frontmatter.links" mt-64 />
 
 <!-- <div label mb-8 mt-136 text-darkblue-50>Assets</div> -->
 
@@ -45,9 +49,3 @@ footer: false
 Resources to help you build stuff
 
 <Grid my-64 :items="$frontmatter.assetsLinks" /> -->
-
-::: warning Work in progress
-
-Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
-
-:::
