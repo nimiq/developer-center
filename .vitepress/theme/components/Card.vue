@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type PropType, computed } from 'vue'
-import type { Card } from './types'
-import { CardType } from './types'
+import { CardType } from '../utils/types'
+import type { Card } from '../utils/types'
 
 const props = defineProps({
   item: {
@@ -29,10 +29,10 @@ const centered = computed(() => isIcon.value)
       :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 ring-1 overflow-hidden :class="{
         'bg-darkblue-6 dark:bg-darkblue-dimmed hover:bg-white hover:dark:bg-darkblue-90 ring-darkblue/5 dark:ring-white/14 group-hover:ring-darkblue/2 transition-shadow': !item.bgColor,
         'bg-radial-lightblue ring-lightblue/20': item.bgColor === 'blue',
-        'bg-radial-green ring-green/20': item.bgColor === 'green',
-        'p-12 md:p-24': isNormal || !hasBgIcon,
-        'p-24 md:p-40': hasBgIcon,
-        'p-20 md:p-40': isIcon,
+        'bg-green-gradient ring-green/20': item.bgColor === 'green',
+        'p12 md:p24': isNormal || !hasBgIcon,
+        'p24 md:p40': hasBgIcon,
+        'p20 md:p40': isIcon,
         'items-center': centered,
       }"
     >
@@ -41,7 +41,7 @@ const centered = computed(() => isIcon.value)
           'absolute inset-y-50 -right-12 md:-right-16 min-w-100 text-100 sm:text-202': !centered,
           'text-[#0E65C9]': item.bgColor === 'blue',
           'text-[#1DA186]': item.bgColor === 'green',
-          'text-darkblue/40 dark:text-white/50 children:h-96 children:w-96 mb-56 group-hover:text-darkblue dark:group-hover:text-white transition-colors': centered,
+          'text-darkblue/40 dark:text-white/50 children:h-96 children:w-96 mb56 group-hover:text-darkblue dark:group-hover:text-white transition-colors': centered,
         }"
       >
         <div :class="item.icon" />
@@ -58,7 +58,7 @@ const centered = computed(() => isIcon.value)
       </component>
       <p
         v-if="item.description" text="darkblue-50 inverted:white/60" z-10 inverted:max-w-256
-        :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt-20' : 'mt-12']"
+        :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt20' : 'mt12']"
       >
         {{ item.description }}
       </p>

@@ -44,22 +44,20 @@ Our documentation is an ongoing project, a dynamic reflection of the evolving bl
 
 :::
 
+# Welcome to the Nimiq Developer Center {.max-w-520}
+
+Get guides, resources and tips on how to create with Nimiq.{.subline}
+
 <Hero mt-64 :items="$frontmatter.links">
-  <template #headline>
-    Welcome to the Nimiq Developer Center
-  </template>
-  <template #subline>
-    Get guides, resources and tips on how to create with Nimiq.
-  </template>
+
 </Hero>
 
 <Hero :items="$frontmatter.buildTogetherLinks" h2>
-  <template #headline>
-    Let's build together
-  </template>
-  <template #subline>
-    Create apps, run a validator or craft something delightful with Nimiq.
-  </template>
+
+## Let's build together
+
+Create apps, run a validator or craft something delightful with Nimiq.
+
 </Hero>
 
 <script setup>

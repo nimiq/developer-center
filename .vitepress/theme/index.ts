@@ -2,7 +2,6 @@
 import Theme from 'vitepress/theme'
 import './style.css'
 import 'uno.css'
-import 'nimiq-typography/typography.css'
 import { h, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
 import mediumZoom from 'medium-zoom'

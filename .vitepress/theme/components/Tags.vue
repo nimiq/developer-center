@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { Tag } from './types'
+import { Tag } from '../utils/types'
 
 const props = defineProps({
   tags: Array as PropType<Tag[]>,
@@ -13,6 +13,7 @@ const icons = {
   [Tag.WebClient]: 'i-nimiq:globe',
   [Tag.Validator]: 'i-nimiq:icons-lg-verified',
   [Tag.Design]: 'i-nimiq:icons-lg-palette',
+  [Tag.NimiqBrandKit]: 'i-carbon:logo-figma',
 }
 </script>
 

@@ -39,7 +39,7 @@ const pageName = computed(() =>
           <main class="main">
             <MarkdownContent
               :class="[
-                frontmatter.layout === 'home' || frontmatter.prose === false ? 'not-prose' : 'prose',
+                frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose',
                 pageName,
                 theme.externalLinkIcon && 'external-link-icon-enabled',
               ]"

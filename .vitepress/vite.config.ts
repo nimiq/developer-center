@@ -46,6 +46,7 @@ export default defineConfig(async ({ mode }) => {
           '@vueuse/core',
           'vitepress',
         ],
+
         vueTemplate: true,
       }),
       UnoCSS({ configFile: './.vitepress/uno.config.ts' }),
@@ -54,6 +55,23 @@ export default defineConfig(async ({ mode }) => {
       VueDevTools(),
 
       ViteImageOptimizer(),
+
+      {
+        /**
+         * nimiq-css works using layers.
+         *
+         * When you don't use layers, the CSS rules tends to be applied in the wrong order, and
+         * the result is that the styles are not applied as expected.
+         */
+        name: 'wrap-css-in-layer',
+        enforce: 'pre',
+        async transform(code, id) {
+          if (id.endsWith('styles/base.css'))
+            return { code: `@layer vp-base { ${code} }` }
+          if (id.endsWith('reset/tailwind.css'))
+            return { code: `@layer tw-reset { ${code} }` }
+        },
+      },
 
     ],
     resolve: {
@@ -78,7 +96,6 @@ export default defineConfig(async ({ mode }) => {
           find: /^.*\/VPDoc\.vue$/,
           replacement: fileURLToPath(new URL('./theme/components/Doc.vue', import.meta.url)),
         },
-
       ],
     },
     css: {
