@@ -38,15 +38,15 @@ buildTogetherLinks:
     icon: i-nimiq:icons-lg-palette
 ---
 
-::: warning Work in progress
+# Welcome to the Nimiq Developer Center
+
+Get guides, resources and tips on how to create with Nimiq.{.subline}
+
+<Callout type="warning">
 
 Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
 
-:::
-
-# Welcome to the Nimiq Developer Center {.max-w-520}
-
-Get guides, resources and tips on how to create with Nimiq.{.subline}
+</Callout>
 
 <Hero mt-64 :items="$frontmatter.links">
 
@@ -56,7 +56,7 @@ Get guides, resources and tips on how to create with Nimiq.{.subline}
 
 ## Let's build together
 
-Create apps, run a validator or craft something delightful with Nimiq.
+Create apps, run a validator or craft something delightful with Nimiq.{.subline}
 
 </Hero>
 
