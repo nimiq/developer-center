@@ -21,30 +21,23 @@ prev: false
 next: false
 aside: false
 footer: false
-
+prose: false
 ---
 
-::: warning Work in progress
+<Callout type="warning">
 
 Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
 
-:::
+</Callout>
 
-<Hero mt-64 :items="$frontmatter.links">
-  <template #headline>
-    Nimiq - a blockchain built from scratch
-  </template>
-  <template #subline>
-    Everybody should be a peer: The basic idea of the Nimiq Blockchain.
-  </template>
-</Hero>
+# Nimiq - a blockchain built from scratch
 
-<Hero mt-32 h2 :items="$frontmatter.becomeValidator">
-  <template #label>Build</template>
-  <template #headline>
-    Become a validator
-  </template>
-  <template #subline>
-    Setting your own validator is easy.
-  </template>
-</Hero>
+Everybody should be a peer: The basic idea of the Nimiq Blockchain.{.subline}
+
+<Grid :items="$frontmatter.links" mt-64 mb-136 />
+
+## Become a validator and earn by securing the network.
+
+Setting your own validator is easy.{.subline}
+
+<Grid :items="$frontmatter.becomeValidator" mt-64 />

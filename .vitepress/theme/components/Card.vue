@@ -44,16 +44,17 @@ const centered = computed(() => isIcon.value)
       </span>
       <component
         :is="centered ? 'h3' : 'h4'" v-if="item.title"
-        text="darkblue inverted:white dark:white dark:group-hocus:darkblue"
+        text="darkblue inverted:white dark:white dark:group-hocus:inverted:white dark:group-hocus:darkblue"
         :class="{
           'text-center': centered,
         }"
+        z-1
         inverted:max-w-256
       >
         {{ item.title }}
       </component>
       <p
-        v-if="item.description" text="neutral-600 inverted:white/60" z-10 inverted:max-w-256
+        v-if="item.description" text="neutral-700 inverted:white/60" z-10 inverted:max-w-256
         :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt20' : 'mt12']"
       >
         {{ item.description }}
@@ -62,7 +63,7 @@ const centered = computed(() => isIcon.value)
       <div v-if="item.tags?.length || 0 > 0 || item.duration" flex items-center flex-wrap gap-24 mt-14>
         <Tags v-if="item.tags" :tags="item.tags" />
         <div v-if="item.duration" flex gap-x-10 items-center>
-          <div i-nimiq:watch text="neutral-600 inverted:white/60" w-16 h-16 />
+          <div i-nimiq:watch-12-20 text="neutral-600 inverted:white/60" w-16 h-16 />
           <span text="16 neutral-700 inverted:white/70">{{ item.duration }}</span>
         </div>
       </div>
