@@ -126,49 +126,52 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         <div flex-1 />
 
         <Popover.Root>
-          <Popover.Trigger aria-label="Icons options" flex="~ items-center gap-4" border-base rounded-full px-12 py-3>
+          <Popover.Trigger
+            aria-label="Icons options" flex="~ items-center
+          gap-4" border-base rounded-full px-12 py-3 text-10
+          >
             Options
-            <div i-nimiq:chevron-down text-10 opacity-70 />
+            <Icon icon="i-nimiq:chevron-down" text-neutral />
           </Popover.Trigger>
 
           <Popover.Portal>
             <Popover.Content
-              align="end" :align-offset="-4" :side-offset="6" bg="white dark:darkblue" shadow-sm
+              align="end" :align-offset="-4" :side-offset="6" bg-neutral-100 shadow-sm
               border-base rounded-6 px-16 py-20 w="240"
             >
-              <h4 label text-12 opacity-75>
+              <h4 label text="11 neutral-900">
                 Download
               </h4>
               <ul mt-10 text-12 flex="~ wrap gap-x-12">
                 <li>
-                  <button underline opacity-70 @click="downloadZip(icons, 'nimiq-icons')">
+                  <button underline @click="downloadZip(icons, 'nimiq-icons')">
                     ZIP
                   </button>
                 </li>
                 <li>
-                  <button underline opacity-70 @click="downloadIconFont(icons)">
+                  <button underline @click="downloadIconFont(icons)">
                     Icon fonts
                   </button>
                 </li>
                 <li>
-                  <button underline opacity-70 @click="downloadSVGSprite(icons)">
+                  <button underline @click="downloadSVGSprite(icons)">
                     SVG Sprite
                   </button>
                 </li>
               </ul>
 
-              <h4 label text-12 mt-16 opacity-75>
+              <h4 label mt-16 text="11 neutral-900">
                 Size
               </h4>
               <Slider.Root
                 v-model="iconSize" relative flex="~ items-center" select-none touch-none h-6 mt-12 w-full
                 :max="48" :min="8" :step="1"
               >
-                <Slider.Track bg="darkblue-20 dark:white/20" relative grow rounded-full h-4>
-                  <Slider.Range absolute bg="darkblue dark:white/80" rounded-full h-full />
+                <Slider.Track bg-neutral-500 relative grow rounded-full h-4>
+                  <Slider.Range absolute bg-neutral-600 rounded-full h-full />
                 </Slider.Track>
                 <Slider.Thumb
-                  block w-12 h-12 bg="darkblue dark:white/80" rounded-8
+                  block w-12 h-12 bg-neutral-900 rounded-8
                   class="after:w20 after:h20 after:absolute" aria-label="Size"
                 />
               </Slider.Root>
@@ -186,13 +189,13 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </ul>
 
       <details v-if="Variant.Logos === activeVariant" my-40>
-        <summary label op70 mt-32>
+        <summary label text-neutral-800 mt-32>
           Monochromatic
         </summary>
-        <ul pl-0 flex flex-wrap select-none text-2xl class="-ml-8">
+        <ul pl-0 flex flex-wrap select-none mt-12 text-2xl class="-ml-8">
           <li v-for="icon in logosMono" v-show="activeVariant === activeVariant" :key="icon" flex>
             <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
-              <Icon :icon="icon" text="darkblue dark:white/80" />
+              <Icon :icon="icon" text-neutral-700 />
             </button>
           </li>
         </ul>
@@ -200,14 +203,14 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 
       <div
         ref="modal" fixed :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }" transition-bottom
-        ease-in-out duration-300 right-0 bg="lightgray dark:darkblue-1000" mt-32 border="base x-none b-none" px-32 z-10 py-24
+        ease-in-out duration-300 right-0 bg-neutral-50 mt-32 border="base x-none b-none" px-32 z-10 py-24
         class="w-full md2:w-[calc(100vw-max(calc(var(--vp-sidebar-width)),calc((100%-(var(--vp-layout-max-width)-64px))/2+var(--vp-sidebar-width)-32px)))]"
       >
         <div relative>
           <div flex="~ gap-32">
-            <Icon :icon="selectedIcon || ''" text="96 darkblue dark:white" />
+            <Icon :icon="selectedIcon || ''" text-96 />
             <div>
-              <div flex="~ items-center gap-4" text="22 darkblue-80 dark:white/90">
+              <div flex="~ items-center gap-4" text="22 neutral-800">
                 <h3 leading-none mt-6>
                   i-{{ selectedIcon }}
                 </h3>
@@ -255,28 +258,41 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
           </div>
         </div>
       </div>
-      <p text-12 opacity-70>
+      <p text="12 neutral-900" mt-24>
         This page design's has been inspired by <a href="https://icones.js.org/" target="_blank">Icônes</a>. Powered by <a
           href="https://iconify.design/" target="_blank"
         >Iconify</a>.
-        <br>
-        <span opacity-60>
-          The icon set has been updated {{ timeAgo }} on {{ timeBuild }}
-        </span>
+      </p>
+      <p text="12 neutral-700">
+        The icon set has been updated {{ timeAgo }} on {{ timeBuild }}
       </p>
     </div>
 
     <Dialog.Root v-model:open="helpOpen">
       <Dialog.Portal>
-        <Dialog.Overlay bg-darkblue op20 fixed inset-0 z-1000 />
-        <Dialog.Content fixed rounded-6 bg="white dark:darkblue" focus="outline-none" top="50%" left="50%" translate="x--50% y--50%" pl-40 z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~ col" shadow>
-          <Dialog.Title>How can I use it?</Dialog.Title>
-          <Dialog.Description>Learn how to use the Nimiq Icons in your project.</Dialog.Description>
-          <Dialog.Close absolute right-24 top-24 bg="darkblue-6 hover:darkblue/20 dark:white/6 hover:white/10" p-10 rounded-full transition-colors>
-            <div i-nimiq:cross />
-          </Dialog.Close>
-          <div overflow-y-auto pr-40>
-            <slot mt-16 name="learn-how-to-use-the-icons" />
+        <Dialog.Overlay bg-neutral op10 fixed inset-0 z-1000 />
+        <Dialog.Content
+          fixed rounded-6 bg-neutral-0
+          focus="outline-none" top="50%" left="50%" translate="x--50% y--50%"
+          p="x-8 t-32 md:x-24 md:t-48" z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~
+        col" shadow
+          of-y-auto
+        >
+          <div>
+            <Dialog.Title m-0>
+              How can I use it?
+            </Dialog.Title>
+            <Dialog.Description m-0>
+              Learn how to use the Nimiq Icons in your project.
+            </Dialog.Description>
+            <Dialog.Close
+              fixed right="24 md:32" top="24 md:32" bg="neutral-200 hover:neutral-300" p-10 rounded-full transition-colors
+            >
+              <div i-nimiq:cross text-neutral />
+            </Dialog.Close>
+            <div pr-40>
+              <slot mt-16 name="learn-how-to-use-the-icons" />
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

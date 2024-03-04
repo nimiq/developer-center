@@ -6,7 +6,7 @@ next: false
 
 # Nimiq Icons
 
-<IconSet class="mt-32 pb-96">
+<IconSet class="mt-32 pb-96 raw">
   <template #learn-how-to-use-the-icons>
 
 ### Installing via NPM

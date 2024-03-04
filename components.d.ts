@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./.vitepress/theme/components/Button.vue')['default']
+    Callout: typeof import('./.vitepress/theme/components/Callout.vue')['default']
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
     DesignKitItem: typeof import('./.vitepress/theme/components/DesignKitItem.vue')['default']
     DesingKitItem: typeof import('./.vitepress/theme/components/DesingKitItem.vue')['default']
