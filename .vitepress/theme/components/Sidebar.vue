@@ -36,7 +36,7 @@ function onSectionTitleClicked(i: number) {
 </script>
 
 <template>
-  <aside v-if="hasSidebar" class="VPSidebar border-base-r scroll" mb-2 :class="{ open }">
+  <aside v-if="hasSidebar" border-base-neutral-r class="VPSidebar scroll raw" bg-neutral-0 mb-2 :class="{ open }">
     <div mt-12>
       <Environment />
     </div>
@@ -45,7 +45,7 @@ function onSectionTitleClicked(i: number) {
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
         <div
-          w-full border-base-t sticky top-0 bottom--1 z-100 bg="lightgray dark:darkblue-1000" cursor-pointer
+          w-full border-base-neutral-t sticky top-0 bottom--1 z-100 bg-neutral-0 cursor-pointer
           @click="onSectionTitleClicked(i)"
         >
           <div pt-24 pb-16>
@@ -86,7 +86,6 @@ aside {
   z-index: var(--vp-z-index-sidebar);
   width: calc(100vw - 64px);
   max-width: 480px;
-  background-color: var(--vp-sidebar-bg-color);
   opacity: 0;
   box-shadow: var(--vp-c-shadow-3);
   overflow-x: hidden;
@@ -100,7 +99,6 @@ aside {
     margin-top: var(--vp-nav-height);
     width: var(--vp-sidebar-width);
     max-width: 100%;
-    background-color: var(--vp-sidebar-bg-color);
     opacity: 1;
     visibility: visible;
     box-shadow: none;

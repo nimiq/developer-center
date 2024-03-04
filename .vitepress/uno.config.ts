@@ -90,5 +90,6 @@ export default defineConfig({
       'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
     },
     [/^border-base-(.*)$/, ([,color]) => `border-base border-${color}-600`],
+    [/^border-base-neutral-(.*)$/, ([,side]) => `border-solid border-${side} border-white/20`],
   ],
 })

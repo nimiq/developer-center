@@ -25,27 +25,18 @@ prose: false
 prev: false
 next: false
 aside: false
-outline: false
 footer: false
 ---
 
-::: warning Work in progress
+<Callout type="warning">
 
 Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
 
-:::
+</Callout>
 
-# Let's build together{.mt-64}
+# Let's build together
 
 Nimiq is made for people to build on it. You just need a browser and Internet.{.subline}
 
 <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
 <Grid  :items="$frontmatter.links" mt-64 />
-
-<!-- <div label mb-8 mt-136 text-darkblue-50>Assets</div> -->
-
-<!-- ## There’s some cool tools to make your life easier
-
-Resources to help you build stuff
-
-<Grid my-64 :items="$frontmatter.assetsLinks" /> -->
