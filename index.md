@@ -1,5 +1,6 @@
 ---
 layout: home
+prose: false
 
 links:
   - bgColor: blue

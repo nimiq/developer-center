@@ -70,7 +70,7 @@ watch(page, () => {
 </script>
 
 <template>
-  <DefaultTheme.Layout bg-neutral-0 text-neutral-700 />
+  <DefaultTheme.Layout bg-neutral-0 />
 </template>
 
 <style>

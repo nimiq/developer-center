@@ -63,7 +63,7 @@ export default defineConfig({
       },
     }),
     presetNimiq({
-      components: true,
+      utilities: true,
       typography: true,
     }),
     presetRemToPx({ baseFontSize: 4 }),
@@ -78,18 +78,9 @@ export default defineConfig({
     },
   },
   rules: [
-    ['shadow', { 'box-shadow': '0px 18px 38px rgba(31, 35, 72, 0.07), 0px 7px 8.5px rgba(31, 35, 72, 0.04), 0px 2px 2.5px rgba(31, 35, 72, 0.02)' }],
-    ['shadow-card', { 'box-shadow': '0px 6px 20px rgba(59, 76, 106, 0.13), 0px 1.34018px 4.46726px rgba(59, 76, 106, 0.0774939), 0px 0.399006px 1.33002px rgba(59, 76, 106, 0.0525061)' }],
     [/^rounded-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
   ],
 
   shortcuts: [
-    {
-      'label': 'font-bold text-12 leading-12 md:text-14 md:leading-14 uppercase [letter-spacing:1.3px] whitespace-nowrap',
-      'border-base': 'border-[1.5px] border-solid',
-      'blue-pill': 'flex items-center gap-8 rounded-full px-16 py-5.5 w-max font-bold bg-blue-10 dark:bg-blue text-blue dark:text-white',
-    },
-    [/^border-base-(.*)$/, ([,color]) => `border-base border-${color}-600`],
-    [/^border-base-neutral-(.*)$/, ([,side]) => `border-solid border-${side} border-white/20`],
   ],
 })

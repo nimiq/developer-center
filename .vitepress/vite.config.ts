@@ -47,6 +47,8 @@ export default defineConfig(async ({ mode }) => {
           'vitepress',
         ],
 
+        dirs: ['.vitepress/theme/components', '.vitepress/theme/utils'],
+
         vueTemplate: true,
       }),
       UnoCSS({ configFile: './.vitepress/uno.config.ts' }),

@@ -38,28 +38,29 @@
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-  
-  --vp-c-brand-1: var(--nq-blue);
-  &:has(body.dark) {
-    --vp-c-brand-1: var(--nq-gold);
-  }
 
+  --vp-c-brand-1: rgb(var(--nq-blue)); 
   --vp-c-bg-soft: rgb(var(--nq-neutral-50));
-  --vp-backdrop-bg-color: rgb(var(--nq-neutral-400));
+  --vp-backdrop-bg-color: rgb(var(--nq-neutral) / 0.2);
   --vp-c-bg: rgb(var(--nq-neutral-0));
   --vp-c-bg-soft: rgb(var(--nq-neutral));
   --vp-c-bg-elv: rgb(var(--nq-neutral));
   --vp-c-divider: rgb(var(--nq-neutral-100));
-  --vp-c-neutral-inverse: rgb(var(--nq-neutral-800));
+  --vp-c-neutral-inverse: rgb(var(--nq-neutral-100));
   --vp-input-switch-color: rgb(var(--nq-neutral));
   --vp-c-bg-soft: rgb(var(--nq-neutral-900));
-  --vp-backdrop-bg-color: rgb(var(--nq-neutral-400));
+  --vp-c-text-1: rgb(var(--nq-neutral-800));
+  --vp-c-text-2: rgb(var(--nq-neutral-700));
   --vp-c-gutter: rgb(var(--nq-neutral-50));
-  
+
   --vp-font-family-base: Mulish;
   --vp-font-family-mono: 'Fira Code';
-  
+
   --vp-sidebar-width: 300px;
+}
+
+html {
+  --uno: scroll;
 }
 
 .medium-zoom-overlay {
@@ -70,10 +71,20 @@
   z-index: 20001;
 }
 
-:not(.prose) {
-  :is(h1, h2) {
-    --uno: max-w-520 text-neutral font-bold;
-  }
+:is(h1,h2):where(:not(.prose)) {
+  --uno: max-w-520;
+}
+
+.subline {
+  --uno: subline text-neutral-700;
+}
+
+h1 {
+  --uno: my-0;
+}
+
+h1 + p {
+  --uno: mt-48 md:mt-64;
 }
 
 
@@ -89,8 +100,8 @@
   }
 
   >.wrapper {
-    border-bottom: 1px solid var(--nq-neutral-100) !important;
-    background-color: var(--nq-neutral-0);
+    border-bottom: 1px solid rgb(var(--nq-neutral-100)) !important;
+    background-color: rgb(var(--nq-neutral-0));
 
     >.container {
       @media screen and (min-width: 960px) {
@@ -116,10 +127,6 @@
           background-color: transparent !important;
         }
 
-        .dark & {
-          border-color: var(--nq-neutral-50);
-        }
-
         .search {
           width: 100%;
 
@@ -132,19 +139,39 @@
             width: 100%;
             max-width: 296px;
             display: flex;
+            border: none;
             justify-content: end;
 
-            :is(.dark, html) & button.DocSearch-Button {
-              background: transparent;
+            button.DocSearch-Button {
               height: 34px;
+              border: 0;
+              border-radius: 999px;
+              background-color: transparent;
+              transition: colors 0.2s var(--nq-ease), box-shadow 0.1s var(--nq-ease);
+              outline: none;
 
-              @media (min-width: 768px) {
-                border-radius: 999px;
-                border: 1px solid var(--nq-neutral-100);
+              --ring-color: rgba(var(--nq-neutral-500));
+              --color: rgb(var(--nq-neutral));
+              --placeholder-color: rgb(var(--nq-neutral-700));
 
-                .DocSearch-Button-Keys {
-                  margin-left: auto;
+              box-shadow: 0 0 0 1.5px var(--ring-color);
+              color: var(--color);
+
+              &:is(:hover) {
+                --color: rgb(var(--nq-blue));
+                --ring-color: rgba(var(--nq-blue) / 0.3);
+
+                span {
+                  color: var(--color);
                 }
+              }
+
+              span {
+                margin: 0;
+              }
+
+              .DocSearch-Button-Keys {
+                margin-left: auto;
               }
             }
           }
@@ -155,7 +182,7 @@
         :is(&, .VPFlyout>button>span) {
           font-weight: 700;
           opacity: 0.6;
-          color: var(--nq-neutral);
+          color: rgb(var(--nq-neutral));
 
           &.active {
             opacity: 1;
@@ -192,4 +219,3 @@
 .btn.small {
   --uno: px-8 py-4 text-12;
 }
-

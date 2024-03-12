@@ -34,24 +34,22 @@ const pageName = computed(() =>
       </div>
 
       <div class="content">
-        <div class="content-container">
-          <slot name="doc-before" />
-          <main class="main">
-            <MarkdownContent
-              :class="[
-                frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose',
-                pageName,
-                theme.externalLinkIcon && 'external-link-icon-enabled',
-              ]"
-            />
-          </main>
-          <VPDocFooter>
-            <template #doc-footer-before>
-              <slot name="doc-footer-before" />
-            </template>
-          </VPDocFooter>
-          <slot name="doc-after" />
-        </div>
+        <slot name="doc-before" />
+        <main class="main">
+          <MarkdownContent
+            :class="[
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose',
+              pageName,
+              theme.externalLinkIcon && 'external-link-icon-enabled',
+            ]"
+          />
+        </main>
+        <VPDocFooter>
+          <template #doc-footer-before>
+            <slot name="doc-footer-before" />
+          </template>
+        </VPDocFooter>
+        <slot name="doc-after" />
       </div>
     </div>
     <slot name="doc-bottom" />
@@ -177,13 +175,5 @@ const pageName = computed(() =>
     margin: 0;
     min-width: 640px;
   }
-}
-
-.content-container {
-  margin: 0 auto;
-}
-
-.VPDoc.has-aside .content-container {
-  max-width: 688px;
 }
 </style>

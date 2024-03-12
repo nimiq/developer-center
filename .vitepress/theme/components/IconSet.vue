@@ -38,6 +38,7 @@ const activeVariant = ref<string>(initialVariant)
 onMounted(async () => {
   const json = await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json())
   addCollection(json)
+  // addCollection({ ...json, icons: Object.entries(json.icons).filter(([key]) => key.startsWith('logos-nimiq-full-white-vertical')).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}) })
 
   icons.value = listIcons()
   variants.value[Variant.Regular] = listIcons().filter(icon => icon.startsWith('nimiq') && !icon.startsWith(`nimiq:${Variant.Large}-`) && !icon.startsWith(`nimiq:${Variant.Logos}-`) && !icon.startsWith(`nimiq:${Variant.Flags}-`))
@@ -259,12 +260,12 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         </div>
       </div>
       <p text="12 neutral-900" mt-24>
+        The icon set has been updated {{ timeAgo }} on {{ timeBuild }}
+      </p>
+      <p text="12 neutral-700">
         This page design's has been inspired by <a href="https://icones.js.org/" target="_blank">Icônes</a>. Powered by <a
           href="https://iconify.design/" target="_blank"
         >Iconify</a>.
-      </p>
-      <p text="12 neutral-700">
-        The icon set has been updated {{ timeAgo }} on {{ timeBuild }}
       </p>
     </div>
 
