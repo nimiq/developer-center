@@ -2,7 +2,7 @@
 const baseUrl = import.meta.env.BASE_URL
 
 // Redirect the user to the design kit page when they right click on the logo
-const designKitUrl = `${baseUrl}build/ui/design-kit/logo`
+const designKitUrl = `${baseUrl}build/ui/design/design-kit`
 
 const router = useRouter()
 </script>

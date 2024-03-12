@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { Toast } from 'radix-vue/namespaced'
 import { addCollection } from '@iconify/vue'
 import { getIconSnippet } from '../composables/icons/icon'
+import { dataUriToBlob, downloadBlob } from '../composables/icons/pack'
 
 const props = defineProps<{
   logo: string
   label: string
   size: number
+  dark?: boolean
 }>()
 
 onMounted(async () => {
@@ -14,52 +15,52 @@ onMounted(async () => {
   addCollection(json)
 })
 
-const { copy: copyToClipboard, copied } = useClipboard({ copiedDuring: 3000 })
+const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
 async function copySnippet(type: string) {
   const logo = props.logo.replace('i-', '')
   const str = await getIconSnippet(logo, type)
-  if (str === '404')
+  if (str === '404' || !str)
     throw new Error(`Icon ${props.logo} Not found`)
+  copyToClipboard(str)
+}
+
+async function download() {
+  const logo = props.logo.replace('i-', '')
+  const str = await getIconSnippet(logo, 'PNG')
   if (!str)
     return
-
-  if (type === 'Figma') {
-    const a = globalThis.document?.createElement('a')
-    if (!a)
-      return
-    a.href = str
-    a.target = '_blank'
-    a.click()
-    return
-  }
-
-  copyToClipboard(str)
+  const name = `${logo.replaceAll('nimiq:logos-', '')}.png`
+  const blob = dataUriToBlob(str)
+  downloadBlob(blob, name)
 }
 </script>
 
 <template>
-  <div flex="~ col gap-24 items-center" m-0 class="raw">
-    <div border-base rounded-6 p-24 flex-1 w-288 aspect-1.57 max-w-full bg="#f8f8f8" grid="~ place-content-center">
+  <div flex="~ col gap-24 items-center" m-0 class="raw" w-full>
+    <div
+      rounded-6 p-24 flex-1 w-288 w-full
+      :class="{
+        'bg-[rgb(var(--nq-neutral-on-light-0))] border-subtle': !dark,
+        'bg-[rgb(var(--nq-neutral-on-dark-0))] border-subtle-light': dark,
+      }"
+      grid="~ place-content-center"
+    >
       <div :class="logo" text-128 :style="`font-size: ${size}px`" />
     </div>
-    <div flex="~ gap-32" w-full>
-      <p>{{ label }}</p>
+    <div flex="~ gap-12" w-full>
+      <p text-neutral-800>
+        {{ label }}
+      </p>
       <div flex="~ gap-12" ml-auto>
-        <Toast.Provider>
-          <button
-            mr-1 mb-1 px-8 py-6 border-base rounded-full text-12 leading-none text-neutral-700 font-semibold
-            @click="copySnippet('SVG')"
-          >
+        <Toast v-if="copyIsSupported" v-model="copied" title="Copied to clipboard!" category="success">
+          <button ghost-btn @click="copySnippet('SVG')">
             SVG
-            <Toast.Root v-model:open="copied" rounded-full px-16 py-8 bg-green shadow-sm>
-              <Toast.Title flex gap-x-10 items-center text-white>
-                <div i-nimiq:check />
-                Copied to clipboard
-              </Toast.Title>
-            </Toast.Root>
-            <Toast.Viewport fixed bottom-32 right-32 flex flex-col list-none="!" />
           </button>
-        </Toast.Provider>
+        </Toast>
+
+        <button ghost-btn @click="download()">
+          PNG
+        </button>
       </div>
     </div>
   </div>

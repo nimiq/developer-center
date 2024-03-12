@@ -169,6 +169,37 @@ ${svg.replace(/<svg (.*?)>/, '<svg $1 {...props}>')}
 `
 }
 
+function convertSvgToPngDataUri(svgString: string, scale=1) {
+    return new Promise<string>((resolve, reject) => {
+        const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(svgBlob);
+        const img = new Image();
+
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            const ctx = canvas.getContext('2d');
+
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            URL.revokeObjectURL(url);
+
+            canvas.toBlob(blob => {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                  console.log(reader.result)
+                    resolve(reader.result as string);
+                };
+                reader.readAsDataURL(blob);
+            }, 'image/png');
+        };
+
+        img.src = url;
+    });
+}
+
+
 export async function getIconSnippet(icon: string, type: string, snippet = true, color = 'currentColor'): Promise<string | undefined> {
   if (!icon)
     return
@@ -183,14 +214,17 @@ export async function getIconSnippet(icon: string, type: string, snippet = true,
       return await getSvg(icon, '32', color)
     case 'SVG Symbol':
       return await getSvgSymbol(icon, '32', color)
+
+    case 'PNG':
+      return await convertSvgToPngDataUri(await getSvg(icon, '32', color), 6)
     case 'Iconify':
       return `<span class="iconify" data-icon="${icon}" data-inline="false"${color === 'currentColor' ? '' : ` style="color: ${color}"`}></span>`
     case 'JSX':
       return SvgToJSX(await getSvg(icon, undefined, color), toComponentName(icon), snippet)
 
-      // Links
+    // Links
     // case 'URL':
-      // return url
+    // return url
     case 'Data URL':
       return `data:image/svg+xml;base64,${Base64.encode(await getSvg(icon, undefined, color))}`
     case 'Figma':

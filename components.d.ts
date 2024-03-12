@@ -10,6 +10,8 @@ declare module 'vue' {
     Button: typeof import('./.vitepress/theme/components/Button.vue')['default']
     Callout: typeof import('./.vitepress/theme/components/Callout.vue')['default']
     Card: typeof import('./.vitepress/theme/components/Card.vue')['default']
+    ClipboardToast: typeof import('./.vitepress/theme/components/ClipboardToast.vue')['default']
+    CopyToClipboard: typeof import('./.vitepress/theme/components/CopyToClipboard.vue')['default']
     DesignKitItem: typeof import('./.vitepress/theme/components/DesignKitItem.vue')['default']
     Doc: typeof import('./.vitepress/theme/components/Doc.vue')['default']
     DocAside: typeof import('./.vitepress/theme/components/DocAside.vue')['default']
@@ -25,5 +27,6 @@ declare module 'vue' {
     Sidebar: typeof import('./.vitepress/theme/components/Sidebar.vue')['default']
     SidebarItem: typeof import('./.vitepress/theme/components/SidebarItem.vue')['default']
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
+    Toast: typeof import('./.vitepress/theme/components/Toast.vue')['default']
   }
 }

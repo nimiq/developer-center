@@ -17,7 +17,7 @@ const centered = computed(() => isIcon.value)
 </script>
 
 <template>
-  <div transition hocus="-translate-y-6" group rounded-8 hocus-shadow-card>
+  <div transition hocus="-translate-y-6" group rounded-8 hocus-shadow-lg>
     <a
       :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden :class="{
         'bg-neutral-200 transition-shadow hocus:bg-white hocus:ring-1 hocus:ring-neutral/1': !item.bgColor,
@@ -70,13 +70,3 @@ const centered = computed(() => isIcon.value)
     </a>
   </div>
 </template>
-
-<style scoped>
-.green-shadow {
-  box-shadow: 0px 18px 38px rgba(19, 181, 157, 0.07), 0px 7px 8.5px rgba(19, 181, 157, 0.04), 0px 2px 2.5px rgba(19, 181, 157, 0.02);
-}
-
-.blue-shadow {
-  box-shadow: 0px 18px 38px rgba(5, 130, 202, 0.07), 0px 7px 8.5px rgba(5, 130, 202, 0.04), 0px 2px 2.5px rgba(19,181,157, 0.02);
-}
-</style>
