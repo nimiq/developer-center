@@ -71,6 +71,36 @@ export async function generateRpcDocs() {
 
   // Methods section
   markdown.push(addHeader('h2', 'Methods'))
+  spec.methods.forEach((method: any) => {
+    markdown.push(addHeader('h3', method.name))
+
+    // Method parameters
+    markdown.push(addParagraph('Parameters:'))
+    if (method.params.length === 0)
+      markdown.push(addParagraph('*None*'))
+    else
+      markdown.push(methodParamsToTable(method))
+
+    // Method result
+    if ('$ref' in method.result.schema) {
+      const ref = method.result.schema.$ref.split('/').pop()
+      markdown.push(addParagraph(`Returns: [${ref}](#${ref.toLowerCase()})`))
+    }
+    else {
+      if (method.result.schema.type !== 'array') {
+        markdown.push(addParagraph(`Returns: ${firstCharToUpper(method.result.schema.type)}`))
+      }
+      else {
+        if ('$ref' in method.result.schema.items) {
+          const ref = method.result.schema.items.$ref.split('/').pop()
+          markdown.push(addParagraph(`Returns: Array< [${ref}](#${ref.toLowerCase()}) >`))
+        }
+        else {
+          markdown.push(addParagraph(`Returns: Array< ${firstCharToUpper(method.result.schema.items.type)} >`))
+        }
+      }
+    }
+  })
 
   // Schemas section
   markdown.push(addHeader('h2', 'Schemas'))
@@ -105,6 +135,10 @@ function addCode(language: string, content: string) {
   return { code: { language, content } }
 }
 
+function firstCharToUpper(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 function schemaPropertiesToTable(schema: any) {
   const table = { table: { headers: ['Name', 'Type', 'Required'], rows: [] } }
   const requiredProps = Object.entries(schema.required).map(prop => prop[1])
@@ -114,14 +148,23 @@ function schemaPropertiesToTable(schema: any) {
     .forEach((prop: any) => {
       // Check if we are dealing with a type or a reference to a schema
       let type: string
-      if (!prop.type && prop.$ref)
-        type = prop.$ref.split('/').pop()
-      else
-        type = prop.type
+      if (!prop.type && prop.$ref) {
+        const ref = prop.$ref.split('/').pop()
+        type = `[${ref}](#${ref.toLowerCase()})`
+      }
+      else { type = prop.type }
 
       const isPropRequired = requiredProps.find(reqProp => reqProp === prop.title)
-      table.table.rows.push([prop.title, type, isPropRequired ? 'Yes' : 'No'])
+      table.table.rows.push([prop.title, firstCharToUpper(type), isPropRequired ? 'Yes' : 'No'])
     })
+  return table
+}
+
+function methodParamsToTable(method: any) {
+  const table = { table: { headers: ['Name', 'Type', 'Required'], rows: [] } }
+  method.params.forEach((param: any) => {
+    table.table.rows.push([param.name, firstCharToUpper(param.schema.type), param.required ? 'Yes' : 'No'])
+  })
   return table
 }
 
