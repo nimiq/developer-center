@@ -70,8 +70,6 @@ export default defineConfig(async ({ mode }) => {
         async transform(code, id) {
           if (id.endsWith('styles/base.css'))
             return { code: `@layer vp-base { ${code} }` }
-          if (id.endsWith('reset/tailwind.css'))
-            return { code: `@layer tw-reset { ${code} }` }
         },
       },
 

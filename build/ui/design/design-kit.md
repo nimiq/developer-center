@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// import DesignKitItem from '.vitepress/theme/components/DesignKitItem.vue'
 import { useDark, useClipboard } from '@vueuse/core'
 
 const isDark = useDark()
@@ -33,7 +34,7 @@ The Nimiq logo is a plain hexagon – with rounded corners and a subtle golden r
   <DesignKitItem label="Dark horizontal variant" logo="i-nimiq:logos-nimiq-white-horizontal" dark :size="128"/>
 </div>
 
-<div grid="~ cols-1 md:cols-2 gap-32">
+<div grid="~ cols-1 md:cols-2 gap-32" mt-64>
   <div md-pb-64>
 
   ### Logo Mark
@@ -42,7 +43,7 @@ The Nimiq logo is a plain hexagon – with rounded corners and a subtle golden r
 
   </div>
 
-  <DesignKitItem md-mt-64 label="Gold hexagon" logo="i-nimiq:logos-nimiq" :size="96"/>
+  <DesignKitItem label="Gold hexagon" logo="i-nimiq:logos-nimiq" :size="96"/>
 </div>
 
 ### Clear space

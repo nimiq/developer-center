@@ -51,9 +51,9 @@ async function download() {
       <p text-neutral-800>
         {{ label }}
       </p>
-      <div flex="~ gap-12" ml-auto>
+      <div flex ml-auto>
         <Toast v-if="copyIsSupported" v-model="copied" title="Copied to clipboard!" category="success">
-          <button ghost-btn @click="copySnippet('SVG')">
+          <button ghost-btn mr-12 @click="copySnippet('SVG')">
             SVG
           </button>
         </Toast>
