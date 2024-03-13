@@ -1,11 +1,11 @@
 import { existsSync } from 'node:fs'
 import { basename, dirname } from 'node:path'
-import { env } from 'node:process'
 import { defineConfig } from 'vitepress'
 import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
 import { Accordion } from './theme/utils/sidebar'
 import { generateWebClientDocs } from './scripts/web-client'
+import { generateRpcDocs } from './scripts/rpc-docs'
 
 // @unocss-include
 
@@ -14,6 +14,7 @@ const baseUrl = '/nimiq-developer-center/'
 // https://vitepress.dev/reference/site-config
 export default async () => {
   await generateWebClientDocs()
+  await generateRpcDocs()
 
   return defineConfig({
     base: baseUrl,
@@ -136,6 +137,14 @@ export default async () => {
                 Accordion({ path: 'build/web-client/interfaces', collapsed: true }),
               ]
             },
+          },
+          {
+            text: 'JSON-RPC',
+            icon: 'i-nimiq:icons-lg-nodes',
+            items: [{
+              text: 'JSON-RPC Specification',
+              link: '/build/rpc-docs/',
+            }],
           },
           {
             text: 'UI',
