@@ -60,7 +60,7 @@
 }
 
 html {
-  --uno: scroll;
+  --uno: scroll text-16;
 }
 
 .medium-zoom-overlay {
