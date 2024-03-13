@@ -20,7 +20,7 @@ const centered = computed(() => isIcon.value)
   <div transition hocus="-translate-y-6" group rounded-8 hocus-shadow-lg>
     <a
       :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden :class="{
-        'bg-neutral-200 transition-shadow hocus:bg-white hocus:ring-1 hocus:ring-neutral/1': !item.bgColor,
+        'bg-neutral-200 transition-shadow hocus:bg-white hocus:border-subtle-sm': !item.bgColor,
         'bg-gradient-blue': item.bgColor === 'blue',
         'bg-gradient-green': item.bgColor === 'green',
         'p12 md:p24': isNormal || !hasBgIcon,

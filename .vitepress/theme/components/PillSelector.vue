@@ -29,11 +29,17 @@ function setPill() {
 
 <template>
   <div
-    w-max flex="~ align-center" h-32 relative p-4 ring="1 darkblue/3" rounded-full bg="darkblue-6 dark:white/20"
+    w-max flex="~ align-center" h-32 relative p-4 border-subtle rounded-full bg-neutral-200
   >
     <label
       v-for="[key, option] of Object.entries(options)" :key="`${key}-input`" :tabindex="option.disabled !== true ? undefined : '1'"
-      relative z-2 px-12 text-12 label transition-colors select-none :class="{ 'text-darkblue-50 dark:text-white-80': model !== key, 'cursor-pointer z-1 hover:text-darkblue-80 hover:text-darkblue hover:dark:text-white/80': option.disabled !== true, 'cursor-not-allowed text-darkblue-30 hover:text-white/70': option.disabled === true }"
+      relative z-2 px-12 text-12 label transition-colors select-none
+      :class="{
+        'text-darkblue': model === key,
+        'text-neutral-800': model !== key,
+        'cursor-pointer z-1 hover:text-neutral-900': option.disabled !== true && model !== key,
+        'cursor-not-allowed text-neutral-500': option.disabled === true,
+      }"
       rounded-full flex="~ items-center"
     >
       <input
@@ -43,12 +49,12 @@ function setPill() {
       >
       {{ option.label }}
     </label>
-    <div bg="white dark:darkblue" rounded-full h-28 top-2 absolute z-1 ring="1 darkblue/4" :style="{ ...pillStyles, transition: loaded ? 'left 300ms, width 200ms' : '' }" />
+    <div bg-white rounded-full h-27 top-2 absolute z-1 :style="{ ...pillStyles, transition: loaded ? 'left 300ms, width 200ms' : '' }" />
   </div>
 </template>
 
 <style scoped>
 label:has(input:focus-visible) {
-  --at-apply: ring-1 ring-darkblue-80 ring-offset-1;
+  --at-apply: ring-2 ring-blue ring-offset-3;
 }
 </style>
