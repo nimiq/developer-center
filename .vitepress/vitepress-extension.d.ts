@@ -6,7 +6,8 @@ declare module 'vitepress' {
   }
 
   interface SidebarItem {
-    icon: string
+    icon?: string
+    prefix?: string
   }
 }
 
