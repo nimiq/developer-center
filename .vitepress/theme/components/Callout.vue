@@ -8,6 +8,8 @@ const classes = computed(() => {
       icon: 'i-nimiq:alert',
     }
   }
+
+  return {}
 })
 </script>
 
