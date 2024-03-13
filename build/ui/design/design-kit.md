@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DesignKitItem from '../../../.vitepress/theme/components/DesignKitItem.vue'
+import Tags from '../../../.vitepress/theme/components/Tags.vue'
 import { useDark, useClipboard } from '@vueuse/core'
 
 const isDark = useDark()
