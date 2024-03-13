@@ -27,10 +27,15 @@ The Nimiq logo has evolved gradually over time, but the hexagon shape and wordma
 The Nimiq logo is a plain hexagon – with rounded corners and a subtle golden radial gradient. That’s it. It’s an ecosystem-first logo. In its simplicity, it leaves enough room for others to build on. It’s not just a logo in the traditional sense, but rather a symbol – a boilerplate intended to be varied and reproduced.
 
 <div grid="~ cols-1 md:cols-2 gap-32 justify-center" mt-24>
+
   <DesignKitItem label="Light horizontal variant" logo="i-nimiq:logos-nimiq-vertical" :size="96"/>
+
   <DesignKitItem label="Light Horizontal variant" logo="i-nimiq:logos-nimiq-horizontal" :size="128"/>
+
   <DesignKitItem label="Dark vertical variant" logo="i-nimiq:logos-nimiq-white-vertical" dark :size="96"/>
+
   <DesignKitItem label="Dark horizontal variant" logo="i-nimiq:logos-nimiq-white-horizontal" dark :size="128"/>
+
 </div>
 
 <div grid="~ cols-1 md:cols-2 gap-32" mt-64>
