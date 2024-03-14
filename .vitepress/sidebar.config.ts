@@ -61,6 +61,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Overview', link: '/build/' },
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
+        { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
       ],
     },
     {
@@ -80,14 +81,6 @@ export const sidebar: DefaultTheme.Sidebar = {
           Accordion({ path: 'build/web-client/interfaces', collapsed: true }),
         ]
       },
-    },
-    {
-      text: 'JSON-RPC',
-      icon: 'i-nimiq:icons-lg-nodes',
-      items: [{
-        text: 'JSON-RPC Specification',
-        link: '/build/rpc-docs/',
-      }],
     },
     {
       text: 'UI',
