@@ -89,7 +89,7 @@ export async function generateRpcDocs() {
     mkdirSync(buildFolder)
 
   writeFileSync(join(__dirname, '../../build/rpc-docs/methods.md'), json2md(methodsMd))
-  writeFileSync(join(__dirname, '../../build/rpc-docs/schemas.md'), json2md(schemaUrl))
+  writeFileSync(join(__dirname, '../../build/rpc-docs/schemas.md'), json2md(schemasMd))
 }
 
 function addHeader(size: string, text: string) {
