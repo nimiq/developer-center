@@ -216,8 +216,8 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                   i-{{ selectedIcon }}
                 </h3>
 
-                <button p-8 rounded-6 hover-bg-neutral-200 @click="copyToClipboard(`i-${selectedIcon}`)">
-                  <div i-nimiq:copy text-16 />
+                <button p-8 rounded-6 hover-bg-neutral-200 group @click="copyToClipboard(`i-${selectedIcon}`)">
+                  <div i-nimiq:copy text="16 neutral-800 group-hocus:neutral" />
                 </button>
               </div>
 
