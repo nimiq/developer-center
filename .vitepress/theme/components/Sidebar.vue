@@ -53,7 +53,7 @@ function onSectionTitleClicked(i: number) {
               <p v-if="group.prefix" text-16 op50 font-semibold relative text-left>
                 {{ group.prefix }}
               </p>
-              <div text="24 darkblue dark:white" flex="~ items-center gap-8">
+              <div text="24 neutral" flex="~ items-center gap-8">
                 <div v-if="group.icon" :class="group.icon" />
                 <h3 text-24 font-bold>
                   {{ group.text }}
