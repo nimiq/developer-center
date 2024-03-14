@@ -139,28 +139,28 @@ You've got one option: that’s white. Use this only on photographs and color ba
 <div grid="~ cols-2 md:cols-3 gap-16 justify-center" mt-24 class="raw">
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square>
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 z-1 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
   <img src="/assets/images/build/ui/design-kit/logo/island.png" alt="A paradisiacal beach seen from the top" rounded-6 border-subtle-light absolute inset-0 aspect-square />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg="#EC991C">
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-gradient-red>
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-gradient-orange>
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-gradient-blue>
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-gradient-green>
-  <div i-nimiq:logos-nimiq-full-white-horizontal text-128 />
+  <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-1 />
 </div>
 
 </div>

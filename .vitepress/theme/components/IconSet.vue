@@ -2,7 +2,7 @@
 import { Icon, addCollection, listIcons } from '@iconify/vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useClipboard, useElementSize, useLocalStorage, useScriptTag, useTimeAgo } from '@vueuse/core'
-import { Dialog, Popover, Slider, Toast } from 'radix-vue/namespaced'
+import { Dialog, Popover, Slider } from 'radix-vue/namespaced'
 import { getIconSnippet } from '../composables/icons/icon'
 import { downloadBlob, downloadIconFont, downloadSVGSprite, downloadZip } from '../composables/icons/pack'
 
@@ -196,64 +196,52 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         <ul pl-0 flex flex-wrap select-none mt-12 text-2xl class="-ml-8">
           <li v-for="icon in logosMono" v-show="activeVariant === activeVariant" :key="icon" flex>
             <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
-              <Icon :icon="icon" text-neutral-700 />
+              <Icon :icon="icon" />
             </button>
           </li>
         </ul>
       </details>
 
       <div
-        ref="modal" fixed :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }" transition-bottom
+        ref="modal" fixed :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }" transition-bottom border-top
         ease-in-out duration-300 right-0 bg-neutral-50 mt-32 border="base x-none b-none" px-32 z-10 py-24
         class="w-full md2:w-[calc(100vw-max(calc(var(--vp-sidebar-width)),calc((100%-(var(--vp-layout-max-width)-64px))/2+var(--vp-sidebar-width)-32px)))]"
       >
         <div relative>
           <div flex="~ gap-32">
-            <Icon :icon="selectedIcon || ''" text-96 />
+            <Icon :icon="selectedIcon || ''" text="96 blue" />
             <div>
-              <div flex="~ items-center gap-4" text="22 neutral-800">
+              <div flex="~ items-center gap-12" text="24 neutral">
                 <h3 leading-none mt-6>
                   i-{{ selectedIcon }}
                 </h3>
 
-                <button p-8 rounded-6 hover="bg-darkblue-6 dark:bg-white/20" @click="copyToClipboard(`i-${selectedIcon}`)">
+                <button p-8 rounded-6 hover-bg-neutral-200 @click="copyToClipboard(`i-${selectedIcon}`)">
                   <div i-nimiq:copy text-16 />
                 </button>
               </div>
 
-              <button class="text-12 text-darkblue-40 underline" @click="() => helpOpen = true">
+              <button text-12 underline @click="() => helpOpen = true">
                 How can I use it?
               </button>
             </div>
-            <button ml-auto p-6 self-start @click="selectedIcon = undefined">
-              <div i-nimiq:cross text="12 darkblue-40 dark:white/60" />
-            </button>
+            <button ml-auto text-32 self-start close-btn @click="selectedIcon = undefined" />
           </div>
 
-          <div mt-24 flex flex-wrap gap-y-16 gap-x-24>
+          <div mt-24 flex flex-wrap gap-y-24 gap-x-32>
             <div v-for="[title, options] in Object.entries(copySections)" :key="title">
-              <h4 my-1 text="11 darkblue-50" label mb-6>
+              <h4 my-1 text-11 text-neutral-800 label mb-12>
                 {{ title }}
               </h4>
               <div flex gap-6 flex-wrap>
-                <Toast.Provider>
+                <Toast v-model="copied" title="Copied to clipboard" category="success">
                   <button
-                    v-for="option in options" :key="option" mr-1 mb-1 opacity-75 px-8 py-6 border-base
-                    rounded-full bg="hover:darkblue-6 dark:hover:white/6" text-12 leading-none transition-colors
-                    flex @click="title === 'Download' ? download(option) : copySnippet(option)"
+                    v-for="option in options" :key="option" ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
                   >
                     {{ option.replace(' TS', '') }}
-                    <sup v-if="option.endsWith('TS')" opacity-70 class="-mr-1 -mt-1">TS</sup>
+                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 mb--8>TS</sup>
                   </button>
-
-                  <Toast.Root v-model:open="copied" rounded-full px-16 py-8 bg-green shadow-sm>
-                    <Toast.Title flex gap-x-10 items-center text-white>
-                      <div i-nimiq:check />
-                      Copied to clipboard
-                    </Toast.Title>
-                  </Toast.Root>
-                  <Toast.Viewport fixed bottom-32 right-32 flex flex-col list-none="!" />
-                </Toast.Provider>
+                </Toast>
               </div>
             </div>
           </div>
@@ -286,11 +274,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
             <Dialog.Description m-0>
               Learn how to use the Nimiq Icons in your project.
             </Dialog.Description>
-            <Dialog.Close
-              fixed right="24 md:32" top="24 md:32" bg="neutral-200 hover:neutral-300" p-10 rounded-full transition-colors
-            >
-              <div i-nimiq:cross text-neutral />
-            </Dialog.Close>
+            <Dialog.Close fixed right="24 md:32" top="24 md:32" close-btn text-32 />
             <div pr-40>
               <slot mt-16 name="learn-how-to-use-the-icons" />
             </div>

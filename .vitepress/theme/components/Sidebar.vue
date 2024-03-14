@@ -36,7 +36,7 @@ function onSectionTitleClicked(i: number) {
 </script>
 
 <template>
-  <aside v-if="hasSidebar" border-base-neutral-r class="VPSidebar scroll raw" bg-neutral-0 mb-2 :class="{ open }">
+  <aside v-if="hasSidebar" border-base-neutral-r class="VPSidebar scroll-sm raw" bg-neutral-0 mb-2 :class="{ open }">
     <div mt-12>
       <Environment />
     </div>
