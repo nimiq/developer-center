@@ -91,7 +91,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           text: 'Design',
           collapsed: false,
           items: [
-            { text: 'Design Kit', link: '/build/ui/design/design-kit' },
+            { text: 'Logo', link: '/build/ui/design/logo' },
             { text: 'Icons', link: '/build/ui/design/icons' },
             { text: 'Typography', link: '/build/ui/design/typography/' },
           ],

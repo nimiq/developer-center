@@ -36,7 +36,7 @@ async function download() {
 </script>
 
 <template>
-  <div flex="~ col gap-24 items-center" m-0 class="raw" w-full>
+  <div flex="~ col gap-16 items-center" m-0 class="raw" w-full>
     <div
       rounded-6 p-24 flex-1 w-288 w-full
       :class="{
