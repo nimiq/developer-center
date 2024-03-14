@@ -19,7 +19,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
         {{ version }}
       </TooltipTrigger>
       <TooltipPortal>
-        <TooltipContent z-100 side="bottom" :side-offset="5" :collision-padding="8" align="start" bg-darkblue text-white p-20 pb-12 shadow rounded-8 max-w-350 text-14 border="base white/20">
+        <TooltipContent z-100 side="bottom" :side-offset="5" :collision-padding="8" align="start" bg-gradient-neutral text-white p-20 pb-12 shadow rounded-8 max-w-350 text-14 border="base white/20">
           <div flex="~ items-center gap-8" mb-6>
             <p text-13 label>
               {{ buildEnvironment }} environment

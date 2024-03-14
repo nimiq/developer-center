@@ -10,7 +10,7 @@ import { useData } from './composables/useData'
  * Adapted to by an hexagon animation
  */
 
-const { isDark, theme, page } = useData()
+const { isDark } = useData()
 const enableTransitions = () => 'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches
 
 function getHexagonPoints(x: number, y: number, r: number): string {
@@ -57,16 +57,16 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   )
 })
 
-watch(page, () => {
-  // if the current page is under build/web-client, we want to add a social
-  if (page.value.filePath.startsWith('build/web-client')) {
-    const link = 'https://www.npmjs.com/package/@nimiq/core-web/v/next'
-    theme.value.socialLinks = [...theme.value.socialLinks, { icon: 'npm', link, ariaLabel: 'Web Client NPM package' }]
-  }
-  else {
-    theme.value.socialLinks = theme.value.socialLinks.filter(({ icon }) => icon !== 'npm')
-  }
-}, { immediate: true })
+// watch(page, () => {
+//   // if the current page is under build/web-client, we want to add a social
+//   if (page.value.filePath.startsWith('build/web-client')) {
+//     const link = 'https://www.npmjs.com/package/@nimiq/core-web/v/next'
+//     theme.value.socialLinks = [...theme.value.socialLinks, { icon: 'npm', link, ariaLabel: 'Web Client NPM package' }]
+//   }
+//   else {
+//     theme.value.socialLinks = theme.value.socialLinks.filter(({ icon }) => icon !== 'npm')
+//   }
+// }, { immediate: true })
 </script>
 
 <template>

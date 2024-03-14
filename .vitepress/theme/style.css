@@ -44,7 +44,7 @@
   --vp-backdrop-bg-color: rgb(var(--nq-neutral) / 0.2);
   --vp-c-bg: rgb(var(--nq-neutral-0));
   --vp-c-bg-soft: rgb(var(--nq-neutral));
-  --vp-c-bg-elv: rgb(var(--nq-neutral));
+  --vp-c-bg-elv: rgb(var(--nq-neutral-0));
   --vp-c-divider: rgb(var(--nq-neutral-100));
   --vp-c-neutral-inverse: rgb(var(--nq-neutral-100));
   --vp-input-switch-color: rgb(var(--nq-neutral));
@@ -52,6 +52,10 @@
   --vp-c-text-1: rgb(var(--nq-neutral-800));
   --vp-c-text-2: rgb(var(--nq-neutral-700));
   --vp-c-gutter: rgb(var(--nq-neutral-50));
+
+  --vp-c-bg-soft: rgb(var(--nq-neutral-200));
+  --vp-c-border: rgb(var(--nq-neutral-400));
+  --vp-shadow-3: var(--nq-shadow);
 
   --vp-font-family-base: Mulish;
   --vp-font-family-mono: 'Fira Code';
