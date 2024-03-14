@@ -91,7 +91,7 @@ A specific small horizontal logo to use at a size between ??px and ??px wide. An
  In case of logo-extensions, we use a white base and apply an opacity-gradient from the top-right edge to the bottom left edge of the shape, with a color-stop at about 60%.
 
 <div border-base mt-24 rounded-6 py="8 md:32">
-<img max-w-520 px-48 my="16 md:0" src="/assets/images/build/ui/design-kit/logo/build-your-nim-logo.png" alt="Visual guide on how to build your own logo with the Nimiq Hexagon" />
+<img max-w-520 mx-auto px-48 my="16 md:0" src="/assets/images/build/ui/design-kit/logo/build-your-nim-logo.png" alt="Visual guide on how to build your own logo with the Nimiq Hexagon" />
 </div>
 
 ## Backgrounds
@@ -176,8 +176,8 @@ The don'ts with the Nimiq logo
   <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-horizontal-outline-ugly.svg" alt="An example on how to not use the Nimiq Logo malformating it with shadows or only outlines" rounded-6  />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't alter, crop, skew, Outline, distort or recreate the logo in any way</p>
 </div>
@@ -189,8 +189,8 @@ The don'ts with the Nimiq logo
   <img src="/assets/images/build/ui/design-kit/logo/nonos/grumpy-cat.png" alt="An example on how to not use the Nimiq Logo making it unreadable" rounded-6 absolute inset-0 aspect-square />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't use the full/color logo on an unapproved background color or low contrast photo</p>
 </div>
@@ -201,8 +201,8 @@ The don'ts with the Nimiq logo
   <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="" rounded-6 />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't display the Nimiq name without the logo mark</p>
 </div>
@@ -213,8 +213,8 @@ The don'ts with the Nimiq logo
   <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="An example on how to not use the Nimiq Logo only showing letters" rounded-6 ml-24 />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't use the full-color logo on the core color backgrounds</p>
 </div>
@@ -225,8 +225,8 @@ The don'ts with the Nimiq logo
     <div i-nimiq:logos-nimiq text-80 z-1 rotate-69 />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't change the orientation of the logo mark</p>
 </div>
@@ -237,8 +237,8 @@ The don'ts with the Nimiq logo
   <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-blue.svg" alt="A grumpy cat" rounded-6 />
 </div>
 <div mt-16 flex="~ gap-8">
-  <div bg-gradient-red grid="~ place-content-center" h-max p-3 mt-4 rounded-full>
-    <div class="i-nimiq:cross-bold" text="7 white" />
+  <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
+    <div class="i-nimiq:cross-bold" text="8 white" />
   </div>
   <p text="neutral-900 14 pretty">Don't change the logo color</p>
 </div>
