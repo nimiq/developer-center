@@ -3,15 +3,19 @@ import { join } from 'node:path'
 import json2md from 'json2md'
 
 export async function generateRpcDocs() {
-  let schemaUrl: string | URL | Request
-  let req: Response
+  let content: Response
 
   try {
-    // Request OpenRPC specification from the latest Albatross release on Github
-    schemaUrl = 'https://raw.githubusercontent.com/nimiq/core-rs-albatross/b3241f864130494fcd687adb4e3689b98cccc984/tools/src/rpc-schema/schema.json'
-    req = await fetch(schemaUrl)
-    if (req.status !== 200)
-      throw new Error(`HTTP code ${req.status}`)
+    // Request the latest release information
+    const latestRelease = await fetch('https://github.com/nimiq/core-rs-albatross/releases/latest', { redirect: 'follow' })
+    if (latestRelease.status !== 200)
+      throw new Error(`HTTP code for fetching release ${latestRelease.status}`)
+
+    // Request OpenRPC document from the latest Albatross release on Github
+    const releaseVersion = latestRelease.url.split('/').pop()
+    content = await fetch(`https://github.com/nimiq/core-rs-albatross/releases/download/${releaseVersion}/openrpc-document.json`)
+    if (content.status !== 200)
+      throw new Error(`HTTP code for fetching content ${content.status}`)
   }
   catch (error) {
     // eslint-disable-next-line no-console
@@ -20,7 +24,7 @@ export async function generateRpcDocs() {
   }
 
   // Read request body and parse the body text as JSON
-  const spec = await req.json()
+  const spec = await content.json()
   const packageVersion = spec.info.version
 
   // Build folder
@@ -44,6 +48,10 @@ export async function generateRpcDocs() {
 
   // Methods section
   const methodsMd = []
+
+  methodsMd.push(addHeader('h2', `Version: ${spec.info.version}`))
+  methodsMd.push(`[Download RPC definition](https://github.com/nimiq/core-rs-albatross/releases/latest)`)
+
   methodsMd.push(addHeader('h2', 'Methods'))
   for (const method of spec.methods) {
     methodsMd.push(addHeader('h3', method.name))
