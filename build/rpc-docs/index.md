@@ -2,10 +2,6 @@
 
 Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.
 
-## Version: Testnet 0.20.0
-
-[View schema definition](https://raw.githubusercontent.com/nimiq/core-rs-albatross/b3241f864130494fcd687adb4e3689b98cccc984/tools/src/rpc-schema/schema.json)
-
 ## Authentication
 
 Authentication with the JSON-RPC server occurs via HTTP Basic Authentication. The username and password can be configured within the `rpc-server` section of the `client.toml` file. Authentication with the RPC server functions by adding an Authorization header to the HTTP request. The value of this header is provided in the format `Basic <credentials>` where `credentials` is a base64-encoded string containing the username and password separated by a colon.
