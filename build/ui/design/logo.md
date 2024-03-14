@@ -8,13 +8,13 @@ const isDark = useDark()
 const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
 </script>
 
-# Nimiq Design Kit{.mb-0}
+# Nimiq Logo{.mb-0}
 
 Welcome to the Nimiq design definition page. The identity has been redefined by carefully selecting colours, typography and shapes to show how powerful, useful & simple Nimiq products are.
 
 <Tags mt-24 class="raw" :tags="['Nimiq Brand Kit']" />
 
-## Logo History
+## The History
 
 The Nimiq logo has evolved gradually over time, but the hexagon shape and wordmark have been constant elements in its design.
 
@@ -24,7 +24,7 @@ The Nimiq logo has evolved gradually over time, but the hexagon shape and wordma
 <img src="/assets/images/build/ui/design-kit/logo/nimiq-logo-history-light.png" alt="The history of the logo of Nimiq" v-else />
 </div>
 
-## The Nimiq Logo
+## The Logo
 
 The Nimiq logo is a plain hexagon – with rounded corners and a subtle golden radial gradient. That’s it. It’s an ecosystem-first logo. In its simplicity, it leaves enough room for others to build on. It’s not just a logo in the traditional sense, but rather a symbol – a boilerplate intended to be varied and reproduced.
 
