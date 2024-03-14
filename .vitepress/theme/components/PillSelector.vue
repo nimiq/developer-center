@@ -29,7 +29,7 @@ function setPill() {
 
 <template>
   <div
-    w-max flex="~ align-center" h-32 relative p-4 border-subtle rounded-full bg-neutral-200
+    w-max flex="~ align-center" h-32 relative p-4 border-subtle-sm rounded-full bg-neutral-200
   >
     <label
       v-for="[key, option] of Object.entries(options)" :key="`${key}-input`" :tabindex="option.disabled !== true ? undefined : '1'"
