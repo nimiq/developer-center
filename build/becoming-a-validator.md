@@ -1,10 +1,12 @@
-# Becoming a Validator on the Proof-of-Stake Testnet
+# Becoming a Validator
+
+This guide will walk you through the process of setting up a Nimiq validator in the Albatross network.
 
 ## Setup
 
 This guide assumes the proof-of-stake network client (the node) has been compiled, or that you are running the node through other means, such as Docker. Check [this guide](https://github.com/nimiq/core-rs-albatross/blob/albatross/README.md#installation) for more information on compiling the code yourself.
 
-This guide provides two methods for sending JSON-RPC commands to your node:
+This guide provides two methods for sending [JSON-RPC commands](./rpc-docs/index.md#methods) to your node:
 
 1. [arpl](https://github.com/sisou/arpl), an RPC client specific to Nimiq's PoS node
 2. `curl`, a general-purpose network request tool

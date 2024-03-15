@@ -18,12 +18,12 @@ const icons = {
 </script>
 
 <template>
-  <div v-if="tags.size > 0" flex="~ gap-16 wrap" text-18 w-max ml-0>
+  <div v-if="tags.size > 0" flex="~ gap-16 wrap" text-18 w-max ml-0 class="raw">
     <div
       v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8"
-      border="1 solid neutral-500 inverted:white/40" rounded-6 leading-1
+      border="base inverted:[--border-color:rgb(255_255_255/0.4)]" rounded-6 leading-1
     >
-      <div :class="icons[tag]" size-24 text="neutral-700 inverted:white/60" />
+      <div :class="icons[tag]" size-18 text="neutral-700 inverted:white/60" />
       <span text="neutral-gold inverted:white/60">{{ tag }}</span>
     </div>
   </div>

@@ -16,6 +16,7 @@ declare module 'vue' {
     DocAsideItem: typeof import('./.vitepress/theme/components/DocAsideItem.vue')['default']
     DocFooter: typeof import('./.vitepress/theme/components/DocFooter.vue')['default']
     Environment: typeof import('./.vitepress/theme/components/Environment.vue')['default']
+    Flyout: typeof import('./.vitepress/theme/components/Flyout.vue')['default']
     Footer: typeof import('./.vitepress/theme/components/Footer.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     HeaderLogo: typeof import('./.vitepress/theme/components/HeaderLogo.vue')['default']
@@ -26,5 +27,6 @@ declare module 'vue' {
     SidebarItem: typeof import('./.vitepress/theme/components/SidebarItem.vue')['default']
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
     Toast: typeof import('./.vitepress/theme/components/Toast.vue')['default']
+    Tooltip: typeof import('./.vitepress/theme/components/Tooltip.vue')['default']
   }
 }
