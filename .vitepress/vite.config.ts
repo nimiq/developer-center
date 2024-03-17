@@ -77,6 +77,10 @@ export default defineConfig(async ({ mode }) => {
     resolve: {
       alias: [
         {
+          find: /^.*\/VPNav\.vue$/,
+          replacement: fileURLToPath(new URL('./theme/components/header/Header.vue', import.meta.url)),
+        },
+        {
           find: /^.*\/VPNavBarTitle\.vue$/,
           replacement: fileURLToPath(new URL('./theme/components/HeaderLogo.vue', import.meta.url)),
         },

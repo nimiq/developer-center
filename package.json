@@ -25,15 +25,17 @@
     "jszip": "^3.10.1",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
-    "nimiq-css": "^0.0.39",
+    "nimiq-css": "^0.0.43",
     "prettier": "^3.2.5",
     "radix-vue": "^1.5.2",
     "svg-packer": "^0.0.3",
+    "vaul-vue": "^0.1.0",
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.8.1",
     "@iconify-json/carbon": "^1.1.31",
+    "@iconify-json/logos": "^1.1.42",
     "@iconify/utils": "^2.1.22",
     "@nimiq/core-web": "2.0.0-alpha.18",
     "@types/node": "^20.11.27",

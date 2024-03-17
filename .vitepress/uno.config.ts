@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetUno } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import { presetNimiq } from 'nimiq-css'
@@ -55,10 +56,12 @@ export default defineConfig({
     presetAttributify(),
     presetIcons({
       collections: {
+        logos: () => import('@iconify-json/logos/icons.json').then(i => i.default as any),
         nimiq: async () => {
-          const res = await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json')
-          const json = await res.json()
-          return json
+          // const res = await fetch('/home/maxi/nimiq/ui/packages/nimiq-icons/dist/icons.json')
+          // const json = await res.json()
+          const json = await readFile('/home/maxi/nimiq/ui/packages/nimiq-icons/dist/icons.json', 'utf-8')
+          return JSON.parse(json)
         },
       },
     }),
