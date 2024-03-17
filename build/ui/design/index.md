@@ -10,4 +10,4 @@ Start building with Nimiq by using our design system.
 
 - [Logo](./logo.md)
 - [Icons](./icons.md)
-- [Typography](./typography.md)
+- [Typography](./typography/index.md)
