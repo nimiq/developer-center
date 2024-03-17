@@ -36,11 +36,8 @@ function onSectionTitleClicked(i: number) {
 </script>
 
 <template>
-  <aside v-if="hasSidebar" border-right class="VPSidebar scroll-sm raw" bg-neutral-0 mb-2 :class="{ open }">
-    <div mt-12>
-      <Environment />
-    </div>
-    <nav aria-labelledby="sidebar-aria-label" tabindex="-1" py-40 h-full relative>
+  <aside v-if="hasSidebar" class="VPSidebar raw" scroll-sm of-y-auto border-right bg-neutral-0 mb-2 :class="{ open }">
+    <nav aria-labelledby="sidebar-aria-label" tabindex="-1" pb-40 h-full relative>
       <span id="sidebar-aria-label" sr-only>Sidebar Navigation</span>
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">

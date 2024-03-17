@@ -58,6 +58,12 @@
   --vp-font-family-mono: 'Fira Code';
 
   --vp-sidebar-width: 300px;
+
+  --vp-nav-height: 68px;
+
+  @media (min-width: 720px) {
+    --vp-nav-height: 96px;
+  }
 }
 
 html {
@@ -195,7 +201,6 @@ h1 + p {
 }
 
 .VPHome {
-  padding: 36px;
   padding-top: 96px;
   max-width: calc(var(--vp-layout-max-width) - 64px);
   margin: 0 auto;
