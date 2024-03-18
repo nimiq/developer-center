@@ -34,7 +34,7 @@ const centered = computed(() => isIcon.value)
           'absolute inset-y-50 -right-12 md:-right-16 min-w-100 text-100 sm:text-202': !centered,
           'text-[#0E65C9]': item.bgColor === 'blue',
           'text-[#1DA186]': item.bgColor === 'green',
-          'text-neutral-700 children:h-96 children:w-96 mb56 group-hocus:text-neutral transition-colors': centered,
+          'text-neutral-700 text-96 mb56 group-hocus:text-darkblue transition-colors': centered,
         }"
       >
         <div :class="item.icon" />
