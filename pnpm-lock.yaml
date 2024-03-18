@@ -33,8 +33,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   nimiq-css:
-    specifier: ^0.0.47
-    version: 0.0.47(typescript@5.4.2)(unocss@0.58.5)(vite@5.1.6)
+    specifier: ^0.0.49
+    version: 0.0.49(typescript@5.4.2)(unocss@0.58.5)(vite@5.1.6)
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -1954,6 +1954,10 @@ packages:
 
   /@unocss/reset@0.58.5:
     resolution: {integrity: sha512-2wMrkCj3SSb5hrx9TKs5jZa34QIRkHv9FotbJutAPo7o8hx+XXn56ogzdoUrcFPJZJUx2R2nyOVbSlGMIjtFtw==}
+
+  /@unocss/reset@0.58.6:
+    resolution: {integrity: sha512-mYyOe5QDRHc1BBRff+G97j3SGGC8s3Vk7cCcXc/l48FvPHKtLCphMZaBS+KkGkzWqwAtxv0QRbGhTixJCVDRug==}
+    dev: false
 
   /@unocss/rule-utils@0.58.5:
     resolution: {integrity: sha512-w0sGJoeUGwMWLVFLEE9PDiv/fQcQqZnTIIQLYNCjTdqXDRlwTp9ACW0h47x/hAAIXdOtEOOBuTfjGD79GznUmA==}
@@ -4637,15 +4641,15 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /nimiq-css@0.0.47(typescript@5.4.2)(unocss@0.58.5)(vite@5.1.6):
-    resolution: {integrity: sha512-FJT0u+BZekcu/mLehIbLnYJ/90H+leo2cGjNGdU9JP9C84h5MBaj2eRuecca57Ppp2xcIRTEYZkR5gSYViGI5A==}
+  /nimiq-css@0.0.49(typescript@5.4.2)(unocss@0.58.5)(vite@5.1.6):
+    resolution: {integrity: sha512-OE2GXkCPD5Cx4oLT2mAnvFZy4IvX50+Rv82WLAZs5sK2EqA3BaFhW/G/IdQQFivHK/WpCKM0uTkYS3tOXjTLbg==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: ^5.0.0
       unocss: ^0.58.5
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@unocss/reset': 0.58.5
+      '@unocss/reset': 0.58.6
       ts-cssjson: 3.0.1
       typescript: 5.4.2
       unocss: 0.58.5(postcss@8.4.35)(vite@5.1.6)
