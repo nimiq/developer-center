@@ -125,14 +125,14 @@ const navigation: NavigationType = {
 <template>
   <header
     style="height: var(--vp-nav-height);" border-bottom mb-1 z-100 px="32 md:40" lg="fixed top-0" w-full
-    flex="~ items-center" class="raw @container" bg-neutral-0
+    flex="~ items-center" class="raw" bg-neutral-0
   >
     <a href="/" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral">
       <div
         :class="isDark ? 'i-nimiq:logos-nimiq-white-horizontal' : 'i-nimiq:logos-nimiq-horizontal'" h="22 md:24"
         w="96 md:101"
       />
-      <h2 whitespace-nowrap class="hidden @sm:block">
+      <h2 whitespace-nowrap hidden sm:block>
         <span sr-only>Nimiq</span> Developer Center
       </h2>
     </a>
