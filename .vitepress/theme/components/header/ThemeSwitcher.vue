@@ -57,7 +57,7 @@ async function toggleTheme({ clientX: x, clientY: y }: MouseEvent) {
 
 <template>
   <input
-    switch text-20 type="checkbox" style="--active-color: rgb(var(--nq-neutral-400))"
+    switch type="checkbox" style="--active-color: rgb(var(--nq-neutral-400))"
     before:bg-neutral="white dark:800" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`" :checked="isDark"
     @click="toggleTheme"
   >

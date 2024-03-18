@@ -16,9 +16,8 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
   <div>
     <TooltipProvider>
       <TooltipRoot>
-        <TooltipTrigger label pill-sm pill text="orange 13" py-4 bg-orange-400 border="1 orange/30" aria-label="View build information">
-          {{ version }}
-          <div i-nimiq:info text-12 op90 ml-6 />
+        <TooltipTrigger rounded-full bg-orange-400 flex="~ items-center justify-center" text="orange 11" p-4 aria-label="View build information">
+          <div i-nimiq:info text-12 />
         </TooltipTrigger>
         <TooltipPortal>
           <TooltipContent z-100 side="bottom" :side-offset="5" :collision-padding="8" align="start" bg="gradient-neutral dark:neutral-100" border-subtle-light text-white p-20 pb-12 rounded-8 max-w-360 text-14 border="base white/20">
@@ -29,7 +28,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
             </div>
 
             <p mb-6 op70>
-              Work heavily in progress. You might find errors or missing information.
+              Work heavily in progress. You might find errors or missing information. {{ version }}
             </p>
 
             <p op70 flex="~ items-center gap-6">
