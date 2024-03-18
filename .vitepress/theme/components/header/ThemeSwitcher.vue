@@ -56,22 +56,14 @@ async function toggleTheme({ clientX: x, clientY: y }: MouseEvent) {
 </script>
 
 <template>
-  <label :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`" relative>
+  <label :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`" relative h-20>
     <input
       switch type="checkbox"
       class="checked:dark:[--active-color:rgb(var(--nq-neutral-600))] peer" :checked="isDark"
       @click.prevent="toggleTheme"
     >
-    <div size="0.9em" absolute w="2em" class="icon" peer-checked:left="1.5em" grid="~ place-content-center">
-      <div :class="`${isDark ? 'i-carbon:sun' : 'i-carbon:moon'} icon`" text="10 darkblue" />
+    <div aria-hidden pointer-events-none size="0.9em" p2 absolute top="0.15em" transition-left ease-out duration-100 left="0.2em peer-checked:[0.97em]" inset-0>
+      <div :class="`${isDark ? 'i-carbon:sun' : 'i-carbon:moon'}`" text="10 darkblue/80" />
     </div>
   </label>
 </template>
-
-<style>
-.icon {
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-}
-</style>
