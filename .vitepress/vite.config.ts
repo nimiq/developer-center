@@ -109,5 +109,8 @@ export default defineConfig(async ({ mode }) => {
         ],
       },
     },
+    build: {
+      cssMinify: 'lightingcss',
+    },
   }
 })
