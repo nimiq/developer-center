@@ -103,6 +103,7 @@ export default defineConfig(async ({ mode }) => {
       ],
     },
     css: {
+      transformer: 'lightningcss',
       postcss: {
         plugins: [
           postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] }),
