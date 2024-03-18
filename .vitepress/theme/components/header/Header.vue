@@ -123,38 +123,42 @@ const navigation: NavigationType = {
 </script>
 
 <template>
-  <header
-    style="height: var(--vp-nav-height);" border-bottom mb-1 z-100 px="32 md:40" lg="fixed top-0" w-full
-    flex="~ items-center" class="raw" bg-neutral-0
-  >
-    <a href="/" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral">
-      <div
-        :class="isDark ? 'i-nimiq:logos-nimiq-white-horizontal' : 'i-nimiq:logos-nimiq-horizontal'" h="22 md:24"
-        w="96 md:101"
-      />
-      <h2 whitespace-nowrap hidden sm:block>
-        <span sr-only>Nimiq</span> Developer Center
-      </h2>
-    </a>
-    <template v-if="isSmall">
-      <SearchBox v-if="showSearch" @close="showSearch = false" />
-      <button ml-auto mr-16 p-16 @click="showSearch = true">
-        <div i-nimiq:magnifying-glass />
-      </button>
-      <MobileMenu :navigation />
-    </template>
-    <template v-else>
-      <SearchBox v-if="showSearch" @close="showSearch = false" />
-      <button ml-24 text-14 py-6 input-text flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
-        <div i-nimiq:magnifying-glass op60 />
-        <span lh="1" style="color: var(--nq-color)">Search</span>
-        <span ghost-btn flex="~ gap-2" p-2 rounded-3 ml-64 style="--ring-color: var(--nq-color)" hover="bg-inherit" group-hover="op60">
-          <kbd>Ctrl</kbd>
-          <kbd>K</kbd>
-        </span>
-      </button>
-      <Navigation :navigation />
-      <Environment ml-16 />
-    </template>
-  </header>
+  <div border-bottom lg="fixed top-0" w-full bg-neutral-0 z-100>
+    <header
+      style="height: var(--vp-nav-height)" max-w-1280 mx-auto px="24 sm:48 md2:64"
+      flex="~ items-center" class="raw"
+    >
+      <a href="/" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
+        <div
+          :class="isDark ? 'i-nimiq:logos-nimiq-white-horizontal' : 'i-nimiq:logos-nimiq-horizontal'" h="22 md:24"
+          w="96 md:101"
+        />
+        <h2 whitespace-nowrap hidden xs:block>
+          <span sr-only>Nimiq</span> Developer Center
+        </h2>
+        <div absolute top--6 right--12 @click.prevent>
+          <Environment />
+        </div>
+      </a>
+      <template v-if="isSmall">
+        <SearchBox v-if="showSearch" @close="showSearch = false" />
+        <button ml-auto mr-16 p-16 @click="showSearch = true">
+          <div i-nimiq:magnifying-glass />
+        </button>
+        <MobileMenu :navigation />
+      </template>
+      <template v-else>
+        <SearchBox v-if="showSearch" @close="showSearch = false" />
+        <button ml-24 text-14 py-6 input-text flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
+          <div i-nimiq:magnifying-glass op60 />
+          <span lh="1" style="color: var(--nq-color)">Search</span>
+          <span ghost-btn flex="~ gap-2" p-2 rounded-3 ml-64 style="--ring-color: var(--nq-color)" hover="bg-inherit" group-hover="op60">
+            <kbd>Ctrl</kbd>
+            <kbd>K</kbd>
+          </span>
+        </button>
+        <Navigation :navigation />
+      </template>
+    </header>
+  </div>
 </template>

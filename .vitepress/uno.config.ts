@@ -73,6 +73,7 @@ export default defineConfig({
   ],
   theme: {
     breakpoints: {
+      xs: '380px',
       sm: '640px',
       md: '768px',
       md2: '960px',

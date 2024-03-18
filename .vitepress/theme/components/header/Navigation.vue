@@ -63,7 +63,7 @@ const baseUrl = import.meta.env.BASE_URL
         </NavigationMenu.Content>
       </NavigationMenu.Item>
 
-      <NavigationMenu.Item ml-16>
+      <NavigationMenu.Item ml-16 flex="~ items-center">
         <ThemeSwitcher />
       </NavigationMenu.Item>
 
