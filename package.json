@@ -43,6 +43,7 @@
     "@unocss/transformer-directives": "^0.58.5",
     "cross-spawn": "^7.0.3",
     "eslint": "^8.57.0",
+    "lightningcss": "^1.24.1",
     "lint-staged": "^15.2.2",
     "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.12",
