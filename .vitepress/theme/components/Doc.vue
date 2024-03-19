@@ -44,11 +44,11 @@ const pageName = computed(() =>
             ]"
           />
         </main>
-        <VPDocFooter>
+        <DocFooter>
           <template #doc-footer-before>
             <slot name="doc-footer-before" />
           </template>
-        </VPDocFooter>
+        </DocFooter>
         <slot name="doc-after" />
       </div>
     </div>

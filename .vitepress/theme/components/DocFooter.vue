@@ -28,18 +28,17 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
 
 <template>
   <nav
-    v-if="frontmatter.footer !== false" grid="~ md:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-96
+    v-if="frontmatter.footer !== false" mx-auto
+    max-w="[calc(74ch+2rem+2rem)]" grid="~ md:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-96
     :class="!hasPrev && !hasNext ? 'grid-rows-1' : 'grid-rows-[auto_auto_auto_auto] md:grid-rows-2'"
   >
-    <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 group lh-0>
+    <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 arrow lh-0>
       <template v-if="!isWebClientDoc">
         Edit this page on GitHub
       </template>
       <template v-else>
         Edit the documentation on GitHub
       </template>
-
-      <div i-nimiq:arrow-top-right w-8 op70 group-hover="translate-x-2 translate-y--2" duration-100ms />
     </a>
 
     <div flex="~ items-center gap-6" justify-self-end>
@@ -50,14 +49,12 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
       </p>
     </div>
 
-    <a v-if="hasPrev" :href="prev.link" blue-pill group h-max>
-      <div i-nimiq:arrow-left w-10 group-hover="translate-x--2" duration-100ms />
+    <a v-if="hasPrev" :href="prev.link" pill h-max arrow-back text-blue bg="blue-500 hocus:blue-600" transition-colors>
       {{ prev.text }}
     </a>
 
-    <a v-if="hasNext" :href="next.link" justify-self-end blue-pill group h-max>
+    <a v-if="hasNext" :href="next.link" justify-self-end pill arrow h-max text-blue bg="blue-500 hocus:blue-600" transition-colors>
       {{ next.text }}
-      <div i-nimiq:arrow-right w-10 group-hover="translate-x-2" duration-100ms />
     </a>
   </nav>
 </template>
