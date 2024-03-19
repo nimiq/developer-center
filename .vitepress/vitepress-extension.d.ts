@@ -14,6 +14,13 @@ declare module 'vitepress' {
 
     interface Config {
       navigation: NavigationType
+
+      footerItems: {
+        link: string
+        icon: string
+        text: string
+        social: string
+      }[]
     }
   }
 }

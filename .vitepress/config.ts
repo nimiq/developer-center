@@ -22,7 +22,7 @@ export default async () => {
     title: 'Nimiq Developer Center',
     srcExclude: ['**/README.md'],
     description:
-    'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
+      'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
 
     lastUpdated: true,
     cleanUrls: true,
@@ -48,6 +48,21 @@ export default async () => {
       navigation,
 
       sidebar,
+
+      footerItems: [
+        {
+          link: 'https://forum.nimiq.community',
+          icon: 'i-nimiq:logos-nimiq-forum-mono',
+          text: 'Question? Checkout the ',
+          social: 'Nimiq Forum',
+        },
+        {
+          link: 'https://t.me/nimiq',
+          icon: 'i-nimiq:logos-telegram-mono',
+          text: 'Give us feedback on ',
+          social: 'Telegram',
+        },
+      ],
 
       search: { provider: 'local' },
     },

@@ -1,24 +1,5 @@
 <script setup lang="ts">
-const footer = [
-  {
-    link: 'https://forum.nimiq.community',
-    icon: 'i-nimiq:logos-nimiq-forum-mono',
-    text: 'Question? Checkout the ',
-    social: 'Nimiq Forum',
-  },
-  // {
-  //   link: 'https://youtube.com/@Nimiq',
-  //   icon: 'i-nimiq:logos-youtube-mono',
-  //   text: 'View Developer tutorials on ',
-  //   social: 'Youtube',
-  // },
-  {
-    link: 'https://t.me/nimiq',
-    icon: 'i-nimiq:logos-telegram-mono',
-    text: 'Give us feedback on ',
-    social: 'Telegram',
-  },
-]
+const footer = useData().theme.value.footerItems
 </script>
 
 <template>
