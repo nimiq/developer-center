@@ -1,13 +1,20 @@
 import 'vitepress'
+import type { NavigationType } from './theme/components/header/navigation-types'
 
 declare module 'vitepress' {
   interface PageData {
     updatedCommitHash: string
   }
 
-  interface SidebarItem {
-    icon?: string
-    prefix?: string
+  namespace DefaultTheme {
+    interface SidebarItem {
+      icon?: string
+      prefix?: string
+    }
+
+    interface Config {
+      navigation: NavigationType
+    }
   }
 }
 
