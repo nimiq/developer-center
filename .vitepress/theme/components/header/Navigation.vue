@@ -16,13 +16,13 @@ const baseUrl = import.meta.env.BASE_URL
   <NavigationMenu.Root v-model="currentTrigger" relative w-full flex="~ justify-end items-center" class="raw">
     <NavigationMenu.List flex="~ items-center" text-neutral-800>
       <NavigationMenu.Item v-for="({ key, main, items }) in navigation.items" :key>
-        <NavigationMenu.Trigger flex items-center gap-8 rounded-2 lh-1 p-16 focusable>
+        <NavigationMenu.Trigger flex items-center gap-8 rounded-6 lh-1 p-16 focusable transition-colors class="data-[state='open']:bg-neutral-100">
           {{ key }}
           <div i-nimiq:chevron-down aria-hidden />
         </NavigationMenu.Trigger>
         <NavigationMenu.Content class="navigation-menu" absolute top-0 left-0 w-full sm:w-auto>
-          <ul p-16 m-0 sm-w-512 grid="~ gap-x-12 sm:cols-[0.75fr_1fr]">
-            <li grid="~ row-span-3">
+          <ul p-16 m-0 sm-w-512 grid="~ gap-x-16 sm:cols-[0.75fr_1fr]">
+            <li grid="~ row-span-4">
               <NavigationMenu.Link as-child>
                 <a
                   relative of-hidden transition-colors flex="~ col justify-end" rounded-6 h-full w-full p-16
@@ -36,11 +36,15 @@ const baseUrl = import.meta.env.BASE_URL
               </NavigationMenu.Link>
             </li>
 
+            <h3 font-bold text="neutral/70 15" border-bottom mb-8 text-right>
+              Quick access
+            </h3>
+
             <li v-for="({ title, description, href }) in items" :key="title">
               <NavigationMenu.Link as-child>
                 <a
                   flex="~ col gap-3" select-none rounded-6 px-8 py-10 class="focusable" transition-colors
-                  :href="`${baseUrl}${href}`" hocus:bg-neutral-300 group
+                  :href="`${baseUrl}${href}`" hocus:bg-neutral-200 group
                 >
                   <h4 label text="11 neutral" pl-2 font-bold class="arrow" after:op-60>{{ title }}</h4>
                   <p text="14 neutral-800" lh-18> {{ description }}</p>
@@ -52,7 +56,7 @@ const baseUrl = import.meta.env.BASE_URL
       </NavigationMenu.Item>
 
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger flex items-center gap-8 rounded-2 lh-1 p-16 focusable>
+        <NavigationMenu.Trigger flex items-center gap-8 rounded-6 lh-1 p-16 focusable transition-colors class="data-[state='open']:bg-neutral-100">
           Community
           <div i-nimiq:chevron-down aria-hidden />
         </NavigationMenu.Trigger>
@@ -74,8 +78,8 @@ const baseUrl = import.meta.env.BASE_URL
 
     <div perspective-2000 absolute top-full left-0 w-full flex="~ justify-end">
       <NavigationMenu.Viewport
-        bg-neutral-50 shadow class="viewport" relative mt-10 origin-top-center overflow-hidden
-        rounded-6 duration-300 border-base
+        bg-neutral-0 shadow class="viewport" relative mt-10 origin-top-center overflow-hidden
+        rounded-6 duration-300 border="1 neutral-400"
       />
     </div>
   </NavigationMenu.Root>

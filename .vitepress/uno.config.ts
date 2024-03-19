@@ -1,4 +1,3 @@
-import { readFile } from 'node:fs/promises'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetUno } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import { presetNimiq } from 'nimiq-css'
