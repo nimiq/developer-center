@@ -1,6 +1,8 @@
 import type { DefaultTheme } from 'vitepress'
 import { Accordion } from './theme/utils/sidebar'
 
+// @unocss-include
+
 export const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
     {
