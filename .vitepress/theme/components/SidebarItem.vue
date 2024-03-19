@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DefaultTheme } from 'vitepress'
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from 'radix-vue'
+import { Accordion } from 'radix-vue/namespaced'
 import { useSidebarControl } from '../composables/useSidebar'
 
 type SidebarItem = DefaultTheme.SidebarItem & { icon: string, items: SidebarItem[], prefix: string }
@@ -90,22 +90,42 @@ function treatAsHtml(filename: string): boolean {
       {{ item.text }}
     </a>
 
-    <AccordionRoot v-else type="multiple" :default-value="collapsed ? [] : [item.text]">
-      <AccordionItem :value="item.text">
-        <AccordionHeader as="div">
-          <AccordionTrigger class="group" flex="~ items-center gap-8">
+    <Accordion.Root v-else type="single" :default-value="collapsed ? item.text : ''" collapsible>
+      <Accordion.Item :value="item.text">
+        <Accordion.Header as="div">
+          <Accordion.Trigger class="group" flex="~ items-center gap-8">
             <div i-nimiq:chevron-down text-10 op70 transition-transform duration-300 rotate="-90 group-data-[state=open]:!0" />
             <span label op80>{{ item.text }}</span>
-          </AccordionTrigger>
-        </AccordionHeader>
-        <AccordionContent class="accordion-content" of-hidden pl-8>
+          </Accordion.Trigger>
+        </Accordion.Header>
+        <Accordion.Content class="accordion-content" of-hidden pl-8>
           <ul mt-4 bottom--8 relative>
             <li v-for="sub in item.items " :key="sub.text">
               <SidebarItem :item="sub" :depth="depth + 1" />
             </li>
           </ul>
-        </AccordionContent>
-      </AccordionItem>
-    </AccordionRoot>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
   </div>
 </template>
+
+<style>
+@keyframes slideDown {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes slideUp {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+.accordion-content[data-state="open"] {
+  animation: slideDown 300ms ease-out;
+}
+
+.accordion-content[data-state="closed"] {
+  animation: slideUp 300ms ease-out;
+}
+</style>
