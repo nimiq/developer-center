@@ -34,12 +34,7 @@
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-c-brand-1);
 
-  --vp-custom-block-tip-border: transparent;
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-
-  --vp-c-brand-1: rgb(var(--nq-blue)); 
+  --vp-c-brand-1: rgb(var(--nq-blue));
   --vp-backdrop-bg-color: rgb(var(--nq-neutral) / 0.2);
   --vp-c-bg: rgb(var(--nq-neutral-0));
   --vp-c-bg-elv: rgb(var(--nq-neutral-0));
@@ -78,7 +73,7 @@ html {
   z-index: 20001;
 }
 
-:is(h1,h2):where(:not(.prose)) {
+:is(h1, h2):where(:not(.prose)) {
   --uno: max-w-520;
 }
 
@@ -90,114 +85,8 @@ h1 {
   --uno: my-0;
 }
 
-h1 + p {
+h1+p {
   --uno: mt-48 md:mt-64;
-}
-
-
-/**
- * Header CSS
- * -------------------------------------------------------------------------- */
-.VPNavBar {
-  padding: 0 !important;
-
-
-  >.divider {
-    display: none;
-  }
-
-  >.wrapper {
-    border-bottom: 1px solid rgb(var(--nq-neutral-100)) !important;
-    background-color: rgb(var(--nq-neutral-0));
-
-    >.container {
-      @media screen and (min-width: 960px) {
-        padding: 0 36px;
-      }
-
-      >.title {
-        display: flex;
-        align-items: center;
-      }
-
-      >.content {
-        >.curtain {
-          display: none;
-        }
-
-        >.content-body {
-          @media screen and (max-width: 760px) {
-            right: 16px;
-            position: relative;
-          }
-
-          background-color: transparent !important;
-        }
-
-        .search {
-          width: 100%;
-
-          @media (max-width: 768px) {
-            display: flex;
-            justify-content: end;
-          }
-
-          #local-search {
-            width: 100%;
-            max-width: 296px;
-            display: flex;
-            border: none;
-            justify-content: end;
-
-            button.DocSearch-Button {
-              height: 34px;
-              border: 0;
-              border-radius: 999px;
-              background-color: transparent;
-              transition: colors 0.2s var(--nq-ease), box-shadow 0.1s var(--nq-ease);
-              outline: none;
-
-              --ring-color: rgba(var(--nq-neutral-500));
-              --color: rgb(var(--nq-neutral));
-              --placeholder-color: rgb(var(--nq-neutral-700));
-
-              box-shadow: 0 0 0 1.5px var(--ring-color);
-              color: var(--color);
-
-              &:is(:hover) {
-                --color: rgb(var(--nq-blue));
-                --ring-color: rgba(var(--nq-blue) / 0.3);
-
-                span {
-                  color: var(--color);
-                }
-              }
-
-              span {
-                margin: 0;
-              }
-
-              .DocSearch-Button-Keys {
-                margin-left: auto;
-              }
-            }
-          }
-        }
-      }
-
-      .VPLink {
-        :is(&, .VPFlyout>button>span) {
-          font-weight: 700;
-          opacity: 0.6;
-          color: rgb(var(--nq-neutral));
-
-          &.active {
-            opacity: 1;
-          }
-        }
-      }
-    }
-  }
 }
 
 .VPHome {
@@ -207,21 +96,38 @@ h1 + p {
 }
 
 .custom-block {
-  border-radius: 6px;
-  padding: 24px;
-  padding-bottom: 14px;
-  font-size: 16px;
+  --uno: my-24 rounded-6 p-24 pb-14 text-16 ring-1.5;
 
-  &>p:first-child {
-    margin-bottom: 12px !important;
-    --at-apply: label;
+  .custom-block-title {
+    --uno: uppercase font-bold tracking-widest text-12 flex items-center relative;
+
+    &::before {
+      --uno: absolute content-[''] text-12 left-0;
+    }
   }
-}
 
-.btn {
-  --uno: border border-base rounded shadow-sm outline-none px-16 py-4 text-neutral-600 transition-all bg-base hover-(bg-neutral-50 shadow) focus-(shadow outline-none);
-}
 
-.btn.small {
-  --uno: px-8 py-4 text-12;
+  &.info {
+    --uno: bg-neutral-200 text-neutral-800 ring-neutral/8;
+
+    .custom-block-title {
+      --uno: text-neutral-700 pl-20;
+
+      &::before {
+        --uno: i-nimiq:info;
+      }
+    }
+  }
+
+  &.tip {
+    --uno: bg-orange-400 text-orange ring-orange/18;
+
+    .custom-block-title {
+      --uno: text-orange/70 pl-24;
+
+      &::before {
+        --uno: i-nimiq:icons-lg-bulb text-16 top-0; 
+      }
+    }
+  }
 }

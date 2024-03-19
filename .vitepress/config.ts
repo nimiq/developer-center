@@ -98,17 +98,17 @@ export default async () => {
             else { return `</div>\n` }
           },
         }])
-        md.use(...[container, 'tip', {
-          render(tokens, idx) {
-            if (tokens[idx].nesting === 1) {
-              return `
-              <div class="custom-block" bg="gold/10" text="gold">
-                <p flex gap-x-8><div i-nimiq:icons-lg-bulb></div><span>Tip</span></p>
-              `
-            }
-            else { return `</div>\n` }
-          },
-        }])
+        // md.use(...[container, 'tip', {
+        //   render(tokens, idx) {
+        //     if (tokens[idx].nesting === 1) {
+        //       return `
+        //       <div class="custom-block" bg="gold/10" text="gold">
+        //         <p flex gap-x-8><div i-nimiq:icons-lg-bulb></div><span>Tip</span></p>
+        //       `
+        //     }
+        //     else { return `</div>\n` }
+        //   },
+        // }])
       },
     },
 

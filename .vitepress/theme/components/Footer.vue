@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const footer = useData().theme.value.footerItems
+const { theme, page } = useData()
+const footer = theme.value.footerItems
 </script>
 
 <template>
-  <footer border-top class="raw">
+  <footer border-top class="raw" :class="page.frontmatter.layout === 'home' ? 'home-layout' : ''">
     <div px-24 py-48>
       <nav max-w="full sm:640 md:688" mx-auto>
         <ul grid="~ col-1 md:cols-2 gap-16" ml--4>
@@ -24,7 +25,7 @@ const footer = useData().theme.value.footerItems
 </template>
 
 <style scoped>
-footer {
+footer:not(.home-layout) {
   @media screen and (min-width: 960px) { padding-left: var(--vp-sidebar-width); }
   @media screen and (min-width: 1280px) { padding-left: 0; margin: 0 auto; width: 807px;}
   @media screen and (min-width: 1441px) { border:0}
