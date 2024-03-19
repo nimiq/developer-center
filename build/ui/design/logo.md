@@ -285,4 +285,4 @@ The Fira Code font is used for code snippets and can be downloaded from [Bunny F
 
 Designers beware! For a more detailed explanation of how to use the components, such as using secondary colours, typography and how to use shadows. Click on the link below to see the [Nimiq Design Kit on Figma](https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0).
 
-  <a href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0" target="_blank" class="raw" mt-16 pill arrow bg-blue-400 text-blue="!">Explore in Figma</a>
+  <a href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0" target="_blank" class="raw arrow" mt-16 pill bg-blue-400 text-blue="!">Explore in Figma</a>

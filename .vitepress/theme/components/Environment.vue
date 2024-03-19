@@ -32,7 +32,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
             </p>
 
             <p op70 flex="~ items-center gap-6">
-              Give us feedback on <a href="https://t.me/nimiq" target="_blank" rel="noopener" group flex="~ items-center" text-white arrow>
+              Give us feedback on <a href="https://t.me/nimiq" target="_blank" rel="noopener" group flex="~ items-center" text-white class="arrow">
                 <div class="i-nimiq:logos-telegram-mono" mr-6 />
                 Telegram
               </a>
@@ -41,7 +41,7 @@ const buildEnvironment = __BUILD_ENVIRONMENT__
             <div flex="~ items-baseline gap-6">
               <p text-11 mt-8 text-white op-70>
                 Updated {{ timeAgo }} on {{ builtTime }}.
-                <a text-11 op70 :href="repoLastCommitUrl" target="_blank" rel="noopener" underline arrow text-white>
+                <a text-11 op70 :href="repoLastCommitUrl" target="_blank" rel="noopener" underline class="arrow" text-white>
                   {{ repoLastCommitHash }}
                 </a>
               </p>
