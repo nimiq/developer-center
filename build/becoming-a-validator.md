@@ -1,6 +1,6 @@
 # Becoming a Validator
 
-This guide will walk you through the process of setting up a Nimiq validator in the Albatross network.
+This guide will walk you through the process of setting up a Nimiq validator in the Albatross network.{.subline}
 
 ## Setup
 
