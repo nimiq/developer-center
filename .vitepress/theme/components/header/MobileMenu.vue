@@ -30,7 +30,7 @@ defineProps<{ navigation: NavigationType }>()
                 <ul>
                   <li>
                     <a
-                      :href="main.href" focusable block px-16 py-12 rounded-6 border-subtle un-text="17 white/90" lh="22" arrow
+                      :href="main.href" focusable block px-16 py-12 rounded-6 border-subtle un-text="17 white/90" lh="22" class="arrow"
                     >
                       {{ key }}
                     </a>
@@ -46,7 +46,7 @@ defineProps<{ navigation: NavigationType }>()
                     </a>
                   </li> -->
                   <li v-for="({ href, title }) in items" :key="title" mt-12>
-                    <a :href="href" focusable block px-16 py-6 un-text="14 neutral-800 hocus:900" rounded-6 border-subtle lh-14 arrow>
+                    <a :href="href" focusable block px-16 py-6 un-text="14 neutral-800 hocus:900" rounded-6 border-subtle lh-14 class="arrow">
                       {{ title }}
                     </a>
                   </li>

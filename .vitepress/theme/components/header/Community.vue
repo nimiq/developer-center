@@ -9,7 +9,7 @@ defineProps<{ community: NavigationType['community'] }>()
     <ul flex="~ col">
       <li v-for="({ href, label }) in community.links" :key="label">
         <a
-          :href focusable un-text-neutral="800 hocus:900" block w-full rounded-6 transition-colors arrow px-20
+          :href focusable un-text-neutral="800 hocus:900" block w-full rounded-6 transition-colors class="arrow" px-20
           py-8 hocus:bg-neutral-200 whitespace-nowrap
         >{{ label }}</a>
       </li>
