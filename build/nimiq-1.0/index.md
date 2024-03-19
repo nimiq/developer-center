@@ -1,3 +1,6 @@
+---
+search: false
+---
 # Nimiq 1.0
 
 Dive into the Nimiq Ecosystem documentation with links to resources, tutorials, and assets.
