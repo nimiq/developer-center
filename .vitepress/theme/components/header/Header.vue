@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
 import SearchBox from 'vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'
-import type { NavigationType } from './navigation-types'
 
 const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
 const MobileMenu = defineAsyncComponent(() => import('./MobileMenu.vue'))
 
-const { isDark } = useData()
 const { smaller } = useBreakpoints(breakpointsTailwind)
 const isSmall = smaller('xl')
 const showSearch = ref(false)
@@ -32,8 +30,8 @@ const { navigation } = useData().theme.value
     >
       <a href="/" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
         <div
-          :class="isDark ? 'i-nimiq:logos-nimiq-white-horizontal' : 'i-nimiq:logos-nimiq-horizontal'" h="22 md:24"
-          w="96 md:101"
+          class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
+          text="96 md:101"
         />
         <h2 whitespace-nowrap hidden xs:block>
           <span sr-only>Nimiq</span> Developer Center
