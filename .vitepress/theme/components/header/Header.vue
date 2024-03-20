@@ -20,6 +20,7 @@ useMagicKeys({
 })
 
 const { navigation } = useData().theme.value
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -28,7 +29,7 @@ const { navigation } = useData().theme.value
       style="height: var(--vp-nav-height)" max-w-1280 mx-auto px="24 sm:48 md2:64"
       flex="~ items-center" class="raw"
     >
-      <a href="/" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
+      <a :href="baseUrl" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
         <div
           class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
           text="96 md:101"
