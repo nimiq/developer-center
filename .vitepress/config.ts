@@ -102,12 +102,12 @@ export default async () => {
     },
 
     head: [
-      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}assets/favicons/apple-touch-icon.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}assets/favicons/favicon-32x32.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}assets/favicons/favicon-16x16.png` }],
-      ['link', { rel: 'manifest', href: `${baseUrl}assets/favicons/site.webmanifest` }],
-      ['link', { rel: 'mask-icon', href: `${baseUrl}asset/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: `${baseUrl}assets/favicons/favicon.ico` }],
+      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}/favicons/apple-touch-icon.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}/favicons/favicon-32x32.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}/favicons/favicon-16x16.png` }],
+      ['link', { rel: 'manifest', href: `${baseUrl}/favicons/site.webmanifest` }],
+      ['link', { rel: 'mask-icon', href: `${baseUrl}/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+      ['link', { rel: 'shortcut icon', href: `${baseUrl}/favicons/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
