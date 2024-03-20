@@ -7,7 +7,6 @@ import { sidebar } from './sidebar.config'
 import { navigation } from './navigation.config'
 import { generateWebClientDocs } from './scripts/web-client'
 import { generateRpcDocs } from './scripts/rpc-docs'
-import { preWrapperPlugin } from './plugins/preWrapper'
 
 // @unocss-include
 
@@ -108,7 +107,7 @@ export default async () => {
       ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}assets/favicons/favicon-16x16.png` }],
       ['link', { rel: 'manifest', href: `${baseUrl}assets/favicons/site.webmanifest` }],
       ['link', { rel: 'mask-icon', href: `${baseUrl}asset/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: '/assets/favicons/favicon.ico' }],
+      ['link', { rel: 'shortcut icon', href: `${baseUrl}/assets/favicons/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],

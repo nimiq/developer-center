@@ -1,7 +1,35 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import type { DefaultTheme } from 'vitepress'
-import { Accordion } from './theme/utils/sidebar'
 
 // @unocss-include
+
+function getFilesItemsFromFolder(folder: string) {
+  const basePath = path.join(__dirname, `../${folder}`)
+
+  // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
+  const files = fs.readdirSync(basePath)
+    .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
+    .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
+    .map((file) => {
+      const filePath = path.basename(file, path.extname(file))
+      const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) // Capitalize file name
+      const link = `/${folder}/${file}`
+      return { file, filePath, text, link }
+    })
+
+  return files
+}
+
+export function Accordion({ path, collapsed = true }: { path: string, collapsed?: boolean }) {
+  const text = (path.split('/').at(-1) || path).replace(/-/g, ' ')
+  const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
+  return {
+    text: capitalize(text),
+    items: getFilesItemsFromFolder(path),
+    collapsed,
+  }
+}
 
 export const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
