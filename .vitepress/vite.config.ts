@@ -7,10 +7,8 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { postcssIsolateStyles } from 'vitepress'
-import ogPlugin from 'vite-plugin-open-graph'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
-import { baseUrl, pkg } from './config'
 
 export default defineConfig(async ({ mode }) => {
   const environment = env.DEPLOYMENT_ENV || mode
@@ -74,25 +72,6 @@ export default defineConfig(async ({ mode }) => {
             return { code: `@layer vp-base { ${code} }` }
         },
       },
-
-      ogPlugin({
-        basic: {
-          title: pkg.title,
-          description: pkg.description,
-          url: pkg.homepage,
-          image: `${baseUrl}og-image.png`,
-          siteName: pkg.title,
-          determiner: 'the',
-          locale: 'en_US',
-          type: 'website',
-        },
-        twitter: {
-          card: 'summary_large_image',
-          site: '@nimiq',
-          creator: '@nimiq',
-          title: pkg.title,
-        },
-      }),
     ],
     resolve: {
       alias: [
