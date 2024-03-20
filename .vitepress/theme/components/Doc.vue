@@ -176,6 +176,32 @@ const pageName = computed(() =>
 </style>
 
 <style>
+.vp-code-group {
+  > .tabs {
+    --uno: bg-transparent px-16 h-max pt-1 flex gap-16 pb-8;
+
+    label {
+      --uno: ghost-btn mx-0 px-12 py-6 border-b-0 after:hidden h-max lh-[1] rounded-full;
+
+    }
+
+    input:checked + label {
+      --uno: bg-gradient-blue text-white;
+    }
+  }
+
+  >.blocks>[class*="language"] {
+    .lang {
+      --uno: op0;
+    }
+
+    pre {
+      --uno: mt-0;
+    }
+  }
+
+}
+
 div[class*="language"]:has(.copy + .lang) {
   --uno: relative text-neutral-900;
 
@@ -193,8 +219,9 @@ div[class*="language"]:has(.copy + .lang) {
 
     &.copied {
       --uno: w-unset bg-green;
+
       &::after {
-        --uno: text-white i-nimiq:check;
+        --uno: text-white i-nimiq:check text-12;
       }
 
       &::before {
