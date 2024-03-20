@@ -36,7 +36,7 @@ const { navigation } = useData().theme.value
         <h2 whitespace-nowrap hidden xs:block>
           <span sr-only>Nimiq</span> Developer Center
         </h2>
-        <div absolute top--6 right--12 @click.prevent>
+        <div absolute top-24 right--16 @click.prevent>
           <Environment />
         </div>
       </a>
