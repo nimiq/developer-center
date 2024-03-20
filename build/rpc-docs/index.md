@@ -29,14 +29,8 @@ The JSON-RPC specification defines two ways of passing parameters to methods: na
 ```JSON
 {
     "jsonrpc": "2.0",
-    "params": [12, 30], // Correct
-    ...
-}
-
-{
-    "jsonrpc": "2.0",
-    "params": {"hour": 12, "minutes": 30}, // Incorrect
-    ...
+    "params": {"hour": 12, "minutes": 30}, // [!code --]
+    "params": [12, 30], // [!code ++]
 }
 ```
 

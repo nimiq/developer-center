@@ -177,7 +177,7 @@ const pageName = computed(() =>
 
 <style>
 .vp-code-group {
-  > .tabs {
+  >.tabs {
     --uno: bg-transparent px-16 h-max pt-1 flex gap-16 pb-8;
 
     label {
@@ -185,7 +185,7 @@ const pageName = computed(() =>
 
     }
 
-    input:checked + label {
+    input:checked+label {
       --uno: bg-gradient-blue text-white;
     }
   }
@@ -241,6 +241,25 @@ div[class*="language"]:has(.copy + .lang) {
       }
     }
   }
+}
+
+div[class*="language"] {
+  code {
+    --uno: w-[calc(100%+48px)] inline-block mx--24 px-24;
+
+    .diff {
+      --uno: mx--24 px-24 w-[calc(100%+48px)] inline-block;
+
+      &.remove {
+        --uno: bg-red/15 text-red children:text-red before:pr-16 before:content-['-'] before:absolute before:left-8;
+      }
+
+      &.add {
+        --uno: bg-green/20 text-green children:text-green before:pr-16 before:content-['+'] before:absolute before:left-8;
+      }
+    }
+  }
+
 }
 
 .custom-block {
