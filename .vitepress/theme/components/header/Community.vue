@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @unocss-include
 import type { NavigationType } from './navigation-types'
 
 defineProps<{ community: NavigationType['community'] }>()
@@ -21,8 +22,7 @@ defineProps<{ community: NavigationType['community'] }>()
           :href target="_blank" rel="noopener noreferrer" focusable block p-8 rounded-2
           :aria-label="`Visit Nimiq on ${key}`" hocus:bg-neutral-200 text-18 text-neutral="700 hocus:800"
         >
-          <div v-if="icon.startsWith('i-')" :class="icon" />
-          <div v-else v-html="icon" />
+          <div :class="icon" />
         </a>
       </li>
     </ul>

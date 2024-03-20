@@ -19,8 +19,8 @@ const centered = computed(() => isIcon.value)
 <template>
   <div transition hocus="-translate-y-6" group rounded-8 hover-shadow-lg>
     <a
-      :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden :class="{
-        'bg-neutral-200 transition-shadow hocus:bg-white hocus:border-subtle-sm': !item.bgColor,
+      :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden transition-shadow :class="{
+        'bg-neutral-200 hocus:bg-white hocus:border-subtle': !item.bgColor,
         'bg-gradient-blue': item.bgColor === 'blue',
         'bg-gradient-green': item.bgColor === 'green',
         'p12 md:p24': isNormal || !hasBgIcon,
@@ -45,17 +45,14 @@ const centered = computed(() => isIcon.value)
       <component
         :is="centered ? 'h3' : 'h4'" v-if="item.title"
         text="darkblue inverted:white dark:white dark:group-hocus:inverted:white dark:group-hocus:darkblue"
-        :class="{
-          'text-center': centered,
-        }"
-        z-1
-        inverted:max-w-256
+        :class="{ 'text-center': centered, 'mb-20': item.icon, 'mb-12': !item.icon }"
+        z-1 inverted:max-w-256
       >
         {{ item.title }}
       </component>
       <p
         v-if="item.description" text="neutral-700 inverted:white/60" z-10 inverted:max-w-256
-        :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt20' : 'mt12']"
+        :class="[{ 'text-center': centered }, item.bgColor && item.icon ? 'mt-auto' : 'mt-12']"
       >
         {{ item.description }}
       </p>

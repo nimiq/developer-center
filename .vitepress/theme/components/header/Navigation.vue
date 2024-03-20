@@ -4,11 +4,12 @@ import ThemeSwitcher from './ThemeSwitcher.vue'
 import type { NavigationType } from './navigation-types'
 import Community from './Community.vue'
 
+// @unocss-include
+
 defineProps<{ navigation: NavigationType }>()
 
 const currentTrigger = ref('')
 
-// @ts-expect-error - Valid TS. Not sure how extend the types
 const baseUrl = import.meta.env.BASE_URL
 </script>
 
@@ -26,7 +27,7 @@ const baseUrl = import.meta.env.BASE_URL
               <NavigationMenu.Link as-child>
                 <a
                   relative of-hidden transition-colors flex="~ col justify-end" rounded-6 h-full w-full p-16
-                  :class="`focusable ${main.classes}`" href="/"
+                  :class="`focusable ${main.classes}`" :href="`${baseUrl}${main.href}`"
                 >
                   <div :class="main.iconClasses" text-128 absolute top-8 right--24 />
                   <span label text="12 white/70" z-1>{{ main.label }}</span>

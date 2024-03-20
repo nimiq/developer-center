@@ -5,7 +5,7 @@ import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
   content: {
-    filesystem: ['.vitepress/config.ts', '.vitepress/theme/utils/sidebar.ts', '**/**.md'],
+    filesystem: ['.vitepress/**config.ts', '**/**.md'],
   },
   variants: [
     (matcher) => {
