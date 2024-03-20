@@ -289,6 +289,10 @@ div[class*="language"]:has(.copy + .lang) {
         --uno: i-nimiq:alert text-14;
       }
     }
+
+    :not(.custom-block-title) li::before {
+      --uno: bg-red/70;
+    }
   }
 }
 </style>
