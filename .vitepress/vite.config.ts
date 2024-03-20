@@ -1,5 +1,7 @@
 import { URL, fileURLToPath } from 'node:url'
 import { env } from 'node:process'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -7,8 +9,12 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { postcssIsolateStyles } from 'vitepress'
+import ogPlugin from 'vite-plugin-open-graph'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
+import { baseUrl } from './config'
+
+const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')) as { title: string, description: string, homepage: string }
 
 export default defineConfig(async ({ mode }) => {
   const environment = env.DEPLOYMENT_ENV || mode
@@ -73,6 +79,24 @@ export default defineConfig(async ({ mode }) => {
         },
       },
 
+      ogPlugin({
+        basic: {
+          title: pkg.title,
+          description: pkg.description,
+          url: pkg.homepage,
+          image: `${baseUrl}og-image.png`,
+          siteName: pkg.title,
+          determiner: 'the',
+          locale: 'en_US',
+          type: 'website',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          site: '@nimiq',
+          creator: '@nimiq',
+          title: pkg.title,
+        },
+      }),
     ],
     resolve: {
       alias: [
