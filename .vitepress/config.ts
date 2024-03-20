@@ -102,15 +102,29 @@ export default async () => {
     },
 
     head: [
-      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}/favicons/apple-touch-icon.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}/favicons/favicon-32x32.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}/favicons/favicon-16x16.png` }],
-      ['link', { rel: 'manifest', href: `${baseUrl}/favicons/site.webmanifest` }],
-      ['link', { rel: 'mask-icon', href: `${baseUrl}/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: `${baseUrl}/favicons/favicon.ico` }],
+      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}favicons/apple-touch-icon.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}favicons/favicon-32x32.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}favicons/favicon-16x16.png` }],
+      ['link', { rel: 'manifest', href: `${baseUrl}favicons/site.webmanifest` }],
+      ['link', { rel: 'mask-icon', href: `${baseUrl}favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+      ['link', { rel: 'shortcut icon', href: `${baseUrl}favicons/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+
+      ['meta', { property: 'og:title', content: pkg.title }],
+      ['meta', { property: 'og:description', content: pkg.description }],
+      ['meta', { property: 'og:url', content: pkg.homepage }],
+      ['meta', { property: 'og:image', content: `${baseUrl}og-image.png` }],
+      ['meta', { property: 'og:site_name', content: pkg.title }],
+      ['meta', { property: 'og:determiner', content: 'the' }],
+      ['meta', { property: 'og:locale', content: 'en_US' }],
+      ['meta', { property: 'og:type', content: 'website' }],
+
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:site', content: '@nimiq' }],
+      ['meta', { name: 'twitter:creator', content: '@nimiq' }],
+      ['meta', { name: 'twitter:title', content: pkg.title }],
     ],
   })
 }
