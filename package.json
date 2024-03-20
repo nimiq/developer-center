@@ -1,12 +1,14 @@
 {
   "name": "nimiq-developer-center",
+  "title": "Nimiq Developer Center",
   "type": "module",
   "version": "0.0.1-alpha",
-  "description": "The Nimiq Developer Center is the central place for developers to learn about Nimiq, its technology, and how to build with it.",
+  "description": "Guides, resources and tips on how to create with Nimiq. Start building the future now!",
   "author": {
     "name": "Nimiq",
     "url": "https://nimiq.com"
   },
+  "homepage": "https://onmax.github.io/nimiq-developer-center/",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
@@ -59,6 +61,7 @@
     "unplugin-vue-components": "^0.26.0",
     "vite": "5.1.6",
     "vite-plugin-image-optimizer": "^1.1.7",
+    "vite-plugin-open-graph": "^2.0.4",
     "vite-plugin-vue-devtools": "7.0.17",
     "vitepress": "1.0.0-rc.45"
   },

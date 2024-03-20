@@ -10,7 +10,7 @@ import { generateRpcDocs } from './scripts/rpc-docs'
 
 // @unocss-include
 
-const baseUrl = '/nimiq-developer-center/'
+export const baseUrl = '/nimiq-developer-center/'
 
 // https://vitepress.dev/reference/site-config
 export default async () => {

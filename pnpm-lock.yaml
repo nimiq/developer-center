@@ -130,6 +130,9 @@ devDependencies:
   vite-plugin-image-optimizer:
     specifier: ^1.1.7
     version: 1.1.7(vite@5.1.6)
+  vite-plugin-open-graph:
+    specifier: ^2.0.4
+    version: 2.0.4
   vite-plugin-vue-devtools:
     specifier: 7.0.17
     version: 7.0.17(vite@5.1.6)(vue@3.4.21)
@@ -6181,6 +6184,11 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
+
+  /vite-plugin-open-graph@2.0.4:
+    resolution: {integrity: sha512-IrJ4DWkb3iVtiOO2v3xIkmvQvdZHuhh0S1hD+Dr9GcMJ4mdbtRDhp66rou061k32B9uckGJW0jjY8RYzzbB9Lg==}
+    engines: {node: '>=16'}
     dev: true
 
   /vite-plugin-vue-devtools@7.0.17(vite@5.1.6)(vue@3.4.21):
