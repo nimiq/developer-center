@@ -1,5 +1,5 @@
-import { existsSync } from 'node:fs'
-import { basename, dirname } from 'node:path'
+import { existsSync, readFileSync } from 'node:fs'
+import { basename, dirname, join } from 'node:path'
 import { defineConfig } from 'vitepress'
 import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
@@ -12,6 +12,8 @@ import { generateRpcDocs } from './scripts/rpc-docs'
 
 export const baseUrl = '/nimiq-developer-center/'
 
+export const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')) as { title: string, description: string, homepage: string }
+
 // https://vitepress.dev/reference/site-config
 export default async () => {
   await generateWebClientDocs()
@@ -19,11 +21,9 @@ export default async () => {
 
   return defineConfig({
     base: baseUrl,
-    title: 'Nimiq Developer Center',
+    title: pkg.title,
     srcExclude: ['**/README.md'],
-    description:
-      'Nimiq\'s official documentation to interact with the Nimiq ecosystem',
-
+    description: pkg.description,
     lastUpdated: true,
     cleanUrls: true,
 

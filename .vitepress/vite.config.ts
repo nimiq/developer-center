@@ -1,7 +1,5 @@
 import { URL, fileURLToPath } from 'node:url'
 import { env } from 'node:process'
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -12,9 +10,7 @@ import { postcssIsolateStyles } from 'vitepress'
 import ogPlugin from 'vite-plugin-open-graph'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
-import { baseUrl } from './config'
-
-const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')) as { title: string, description: string, homepage: string }
+import { baseUrl, pkg } from './config'
 
 export default defineConfig(async ({ mode }) => {
   const environment = env.DEPLOYMENT_ENV || mode
