@@ -178,7 +178,7 @@ const pageName = computed(() =>
 <style>
 .vp-code-group {
   >.tabs {
-    --uno: bg-transparent px-16 h-max pt-1 flex gap-16 pb-8;
+    --uno: bg-neutral-300 px-16 pt-10 flex gap-16 shadow-none;
 
     label {
       --uno: ghost-btn mx-0 px-12 py-6 border-b-0 after:hidden h-max lh-[1] rounded-full;
@@ -196,7 +196,7 @@ const pageName = computed(() =>
     }
 
     pre {
-      --uno: mt-0;
+      --uno: mt-0 rounded-t-0 pt-16;
     }
   }
 
