@@ -178,11 +178,14 @@ const pageName = computed(() =>
 <style>
 .vp-code-group {
   >.tabs {
-    --uno: bg-neutral-300 px-16 pt-10 flex gap-16 shadow-none;
+    --uno: bg-neutral-300 px-16 pt-10 flex gap-4 shadow-none z-1 pb-4 text-neutral-800;
 
     label {
       --uno: ghost-btn mx-0 px-12 py-6 border-b-0 after:hidden h-max lh-[1] rounded-full;
+    }
 
+    input:focus-visible+label {
+      --uno: ring-blue ring-1.5 ring-offset-1;
     }
 
     input:checked+label {
