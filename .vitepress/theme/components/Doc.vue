@@ -16,10 +16,7 @@ const pageName = computed(() =>
 </script>
 
 <template>
-  <div
-    class="VPDoc"
-    :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }"
-  >
+  <div class="VPDoc" :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }">
     <slot name="doc-top" />
     <div class="container">
       <div v-if="hasAside" class="aside" :class="{ 'left-aside': leftAside }">
@@ -174,6 +171,52 @@ const pageName = computed(() =>
     order: 1;
     margin: 0;
     min-width: 640px;
+  }
+}
+</style>
+
+<style>
+div[class*="language"]:has(.copy + .lang) {
+  --uno: relative;
+
+  .lang {
+    --uno: absolute text-11 text-neutral-800 lh-12 right-6 top-6;
+  }
+
+  .copy {
+    --uno: absolute bg-neutral-400 op0 size-32 rounded-6 right-20 top-20 flex items-center justify-center gap-8 px-9 inline-block transition-colors duration-150 ease-out;
+
+    &::after {
+      content: '';
+      --uno: inline-block text-inherit size-14 bg-current;
+      --un-icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTQgMTQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEuNSIgZD0iTTkuMzQxIDMuNDlWMS43N0ExLjAxIDEuMDEgMCAwMDguMzMuNzZIMS43N0ExLjAxIDEuMDEgMCAwMC43NiAxLjc3djcuMzRjMCAuNTU4LjQ1MyAxLjAxMSAxLjAxMSAxLjAxMUgzLjFtMi41NyAzLjEyaDYuNTZjLjU1OCAwIDEuMDExLS40NTQgMS4wMTEtMS4wMTJWNS42NzNjMC0uNTU4LS40NTMtMS4wMTEtMS4wMTEtMS4wMTFINS42N2MtLjU1OCAwLTEuMDExLjQ1My0xLjAxMSAxLjAxMXY2LjU1NmMwIC41NTguNDUzIDEuMDExIDEuMDExIDEuMDExWiIvPjwvc3ZnPg==);
+      mask: var(--un-icon) no-repeat;
+      mask-size: 100% 100%;
+    }
+
+    &.copied {
+      --uno: w-unset bg-green;
+      &::after {
+        --uno: text-white;
+        --un-icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxLjJlbSIgaGVpZ2h0PSIxZW0iIHZpZXdCb3g9IjAgMCAxMiAxMCI+PGcgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI25pbWlxLWNoZWNrLTk3MzM2MHBjMzByMW5uYXNrcmt1cjcpIj48cGF0aCBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNSIgZD0iTTExLjA4MiAxLjExMSA1LjAyMiA4Ljg5IDEuMzYzIDUuNjg3Ii8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0ibmltaXEtY2hlY2stOTczMzYwcGMzMHIxbm5hc2tya3VyNyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgxMnYxMEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvZz48L3N2Zz4=);
+      }
+
+      &::before {
+        --uno: text-15 font-bold text-white;
+        content: 'Copied!';
+      }
+    }
+  }
+
+  &:hover,
+  &:has(.copy:focus) {
+    .copy {
+      --uno: op100;
+
+      &:not(.copied):hover {
+        --uno: bg-neutral-0;
+      }
+    }
   }
 }
 </style>
