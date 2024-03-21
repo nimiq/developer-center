@@ -28,8 +28,8 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
 
 <template>
   <nav
-    v-if="frontmatter.footer !== false" mx-auto
-    max-w="74ch" grid="~ cols-1 sm:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-0 px-32 pb="96 md:128"
+    v-if="frontmatter.footer !== false" mx-auto max-md:px-32
+    max-w="74ch" grid="~ cols-1 sm:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-0 pb="96 md:128"
     :class="!hasPrev && !hasNext ? 'grid-rows-1' : 'grid-rows-[auto_auto_auto_auto] xs:grid-rows-2'"
   >
     <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 arrow lh-0>

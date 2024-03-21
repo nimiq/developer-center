@@ -84,7 +84,6 @@ aside {
   width: calc(100vw - 64px);
   max-width: 480px;
   opacity: 0;
-  box-shadow: var(--vp-c-shadow-3);
   overflow-x: hidden;
   overflow-y: auto;
   transform: translateX(-100%);
@@ -98,7 +97,6 @@ aside {
     max-width: 100%;
     opacity: 1;
     visibility: visible;
-    box-shadow: none;
     transform: translateX(0);
   }
 

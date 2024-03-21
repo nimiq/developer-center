@@ -85,7 +85,7 @@ function treatAsHtml(filename: string): boolean {
 
 <template>
   <div>
-    <a v-if="!hasChildren" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" op80 flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink }" transition-all py-8>
+    <a v-if="!hasChildren" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink, 'op-80': !isActiveLink }" transition-all py-8>
       <div w-2 h-19 rounded-2 :bg="isActiveLink ? 'blue' : 'transparent'" transition-colors />
       {{ item.text }}
     </a>
@@ -95,7 +95,7 @@ function treatAsHtml(filename: string): boolean {
         <Accordion.Header as="div">
           <Accordion.Trigger class="group" flex="~ items-center gap-8">
             <div i-nimiq:chevron-down text-10 op70 transition-transform duration-300 rotate="-90 group-data-[state=open]:!0" />
-            <span label op80>{{ item.text }}</span>
+            <span label op-80>{{ item.text }}</span>
           </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content class="accordion-content" of-hidden pl-8>

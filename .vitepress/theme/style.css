@@ -77,6 +77,10 @@ html {
   --uno: max-w-520;
 }
 
+:is(h1, h2,h3,h4,h5,h6){
+  --uno: w-full; /* TODO Remove this */
+}
+
 .subline {
   --uno: subline text-neutral-700;
 }
