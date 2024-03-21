@@ -34,7 +34,8 @@ const pageName = computed(() =>
         <main class="main">
           <MarkdownContent
             :class="[
-              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:pb-64',
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb-64',
+              frontmatter.prose === false ? `px-32 pb-64 md:pb-128` : '',
               pageName,
               theme.externalLinkIcon && 'external-link-icon-enabled',
             ]"

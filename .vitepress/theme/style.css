@@ -89,6 +89,10 @@ h1+p {
   --uno: mt-48 md:mt-64;
 }
 
+h2+p.subline {
+  --uno: mt-40 md:mt-48;
+}
+
 .VPHome {
   padding-top: 96px;
   max-width: calc(var(--vp-layout-max-width) - 64px);
