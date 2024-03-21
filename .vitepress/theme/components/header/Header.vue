@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
-import SearchBox from 'vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'
 
+const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
 const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
 const MobileMenu = defineAsyncComponent(() => import('./MobileMenu.vue'))
 
