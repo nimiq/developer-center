@@ -57,7 +57,7 @@
   --vp-nav-height: 68px;
 
   @media (min-width: 720px) {
-    --vp-nav-height: 74px;
+    --vp-nav-height: 72px;
   }
 }
 

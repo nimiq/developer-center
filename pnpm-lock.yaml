@@ -39,7 +39,7 @@ dependencies:
     specifier: ^3.2.5
     version: 3.2.5
   radix-vue:
-    specifier: ^1.5.2
+    specifier: ^1.5.3
     version: 1.5.3(vue@3.4.21)
   svg-packer:
     specifier: ^0.0.3

@@ -4,4 +4,5 @@ export default antfu({
   vue: true,
   typescript: true,
   markdown: true,
+  ignores: ['dev-dist', '.vitepress/cache'],
 })

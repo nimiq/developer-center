@@ -3,7 +3,7 @@ import { Toast } from 'radix-vue/namespaced'
 
 defineProps<{
   title: string
-  category: 'success'
+  category: 'success' | 'info'
 }>()
 
 const show = defineModel<boolean>()
@@ -12,10 +12,12 @@ const show = defineModel<boolean>()
 <template>
   <Toast.Provider>
     <slot />
+    {{ { show } }}
 
     <Toast.Root
-      v-model:open="show" class="rounded-full px16 py8 shadow-[--nq-shadow]"
-      :class="{ 'bg-gradient-green': category === 'success' }"
+      v-model:open="show" :default-open="show"
+      rounded-full px-16 py-8 shadow class="ToastRoot"
+      :class="{ 'bg-gradient-green': category === 'success', 'bg-gradient-neutral': category === 'info' }"
     >
       <Toast.Title class="flex gap-x-10 items-center text-white">
         <div v-if="category === 'success'" i-nimiq:check />
@@ -26,6 +28,52 @@ const show = defineModel<boolean>()
       <!-- <Toast.Close /> -->
     </Toast.Root>
 
-    <Toast.Viewport class="fixed bottom-16 md:bottom-32 right-16 md:right-32 flex flex-col z-10" />
+    <Toast.Viewport fixed bottom="16 md:32" right="16 md:32" flex="~ col" z-1000 />
   </Toast.Provider>
 </template>
+
+<style scoped>
+.ToastRoot[data-state='open'] {
+  animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ToastRoot[data-state='closed'] {
+  animation: hide 100ms ease-in;
+}
+.ToastRoot[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+.ToastRoot[data-swipe='cancel'] {
+  transform: translateX(0);
+  transition: transform 200ms ease-out;
+}
+.ToastRoot[data-swipe='end'] {
+  animation: swipeOut 100ms ease-out;
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(calc(100% + var(--viewport-padding)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeOut {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(100% + var(--viewport-padding)));
+  }
+}
+</style>

@@ -29,7 +29,7 @@
     "medium-zoom": "^1.1.0",
     "nimiq-css": "^0.0.53",
     "prettier": "^3.2.5",
-    "radix-vue": "^1.5.2",
+    "radix-vue": "^1.5.3",
     "svg-packer": "^0.0.3",
     "vaul-vue": "^0.1.0",
     "vue": "^3.4.21"
