@@ -17,7 +17,7 @@ const centered = computed(() => isIcon.value)
 </script>
 
 <template>
-  <div transition hocus="-translate-y-6" group rounded-8 hover-shadow-lg>
+  <div transition hocus:translate-y--6 group rounded-8 hover-shadow-lg>
     <a
       :href="item.href" :data-inverted="item.bgColor" flex flex-col relative h-full cursor-pointer rounded-6 overflow-hidden transition-shadow :class="{
         'bg-neutral-200 hocus:bg-white hocus:border-subtle': !item.bgColor,
@@ -39,7 +39,7 @@ const centered = computed(() => isIcon.value)
       >
         <div :class="item.icon" />
       </div>
-      <span v-if="item.label" text="neutral-600 inverted:white/70" label mb-8>
+      <span v-if="item.label" text="neutral-600 inverted:white/70" text-14 label mb-8>
         {{ item.label }}
       </span>
       <component

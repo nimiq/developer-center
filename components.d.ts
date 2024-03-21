@@ -30,6 +30,8 @@ declare module 'vue' {
     Navigation: typeof import('./.vitepress/theme/components/header/Navigation.vue')['default']
     NavigationMenuListItem: typeof import('./.vitepress/theme/components/NavigationMenuListItem.vue')['default']
     PillSelector: typeof import('./.vitepress/theme/components/PillSelector.vue')['default']
+    RegisterPW: typeof import('./.vitepress/theme/components/RegisterPW.vue')['default']
+    RegisterSW: typeof import('./.vitepress/theme/components/RegisterSW.vue')['default']
     Sidebar: typeof import('./.vitepress/theme/components/Sidebar.vue')['default']
     SidebarItem: typeof import('./.vitepress/theme/components/SidebarItem.vue')['default']
     SocialMedia: typeof import('./.vitepress/theme/components/header/SocialMedia.vue')['default']
