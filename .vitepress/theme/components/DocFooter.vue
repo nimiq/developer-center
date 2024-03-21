@@ -29,8 +29,8 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
 <template>
   <nav
     v-if="frontmatter.footer !== false" mx-auto
-    max-w="[calc(74ch+2rem+2rem)]" grid="~ md:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-96
-    :class="!hasPrev && !hasNext ? 'grid-rows-1' : 'grid-rows-[auto_auto_auto_auto] md:grid-rows-2'"
+    max-w="74ch" grid="~ cols-1 sm:cols-[auto_auto] justify-between gap-16 md:gap-40" pt-0 px-32 pb="96 md:128"
+    :class="!hasPrev && !hasNext ? 'grid-rows-1' : 'grid-rows-[auto_auto_auto_auto] xs:grid-rows-2'"
   >
     <a :href="editThisLink" target="_blank" rel="noopener" flex="~ items-center gap-6" un-text-12 op70 arrow lh-0>
       <template v-if="!isWebClientDoc">
@@ -41,7 +41,7 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
       </template>
     </a>
 
-    <div flex="~ items-center gap-6" justify-self-end>
+    <div flex="~ items-center gap-6" sm:justify-self-end>
       <p :key="page.filePath" text-12 op-70>
         Updated {{ timeAgo }} on {{ builtTime }} <template v-if="!isWebClientDoc">
           (<a :href="lastUrl" target="_blank" rel="noopener" font-bold>{{ hash }}</a>)
@@ -53,7 +53,7 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
       {{ prev.text }}
     </a>
 
-    <a v-if="hasNext" :href="next.link" justify-self-end pill arrow h-max text-blue bg="blue-400 hover:blue-500" transition-colors>
+    <a v-if="hasNext" :href="next.link" sm:justify-self-end pill arrow h-max text-blue bg="blue-400 hover:blue-500" transition-colors>
       {{ next.text }}
     </a>
   </nav>

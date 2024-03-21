@@ -31,11 +31,10 @@ const pageName = computed(() =>
       </div>
 
       <div class="content">
-        <slot name="doc-before" />
         <main class="main">
           <MarkdownContent
             :class="[
-              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose',
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:pb-64',
               pageName,
               theme.externalLinkIcon && 'external-link-icon-enabled',
             ]"
@@ -46,10 +45,8 @@ const pageName = computed(() =>
             <slot name="doc-footer-before" />
           </template>
         </DocFooter>
-        <slot name="doc-after" />
       </div>
     </div>
-    <slot name="doc-bottom" />
   </div>
 </template>
 
@@ -154,23 +151,15 @@ const pageName = computed(() =>
   padding-bottom: 32px;
 }
 
-.content {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-}
-
 @media (min-width: 960px) {
   .content {
-    padding: 0 32px 128px;
+    /* padding: 0 32px 128px; */
   }
 }
 
 @media (min-width: 1280px) {
   .content {
     order: 1;
-    margin: 0;
-    min-width: 640px;
   }
 }
 </style>
