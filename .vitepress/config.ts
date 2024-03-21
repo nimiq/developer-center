@@ -3,6 +3,7 @@ import { basename, dirname, join } from 'node:path'
 import { defineConfig } from 'vitepress'
 import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
+import { withPwa } from '@vite-pwa/vitepress'
 import { sidebar } from './sidebar.config'
 import { navigation } from './navigation.config'
 import { generateWebClientDocs } from './scripts/web-client'
@@ -19,7 +20,7 @@ export default async () => {
   await generateWebClientDocs()
   await generateRpcDocs()
 
-  return defineConfig({
+  return withPwa(defineConfig({
     base: baseUrl,
     title: pkg.title,
     srcExclude: ['**/README.md'],
@@ -126,5 +127,5 @@ export default async () => {
       ['meta', { name: 'twitter:creator', content: '@nimiq' }],
       ['meta', { name: 'twitter:title', content: pkg.title }],
     ],
-  })
+  }))
 }
