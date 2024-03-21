@@ -50,7 +50,7 @@ const baseUrl = import.meta.env.BASE_URL
       </template>
       <template v-else>
         <SearchBox v-if="showSearch" @close="showSearch = false" />
-        <button ml-24 text-14 py-6 input-text flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
+        <button ml-24 text-14 py-6 px-12 input-text flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
           <div i-nimiq:magnifying-glass op60 />
           <span lh="1" style="color: var(--nq-color)">Search</span>
           <span ghost-btn flex="~ gap-2" p-2 rounded-3 ml-64 style="--ring-color: var(--nq-color)" hover="bg-inherit" group-hover="op60">
