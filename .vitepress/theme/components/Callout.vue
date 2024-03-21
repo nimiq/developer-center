@@ -16,7 +16,7 @@ const classes = computed(() => {
 <template>
   <div w-full :class="classes.container" p-24 rounded-6 my-64>
     <div flex="~ gap-8" mb-12>
-      <div :class="classes.icon" op80 text-14 />
+      <div :class="classes.icon" op-80 text-14 />
       <h5 label>
         {{ type }}
       </h5>
