@@ -1,11 +1,30 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
 import RegisterSw from './components/RegisterSW.vue'
+
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
   <RegisterSW />
-  <DefaultTheme.Layout bg-neutral-0 class="vp-raw" />
+  <DefaultTheme.Layout bg-neutral-0 class="vp-raw">
+    <template #not-found>
+      <main px-32 mt="48 md:96" max-w-70ch mx-auto>
+        <h1 text-20>
+          <span font-bold>404</span> Page not found
+        </h1>
+
+        <div class="prose" mt-24>
+          <blockquote px-0>
+            <p font-italic>
+              But if you keep looking, you'll find it.
+            </p>
+          </blockquote>
+          <a :href="baseUrl" pill-blue arrow text-white mt-24 ml-0>Go home</a>
+        </div>
+      </main>
+    </template>
+  </DefaultTheme.Layout>
 </template>
 
 <style>
