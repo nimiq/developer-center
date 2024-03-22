@@ -7,7 +7,7 @@ const { hasSidebar } = useSidebar()
 
 const hasOutline = computed(() => page.value.frontmatter.outline !== false)
 
-const isHome = computed(() => page.value.frontmatter.layout === 'home')
+const isHome = computed(() => page.value.frontmatter.layout === 'home' || page.value.title === '404')
 const isMd = computed(() => hasSidebar.value && !hasOutline.value)
 </script>
 
