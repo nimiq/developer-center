@@ -26,10 +26,7 @@ const { navigation } = useData().theme.value
 
 <template>
   <div border-bottom lg="fixed top-0" w-full bg-neutral-0 z-100>
-    <header
-      style="height: var(--vp-nav-height)" max-w-1280 mx-auto px="24 sm:48 md2:64"
-      flex="~ items-center" class="raw"
-    >
+    <header mx-auto flex="~ items-center" class="raw">
       <a :href="withBase('/')" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative @click.right.prevent="go(withBase('/build/ui/design/logo'))">
         <div
           class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
@@ -51,16 +48,35 @@ const { navigation } = useData().theme.value
       </template>
       <template v-else>
         <SearchBox v-if="showSearch" @close="showSearch = false" />
-        <button ml-24 text-14 py-6 px-12 input-text min-w-192 group flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
-          <div i-nimiq:magnifying-glass text-neutral-800 />
+        <button ml-96 text-14 py-6 px-12 input-text min-w-192 group flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
+          <div i-nimiq:magnifying-glass text-neutral-700 text-12 />
           <span text="neutral-800 group-hocus:blue">Search</span>
-          <span flex="~ items-center gap-4" pointer-events-none mr--6 select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" font-mono>
+          <div flex="~ items-baseline gap-4" pointer-events-none mr--3 mb--1 py-2 lh="11" select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" font-mono>
             <kbd>Ctrl</kbd>
             <kbd>K</kbd>
-          </span>
+          </div>
         </button>
         <Navigation :navigation />
       </template>
     </header>
   </div>
 </template>
+
+<style>
+header {
+  height: var(--vp-nav-height);
+  padding: 0 32px;
+  max-width: calc(74ch + 2rem + 2rem);
+  margin: 0 auto;
+
+  @media(min-width: 960px) {
+    max-width: inherit;
+    margin: inherit;
+    padding-right: max(32px,calc((100vw - var(--vp-layout-max-width)) / 2));
+  }
+
+  @media (min-width: 1440px) {
+    padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+  }
+}
+</style>
