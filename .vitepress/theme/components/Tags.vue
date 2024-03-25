@@ -24,7 +24,7 @@ const icons = {
       border-base class="inverted:[--border-color:rgb(255_255_255/0.4)]" rounded-6 leading-1
     >
       <div :class="icons[tag]" size-18 text="neutral-700 inverted:white/60" />
-      <span text="neutral-gold inverted:white/60">{{ tag }}</span>
+      <span text="neutral-800 inverted:white/60" lh="18">{{ tag }}</span>
     </div>
   </div>
 </template>
