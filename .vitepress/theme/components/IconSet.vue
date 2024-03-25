@@ -129,7 +129,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         <Popover.Root>
           <Popover.Trigger
             aria-label="Icons options" flex="~ items-center
-          gap-4" border-base rounded-full px-12 py-3 text-10
+          gap-4" border-base rounded-full px-12 py-3 text-12
           >
             Options
             <Icon icon="i-nimiq:chevron-down" text-neutral />
@@ -239,7 +239,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                     v-for="option in options" :key="option" ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
                   >
                     {{ option.replace(' TS', '') }}
-                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 mb--8>TS</sup>
+                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 mb--4>TS</sup>
                   </button>
                 </Toast>
               </div>

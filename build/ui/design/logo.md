@@ -20,10 +20,28 @@ Welcome to the Nimiq design definition page. The identity has been redefined by 
 
 The Nimiq logo has evolved gradually over time, but the hexagon shape and wordmark have been constant elements in its design.
 
-<div border-base mt-24 rounded-6 py-32>
-<img src="/assets/images/build/ui/design-kit/logo/nimiq-logo-history-dark.png" alt="The history of the logo of Nimiq" v-if="isDark" />
+<!-- <div border-base mt-24 rounded-6 py-32>
+<img src="/assets/images/build/ui/design-kit/logo/nimiq-logo-history-dark.png" alt="The history of the logo of Nimiq" loading="lazy" hidden dark:block />
 
-<img src="/assets/images/build/ui/design-kit/logo/nimiq-logo-history-light.png" alt="The history of the logo of Nimiq" v-else />
+<img src="/assets/images/build/ui/design-kit/logo/nimiq-logo-history-light.png" alt="The history of the logo of Nimiq" block dark:hidden />
+</div> -->
+
+<div border-base mt-24 rounded-6 py-32 grid="~ cols-2">
+  <svg width="62" height="56" viewBox="0 0 62 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M46.1865 0.5H15.1435L0 27.84L15.1435 55.18H46.1865L61.33 27.84L46.1865 0.5ZM33.5048 43.4633V49.3217H28.7722V44.2442C25.9324 44.2442 22.5258 42.6847 20.254 40.3387L23.4717 35.6522C25.9324 37.605 28.0153 38.5808 30.286 38.5808C32.9368 38.5808 34.0727 37.4089 34.0727 35.2612C34.0727 30.1838 21.3899 30.1838 21.3899 21.5907C21.3899 16.5132 24.4186 13.1936 28.9612 12.2178V6.74933H33.6937V11.8268C36.7224 12.2178 38.9942 13.7796 40.887 15.7323L37.1003 20.0289C35.5887 18.0761 34.077 17.4902 31.9899 17.4902C29.7224 17.4902 28.2042 18.466 28.2042 20.6093C28.5832 25.2957 41.455 24.9058 41.455 34.2787C41.455 38.9663 38.6152 42.6769 33.8827 43.6527L33.5048 43.4633Z" fill="#F6AE2D"/>
+</svg>
+<div i-nimiq:logos-nimiq w-62 h-56 />
+<div
+  relative h-3 col-span-2 mt-26.5 w-full
+  style="--c: var(--nq-neutral-400); background: linear-gradient(90deg, rgba(var(--c) / 0) 0%, rgb(var(--c) / 0.7) 15%, rgb(var(--c)) 50%, rgb(var(--c) / 0.7) 85%, rgba(var(--c) / 0) 100%)"
+/>
+
+<div h-14 w-14 bg-neutral-400 rounded-full mt--8.5 />
+<div h-14 w-14 bg-neutral-400 rounded-full mt--8.5 />
+
+<div mt-16 text-18 font-bold>2017</div>
+<div mt-16 text-18 font-bold>2018</div>
+
 </div>
 
 ## The Logo

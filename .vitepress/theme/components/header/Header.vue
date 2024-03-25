@@ -8,7 +8,7 @@ const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
 const MobileMenu = defineAsyncComponent(() => import('./MobileMenu.vue'))
 
 const { smaller } = useBreakpoints(breakpointsTailwind)
-const isSmall = smaller('xl')
+const isSmall = smaller('lg')
 const showSearch = ref(false)
 
 useMagicKeys({
@@ -35,10 +35,10 @@ const { navigation } = useData().theme.value
           class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
           text="96 md:101"
         />
-        <h2 whitespace-nowrap hidden xs:block>
+        <h2 whitespace-nowrap hidden xs:block w-max>
           <span sr-only>Nimiq</span> Developer Center
         </h2>
-        <div absolute top-24 right--16 @click.prevent>
+        <div absolute top-36 right--12 @click.prevent>
           <Environment />
         </div>
       </a>
@@ -51,10 +51,10 @@ const { navigation } = useData().theme.value
       </template>
       <template v-else>
         <SearchBox v-if="showSearch" @close="showSearch = false" />
-        <button ml-24 text-14 py-6 px-12 input-text flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
-          <div i-nimiq:magnifying-glass op60 />
-          <span lh="1" style="color: var(--nq-color)">Search</span>
-          <span ghost-btn flex="~ gap-2" p-2 rounded-3 ml-64 style="--ring-color: var(--nq-color)" hover="bg-inherit" group-hover="op60">
+        <button ml-24 text-14 py-6 px-12 input-text min-w-192 group flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
+          <div i-nimiq:magnifying-glass text-neutral-800 />
+          <span text="neutral-800 group-hocus:blue">Search</span>
+          <span flex="~ items-center gap-4" pointer-events-none mr--6 select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" font-mono>
             <kbd>Ctrl</kbd>
             <kbd>K</kbd>
           </span>

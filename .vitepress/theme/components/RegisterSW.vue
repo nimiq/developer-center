@@ -18,3 +18,7 @@ onBeforeMount(async () => {
   })
 })
 </script>
+
+<template>
+  <span sr-only>App ready to be used offline</span>
+</template>

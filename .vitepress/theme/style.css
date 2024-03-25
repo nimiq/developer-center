@@ -1,104 +1,113 @@
-:root {
-  --vp-c-default-1: var(--vp-c-gray-1);
-  --vp-c-default-2: var(--vp-c-gray-2);
-  --vp-c-default-3: var(--vp-c-gray-3);
-  --vp-c-default-soft: var(--vp-c-gray-soft);
+@layer tw-reset, vp-base, vp-components, vp-utilities, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components, styles;
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+@import '../../node_modules/@unocss/reset/tailwind-compat.css' layer(tw-reset);
 
-  --vp-c-tip-1: var(--vp-c-brand-1);
-  --vp-c-tip-2: var(--vp-c-brand-2);
-  --vp-c-tip-3: var(--vp-c-brand-3);
-  --vp-c-tip-soft: var(--vp-c-brand-soft);
+@layer styles {
 
-  --vp-c-warning-1: var(--vp-c-gold-1);
-  --vp-c-warning-2: var(--vp-c-gold-2);
-  --vp-c-warning-3: var(--vp-c-gold-3);
-  --vp-c-warning-soft: var(--vp-c-gold-soft);
+  :root {
+    --vp-c-default-1: var(--vp-c-gray-1);
+    --vp-c-default-2: var(--vp-c-gray-2);
+    --vp-c-default-3: var(--vp-c-gray-3);
+    --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-danger-1: var(--vp-c-red-1);
-  --vp-c-danger-2: var(--vp-c-red-2);
-  --vp-c-danger-3: var(--vp-c-red-3);
-  --vp-c-danger-soft: var(--vp-c-red-soft);
+    --vp-c-brand-1: var(--vp-c-indigo-1);
+    --vp-c-brand-2: var(--vp-c-indigo-2);
+    --vp-c-brand-3: var(--vp-c-indigo-3);
+    --vp-c-brand-soft: var(--vp-c-indigo-soft);
 
-  --vp-button-brand-border: transparent;
-  --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand-3);
-  --vp-button-brand-hover-border: transparent;
-  --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
-  --vp-button-brand-active-border: transparent;
-  --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+    --vp-c-tip-1: var(--vp-c-brand-1);
+    --vp-c-tip-2: var(--vp-c-brand-2);
+    --vp-c-tip-3: var(--vp-c-brand-3);
+    --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  --vp-c-brand-1: rgb(var(--nq-blue));
-  --vp-backdrop-bg-color: rgb(var(--nq-neutral) / 0.2);
-  --vp-c-bg: rgb(var(--nq-neutral-0));
-  --vp-c-bg-elv: rgb(var(--nq-neutral-0));
-  --vp-c-divider: rgb(var(--nq-neutral-100));
-  --vp-c-neutral-inverse: rgb(var(--nq-neutral-100));
-  --vp-input-switch-color: rgb(var(--nq-neutral));
-  --vp-c-text-1: rgb(var(--nq-neutral-800));
-  --vp-c-text-2: rgb(var(--nq-neutral-700));
-  --vp-c-gutter: rgb(var(--nq-neutral-50));
+    --vp-c-warning-1: var(--vp-c-gold-1);
+    --vp-c-warning-2: var(--vp-c-gold-2);
+    --vp-c-warning-3: var(--vp-c-gold-3);
+    --vp-c-warning-soft: var(--vp-c-gold-soft);
 
-  --vp-c-bg-soft: rgb(var(--nq-neutral-200));
-  --vp-c-border: rgb(var(--nq-neutral-400));
-  --vp-shadow-3: var(--nq-shadow);
+    --vp-c-danger-1: var(--vp-c-red-1);
+    --vp-c-danger-2: var(--vp-c-red-2);
+    --vp-c-danger-3: var(--vp-c-red-3);
+    --vp-c-danger-soft: var(--vp-c-red-soft);
 
-  --vp-font-family-base: Mulish;
-  --vp-font-family-mono: 'Fira Code';
+    --vp-button-brand-border: transparent;
+    --vp-button-brand-text: var(--vp-c-white);
+    --vp-button-brand-bg: var(--vp-c-brand-3);
+    --vp-button-brand-hover-border: transparent;
+    --vp-button-brand-hover-text: var(--vp-c-white);
+    --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+    --vp-button-brand-active-border: transparent;
+    --vp-button-brand-active-text: var(--vp-c-white);
+    --vp-button-brand-active-bg: var(--vp-c-brand-1);
 
-  --vp-sidebar-width: 300px;
+    --vp-c-brand-1: rgb(var(--nq-blue));
+    --vp-backdrop-bg-color: rgb(var(--nq-neutral) / 0.2);
+    --vp-c-bg: rgb(var(--nq-neutral-0));
+    --vp-c-bg-elv: rgb(var(--nq-neutral-0));
+    --vp-c-divider: rgb(var(--nq-neutral-100));
+    --vp-c-neutral-inverse: rgb(var(--nq-neutral-100));
+    --vp-input-switch-color: rgb(var(--nq-neutral));
+    --vp-c-text-1: rgb(var(--nq-neutral-800));
+    --vp-c-text-2: rgb(var(--nq-neutral-700));
+    --vp-c-gutter: rgb(var(--nq-neutral-50));
 
-  --vp-nav-height: 68px;
+    --vp-c-bg-soft: rgb(var(--nq-neutral-200));
+    --vp-c-border: rgb(var(--nq-neutral-400));
+    --vp-shadow-3: var(--nq-shadow);
 
-  @media (min-width: 720px) {
-    --vp-nav-height: 72px;
+    --vp-font-family-base: Mulish;
+    --vp-font-family-mono: 'Fira Code';
+
+    --vp-sidebar-width: 300px;
+
+    --vp-nav-height: 68px;
+
+    @media (min-width: 720px) {
+      --vp-nav-height: 72px;
+    }
   }
-}
 
-html {
-  --uno: scroll text-16;
-}
+  html {
+    --uno: scroll text-16;
+  }
 
-.medium-zoom-overlay {
-  z-index: 20000;
-}
+  .medium-zoom-overlay {
+    z-index: 20000;
+  }
 
-.medium-zoom-image {
-  z-index: 20001;
-}
+  .medium-zoom-image {
+    z-index: 20001;
+  }
 
-:is(h1, h2):where(:not(.prose)) {
-  --uno: max-w-520;
-}
+  :is(h1, h2):where(:not(.prose)) {
+    --uno: max-w-520;
+  }
 
-:is(h1, h2,h3,h4,h5,h6){
-  --uno: w-full; /* TODO Remove this */
-}
+  :is(h1, h2, h3, h4, h5, h6) {
+    --uno: w-full;
+    /* TODO Remove this */
+  }
 
-.subline {
-  --uno: subline text-neutral-700;
-}
+  .subline {
+    --uno: subline text-neutral-700;
+  }
 
-h1 {
-  --uno: my-0;
-}
+  h1 {
+    --uno: my-0;
+  }
 
-h1+p {
-  --uno: mt-48 md:mt-64;
-}
+  h1+p {
+    --uno: mt-48 md:mt-64;
+  }
 
-h2+p.subline {
-  --uno: mt-40 md:mt-48;
-}
+  h2+p.subline {
+    --uno: mt-40 md:mt-48;
+  }
 
-.VPHome {
-  padding-top: 96px;
-  max-width: calc(var(--vp-layout-max-width) - 64px);
-  margin: 0 auto;
+  .VPHome {
+    padding-top: 96px;
+    max-width: calc(var(--vp-layout-max-width) - 64px);
+    margin: 0 auto;
+  }
+
 }
