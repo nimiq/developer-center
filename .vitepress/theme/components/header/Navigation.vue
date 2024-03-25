@@ -43,7 +43,7 @@ const currentTrigger = ref('')
               <NavigationMenu.Link as-child>
                 <a
                   flex="~ col gap-3" select-none rounded-6 px-8 py-10 class="focusable" transition-colors
-                  :href="`${baseUrl}${href}`" hocus:bg-neutral-200 group
+                  :href="withBase(href)" hocus:bg-neutral-200 group
                 >
                   <h4 label text="11 neutral" pl-2 font-bold class="arrow" after:op-60>{{ title }}</h4>
                   <p text="14 neutral-800" lh-18> {{ description }}</p>

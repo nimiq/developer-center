@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
-
-const { go } = useRouter()
+import { ContextMenu } from 'radix-vue/namespaced'
+import { getIconSnippet } from '../../composables/icons/icon'
 
 const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
 const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
@@ -22,19 +22,40 @@ useMagicKeys({
 })
 
 const { navigation } = useData().theme.value
+
+const nimiqLogo = ref('')
+onMounted(async () => {
+  nimiqLogo.value = await getIconSnippet('nimiq:logos-nimiq-horizontal', 'SVG')
+})
+const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
 </script>
 
 <template>
   <div border-bottom lg="fixed top-0" w-full bg-neutral-0 z-100>
     <header mx-auto flex="~ items-center" class="raw">
-      <a :href="withBase('/')" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative @click.right.prevent="go(withBase('/build/ui/design/logo'))">
-        <div
-          class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
-          text="96 md:101"
-        />
-        <h2 whitespace-nowrap hidden xs:block w-max>
-          <span sr-only>Nimiq</span> Developer Center
-        </h2>
+      <a :href="withBase('/')" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
+        <ContextMenu.Root>
+          <ContextMenu.Trigger as-child>
+            <div
+              class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
+              text="96 md:101"
+            />
+            <h2 whitespace-nowrap hidden xs:block w-max>
+              <span sr-only>Nimiq</span> Developer Center
+            </h2>
+          </ContextMenu.Trigger>
+          <ContextMenu.Portal>
+            <ContextMenu.Content :side-offset="8" bg-neutral-0 ring="1 neutral/20" z-100 rounded-6 p-8 shadow flex="~ col gap-8">
+              <ContextMenu.Item v-if="isSupported" as="button" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors px-8 py-4 rounded-2 @click="copy(nimiqLogo)">
+                <div i-nimiq:copy op-80 text-14 />Copy Logo
+              </ContextMenu.Item>
+              <ContextMenu.Item as="a" :href="withBase('build/ui/design/logo')" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors px-8 py-4 rounded-2 arrow after:opacity-70><div i-nimiq:logos-nimiq-mono op-80 text-14 />How to use it</ContextMenu.Item>
+              <ContextMenu.Separator h-1 w-full bg-neutral-300 />
+              <ContextMenu.Item as="a" href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors after:opacity-70 px-8 py-4 rounded-2 arrow><div i-logos:figma op-80 text-14 />Style Guide</ContextMenu.Item>
+            </ContextMenu.Content>
+          </ContextMenu.Portal>
+        </ContextMenu.Root>
+
         <div absolute top-36 right--12 @click.prevent>
           <Environment />
         </div>
