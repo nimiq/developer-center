@@ -8,6 +8,8 @@ const isDark = useDark()
 const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
 </script>
 
+Asset {.label .text-14 .text-neutral-800 .m-0}
+
 # Nimiq Logo{.mb-0}
 
 Welcome to the Nimiq design definition page. The identity has been redefined by carefully selecting colours, typography and shapes to show how powerful, useful & simple Nimiq products are.
