@@ -49,7 +49,7 @@ const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
               <ContextMenu.Item v-if="isSupported" as="button" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors px-8 py-4 rounded-2 @click="copy(nimiqLogo)">
                 <div i-nimiq:copy op-80 text-14 />Copy Logo
               </ContextMenu.Item>
-              <ContextMenu.Item as="a" :href="withBase('build/ui/design/logo')" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors px-8 py-4 rounded-2 arrow after:opacity-70><div i-nimiq:logos-nimiq-mono op-80 text-14 />How to use it</ContextMenu.Item>
+              <ContextMenu.Item as="a" :href="withBase('/build/ui/design/logo')" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors px-8 py-4 rounded-2 arrow after:opacity-70><div i-nimiq:logos-nimiq-mono op-80 text-14 />How to use it</ContextMenu.Item>
               <ContextMenu.Separator h-1 w-full bg-neutral-300 />
               <ContextMenu.Item as="a" href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design" flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors after:opacity-70 px-8 py-4 rounded-2 arrow><div i-logos:figma op-80 text-14 />Style Guide</ContextMenu.Item>
             </ContextMenu.Content>
