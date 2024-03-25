@@ -239,7 +239,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                     v-for="option in options" :key="option" ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
                   >
                     {{ option.replace(' TS', '') }}
-                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 mb--4>TS</sup>
+                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 top-0>TS</sup>
                   </button>
                 </Toast>
               </div>
