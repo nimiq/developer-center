@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
 import RegisterSw from './components/RegisterSW.vue'
-
-const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const baseUrl = import.meta.env.BASE_URL
               But if you keep looking, you'll find it.
             </p>
           </blockquote>
-          <a :href="baseUrl" pill-blue arrow text-white mt-24 ml-0>Go home</a>
+          <a :href="withBase('/')" pill-blue arrow text-white mt-24 ml-0>Go home</a>
         </div>
       </main>
     </template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
 
+const { go } = useRouter()
+
 const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
 const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
 const MobileMenu = defineAsyncComponent(() => import('./MobileMenu.vue'))
@@ -20,7 +22,6 @@ useMagicKeys({
 })
 
 const { navigation } = useData().theme.value
-const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL
       style="height: var(--vp-nav-height)" max-w-1280 mx-auto px="24 sm:48 md2:64"
       flex="~ items-center" class="raw"
     >
-      <a :href="baseUrl" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
+      <a :href="withBase('/')" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative @click.right.prevent="go(withBase('/build/ui/design/logo'))">
         <div
           class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
           text="96 md:101"

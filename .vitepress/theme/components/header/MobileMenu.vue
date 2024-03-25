@@ -3,8 +3,6 @@ import { DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot, Dr
 import type { NavigationType } from './navigation-types'
 
 defineProps<{ navigation: NavigationType }>()
-
-const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -31,12 +29,12 @@ const baseUrl = import.meta.env.BASE_URL
               <li v-for="({ key, main, items }) in navigation.items" :key>
                 <ul>
                   <li>
-                    <a :href="`${baseUrl}${main.href}`" px-16 py-12 un-text="17 neutral-900" lh="22" arrow>
+                    <a :href="withBase(main.href)" px-16 py-12 un-text="17 neutral-900" lh="22" arrow>
                       {{ key }}
                     </a>
                   </li>
                   <li v-for="({ href, title }) in items" :key="title" mt-12>
-                    <a :href="`${baseUrl}${href}`" block px-16 py-6 un-text="14 neutral-800 hocus:neutral-900" rounded-6 lh-14>
+                    <a :href="withBase(href)" block px-16 py-6 un-text="14 neutral-800 hocus:neutral-900" rounded-6 lh-14>
                       {{ title }}
                     </a>
                   </li>

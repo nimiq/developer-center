@@ -9,8 +9,6 @@ import Community from './Community.vue'
 defineProps<{ navigation: NavigationType }>()
 
 const currentTrigger = ref('')
-
-const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -27,7 +25,7 @@ const baseUrl = import.meta.env.BASE_URL
               <NavigationMenu.Link as-child>
                 <a
                   relative of-hidden transition-colors flex="~ col justify-end" rounded-6 h-full w-full p-16
-                  :class="`focusable ${main.classes}`" :href="`${baseUrl}${main.href}`"
+                  :class="`focusable ${main.classes}`" :href="withBase(main.href)"
                 >
                   <div :class="main.iconClasses" text-128 absolute top-8 right--24 />
                   <span label text="12 white/70" z-1>{{ main.label }}</span>
