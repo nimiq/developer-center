@@ -12,7 +12,6 @@ const show = defineModel<boolean>()
 <template>
   <Toast.Provider>
     <slot />
-    {{ { show } }}
 
     <Toast.Root
       v-model:open="show" :default-open="show"
