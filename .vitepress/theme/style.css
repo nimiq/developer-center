@@ -110,4 +110,8 @@
     margin: 0 auto;
   }
 
+  .VPLocalNav.has-sidebar .container {
+    margin: 0 auto;
+  }
+
 }

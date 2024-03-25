@@ -36,8 +36,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   nimiq-css:
-    specifier: ^0.0.55
-    version: 0.0.55(typescript@5.4.3)(unocss@0.58.6)(vite@5.2.3)
+    specifier: ^0.0.56
+    version: 0.0.56(typescript@5.4.3)(unocss@0.58.6)(vite@5.2.3)
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -6535,15 +6535,14 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /nimiq-css@0.0.55(typescript@5.4.3)(unocss@0.58.6)(vite@5.2.3):
-    resolution: {integrity: sha512-YIICOdGRdPLjRB60MwhD9bfi4ouobaCkwQpt29C0d/vYEpTn+RQFXHFmXtRPRIQ+FB7F4JCNMgfS/SIQn+05Sw==}
+  /nimiq-css@0.0.56(typescript@5.4.3)(unocss@0.58.6)(vite@5.2.3):
+    resolution: {integrity: sha512-4/Wy0Ld4do/o3CvB1JX9xBIKIya3Ckm4lLgwszH9AQ3AWz4WrzqT0ZdfmflOkNk1XOyJB3cMExbUfpzShxK4YA==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: ^5.0.0
       unocss: ^0.58.5
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@unocss/reset': 0.58.6
       ts-cssjson: 3.0.1
       typescript: 5.4.3
       unocss: 0.58.6(postcss@8.4.38)(rollup@2.79.1)(vite@5.2.3)
