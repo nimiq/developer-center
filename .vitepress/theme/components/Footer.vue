@@ -21,17 +21,17 @@ const isMd = computed(() => hasSidebar.value && !hasOutline.value)
     <div
       max-md:px-32
       py-48 mx-auto :class="{
-        'md:px-64': isHome,
-        'md:pl-96': hasSidebar,
-        'max-w-1280': isHome,
+        'md:px64': isHome,
+        'md:pl96': hasSidebar,
+        'max-w1280': isHome,
         'w-full': !isMd,
-        'px-64 w-[calc(74ch+64px)]': isMd,
+        'px64 w-[calc(74ch+64px)]': isMd,
       }"
     >
       <nav>
         <ul grid="~ col-1 md:cols-2 gap-16 justify-between" ml--4>
           <li v-for="(item, i) in footer" :key="item.icon" :class="{ 'md:justify-self-end': i % 2 !== 0 }">
-            <a :href="item.link" target="_blank" flex="~ items-center" px-4 w-max un-text-14 class="arrow" text-blue>
+            <a :href="item.link" target="_blank" noopener noreferrer flex="~ items-center" px-4 w-max un-text-14 class="arrow" text-blue>
               <div :class="item.icon" mr-8 text="20 neutral-600" />
               <span text-neutral-700>{{ item.text }}</span>
               <span font-semibold ml-4>{{ item.social }}</span>

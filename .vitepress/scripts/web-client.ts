@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { consola } from 'consola'
 
 export async function generateWebClientDocs() {
   // Read installed package version of @nimiq/core-web
@@ -13,20 +14,19 @@ export async function generateWebClientDocs() {
 
     // Skip build if package version and generated version match
     if (packageVersion === generatedVersion) {
-      // eslint-disable-next-line no-console
-      console.log(`Web-Client docs ${packageVersion} already generated`)
+      consola.info(`Web-Client docs ${packageVersion} already generated`)
       return
     }
   }
 
   // Rebuild docs
-  // eslint-disable-next-line no-console
-  console.log(`Generating Web-Client docs ${packageVersion} ...`)
+
+  consola.info(`Generating Web-Client docs ${packageVersion} ...`)
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
   // Update entry file with frontmatter to disable the "next" footer button
   const entryFile = join(__dirname, '../../build/web-client/index.md')
-  console.log(`Web-Client docs entry file: ${entryFile}`) // eslint-disable-line no-console
+  consola.info(`Web-Client docs entry file: ${entryFile}`)
 
   let entryFileContent = readFileSync(entryFile, 'utf-8')
   entryFileContent = `---\ndocFooter: false\n---\n${entryFileContent}`

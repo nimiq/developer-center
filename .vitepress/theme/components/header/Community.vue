@@ -10,6 +10,7 @@ defineProps<{ community: NavigationType['community'] }>()
     <ul flex="~ col">
       <li v-for="({ href, label }) in community.links" :key="label">
         <a
+          target="_blank" noopener noreferrer
           :href focusable un-text-neutral="800 hocus:900" block w-full rounded-6 transition-colors class="arrow" px-20
           py-8 hocus:bg-neutral-200 whitespace-nowrap
         >{{ label }}</a>
@@ -19,6 +20,7 @@ defineProps<{ community: NavigationType['community'] }>()
     <ul flex="~ justify-center" px-12 py-8>
       <li v-for="({ href, icon, key }) in community.socials" :key="key">
         <a
+          noopener noreferrer
           :href target="_blank" rel="noopener noreferrer" focusable block p-8 rounded-2
           :aria-label="`Visit Nimiq on ${key}`" hocus:bg-neutral-200 text-18 text-neutral="700 hocus:800"
         >

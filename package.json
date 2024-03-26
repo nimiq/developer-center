@@ -46,6 +46,7 @@
     "@unocss/preset-rem-to-px": "^0.58.6",
     "@unocss/transformer-directives": "^0.58.6",
     "@vite-pwa/vitepress": "^0.4.0",
+    "consola": "^3.2.3",
     "cross-spawn": "^7.0.3",
     "eslint": "^8.57.0",
     "https-localhost": "^4.7.1",

@@ -5,7 +5,7 @@ links:
     label: Build
     title: Get Started with the Web Client
     description:  Get a Nimiq App up and running in the browser under 5 minutes.
-    href: web-client/
+    href: /build/web-client/
     layout: lg
     span: 6
     tags:
@@ -16,11 +16,14 @@ links:
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
     tags: [Validator]
-    href: becoming-a-validator
+    href: /build/becoming-a-validator
+  - label: RPC
+    title: Connect via RPC
+    href: /build/rpc-docs/
   - label: Our design rules
     title: Design something awesome
     href: https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0
-    tags: [Design]
+    tags: [Asset]
 prose: false
 prev: false
 next: false
