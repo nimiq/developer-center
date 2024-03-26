@@ -20,7 +20,7 @@ export default {
   setup() {
     const route = useRoute()
     const initZoom = () => {
-      mediumZoom('.prose img', { background: 'rgb(var(--nq-neutral-0))' })
+      mediumZoom('.prose img:not(:is(.not-zoomable,[not-zoomable]))', { background: 'rgb(var(--nq-neutral-0))' })
     }
     onMounted(() => {
       initZoom()

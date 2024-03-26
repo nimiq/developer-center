@@ -163,7 +163,7 @@ You've got one option: that’s white. Use this only on photographs and color ba
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square>
   <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-2 />
-  <img src="/assets/images/build/ui/design-kit/logo/island.png" alt="A paradisiacal beach seen from the top" rounded-6 border-subtle-light absolute inset-0 aspect-square />
+  <img src="/assets/images/build/ui/design-kit/logo/island.png" alt="A paradisiacal beach seen from the top" rounded-6 border-subtle-light absolute inset-0 aspect-square not-zoomable />
 </div>
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg="#EC991C">
@@ -196,7 +196,7 @@ The don'ts with the Nimiq logo
 
 <div>
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-white>
-  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-horizontal-outline-ugly.svg" alt="An example on how to not use the Nimiq Logo malformating it with shadows or only outlines" rounded-6  />
+  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-horizontal-outline-ugly.svg" alt="An example on how to not use the Nimiq Logo malformating it with shadows or only outlines" rounded-6 not-zoomable />
 </div>
 <div mt-16 flex="~ gap-8">
   <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
@@ -209,7 +209,7 @@ The don'ts with the Nimiq logo
 <div>
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square>
   <div i-nimiq:logos-nimiq-horizontal text-128 z-1 />
-  <img src="/assets/images/build/ui/design-kit/logo/nonos/grumpy-cat.png" alt="An example on how to not use the Nimiq Logo making it unreadable" rounded-6 absolute inset-0 aspect-square />
+  <img src="/assets/images/build/ui/design-kit/logo/nonos/grumpy-cat.png" alt="An example on how to not use the Nimiq Logo making it unreadable" rounded-6 absolute inset-0 aspect-square not-zoomable />
 </div>
 <div mt-16 flex="~ gap-8">
   <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
@@ -221,7 +221,7 @@ The don'ts with the Nimiq logo
 
 <div>
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-white >
-  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="" rounded-6 />
+  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="An example on how not use the Nimiq Logo using only letters" not-zoomable rounded-6 />
 </div>
 <div mt-16 flex="~ gap-8">
   <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
@@ -233,7 +233,7 @@ The don'ts with the Nimiq logo
 
 <div>
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg="#EC991C">
-  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="An example on how to not use the Nimiq Logo only showing letters" rounded-6 ml-24 />
+  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-only-letters.svg" alt="An example on how to not use the Nimiq Logo only showing letters" rounded-6 ml-24 not-zoomable />
 </div>
 <div mt-16 flex="~ gap-8">
   <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>
@@ -257,7 +257,7 @@ The don'ts with the Nimiq logo
 
 <div>
 <div flex="~ justify-center items-center" border-base rounded-6 relative aspect-square bg-white>
-  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-blue.svg" alt="A grumpy cat" rounded-6 />
+  <img src="/assets/images/build/ui/design-kit/logo/nonos/nimiq-blue.svg" alt="A grumpy cat" rounded-6 not-zoomable />
 </div>
 <div mt-16 flex="~ gap-8">
   <div bg-gradient-red h-14 w-14 p-3 mt-4 rounded-full>

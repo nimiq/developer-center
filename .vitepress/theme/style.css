@@ -72,11 +72,15 @@
   }
 
   .medium-zoom-overlay {
-    z-index: 20000;
+    z-index: 99;
   }
 
-  .medium-zoom-image {
-    z-index: 20001;
+  .medium-zoom-image--opened {
+    z-index: 99;
+  }
+
+  .medium-zoom-image--hidden {
+    z-index: 99;
   }
 
   :is(h1, h2):where(:not(.prose)) {
