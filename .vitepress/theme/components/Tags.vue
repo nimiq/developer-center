@@ -12,7 +12,7 @@ const icons = {
   [Tag.RPC]: 'i-nimiq:icons-lg-nodes',
   [Tag.WebClient]: 'i-nimiq:globe',
   [Tag.Validator]: 'i-nimiq:icons-lg-verified',
-  [Tag.Design]: 'i-nimiq:icons-lg-palette',
+  [Tag.Asset]: 'i-nimiq:icons-lg-palette',
   [Tag.NimiqBrandKit]: 'i-carbon:logo-figma',
 }
 </script>
