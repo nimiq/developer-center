@@ -70,9 +70,9 @@ const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
       <template v-else>
         <SearchBox v-if="showSearch" @close="showSearch = false" />
         <button ml-96 text-14 py-6 px-12 input-text min-w-192 group flex="~ gap-8 items-center" rounded-full class="group" @click="showSearch = true">
-          <div i-nimiq:magnifying-glass text-neutral-700 text-12 />
-          <span text="neutral-800 group-hocus:blue">Search</span>
-          <div flex="~ items-baseline gap-4" pointer-events-none mr--3 mb--1 py-2 lh="11" select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" font-mono>
+          <div i-nimiq:magnifying-glass text="12 neutral-700 group-hocus:blue/80 transition" />
+          <span text="neutral-800 group-hocus:blue transition">Search</span>
+          <div flex="~ items-baseline gap-4" pointer-events-none mr--3 mb--1 py-2 lh="11" select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" transition font-mono>
             <kbd>Ctrl</kbd>
             <kbd>K</kbd>
           </div>

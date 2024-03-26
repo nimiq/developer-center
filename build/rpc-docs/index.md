@@ -70,4 +70,3 @@ curl --request POST \
 :::
 
 <!--@include: ./methods.md-->
-<!--@include: ./schemas.md-->
