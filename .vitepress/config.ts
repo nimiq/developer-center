@@ -171,5 +171,10 @@ export default async () => {
         navigateFallback: '/',
       },
     },
+
+    sitemap: {
+      hostname: 'https://onmax.github.io',
+    },
+
   }))
 }
