@@ -49,7 +49,7 @@ export const navigation = {
         label: 'Learn',
         title: 'The technology',
         description: 'What makes Nimiq a truly unique blockchain.',
-        href: '/learn',
+        href: '/learn/',
       },
       items: [
         {
@@ -77,12 +77,12 @@ export const navigation = {
         label: 'Build',
         title: 'On top of Nimiq',
         description: 'Create an app and have it running in 5 minutes.',
-        href: '/build',
+        href: '/build/',
       },
       items: [
         {
           title: 'Web Client',
-          href: '/build/web-client',
+          href: '/build/web-client/',
           description: 'Create a simple web app that interacts with the Nimiq blockchain.',
         },
         {
@@ -92,7 +92,7 @@ export const navigation = {
         },
         {
           title: 'Design',
-          href: '/build/design',
+          href: '/build/ui/design/',
           description: 'Your app with Nimiq in mind.',
         },
       ],
