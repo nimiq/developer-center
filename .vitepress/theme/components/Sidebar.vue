@@ -42,7 +42,7 @@ function onSectionTitleClicked(i: number) {
 
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
         <div
-          w-full border-top sticky top-0 bottom--1 z-100 bg-neutral-0 cursor-pointer
+          w-full border-top sticky top-0 bottom--1 z-1 bg-neutral-0 cursor-pointer
           @click="onSectionTitleClicked(i)"
         >
           <div pt-24 pb-16>
@@ -52,14 +52,14 @@ function onSectionTitleClicked(i: number) {
               </p>
               <div text="24 neutral" flex="~ items-center gap-8">
                 <div v-if="group.icon" :class="group.icon" />
-                <h3 text-24 font-bold>
+                <h3 text-24 font-bold w-max>
                   {{ group.text }}
                 </h3>
               </div>
             </button>
             <div
-              absolute inset-x-0 bottom--16 bg-gradient-to-b h-16 pointer-events-none
-              from="lightgray dark:darkblue-1000" to-transparent
+              absolute inset-x-0 bottom--16 h-16 pointer-events-none
+              bg-gradient="to-b from-neutral-0 to-transparent"
             />
           </div>
         </div>

@@ -49,22 +49,22 @@ export const navigation = {
         label: 'Learn',
         title: 'The technology',
         description: 'What makes Nimiq a truly unique blockchain.',
-        href: 'learn/',
+        href: '/learn',
       },
       items: [
         {
           title: 'Validators and Stakers',
-          href: 'learn/protocol/validators/validators-and-stakers',
+          href: '/learn/protocol/validators/validators-and-stakers',
           description: 'Learn about the pillars of Albatross PoS',
         },
         {
           title: 'Staking Contract',
-          href: 'learn/protocol/validators/staking-contract',
+          href: '/learn/protocol/validators/staking-contract',
           description: 'The repository of data for validators, stakers, and staking.',
         },
         {
           title: 'Block Format',
-          href: 'learn/protocol/block-format',
+          href: '/learn/protocol/block-format',
           description: 'Everything about micro and macro blocks.',
         },
       ],
@@ -77,22 +77,22 @@ export const navigation = {
         label: 'Build',
         title: 'On top of Nimiq',
         description: 'Create an app and have it running in 5 minutes.',
-        href: 'build/',
+        href: '/build',
       },
       items: [
         {
           title: 'Web Client',
-          href: 'build/web-client/',
+          href: '/build/web-client',
           description: 'Create a simple web app that interacts with the Nimiq blockchain.',
         },
         {
           title: 'Become a validator',
-          href: 'build/becoming-a-validator',
+          href: '/build/becoming-a-validator',
           description: 'Connect and start earning rewards.',
         },
         {
           title: 'Design',
-          href: 'build/design/',
+          href: '/build/design',
           description: 'Your app with Nimiq in mind.',
         },
       ],

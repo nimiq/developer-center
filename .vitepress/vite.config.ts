@@ -7,12 +7,13 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { postcssIsolateStyles } from 'vitepress'
+import { consola } from 'consola'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
 
 export default defineConfig(async ({ mode }) => {
   const environment = env.DEPLOYMENT_ENV || mode
-  console.log(`Building for ${environment}. ${JSON.stringify({ env: env.DEPLOYMENT_ENV, mode })}`) // eslint-disable-line no-console
+  consola.debug(`Building for ${environment}`)
 
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()
 

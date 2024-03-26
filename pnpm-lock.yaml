@@ -85,6 +85,9 @@ devDependencies:
   '@vite-pwa/vitepress':
     specifier: ^0.4.0
     version: 0.4.0(vite-plugin-pwa@0.19.6)
+  consola:
+    specifier: ^3.2.3
+    version: 3.2.3
   cross-spawn:
     specifier: ^7.0.3
     version: 7.0.3

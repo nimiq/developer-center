@@ -24,6 +24,6 @@ export enum Tag {
   RPC = 'RPC',
   WebClient = 'Web Client',
   Validator = 'Validator',
-  Design = 'Design',
+  Asset = 'Asset',
   NimiqBrandKit = 'Nimiq Brand Kit',
 }

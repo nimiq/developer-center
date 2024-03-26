@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import json2md from 'json2md'
+import { consola } from 'consola'
 
 export async function generateRpcDocs() {
   let content: Response
@@ -8,18 +9,23 @@ export async function generateRpcDocs() {
   try {
     // Request the latest release information
     const latestRelease = await fetch('https://github.com/nimiq/core-rs-albatross/releases/latest', { redirect: 'follow' })
-    if (latestRelease.status !== 200)
-      throw new Error(`HTTP code for fetching release ${latestRelease.status}`)
+    if (latestRelease.status !== 200) {
+      const e = new Error(`HTTP code for fetching release ${latestRelease.status}`)
+      consola.error(e)
+      throw e
+    }
 
     // Request OpenRPC document from the latest Albatross release on Github
     const releaseVersion = latestRelease.url.split('/').pop()
     content = await fetch(`https://github.com/nimiq/core-rs-albatross/releases/download/${releaseVersion}/openrpc-document.json`)
-    if (content.status !== 200)
-      throw new Error(`HTTP code for fetching content ${content.status}`)
+    if (content.status !== 200) {
+      const e = new Error(`HTTP code for fetching content ${content.status}`)
+      consola.error(e)
+      throw e
+    }
   }
   catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(`Failed to fetch OpenRPC specification from GitHub: ${error}`)
+    consola.error(new Error(`Failed to fetch OpenRPC specification from GitHub: ${error}`))
     return
   }
 
@@ -37,14 +43,12 @@ export async function generateRpcDocs() {
 
     // Skip build if package version and generated version match
     if (packageVersion === generatedVersion) {
-      // eslint-disable-next-line no-console
-      console.log(`RPC specification docs ${packageVersion} already generated`)
+      consola.info(`RPC specification docs ${packageVersion} already generated`)
       return
     }
   }
 
-  // eslint-disable-next-line no-console
-  console.log(`Generating RPC specification docs ${packageVersion} ...`)
+  consola.info(`Generating RPC specification docs ${packageVersion} ...`)
 
   // Methods section
   const methodsMd = []
