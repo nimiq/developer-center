@@ -1,7 +1,3 @@
----
-aside: false
----
-
 # Nimiq JSON-RPC Specification
 
 Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.
@@ -81,10 +77,14 @@ curl --request POST \
   }
 
   section {
-    --uno: flex gap-32 items-start max-w-inherit;
+    --uno: flex gap-32 items-start max-w-inherit flex-col;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
 
     .io {
-      --uno: shrink basis-[min(30%,280px)] m-0;
+      --uno: shrink basis-40ch m-0;
 
       h4 {
         --uno: text-12 text-neutral-800 mt-32 mb-16;
@@ -100,7 +100,10 @@ curl --request POST \
     }
 
     .vp-code-group {
-      --uno: of-x-auto flex-1;
+      --uno: flex-1 w-full;
+      @media (min-width: 768px) {
+        --uno: of-x-auto;
+      }
     }
   }
 </style>

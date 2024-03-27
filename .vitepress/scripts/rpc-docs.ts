@@ -84,12 +84,12 @@ const res = await fetch(url, {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: '{
+  body: {
     "jsonrpc":"2.0",
     "method":"{{ methodName }}",
     "params":[{{ parametersValues }}],
     "id":1
-  }'
+  }
 });
 const data = await res.json();
 \`\`\`
