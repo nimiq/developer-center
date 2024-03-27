@@ -55,12 +55,10 @@ export default defineConfig({
     presetAttributify(),
     presetIcons({
       collections: {
-        logos: () => import('@iconify-json/logos/icons.json').then(i => i.default as any),
         nimiq: async () => {
-          const res = await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json')
-          const json = await res.json()
-          return json
+          return await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json())
         },
+
       },
     }),
     presetNimiq({

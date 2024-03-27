@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
 
 const offlineReady = ref(false)
@@ -21,4 +21,4 @@ onBeforeMount(async () => {
 
 <template>
   <span sr-only>App ready to be used offline</span>
-</template>
+</template> -->

@@ -15,8 +15,7 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "node",
-      "vite-plugin-pwa/client"
+      "node"
     ],
     "allowSyntheticDefaultImports": true
   },

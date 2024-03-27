@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/nimiq-developer-center/dev-sw.js?dev-sw', { scope: '/nimiq-developer-center/', type: 'classic' })
