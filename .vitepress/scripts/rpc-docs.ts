@@ -36,15 +36,14 @@ export async function generateRpcDocs() {
   // Build folder
   const buildFolder = join(__dirname, '../../build/rpc-docs')
   // Read package version of generated docs, if already built
-  const methodFile = join(buildFolder, '/method.md')
+  const methodFile = join(buildFolder, '/methods.md')
 
   if (existsSync(methodFile)) {
-    const re = /## Version: (\.*)/
+    const re = /## Version: (.*)/
     const content = readFileSync(methodFile, 'utf-8')
     const generatedVersion = re.exec(content)?.[1]
-    consola.info(`RPC specification docs ${packageVersion} already generated`)
     if (packageVersion === generatedVersion) {
-      consola.info(`RPC specification docs ${packageVersion} already generated`)
+      consola.info(`RPC docs ${packageVersion} already generated`)
       return
     }
   }
@@ -59,45 +58,45 @@ export async function generateRpcDocs() {
 
   // - <span font-mono>passphrase</span>*: `String`
   // Returns: [ReturnAccount](#returnaccount)
-  const template = `
-  <div grid="~ gap-32 cols-1 lg:cols-[2fr_3fr]">
-    <div w-full>
-  
-### {{ methodName }}
+  const template = `### \`{{ methodName }}\`
 
-Parameters{.label .text-12 .text-neutral-800}
+{{ description }}
+
+<section>
+  <div class="io">
+  
+<h4 label>Parameters</h4>
 
 {{ parameters }}
 
-Returns{.label .text-12 .text-neutral-800}
+<h4 label>Returns</h4>
 
 {{ returns }}
 
 </div>
 
-<div w-full>
-
 ::: code-group
 
 \`\`\`JavaScript
-const options = {
+const url = new URL('http://127.0.0.1:8648');
+const res = await fetch(url, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
   },
-  body: '{"jsonrpc":"2.0","method":"{{ methodName }}","params":[{{ parametersValues }}],"id":1}'
-};
-
-fetch('http://127.0.0.1:8648', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+  body: '{
+    "jsonrpc":"2.0",
+    "method":"{{ methodName }}",
+    "params":[{{ parametersValues }}],
+    "id":1
+  }'
+});
+const data = await res.json();
 \`\`\`
 
 \`\`\`Shell
-curl --request POST \n
-  --url http://127.0.0.1:8648 \n
-  --header 'Content-Type: application/json' \n
+curl --request POST --url http://127.0.0.1:8648
+  --header 'Content-Type: application/json'
   --data '{
     "jsonrpc": "2.0",
     "method": "{{ methodName }}",
@@ -107,9 +106,7 @@ curl --request POST \n
 \`\`\`
 :::
 
-</div>
-</div>
-`.trim()
+</section>\n\n`
 
   function paramToValue(param: any) {
     switch (param.schema.type) {
@@ -137,6 +134,7 @@ curl --request POST \n
     }
     const tmp = template
       .replaceAll('{{ methodName }}', method.name)
+      .replaceAll('{{ description }}', method.description)
       .replaceAll('{{ parameters }}', parameters)
       .replaceAll('{{ parametersValues }}', parametersValues)
       .replaceAll('{{ returns }}', resultProperties)

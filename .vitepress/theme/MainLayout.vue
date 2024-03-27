@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
-// import RegisterSw from './components/RegisterSW.vue'
 </script>
 
 <template>
-  <!-- <RegisterSW /> -->
   <DefaultTheme.Layout bg-neutral-0 class="vp-raw">
     <template #not-found>
       <main px-32>

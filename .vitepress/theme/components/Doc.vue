@@ -30,7 +30,7 @@ const pageName = computed(() =>
         </div>
       </div>
 
-      <div class="content">
+      <div class="content" w-full>
         <main class="main">
           <MarkdownContent
             :class="[

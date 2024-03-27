@@ -1,10 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
-import { env } from 'node:process'
 import { defineConfig } from 'vitepress'
 import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
-import { withPwa } from '@vite-pwa/vitepress'
 import { sidebar } from './sidebar.config'
 import { navigation } from './navigation.config'
 import { generateWebClientDocs } from './scripts/web-client'
@@ -108,7 +106,7 @@ export default async () => {
       ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}favicons/apple-touch-icon.png` }],
       ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}favicons/favicon-32x32.png` }],
       ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}favicons/favicon-16x16.png` }],
-      ['link', { rel: 'manifest', href: `${baseUrl}favicons/site.webmanifest` }],
+      // ['link', { rel: 'manifest', href: `${baseUrl}favicons/site.webmanifest` }],
       ['link', { rel: 'mask-icon', href: `${baseUrl}favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
       ['link', { rel: 'shortcut icon', href: `${baseUrl}favicons/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
@@ -128,53 +126,10 @@ export default async () => {
       ['meta', { name: 'twitter:creator', content: '@nimiq' }],
       ['meta', { name: 'twitter:title', content: pkg.title }],
     ],
-    // pwa: {
-    //   mode: env.DEPLOYMENT_ENV !== 'production' ? 'development' : 'production',
-    //   disable: env.DEPLOYMENT_ENV !== 'production',
-    //   scope: baseUrl,
-    //   registerType: 'autoUpdate',
-    //   injectRegister: 'script-defer',
-    //   includeAssets: [`${baseUrl}favicons/favicon.svg`],
-    //   manifest: {
-    //     name: pkg.title,
-    //     short_name: pkg.title,
-    //     theme_color: '#ffffff',
-    //     icons: [
-    //       {
-    //         src: `${baseUrl}favicons/nimiq-hexagon-192.png`,
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: `${baseUrl}favicons/nimiq-hexagon-512.png`,
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: `${baseUrl}favicons/nimiq-hexagon-512.png`,
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //         purpose: 'any maskable',
-    //       },
-    //     ],
-    //   },
-    //   workbox: {
-    //     globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
-    //   },
-    //   experimental: {
-    //     includeAllowlist: true,
-    //   },
-    //   devOptions: {
-    //     enabled: env.DEPLOYMENT_ENV === 'production',
-    //     type: 'module',
-    //     suppressWarnings: true,
-    //     navigateFallback: '/',
-    //   },
-    // },
 
-    sitemap: {
-      hostname: 'https://onmax.github.io',
-    },
+    // sitemap: {
+    //   hostname: 'https://onmax.github.io',
+    // },
 
   })
 }
