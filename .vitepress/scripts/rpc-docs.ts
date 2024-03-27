@@ -65,6 +65,10 @@ export async function generateRpcDocs() {
   
 ### {{ methodName }}
 
+Description{.label .text-12 .text-neutral-800}
+
+{{ description }}
+
 Parameters{.label .text-12 .text-neutral-800}
 
 {{ parameters }}
@@ -137,6 +141,7 @@ curl --request POST \n
     }
     const tmp = template
       .replaceAll('{{ methodName }}', method.name)
+      .replaceAll('{{ description }}', method.description)
       .replaceAll('{{ parameters }}', parameters)
       .replaceAll('{{ parametersValues }}', parametersValues)
       .replaceAll('{{ returns }}', resultProperties)
