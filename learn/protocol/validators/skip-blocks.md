@@ -8,7 +8,7 @@ A skip block is a [micro block](/learn/protocol/block-format.md) with some diffe
 
 As for the justification, it attests that _x_ validator slots received and signed the skip block, and resuming the block production is unanimous among validators. The remainder data fields are similar to a micro block. The following images illustrate their differences:
 
-![Alt Text](/assets/images/protocol/skip-block.png) {align=center}
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/skip-block.png" alt="skip block struct" />
 
 Mind these differentiating aspects:
 

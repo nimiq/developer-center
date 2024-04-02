@@ -56,9 +56,11 @@ A compressed signature is a compacted version of a typical digital signature gen
 
 A type of algorithm used to reach an agreement between nodes in a shared state. Nimiq PoS is a consensus algorithm where validators work together to follow the consensus rules, providing accuracy and consistency.
 
-## Disabled slot set
+## Double proposal
+The act of submitting two different Tendermint proposals in the same round.
 
-A set of slots not eligible to produce blocks due to misbehaving. This is one of the three punishment sets in the staking contract. Validators must send an unpark transaction referring to their disabled slot to resume the block production. We include a disabled set for the previous epoch and another one for the current epoch, as it affects the rewards distribution for a batch; thus, they get their rewards burned.
+## Double vote
+The act of voting twice for the same block height, at the same round and step of Tendermint.
 
 ## Election block
 
@@ -72,6 +74,12 @@ The measure of unpredictability of a random value. Using the entropy of the rand
 
 The time between two election macro blocks mark an epoch. An epoch starts with the first micro block after an election macro block and ends at an election macro block, including all the micro blocks and checkpoint macro blocks in between.
 
+## Equivocation
+An equivocation is when a validator acts maliciously against the consensus protocol. This can involve creating two blocks at the same height, proposing two Tendermint blocks for the same block height, or even voting twice for a proposal during the same round and step.
+
+## Equivocation proof
+An equivocation proof validates a validator's misbehavior, leading to jail (see [jailing](https://onmax.github.io/nimiq-developer-center/learn/protocol/glossary#jailing)) upon submission by any honest validator.
+
 ## Fork
 
 A split in the blockchain produced by a malicious validator. A malicious validator can fork the chain by producing two blocks at the same block height, attempting for a double-spend attack.
@@ -84,17 +92,13 @@ The designation of the first block in the blockchain - also known as block 0. De
 
 Part of the structure of a block. The block’s header contains general data about the block, such as the block number, the timestamp, and the version. Headers include required data to the consensus and commitments to the block. It also connects the current block to the previous one.
 
-## Inactive validator
-
-A validator becomes inactive in two cases: when they send a retire transaction or fail to send an unpark transaction before the end of the current epoch after misbehaving. Validators must first become inactive to exit the staking contract. When a validator is inactive, they are not eligible to produce or propose blocks or vote. They are not considered for validator selection, even if they remain in the staking contract.
-
 ## Inherent
 
 An inherent is a type of data that is intrinsic to the block. Unlike transactions, inherents are applied at specific times and serve different purposes, depending on their type. Inherents can be used to differentiate between a checkpoint block and an election block, for instance.
 
-## Jailing
+## Jail
 
-Jailing refers to the validator state characterized by incurring severe penalties, for actions such as forking or continuing on a fork. When a validator is in a jailed state, it is temporarily locked and cannot be re-elected during this period. Additionally, all the validator’s rewards are burned.
+Going to jail refers to the validator's state characterized by incurring severe penalties for actions such as forking or continuing on a fork. When a validator is in a jailed state, it is locked for an 8-epoch period and cannot be re-elected during this lockup. Additionally, all the validator’s rewards are burned.
 
 ## Justification
 
@@ -103,10 +107,6 @@ Part of the structure of a block. In micro blocks, the justification contains th
 ## Leader
 
 The proposer selected to make a Tendermint proposal.
-
-## Lost reward set
-
-A set of validators that are not eligible to receive the batch rewards due to misbehavior. The lost reward set applies to the current and previous batches, as rewards are distributed with one batch delay to take into account possible misbehaviors.
 
 ## Luna
 
@@ -132,21 +132,13 @@ A type of block produced by one validator at a time. Micro blocks include transa
 
 Nimiq’s native cryptocurrency.
 
-## Parked validator
-
-A validator that cannot produce or propose blocks during the current epoch due to misbehavior. To become active again, a parked validator must send an unpark transaction. If a parked validator fails to do so by the end of the epoch, they will be deemed inactive.
-
 ## Potential validator
 
-A validator who has staked coins to participate in the consensus but has not yet been included in the staking contract.
+A validator who has staked coins to participate in the consensus but has not yet been included in the block production.
 
 ## Proof-of-stake
 
 A blockchain model where nodes put their tokens as a deposit and get allowed to validate transactions in the blockchain. Nodes are elected proportionally by their stake. A higher deposit increases the probability of a node being selected as a validator.
-
-## Punishment set
-
-A set of punishments that consists of the parked set, lost reward set, and disabled slot set. A validator that misbehaves is punished and added to these three sets, disabling it from producing or proposing blocks and affecting the rewards to receive.
 
 ## Random seed
 
