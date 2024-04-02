@@ -14,6 +14,7 @@ Micro blocks contain user transactions, and each micro block is produced and sig
 
 | Data field | Description |
 | --- | --- |
+| `network` | The network ID associated with the block, such as mainnet or devnet. |
 | `version` | The block’s version number. A change in the version number implies a hard fork. |
 | `block_number` | The block’s number. |
 | `timestamp` | The block's Unix time with millisecond precision. |
@@ -36,7 +37,7 @@ Micro blocks contain user transactions, and each micro block is produced and sig
 
 | Data field | Description |
 | --- | --- |
-| `Micro(Signature)` | Block producer's signature. |
+| `Micro(Ed25519Signature)` | Block producer's signature. |
 | `Skip(SkipBlockProof)` | Contains aggregated signatures for a skip block. This field might be empty as skip blocks might not occur in a batch. |
 
 Note that only one of those is added as justification. The block producer signs the block when the micro block is produced within the expected time. But when the micro block isn't produced in the expected time, a `SkipBlockProof` is added instead.
@@ -49,6 +50,7 @@ There are two types of macro blocks: election and checkpoint. A new validator li
 
 | Data field | Description |
 | --- | --- |
+| `network` | The network ID associated with the block, such as mainnet or devnet. |
 | `version` | The block’s version number. A change in the version number implies a hard fork. |
 | `block_number` | The block’s number. |
 | `round` | The specific round where the block was proposed. |
@@ -82,7 +84,7 @@ Checkpoint or election macro blocks contain a `TendermintProof` as justification
 
 The following figure demonstrates the connection between a macro block and a micro block. Every block, macro or micro, is connected to the previous one by the parent hash and the random seed.
 
-![Alt Text](/assets/images/protocol/macro-micro.png)
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/macro-micro.png" alt="skip block struct" />
 
 ## Blockchain format
 

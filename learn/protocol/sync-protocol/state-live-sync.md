@@ -4,17 +4,15 @@ The state live sync method applies to both light nodes and full nodes. The state
 
 The state of the blockchain consists of all the accounts and corresponding balances. The accounts are stored in the accounts tree or state tree. Nodes fetch parts of the state tree present in every block to build their state tree and add it to their local storage.
 
-A Merkle tree (more precisely, a _[Merkle-Radix-Tree](https://en.wikipedia.org/wiki/Radix_tree)_) is used to store the accounts, with the account tree root stored in each block header, and each account functioning as a leaf node within the Merkle tree.
+A Merkle tree (more precisely, a [Merkle-Radix-Tree](https://en.wikipedia.org/wiki/Radix_tree)) is used to store the accounts, with the account tree root stored in each block header, and each account functioning as a leaf node within the Merkle tree.
 
 The Merkle Radix Tree efficiently stores accounts and their corresponding balances in the bottom layer. Leaf nodes in the tree represent the hashes of the accounts, and these leaf node hashes are combined through hashing to create parent or inner nodes. Parent nodes in the tree can have either one child, known as an "only child" node, or multiple children. "Only child" nodes are merged with their parent nodes, optimizing space. Combining adjacent nodes and creating parent nodes is repeated iteratively until only one hash value remains, known as the state root. This state root, stored as a single hash value, serves as proof of integrity for all the data within the accounts tree. Merkle Radix Trees allows for efficient storage and verification of accounts and balances in the blockchain while optimizing space by resulting in a single hash value representing the entire tree.
 
-Hash values are propagated up the tree from lower to higher levels until the state root is reached. The state root serves as the fingerprint of the entire tree, allowing for easy detection of unauthorized modifications and efficient data integrity verification stored in the block’s header. The following accounts tree illustrates how 5 accounts are stored in the state root:
+Hash values are propagated up the tree from lower to higher levels until the state root is reached. The state root serves as the fingerprint of the entire tree, allowing for easy detection of unauthorized modifications and efficient data integrity verification stored in the block’s header. The following accounts tree illustrates how 6 accounts are stored in the state root:
 
-![Alt Text](/assets/images/protocol/merkle-radix-tree.png)
+![Alt Text](/assets/images/protocol/merkle.png)
 
 > 💡 This figure is merely illustrative as the accounts tree hold multiple accounts.
-
-Following the above figure, account 3 has a leaf node that holds the account and the account's hash. The node above is its parent node which includes its children's hash (including data on accounts 1 and 2, their leaf nodes, and parent nodes). The second inner node is the parent of the first inner node, which is the parent of the leaf node.
 
 ## State sync
 

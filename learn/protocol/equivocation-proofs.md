@@ -32,7 +32,7 @@ pub struct ForkProof {
 
 The offending validator address, two micro headers from the same block height and the respective signatures are enough to prove the malicious behavior.
 
-### Double proposal
+### Double proposal proofs
 
 Macro blocks are produced using the Tendermint algorithm. A validator, selected as the round leader, proposes a macro block and gossips its proposal. Malicious validators may attempt to propose two different macro headers at the same block height, round and step.
 
@@ -50,9 +50,9 @@ pub struct DoubleProposalProof {
 
 The offending validator address, two macro headers from the same round and the respective signatures are enough to prove the malicious behavior.
 
-### Double vote
+### Double vote proofs
 
-Validators are expected to vote block or “none” for a single Tendermint proposal per round and step. Voting for different proposals at the same block height, round, and step is considered a double vote, disrupting Tendermint's voting principle. The double vote proof is used to identify and penalize validators for their misbehavior.
+Validators are expected to vote block or _nil_ for a single Tendermint proposal per round and step. Voting for different proposals at the same block height, round, and step is considered a double vote, disrupting Tendermint's voting principle. The double vote proof is used to identify and penalize validators for their misbehavior.
 
 ```rust
 pub struct DoubleVoteProof {

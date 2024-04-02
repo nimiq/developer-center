@@ -63,7 +63,7 @@ Stakers delegate their stake to validators, but validators are not aware of thei
 | --- | --- | --- |
 | `address` | `Address` | The address of the staker. Used for most transactions, except AddStake which accepts any address. |
 | `active_balance` | `Coin` | The staker's active balance. |
-| `inactive_balance` | `Coin` | The staker's inactive balance. Only released inactive balance can be withdrawn. |
+| `inactive_balance` | `Coin` | The staker's inactive balance. Only released inactive balance can be retired. |
 | `inactive_from` | `Option<u32>` | The block number at which the inactive balance was last inactivated (it becomes effectively inactive on the next election block). |
 | `retired_balance` | `Coin` | The staker's retired balance. Retired balance can be withdrawn immediately. |
 | `delegation` | `Option<Address>` | The address of the validator the staker is delegating its stake to. |
