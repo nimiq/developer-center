@@ -10,7 +10,7 @@ import { generateRpcDocs } from './scripts/rpc-docs'
 
 // @unocss-include
 
-export const baseUrl = '/nimiq-developer-center/'
+export const baseUrl = '/developer-center/'
 
 export const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')) as { title: string, description: string, homepage: string }
 
