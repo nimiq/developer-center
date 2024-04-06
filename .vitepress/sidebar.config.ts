@@ -92,6 +92,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Overview', link: '/build/' },
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
+        { text: 'Migration to PoS', link: '/build/migration-guide' },
         { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
       ],
     },
