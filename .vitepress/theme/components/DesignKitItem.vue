@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { addCollection } from '@iconify/vue'
 import { getIconSnippet } from '../composables/icons/icon'
 import { dataUriToBlob, downloadBlob } from '../composables/icons/pack'
 
@@ -9,11 +8,6 @@ const props = defineProps<{
   size: number
   dark?: boolean
 }>()
-
-onMounted(async () => {
-  const json = await fetch('https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json').then(res => res.json())
-  addCollection(json)
-})
 
 const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
 async function copySnippet(type: string) {
