@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onContentUpdated } from 'vitepress'
 import { ref, shallowRef } from 'vue'
+import { onContentUpdated } from '../utils/markdown-content'
 import { useData } from '../composables/useData'
 import {
   type MenuItem,
@@ -10,12 +10,12 @@ import {
 } from '../composables/useOutline'
 import DocAsideItem from './DocAsideItem.vue'
 
-const { frontmatter, theme } = useData()
+const { theme } = useData()
 
 const headers = shallowRef<MenuItem[]>([])
 
 onContentUpdated(() => {
-  headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
+  headers.value = getHeaders([2, 3])
 })
 
 const container = ref()
@@ -39,7 +39,7 @@ useActiveAnchor(container, marker)
       </div>
 
       <nav aria-labelledby="doc-outline-aria-label">
-        <span id="doc-outline-aria-label" class="visually-hidden">
+        <span id="doc-outline-aria-label" sr-only>
           Table of Contents for current page
         </span>
         <DocAsideItem :headers="headers" :root="true" />
@@ -66,15 +66,7 @@ useActiveAnchor(container, marker)
 }
 
 .outline-marker {
-  position: absolute;
-  top: 32px;
-  left: -1px;
-  z-index: 0;
-  opacity: 0;
-  width: 2px;
-  border-radius: 2px;
-  height: 18px;
-  background-color: var(--vp-c-brand-1);
+  --uno: absolute top-16 left--1 z-0 opacity-0 w-2 rounded-2 h-18 bg-blue;
   transition:
     top 0.25s cubic-bezier(0, 1, 0.5, 1),
     background-color 0.5s,
@@ -82,8 +74,6 @@ useActiveAnchor(container, marker)
 }
 
 .outline-title {
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 600;
+  --uno: text-neutral-700 uppercase leading-relaxed text-12 font-bold;
 }
 </style>

@@ -34,8 +34,8 @@ const pageName = computed(() =>
         <main class="main">
           <MarkdownContent
             :class="[
-              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb-64',
-              frontmatter.prose === false ? `px-32 md:px-96 pb-64 md:pb-128` : '',
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb64',
+              frontmatter.prose === false ? `px-32 md:px96 pb64 md:pb128` : '',
               pageName,
               theme.externalLinkIcon && 'external-link-icon-enabled',
             ]"
@@ -259,7 +259,7 @@ div[class*="language"] {
   --uno: my-24 rounded-6 p-24 pb-14 text-16 ring-1.5;
 
   .custom-block-title {
-    --uno: uppercase font-bold tracking-widest text-12 flex items-center relative;
+    --uno: uppercase font-bold tracking-widest text-12 flex items-center relative m-0;
 
     &::before {
       --uno: absolute content-[''] text-12 left-0;
