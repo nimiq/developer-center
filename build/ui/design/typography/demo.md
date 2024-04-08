@@ -115,7 +115,7 @@ As Pixel gazed upon the names and deeds immortalized in the ledger, he realized 
 
 > "To stand amongst the legends, one must not only explore but also innovate and inspire," Pixel pondered, inspired by the tales of those who came before.
 
-<style>
+<style scoped>
   /* Just for demo purposes */
 table {
    td {
