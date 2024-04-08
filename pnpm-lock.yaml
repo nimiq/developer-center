@@ -36,8 +36,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   nimiq-css:
-    specifier: ^0.0.61
-    version: 0.0.61(typescript@5.4.4)(unocss@0.59.0)(vite@5.2.3)
+    specifier: ^0.0.62
+    version: 0.0.62(typescript@5.4.4)(unocss@0.59.0)(vite@5.2.3)
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -5173,8 +5173,8 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /nimiq-css@0.0.61(typescript@5.4.4)(unocss@0.59.0)(vite@5.2.3):
-    resolution: {integrity: sha512-hvr329+YFvNbaInJFPbgaNmpmU4GkWoTzj6ScSrQLBIoC7Dr2QdLYQ1bVkUr6AFgW4canuEvONMsWtgDih9E0A==}
+  /nimiq-css@0.0.62(typescript@5.4.4)(unocss@0.59.0)(vite@5.2.3):
+    resolution: {integrity: sha512-q6kwIJ9QfL3LdW8QvIkFCmM4tWlnACSpfyWdPDXR9VmoCF1GHKNJ4q9LwAjIBymCaR9hJLENBkoTyeHKK79cTA==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: ^5.0.0
