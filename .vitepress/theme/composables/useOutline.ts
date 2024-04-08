@@ -22,7 +22,7 @@ export function resolveTitle(theme: DefaultTheme.Config) {
 
 export function getHeaders(range: DefaultTheme.Config['outline']) {
   const headers = [
-    ...Array.from(document.querySelectorAll('.VPDoc :where(h1,h2,h3,h4,h5,h6)')),
+    ...Array.from(document.querySelectorAll('.prose :where(h1,h2,h3,h4,h5,h6)')),
   ]
     .filter(el => el.id && el.hasChildNodes())
     .map((el) => {
@@ -190,7 +190,7 @@ export function useActiveAnchor(
 
     if (activeLink) {
       activeLink.classList.add('active')
-      marker.value.style.top = `${activeLink.offsetTop + 39}px`
+      marker.value.style.top = `${activeLink.offsetTop + 27}px`
       marker.value.style.opacity = '1'
     }
     else {

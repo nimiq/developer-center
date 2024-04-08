@@ -39,21 +39,16 @@ function onClick({ target: el }: Event) {
 }
 
 .outline-link {
-  display: block;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--vp-c-text-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.5s;
-}
+  --uno: block lh-32 text-14 text-neutral whitespace-nowrap overflow-hidden text-ellipsis;
+  transition: 300ms ease-in-out color, 100ms ease-in-out font-weight;
 
-.outline-link:hover,
-.outline-link.active {
-  color: var(--vp-c-text-1);
-  transition: color 0.25s;
+  &:is(:hover) {
+    --uno: text-blue;
+  }
+
+  &:is(.active) {
+    --uno: font-bold text-blue;
+  }
 }
 
 .outline-link.nested {
