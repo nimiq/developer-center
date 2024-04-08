@@ -1,6 +1,6 @@
 # RPC client
 
-## Requisites
+## Requirements
 
 - Rust and its package manager Cargo (installation instructions [here](https://www.rust-lang.org/learn/get-started))
 - Clone the Albatross source code from [GitHub](https://github.com/nimiq/core-rs-albatross) and follow the [installation instructions](https://github.com/nimiq/core-rs-albatross#installation)
@@ -16,7 +16,11 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 5. Run `./nimiq-rpc` to fetch a list of all available commands
 6. For a detailed description of a command usage, add the desired command followed by `--help`
 
-> 👉 Commands may require additional arguments and/or allow further options as input. Commands with available options work without the option added; however, commands with arguments return an error if the argument is not added.
+<Callout type="tip">
+
+Commands may require additional arguments and/or allow further options as input. Commands with available options work without the option added; however, commands with arguments return an error if the argument is not added.
+
+</Callout>
 
 Listed below are the commands grouped by subject and a few examples of the usage of the RPC client.
 
