@@ -78,7 +78,7 @@ The time between two election macro blocks mark an epoch. An epoch starts with t
 An equivocation is when a validator acts maliciously against the consensus protocol. This can involve creating two blocks at the same height, proposing two Tendermint blocks for the same block height, or even voting twice for a proposal during the same round and step.
 
 ## Equivocation proof
-An equivocation proof validates a validator's misbehavior, leading to jail (see [jailing](https://onmax.github.io/nimiq-developer-center/learn/protocol/glossary#jailing)) upon submission by any honest validator.
+An equivocation proof validates a validator's misbehavior, leading to jail (see [jailing](#jail)) upon submission by any honest validator.
 
 ## Fork
 
