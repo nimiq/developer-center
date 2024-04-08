@@ -12,7 +12,11 @@ Hash values are propagated up the tree from lower to higher levels until the sta
 
 ![Alt Text](/assets/images/protocol/merkle.png)
 
-> 💡 This figure is merely illustrative as the accounts tree hold multiple accounts.
+<Callout type='warning'>
+
+This figure is merely illustrative as the accounts tree hold multiple accounts.
+
+</Callout>
 
 ## State sync
 

@@ -40,7 +40,11 @@ After the two mempools are fed with transactions respecting the verification pro
 
 ![Alt Text](/assets/images/protocol/mempool.png)
 
-> 💡 Note that once the transactions are added to the micro block, they aren’t ordered. The order is made in the mempool.
+<Callout type='info'>
+
+Note that once the transactions are added to the micro block, they aren’t ordered. The order is made in the mempool.
+
+</Callout>
 
 After a transaction is added, the user’s balance is updated, and the validators must update their mempool accordingly. Mind that each validator owns a mempool and broadcasts and verifies transactions constantly. Adding and deleting transactions from each mempool is a continuous process. Also, two validators may attempt to add the same transaction to different blocks. In this case, the first transaction to be added is the valid one, and the other validator must discard the respective transaction in his mempool.
 
