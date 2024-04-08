@@ -38,7 +38,7 @@ export default defineConfig(async ({ mode }) => {
 
     plugins: [
       Components({
-        dirs: ['./theme/components'],
+        dirs: ['.vitepress/theme/components'],
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       }),
       AutoImport({
