@@ -72,7 +72,7 @@ export default defineConfig(async ({ mode }) => {
       //     handler(_html) {
       //       return [{
       //         tag: 'style',
-      //         children: `@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;`,
+      //         children: ``,
       //         injectTo: 'head-prepend',
       //       }]
       //     },
