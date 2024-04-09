@@ -66,18 +66,18 @@ export default defineConfig(async ({ mode }) => {
 
       ViteImageOptimizer(),
 
-      {
-        name: 'layer-definition',
-        transformIndexHtml: {
-          handler(_html) {
-            return [{
-              tag: 'style',
-              children: `@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;`,
-              injectTo: 'head-prepend',
-            }]
-          },
-        },
-      },
+      // {
+      //   name: 'layer-definition',
+      //   transformIndexHtml: {
+      //     handler(_html) {
+      //       return [{
+      //         tag: 'style',
+      //         children: `@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;`,
+      //         injectTo: 'head-prepend',
+      //       }]
+      //     },
+      //   },
+      // },
 
       {
         /**
