@@ -13,7 +13,7 @@ The Validator Registration tool facilitates the registration process for users m
 
 ### Step 1: Generate the keys
 
-After you cloned the core-js repository, move to change directory with ```cd clients/nodejs``` to be able to execute the registration script.
+After you cloned the core-js repository, change directory with ```cd clients/nodejs``` to be able to execute the registration script.
 
 Execute the script without parameters to generate the validator address, signing key, and voting key:
 
