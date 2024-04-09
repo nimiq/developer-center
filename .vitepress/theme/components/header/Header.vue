@@ -30,6 +30,8 @@ onMounted(async () => {
 const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
 
 const showEnvironment = __BUILD_ENVIRONMENT__ !== 'production'
+
+const isMac = document.documentElement.classList.contains('mac')
 </script>
 
 <template>
@@ -75,7 +77,7 @@ const showEnvironment = __BUILD_ENVIRONMENT__ !== 'production'
           <div i-nimiq:magnifying-glass text="12 neutral-700 group-hocus:blue/80 transition" />
           <span text="neutral-800 group-hocus:blue transition">Search</span>
           <div flex="~ items-baseline gap-4" pointer-events-none mr--3 mb--1 py-2 lh="11" select-none rounded-full ring="1 neutral/10 group-hocus:blue-600" ml-auto font-sans font-medium text="11 neutral/80 group-hocus:blue" px-6 bg="neutral-200 group-hocus:blue-400" transition font-mono>
-            <kbd>Ctrl</kbd>
+            <kbd>{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
             <kbd>K</kbd>
           </div>
         </button>
