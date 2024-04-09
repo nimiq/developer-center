@@ -99,7 +99,7 @@ curl --request POST \
     }
 
     .io {
-      --uno: shrink basis-40ch m-0;
+      --uno: shrink basis-30ch m-0;
 
       h4 {
         --uno: text-12 text-neutral-800 mt-32 mb-16;
@@ -121,8 +121,9 @@ curl --request POST \
     .vp-code-group {
       --uno: flex-1 w-full;
       .line span { --uno: text-12 };
+
       @media (min-width: 768px) {
-        --uno: of-x-auto;
+        overflow-x: auto;
       }
     }
   }
