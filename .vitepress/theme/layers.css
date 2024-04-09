@@ -1,0 +1,17 @@
+/*
+It would be nice to declare this layers as vite plugin but when we build it is broken :/
+
+// {
+//   name: 'layer-definition',
+//   transformIndexHtml: {
+//     handler(_html) {
+//       return [{
+//         tag: 'style',
+//         children: `@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;`,
+//         injectTo: 'head-prepend',
+//       }]
+//     },
+//   },
+// },
+*/
+@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;
