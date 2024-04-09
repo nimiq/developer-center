@@ -60,6 +60,25 @@ export default defineConfig(async ({ mode }) => {
       ViteImageOptimizer(),
 
       {
+        name: 'layer-definition',
+        transformIndexHtml: {
+          enforce: 'pre',
+          transform(_html, ctx) {
+            return [{
+              tag: 'style',
+              // add the css to the head of the document
+              attrs: { type: 'text/css' },
+              children: [
+                `@layer vp-reset, vp-base, vp-components, vp-utilities, vp-colors, vp-preflight, vp-typography, vp-utilities, utilities, components;`,
+              ],
+
+              injectTo: ctx.server ? 'body-prepend' : 'head',
+            }]
+          },
+        },
+      },
+
+      {
         /**
          * nimiq-css works using layers.
          *
