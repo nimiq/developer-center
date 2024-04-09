@@ -1,6 +1,6 @@
 // https://vitepress.dev/guide/custom-theme
-import './style.css'
 import Theme from 'vitepress/theme'
+import './style.css'
 import 'uno.css'
 import { h, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
