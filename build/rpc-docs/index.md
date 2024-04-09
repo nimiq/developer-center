@@ -1,5 +1,18 @@
 # Nimiq JSON-RPC Specification
 
+<script setup lang="ts">
+const specUrl = __ALBATROSS_RPC_OPENRPC_URL__
+const specVersion = __ALBATROSS_RPC_OPENRPC_VERSION__
+</script>
+
+<div flex="~ items-baseline gap-32 justify-start" my-32 class="raw">
+  <span op-80 text-14>Version {{specVersion}}</span>
+  <a :href="specUrl" pill-tertiary pill-sm cursor-pointer flex="~ gap-8 items-center" download un-text="neutral-900">
+    <div i-nimiq:arrow-to-bottom op-80></div>
+    Download OpenRPC.json
+  </a>
+</div>
+
 Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.
 
 ## Authentication
@@ -69,6 +82,8 @@ curl --request POST \
 
 ::: -->
 
+## Methods
+
 <!--@include: ./methods.md-->
 
 <style>
@@ -96,11 +111,16 @@ curl --request POST \
         li::before {
           --uno: mr-4;
         }
+
+        span {
+          --uno: text-12;
+        }
       }
     }
 
     .vp-code-group {
       --uno: flex-1 w-full;
+      .line span { --uno: text-12 };
       @media (min-width: 768px) {
         --uno: of-x-auto;
       }

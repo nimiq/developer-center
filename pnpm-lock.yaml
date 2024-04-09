@@ -109,6 +109,9 @@ devDependencies:
   node-html-parser:
     specifier: ^6.1.13
     version: 6.1.13
+  pkg-types:
+    specifier: ^1.0.3
+    version: 1.0.3
   postcss:
     specifier: ^8.4.38
     version: 8.4.38

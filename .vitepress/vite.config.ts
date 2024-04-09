@@ -10,8 +10,13 @@ import { postcssIsolateStyles } from 'vitepress'
 import { consola } from 'consola'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
+import { generateWebClientDocs } from './scripts/web-client'
+import { generateRpcDocs } from './scripts/rpc-docs'
 
 export default defineConfig(async ({ mode }) => {
+  const { specUrl, specVersion } = await generateRpcDocs()
+  await generateWebClientDocs()
+
   const environment = env.DEPLOYMENT_ENV || mode
   consola.debug(`Building for ${environment}`)
 
@@ -34,6 +39,8 @@ export default defineConfig(async ({ mode }) => {
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
       __BUILD_ENVIRONMENT__: JSON.stringify(environment),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+      __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(specUrl),
+      __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(specVersion),
     },
 
     plugins: [
@@ -62,17 +69,11 @@ export default defineConfig(async ({ mode }) => {
       {
         name: 'layer-definition',
         transformIndexHtml: {
-          enforce: 'pre',
-          transform(_html, ctx) {
+          handler(_html) {
             return [{
               tag: 'style',
-              // add the css to the head of the document
-              attrs: { type: 'text/css' },
-              children: [
-                `@layer vp-reset, vp-base, vp-components, vp-utilities, vp-colors, vp-preflight, vp-typography, vp-utilities, utilities, components;`,
-              ],
-
-              injectTo: ctx.server ? 'body-prepend' : 'head',
+              children: `@layer nq-reset, vp-base, nq-colors, nq-preflight, nq-typography, nq-utilities, utilities, components;`,
+              injectTo: 'head-prepend',
             }]
           },
         },
@@ -98,10 +99,6 @@ export default defineConfig(async ({ mode }) => {
         {
           find: /^.*\/VPNav\.vue$/,
           replacement: fileURLToPath(new URL('./theme/components/header/Header.vue', import.meta.url)),
-        },
-        {
-          find: /^.*\/VPNavBarTitle\.vue$/,
-          replacement: fileURLToPath(new URL('./theme/components/HeaderLogo.vue', import.meta.url)),
         },
         {
           find: /^.*\/VPSidebar\.vue$/,
