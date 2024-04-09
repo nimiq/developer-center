@@ -28,6 +28,8 @@ onMounted(async () => {
   nimiqLogo.value = await getIconSnippet('nimiq:logos-nimiq-horizontal', 'SVG')
 })
 const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
+
+const showEnvironment = __BUILD_ENVIRONMENT__ !== 'production'
 </script>
 
 <template>
@@ -56,7 +58,7 @@ const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
           </ContextMenu.Portal>
         </ContextMenu.Root>
 
-        <div absolute top-36 right--12 @click.prevent>
+        <div v-if="showEnvironment" absolute top-36 right--12 @click.prevent>
           <Environment />
         </div>
       </a>
