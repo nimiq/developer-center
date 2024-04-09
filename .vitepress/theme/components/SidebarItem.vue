@@ -14,7 +14,7 @@ const {
   // collapsible,
   // isLink,
   isActiveLink,
-  // hasActiveLink,
+  hasActiveLink,
   hasChildren,
   // toggle,
 } = useSidebarControl(computed(() => props.item))
@@ -90,7 +90,7 @@ function treatAsHtml(filename: string): boolean {
       {{ item.text }}
     </a>
 
-    <Accordion.Root v-else type="single" :default-value="collapsed ? item.text : ''" collapsible>
+    <Accordion.Root v-else type="single" :default-value="(collapsed || hasActiveLink) ? item.text : ''" collapsible>
       <Accordion.Item :value="item.text">
         <Accordion.Header as="div">
           <Accordion.Trigger class="group" flex="~ items-center gap-8">
