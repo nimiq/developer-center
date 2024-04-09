@@ -126,7 +126,7 @@ curl --request POST --url http://127.0.0.1:8648
   }, [])
 
   for (const { methods, tags } of groupMethods) {
-    methodsMd.push(addHeader('h3', uppercase(tags.join(' '))))
+    methodsMd.push(addHeader('h3', uppercase(tags.join(' ').replaceAll('_', ' '))))
     for (const method of methods) {
       const parameters = method.params.map(param => `- <span font-mono>${param.name}</span>${param.required ? '*' : ''}: \`${param.schema.type}\``).join('\n')
 
