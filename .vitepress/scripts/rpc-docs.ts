@@ -5,6 +5,8 @@ import { consola } from 'consola'
 
 export async function generateRpcDocs() {
   let content: Response
+  let specUrl: string = ''
+  let specVersion: string = ''
 
   try {
     // Request the latest release information
@@ -17,7 +19,9 @@ export async function generateRpcDocs() {
 
     // Request OpenRPC document from the latest Albatross release on Github
     const releaseVersion = latestRelease.url.split('/').pop()
-    content = await fetch(`https://github.com/nimiq/core-rs-albatross/releases/download/${releaseVersion}/openrpc-document.json`)
+    specUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${releaseVersion}/openrpc-document.json`
+    consola.info(`Fetching OpenRPC specification from ${specUrl}`)
+    content = await fetch(specUrl)
     if (content.status !== 200) {
       const e = new Error(`HTTP code for fetching content ${content.status}`)
       consola.error(e)
@@ -26,39 +30,32 @@ export async function generateRpcDocs() {
   }
   catch (error) {
     consola.error(new Error(`Failed to fetch OpenRPC specification from GitHub: ${error}`))
-    return
+    return { specUrl, specVersion }
   }
 
   // Read request body and parse the body text as JSON
   const spec = await content.json()
-  const packageVersion = spec.info.version
+  specVersion = spec.info.version
 
   // Build folder
   const buildFolder = join(__dirname, '../../build/rpc-docs')
   // Read package version of generated docs, if already built
-  const methodFile = join(buildFolder, '/methods.md')
+  const versionFile = join(buildFolder, '/.version')
 
-  if (existsSync(methodFile)) {
-    const re = /## Version: (.*)/
-    const content = readFileSync(methodFile, 'utf-8')
-    const generatedVersion = re.exec(content)?.[1]
-    if (packageVersion === generatedVersion) {
-      consola.info(`RPC docs ${packageVersion} already generated`)
-      return
+  if (existsSync(versionFile)) {
+    const generatedVersion = readFileSync(versionFile, 'utf-8')
+    if (specVersion === generatedVersion) {
+      consola.info(`RPC docs ${specVersion} already generated`)
+      return { specUrl, specVersion }
     }
   }
 
-  consola.info(`Generating RPC specification docs ${packageVersion} ...`)
+  consola.info(`Generating RPC specification docs ${specVersion} ...`)
 
   // Methods section
   const methodsMd = []
 
-  methodsMd.push(addHeader('h2', `Version: ${spec.info.version}`))
-  methodsMd.push(`[Download RPC definition](https://github.com/nimiq/core-rs-albatross/releases/latest)`)
-
-  // - <span font-mono>passphrase</span>*: `String`
-  // Returns: [ReturnAccount](#returnaccount)
-  const template = `### \`{{ methodName }}\`
+  const template = `#### \`{{ methodName }}\`
 
 {{ description }}
 
@@ -85,10 +82,10 @@ const res = await fetch(url, {
     'Content-Type': 'application/json'
   },
   body: {
-    "jsonrpc":"2.0",
-    "method":"{{ methodName }}",
-    "params":[{{ parametersValues }}],
-    "id":1
+    "jsonrpc": "2.0",
+    "method": "{{ methodName }}",
+    "params": [{{ parametersValues }}],
+    "id": 1
   }
 });
 const data = await res.json();
@@ -117,111 +114,58 @@ curl --request POST --url http://127.0.0.1:8648
     }
   }
 
-  methodsMd.push(addHeader('h2', 'Methods'))
-  for (const method of spec.methods) {
-    const parameters = method.params.map(param => `- <span font-mono>${param.name}</span>${param.required ? '*' : ''}: \`${param.schema.type}\``).join('\n')
+  const groupMethods: { tags: string[], methods: any[] }[] = spec.methods.reduce((acc, method) => {
+    const tags = method.tags.map(tag => tag.name)
+    const group = acc.find(g => g.tags.includes(tags[0]))
+    if (group)
+      group.methods.push(method)
+    else
+      acc.push({ tags, methods: [method] })
 
-    const parametersValues = method.params.map(paramToValue).join(', ')
+    return acc as { tags: string[], methods: any[] }[]
+  }, [])
 
-    let resultProperties = ''
-    const returnsObject = '$ref' in method.result.schema
-    if (returnsObject) {
-      const { /* title, description, */ required, properties } = spec.components.schemas[method.result.schema.$ref.split('/').at(-1)]
-      resultProperties = Object.values(properties).map(({ title, type }) => `- <span font-mono>${title}</span>${required.includes(title) ? '*' : ''}: \`${type}\``).join('\n')
+  for (const { methods, tags } of groupMethods) {
+    methodsMd.push(addHeader('h3', uppercase(tags.join(' '))))
+    for (const method of methods) {
+      const parameters = method.params.map(param => `- <span font-mono>${param.name}</span>${param.required ? '*' : ''}: \`${param.schema.type}\``).join('\n')
+
+      const parametersValues = method.params.map(paramToValue).join(', ')
+
+      let resultProperties = ''
+      const returnsObject = '$ref' in method.result.schema
+      if (returnsObject) {
+        const { /* title, description, */ required, properties } = spec.components.schemas[method.result.schema.$ref.split('/').at(-1)] as { title: string, description: string, required: string[], properties: { [key: string]: { title: string, type: string } } }
+        resultProperties = Object.values(properties).map(({ title, type }) => `- <span font-mono>${title}</span>${required.includes(title) ? '*' : ''}: \`${type}\``).join('\n')
+      }
+      else {
+        resultProperties = `- \`${method.result.schema.type}\``
+      }
+      const tmp = template
+        .replaceAll('{{ methodName }}', method.name)
+        .replaceAll('{{ description }}', method.description)
+        .replaceAll('{{ parameters }}', parameters)
+        .replaceAll('{{ parametersValues }}', parametersValues)
+        .replaceAll('{{ returns }}', resultProperties)
+
+      methodsMd.push(tmp)
     }
-    else {
-      resultProperties = `- \`${method.result.schema.type}\``
-    }
-    const tmp = template
-      .replaceAll('{{ methodName }}', method.name)
-      .replaceAll('{{ description }}', method.description)
-      .replaceAll('{{ parameters }}', parameters)
-      .replaceAll('{{ parametersValues }}', parametersValues)
-      .replaceAll('{{ returns }}', resultProperties)
-
-    methodsMd.push(tmp)
   }
-
-  // Method parameters
-  // methodsMd.push(addParagraph('Parameters{.subline .text-neutral-800 .text-12}'))
-  // if (method.params.length === 0)
-  //   methodsMd.push(addParagraph('*None*'))
-  // else
-  //   methodsMd.push(methodParamsToTable(method))
-
-  // Method result
-  // if ('$ref' in method.result.schema) {
-  //   const ref = method.result.schema.$ref.split('/').pop()
-  //   methodsMd.push(addParagraph(`Returns: [${ref}](#${ref.toLowerCase()})`))
-  // }
-  // else {
-  //   if (method.result.schema.type !== 'array') {
-  //     methodsMd.push(addParagraph(`Returns: ${firstCharToUpper(method.result.schema.type)} `))
-  //   }
-  //   else {
-  //     if ('$ref' in method.result.schema.items) {
-  //       const ref = method.result.schema.items.$ref.split('/').pop()
-  //       methodsMd.push(addParagraph(`Returns: Array < [${ref}](#${ref.toLowerCase()}) > `))
-  //     }
-  //     else {
-  //       methodsMd.push(addParagraph(`Returns: Array < ${firstCharToUpper(method.result.schema.items.type)} > `))
-  //     }
-  //   }
-  // }
-
-  // Schemas section
-  // const schemasMd = []
-  // schemasMd.push(addHeader('h2', 'Schemas'))
-  // for (const schema of Object.values(spec.components.schemas)) {
-  //   schemasMd.push(addHeader('h3', (schema as any).title))
-  //   schemasMd.push(schemaPropertiesToTable(schema))
-  // }
 
   // Verify that destination folder exists
   if (!existsSync(buildFolder))
     mkdirSync(buildFolder)
 
   writeFileSync(join(__dirname, '../../build/rpc-docs/methods.md'), json2md(methodsMd))
-  // writeFileSync(join(__dirname, '../../build/rpc-docs/schemas.md'), json2md(schemasMd))
+  writeFileSync(versionFile, specVersion)
+
+  return { specUrl, specVersion }
 }
 
 function addHeader(size: string, text: string) {
   return { [size]: text }
 }
 
-// function addParagraph(text: string) {
-//   return { p: text }
-// }
-
-// function firstCharToUpper(string: string) {
-//   return string.charAt(0).toUpperCase() + string.slice(1)
-// }
-
-// function schemaPropertiesToTable(schema: any) {
-//   const table = { table: { headers: ['Name', 'Type', 'Required'], rows: [] } }
-//   const requiredProps = Object.entries(schema.required).map(prop => prop[1])
-
-//   Object.entries(schema.properties)
-//     .map(obj => obj[1])
-//     .forEach((prop: any) => {
-//       // Check if we are dealing with a type or a reference to a schema
-//       let type: string
-//       if (!prop.type && prop.$ref) {
-//         const ref = prop.$ref.split('/').pop()
-//         type = `[${ref}](#${ref.toLowerCase()})`
-//       }
-//       else { type = prop.type }
-
-//       const isPropRequired = requiredProps.find(reqProp => reqProp === prop.title)
-//       table.table.rows.push([prop.title, firstCharToUpper(type), isPropRequired ? 'Yes' : 'No'])
-//     })
-//   return table
-// }
-
-// function methodParamsToTable(method: any) {
-//   const table = { table: { headers: ['Name', 'Type', 'Required'], rows: [] } }
-//   method.params.forEach((param: any) => {
-//     table.table.rows.push([param.name, firstCharToUpper(param.schema.type), param.required ? 'Yes' : 'No'])
-//   })
-//   return table
-// }
+function uppercase(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}

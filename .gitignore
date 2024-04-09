@@ -6,8 +6,7 @@ node_modules
 build/web-client
 
 # Ignore dynamically built RPC spec docs
-build/rpc-docs/_version
+build/rpc-docs/.version
 build/rpc-docs/methods.md
-build/rpc-docs/schemas.md
 
 components.d.ts

@@ -55,6 +55,7 @@
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.13",
+    "pkg-types": "^1.0.3",
     "postcss": "^8.4.38",
     "sharp": "^0.33.3",
     "simple-git-hooks": "^2.11.1",

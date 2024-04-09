@@ -6,3 +6,5 @@ declare const __REPO_URL__: string
 declare const __DEVELOPER_CENTER_VERSION__: string
 declare const __BUILD_ENVIRONMENT__: string
 declare const __BUILD_TIME__: string
+declare const __ALBATROSS_RPC_OPENRPC_URL__: string
+declare const __ALBATROSS_RPC_OPENRPC_VERSION__: string
