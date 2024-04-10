@@ -14,7 +14,7 @@ becomeValidator:
   - title: Run a validator
     description: Start earning by validating blocks and securing the network.
     bgColor: blue
-    href: '/nimiq-developer-center/build/becoming-a-validator'
+    href: '../build/becoming-a-validator'
     icon: 'i-nimiq:icons-lg-verified'
     duration: '30-45 min'
 prev: false
