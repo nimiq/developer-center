@@ -17,7 +17,8 @@ export default defineConfig(async ({ mode }) => {
   const { specUrl, specVersion } = await generateRpcDocs()
   await generateWebClientDocs()
 
-  const environment = env.DEPLOYMENT_ENV || mode
+  const environment = env.NODE_ENV || mode
+
   consola.debug(`Building for ${environment}`)
 
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()

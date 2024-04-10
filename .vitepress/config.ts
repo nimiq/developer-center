@@ -2,7 +2,6 @@ import { existsSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 import { env } from 'node:process'
 import { defineConfig } from 'vitepress'
-import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
 import { readPackageJSON } from 'pkg-types'
 import { sidebar } from './sidebar.config'
@@ -13,7 +12,8 @@ import { navigation } from './navigation.config'
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
-  const baseUrl = env.NODE_ENV === 'production' ? '/developers' : '/developer-center/'
+  const isProduction = env.NODE_ENV === 'production'
+  const baseUrl = isProduction ? '/developers' : '/developer-center/'
 
   return defineConfig({
     base: baseUrl,

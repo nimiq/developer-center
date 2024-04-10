@@ -53,7 +53,6 @@
     "knitwork": "^1.1.0",
     "lint-staged": "^15.2.2",
     "markdown-it": "^14.1.0",
-    "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.13",
     "pkg-types": "^1.0.3",
     "postcss": "^8.4.38",
