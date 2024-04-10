@@ -8,7 +8,7 @@ export async function generateWebClientDocs() {
   const packageVersion = JSON.parse(readFileSync(join(__dirname, '../../node_modules/@nimiq/core-web/package.json'), 'utf-8')).version as string
 
   // Read package version of generated docs, if already built
-  const versionFile = join(__dirname, '../../build/web-client/_version')
+  const versionFile = join(__dirname, '../../build/web-client/.version')
   if (existsSync(versionFile)) {
     const generatedVersion = readFileSync(versionFile, 'utf-8')
 
