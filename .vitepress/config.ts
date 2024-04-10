@@ -14,10 +14,11 @@ import { navigation } from './navigation.config'
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
   const isProduction = env.DEPLOYMENT_MODE === 'production'
-  const baseUrl = isProduction ? '/developers' : '/developer-center/'
-  consola.info(`Building for ${isProduction ? 'production' : 'development'}. The base URL is ${baseUrl}`)
+  const base = isProduction ? '/developers' : '/developer-center/'
+  consola.info(`Building for ${isProduction ? 'production' : 'development'}. The base URL is ${base}`)
 
   return defineConfig({
+    base,
     title,
     srcExclude: ['**/README.md'],
     description,
@@ -74,19 +75,19 @@ export default async () => {
 
     head: [
       ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseUrl}favicons/apple-touch-icon.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseUrl}favicons/favicon-32x32.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseUrl}favicons/favicon-16x16.png` }],
-      // ['link', { rel: 'manifest', href: `${baseUrl}favicons/site.webmanifest` }],
-      ['link', { rel: 'mask-icon', href: `${baseUrl}favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: `${baseUrl}favicons/favicon.ico` }],
+      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}favicons/apple-touch-icon.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}favicons/favicon-32x32.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${base}favicons/favicon-16x16.png` }],
+      // ['link', { rel: 'manifest', href: `${base}favicons/site.webmanifest` }],
+      ['link', { rel: 'mask-icon', href: `${base}favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+      ['link', { rel: 'shortcut icon', href: `${base}favicons/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
 
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: homepage }],
-      ['meta', { property: 'og:image', content: `${baseUrl}og-image.png` }],
+      ['meta', { property: 'og:image', content: `${base}og-image.png` }],
       ['meta', { property: 'og:site_name', content: title }],
       ['meta', { property: 'og:determiner', content: 'the' }],
       ['meta', { property: 'og:locale', content: 'en_US' }],
