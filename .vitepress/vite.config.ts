@@ -10,13 +10,8 @@ import { postcssIsolateStyles } from 'vitepress'
 import { consola } from 'consola'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
-import { generateWebClientDocs } from './scripts/web-client'
-import { generateRpcDocs } from './scripts/rpc-docs'
 
 export default defineConfig(async () => {
-  const { specUrl, specVersion } = await generateRpcDocs()
-  await generateWebClientDocs()
-
   const environment = env.DEPLOYMENT_MODE
   consola.info(`Building for ${environment}`)
 
@@ -39,8 +34,7 @@ export default defineConfig(async () => {
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
       __BUILD_ENVIRONMENT__: JSON.stringify(environment),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
-      __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(specUrl),
-      __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(specVersion),
+
     },
 
     plugins: [
