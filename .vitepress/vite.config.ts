@@ -13,13 +13,12 @@ import { getGitStats } from './scripts/git-stats'
 import { generateWebClientDocs } from './scripts/web-client'
 import { generateRpcDocs } from './scripts/rpc-docs'
 
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(async () => {
   const { specUrl, specVersion } = await generateRpcDocs()
   await generateWebClientDocs()
 
-  const environment = env.NODE_ENV || mode
-
-  consola.debug(`Building for ${environment}`)
+  const environment = env.DEPLOYMENT_MODE
+  consola.info(`Building for ${environment}`)
 
   const { albatrossCommitDate, albatrossCommitHash, commitHash, commitUrl, repoUrl } = await getGitStats()
 

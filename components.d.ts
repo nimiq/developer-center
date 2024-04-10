@@ -31,7 +31,5 @@ declare module 'vue' {
     Tags: typeof import('./.vitepress/theme/components/Tags.vue')['default']
     ThemeSwitcher: typeof import('./.vitepress/theme/components/header/ThemeSwitcher.vue')['default']
     Toast: typeof import('./.vitepress/theme/components/Toast.vue')['default']
-    TwoColumn: typeof import('./.vitepress/theme/components/TwoColumn.vue')['default']
-    TwoColumns: typeof import('./.vitepress/theme/components/TwoColumns.vue')['default']
   }
 }
