@@ -22,8 +22,7 @@ export async function generateWebClientDocs() {
   // Rebuild docs
 
   consola.info(`Generating Web-Client docs ${packageVersion} ...`)
-  execSync('pnpm run build:web-client && echo "Done"', { stdio: 'inherit' })
-  consola.log('done 2')
+  execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
   // Update entry file with frontmatter to disable the "next" footer button
   const entryFile = join(__dirname, '../../build/web-client/index.md')
