@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
+import { env } from 'node:process'
 import { defineConfig } from 'vitepress'
 import container from 'markdown-it-container'
 import { spawn } from 'cross-spawn'
@@ -9,11 +10,10 @@ import { navigation } from './navigation.config'
 
 // @unocss-include
 
-export const baseUrl = '/developer-center/'
-
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
+  const baseUrl = env.NODE_ENV === 'production' ? '/developers' : '/developer-center/'
 
   return defineConfig({
     base: baseUrl,
@@ -123,9 +123,9 @@ export default async () => {
       ['meta', { name: 'twitter:title', content: title }],
     ],
 
-    // sitemap: {
-    //   hostname: 'https://onmax.github.io',
-    // },
+    sitemap: {
+      hostname: 'https://nimiq.com/developers',
+    },
 
   })
 }
