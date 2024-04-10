@@ -37,7 +37,7 @@ To start the validator registration process, fund the address you just generated
 
 <Callout type='info'>
 
-TO DO link to ask for funds
+You will need funds to pay the validator registration transaction and the deposit payment for your validator. If you don't have funds to pay these transactions, please use our **[Testnet Faucet](https://test.nimiq.watch/#faucet)** to request NIM for the test-run.
 
 </Callout>
 
