@@ -26,7 +26,9 @@ The tool generates the keys and pastes them into the `validator-keys.json` file.
 <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="skip block struct" />
 
 <Callout type='tip'>
+
 Save the private key securely! There is no recovery mechanism for lost private keys. Once lost, access to your validator and NIM may be permanently lost.
+
 </Callout>
 
 ### Step 2: Fund your address
