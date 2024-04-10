@@ -7,8 +7,8 @@ import { readPackageJSON } from 'pkg-types'
 import consola from 'consola'
 import { sidebar } from './sidebar.config'
 import { navigation } from './navigation.config'
-
-// @unocss-include
+import { generateWebClientDocs } from './scripts/web-client'
+import { generateRpcDocs } from './scripts/rpc-docs'
 
 // https://vitepress.dev/reference/site-config
 export default async () => {
@@ -16,6 +16,9 @@ export default async () => {
   const isProduction = env.DEPLOYMENT_MODE === 'production'
   const base = isProduction ? '/developers' : '/developer-center/'
   consola.info(`Building for ${isProduction ? 'production' : 'development'}. The base URL is ${base}`)
+
+  await generateWebClientDocs()
+  const { specUrl, specVersion } = await generateRpcDocs()
 
   return defineConfig({
     base,
@@ -66,6 +69,10 @@ export default async () => {
     },
 
     vite: {
+      define: {
+        __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(specUrl),
+        __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(specVersion),
+      },
       configFile: '.vitepress/vite.config.ts',
     },
 
