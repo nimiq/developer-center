@@ -69,32 +69,6 @@ export default async () => {
 
     markdown: {
       math: true, // Allow latex math
-
-      // Add ::: goal|warning ::: custom markdown-it plugins
-      config: (md) => {
-        md.use(...[container, 'goal', {
-          render(tokens, idx) {
-            if (tokens[idx].nesting === 1) {
-              return `
-              <div class="custom-block" bg="green-10 dark:green/20" text="green dark:green-60">
-                <p flex gap-x-8><div i-nimiq:flag></div><span>Goal</span></p>
-              `
-            }
-            else { return `</div>\n` }
-          },
-        }])
-        md.use(...[container, 'warning', {
-          render(tokens, idx) {
-            if (tokens[idx].nesting === 1) {
-              return `
-              <div class="custom-block" bg="yellow/10 dark:yellow/20" text="orange dark:yellow-60">
-                <p flex gap-x-8><div i-nimiq:icons-lg-tools text="orange dark:yellow-60"></div><span>Warning</span></p>
-              `
-            }
-            else { return `</div>\n` }
-          },
-        }])
-      },
     },
 
     head: [

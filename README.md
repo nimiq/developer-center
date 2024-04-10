@@ -33,7 +33,7 @@ Feel free to contribute if you want to improve any part of the docs. PRs all wel
 
 ```bash
 git clone https://github.com/nimiq/developer-center # Clone repo. You can also fork it and clone from your fork
-cd nimiq-developer-center
+cd developer-center
 pnpm install # Install pnpm first if you don't have it -> https://pnpm.io/installation
 pnpm dev # Start dev server
 ```

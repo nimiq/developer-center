@@ -11,11 +11,11 @@ next: false
 
 ### Installing via NPM
 
-::: warning
+<Callout type='warning'>
 
-Working on it at the moment
+Work in Progress
 
-:::
+</Callout>
 
 ### Copy per Icon
 

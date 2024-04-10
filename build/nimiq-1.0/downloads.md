@@ -4,9 +4,11 @@ search: false
 
 # Downloads
 
-::: warning
+<Callout type='warning'>
+
 This page describes the installation and usage of the precompiled packages linked below. For better performance, you might also consider to compile the miner [source code](https://github.com/nimiq/core-js) on the machine where it is intended to be used.
-:::
+
+</Callout>
 
 ## Packages
 
@@ -59,9 +61,11 @@ For Microsoft Windows operating systems
 
 ## Configuration
 
-::: warning
+<Callout type='warning'>
+
 To run a Nimiq Full Node and receive connections from other peers you need a valid domain name and SSL certificate.
-:::
+
+</Callout>
 
 The configuration file for Linux is located in `/etc/nimiq/nimiq.conf`
 
