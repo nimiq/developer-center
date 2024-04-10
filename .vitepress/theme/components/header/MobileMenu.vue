@@ -3,10 +3,15 @@ import { DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot, Dr
 import type { NavigationType } from './navigation-types'
 
 defineProps<{ navigation: NavigationType }>()
+
+const open = ref(false)
+const { route } = useRouter()
+
+watch(route, () => open.value = false)
 </script>
 
 <template>
-  <DrawerRoot>
+  <DrawerRoot v-model:open="open">
     <DrawerTrigger v-bind="$attrs">
       <div i-nimiq:hamburger-menu rotate-y-180 />
     </DrawerTrigger>
