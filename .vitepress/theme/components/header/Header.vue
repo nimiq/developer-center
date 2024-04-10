@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
+import { watch } from 'vue'
 import { ContextMenu } from 'radix-vue/namespaced'
 import { getIconSnippet } from '../../composables/icons/icon'
 
@@ -11,14 +12,11 @@ const { smaller } = useBreakpoints(breakpointsTailwind)
 const isSmall = smaller('lg')
 const showSearch = ref(false)
 
-useMagicKeys({
-  passive: false,
-  onEventFired: (e) => {
-    if (e.ctrlKey && e.key === 'k') {
-      e.preventDefault()
-      showSearch.value = true
-    }
-  },
+useEventListener('keydown', (e: KeyboardEvent) => {
+  if ((e.key === 'k' || e.key === 'л') && (e.metaKey || e.ctrlKey)) {
+    e.preventDefault()
+    showSearch.value = true
+  }
 })
 
 const { navigation } = useData().theme.value
