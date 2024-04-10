@@ -43,15 +43,15 @@ You will need funds to pay the validator registration transaction and the deposi
 
 ### Step 3: Execute the Validator Registration Script
 
-For testing this in the PoW testnet, you must specify the network argument as follows:
+For testing this in the PoW testnet, you must specify the validator argument as follows:
 
 ```shell
 node validator-registration.js --validator validator-keys.json
 ```
 
-The script will connect the tool to the Nimiq PoW chain. Upon consensus, the tool creates the validator registration transaction, signs it, and sends it to the network, effectively generating the validator. Note that this transaction is a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your address—as instructed in the previous step—as the transaction fees are paid from this address.
+The script will connect the tool to the Nimiq PoW chain. Upon consensus, the tool creates the validator registration transaction, signs it, and sends it to the network, effectively generating the validator. Note that this transaction is a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your address — as instructed in the previous step — as the transaction fees are paid from this address.
 
-For detailed guidance through the scripts, run `node validator-registration.js --help`. This will print out the following usage description.
+For detailed guidance through the scripts, run `node validator-registration.js --help`. This will print out the usage description.
 
 ### Step 4:  Deposit Payment and Commit
 

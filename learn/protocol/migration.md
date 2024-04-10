@@ -46,7 +46,7 @@ The pre-stake phase occurs within a specific range of blocks and is exclusive fo
 
 Users wishing to stake their NIM can send a pre-stake transaction specifying which preregistered validator they want to stake. A user can only stake for pre-registered validators. Attempting to stake with non-pre-registered validators will result in losing the staked NIM. Please note that once the NIM is staked for a preregistered validator, unstaking is not possible. There is no way to recover the stake until the PoS chain begins.
 
-For convenience, the Nimiq wallet will feature a button facilitating the process.. This feature will provide access to a public list of pre-registered validators. After the pre-stake phase, a clear overview of the validators and the total allocated stake will be provided.
+For convenience, the Nimiq wallet will feature a button facilitating the process. Users can send one pre-stake transaction per address. This feature will provide access to a public list of pre-registered validators. After the pre-stake phase, a clear overview of the validators and the total allocated stake will be provided.
 
 ## Activation phase
 
