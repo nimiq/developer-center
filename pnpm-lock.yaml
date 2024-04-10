@@ -103,9 +103,6 @@ devDependencies:
   markdown-it:
     specifier: ^14.1.0
     version: 14.1.0
-  markdown-it-container:
-    specifier: ^4.0.0
-    version: 4.0.0
   node-html-parser:
     specifier: ^6.1.13
     version: 6.1.13
@@ -4901,10 +4898,6 @@ packages:
 
   /mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
-    dev: true
-
-  /markdown-it-container@4.0.0:
-    resolution: {integrity: sha512-HaNccxUH0l7BNGYbFbjmGpf5aLHAMTinqRZQAEQbMr2cdD3z91Q6kIo1oUn1CQndkT03jat6ckrdRYuwwqLlQw==}
     dev: true
 
   /markdown-it-mathjax3@4.3.2:
