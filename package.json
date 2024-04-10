@@ -10,8 +10,9 @@
   },
   "homepage": "https://nimiq.github.io/developer-center/",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
+    "dev": "DEPLOYMENT_MODE=development vitepress dev",
+    "build": "DEPLOYMENT_MODE=production vitepress build",
+    "build:staging": "DEPLOYMENT_MODE=staging vitepress build",
     "preview": "vitepress preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

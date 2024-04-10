@@ -1,9 +1,10 @@
 import { existsSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 import { env } from 'node:process'
-import { defineConfig } from 'vitepress'
+import { defineConfig, resolveConfig } from 'vitepress'
 import { spawn } from 'cross-spawn'
 import { readPackageJSON } from 'pkg-types'
+import consola from 'consola'
 import { sidebar } from './sidebar.config'
 import { navigation } from './navigation.config'
 
@@ -12,11 +13,11 @@ import { navigation } from './navigation.config'
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
-  const isProduction = env.NODE_ENV === 'production'
+  const isProduction = env.DEPLOYMENT_MODE === 'production'
   const baseUrl = isProduction ? '/developers' : '/developer-center/'
+  consola.info(`Building for ${isProduction ? 'production' : 'development'}. The base URL is ${baseUrl}`)
 
   return defineConfig({
-    base: baseUrl,
     title,
     srcExclude: ['**/README.md'],
     description,
