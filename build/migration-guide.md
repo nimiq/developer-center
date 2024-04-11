@@ -1,73 +1,73 @@
-# Migration to PoS user guide
+# Migration to PoS User Guide
 
-These instructions are exclusively for users interested in using Nimiq’s Migration Tools to transition from PoW to PoS. If you wish to become a validator post-migration, please refer to this [documentation](becoming-a-validator.md). This is the user guide for the registration tool. For a complete understanding of the migration technicalities, refer to this [document](/learn/protocol/migration).
+These instructions are exclusively for users interested in using Nimiq’s Migration Tools to register their validator and actively transition from Nimiq PoW to PoS. If you wish to become a validator post-migration instead, please refer to this [documentation](becoming-a-validator.md). For a complete understanding of the migration technicalities, refer to [this document](/learn/protocol/migration).
 
 ## Validator Registration Tool
 
-The Validator Registration tool facilitates the registration process for users migrating from PoW to PoS during the pre-registration phase. Users register within the PoW chain. The Validator Registration tool operates in two distinct modes:
+The Validator Registration tool facilitates the pre-registration process for validators, so they are included in the PoS genesis block. Validators pre-register within the PoW chain. The Validator Registration tool operates in two distinct modes:
 
-- Address and corresponding keys generation
+- Keys and corresponding address generation
 - Validator registration via transactions
 
- First, you need to clone the [core-js repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) and follow the instructions.
+ First, you need to clone the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) and follow the quickstart instructions.
 
-### Step 1: Generate the keys
+### Step 1: Generate validator keys
 
-After you cloned the core-js repository, change directory with ```cd clients/nodejs``` to be able to execute the registration script.
+After you cloned the core-js repository, change directory to where the tool is located with ```cd clients/nodejs```.
 
-Execute the script without parameters to generate the validator address, signing key, and voting key:
+Execute the tool without parameters to generate a validator address, signing key, and voting key:
 
 ```shell
 node validator-registration.js
 ```
 
-The tool generates the keys and pastes them into the `validator-keys.json` file. The screenshot demonstrates the output of the script.
+The tool generates fresh keys and stores them into the `validator-keys.json` file in your current directory. The following screenshot demonstrates example output of the script:
 
-<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="skip block struct" />
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="Validator example keys" />
 
 <Callout type='tip'>
 
-Save the private key securely! There is no recovery mechanism for lost private keys. Once lost, access to your validator and NIM may be permanently lost.
+Save the private keys securely, especially the validator private key! There is no recovery mechanism for lost private keys. Once lost, access to your validator and related NIM may be permanently lost.
 
 </Callout>
 
-### Step 2: Fund your address
+### Step 2: Fund your validator address
 
-To start the validator registration process, fund the address you just generated to cover the nominal transaction fees of 1 Luna each (you need 6 Lunas) associated with the validator generation process. You can use any wallet to fund this address.
+To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each (you need at least 6 Lunas = 0.00006 NIM) associated with the validator registration process. You can use any wallet to send Lunas to this address.
 
 <Callout type='info'>
 
-You will need funds to pay the validator registration transaction and the deposit payment for your validator. If you don't have funds to pay these transactions, please use our **[Testnet Faucet](https://test.nimiq.watch/#faucet)** to request NIM for the test-run.
+You will need funds to pay for the validator registration transactions and for the deposit for your validator. If you don't have funds for these transactions, please use the **[Testnet Faucet](https://test.nimiq.watch/#faucet)** to request NIM for the test-run.
 
 </Callout>
 
-### Step 3: Execute the Validator Registration Script
+### Step 3: Run the validator registration tool
 
-For testing this in the PoW testnet, you must specify the validator argument as follows:
+For testing this in the PoW testnet, you must specify the arguments as follows:
 
 ```shell
-node validator-registration.js --validator validator-keys.json
+node validator-registration.js --validator validator-keys.json --network test
 ```
 
-The script will connect the tool to the Nimiq PoW chain. Upon consensus, the tool creates the validator registration transaction, signs it, and sends it to the network, effectively generating the validator. Note that this transaction is a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your address — as instructed in the previous step — as the transaction fees are paid from this address.
+The tool will connect to the Nimiq PoW testnet chain. Upon consensus, the tool creates and signs the validator registration transactions and sends them to the network, effectively registering your validator. Note that these transactions are a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your validator address — as instructed in the previous step — as the transaction fees are paid from this address.
 
-For detailed guidance through the scripts, run `node validator-registration.js --help`. This will print out the usage description.
+For detailed guidance through the scripts and their options, run `node validator-registration.js --help`. This will print out the usage instructions.
 
-### Step 4:  Deposit Payment and Commit
+### Step 4: Deposit payment and commit
 
-The final transaction involves committing to the registration and paying the validator's deposit of 100 000 NIM. This transaction can be sent from any address. Despite the address you use to pay the validator deposit, **you must include your validator address** in the transaction’s “public message” field so we can later identify your validator. Please include your validator address in human-readable format.
+The final step involves committing to the registration and paying the validator's deposit of 100 000 NIM. This transaction can be sent from any address. Irrespective of the address you send the deposit from, **you must include your validator address** in the transaction’s “public message” field so your deposit can later be matched to your validator. Please include your validator address in human-readable format (NQ...).
 
-To send the transaction manually via wallet, you need the following data:
+To send the transaction manually via the Nimiq Wallet, you need the following data:
 
-**Burn Address**: NQ07 0000 0000 0000 0000 0000 0000 0000 0000
+**Recipient Address**: NQ07 0000 0000 0000 0000 0000 0000 0000 0000
 
-**Value**: 100 000 NIM
+**Value**: 100 000 NIM or more
 
 **Public Message**: Your validator address (e.g. NQ65 SYRU Q915 CMSP G28V 4HL7 C9RP DVAX YLBP)
 
 <Callout type='warning'>
 
-Please note that any value below 100 000 NIM will result in permanent loss, and any value above will be burned.
+Please note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake.
 
 </Callout>
 
