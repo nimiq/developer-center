@@ -21,7 +21,7 @@ To facilitate this process, Nimiq provides a two-mode tool. This tool allows use
 ### Registration transactions
 
 - **Validator registration:** The first 6 transactions contain the encoded validator keys. Each transaction must be sent from the account of the registering validator, and have a value of 1 Luna each.
-- **Deposit payment and commitment:** The last step is to pay the validator's deposit and commit to the registration. Unlike the other six transactions, this one can be sent from any account, but the data field must include the registered validator's address to identify the validator.
+- **Deposit payment and commitment:** The last step is to pay the validator's deposit of 100 000 NIM and commit to the registration. Unlike the other six transactions, this one can be sent from any account, but the data field must include the registered validator's address to identify the validator.
 
 The validator generation transactions include the following data:
 
@@ -43,7 +43,7 @@ The registration window takes place within a specific range of blocks. The count
 
 The pre-staking phase occurs within a specific range of blocks and is exclusive for staking. During this phase, validator registration transactions are not accepted anymore.
 
-Users wishing to stake their NIM as soon as the PoS chain launches, can send a pre-stake transaction specifying which preregistered validator they want to stake with. Users can only stake for registered validators. Attempting to stake with non-registered validators will result in the loss of the sent NIM. Please note that once the NIM are pre-staked for a registered validator, unstaking is not possible in the PoW chain. Stake can only be recovered when the PoS chain begins.
+Users wishing to stake their NIM as soon as the PoS chain launches, can send a pre-stake transaction of a minimum of 100 NIM specifying which preregistered validator they want to stake with. Users can only stake for registered validators. Attempting to stake with non-registered validators will result in the loss of the sent NIM. Please note that once the NIM are pre-staked for a registered validator, unstaking is not possible in the PoW chain. Stake can only be recovered when the PoS chain begins.
 
 For convenience, the Nimiq Wallet will feature an interface to facilite this process. Users can send one pre-stake transaction per address. This feature will provide users with the list of pre-registered validators, allow to select one and send their pre-staking transaction.
 
