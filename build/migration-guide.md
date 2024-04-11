@@ -47,7 +47,7 @@ You can of course also generate your validator, signing and/or voting keys yours
 
 ### Step 2: Fund your validator address
 
-To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each (you need at least 6 Lunas = 0.00006 NIM) associated with the validator registration process. You can use any wallet to send Lunas to this address.
+To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each (you need at least 6 Lunas = 0.00006 NIM) associated with the validator registration process. Additionally, you will need to pay the readiness transaction, so you need to fund your address with **10 Lunas for the registration and activation transactions**. You can use any wallet to send Lunas to this address.
 
 <Callout type='info'>
 
@@ -105,7 +105,9 @@ Ensure that you set your `sync_mode` as `full` or `history` in the consensus par
 
 The Activation tool establishes a connection with the PoW chain via RPC, extracting data from your configuration file and crosschecking it with the information in the JSON file within the PoW chain.
 
-To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with a RPC server enabled (this might take a while). You can start it by running the following command:
+To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with a RPC server enabled on the imported validator address(this might take a while).
+
+You can start the RPC server by running the following command:
 
 ```shell
 node clients/nodejs/index.js --dumb --network=test --rpc=8648
@@ -116,7 +118,7 @@ Before executing the activation tool, make sure you run ```cargo build --release
 Once you are in consensus in the PoW chain, proceed to execute the migration tool by running the following command **in the PoS chain**, including the path to the configuration file containing your validator data and specifying the RPC server to be used:
 
 ```shell
- ./nimiq-pow-migration --url "http://127.0.0.1:8648" --config client.toml
+ ./nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
 ```
 
 After launching the tool, the readiness transaction will be automatically sent to the network. During a span of blocks, the tool will monitor for readiness transactions. At the defined candidate block, if the tool counts 80% of readiness, the migration process starts and once it is done, it will automatically start the PoS client.
