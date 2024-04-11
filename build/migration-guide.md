@@ -2,6 +2,16 @@
 
 These instructions are exclusively for users interested in using Nimiq’s Migration Tools to register their validator and actively transition from Nimiq PoW to PoS. If you wish to become a validator post-migration instead, please refer to this [documentation](becoming-a-validator.md). For a complete understanding of the migration technicalities, refer to [this document](/learn/protocol/migration).
 
+The migration to PoS will undergo a test run. The phases of this test run are as follows:
+
+| Event                     | Day and Time (UTC)        | Block Height  |
+|---------------------------|----------------------------|---------------|
+| Registration Start        | Sunday, April 14th, 00:00 | 3016529       |
+| Registration End          | Thursday, April 18th, 00:00| 3022289       |
+| Pre-stake Start           | Friday, April 19th, 00:00  | 3023729       |
+| Pre-stake End             | Monday, April 22nd, 00:00  | 3028049       |
+| Block Candidate           | Monday, April 22nd, 18:00  | 3029129       |
+
 ## Validator Registration Tool
 
 The Validator Registration tool facilitates the pre-registration process for validators, so they are included in the PoS genesis block. Validators pre-register within the PoW chain. The Validator Registration tool operates in two distinct modes:
@@ -21,7 +31,7 @@ Execute the tool without parameters to generate a validator address, signing key
 node validator-registration.js
 ```
 
-The tool generates fresh keys and stores them into the `validator-keys.json` file in your current directory. The following screenshot demonstrates example output of the script:
+The tool generates fresh keys and stores them into the `validator-keys.json` file in your current directory. The following screenshot demonstrates an example output of the script:
 
 <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="Validator example keys" />
 
