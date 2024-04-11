@@ -59,11 +59,11 @@ The final step involves committing to the registration and paying the validator'
 
 To send the transaction manually via the Nimiq Wallet, you need the following data:
 
-**Recipient Address**: NQ07 0000 0000 0000 0000 0000 0000 0000 0000
-
-**Value**: 100 000 NIM or more
-
-**Public Message**: Your validator address (e.g. NQ65 SYRU Q915 CMSP G28V 4HL7 C9RP DVAX YLBP)
+|                       |                                                                      |
+| --------------------- | -------------------------------------------------------------------- |
+| **Recipient Address** | `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`                       |
+| **Value**             | `100000` NIM or more                                                 |
+| **Public Message**    | Your validator address in human-readable format (starting with `NQ`) |
 
 <Callout type='warning'>
 
