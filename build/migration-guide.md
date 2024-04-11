@@ -31,6 +31,10 @@ Save the private keys securely, especially the validator private key! There is n
 
 </Callout>
 
+#### Using your own keys
+
+You can of course also generate your validator, signing and/or voting keys yourself through other methods. Just replace the address and keys in the `validator-keys.json` file with the ones your have and continue with the next step.
+
 ### Step 2: Fund your validator address
 
 To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each (you need at least 6 Lunas = 0.00006 NIM) associated with the validator registration process. You can use any wallet to send Lunas to this address.
