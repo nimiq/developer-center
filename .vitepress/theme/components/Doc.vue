@@ -237,8 +237,13 @@ div[class*="language"]:has(.copy + .lang) {
 }
 
 div[class*="language"] {
+  pre {
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+
   code {
-    --uno: w-[calc(100%+48px)] inline-block mx--24 px-24;
+    --uno: block p-24;
 
     .diff {
       --uno: mx--24 px-24 w-[calc(100%+48px)] inline-block;
