@@ -6,11 +6,11 @@ The migration to PoS will undergo a test run. The phases of this test run are as
 
 | Event                     | Day and Time (UTC)        | Block Height  |
 |---------------------------|----------------------------|---------------|
-| Registration Start        | Sunday, April 14th, 00:00 | 3016529       |
-| Registration End          | Thursday, April 18th, 00:00| 3022289       |
-| Pre-stake Start           | Friday, April 19th, 00:00  | 3023729       |
-| Pre-stake End             | Monday, April 22nd, 00:00  | 3028049       |
-| Block Candidate           | Monday, April 22nd, 18:00  | 3029129       |
+| Registration Start        | Sunday, April 14th, 00:00 | 3016530       |
+| Registration End          | Thursday, April 18th, 00:00| 3022290       |
+| Pre-stake Start           | Friday, April 19th, 00:00  | 3023730       |
+| Pre-stake End             | Monday, April 22nd, 00:00  | 3028050       |
+| Block Candidate           | Monday, April 22nd, 18:00  | 3029130       |
 
 ## Validator Registration Tool
 
@@ -81,7 +81,7 @@ To send the transaction manually via the Nimiq Wallet, you need the following da
 
 <Callout type='warning'>
 
-Please note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake.
+Please note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
 
 </Callout>
 
@@ -118,7 +118,7 @@ Before executing the activation tool, make sure you run ```cargo build --release
 Once you are in consensus in the PoW chain, proceed to execute the migration tool by running the following command **in the PoS chain**, including the path to the configuration file containing your validator data and specifying the RPC server to be used:
 
 ```shell
- ./nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
+cargo run --release --bin nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
 ```
 
 After launching the tool, the readiness transaction will be automatically sent to the network. During a span of blocks, the tool will monitor for readiness transactions. At the defined candidate block, if the tool counts 80% of readiness, the migration process starts and once it is done, it will automatically start the PoS client.
