@@ -19,11 +19,9 @@ The Validator Registration tool facilitates the pre-registration process for val
 - Keys and corresponding address generation
 - Validator registration via transactions
 
- First, you need to clone the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) and follow the quickstart instructions.
+ First, you need to clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool) and install its dependencies by executing `yarn` inside the repository.
 
 ### Step 1: Generate validator keys
-
-After you cloned the core-js repository, change directory to where the tool is located with ```cd clients/nodejs```.
 
 Execute the tool without parameters to generate a validator address, signing key, and voting key:
 
@@ -105,9 +103,9 @@ Ensure that you set your `sync_mode` as `full` or `history` in the consensus par
 
 The Activation tool establishes a connection with the PoW chain via RPC, extracting data from your configuration file and crosschecking it with the information in the JSON file within the PoW chain.
 
-To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with a RPC server enabled on the imported validator address(this might take a while).
+To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with a RPC server enabled on the imported validator address (this might take a while).
 
-You can start the RPC server by running the following command:
+You can start the RPC server by cloning the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) then following the quickstart instructions and finally running the following command:
 
 ```shell
 node clients/nodejs/index.js --dumb --network=test --rpc=8648
