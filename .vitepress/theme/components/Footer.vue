@@ -29,7 +29,7 @@ const isMd = computed(() => hasSidebar.value && !hasOutline.value)
       }"
     >
       <nav>
-        <ul grid="~ col-1 md:cols-2 gap-16 justify-between" ml--4>
+        <ul grid="~ col-1 md:cols-2 gap-16 justify-between" ml--4 z-10 relative>
           <li v-for="(item, i) in footer" :key="item.icon" :class="{ 'md:justify-self-end': i % 2 !== 0 }">
             <a :href="item.link" target="_blank" noopener noreferrer flex="~ items-center" px-4 w-max un-text-14 class="arrow" text-blue>
               <div :class="item.icon" mr-8 text="20 neutral-600" />
