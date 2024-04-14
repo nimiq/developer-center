@@ -29,7 +29,7 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div w-full :class="classes.container" class="raw" p-24 rounded-6 my-64 border-base>
+  <div w-full :class="classes.container" class="raw" px-24 py-20 rounded-6 my-64 border-base>
     <div flex="~ gap-8 items-center" mb-12>
       <div :class="classes.icon" op-80 text-14 />
       <h5 label>
