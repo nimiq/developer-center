@@ -42,7 +42,7 @@ Micro blocks contain user transactions, and each micro block is produced and sig
 
 Note that only one of those is added as justification. The block producer signs the block when the micro block is produced within the expected time. But when the micro block isn't produced in the expected time, a `SkipBlockProof` is added instead.
 
-### Macro Blocks
+## Macro Blocks
 
 There are two types of macro blocks: election and checkpoint. A new validator list is elected in every election macro block, and the staking contract is updated accordingly. Macro blocks are produced with Tendermint, where a random validator is chosen to propose the new macro block. User transactions are not included in macro blocks.
 
@@ -89,11 +89,7 @@ The following figure demonstrates the connection between a macro block and a mic
 ## Blockchain format
 
 The blockchain is divided into batches and epochs:
+- Batch: The interval between two macro blocks. A batch consists of several micro blocks, closing on a macro block.
+- Epoch: The interval between two election macro blocks marks an epoch. It starts with the first micro block after an election macro block and ends at an election macro block, including multiple micro blocks and checkpoint macro blocks in between.
 
-Batch: The interval between two macro blocks. A batch consists of several micro blocks, closing on a macro block.
-
-Epoch: The interval between two election macro blocks marks an epoch. It starts with the first micro block after an election macro block and ends at an election macro block, including multiple micro blocks and checkpoint macro blocks in between.
-
-The following figure illustrates how the blockchain is divided.
-
-![Alt Text](/assets/images/protocol/block-struct-3.png)
+![blockchain-structure](/assets/images/protocol/block-struct-3.png)

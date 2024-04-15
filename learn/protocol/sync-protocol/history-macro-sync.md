@@ -20,10 +20,10 @@ The node requests batch sets for each epoch using received election block hashes
 
 The syncing node requests and incorporates history chunks from multiple history nodes since the genesis block. Each history chunk, consisting of a set number of history items, is fetched by specifying the epoch number, chunk index, and the closing macro block. The node repeats this request until it reaches the most recent history item.
 
-- Towards receiving as many history chunks as optimally as possible, the node can request the first chunk of an epoch to one node, the second chunk to another, and so on by providing:
-  1. the epoch number of the epoch the node wants to fetch the history items from
-  2. a chunk index within the epoch; if the index of the chunk is 0, it receives history items from 0 to 999
-  3. the closing macro block of the respective chunk; can be either an election or a checkpoint block
+Towards receiving as many history chunks as optimally as possible, the node can request the first chunk of an epoch to one node, the second chunk to another, and so on by providing:
+1. the epoch number of the epoch the node wants to fetch the history items from
+2. a chunk index within the epoch; if the index of the chunk is 0, it receives history items from 0 to 999
+3. the closing macro block of the respective chunk; can be either an election or a checkpoint block
 
 As mentioned, this process can be made with many history nodes. History items are aggregated into chunks to avoid the time-consuming process of downloading item by item. Plus, requesting chunks from multiple nodes makes the process practical and accelerated. The syncing node makes this request continuously until it reaches the most recent history item. Mind that as the chain progresses, it might be required for the syncing node to re-request some of the requests mentioned above.
 

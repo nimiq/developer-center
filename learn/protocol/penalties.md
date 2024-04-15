@@ -4,7 +4,8 @@ Validators are responsible for ensuring the security and stability of a blockcha
 
 Our blockchain deals with misbehavior based on the nature of the offense:
 
-- A delay in block production constitutes a minor offense. In such cases, the associated slot is deactivated, and the rewards are burned. For more severe offenses like forking, double voting, or double proposals, the validator is jailed. All validator slots are deactivated for a set period, and rewards for these slots are burned.
+- A delay in block production constitutes a minor offense. In such cases, the associated slot is deactivated, and the rewards are burned.
+- For more severe offenses like forking, double voting, or double proposals, the validator is jailed. All validator slots are deactivated for a set period, and rewards for these slots are burned.
 
 <Callout type='info'>
 
@@ -28,6 +29,8 @@ When a validator acts maliciously on purpose, it gets jailed. Getting jailed can
 - Making a double proposal on Tendermint
 - Casting more than one vote per slot on Tendermint proposals
 
+###
+
 Any rational validator that witnesses one of these behaviors can report it by including a proof in a micro block. Once the proof that attests to the misbehavior is submitted, the validator is immediately jailed.
 
 As these are more severe offenses that interfere with the blockchain, the consequences are also more severe. When a validator is jailed:
@@ -35,6 +38,8 @@ As these are more severe offenses that interfere with the blockchain, the conseq
 - It is immediately removed from the `active_validators` set, and all its slots are marked as penalized in the `punished_slots` set in the staking contract.
 - It gets locked for 8 epochs. However, it is required to continue the block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
 - It loses its rewards for the jail period.
+
+###
 
 The `active_validators` and `punished_slots` sets are updated at every block in the [staking contract](validators/staking-contract.md). However, if a validator shifts from active to inactive or jailed, it is required to produce blocks until the current batch concludes, as it remains included in the validator slot list for that batch. However, it is no longer considered to produce blocks for further batches starting at the next checkpoint block.
 

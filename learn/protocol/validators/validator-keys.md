@@ -24,7 +24,7 @@ The [Schnorr](https://en.wikipedia.org/wiki/Schnorr_signature) signature scheme 
 - The hot public key is stored in the validator as the `voting_key`
 - The hot private key is used for the validator to vote for macro block proposals and skip blocks
 
----
+###
 
 Having 3 key pairs for validators adds layers of security and reduces the chance of compromising each key. Validators use their keys to sign blocks, vote for block proposals, and send staking contract transactions.
 
