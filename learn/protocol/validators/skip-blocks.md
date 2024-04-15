@@ -34,8 +34,10 @@ Validators can produce the skip block locally since any variants that would make
 3. Validators produces a skip block locally and sign it; they can then relay their signature among their peers and aggregate them
 4. When at least 2*f*+1 signatures have been aggregated, the skip block is added to the chain with a proof in the justification of the block that consists of the aggregated signatures from the validators who signed the skip block
 5. After the block is added, the chain can resume standard production, which means:
-    1. a validator is selected accordingly to the validator selection rules to produce the next micro block
-    2. if the validator elected to produce the next micro block is also delaying the block production, a new skip block is added, and the process above is repeated
+-  a validator is selected accordingly to the validator selection rules to produce the next micro block
+-  if the validator elected to produce the next micro block is also delaying the block production, a new skip block is added, and the process above is repeated
+
+###
 
 There are only two outcomes for a delayed micro block:
 

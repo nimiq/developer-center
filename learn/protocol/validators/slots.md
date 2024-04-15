@@ -10,7 +10,22 @@ Validators use their slots in the following way:
 - One slot is used to propose a macro block
 - All validators’ slots are used to vote for a macro block proposal or a [skip block](/learn/protocol/validators/skip-blocks.md)
 
-![Alt Text](/assets/images/protocol/slots.png)
+###
+
+| Validator address | Validator pubkey | Range of slots |
+| --- | --- | --- |
+| Validator 1 | pubkey 1 | (0, 24) |
+| Validator 2 | pubkey 2 | (25, 84) |
+| Validator 3 | pubkey 3 | (85, 149) |
+| Validator 4 | pubkey 4 | (150, 254) |
+| Validator 5 | pubkey 5 | (255, 304) |
+| Validator 6 | pubkey 6 | (305, 321) |
+| Validator 7 | pubkey 7 | (322, 361) |
+| Validator 8 | pubkey 8 | (362, 436) |
+| Validator 9 | pubkey 9 | (437, 481) |
+| Validator 10 | pubkey 10 | (482, 512) |
+
+###
 
 Due to the redistribution of the slot owner list with every micro block, it is impossible to anticipate which validator will be responsible for producing the next block. The same validator may end up producing three consecutive blocks if the range is extensive. For instance, based on the above figure, if slots 151, 170, and 237 were chosen to produce the following three blocks, the resulting range would correspond to validator 4.
 

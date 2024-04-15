@@ -8,6 +8,8 @@ The blockchain uses zero-knowledge proofs to:
 - Enable nodes to reconnect with the blockchain faster
 - Secure the network
 
+###
+
 Zero-knowledge proofs prove the chain’s integrity from the genesis block to the latest election macro block in a small proof, which makes it easy for the node receiving it to verify. The proof size remains the same regardless of whether the node requests a proof from the genesis block or the latest macro block.
 
 From the verifier side, receiving and verifying a zero-knowledge proof is a fast process, but generating such proof takes significant computational power and space from the prover node side. Generating these proofs takes time but verifying them is a quick process.
@@ -49,6 +51,8 @@ pub struct ZKProof {
 
 - The `block_number` consists of the most recent election block. This number must be greater than the node's number in the request.
 - The `proof` consists of the zero-knowledge proof generated using a construction based on the MNT4-753 and MNT6-753 elliptic curves.
+
+###
 
 In case of a first connection with the network, the node provides the `block_number` 0 as the most recent proof, despite the genesis block having no proof attached to it.
 

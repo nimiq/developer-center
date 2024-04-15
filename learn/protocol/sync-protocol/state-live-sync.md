@@ -10,9 +10,9 @@ The Merkle Radix Tree efficiently stores accounts and their corresponding balanc
 
 Hash values are propagated up the tree from lower to higher levels until the state root is reached. The state root serves as the fingerprint of the entire tree, allowing for easy detection of unauthorized modifications and efficient data integrity verification stored in the block’s header. The following accounts tree illustrates how 6 accounts are stored in the state root:
 
-![Alt Text](/assets/images/protocol/merkle.png)
+![merkle-tree](/assets/images/protocol/merkle.png)
 
-<Callout type='warning'>
+<Callout type='info'>
 
 This figure is merely illustrative as the accounts tree hold multiple accounts.
 

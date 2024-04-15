@@ -10,8 +10,6 @@ Every block has a predetermined storage capacity for transactions. Validators ar
 
 Users are encouraged to offer higher fees to accelerate the addition of their transactions to the blockchain. The result of a transaction being added to the mempool is to be then added to the block. The mempool serves the dual purpose of filtering transactions and enabling validators to disregard invalid ones.
 
----
-
 The blockchain mempool is divided into two groups that hold different types of transactions:
 
 - Transactions from the [staking contract](validators/staking-contract.md) are added to a **control mempool**
@@ -30,6 +28,8 @@ A verification process filters transactions before they are added to the mempool
     - Another scenario involves a transaction *x* being made, received by all validators, and one validator includes it in a block. The transaction *x* is now considered a known transaction, necessitating the other validators to remove it from their individual mempools.
 - **Balance:** After verifying all necessary steps, the validator checks the user’s balance and all pending transactions for that user in the mempool. The mempool must ensure that the sender has adequate funds to cover at least the transaction fees.
 
+###
+
 Note that if the first step returns an invalid signature, the transaction is immediately discarded, and verifying the following steps unnecessary as the first was already invalid. This means that if, for example, the signature is not valid, the rest of the steps do not need to be verified, and the transaction is immediately discarded.
 
 After the two mempools are fed with transactions respecting the verification process, they are kept on hold and will be added to a block by the elected block producer in the following way:
@@ -38,7 +38,7 @@ After the two mempools are fed with transactions respecting the verification pro
 - Transactions with higher fees have priority against transactions with lower fees (mind that this is not the rule. While high fees encourage validators to add the transaction to the block, nothing in the protocol prevents the validator from adding a transaction with low fees)
 - New transactions have priority over older ones.
 
-![Alt Text](/assets/images/protocol/mempool.png)
+![mempool](/assets/images/protocol/mempool.png)
 
 <Callout type='info'>
 
@@ -52,9 +52,8 @@ After a transaction is added, the user’s balance is updated, and the validator
 
 Even after the verification process went through and after the transactions have been added to the mempool, transactions may not succeed in being included in a block, as they can become invalid when in the mempool. As transactions are included in the blockchain, validators first verify if:
 
-- There are **expired transactions**. Similar to the verification step of the validity window, when adding a transaction to the mempool, transactions can expire when on hold. In this case, validators must discard the respective transaction.
-- There is any **transaction already included** in a block. A validator might have included a transaction in a block that other validators haven’t detected, or a validator might disconnect from the network, and once reconnecting and downloading the history sync, other validators could already have included that transactions; in this case, as soon known a validator notices the respective transaction, he must discard the one already added.
-- A **fork occurred** somewhere in the chain. Suppose a malicious validator forks the chain, and the following block producer elected is also malicious and produces on top of the fork. Eventually, a rational validator will be selected, and the blocks produced maliciously must be reverted. Based on this, as soon as a rational validator notices the fork, the blocks produced maliciously are longer valid. There are two ways to fix this:
-  1. Transactions are adopted by other validators, and they include them in a block in the longest chain; validators with the respective transaction in their mempool can discard it.
-  2. Transactions are reverted and must be readded to the mempool as they were added in the block produced maliciously.
-- The user's **account balance** has changed between the time the transaction was added to the mempool and the time the transaction was about to be added to the block. Identical to verifying the user’s balance made before the transaction is added to the mempool, if the user's balance changes in this period, the transaction becomes invalid as the user's balance is insufficient. Validators must update the user's balance in their mempool.
+1. There are **expired transactions**. Similar to the verification step of the validity window, when adding a transaction to the mempool, transactions can expire when on hold. In this case, validators must discard the respective transaction.
+2. There is any **transaction already included** in a block. A validator might have included a transaction in a block that other validators haven’t detected, or a validator might disconnect from the network, and once reconnecting and downloading the history sync, other validators could already have included that transactions; in this case, as soon known a validator notices the respective transaction, he must discard the one already added.
+3. A **fork occurred** somewhere in the chain. Suppose a malicious validator forks the chain, and the following block producer elected is also malicious and produces on top of the fork. Eventually, a rational validator will be selected, and the blocks produced maliciously must be reverted. Based on this, as soon as a rational validator notices the fork, the blocks produced maliciously are longer valid.
+There are two ways to fix this: (1) transactions are adopted by other validators, and they include them in a block in the longest chain;validators with the respective transaction in their mempool can discard it, and (2) transactions are reverted and must be re-added to the mempool as they were added in the block produced maliciously.
+4. The user's **account balance** has changed between the time the transaction was added to the mempool and the time the transaction was about to be added to the block. Identical to verifying the user’s balance made before the transaction is added to the mempool, if the user's balance changes in this period, the transaction becomes invalid as the user's balance is insufficient. Validators must update the user's balance in their mempool.
