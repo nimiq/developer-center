@@ -31,11 +31,7 @@ aside: false
 footer: false
 ---
 
-<Callout type="warning">
-
-Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
-
-</Callout>
+<HeadsUp />
 
 # Let's build together
 

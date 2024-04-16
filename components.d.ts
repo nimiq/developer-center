@@ -20,6 +20,7 @@ declare module 'vue' {
     Footer: typeof import('./.vitepress/theme/components/Footer.vue')['default']
     Grid: typeof import('./.vitepress/theme/components/Grid.vue')['default']
     Header: typeof import('./.vitepress/theme/components/header/Header.vue')['default']
+    HeadsUp: typeof import('./.vitepress/theme/components/HeadsUp.vue')['default']
     Hero: typeof import('./.vitepress/theme/components/Hero.vue')['default']
     IconSet: typeof import('./.vitepress/theme/components/IconSet.vue')['default']
     MobileMenu: typeof import('./.vitepress/theme/components/header/MobileMenu.vue')['default']

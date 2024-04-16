@@ -1,8 +1,4 @@
-<Callout type="warning">
-
-Our documentation is an ongoing project. As we actively update its content, please note that the information provided may undergo changes.
-
-</Callout>
+<HeadsUp />
 
 # Nimiq Design
 
