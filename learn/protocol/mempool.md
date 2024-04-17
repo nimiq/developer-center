@@ -28,8 +28,6 @@ A verification process filters transactions before they are added to the mempool
     - Another scenario involves a transaction *x* being made, received by all validators, and one validator includes it in a block. The transaction *x* is now considered a known transaction, necessitating the other validators to remove it from their individual mempools.
 - **Balance:** After verifying all necessary steps, the validator checks the user’s balance and all pending transactions for that user in the mempool. The mempool must ensure that the sender has adequate funds to cover at least the transaction fees.
 
-###
-
 Note that if the first step returns an invalid signature, the transaction is immediately discarded, and verifying the following steps unnecessary as the first was already invalid. This means that if, for example, the signature is not valid, the rest of the steps do not need to be verified, and the transaction is immediately discarded.
 
 After the two mempools are fed with transactions respecting the verification process, they are kept on hold and will be added to a block by the elected block producer in the following way:

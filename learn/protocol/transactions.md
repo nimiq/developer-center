@@ -7,16 +7,12 @@ Transactions serve as the means to interact with the blockchain. A transaction m
 - Vesting contract
 - [Staking contract](validators/staking-contract.md)
 
-###
-
 Once transactions are sent, they are temporarily held in the mempool, where they remain until a validator includes them in the blockchain. The transaction is included once the validator confirms and validates the transaction.
 
 The blockchain includes 2 mempools catered to different purposes:
 
 - **Regular mempool** includes Basic, HTLC, and Vesting transactions
 - **Control mempool** includes transactions associated with the staking contract, which are prioritized over regular mempool transactions.
-
-###
 
 Transactions cannot have the same sender and recipient, except for staking-related transactions, where validators and stakers can send a transaction from the staking contract to the staking contract.
 
@@ -47,7 +43,5 @@ Hence, when a validator includes a transaction to the micro block, it may succee
 
 - **Succeed**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated.
 - **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted.
-
-###
 
 Let's consider a scenario where Alice, with 100 NIM in her balance, sends two transactions. In the first transaction (transaction 1), she intends to send 80 NIM to Bob. Following the succeed-fail principle mentioned above, transaction 1 succeeds. However, immediately after, Alice attempts to send 50 NIM to Charlie in transaction 2, which fails due to insufficient balance. Both transactions are recorded in the blockchain. Transaction 1 is logged as a successful transaction, whereas transaction 2 is marked as fail. Our protocol accommodates failed transactions, deducting the associated fees even in cases of failure.

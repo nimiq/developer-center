@@ -37,8 +37,6 @@ Validators can produce the skip block locally since any variants that would make
 -  a validator is selected accordingly to the validator selection rules to produce the next micro block
 -  if the validator elected to produce the next micro block is also delaying the block production, a new skip block is added, and the process above is repeated
 
-###
-
 There are only two outcomes for a delayed micro block:
 
 - receive 2*f*+1 signatures to a skip block instead and, once added, resume the block production afterward
