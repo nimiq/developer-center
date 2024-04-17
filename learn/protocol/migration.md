@@ -23,8 +23,6 @@ To facilitate this process, Nimiq provides a two-mode tool. This tool allows use
 - **Validator registration:** The first 6 transactions contain the encoded validator keys. Each transaction must be sent from the account of the registering validator, and have a value of 1 Luna each.
 - **Deposit payment and commitment:** The last step is to pay the validator's deposit of 100 000 NIM and commit to the registration. Unlike the other six transactions, this one can be sent from any account, but the data field must include the registered validator's address to identify the validator.
 
-###
-
 The validator generation transactions include the following data:
 
 | Type      | Data                                          |
@@ -57,8 +55,6 @@ Only preregistered validators can participate in this phase. The activation phas
 
 - **Selecting the Transition Block:** Validators target a block with a height corresponding to the next PoS election block as the candidate block for the transition.
 - **Executing the Transition:** If, at the candidate block's height, at least 80% of stake is signalling readiness for the transition, the candidate block becomes the transition block. An activation tool takes charge of capturing the state of the PoW chain at the transition block and generating the genesis block for the new PoS chain.
-
-###
 
 During this phase, validators send a transaction signaling their readiness. The readiness transaction is as follows:
 

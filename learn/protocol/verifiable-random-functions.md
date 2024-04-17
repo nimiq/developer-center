@@ -6,8 +6,6 @@ A verifiable random function is a pseudo-random function that generates a random
 - Verify function: By running this function, anyone can verify the proof's correctness. The corresponding public key, the proof, and the previous message are taken as input to verify if the proof was correctly computed.
 - Extract function: The function takes as input the proof and outputs a random value. This random value is the entropy that was extracted from the proof. Thus, the entropy randomly takes a piece of the proof and generates a random value.
 
-###
-
 VRFs have three security properties:
 
 - Pseudorandomness: Despite the output appearing to be random, it is generated with deterministic computation. The same input always results in the same output.
