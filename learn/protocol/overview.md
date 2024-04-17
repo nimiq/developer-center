@@ -1,10 +1,6 @@
 # Overview
 
-<Callout type="warning" class="raw">
-
-Our documentation is an ongoing project, a dynamic reflection of the evolving blockchain. As we actively update its content, please note that the information provided may undergo changes.
-
-</Callout>
+<HeadsUp />
 
 Welcome to the Nimiq Proof-of-Stake documentation. Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features. Covering key aspects, we provide essential insights into Nimiq's Proof-of-Stake.
 
