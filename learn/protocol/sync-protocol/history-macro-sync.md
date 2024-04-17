@@ -25,6 +25,8 @@ Towards receiving as many history chunks as optimally as possible, the node can 
 2. a chunk index within the epoch; if the index of the chunk is 0, it receives history items from 0 to 999
 3. the closing macro block of the respective chunk; can be either an election or a checkpoint block
 
+### Final considerations
+
 As mentioned, this process can be made with many history nodes. History items are aggregated into chunks to avoid the time-consuming process of downloading item by item. Plus, requesting chunks from multiple nodes makes the process practical and accelerated. The syncing node makes this request continuously until it reaches the most recent history item. Mind that as the chain progresses, it might be required for the syncing node to re-request some of the requests mentioned above.
 
 Note that this is an extensive process. The syncing node must fetch data from as many nodes as possible to reach the endpoint faster and have a decentralized, thus consensual response that can prove the chain's integrity. Relying on a single node could result in receiving inaccurate data.
