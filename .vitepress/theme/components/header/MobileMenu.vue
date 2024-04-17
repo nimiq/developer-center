@@ -12,7 +12,7 @@ watch(route, () => open.value = false)
 
 <template>
   <DrawerRoot v-model:open="open">
-    <DrawerTrigger v-bind="$attrs">
+    <DrawerTrigger v-bind="$attrs" aria-label="Open navigation">
       <div i-nimiq:hamburger-menu rotate-y-180 />
     </DrawerTrigger>
     <DrawerPortal>

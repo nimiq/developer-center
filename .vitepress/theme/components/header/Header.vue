@@ -37,7 +37,7 @@ const isMac = document.documentElement.classList.contains('mac')
     <header mx-auto flex="~ items-center" class="raw">
       <a :href="withBase('/')" focusable flex="~ items-center gap-10" p-6 ml--6 un-text="19 md:20 neutral" relative>
         <ContextMenu.Root>
-          <ContextMenu.Trigger as-child>
+          <ContextMenu.Trigger as-child aria-label="Nimiq Developer Center">
             <div
               class="dark:i-nimiq:logos-nimiq-white-horizontal i-nimiq:logos-nimiq-horizontal"
               text="96 md:101"
@@ -64,7 +64,7 @@ const isMac = document.documentElement.classList.contains('mac')
       </a>
       <template v-if="isSmall">
         <SearchBox v-if="showSearch" @close="showSearch = false" />
-        <button ml-auto mr-16 p-16 @click="showSearch = true">
+        <button ml-auto mr-16 p-16 aria-label="Search" @click="showSearch = true">
           <div i-nimiq:magnifying-glass />
         </button>
         <MobileMenu :navigation />
