@@ -1,5 +1,5 @@
 <template>
-  <div my-64 rounded-6 bg-orange-400 bg-op-50 text="[#E07802]" px-24 py-16 ring="1.5 orange-600" relative of-hidden>
+  <div my-64 rounded-6 bg-orange-400 bg-op-50 text="[#E07802]" px-24 py-16 ring="1.5 orange-600" relative of-hidden class="raw">
     <div flex="~ items-center gap-12" text-18 font-bold mb-8>
       <div i-nimiq:bell text-16 op-70 />
       Heads up
