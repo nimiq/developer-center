@@ -103,12 +103,12 @@ Ensure that you set your `sync_mode` as `full` or `history` in the consensus par
 
 The Activation tool establishes a connection with the PoW chain via RPC, extracting data from your configuration file and crosschecking it with the information in the JSON file within the PoW chain.
 
-To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with a RPC server enabled on the imported validator address (this might take a while).
+To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with an RPC server enabled on your imported validator address (this might take a while). As in [this example](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163), you can do it in your configuration file by adding your address and key pair.
 
 You can start the RPC server by cloning the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) then following the quickstart instructions and finally running the following command:
 
 ```shell
-node clients/nodejs/index.js --dumb --network=test --rpc=8648
+node clients/nodejs/index.js --dumb --network=test --rpc=8648 --wallet-seed=private_keypublic_key
 ```
 
 Before executing the activation tool, make sure you run ```cargo build --release``` within the PoS repository to compile the code.
