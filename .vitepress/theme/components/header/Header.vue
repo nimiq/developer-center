@@ -5,9 +5,10 @@ import { ContextMenu } from 'radix-vue/namespaced'
 import { inBrowser } from 'vitepress'
 import { getIconSnippet } from '../../composables/icons/icon'
 
+import Navigation from './Navigation.vue'
+import MobileMenu from './MobileMenu.vue'
+
 const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
-const Navigation = defineAsyncComponent(() => import('./Navigation.vue'))
-const MobileMenu = defineAsyncComponent(() => import('./MobileMenu.vue'))
 
 const { smaller } = useBreakpoints(breakpointsTailwind)
 const isSmall = smaller('lg')
