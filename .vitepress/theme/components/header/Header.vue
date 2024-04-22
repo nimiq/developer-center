@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
-import { watch } from 'vue'
+import { breakpointsTailwind } from '@vueuse/core'
 import { ContextMenu } from 'radix-vue/namespaced'
 import { inBrowser } from 'vitepress'
 import { getIconSnippet } from '../../composables/icons/icon'
