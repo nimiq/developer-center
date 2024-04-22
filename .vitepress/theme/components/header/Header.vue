@@ -2,6 +2,7 @@
 import { breakpointsTailwind, useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
 import { ContextMenu } from 'radix-vue/namespaced'
+import { inBrowser } from 'vitepress'
 import { getIconSnippet } from '../../composables/icons/icon'
 
 const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
@@ -29,7 +30,7 @@ const { copy, isSupported } = useClipboard({ copiedDuring: 3000 })
 
 const showEnvironment = __BUILD_ENVIRONMENT__ !== 'production'
 
-const isMac = document.documentElement.classList.contains('mac')
+const isMac = inBrowser ? document.documentElement.classList.contains('mac') : false
 </script>
 
 <template>
