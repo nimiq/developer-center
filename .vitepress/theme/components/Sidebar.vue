@@ -14,7 +14,7 @@ const { sidebarGroups, hasSidebar } = useSidebar() as unknown as { sidebarGroups
 
 // a11y: focus Nav element when menu has opened
 const navEl = ref<HTMLElement | null>(null)
-const isLocked = useScrollLock(inBrowser ? document.body : null)
+const isLocked = useScrollLock(inBrowser ? globalThis.document.body : null)
 
 watch(
   [props, navEl],
@@ -66,7 +66,7 @@ function onSectionTitleClicked(i: number) {
 
         <ul pb-20>
           <li v-for="item in group.items" :key="item.text">
-            <SidebarItem :item="item" :depth="0" :class="item.items ? 'my32' : ''" />
+            <SidebarItem :item="item" :depth="0" :class="item.items ? 'my-32' : ''" />
           </li>
         </ul>
       </template>

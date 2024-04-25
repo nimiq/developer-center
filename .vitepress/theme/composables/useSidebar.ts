@@ -118,7 +118,7 @@ export function useCloseSidebarOnEscape(
 
   watchEffect(() => {
     triggerElement = isOpen.value
-      ? (document.activeElement as HTMLButtonElement)
+      ? (globalThis.document?.activeElement as HTMLButtonElement)
       : undefined
   })
 

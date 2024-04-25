@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inBrowser } from 'vitepress';
+
 /**
  * Credit to [@hooray](https://github.com/hooray)
  * @see https://github.com/vuejs/vitepress/pull/2347
@@ -8,7 +10,7 @@
 
 const { isDark } = useData()
 
-const enableTransitions = () => 'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+const enableTransitions = () => inBrowser && 'startViewTransition' in globalThis?.document && globalThis?.window.matchMedia('(prefers-reduced-motion: no-preference)').matches
 
 function getHexagonPoints(x: number, y: number, r: number): string {
   const angles = [0, 60, 120, 180, 240, 300]

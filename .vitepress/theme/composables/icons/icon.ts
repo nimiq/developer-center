@@ -62,8 +62,8 @@ export async function getSvg(icon: string, size = '1em', color = 'currentColor')
 export async function getSvgSymbol(icon: string, size = '1em', color = 'currentColor') {
   const svgMarkup = await getSvg(icon, size, color)
 
-  const symbolElem = document.createElementNS('http://www.w3.org/2000/svg', 'symbol')
-  const node = document.createElement('div') // Create any old element
+  const symbolElem = globalThis.document?.createElementNS('http://www.w3.org/2000/svg', 'symbol')
+  const node = globalThis.document.createElement('div') // Create any old element
   node.innerHTML = svgMarkup
 
   // Grab the inner HTML and move into a symbol element
@@ -79,7 +79,7 @@ export function toComponentName(icon: string) {
 }
 
 export function ClearSvg(svgCode: string, reactJSX?: boolean) {
-  const el = document.createElement('div')
+  const el = globalThis.document?.createElement('div')
   el.innerHTML = svgCode
   const svg = el.getElementsByTagName('svg')[0]
   const keep = ['viewBox', 'width', 'height', 'focusable', 'xmlns', 'xlink']
@@ -176,7 +176,7 @@ function convertSvgToPngDataUri(svgString: string, scale=1) {
         const img = new Image();
 
         img.onload = function() {
-            const canvas = document.createElement('canvas');
+            const canvas = globalThis.document?.createElement('canvas');
             canvas.width = img.width * scale;
             canvas.height = img.height * scale;
             const ctx = canvas.getContext('2d');

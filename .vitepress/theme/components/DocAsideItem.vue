@@ -11,7 +11,7 @@ defineProps<{
 
 function onClick({ target: el }: Event) {
   const id = (el as HTMLAnchorElement).href!.split('#')[1]
-  const heading = document.getElementById(decodeURIComponent(id))
+  const heading = globalThis.document?.getElementById(decodeURIComponent(id))
   heading?.focus({ preventScroll: true })
 }
 </script>

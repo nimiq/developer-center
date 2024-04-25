@@ -22,7 +22,7 @@ export function resolveTitle(theme: DefaultTheme.Config) {
 
 export function getHeaders(range: DefaultTheme.Config['outline']) {
   const headers = [
-    ...Array.from(document.querySelectorAll('.prose :where(h1,h2,h3,h4,h5,h6)')),
+    ...Array.from(globalThis.document?.querySelectorAll('.prose :where(h1,h2,h3,h4,h5,h6)')),
   ]
     .filter(el => el.id && el.hasChildNodes())
     .map((el) => {
@@ -132,7 +132,7 @@ export function useActiveAnchor(
 
     const scrollY = window.scrollY
     const innerHeight = window.innerHeight
-    const offsetHeight = document.body.offsetHeight
+    const offsetHeight = globalThis.document.body.offsetHeight
     const isBottom = Math.abs(scrollY + innerHeight - offsetHeight) < 1
 
     // resolvedHeaders may be repositioned, hidden or fix positioned
@@ -202,7 +202,7 @@ export function useActiveAnchor(
 
 function getAbsoluteTop(element: HTMLElement): number {
   let offsetTop = 0
-  while (element !== document.body) {
+  while (element !== globalThis.document.body) {
     if (element === null) {
       // child element is:
       // - not attached to the DOM (display: none)

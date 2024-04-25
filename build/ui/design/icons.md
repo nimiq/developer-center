@@ -6,6 +6,7 @@ next: false
 
 # Nimiq Icons
 
+<ClientOnly>
 <IconSet class="mt-32 pb-96 raw">
   <template #learn-how-to-use-the-icons>
 
@@ -39,3 +40,4 @@ Check out [this blog](https://antfu.me/posts/journey-with-icons-continues) post 
 
   </template>
 </IconSet>
+</ClientOnly>
