@@ -41,12 +41,16 @@ export async function generateRpcDocs() {
   const buildFolder = join(__dirname, '../../build/rpc-docs')
   // Read package version of generated docs, if already built
   const versionFile = join(buildFolder, '/.version')
+  const methodsFile = join(buildFolder, '/methods.md')
 
   if (existsSync(versionFile)) {
     const generatedVersion = readFileSync(versionFile, 'utf-8')
     if (specVersion === generatedVersion) {
-      consola.info(`RPC docs ${specVersion} already generated`)
-      return { specUrl, specVersion }
+      if(existsSync(methodsFile)) {
+        consola.info(`RPC docs ${specVersion} already generated`)
+        return { specUrl, specVersion }
+      } else 
+        consola.warn(`RPC docs ${specVersion} already generated, but methods.md is missing. Rebuilding...`)
     }
   }
 
