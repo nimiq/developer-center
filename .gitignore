@@ -6,6 +6,7 @@ node_modules
 # Ignore dynamically built web-client docs
 build/web-client
 !build/web-client/README.md
+!build/web-client/index.md
 
 # Ignore dynamically built RPC spec docs
 build/rpc-docs/.version

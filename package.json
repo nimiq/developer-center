@@ -16,7 +16,7 @@
     "preview": "vitepress preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --entryDocument index.md --hideBreadcrumbs",
+    "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --exclude index.md --hideBreadcrumbs",
     "update": "npx taze latest --update -w"
   },
   "dependencies": {
