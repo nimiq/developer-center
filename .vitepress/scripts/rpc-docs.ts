@@ -79,21 +79,16 @@ export async function generateRpcDocs() {
 ::: code-group
 
 \`\`\`JavaScript
-const res = await fetch(
-  'http://127.0.0.1:8648',
-  {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: {
-      "jsonrpc": "2.0",
-      "method": "{{ methodName }}",
-      "params": [{{ parametersValues }}],
-      "id": 1
-    }
+const res = await fetch('http://127.0.0.1:8648', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: {
+    "jsonrpc": "2.0",
+    "method": "{{ methodName }}",
+    "params": [{{ parametersValues }}],
+    "id": 1
   }
-);
+});
 const data = await res.json();
 \`\`\`
 
