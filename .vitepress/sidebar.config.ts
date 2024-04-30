@@ -11,10 +11,11 @@ function getFilesItemsFromFolder(folder: string) {
   const files = fs.readdirSync(basePath)
     .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
     .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
+    .filter(file => !file.startsWith('_')) // Exclude files starting with '_'
     .map((file) => {
       const filePath = path.basename(file, path.extname(file))
       const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) // Capitalize file name
-      const link = `/${folder}/${file}`
+      const link = `/${folder}/${file}`.split('.md').join('')
       return { file, filePath, text, link }
     })
 
@@ -104,13 +105,13 @@ export const sidebar: DefaultTheme.Sidebar = {
       // plugin to generate the docs first. After that it should just use the generated docs.
       get items() {
         return [
-          {
-            text: 'Getting started',
-            link: '/build/web-client/index',
-          },
-          Accordion({ path: 'build/web-client/classes', collapsed: false }),
-          Accordion({ path: 'build/web-client/enums', collapsed: true }),
-          Accordion({ path: 'build/web-client/interfaces', collapsed: true }),
+          { text: 'Overview', link: '/build/web-client/' },
+          { text: 'Getting started', link: '/build/web-client/getting-started' },
+          { text: 'Installation', link: '/build/web-client/installation' },
+          Accordion({ path: 'build/web-client/integrations', collapsed: false }),
+          Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
+          Accordion({ path: 'build/web-client/reference/enums', collapsed: true }),
+          Accordion({ path: 'build/web-client/reference/interfaces', collapsed: true }),
         ]
       },
     },

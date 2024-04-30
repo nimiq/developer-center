@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { type PropType, computed } from 'vue'
+import { computed } from 'vue'
 import { type Card, CardType } from '../utils/types'
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<Omit<Card, 'type'>[]>,
-    default: () => [],
-  },
-})
+const props = withDefaults(defineProps<{items: Card[]}>(), { items: () => [] })
 
 const items = computed<Card[]>(() => props.items.map((i) => {
-  const { bgColor, icon } = i
+  const { bgColor, icon, type } = i
+  if(type) return i
   if (bgColor)
     return { ...i, type: CardType.Bg } as Card
   if (icon)
@@ -26,16 +22,14 @@ const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(
 <template>
   <div flex="~ col">
     <!-- Grid with items with background color -->
-    <ul v-if="gridLg.length > 0" flex="~ col md:row md:flex-wrap gap-x-32">
-      <li v-for="item in gridLg" :key="item!.title" class="flex-1" max-md="mt-32">
+    <ul v-if="gridLg.length > 0" flex="~ col md:row md:flex-wrap gap-16 md:gap-32">
+      <li v-for="item in gridLg" :key="item!.title" class="flex-1">
         <Card :item="item" h-full />
       </li>
     </ul>
 
-    <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-x-32">
-      <li
-        v-for="item in gridSm" :key="item!.title" :class="{ mt32: gridLg.length > 0 }" max-md="mt-32"
-      >
+    <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap:32 md:gap-32">
+      <li v-for="item in gridSm" :key="item!.title" :class="{ 'mt-32': gridLg.length > 0 }">
         <Card :item="item" h-full />
       </li>
     </ul>

@@ -2,6 +2,6 @@
   "files": ["node_modules/@nimiq/core-web/types/web.d.ts"],
   "typedocOptions": {
     "entryPoints": ["node_modules/@nimiq/core-web/types/web.d.ts"],
-    "out": "build/web-client/tmp"
+    "out": "build/web-client/reference"
   }
 }
