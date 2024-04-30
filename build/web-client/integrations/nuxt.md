@@ -1,6 +1,6 @@
-# Nimiq Web Client in Vite
+# Nimiq Web Client in Nuxt
 
-The Nimiq Web Client ships with support for Vite.
+The Nimiq Web Client ships with support for Nuxt.
 
 ---
 
