@@ -36,7 +36,7 @@ client.addHeadChangedListener((head) => {
 
 ## Issues, bugs and feedback
 
-This is an early version of the client code compiled on WebAssembly, and as such there may be issues and friction, especially now that more people are trying it in more environments than we could ever test ourselves.
+This is an early version of the client code compiled to WebAssembly, and as such there may be issues and friction, especially now that more people are trying it in more environments than we could ever test ourselves.
 
 If you encounter problems or find a bug, please open an issue in our [Github repository](https://github.com/nimiq/core-rs-albatross).
 
