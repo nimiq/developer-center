@@ -4,7 +4,8 @@ import type { DefaultTheme } from 'vitepress'
 
 // @unocss-include
 
-function getFilesItemsFromFolder(folder: string) {
+type GetFilesItemsFromFolderOption = { order?: string[] }
+function getFilesItemsFromFolder(folder: string, { order =[] }: GetFilesItemsFromFolderOption = {}) {
   const basePath = path.join(__dirname, `../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
@@ -12,6 +13,7 @@ function getFilesItemsFromFolder(folder: string) {
     .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
     .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
     .filter(file => !file.startsWith('_')) // Exclude files starting with '_'
+    .sort((a, b) => order.indexOf(a) - order.indexOf(b)) // Sort by order
     .map((file) => {
       const filePath = path.basename(file, path.extname(file))
       const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) // Capitalize file name
@@ -22,12 +24,12 @@ function getFilesItemsFromFolder(folder: string) {
   return files
 }
 
-export function Accordion({ path, collapsed = true }: { path: string, collapsed?: boolean }) {
+export function Accordion({ path, collapsed = true, order }: { path: string, collapsed?: boolean } & GetFilesItemsFromFolderOption) {
   const text = (path.split('/').at(-1) || path).replace(/-/g, ' ')
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path),
+    items: getFilesItemsFromFolder(path, {order}),
     collapsed,
   }
 }
@@ -108,10 +110,10 @@ export const sidebar: DefaultTheme.Sidebar = {
           { text: 'Overview', link: '/build/web-client/' },
           { text: 'Getting started', link: '/build/web-client/getting-started' },
           { text: 'Installation', link: '/build/web-client/installation' },
-          Accordion({ path: 'build/web-client/integrations', collapsed: false }),
+          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md']}),
           Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
-          Accordion({ path: 'build/web-client/reference/enums', collapsed: true }),
-          Accordion({ path: 'build/web-client/reference/interfaces', collapsed: true }),
+          Accordion({ path: 'build/web-client/reference/enums', collapsed: false }),
+          Accordion({ path: 'build/web-client/reference/interfaces', collapsed: false }),
         ]
       },
     },
