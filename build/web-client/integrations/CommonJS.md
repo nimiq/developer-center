@@ -4,17 +4,7 @@ The Nimiq Web Client ships with support for CommonJS.
 
 ---
 
-## Installation {.mt-16}
-
-::: code-group
-
-```bash [npm]
-npm install @nimiq/core-web@next
-```
-
-```bash [yarn]
-yarn add @nimiq/core-web@next
-```
+<!--@include: ./_installation.md-->
 
 And now you are ready to go!
 
