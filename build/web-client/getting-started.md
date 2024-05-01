@@ -10,7 +10,7 @@ The protocol is based on the [Albatross consensus algorithm](/learn/), a proof-o
 
 ## The Nimiq Web Client
 
-The Nimiq Web Client is a JavaScript library that allows you to interact with the Nimiq blockchain directly in your browser. It provides a simple interface to create wallets, send transactions and interact with the blockchain.
+The Nimiq Web Client is a JavaScript library that allows you to interact with the Nimiq PoS blockchain directly in your browser. It provides a simple interface to create wallets, send transactions and interact with the blockchain.
 
 Reaching consensus with the network is easy:
 
