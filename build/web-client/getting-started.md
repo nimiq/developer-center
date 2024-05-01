@@ -4,9 +4,9 @@ next: ./installation/
 
 # What's Nimiq?
 
-Nimiq is an open source crypto designed for simplicity and ease of use. With our browser-first approach, Nimiq works directly within web browsers without the need for additional software, allowing developers easy integration and users seamless interaction.
+Nimiq is an open source crypto designed for simplicity and ease of use. With our browser-first approach, Nimiq works directly within web browsers without the need for additional software, providing easy integration for developers and seamless interaction for users.
 
-The protocol is based on the [Albatross consensus algorithm](/learn/), a proof-of-stake system renowned for its speed, security and low power consumption. Albatross supports high transaction throughput, capable of handling thousands of transactions per second.
+The protocol is based on the [Albatross consensus algorithm](/learn/), a proof-of-stake system renowned for its speed, security and low power consumption. Albatross supports high transaction throughput, and can handle thousands of transactions per second.
 
 ## The Nimiq Web Client
 
