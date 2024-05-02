@@ -39,6 +39,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Learn',
       icon: 'i-nimiq:icons-lg-bulb',
+      link: '/learn/',
       items: [
         { text: 'Home', link: '/learn/' },
         { text: 'Overview', link: '/learn/protocol/overview' },
@@ -49,6 +50,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       prefix: 'About the',
       text: 'Protocol',
       icon: 'i-nimiq:icons-lg-nodes',
+      link: '/learn/',
       items: [
         { text: 'Block Format', link: '/learn/protocol/block-format' },
         { text: 'Penalties', link: '/learn/protocol/penalties' },
@@ -92,6 +94,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Build',
       icon: 'i-nimiq:icons-lg-tools',
+      link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
@@ -102,6 +105,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Web client',
       icon: 'i-nimiq:icons-lg-bulb',
+      link: '/build/web-client/',
 
       // Needs to be dynamic. The first time the developer does run the project in needs to run the
       // plugin to generate the docs first. After that it should just use the generated docs.
@@ -121,6 +125,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: 'UI',
       icon: 'i-nimiq:globe',
       prefix: 'Using Nimiq\'s',
+      link: '/build/ui/css-framework/overview',
       items: [
         {
           text: 'Design',
