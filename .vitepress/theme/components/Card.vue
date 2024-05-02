@@ -26,7 +26,7 @@ const hasLink = computed(() => props.item.href)
       'p-20 md:p-40': isIcon,
       'items-center': centered,
       'flex flex-col': !isIconSmall,
-      'grid grid-cols-[24px_1fr] grid-rows-[auto_1fr] gap-x-16 gap-y-4 items-center': isIconSmall,
+      'grid grid-cols-[24px_1fr] grid-rows-[max-content_1fr] gap-x-16 gap-y-4 items-center': isIconSmall,
       'transition hocus:translate-y--6 hocus:shadow cursor-pointer': hasLink
     }"
   >
@@ -53,6 +53,7 @@ const hasLink = computed(() => props.item.href)
         'mb-12': !item.icon,
         'text-white group-hocus:text-white': item.bgColor,
         'text-darkblue dark:text-white dark:group-hocus:text-darkblue': !item.bgColor,
+        'lh-[1.2]': isIconSmall
       }"
       z-1 inverted:max-w-256
     >
