@@ -4,22 +4,22 @@
 
 ```bash [npm]
 npm install @nimiq/core-web@next
-npm install -D vite-plugin-wasm vite-plugin-wasm
+npm install -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [yarn]
 yarn add @nimiq/core-web@next
-yarn add -D vite-plugin-wasm vite-plugin-wasm
+yarn add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [pnpm]
 pnpm add @nimiq/core-web@next
-pnpm add -D vite-plugin-wasm vite-plugin-wasm
+pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [bun]
 bun add @nimiq/core-web@next
-bun add -D vite-plugin-wasm vite-plugin-wasm
+bun add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 :::
