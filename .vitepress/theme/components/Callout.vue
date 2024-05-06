@@ -6,7 +6,7 @@ const classes = computed(() => {
   switch (props.type) {
     case 'warning': {
       return {
-        container: 'bg-orange-400/70 dark:bg-orange-400 text-orange [--border-color:rgb(var(--nq-orange)/0.1)]',
+        container: 'bg-orange-400 dark:bg-orange-400 text-orange-1100 [--border-color:rgb(var(--nq-orange)/0.1)]',
         icon: 'i-nimiq:alert',
       }
     }
@@ -18,7 +18,7 @@ const classes = computed(() => {
     }
     case 'info': {
       return {
-        container: 'bg-blue-400 text-blue [--border-color:rgb(var(--nq-blue)/0.15)]',
+        container: 'bg-blue-400 text-blue-1100 [--border-color:rgb(var(--nq-blue)/0.15)]',
         icon: 'i-nimiq:info',
       }
     }
@@ -29,10 +29,10 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div w-full :class="classes.container" class="raw" px-24 py-20 rounded-6 my-64 border-base>
+  <div w-full :class="classes.container" px-24 py-20 rounded-6 my-64 border-base class="raw">
     <div flex="~ gap-8 items-center" mb-12>
       <div :class="classes.icon" op-80 text-14 />
-      <h5 label>
+      <h5 label text-current>
         {{ type }}
       </h5>
     </div>

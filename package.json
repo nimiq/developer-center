@@ -16,7 +16,7 @@
     "preview": "vitepress preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --entryDocument index.md --hideBreadcrumbs",
+    "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --exclude index.md --hideBreadcrumbs",
     "update": "npx taze latest --update -w"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "jszip": "^3.10.1",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
-    "nimiq-css": "^0.0.75",
+    "nimiq-css": "^0.0.85",
     "prettier": "^3.2.5",
     "radix-vue": "^1.6.2",
     "svg-packer": "^0.0.3",

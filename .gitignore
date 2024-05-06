@@ -4,8 +4,8 @@ node_modules
 .vitepress/.temp
 
 # Ignore dynamically built web-client docs
-build/web-client
-!build/web-client/README.md
+build/web-client/reference
+build/web-client/.version
 
 # Ignore dynamically built RPC spec docs
 build/rpc-docs/.version

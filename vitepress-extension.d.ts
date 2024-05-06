@@ -1,5 +1,5 @@
 import 'vitepress'
-import type { NavigationType } from './theme/components/header/navigation-types'
+import type { NavigationType } from './.vitepress/theme/components/header/navigation-types'
 
 declare module 'vitepress' {
   interface PageData {

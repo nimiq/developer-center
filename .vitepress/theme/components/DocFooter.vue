@@ -7,7 +7,7 @@ import { usePrevNext } from '../composables/usePrevNext'
 const { page, frontmatter } = useData()
 
 const webClientRepoUrl = 'https://github.com/nimiq/core-rs-albatross/tree/albatross/web-client'
-const isWebClientDoc = computed(() => page.value.filePath.startsWith('build/web-client'))
+const isWebClientDoc = computed(() => page.value.filePath.startsWith('build/web-client/reference'))
 
 const repoUrl = __REPO_URL__
 

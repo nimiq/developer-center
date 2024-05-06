@@ -4,29 +4,32 @@ import type { DefaultTheme } from 'vitepress'
 
 // @unocss-include
 
-function getFilesItemsFromFolder(folder: string) {
+type GetFilesItemsFromFolderOption = { order?: string[] }
+function getFilesItemsFromFolder(folder: string, { order =[] }: GetFilesItemsFromFolderOption = {}) {
   const basePath = path.join(__dirname, `../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
   const files = fs.readdirSync(basePath)
     .filter(file => !fs.lstatSync(path.join(basePath, file)).isDirectory()) // Exclude directories
     .filter(file => path.extname(file) === '.md') // Exclude non-markdown files
+    .filter(file => !file.startsWith('_')) // Exclude files starting with '_'
+    .sort((a, b) => order.indexOf(a) - order.indexOf(b)) // Sort by order
     .map((file) => {
       const filePath = path.basename(file, path.extname(file))
       const text = filePath.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) // Capitalize file name
-      const link = `/${folder}/${file}`
+      const link = `/${folder}/${file}`.split('.md').join('')
       return { file, filePath, text, link }
     })
 
   return files
 }
 
-export function Accordion({ path, collapsed = true }: { path: string, collapsed?: boolean }) {
+export function Accordion({ path, collapsed = true, order }: { path: string, collapsed?: boolean } & GetFilesItemsFromFolderOption) {
   const text = (path.split('/').at(-1) || path).replace(/-/g, ' ')
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path),
+    items: getFilesItemsFromFolder(path, {order}),
     collapsed,
   }
 }
@@ -36,6 +39,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Learn',
       icon: 'i-nimiq:icons-lg-bulb',
+      link: '/learn/',
       items: [
         { text: 'Home', link: '/learn/' },
         { text: 'Overview', link: '/learn/protocol/overview' },
@@ -46,6 +50,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       prefix: 'About the',
       text: 'Protocol',
       icon: 'i-nimiq:icons-lg-nodes',
+      link: '/learn/',
       items: [
         { text: 'Block Format', link: '/learn/protocol/block-format' },
         { text: 'Penalties', link: '/learn/protocol/penalties' },
@@ -89,6 +94,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Build',
       icon: 'i-nimiq:icons-lg-tools',
+      link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
@@ -99,18 +105,19 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Web client',
       icon: 'i-nimiq:icons-lg-bulb',
+      link: '/build/web-client/',
 
       // Needs to be dynamic. The first time the developer does run the project in needs to run the
       // plugin to generate the docs first. After that it should just use the generated docs.
       get items() {
         return [
-          {
-            text: 'Getting started',
-            link: '/build/web-client/index',
-          },
-          Accordion({ path: 'build/web-client/classes', collapsed: false }),
-          Accordion({ path: 'build/web-client/enums', collapsed: true }),
-          Accordion({ path: 'build/web-client/interfaces', collapsed: true }),
+          { text: 'Overview', link: '/build/web-client/' },
+          { text: 'Getting started', link: '/build/web-client/getting-started' },
+          { text: 'Installation', link: '/build/web-client/installation' },
+          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md']}),
+          Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
+          Accordion({ path: 'build/web-client/reference/enums', collapsed: false }),
+          Accordion({ path: 'build/web-client/reference/interfaces', collapsed: false }),
         ]
       },
     },
@@ -118,6 +125,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: 'UI',
       icon: 'i-nimiq:globe',
       prefix: 'Using Nimiq\'s',
+      link: '/build/ui/css-framework/overview',
       items: [
         {
           text: 'Design',
