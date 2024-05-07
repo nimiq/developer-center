@@ -4,8 +4,8 @@ import type { DefaultTheme } from 'vitepress'
 
 // @unocss-include
 
-type GetFilesItemsFromFolderOption = { order?: string[] }
-function getFilesItemsFromFolder(folder: string, { order =[] }: GetFilesItemsFromFolderOption = {}) {
+interface GetFilesItemsFromFolderOption { order?: string[] }
+function getFilesItemsFromFolder(folder: string, { order = [] }: GetFilesItemsFromFolderOption = {}) {
   const basePath = path.join(__dirname, `../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
@@ -29,7 +29,7 @@ export function Accordion({ path, collapsed = true, order }: { path: string, col
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path, {order}),
+    items: getFilesItemsFromFolder(path, { order }),
     collapsed,
   }
 }
@@ -100,6 +100,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
         { text: 'Migration to PoS', link: '/build/migration-guide' },
         { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
+        { text: 'Web Client x RPC', link: '/build/web-client-rpc' },
       ],
     },
     {
@@ -114,7 +115,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           { text: 'Overview', link: '/build/web-client/' },
           { text: 'Getting started', link: '/build/web-client/getting-started' },
           { text: 'Installation', link: '/build/web-client/installation' },
-          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md']}),
+          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md'] }),
           Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
           Accordion({ path: 'build/web-client/reference/enums', collapsed: false }),
           Accordion({ path: 'build/web-client/reference/interfaces', collapsed: false }),
