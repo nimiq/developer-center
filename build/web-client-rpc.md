@@ -1,4 +1,4 @@
-# Web Client X RPC
+# Web Client VS RPC Client
 
 If you're unsure which client to use for interacting with the Nimiq blockchain, this page offers a comparison between the Nimiq Web Client and the RPC so you can choose the tool that best fits your needs and expertise. {.subline}
 
@@ -9,7 +9,7 @@ The Nimiq Web Client establishes direct connections with other peers in the netw
 
 ## Nimiq Web Client
 
-The Nimiq Web Client is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem directly from your web browser. This client is compiled from Rust to WebAssembly and offers a lightweight solution for users who want to interact with the Nimiq blockchain.
+The [Nimiq Web Client](/build/web-client/getting-started.md) is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem directly from your web browser. This client is compiled from Rust to WebAssembly and offers a lightweight solution for users who want to interact with the Nimiq blockchain.
 
 The Web Client provides a user-friendly interface for building consensus with other nodes, creating wallets, sending transactions, and interacting with the blockchain with simple operations. It simplifies user interaction and offers easy integration.
 
@@ -17,7 +17,7 @@ Users can access the Web Client on mobile devices, such as smartphones and table
 
 ## Nimiq RPC
 
-The Nimiq RPC provides developers access to the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
+The [Nimiq RPC](/build/rpc-docs/index.md) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
 
 The RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
