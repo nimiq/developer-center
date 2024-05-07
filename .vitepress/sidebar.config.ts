@@ -100,7 +100,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
         { text: 'Migration to PoS', link: '/build/migration-guide' },
         { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
-        { text: 'Web Client x RPC', link: '/build/web-client-rpc' },
+        { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },
     {
