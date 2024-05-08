@@ -46,7 +46,7 @@ For users seeking a straightforward and user-friendly way to interact with the b
 
 ### RPC
 
-For developers, tech-savvies, and validators looking for more advanced control over blockchain operations, the Nimiq RPC provides extensive capabilities for access to nodes. Through established methods and endpoints, users can perform a wide range of operations, including:
+For developers, tech-savvies, and validators looking for more advanced control over blockchain operations, the Nimiq RPC provides extensive capabilities for accessing their nodes. Through established methods and endpoints, users can perform a wide range of operations, including:
 
 - Create new accounts
 - Create special transactions, such as deactivating validators or redeeming early HTLCs
