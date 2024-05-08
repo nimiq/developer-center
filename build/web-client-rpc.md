@@ -21,15 +21,15 @@ The [Nimiq RPC](/build/rpc-docs/index.md) provides developers access to a node t
 
 The RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
-The RPC supports interaction with nodes and allows users to call its endpoints using JavaScript or shell scripting languages. Comprehensive API documentation is available for the RPC, detailing the methods, parameters, and endpoints supported by the interface, facilitating seamless integration and development.
+The RPC supports interaction with nodes and allows users to call its endpoints using JavaScript, shell scripting languages, or any language or software capable of sending requests according to the JSON-RPC specification. Comprehensive API documentation is available for the RPC, detailing the methods, parameters, and endpoints supported by the interface, facilitating seamless integration and development.
+
 
 ## How to know which one to use?
 
 | Aspect | Web Client | RPC Client |
 | --- | --- | --- |
-| Use Case | Simple blockchain tasks | Complex blockchain operations |
 | Nimiq Use | Nimiq Pay App | TrustWallet |
-| Accessibility | Works in web browsers | Requires coding skills to use |
+| Accessibility | Requires familiarity with JavaScript and similar frameworks like NodeJS; can be run in a browser | Requires adherence to the JSON-RPC specification |
 | Functionality | Basic blockchain tasks | Gives detailed control over blockchain functions |
 | User Base | Easy for beginners | For developers, experienced users, validators |
 
