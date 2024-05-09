@@ -38,4 +38,4 @@ footer: false
 Nimiq is made for people to build on it. You just need a browser and Internet.{.subline}
 
 <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
-<Grid  :items="$frontmatter.links" mt-64 />
+<Grid :items="$frontmatter.links" mt-64 />

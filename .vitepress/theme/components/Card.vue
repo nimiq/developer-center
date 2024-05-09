@@ -26,7 +26,7 @@ const hasLink = computed(() => props.item.href)
       'p-20 md:p-40': isIcon,
       'items-center': centered,
       'flex flex-col': !isIconSmall,
-      'grid grid-cols-[24px_1fr] grid-rows-[max-content_1fr] gap-x-16 gap-y-4 items-center': isIconSmall,
+      'grid grid-cols-[24px_1fr] grid-rows-[max-content_1fr] gap-x-8 md:gap-x-16 gap-y-4 items-center': isIconSmall,
       'transition hocus:translate-y--6 hocus:shadow cursor-pointer': hasLink
     }"
   >
@@ -36,7 +36,8 @@ const hasLink = computed(() => props.item.href)
         'text-[#0E65C9]': item.bgColor === 'blue',
         'text-[#1DA186]': item.bgColor === 'green',
         'text-neutral-700 text-96 mb-56 group-hocus:text-darkblue transition-colors': centered,
-        'text-24 text-neutral': isIconSmall
+        'text-24 text-neutral': isIconSmall,
+        'dark:group-hocus:text-neutral-600': isIconSmall && hasLink
       }"
     >
       <div :class="item.icon" />
@@ -52,7 +53,8 @@ const hasLink = computed(() => props.item.href)
         'mb-20': item.icon && !isIconSmall,
         'mb-12': !item.icon,
         'text-white group-hocus:text-white': item.bgColor,
-        'text-darkblue dark:text-white dark:group-hocus:text-darkblue': !item.bgColor,
+        'text-neutral': !item.bgColor,
+        'dark:group-hocus:text-darkblue': !item.bgColor && hasLink,
         'lh-[1.2]': isIconSmall
       }"
       z-1 inverted:max-w-256
@@ -64,6 +66,7 @@ const hasLink = computed(() => props.item.href)
       :class="[item.bgColor && item.icon ? 'mt-auto' : 'mt-12', {
         'text-center': centered,
         'col-span-full !mt-0 text-14 text-neutral-900': isIconSmall,
+        'dark:group-hocus:text-neutral-200': isIconSmall && hasLink
         }]"
     >
       {{ item.description }}

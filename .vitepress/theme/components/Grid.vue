@@ -28,7 +28,7 @@ const gridSm = computed(() => items.value.filter(item => !gridLg.value.includes(
       </li>
     </ul>
 
-    <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap:32 md:gap-32">
+    <ul v-if="gridSm.length > 0" grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-16 md:gap-32">
       <li v-for="item in gridSm" :key="item!.title" :class="{ 'mt-32': gridLg.length > 0 }">
         <Card :item="item" h-full />
       </li>
