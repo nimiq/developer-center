@@ -6,7 +6,7 @@ The Nimiq Web Client ships with support for Webpack.
 
 <!--@include: ./_installation.md-->
 
-Update your `webpack.config.js`:
+Update your `webpack.config.js` to enable the [`asyncWebAssembly`](https://webpack.js.org/configuration/experiments/#asyncWebAssembly) :
 
 ```javascript
 module.exports = {
@@ -19,9 +19,7 @@ module.exports = {
 Now you are ready to go!
 
 ```js
-const Nimiq = await import('nimiq/core-web/web') // You need to use await import() to load the WebAssembly module
-
-await Nimiq()
+const Nimiq = await import('nimiq/core-web') // You need to use await import() to load the WebAssembly module
 
 const config = new Nimiq.ClientConfiguration()
 const client = await Nimiq.Client.create(config.build())
@@ -31,7 +29,7 @@ await client.waitForConsensusEstablished​()
 
 <Callout type='warning'>
 
-You need to use `await import()` to load the WebAssembly module.
+You need to use `await import()` to load the WebAssembly module and also experiment in your config.
 
 </Callout>
 
