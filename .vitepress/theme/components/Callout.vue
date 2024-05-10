@@ -41,7 +41,7 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
-.callout ::v-deep a {
+.callout ::v-deep(a) {
   --uno: underline;
 }
 </style>

@@ -39,7 +39,7 @@ client.addHeadChangedListener((head) => {
 
 ## Using your private node
 
-Although the Web Client already offers a lot of functionality, you can also set up your own private node for full control and advanced customisation. [Find out more](../web-client-rpc.md).
+Although the Web Client already offers a lot of functionality, you can also set up your own private node for full control and advanced customisation. [Find out more about their differences](../web-client-rpc.md).
 
 ## Issues, bugs and feedback
 

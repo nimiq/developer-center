@@ -16,7 +16,7 @@ To become a validator, users must have three essential components: a validator a
 
 This phase involves a series of six transactions to register the validator keys and an additional one to confirm by paying the deposit for the validator. Users must complete the entire sequence of transactions to have their validator included in the PoS genesis block. NIM spent on incomplete registrations will be burned.
 
-To facilitate this process, Nimiq provides a two-mode tool. This tool allows users to generate validator keys and send properly formatted registration transactions to the blockchain. Users can either use our tool or send the transactions manually. Please refer to [our guide](../../build/migration-guide.md) to learn how to use the tool. Read on to learn how the registration transactions are structured.
+To facilitate this process, Nimiq provides a two-mode tool. This tool allows users to generate validator keys and send properly formatted registration transactions to the blockchain. Users can either use our tool or send the transactions manually. Please refer to [our guide](/build/private-node/migration-guide.md) to learn how to use the tool. Read on to learn how the registration transactions are structured.
 
 ### Registration transactions
 
