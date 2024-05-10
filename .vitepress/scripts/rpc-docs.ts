@@ -157,7 +157,7 @@ curl --request POST --url http://127.0.0.1:8648
   if (!existsSync(buildFolder))
     mkdirSync(buildFolder)
 
-  writeFileSync(join(__dirname, '../../build/rpc-docs/methods.md'), json2md(methodsMd))
+  writeFileSync(join(buildFolder, 'methods.md'), json2md(methodsMd))
   writeFileSync(versionFile, specVersion)
 
   return { specUrl, specVersion }
