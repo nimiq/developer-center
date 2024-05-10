@@ -53,8 +53,10 @@ The Nimiq Web Client is a Javascript library that allows you to manage and trans
 <div flex="~ gap-16" mt-36 class="raw">
   <a href="./getting-started" pill-blue arrow>Getting Started</a>
   <!-- <a href="./getting-started" pill-tertiary>Tutorials</a> -->
-  <a href="../rpc-docs/" pill-tertiary>Use RPC instead</a>
+  <a href="./installation.md" pill-tertiary>Installation</a>
 </div>
 
 <Grid :items="$frontmatter.webClientFeatures" mt-64 mb-136 />
+
+
 

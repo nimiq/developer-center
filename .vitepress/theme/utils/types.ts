@@ -25,6 +25,7 @@ export type Card = NormalCard | IconCard | IconBgCard | IconSmallCard
 export enum Tag {
   RPC = 'RPC',
   WebClient = 'Web Client',
+  PrivateNode = 'Private Node',
   Validator = 'Validator',
   Asset = 'Asset',
   NimiqBrandKit = 'Nimiq Brand Kit',

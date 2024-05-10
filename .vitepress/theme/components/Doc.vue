@@ -34,8 +34,8 @@ const pageName = computed(() =>
         <main class="main">
           <MarkdownContent
             :class="[
-              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb64 children:mx-auto',
-              frontmatter.prose === false ? `px-32 md:px96 pb64 md:pb128` : '',
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb-64 children:mx-auto',
+              frontmatter.prose === false ? `px-32 md:px-96 pb-64 md:pb-128` : '',
               pageName,
               theme.externalLinkIcon && 'external-link-icon-enabled',
             ]"
@@ -272,6 +272,18 @@ div[class*="language"] {
   }
 
   &.info {
+    --uno: bg-neutral-200 text-neutral-800 ring-neutral/8;
+
+    .custom-block-title {
+      --uno: text-neutral-700 pl-20;
+
+      &::before {
+        --uno: i-nimiq:info;
+      }
+    }
+  }
+
+  &.details {
     --uno: bg-neutral-200 text-neutral-800 ring-neutral/8;
 
     .custom-block-title {

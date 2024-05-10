@@ -97,13 +97,12 @@ export const sidebar: DefaultTheme.Sidebar = {
       link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
-        { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
-        { text: 'Migration to PoS', link: '/build/migration-guide' },
-        { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
+
         { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },
     {
+      prefix: 'Use the',
       text: 'Web client',
       icon: 'i-nimiq:icons-lg-bulb',
       link: '/build/web-client/',
@@ -123,8 +122,20 @@ export const sidebar: DefaultTheme.Sidebar = {
       },
     },
     {
-      text: 'UI',
+      text: 'Private node',
+      prefix: 'Set up your',
       icon: 'i-nimiq:globe',
+      link: '/build/private-node/',
+      items: [
+        { text: 'Overview', link: '/build/private-node/' },
+        { text: 'Becoming a Validator', link: '/build/private-node/becoming-a-validator' },
+        { text: 'Migration to PoS', link: '/build/private-node/migration-guide' },
+        { text: 'JSON-RPC Specification', link: '/build/private-node/rpc-docs/' },
+      ]
+    },
+    {
+      text: 'UI',
+      icon: 'i-nimiq:icons-lg-palette',
       prefix: 'Using Nimiq\'s',
       link: '/build/ui/css-framework/overview',
       items: [
