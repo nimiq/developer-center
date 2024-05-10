@@ -22,7 +22,7 @@ links:
     tags: ['Web Client', 'Private Node']
     href: web-client-rpc/
   - label: RPC
-    title: Use the RPC
+    title: Use RPC
     href: private-node/rpc-docs/
     tags: [RPC]
   - label: Our design rules

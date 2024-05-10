@@ -17,7 +17,7 @@ Users can access the Web Client on mobile devices, such as smartphones and table
 
 ## Nimiq RPC
 
-[Nimiq RPC](/build/rpc-docs/index.md) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
+[Nimiq RPC](/build/private-node/rpc-docs/index.md) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
 
 RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
@@ -56,7 +56,7 @@ For developers, tech-savvies, and validators looking for more advanced control o
 
 ## Start building now
 
-Now, that you know the differences, why not start building?
+Now that you know the differences, why not start building?
 
 <div flex="~ gap-16 items-center" class="raw" mt-16>
   <a href="/build/web-client/index.md" arrow pill-sm pill-blue>Web Client</a>
@@ -65,4 +65,4 @@ Now, that you know the differences, why not start building?
 
 ## Learn about the protocol
 
-Curious about how the Nimiq blockchain works? Dive into the [Nimiq Albatross](/protocol/albatross.md) to learn more about the consensus algorithm, block structure, network protocol and more.
+Curious about how the Nimiq blockchain works? Dive into the [Nimiq Albatross protocol documentation](/learn/) to learn more about the consensus algorithm, block structure, network protocol and more.

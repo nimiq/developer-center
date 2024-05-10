@@ -25,7 +25,6 @@ footer: false
 
 # Set up your Nimiq Albatross node
 
-
 Full Control and Advanced Customization Beyond the Web Client.{.subline}
 
 <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
