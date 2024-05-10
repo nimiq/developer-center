@@ -17,9 +17,14 @@ links:
     description: Collect stake, validate blocks and earn.
     tags: [Validator]
     href: becoming-a-validator
+  - label: Clients
+    title: Web vs RPC
+    tags: ['Web Client', 'Private Node']
+    href: web-client-rpc/
   - label: RPC
-    title: Connect via RPC
-    href: rpc-docs/
+    title: Use the RPC
+    href: private-node/rpc-docs/
+    tags: [RPC]
   - label: Our design rules
     title: Design something awesome
     href: ui/design/

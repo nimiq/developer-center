@@ -52,3 +52,17 @@ For developers, tech-savvies, and validators looking for more advanced control o
 - Verify transactions
 - List all available accounts and their balances
 - Retrieve ZKP state information
+
+
+## Start building now
+
+Now, that you know the differences, why not start building?
+
+<div flex="~ gap-16 items-center" class="raw" mt-16>
+  <a href="/build/web-client/index.md" arrow pill-sm pill-blue>Web Client</a>
+  <a href="/build/private-node/index.md" arrow pill-sm pill-secondary>Your private node</a>
+</div>
+
+## Learn about the protocol
+
+Curious about how the Nimiq blockchain works? Dive into the [Nimiq Albatross](/protocol/albatross.md) to learn more about the consensus algorithm, block structure, network protocol and more.
