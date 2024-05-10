@@ -59,8 +59,8 @@ For developers, tech-savvies, and validators looking for more advanced control o
 Now that you know the differences, why not start building?
 
 <div flex="~ gap-16 items-center" class="raw" mt-16>
-  <a href="/build/web-client/index.md" arrow pill-sm pill-blue>Web Client</a>
-  <a href="/build/private-node/index.md" arrow pill-sm pill-secondary>Your private node</a>
+  <a href="./web-client/" arrow pill-sm pill-blue>Web Client</a>
+  <a href="./private-node/" arrow pill-sm pill-secondary>Your private node</a>
 </div>
 
 ## Learn about the protocol

@@ -31,6 +31,8 @@ Feel free to contribute if you want to improve any part of the docs. PRs all wel
 
 ## Set up
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fb410bb8-181e-4aa9-8343-9d636c728c2c/deploy-status)](https://app.netlify.com/sites/developer-center/deploys)
+
 ```bash
 git clone https://github.com/nimiq/developer-center # Clone repo. You can also fork it and clone from your fork
 cd developer-center

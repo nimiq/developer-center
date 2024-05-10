@@ -32,4 +32,4 @@ Full Control and Advanced Customization Beyond the Web Client.{.subline}
 
 ## Not sure which client to use? {.mt-64}
 
-Most applications will not require a private node. To learn more, explore the differences between the [Web Client and RPC](/build/web-client-rpc.md).{.mt-16}.
+Most applications will not require a private node. To learn more, explore the differences between the [Web Client and RPC](/build/web-client-rpc.md).{.mt-16}

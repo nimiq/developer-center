@@ -124,7 +124,7 @@ export const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Private node',
       prefix: 'Set up your',
-      icon: 'i-nimiq:globe',
+      icon: 'i-nimiq:server',
       link: '/build/private-node/',
       items: [
         { text: 'Overview', link: '/build/private-node/' },

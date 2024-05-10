@@ -80,7 +80,6 @@ const isMac = inBrowser ? document.documentElement.classList.contains('mac') : f
           <MobileMenu :navigation />
         </template>
         <template v-else>
-          {{ isSmall }}
           <SearchBox v-if="showSearch" @close="showSearch = false" />
           <button ml-32 text-14 py-6 px-12 input-box max-w-320 min-w-192 group flex="~ gap-8 items-center" rounded-full
             class="group" @click="showSearch = true">
