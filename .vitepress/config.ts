@@ -13,9 +13,13 @@ import { generateRpcDocs } from './scripts/rpc-docs'
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
-  const isProduction = env.DEPLOYMENT_MODE === 'production'
-  const base = isProduction ? '/developers' : '/developer-center'
-  consola.info(`Building for ${isProduction ? 'production' : 'development'}. The base URL is ${base}`)
+  const basesUrl = {
+    'production': '/developers',
+    'development': '/developer-center',	
+    'staging': '/'
+  }
+  const base = basesUrl[env.DEPLOYMENT_MODE]
+  consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
   await generateWebClientDocs()
   const { specUrl, specVersion } = await generateRpcDocs()

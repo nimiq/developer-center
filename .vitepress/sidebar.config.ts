@@ -4,8 +4,8 @@ import type { DefaultTheme } from 'vitepress'
 
 // @unocss-include
 
-type GetFilesItemsFromFolderOption = { order?: string[] }
-function getFilesItemsFromFolder(folder: string, { order =[] }: GetFilesItemsFromFolderOption = {}) {
+interface GetFilesItemsFromFolderOption { order?: string[] }
+function getFilesItemsFromFolder(folder: string, { order = [] }: GetFilesItemsFromFolderOption = {}) {
   const basePath = path.join(__dirname, `../${folder}`)
 
   // Get all files in the folder. Exclude ignored files, directories, and non-markdown files.
@@ -29,7 +29,7 @@ export function Accordion({ path, collapsed = true, order }: { path: string, col
   const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
-    items: getFilesItemsFromFolder(path, {order}),
+    items: getFilesItemsFromFolder(path, { order }),
     collapsed,
   }
 }
@@ -97,12 +97,12 @@ export const sidebar: DefaultTheme.Sidebar = {
       link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
-        { text: 'Becoming a Validator', link: '/build/becoming-a-validator' },
-        { text: 'Migration to PoS', link: '/build/migration-guide' },
-        { text: 'JSON-RPC Specification', link: '/build/rpc-docs/' },
+
+        { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },
     {
+      prefix: 'Use the',
       text: 'Web client',
       icon: 'i-nimiq:icons-lg-bulb',
       link: '/build/web-client/',
@@ -114,7 +114,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           { text: 'Overview', link: '/build/web-client/' },
           { text: 'Getting started', link: '/build/web-client/getting-started' },
           { text: 'Installation', link: '/build/web-client/installation' },
-          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md']}),
+          Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md'] }),
           Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
           Accordion({ path: 'build/web-client/reference/enums', collapsed: false }),
           Accordion({ path: 'build/web-client/reference/interfaces', collapsed: false }),
@@ -122,8 +122,20 @@ export const sidebar: DefaultTheme.Sidebar = {
       },
     },
     {
-      text: 'UI',
+      text: 'Private node',
+      prefix: 'Set up your',
       icon: 'i-nimiq:globe',
+      link: '/build/private-node/',
+      items: [
+        { text: 'Overview', link: '/build/private-node/' },
+        { text: 'Becoming a Validator', link: '/build/private-node/becoming-a-validator' },
+        { text: 'Migration to PoS', link: '/build/private-node/migration-guide' },
+        { text: 'JSON-RPC Specification', link: '/build/private-node/rpc-docs/' },
+      ]
+    },
+    {
+      text: 'UI',
+      icon: 'i-nimiq:icons-lg-palette',
       prefix: 'Using Nimiq\'s',
       link: '/build/ui/css-framework/overview',
       items: [

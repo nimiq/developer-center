@@ -12,19 +12,19 @@ const icons = {
   [Tag.RPC]: 'i-nimiq:icons-lg-nodes',
   [Tag.WebClient]: 'i-nimiq:globe',
   [Tag.Validator]: 'i-nimiq:icons-lg-verified',
+  [Tag.PrivateNode]: 'i-nimiq:server',
   [Tag.Asset]: 'i-nimiq:icons-lg-palette',
   [Tag.NimiqBrandKit]: 'i-carbon:logo-figma',
 }
 </script>
 
 <template>
-  <div v-if="tags.size > 0" flex="~ gap-16 wrap" text-18 w-max ml-0 class="raw">
+  <div v-if="tags.size > 0" flex="~ gap-16 wrap" text-16 w-full ml-0 class="raw">
     <div
-      v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8"
-      border-base class="inverted:[--border-color:rgb(255_255_255/0.4)]" rounded-6 leading-1
+      v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8" ring="1.5 neutral-500 group-hocus:neutral-800 inverted:white/60 inverted:group-hocus:white/80" transition-shadow rounded-6 lh-normal
     >
-      <div :class="icons[tag]" size-18 text="neutral-700 inverted:white/60" />
-      <span text="neutral-800 inverted:white/60" lh="18">{{ tag }}</span>
+      <div :class="icons[tag]" size-14 text="neutral-700 group-hocus:darkblue/80 inverted:white/60 inverted:group-hocus:white/70" transition-colors />
+      <span text="neutral-800 group-hocus:darkblue inverted:white/70 inverted:group-hocus:white/80" lh="18">{{ tag }}</span>
     </div>
   </div>
 </template>

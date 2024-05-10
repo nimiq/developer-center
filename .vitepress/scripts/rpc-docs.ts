@@ -40,7 +40,7 @@ export async function generateRpcDocs() {
   specVersion = spec.info.version
 
   // Build folder
-  const buildFolder = join(__dirname, '../../build/rpc-docs')
+  const buildFolder = join(__dirname, '../../build/private-node/rpc-docs')
   // Read package version of generated docs, if already built
   const versionFile = join(buildFolder, '/.version')
   const methodsFile = join(buildFolder, '/methods.md')
@@ -159,7 +159,7 @@ curl --request POST --url http://127.0.0.1:8648
   if (!existsSync(buildFolder))
     mkdirSync(buildFolder)
 
-  writeFileSync(join(__dirname, '../../build/rpc-docs/methods.md'), json2md(methodsMd))
+  writeFileSync(join(buildFolder, 'methods.md'), json2md(methodsMd))
   writeFileSync(versionFile, specVersion)
 
   return { specUrl, specVersion }

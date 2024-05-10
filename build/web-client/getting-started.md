@@ -36,6 +36,11 @@ client.addHeadChangedListener((head) => {
 })
 ```
 
+
+## Using your private node
+
+Although the Web Client already offers a lot of functionality, you can also set up your own private node for full control and advanced customisation. [Find out more about their differences](../web-client-rpc.md).
+
 ## Issues, bugs and feedback
 
 This is an early version of the client code compiled to WebAssembly, and as such there might be issues and friction, especially now that more people are trying it in more environments than we could ever test ourselves.
