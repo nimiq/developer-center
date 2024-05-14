@@ -39,8 +39,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       nimiq-css:
-        specifier: ^0.0.92
-        version: 0.0.92(typescript@5.4.4)(unocss@0.59.0(postcss@8.4.38)(rollup@4.14.1)(vite@5.2.3(@types/node@20.12.5)))(vite@5.2.3(@types/node@20.12.5))
+        specifier: ^0.0.95
+        version: 0.0.95(typescript@5.4.4)(unocss@0.59.0(postcss@8.4.38)(rollup@4.14.1)(vite@5.2.3(@types/node@20.12.5)))(vite@5.2.3(@types/node@20.12.5))
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -2949,8 +2949,8 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  nimiq-css@0.0.92:
-    resolution: {integrity: sha512-KwBAFS6ghDPfwaRhDj4IA8uP6bZFg2G3jA5vOQMVuNa9aSYkemGwcSO3njelcsdz+dddhXcluo4hy+4AtMYMdQ==}
+  nimiq-css@0.0.95:
+    resolution: {integrity: sha512-thef9Zi0H2fB98apt7rUt5Vhv5NcuFjl5phw41Q/aHaWqALl+zD+aNxKs/pdsnHg3EnpZkSsIlPqWtzs0vMGqQ==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: ^5.0.0
@@ -7175,7 +7175,7 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  nimiq-css@0.0.92(typescript@5.4.4)(unocss@0.59.0(postcss@8.4.38)(rollup@4.14.1)(vite@5.2.3(@types/node@20.12.5)))(vite@5.2.3(@types/node@20.12.5)):
+  nimiq-css@0.0.95(typescript@5.4.4)(unocss@0.59.0(postcss@8.4.38)(rollup@4.14.1)(vite@5.2.3(@types/node@20.12.5)))(vite@5.2.3(@types/node@20.12.5)):
     dependencies:
       '@unocss/reset': 0.59.0-beta.1
       ts-cssjson: 3.0.1

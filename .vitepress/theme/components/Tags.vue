@@ -21,9 +21,9 @@ const icons = {
 <template>
   <div v-if="tags.size > 0" flex="~ gap-16 wrap" text-16 w-full ml-0 class="raw">
     <div
-      v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8" ring="1.5 neutral-500 group-hocus:neutral-800 inverted:white/60 inverted:group-hocus:white/80" transition-shadow rounded-6 lh-normal
+      v-for="tag in tags" :key="tag" flex items-center gap-x-8 p="x-12 y-8" ring="1.5 neutral-500 group-hocus:neutral-600 inverted:white/60 inverted:group-hocus:white/70" transition-shadow rounded-6 lh-normal
     >
-      <div :class="icons[tag]" size-14 text="neutral-700 group-hocus:darkblue/80 inverted:white/60 inverted:group-hocus:white/70" transition-colors />
+      <div :class="icons[tag]" size-14 text="neutral-700 group-hocus:neutral-800 inverted:white/60 inverted:group-hocus:white/70" transition-colors />
       <span text="neutral-800 group-hocus:darkblue inverted:white/70 inverted:group-hocus:white/80" lh="18">{{ tag }}</span>
     </div>
   </div>
