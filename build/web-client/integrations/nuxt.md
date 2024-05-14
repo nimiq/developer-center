@@ -14,12 +14,12 @@ import wasm from "vite-plugin-wasm"; // [!code ++]
 import topLevelAwait from "vite-plugin-top-level-await"; // [!code ++]
 
 export default defineNuxtConfig({
-  plugins: [
-    wasm(), // [!code ++]
-    topLevelAwait(), // [!code ++]
-  ],
-
   vite: { // [!code ++]
+    plugins: [ // [!code ++]
+      wasm(), // [!code ++]
+      topLevelAwait(), // [!code ++]
+    ], // [!code ++]
+
     optimizeDeps: { // [!code ++]
       exclude: ['@nimiq/core-web'], // [!code ++]
     }, // [!code ++]
