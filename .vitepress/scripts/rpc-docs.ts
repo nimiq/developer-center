@@ -10,17 +10,14 @@ export async function generateRpcDocs() {
 
   try {
     // Request the latest release information
-    // const latestRelease = await fetch('https://github.com/nimiq/core-rs-albatross/releases/latest', { redirect: 'follow' })
-    // if (latestRelease.status !== 200) {
-    //   const e = new Error(`HTTP code for fetching release ${latestRelease.status}`)
-    //   consola.error(e)
-    //   throw e
-    // }
+    const latestRelease = await fetch('https://github.com/nimiq/core-rs-albatross/releases/latest', { redirect: 'follow' })
+    if (latestRelease.status !== 200) {
+      const e = new Error(`HTTP code for fetching release ${latestRelease.status}`)
+      consola.error(e)
+      throw e
+    }
     // Request OpenRPC document from the latest Albatross release on Github
-    // const releaseVersion = latestRelease.url.split('/').pop()
-
-    const releaseVersion = "v0.21.0"
-
+    const releaseVersion = latestRelease.url.split('/').pop()
     specUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${releaseVersion}/openrpc-document.json`
     consola.info(`Fetching OpenRPC specification from ${specUrl}`)
     content = await fetch(specUrl)

@@ -14,12 +14,14 @@ import wasm from "vite-plugin-wasm"; // [!code ++]
 import topLevelAwait from "vite-plugin-top-level-await"; // [!code ++]
 
 export default defineNuxtConfig({
-  plugins: [
-    wasm(), // [!code ++]
-    topLevelAwait(), // [!code ++]
-  ],
+  ssr: false, // Nimiq Web Client is client-side only. You can wrap the parts of you are that use the WebClient using <ClientOnly>
 
   vite: { // [!code ++]
+    plugins: [ // [!code ++]
+      wasm(), // [!code ++]
+      topLevelAwait(), // [!code ++]
+    ], // [!code ++]
+
     optimizeDeps: { // [!code ++]
       exclude: ['@nimiq/core-web'], // [!code ++]
     }, // [!code ++]
