@@ -1,4 +1,6 @@
 ---
+prose: false
+aside: false
 footer: false
 integrations:
   - title: Vite
@@ -19,7 +21,7 @@ integrations:
   - title: CommonJS
     icon: i-logos:nodejs-icon
     href: ./integrations/CommonJS
-  
+
 ---
 
 # Installation
@@ -28,7 +30,7 @@ Multiple integrations so you can use Nimiq anywhere.{.subline}
 
 <!-- <Grid :items="$frontmatter.integrations" mt-64 class="raw" /> -->
 
-<ul grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap:32 md:gap-32" class="raw" mt-64>
+<ul grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-y-12 gap:32 md:gap-32" class="raw" mt-64>
   <li v-for="({title, icon, href}) in $frontmatter.integrations" :key="title">
     <a :href="href" h-full flex="~ col items-center gap-16" p-24 ring="transparent ring-1.5 hocus:neutral/2 dark:hocus:neutral/10" bg="neutral-200 hocus:white" rounded-6 overflow-hidden transition hocus:translate-y--6 hocus:shadow cursor-pointer>
       <div :class="icon" text-40 />
