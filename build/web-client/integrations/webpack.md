@@ -19,7 +19,7 @@ module.exports = {
 Now you are ready to go!
 
 ```js
-const Nimiq = await import('nimiq/core-web') // You need to use await import() to load the WebAssembly module
+const Nimiq = await import('@nimiq/core-web') // You need to use await import() to load the WebAssembly module
 
 const config = new Nimiq.ClientConfiguration()
 const client = await Nimiq.Client.create(config.build())
