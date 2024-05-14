@@ -6,5 +6,5 @@ await init()
 const config = new ClientConfiguration()
 const client = await Client.create(config.build())
 
-await client.waitForConsensusEstablished​()
+await client.waitForConsensusEstablished()
 ```

@@ -87,7 +87,7 @@ export const navigation = {
         },
         {
           title: 'Become a validator',
-          href: '/build/becoming-a-validator',
+          href: '/build/private-node/becoming-a-validator',
           description: 'Connect and start earning rewards.',
         },
         {

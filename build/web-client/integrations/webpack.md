@@ -24,7 +24,7 @@ const Nimiq = await import('nimiq/core-web') // You need to use await import() t
 const config = new Nimiq.ClientConfiguration()
 const client = await Nimiq.Client.create(config.build())
 
-await client.waitForConsensusEstablished​()
+await client.waitForConsensusEstablished()
 ```
 
 <Callout type='warning'>
