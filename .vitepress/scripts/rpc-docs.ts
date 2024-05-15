@@ -37,7 +37,7 @@ export async function generateRpcDocs() {
   specVersion = spec.info.version
 
   // Build folder
-  const buildFolder = join(__dirname, '../../build/private-node/rpc-docs')
+  const buildFolder = join(__dirname, '../../build/set-up-your-own-node/rpc-docs')
   // Read package version of generated docs, if already built
   const versionFile = join(buildFolder, '/.version')
   const methodsFile = join(buildFolder, '/methods.md')
@@ -45,11 +45,11 @@ export async function generateRpcDocs() {
   if (existsSync(versionFile)) {
     const generatedVersion = readFileSync(versionFile, 'utf-8')
     if (specVersion === generatedVersion) {
-      if(existsSync(methodsFile)) {
+      if (existsSync(methodsFile)) {
         consola.info(`RPC docs ${specVersion} already generated`)
         return { specUrl, specVersion }
-      } else 
-        consola.warn(`RPC docs ${specVersion} already generated, but methods.md is missing. Rebuilding...`)
+      }
+      else { consola.warn(`RPC docs ${specVersion} already generated, but methods.md is missing. Rebuilding...`) }
     }
   }
 

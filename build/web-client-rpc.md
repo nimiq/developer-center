@@ -17,12 +17,11 @@ Users can access the Web Client on mobile devices, such as smartphones and table
 
 ## Nimiq RPC
 
-[Nimiq RPC](/build/private-node/rpc-docs/index.md) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
+[Nimiq RPC](/build/set-up-your-own-node/rpc-docs/index.md) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
 
 RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
 RPC supports interaction with nodes and allows users to call its endpoints using HTTP from any language or software capable of sending requests according to the JSON-RPC specification. Comprehensive API documentation is available for the RPC, detailing the methods, parameters, and endpoints supported by the interface, facilitating seamless integration and development.
-
 
 ## How to know which one to use?
 
@@ -53,14 +52,13 @@ For developers, tech-savvies, and validators looking for more advanced control o
 - List all available accounts and their balances
 - Retrieve ZKP state information
 
-
 ## Start building now
 
 Now that you know the differences, why not start building?
 
 <div flex="~ gap-16 items-center" class="raw" mt-16>
   <a href="./web-client/" arrow pill-sm pill-blue>Web Client</a>
-  <a href="./private-node/" arrow pill-sm pill-secondary>Your private node</a>
+  <a href="./set-up-your-own-node/" arrow pill-sm pill-secondary>Your private node</a>
 </div>
 
 ## Learn about the protocol

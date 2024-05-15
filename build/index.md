@@ -23,7 +23,7 @@ links:
     href: web-client-rpc/
   - label: RPC
     title: Use RPC
-    href: private-node/rpc-docs/
+    href: set-up-your-own-node/rpc-docs/
     tags: [RPC]
   - label: Our design rules
     title: Design something awesome

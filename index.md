@@ -12,7 +12,7 @@ links:
   - bgColor: green
     icon: i-nimiq:icons-lg-cubes
     label: Learn
-    title: The underlying technology
+    title: The Underlying Technology
     description: Learn what makes Nimiq a truly unique blockchain.
     href: learn/
   - label: Validators and Stakers
@@ -25,15 +25,15 @@ links:
     title: Everything about micro and macro blocks.
     href: learn/protocol/block-format
 buildTogetherLinks:
-  - title: Start building
+  - title: Start Building
     icon: i-nimiq:icons-lg-tools
     description: Connect and interact with Albatross using JS
     href: build/web-client/
-  - title: Run a validator
+  - title: Run a Validator
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
     href: build/becoming-a-validator
-  - title: Use our designs
+  - title: Use our Designs
     href: build/ui/css-framework/overview
     description: Use our components to build something awesome
     icon: i-nimiq:icons-lg-palette
@@ -47,7 +47,7 @@ Get guides, resources and tips on how to create with Nimiq.{.subline}
 
 <Grid :items="$frontmatter.links" mt-64 mb-136 />
 
-## Let's build together
+## Let's Build Together
 
 Create apps, run a validator or craft something delightful with Nimiq.{.subline}
 

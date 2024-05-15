@@ -122,16 +122,16 @@ export const sidebar: DefaultTheme.Sidebar = {
       },
     },
     {
-      text: 'Private node',
+      text: 'Own Node',
       prefix: 'Set up your',
       icon: 'i-nimiq:server',
-      link: '/build/private-node/',
+      link: '/build/set-up-your-own-node/',
       items: [
-        { text: 'Overview', link: '/build/private-node/' },
-        { text: 'Becoming a Validator', link: '/build/private-node/becoming-a-validator' },
-        { text: 'Migration to PoS', link: '/build/private-node/migration-guide' },
-        { text: 'JSON-RPC Specification', link: '/build/private-node/rpc-docs/' },
-      ]
+        { text: 'Overview', link: '/build/set-up-your-own-node/' },
+        { text: 'Becoming a Validator', link: '/build/set-up-your-own-node/becoming-a-validator' },
+        { text: 'Migration to PoS', link: '/build/set-up-your-own-node/migration-guide' },
+        { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/' },
+      ],
     },
     {
       text: 'UI',
