@@ -8,7 +8,7 @@ build/web-client/reference
 build/web-client/.version
 
 # Ignore dynamically built RPC spec docs
-build/private-node/rpc-docs/.version
-build/private-node/rpc-docs/methods.md
+build/set-up-your-own-node/rpc-docs/.version
+build/set-up-your-own-node/rpc-docs/methods.md
 
 components.d.ts

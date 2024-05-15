@@ -11,7 +11,7 @@ links:
     description: Everything about micro and macro blocks.
     href: 'protocol/block-format'
 becomeValidator:
-  - title: Run a validator
+  - title: Run a Validator
     description: Start earning by validating blocks and securing the network.
     bgColor: blue
     href: '../build/becoming-a-validator'

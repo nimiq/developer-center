@@ -15,7 +15,7 @@ links:
     description: 'Learn what makes Nimiq a truly unique blockchain.'
     href: 'learn/'
   - title: '3 steps to become part of the validator list'
-    label: 'Run a validator'
+    label: 'Run a Validator'
     href: '/'
   - title: 'Accept USDC Polygon now, see how'
     label: 'Cryptopayment Link'

@@ -1,6 +1,6 @@
 ---
 links:
-  - title: Run a validator
+  - title: Run a Validator
     bgColor: green
     label: Connect
     icon: i-nimiq:icons-lg-verified

@@ -10,7 +10,7 @@ links:
     span: 6
     tags:
       - Web Client
-  - title: Run a validator
+  - title: Run a Validator
     bgColor: green
     label: Connect
     icon: i-nimiq:icons-lg-verified
@@ -26,7 +26,7 @@ links:
     href: set-up-your-own-node/rpc-docs/
     tags: [RPC]
   - label: Our design rules
-    title: Design something awesome
+    title: Design Something Awesome
     href: ui/design/
     tags: [Asset]
 prose: false
