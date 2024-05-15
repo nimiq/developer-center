@@ -31,7 +31,10 @@ export default defineNuxtConfig({
 
 <Callout type="warning">
 
-Ensure the package is only run client-side: either set `ssr: false` in your Nuxt config, import this package only in client-side plugins, or wrap it in `<ClientOnly>`.
+The Web Client cannot run in the server. To ensure that the package only runs on the client side, you have three options:
+
+- Set `ssr: false` in your Nuxt config. If you use this option, consider also using [loading template](https://nuxt.com/docs/api/nuxt-config#spaloadingtemplate).
+- Wrap it in `<ClientOnly>`.
 
 </Callout>
 
