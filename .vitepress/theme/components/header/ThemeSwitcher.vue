@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inBrowser } from 'vitepress';
+import { inBrowser } from 'vitepress'
 
 /**
  * Credit to [@hooray](https://github.com/hooray)

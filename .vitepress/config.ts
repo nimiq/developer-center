@@ -14,9 +14,9 @@ import { generateRpcDocs } from './scripts/rpc-docs'
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
   const basesUrl = {
-    'production': '/developers',
-    'development': '/developer-center',	
-    'staging': '/'
+    production: '/developers',
+    development: '/developer-center',
+    staging: '/',
   }
   const base = basesUrl[env.DEPLOYMENT_MODE]
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)

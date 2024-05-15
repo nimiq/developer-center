@@ -31,7 +31,7 @@ webClientFeatures:
     icon: i-nimiq:icons-lg-tools
     description: Great type support for a better development experience.
     type: 'icon-small'
-  
+
   # - title: Interactive Tutorials
   #   icon: i-nimiq:icons-lg-school
   #   description: Learn through step-by-step guides and examples.
@@ -57,6 +57,3 @@ The Nimiq Web Client is a Javascript library that allows you to manage and trans
 </div>
 
 <Grid :items="$frontmatter.webClientFeatures" mt-64 mb-136 />
-
-
-

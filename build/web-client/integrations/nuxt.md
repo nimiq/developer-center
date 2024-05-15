@@ -6,10 +6,9 @@ The Nimiq Web Client ships with support for Nuxt.
 
 <!--@include: ./_installation-vite.md-->
 
-
 Update your `nuxt.config.js`:
 
-```javascript 
+```javascript
 import wasm from "vite-plugin-wasm"; // [!code ++]
 import topLevelAwait from "vite-plugin-top-level-await"; // [!code ++]
 

@@ -2,11 +2,12 @@
 import { computed } from 'vue'
 import { type Card, CardType } from '../utils/types'
 
-const props = withDefaults(defineProps<{items: Card[]}>(), { items: () => [] })
+const props = withDefaults(defineProps<{ items: Card[] }>(), { items: () => [] })
 
 const items = computed<Card[]>(() => props.items.map((i) => {
   const { bgColor, icon, type } = i
-  if(type) return i
+  if (type)
+    return i
   if (bgColor)
     return { ...i, type: CardType.Bg } as Card
   if (icon)

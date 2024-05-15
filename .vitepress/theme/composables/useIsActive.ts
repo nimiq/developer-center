@@ -1,4 +1,4 @@
-import { inBrowser } from "vitepress"
+import { inBrowser } from 'vitepress'
 
 export const HASH_RE = /#.*$/
 export const EXT_RE = /(index)?\.(md|html)$/

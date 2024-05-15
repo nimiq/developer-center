@@ -11,5 +11,3 @@ And now you are ready to go!
 <!--@include: ../_demo.md-->
 
 <!--@include: ./_contribute.md-->
-
-
