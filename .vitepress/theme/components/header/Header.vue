@@ -65,6 +65,7 @@ const isMac = inBrowser ? document.documentElement.classList.contains('mac') : f
               <ContextMenu.Item
                 as="a"
                 href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design"
+                target="_blank" rel="noopener noreferrer"
                 flex="~ items-center gap-8" hocus:bg-neutral-100 transition-colors after:opacity-70 px-8 py-4 rounded-2
                 arrow
               >
@@ -80,14 +81,14 @@ const isMac = inBrowser ? document.documentElement.classList.contains('mac') : f
       </a>
       <ClientOnly>
         <template v-if="isSmall">
-          <SearchBox v-if="showSearch" @close="showSearch = false" />
+          <SearchBox v-if="showSearch" @close="() => showSearch = false" />
           <button ml-auto mr-16 p-16 aria-label="Search" @click="showSearch = true">
             <div i-nimiq:magnifying-glass />
           </button>
           <MobileMenu :navigation />
         </template>
         <template v-else>
-          <SearchBox v-if="showSearch" @close="showSearch = false" />
+          <SearchBox v-if="showSearch" @close="() => showSearch = false" />
           <button
             ml-32 text-14 py-6 px-12 input-box max-w-320 min-w-192 group flex="~ gap-8 items-center" rounded-full
             class="group" @click="showSearch = true"

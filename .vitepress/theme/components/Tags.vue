@@ -14,7 +14,7 @@ const icons = {
   [Tag.Validator]: 'i-nimiq:icons-lg-verified',
   [Tag.PrivateNode]: 'i-nimiq:server',
   [Tag.Asset]: 'i-nimiq:icons-lg-palette',
-  [Tag.NimiqBrandKit]: 'i-carbon:logo-figma',
+  [Tag.NimiqBrandKit]: 'i-ph:paint-brush-broad-duotone size-16',
 }
 </script>
 

@@ -15,7 +15,7 @@ You can install the Nimiq's CSS framework using your favorite package manager.
 ::: code-group
 
 ```sh [npm]
-npm add @nimiq/style
+npm install @nimiq/style
 ```
 
 ```sh [pnpm]

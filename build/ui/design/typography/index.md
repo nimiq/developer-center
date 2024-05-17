@@ -4,9 +4,21 @@ A CSS stylesheet for Nimiq's typography. Inspired by the [Tailwind CSS Typograph
 
 ## Installation
 
-```bash
-npm install nimiq-typography
+::: code-group
+
+```sh [npm]
+npm install nimiq-css
 ```
+
+```sh [pnpm]
+pnpm add nimiq-css
+```
+
+```sh [yarn]
+yarn add nimiq-css
+```
+
+:::
 
 ## Usage
 

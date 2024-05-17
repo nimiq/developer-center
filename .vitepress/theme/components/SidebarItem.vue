@@ -18,6 +18,19 @@ const {
   hasChildren,
   // toggle,
 } = useSidebarControl(computed(() => props.item))
+const linkRef = ref<HTMLAnchorElement | null>(null)
+
+watch(isActiveLink, () => {
+  if (isActiveLink.value) {
+    globalThis.window.requestAnimationFrame(() => {
+      linkRef.value.scrollIntoView({
+        behavior: 'instant',
+        block: 'center',
+        inline: 'nearest',
+      })
+    })
+  }
+})
 
 const { site } = useData()
 function normalizeLink(url: string): string {
@@ -85,7 +98,7 @@ function treatAsHtml(filename: string): boolean {
 
 <template>
   <div>
-    <a v-if="!hasChildren" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink, 'op-80': !isActiveLink }" transition-all py-8>
+    <a v-if="!hasChildren" ref="linkRef" :rel="item.rel" :href="normalizeLink(item.link)" :target="item.target" flex="~ items-center gap-8" :class="{ 'font-bold text-blue': isActiveLink, 'op-80': !isActiveLink }" transition-all py-8>
       <div w-2 h-19 rounded-2 :bg="isActiveLink ? 'blue' : 'transparent'" transition-colors />
       {{ item.text }}
     </a>
