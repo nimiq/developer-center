@@ -161,6 +161,12 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Cards', link: '/build/ui/css-framework/cards' },
           ],
         },
+        {
+          text: 'Utilities',
+          items: [
+            { text: 'Arrow Links', link: '/build/ui/utilities/arrows-links.md' },
+          ],
+        },
       ],
     },
   ],
