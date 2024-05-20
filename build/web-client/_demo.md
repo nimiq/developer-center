@@ -1,5 +1,5 @@
 ```js
-import init, { Client, ClientConfiguration } from '@nimiq/core-web/web'
+import init, { Client, ClientConfiguration } from '@nimiq/core/web'
 
 await init()
 

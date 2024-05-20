@@ -9,7 +9,7 @@ The Nimiq Web Client ships with support for CommonJS.
 And now you are ready to go!
 
 ```javascript
-const Nimiq = require("@nimiq/core-web");
+const Nimiq = require("@nimiq/core");
 
 async function main() {
     const config = new Nimiq.ClientConfiguration();
