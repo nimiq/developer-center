@@ -5,7 +5,7 @@ TODO: Write here a description
 You can modify the size of the switch using `font-size`
 
 <div flex mt-32>
-  <input type='checkbox' switch h-max />
+  <input type='checkbox' switch />
   <input type='checkbox' switch style='font-size: 24px' />
 </div>
 
@@ -17,7 +17,7 @@ You can modify the size of the switch using `font-size`
 Switches can also be disabled
 
 <div flex mt-32>
-  <input type='checkbox' switch disabled h-max />
+  <input type='checkbox' switch disabled />
   <input type='checkbox' switch disabled style='font-size: 24px' />
 </div>
 
