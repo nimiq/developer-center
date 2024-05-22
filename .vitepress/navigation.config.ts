@@ -41,6 +41,33 @@ export const navigation = {
     ],
   },
   items: [
+        {
+      key: 'Migration',
+      main: {
+        classes: 'bg-gradient-orange hocus:bg-gradient-orange-darkened',
+        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-[#FF9248] rotate-y-180 rotate-z-180',
+        label: 'Migration from PoW to PoS',
+        description: 'Everything about the migration.',
+        href: '/migration/',
+      },
+      items: [
+        {
+          title: 'Migration for the First Validators',
+          href: '/migration/migration-validators',
+          description: 'Our guide on how to become one of the very first validators',
+        },
+        {
+          title: 'Migration for Node Operators',
+          href: '/migration/node-operators',
+          description: 'Our guide on how to migrate as a node operator',
+        },
+        {
+          title: 'Migration Technical Details',
+          href: '/migration/migration-technical-details',
+          description: 'Learn about the transition from Proof-of-Work to Proof-of-Stake',
+        },
+      ],
+    },
     {
       key: 'Learn',
       main: {
@@ -69,6 +96,7 @@ export const navigation = {
         },
       ],
     },
+
     {
       key: 'Build',
       main: {

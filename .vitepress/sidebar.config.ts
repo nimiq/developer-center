@@ -90,6 +90,20 @@ export const sidebar: DefaultTheme.Sidebar = {
     },
   ],
 
+  '/migration/': [
+    {
+      text: 'Migration',
+      icon: 'i-nimiq:icons-lg-sparkling-swap',
+      link: '/migration/',
+      items: [
+        { text: 'Guide for Validators', link: '/migration/migration-validators' },
+        { text: 'Guide for Node Operators', link: '/migration/node-operators' },
+        { text: 'Migration Technicalities', link: '/migration/migration-technical-details' },
+        { text: 'FAQs', link: '/migration/faqs' },
+      ],
+    },
+  ],
+
   '/build/': [
     {
       text: 'Build',

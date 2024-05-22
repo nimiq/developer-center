@@ -1,4 +1,4 @@
-# Migration
+# Migration Technical Details
 
 Nimiq is transitioning from a Proof-of-Work (PoW) to a Proof-of-Stake (PoS) blockchain. This transition is being carried out through a special hard fork, and will happen in three phases: validator registration, pre-staking, and activation.
 
