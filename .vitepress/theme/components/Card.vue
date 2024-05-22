@@ -49,7 +49,7 @@ const hasLink = computed(() => props.item.href)
         'text-18 lh-[1.2]': isIconSmall,
         'mb-20': item.icon && !isIconSmall,
         'mb-12': !item.icon,
-        'text-white text-24': item.bgColor,
+        'text-white text-24 font-semibold': item.bgColor,
       }" z-1 inverted:max-w-256
     >
       {{ item.title }}
