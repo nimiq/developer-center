@@ -1,10 +1,31 @@
-<script setup lang="ts">
-import DesignKitItem from '../../../.vitepress/theme/components/DesignKitItem.vue'
-import Tags from '../../../.vitepress/theme/components/Tags.vue'
-import { useDark, useClipboard } from '@vueuse/core'
+---
+links:
+  - bgColor: gold
+    icon: i-nimiq:icons-lg-verified
+    label: Validator
+    title: Register now
+    description: Join since the first epoch as a validator and earn rewards.
+    href: migration-validators/
+    layout: lg
+    span: 6
+  - title: Be part of the migration
+    label: Node
+    href: node-operators
+  - label: Learn more
+    title: Deep dive into the technical details
+    href: migration-technical-details/
+  - label: FAQ
+    title: Check our FAQs for more information.
+    href: faqs/
+---
 
-const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
-</script>
+# Nimiq Migration to Proof-of-Stake
+
+We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved. {.subline}
+
+<Grid class="raw" :items="$frontmatter.links" mt-64 />
+
+## What's the migration?
 
 Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain through a special hard fork. The transition starts by establishing the first validator list for the PoS blockchain within the PoW chain, followed by users staking their NIM during the pre-staking phase. Finally, the activation phase selects a transition block and executes the transition to the PoS chain if at least 80% of the stake is ready.
 
@@ -12,32 +33,20 @@ During the migration, we will capture the entire blockchain state, including all
 
 **There is no requirement to participate in the migration.** However, if you want, you can become one of the first validators or migrate as an observer. Nimiq ensures that no NIM will be lost during the process. We have guides available for those who want to actively engage in the transition:
 
-- **[Validator Registration](migration-validators):** Users can join the very first validator list by running the migration as a validator. Want to be one of our first validators?
-- **[Node Operator Participation](node-operators):** Users who want to migrate can also run the migration process. The process is even simpler for node operators, offering an accessible option for participation.
-
-### Most Asked Questions
+## Most Asked Questions
 
 **Do I need to participate in the migration?**
+
 No, you don't need to participate unless you want to become one of our first validators or actively engage in the process as a node operator. Your NIM and transaction history will be automatically transferred to the new PoS chain.
 
+---
+
 **Will my NIM be safe during the transition?**
+
 Yes, all NIM balances and transaction histories will be securely migrated to the PoS chain, and no NIM will be lost during this process.
 
+---
+
 **Can I access my Wallet post-transition with the same Login File?**
+
 Yes, you can. Your address and data will be transferred to the PoS chain, so your Login File remains the same.
-
-<div grid="~ rows-[120px_120px] md:rows-[120px] md:cols-2 gap-32" class="raw" mt-36>
-
-<div flex="~ justify-center items-center" border-base rounded-6 bg-neutral-200 relative p-6>
-  <p class="m-24">Curious about the technical details? Read our <a href="migration-technical-details">technical details</a> page!</p>
-  <div text-neutral-700 absolute inset-x-16 bottom-16 flex="~ justify-between" lh-none>
-  </div>
-</div>
-
-<div flex="~ justify-center items-center" border-base rounded-6 bg-neutral-200 relative p-6>
-  <p class="m-24">Have questions about the migration? Check our <a href="faqs">FAQs</a>!</p>
-  <div text-neutral-600 absolute inset-x-16 bottom-16 flex="~ justify-between" lh-none>
-  </div>
-</div>
-
-</div>

@@ -16,9 +16,10 @@ interface BaseCard {
   duration?: string
 }
 
-type NormalCard = BaseCard & { type?: CardType.Normal, icon: undefined, bgColor?: 'green' | 'blue' }
+type Color = 'green' | 'blue' | 'gold' | 'purple' | 'red'
+type NormalCard = BaseCard & { type?: CardType.Normal, icon: undefined, bgColor?: Color }
 type IconCard = BaseCard & { icon: string, type?: CardType.Icon, bgColor: undefined }
-type IconBgCard = BaseCard & { icon: string, bgColor: 'blue' | 'green', type?: CardType.Bg }
+type IconBgCard = BaseCard & { icon: string, bgColor: Color, type?: CardType.Bg }
 type IconSmallCard = BaseCard & { icon: string, type?: CardType.IconSmall, bgColor: undefined }
 export type Card = NormalCard | IconCard | IconBgCard | IconSmallCard
 
