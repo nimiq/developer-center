@@ -41,12 +41,13 @@ export const navigation = {
     ],
   },
   items: [
-        {
+    {
       key: 'Migration',
       main: {
-        classes: 'bg-gradient-orange hocus:bg-gradient-orange-darkened',
-        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-[#FF9248] rotate-y-180 rotate-z-180',
-        label: 'Migration from PoW to PoS',
+        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
+        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-white/20 rotate-y-180 rotate-z-180',
+        label: 'Migration',
+        title: 'From PoW to PoS',
         description: 'Everything about the migration.',
         href: '/migration/',
       },
