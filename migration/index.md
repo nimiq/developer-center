@@ -3,19 +3,19 @@ links:
   - bgColor: gold
     icon: i-nimiq:icons-lg-verified
     label: Validator
-    title: Register now
-    description: Join since the first epoch as a validator and earn rewards.
+    title: Pre-register now
+    description: Join the first epoch as a validator and earn rewards from the very beginning
     href: migration-validators/
     layout: lg
     span: 6
   - title: Be part of the migration
-    label: Node
+    label: Node Operators
     href: node-operators
   - label: Learn more
     title: Deep dive into the technical details
     href: migration-technical-details/
   - label: FAQ
-    title: Check our FAQs for more information.
+    title: Check our FAQs for more information
     href: faqs/
 ---
 
@@ -25,7 +25,7 @@ We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockch
 
 <Grid class="raw" :items="$frontmatter.links" mt-64 />
 
-## What's the migration?
+## Understanding the Migration
 
 Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain through a special hard fork. The transition starts by establishing the first validator list for the PoS blockchain within the PoW chain, followed by users staking their NIM during the pre-staking phase. Finally, the activation phase selects a transition block and executes the transition to the PoS chain if at least 80% of the stake is ready.
 
