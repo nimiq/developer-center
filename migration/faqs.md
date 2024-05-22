@@ -50,7 +50,7 @@ If the activation phase fails to achieve the 80% stake readiness target, a new a
 
 #### I pre-registered as a validator but forgot to run the activation tool/send the readiness transaction within the activation window. Can I recover my validator?
 
-Your validator will still be included in the validator list and you can access to it once you migrate. However, if you are selected to produce a block and fail to do so because you didn't launch the tool in time, you will face penalties for the block you skipped to produce. Once you realize the oversight, you can run the activation tool to migrate the state and history and build the genesis block, and reactivate your validator via transaction.
+Your validator will still be included in the validator list and you can access to it once you migrate. However, if you are selected to produce a block and fail to do so because you didn't launch the tool in time, you will face penalties for the block you skipped to produce. Once you realize the oversight, you can run the activation tool to migrate the state and history and build the genesis block, and reactivate your validator via sending a transaction to the migrated PoS chain.
 
 #### Can I withdraw my NIM deposit after pre-registration?
 
