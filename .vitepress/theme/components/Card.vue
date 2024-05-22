@@ -18,6 +18,8 @@ const hasLink = computed(() => props.item.href)
     :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" flex-card :class="{
       'bg-gradient-blue': item.bgColor === 'blue',
       'bg-gradient-green': item.bgColor === 'green',
+      'bg-gradient-gold': item.bgColor === 'gold',
+      'bg-gradient-red': item.bgColor === 'red',
       'p-24 md:p-40': hasBgIcon,
       'p-20 md:p-40': isIcon,
       'items-center': centered,
@@ -30,6 +32,7 @@ const hasLink = computed(() => props.item.href)
         'absolute inset-y-50 -right-12 md:-right-16 min-w-100 text-100 sm:text-202': !centered && !isIconSmall,
         'text-[#0E65C9]': item.bgColor === 'blue',
         'text-[#1DA186]': item.bgColor === 'green',
+        'text-white/12': item.bgColor === 'gold' || item.bgColor === 'red',
         'text-96 mb-56 op-80 group-hocus:op-100': centered,
         'text-24 text-neutral': isIconSmall,
         'dark:group-hocus:text-neutral-600': isIconSmall && hasLink,
@@ -46,7 +49,7 @@ const hasLink = computed(() => props.item.href)
         'text-18 lh-[1.2]': isIconSmall,
         'mb-20': item.icon && !isIconSmall,
         'mb-12': !item.icon,
-        'text-white': item.bgColor,
+        'text-white text-24': item.bgColor,
       }" z-1 inverted:max-w-256
     >
       {{ item.title }}
@@ -56,6 +59,7 @@ const hasLink = computed(() => props.item.href)
         'text-center': centered,
         'col-span-full !mt-0 text-14': isIconSmall,
         'text-white/80 group-hocus:text-white/90': item.bgColor,
+        'text-white/90 group-hocus:text-white': item.bgColor === 'gold',
         'inverted:text-neutral-900 inverted:group-hocus:text-neutral': !item.bgColor,
       }]"
     >
