@@ -51,7 +51,7 @@ To register your validator and keys on the PoW Mainnet, you must specify the arg
 node validator-registration.js --validator validator-keys.json --network main
 ```
 
-The tool will connect to the Nimiq PoW Mainnet chain. Upon consensus, the tool creates and signs the validator registration transactions and sends them to the network, effectively registering your validator. Note that these transactions are a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your validator address — as instructed in the previous step — as the transaction fees are paid from this address.
+The tool will connect to the Nimiq PoW Mainnet chain. Upon consensus, the tool creates and signs the validator registration transactions and sends them to the network, effectively registering your validator. Note that these transactions are a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your validator address &mdash; as instructed in the previous step &mdash; as the transaction fees are paid from this address.
 
 For detailed guidance through the scripts and their options, run `node validator-registration.js --help`. This will print out the usage instructions.
 
@@ -76,7 +76,6 @@ Please note that any value below 100 000 NIM will result in permanent loss. Any 
 ## Validator Activation Tool
 
 The Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the activation tool before its window begins to ensure sufficient time for migrating the history, as this process can be time-consuming.
-
 
 - Clone and compile the [PoS blockchain](https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#installation) repository and follow the instructions.
 - Enable the RPC server in the PoW chain. Follow the instructions in [this sample guide](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf).
