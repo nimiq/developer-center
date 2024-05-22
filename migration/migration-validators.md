@@ -1,6 +1,6 @@
 # PoS Migration Guide for Validators
 
-This guide is for users interested in using Nimiq’s Migration Tools to register their validator and transition from Nimiq PoW to PoS. For post-migration validator registration, refer to the [becoming a validator]() documentation. For a complete understanding of the migration technicalities, refer to [this document](migration-technical-details).
+This guide is for users interested in using Nimiq’s Migration Tools to register their validator and transition from Nimiq PoW to PoS. For post-migration validator registration, refer to the [becoming a validator](/build/set-up-your-own-node/becoming-a-validator.md) documentation. For a complete understanding of the migration technicalities, refer to [this document](migration-technical-details).
 
 ## Validator Registration Tool
 

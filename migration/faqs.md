@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Frequently Asked Questions about Nimiq PoS Migration
 
 #### Does every Nimiq user need to run the migration tools to transition to PoS?
 
@@ -56,6 +56,6 @@ Your validator will still be included in the validator list and you can access t
 
 Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators [here](/learn/protocol/validators/validators-and-stakers.md).
 
-#### What can I do if I accidentally selected the wrong validator to pre-stake my NIM to?
+#### Can I switch the validator I have pre-staked my NIM to?
 
-During the transition phase, there's no option to change your selection. However, once the migration ends, you can update your choice and stake to the validator you want.
+Yes, you can switch the validator you have pre-staked to. We support switching validators and increasing the NIM stake. You cannot remove or decrease the pre-stake; however, if you want to remove your NIM, you can do it after the transition.
