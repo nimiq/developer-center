@@ -69,34 +69,6 @@ export const navigation = {
         },
       ],
     },
-    {
-      key: 'Learn',
-      main: {
-        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
-        iconClasses: 'i-nimiq:icons-lg-cubes text-[#1DA186] rotate-y-180 rotate-z-180',
-        label: 'Learn',
-        title: 'The technology',
-        description: 'What makes Nimiq a truly unique blockchain.',
-        href: '/learn/',
-      },
-      items: [
-        {
-          title: 'Validators and Stakers',
-          href: '/learn/protocol/validators/validators-and-stakers',
-          description: 'Learn about the pillars of Albatross PoS',
-        },
-        {
-          title: 'Staking Contract',
-          href: '/learn/protocol/validators/staking-contract',
-          description: 'The repository of data for validators, stakers, and staking.',
-        },
-        {
-          title: 'Block Format',
-          href: '/learn/protocol/block-format',
-          description: 'Everything about micro and macro blocks.',
-        },
-      ],
-    },
 
     {
       key: 'Build',
@@ -123,6 +95,34 @@ export const navigation = {
           title: 'Design',
           href: '/build/ui/design/',
           description: 'Your app with Nimiq in mind.',
+        },
+      ],
+    },
+    {
+      key: 'Learn',
+      main: {
+        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
+        iconClasses: 'i-nimiq:icons-lg-cubes text-[#1DA186] rotate-y-180 rotate-z-180',
+        label: 'Learn',
+        title: 'The technology',
+        description: 'What makes Nimiq a truly unique blockchain.',
+        href: '/learn/',
+      },
+      items: [
+        {
+          title: 'Validators and Stakers',
+          href: '/learn/protocol/validators/validators-and-stakers',
+          description: 'Learn about the pillars of Albatross PoS',
+        },
+        {
+          title: 'Staking Contract',
+          href: '/learn/protocol/validators/staking-contract',
+          description: 'The repository of data for validators, stakers, and staking.',
+        },
+        {
+          title: 'Block Format',
+          href: '/learn/protocol/block-format',
+          description: 'Everything about micro and macro blocks.',
         },
       ],
     },
