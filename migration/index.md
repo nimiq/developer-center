@@ -27,11 +27,15 @@ We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockch
 
 ## Understanding the Migration
 
-Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain through a special hard fork. The transition starts by establishing the first validator list for the PoS blockchain within the PoW chain, followed by users staking their NIM during the pre-staking phase. Finally, the activation phase selects a transition block and executes the transition to the PoS chain if at least 80% of the stake is ready.
+Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain through a special hard fork. The transition process includes several key phases:
+
+- **Pre-registration Phase**: Establishing the first list of validators for the PoS blockchain within the PoW chain
+- **Pre-Staking Phase**: Users pre-stake their NIM
+- **Activation Phase**: Selecting the transition block and executing the transition to the PoS chain if at least 80% of the stake is ready
 
 During the migration, we will capture the entire blockchain state, including all accounts, balances, and transaction history. This means that users' balances will remain intact and will be transferred to the new PoS chain.
 
-**There is no requirement to participate in the migration.** However, if you want, you can become one of the first validators or migrate as an observer. Nimiq ensures that no NIM will be lost during the process. We have guides available for those who want to actively engage in the transition:
+**There is no requirement to participate in the migration.** However, if you want, you can [become one of the first validators](migration-validators) or [migrate as an observer](node-operators). Nimiq ensures that no NIM will be lost during the process. We have [guides](#nimiq-migration-to-proof-of-stake) available for those who want to actively engage in the transition.
 
 ## Most Asked Questions
 
