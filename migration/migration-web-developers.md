@@ -47,7 +47,7 @@ const address = keyPair.toAddress();
 ```
 
 ### Load a wallet from an encrypted private key
-Previously, you could use the ```Wallet.loadEncrypted()``` function to derive a wallet from an encrypted private key. This function is no longer available.
+Previously, you could use the `Wallet.loadEncrypted()` function to derive a wallet from an encrypted private key. This function is no longer available.
 
 #### Previous (PoW)
 
