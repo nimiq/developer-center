@@ -26,7 +26,7 @@ No, registration as a validator is optional. Users can choose to actively partic
 
 #### Can I deposit more than the minimum required as a pre-registered validator?
 
-Yes. Any NIM amount exceeding the minimum deposit of 100 000 NIM will be considered stake, but only if it exceeds the minimum stake of 100 NIM. If the deposit does not meet this minimum, it will be burned.
+Yes. Any NIM amount exceeding the validator deposit of 100 000 NIM will be considered stake, but only if it exceeds the minimum stake of 100 NIM. If the extra deposit does not meet this minimum, it will be burned.
 
 #### Will my balance remain intact during the transition?
 
@@ -46,7 +46,7 @@ No, pre-staking is only available during the pre-staking phase. Your NIM will be
 
 #### What happens if the activation doesn’t collect 80% of readiness?
 
-If the activation phase fails to achieve the 80% stake readiness target, a new activation window will start at the block immediately following the candidate block. Each new activation window spans 1440 PoW blocks, equivalent to one day, and this process will continue until the required readiness threshold is reached. For more details, you can find more information [here](migration-technical-details#activation-phase).
+The 80% readiness applies to the stake that has been pre-staked by pre-registered validators. There is no minimum amount of NIM that must be pre-staked, but 80% of the pre-staked NIM must signal readiness during an activation window. If this threshold is not met, a new activation window will start immediately after the current one ends. Each new activation window spans 1440 PoW blocks, equivalent to one day, and this process will continue until the required readiness threshold is reached. For more details, you can find more information [here](migration-technical-details#activation-phase).
 
 #### I pre-registered as a validator but forgot to run the activation tool/send the readiness transaction within the activation window. Can I recover my validator?
 
