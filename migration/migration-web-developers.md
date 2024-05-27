@@ -227,7 +227,7 @@ function lunasToCoins(lunas: number): number {
 **New capability:** Can now handle UintArray
 
 ### Transaction state
-```MINED``` is replace by ```INCLUDED```
+`MINED` is replace by `INCLUDED`
 
 ## Timestamps
 Timestamps of transactions and blocks are now in milliseconds, where they were in seconds (UNIX) before. That means you no longer have to multiply them by 1000 to use with new Date() in Javascript:
