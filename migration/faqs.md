@@ -2,7 +2,7 @@
 
 #### Does every Nimiq user need to run the migration tools to transition to PoS?
 
-No, participation in the transition process is not mandatory. However, if you want to be one of our first validators for the new PoS chain or migrate the state, you can find the guide that best fits your preferences [here](/migration/).
+The migration process is only mandatory for those who want to be the first validators in the PoS chain or those who wish to have their nodes running from the very beginning. For regular users, no action is required. If you want to participate in the transition, you can find the appropriate guide [here](/migration/).
 
 #### I own a Nimiq Wallet. Do I need to participate in the migration?
 
@@ -14,7 +14,7 @@ Yes, you can access your wallet at any time during the transition.
 
 #### Can I log in to the Nimiq Wallet with the same Login File after the transition?
 
-Yes, you can. Since your data remains intact, your Login File will remain the same. In case you log out for any reason, you can easily log back in using the same file and 24 recovery words.
+Yes, you can. Since your data remains intact, your Login File will remain the same. If you log out for any reason, you can easily log back in using the same file and your password or the 24 recovery words.
 
 #### Do I need to be a miner to register as a validator?
 
@@ -26,7 +26,7 @@ No, registration as a validator is optional. Users can choose to actively partic
 
 #### Can I deposit more than the minimum required as a pre-registered validator?
 
-Yes. Any NIM amount exceeding the minimum deposit of 100 000 NIM will be considered stake, but only if it exceeds the minimum stake of 100 NIM. If the excess does not meet this minimum, it will be burned.
+Yes. Any NIM amount exceeding the minimum deposit of 100 000 NIM will be considered stake, but only if it exceeds the minimum stake of 100 NIM. If the deposit does not meet this minimum, it will be burned.
 
 #### Will my balance remain intact during the transition?
 
@@ -42,7 +42,7 @@ Yes, you can. Any amount above the required 100 NIM minimum deposit will be adde
 
 #### Can I pre-stake to a validator anytime during the transition?
 
-No, pre-staking is only available during the pre-staking phase. Your NIM will be added to the pre-registered validator’s deposit, contributing to the required threshold of stake needed for migration readiness.
+No, pre-staking is only available during the pre-staking phase. Your NIM will be added to the pre-registered validator’s deposit, contributing to the required threshold of stake needed for migration readiness. After the migration is complete, you can add more stake, re-stake to another validator, or unstake and recover your staked funds.
 
 #### What happens if the activation doesn’t collect 80% of readiness?
 
@@ -51,6 +51,10 @@ If the activation phase fails to achieve the 80% stake readiness target, a new a
 #### I pre-registered as a validator but forgot to run the activation tool/send the readiness transaction within the activation window. Can I recover my validator?
 
 Your validator will still be included in the validator list and you can access to it once you migrate. However, if you are selected to produce a block and fail to do so because you didn't launch the tool in time, you will face penalties for the block you skipped to produce. Once you realize the oversight, you can run the activation tool to migrate the state and history and build the genesis block, and reactivate your validator via sending a transaction to the migrated PoS chain.
+
+#### Do I still need to run the activation tool after the PoS is running?
+
+No, the activation tool is specifically designed to migrate the PoW state and establish the genesis block for the PoS chain. Once this is done, the genesis block will be committed to the repository, making the migration tool no longer necessary. From this point on, you can simply follow the steps to run a validator.
 
 #### Can I withdraw my NIM deposit after pre-registration?
 
