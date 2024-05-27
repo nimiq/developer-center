@@ -61,7 +61,7 @@ const wallet = await Wallet.loadEncrypted(encryptedHex, password);
 // No equivalent yet
 ```
 
-### Export the key pair or private key as a plain Uint8Array
+### Export the key pair or private key as a plain `Uint8Array`
 To export the key pair or private key as a plain Uint8Array, you need to serialize the key pair or private key.
 
 #### Previous (PoW)
