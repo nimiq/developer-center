@@ -143,7 +143,7 @@ const privatekeyHex = keyPair.privateKey.toHex();
 ```
 
 ## Nimiq.Client
-The Client class is a central component of the Nimiq's new web client framework and is essential for interacting with the Nimiq blockchain network under the PoS consensus model.
+The Client class is a central component of the Nimiq's new Web Client framework and is essential for interacting with the Nimiq blockchain network under the PoS consensus model.
 
 ### Initialization
 
