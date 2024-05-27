@@ -190,7 +190,7 @@ const client = await Nimiq.Client.create(config.build());
 In addition to the existing account types ```basic (0)```, ```vesting (1)```, and ```htlc (2)```, Nimiq now has a fourth account type ```staking (3)```. Only the staking contract can be type ```staking```, no other account can have this type.
 
 ### User-friendly addresses
-The new library doesn’t yet support the withSpaces parameter. User-friendly addresses are always returned with spaces.
+The new library doesn’t yet support the `withSpaces` parameter. User-friendly addresses are always returned with spaces.
 
 #### Previous (PoW)
 
