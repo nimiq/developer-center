@@ -224,7 +224,7 @@ function lunasToCoins(lunas: number): number {
 ## Other
 
 ### Send transactions
-**New capability:** Can now handle UintArray
+**New capability:** Can now handle `UintArray`
 
 ### Transaction state
 `MINED` is replace by `INCLUDED`
