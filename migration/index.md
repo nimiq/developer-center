@@ -41,7 +41,7 @@ During the migration, we will capture the entire blockchain state, including all
 
 **Do I need to participate in the migration?**
 
-No, you don't need to participate unless you want to become one of our first validators or actively engage in the process as a node operator. Your NIM and transaction history will be automatically transferred to the new PoS chain.
+No, you don't need to participate unless you want to become one of our first validators or actively engage in the process as a node operator with zero downtime. Your NIM and transaction history will be automatically transferred to the new PoS chain.
 
 ---
 
