@@ -1,6 +1,6 @@
 # Migration Guide for Web Developers
 
-With our shift from Proof-of-Work (PoW) to Proof-of-Stake (PoS), significant updates have been made to the [Nimiq Web Client](/build/web-client/). This comparison page is meticulously crafted to guide you through the enhancements implemented in the new version. We'll highlight critical changes in configuration, client instantiation, wallet creation, transaction handling, and more.
+With our shift from Proof-of-Work (PoW) to Proof-of-Stake (PoS), the [Nimiq Web Client](/build/web-client/) has undergone significant updates. This comparison page is meticulously crafted to guide you through the enhancements implemented in the new version. We'll highlight critical changes in configuration, client instantiation, wallet creation, transaction handling, and more.
 
 ## Nimiq.Wallet
 
@@ -221,14 +221,6 @@ function lunasToCoins(lunas: number): number {
 }
 ```
 
-## Other
-
-### Send transactions
-**New capability:** Can now handle `UintArray`
-
-### Transaction state
-`MINED` is replace by `INCLUDED`
-
 ## Timestamps
 Timestamps of transactions and blocks are now in milliseconds, where they were in seconds (UNIX) before. That means you no longer have to multiply them by 1000 to use with `new Date()` in JavaScript:
 
@@ -243,6 +235,14 @@ const txDate = new Date(transaction.timestamp * 1000);
 ```JavaScript
 const txDate = new Date(transaction.timestamp);
 ```
+
+## Other
+
+### Send transactions
+**New capability:** Can now handle `UintArray`
+
+### Transaction state
+`MINED` is replace by `INCLUDED`
 
 <style>
   h4 {
