@@ -1,6 +1,6 @@
 <script setup lang="ts">
 type Callout = 'warning' | 'tip' | 'info'
-const props = defineProps<{ type: Callout }>()
+const props = withDefaults(defineProps<{ type: Callout, noTitle?: boolean }>(), { noTitle: false })
 
 // @unocss-include
 
@@ -31,8 +31,8 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div w-full :class="classes.container" px-24 py-20 rounded-6 my-64 nq-border-base text-pretty class="callout">
-    <div flex="~ gap-8 items-center" mb-12>
+  <div w-full :class="classes.container" px-24 py-20 rounded-6 my-64 border-base text-pretty class="callout">
+    <div v-if="!noTitle" flex="~ gap-8 items-center" mb-12>
       <div :class="classes.icon" op-80 text-14 />
       <h5 nq-label text-current>
         {{ type }}

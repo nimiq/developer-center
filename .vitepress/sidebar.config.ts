@@ -40,6 +40,18 @@ export function Accordion({ path, collapsed = true, order }: { path: string, col
 export const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
     {
+      text: 'Learn',
+      icon: 'i-nimiq:icons-lg-bulb',
+      link: '/learn/',
+      items: [
+        { text: 'Home', link: '/learn/' },
+        { text: 'Overview', link: '/learn/protocol/overview' },
+        { text: 'Glossary', link: '/learn/protocol/glossary' },
+        { text: 'Validator Trust Score', link: '/learn/validator-trust-score' },
+      ],
+    },
+    {
+      prefix: 'About the',
       text: 'Protocol',
       link: '/learn/',
       items: [
