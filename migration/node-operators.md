@@ -67,7 +67,7 @@ Once you have your client compiled, you can:
 - Open the file `$HOME/.nimiq/client.toml` (see [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml))
 - Set the `network` to `main`
 - Choose your `sync_mode` setting as `full` or `history`
-- Optionally, enable the PoS RPC server by uncommenting the section in the [rpc-server] configuration if you need it.
+- Optionally, enable the PoS RPC server by uncommenting the section in the [rpc-server] configuration if you need it
 
 **Step 2: Run the Activation Tool**
 
