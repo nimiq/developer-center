@@ -5,7 +5,7 @@ links:
     label: Validator
     title: Pre-register now
     description: Join the first epoch as a validator and earn rewards from the very beginning
-    href: migration-validators/
+    href: migration-validators
     layout: lg
     span: 6
   - title: Be part of the migration
@@ -13,10 +13,10 @@ links:
     href: node-operators
   - label: Learn more
     title: Deep dive into the technical details
-    href: migration-technical-details/
+    href: migration-technical-details
   - label: FAQ
     title: Check our FAQs for more information
-    href: faqs/
+    href: faqs
 ---
 
 # Nimiq Migration to Proof-of-Stake
