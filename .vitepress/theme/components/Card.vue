@@ -40,15 +40,16 @@ const hasLink = computed(() => props.item.href)
     >
       <div :class="item.icon" />
     </div>
-    <span v-if="item.label" text="neutral-600 inverted:white/70" text-14 label mb-8>
+    <span v-if="item.label" text="neutral-700 inverted:white/70" :class="{ 'text-14': centered || item.bgColor, 'text-12': !centered }" label mb-8>
       {{ item.label }}
     </span>
     <component
       :is="centered ? 'h3' : 'h4'" v-if="item.title" :class="{
         'text-center': centered,
+        'mt-0 font-semibold lh-[1.2]': !centered,
         'text-18 lh-[1.2]': isIconSmall,
         'mb-20': item.icon && !isIconSmall,
-        'mb-12': !item.icon,
+        'mb-12': !item.icon && (item.description || item.tags?.length || 0 > 0 || item.duration),
         'text-white text-24 font-semibold': item.bgColor,
       }" z-1 inverted:max-w-256
     >
