@@ -1,16 +1,6 @@
-# Migration to PoS User Guide
+# PoS Migration Guide for Validators
 
-These instructions are exclusively for users interested in using Nimiq’s Migration Tools to register their validator and actively transition from Nimiq PoW to PoS. If you wish to become a validator post-migration instead, please refer to this [documentation](becoming-a-validator.md). For a complete understanding of the migration technicalities, refer to [this document](/learn/protocol/migration).
-
-The migration to PoS will undergo a test run. The phases of this test run are as follows:
-
-| Event                     | Day and Time (UTC)        | Block Height  |
-|---------------------------|----------------------------|---------------|
-| Registration Start        | Sunday, April 14th, 00:00 | 3016530       |
-| Registration End          | Thursday, April 18th, 00:00| 3022290       |
-| Pre-stake Start           | Friday, April 19th, 00:00  | 3023730       |
-| Pre-stake End             | Monday, April 22nd, 00:00  | 3028050       |
-| Block Candidate           | Monday, April 22nd, 18:00  | 3029130       |
+This guide is for users interested in using Nimiq’s Migration Tools to register their validator and transition from Nimiq PoW to PoS. For post-migration validator registration, refer to the [becoming a validator](/build/set-up-your-own-node/becoming-a-validator.md) documentation. For a complete understanding of the migration technicalities, refer to [this document](migration-technical-details).
 
 ## Validator Registration Tool
 
@@ -49,19 +39,19 @@ To start the validator registration process, fund the validator address you just
 
 <Callout type='info'>
 
-You will need funds to pay for the validator registration transactions and for the deposit for your validator. If you don't have funds for these transactions, please use the **[Testnet Faucet](https://test.nimiq.watch/#faucet)** to request NIM for the test-run.
+You will need funds to pay for the validator registration transactions and for the deposit for your validator. If you don't have funds for these transactions, please fund your address!
 
 </Callout>
 
 ### Step 3: Run the validator registration tool
 
-For testing this in the PoW testnet, you must specify the arguments as follows:
+To register your validator and keys on the PoW Mainnet, you must specify the arguments as follows:
 
 ```shell
-node validator-registration.js --validator validator-keys.json --network test
+node validator-registration.js --validator validator-keys.json --network main
 ```
 
-The tool will connect to the Nimiq PoW testnet chain. Upon consensus, the tool creates and signs the validator registration transactions and sends them to the network, effectively registering your validator. Note that these transactions are a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your validator address — as instructed in the previous step — as the transaction fees are paid from this address.
+The tool will connect to the Nimiq PoW Mainnet chain. Upon consensus, the tool creates and signs the validator registration transactions and sends them to the network, effectively registering your validator. Note that these transactions are a bundle of 6, and each one has a nominal fee of 1 Luna. Please ensure you have funded your validator address &mdash; as instructed in the previous step &mdash; as the transaction fees are paid from this address.
 
 For detailed guidance through the scripts and their options, run `node validator-registration.js --help`. This will print out the usage instructions.
 
@@ -85,7 +75,7 @@ Please note that any value below 100 000 NIM will result in permanent loss. Any 
 
 ## Validator Activation Tool
 
-The Activation tool facilitates the transition from the PoW chain to the PoS chain. Keep in mind that this tool can only be executed once the pre-stake phase is concluded, specifically during the activation phase.
+The Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the activation tool before its window begins to ensure sufficient time for migrating the history, as this process can be time-consuming.
 
 - Clone and compile the [PoS blockchain](https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#installation) repository and follow the instructions.
 - Enable the RPC server in the PoW chain. Follow the instructions in [this sample guide](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf).
@@ -95,7 +85,7 @@ The Activation tool facilitates the transition from the PoW chain to the PoS cha
 Once you have your client setup, you can either:
 
 - Go to the file `$HOME/.nimiq/client.toml`, which includes a dedicated validator section at the end, and paste your validator data into this section.
-- Refer to [this guide](becoming-a-validator#configuration).
+- Refer to [this guide](/build/set-up-your-own-node/becoming-a-validator.md#configuration).
 
 Ensure that you set your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
 
@@ -108,7 +98,7 @@ To execute the tool successfully, you need to ensure that you are fully synced a
 You can start the RPC server by cloning the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) then following the quickstart instructions and finally running the following command:
 
 ```shell
-node clients/nodejs/index.js --dumb --network=test --rpc=8648 --wallet-seed=private_keypublic_key
+node clients/nodejs/index.js --dumb --network=main --rpc=8648 --wallet-seed=private_keypublic_key
 ```
 
 Before executing the activation tool, make sure you run ```cargo build --release``` within the PoS repository to compile the code.

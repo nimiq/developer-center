@@ -42,33 +42,34 @@ export const navigation = {
   },
   items: [
     {
-      key: 'Learn',
+      key: 'Migration',
       main: {
-        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
-        iconClasses: 'i-nimiq:icons-lg-cubes text-[#1DA186] rotate-y-180 rotate-z-180',
-        label: 'Learn',
-        title: 'The technology',
-        description: 'What makes Nimiq a truly unique blockchain.',
-        href: '/learn/',
+        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
+        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-white/20 rotate-y-180 rotate-z-180',
+        label: 'Migration',
+        title: 'PoW to PoS',
+        description: 'Everything about the migration.',
+        href: '/migration/',
       },
       items: [
         {
-          title: 'Validators and Stakers',
-          href: '/learn/protocol/validators/validators-and-stakers',
-          description: 'Learn about the pillars of Albatross PoS',
+          title: 'For validators',
+          href: '/migration/migration-validators',
+          description: 'Join the first epoch as a validator and earn rewards from the very beginning',
         },
         {
-          title: 'Staking Contract',
-          href: '/learn/protocol/validators/staking-contract',
-          description: 'The repository of data for validators, stakers, and staking.',
+          title: 'For Node Operators',
+          href: '/migration/node-operators',
+          description: 'Our guide on how to migrate as a node operator',
         },
         {
-          title: 'Block Format',
-          href: '/learn/protocol/block-format',
-          description: 'Everything about micro and macro blocks.',
+          title: 'Technical details',
+          href: '/migration/migration-technical-details',
+          description: 'Deep dive into the technical details',
         },
       ],
     },
+
     {
       key: 'Build',
       main: {
@@ -94,6 +95,34 @@ export const navigation = {
           title: 'Design',
           href: '/build/ui/design/',
           description: 'Your app with Nimiq in mind.',
+        },
+      ],
+    },
+    {
+      key: 'Learn',
+      main: {
+        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
+        iconClasses: 'i-nimiq:icons-lg-cubes text-[#1DA186] rotate-y-180 rotate-z-180',
+        label: 'Learn',
+        title: 'The technology',
+        description: 'What makes Nimiq a truly unique blockchain.',
+        href: '/learn/',
+      },
+      items: [
+        {
+          title: 'Validators and Stakers',
+          href: '/learn/protocol/validators/validators-and-stakers',
+          description: 'Learn about the pillars of Albatross PoS',
+        },
+        {
+          title: 'Staking Contract',
+          href: '/learn/protocol/validators/staking-contract',
+          description: 'The repository of data for validators, stakers, and staking.',
+        },
+        {
+          title: 'Block Format',
+          href: '/learn/protocol/block-format',
+          description: 'Everything about micro and macro blocks.',
         },
       ],
     },
