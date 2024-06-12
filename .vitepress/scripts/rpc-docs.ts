@@ -84,7 +84,7 @@ export async function generateRpcDocs() {
 
   const tocColumns = []
   for (const { tags, methods } of groupMethods) {
-    const links = methods.map(method => `<a href="#${method.name}">${method.name}</a>`).join('\n\t\t')
+    const links = methods.map(method => `<a href="#${method.name.toLowerCase()}">${method.name}</a>`).join('\n\t\t')
     const tmp = columnTemplate
       .replaceAll('{{ tag }}', uppercase(tags.join(' ').replaceAll('_', ' ')))
       .replaceAll('{{ links }}', links)
