@@ -3,22 +3,22 @@
 ::: code-group
 
 ```bash [npm]
-npm install @nimiq/core-web@next
+npm install @nimiq/core@next
 npm install -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [yarn]
-yarn add @nimiq/core-web@next
+yarn add @nimiq/core@next
 yarn add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [pnpm]
-pnpm add @nimiq/core-web@next
+pnpm add @nimiq/core@next
 pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [bun]
-bun add @nimiq/core-web@next
+bun add @nimiq/core@next
 bun add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 

@@ -19,7 +19,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: { // [!code ++]
-    exclude: ['@nimiq/core-web'], // [!code ++]
+    exclude: ['@nimiq/core'], // [!code ++]
   }, // [!code ++]
 })
 ```

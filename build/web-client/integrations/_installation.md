@@ -3,19 +3,19 @@
 ::: code-group
 
 ```bash [npm]
-npm install @nimiq/core-web@next
+npm install @nimiq/core@next
 ```
 
 ```bash [yarn]
-yarn add @nimiq/core-web@next
+yarn add @nimiq/core@next
 ```
 
 ```bash [pnpm]
-pnpm add @nimiq/core-web@next
+pnpm add @nimiq/core@next
 ```
 
 ```bash [bun]
-bun add @nimiq/core-web@next
+bun add @nimiq/core@next
 ```
 
 :::

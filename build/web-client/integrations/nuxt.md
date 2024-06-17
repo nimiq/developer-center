@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     ], // [!code ++]
 
     optimizeDeps: { // [!code ++]
-      exclude: ['@nimiq/core-web'], // [!code ++]
+      exclude: ['@nimiq/core'], // [!code ++]
     }, // [!code ++]
   } // [!code ++]
 })
