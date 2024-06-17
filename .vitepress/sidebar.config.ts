@@ -37,40 +37,22 @@ export function Accordion({ path, collapsed = true, order }: { path: string, col
 export const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
     {
-      text: 'Learn',
-      icon: 'i-nimiq:icons-lg-bulb',
-      link: '/learn/',
-      items: [
-        { text: 'Home', link: '/learn/' },
-        { text: 'Overview', link: '/learn/protocol/overview' },
-        { text: 'Glossary', link: '/learn/protocol/glossary' },
-      ],
-    },
-    {
-      prefix: 'About the',
       text: 'Protocol',
-      icon: 'i-nimiq:icons-lg-nodes',
       link: '/learn/',
       items: [
-        { text: 'Block Format', link: '/learn/protocol/block-format' },
-        { text: 'Penalties', link: '/learn/protocol/penalties' },
-        { text: 'Equivocation Proofs', link: '/learn/protocol/equivocation-proofs' },
-        { text: 'Accounts', link: '/learn/protocol/accounts' },
-        { text: 'Transactions', link: '/learn/protocol/transactions' },
-        { text: 'Merkle Trees', link: '/learn/protocol/merkle-trees' },
-        { text: 'Mempool', link: '/learn/protocol/mempool' },
         {
-          text: 'Sync protocol',
+          text: 'Protocol',
           collapsed: false,
           items: [
-            { text: 'Nodes and sync', link: '/learn/protocol/sync-protocol/nodes-and-sync' },
-            { text: 'Block live sync', link: '/learn/protocol/sync-protocol/block-live-sync' },
-            { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
-            { text: 'Light macro sync', link: '/learn/protocol/sync-protocol/light-macro-sync' },
-            { text: 'State live sync', link: '/learn/protocol/sync-protocol/state-live-sync' },
+            { text: 'Block Format', link: '/learn/protocol/block-format' },
+            { text: 'Penalties', link: '/learn/protocol/penalties' },
+            { text: 'Equivocation Proofs', link: '/learn/protocol/equivocation-proofs' },
+            { text: 'Accounts', link: '/learn/protocol/accounts' },
+            { text: 'Transactions', link: '/learn/protocol/transactions' },
+            { text: 'Merkle Trees', link: '/learn/protocol/merkle-trees' },
+            { text: 'Mempool', link: '/learn/protocol/mempool' },
           ],
         },
-
         {
           text: 'Validators',
           collapsed: false,
@@ -83,9 +65,26 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Verifiable Random Functions', link: '/learn/protocol/verifiable-random-functions' },
           ],
         },
-        { text: 'ZKP and Recursive SNARKs', link: '/learn/protocol/ZKP-and-recursive-SNARKs' },
-        { text: 'Prover node', link: '/learn/protocol/prover-node' },
-        { text: 'Migration', link: '/learn/protocol/migration' },
+        {
+          text: 'Sync',
+          collapsed: false,
+          items: [
+            { text: 'Nodes and sync', link: '/learn/protocol/sync-protocol/nodes-and-sync' },
+            { text: 'Block live sync', link: '/learn/protocol/sync-protocol/block-live-sync' },
+            { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
+            { text: 'Light macro sync', link: '/learn/protocol/sync-protocol/light-macro-sync' },
+            { text: 'State live sync', link: '/learn/protocol/sync-protocol/state-live-sync' },
+          ],
+        },
+        {
+          text: 'ZKP',
+          collapsed: false,
+          items: [
+            { text: 'ZKP and Recursive SNARKs', link: '/learn/protocol/ZKP-and-recursive-SNARKs' },
+            { text: 'Prover node', link: '/learn/protocol/prover-node' },
+          ],
+        },
+        { text: 'Glossary', link: '/learn/protocol/glossary' },
       ],
     },
   ],

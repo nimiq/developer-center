@@ -1,39 +1,50 @@
 ---
 links:
-  - title: Validators and Stakers
-    description: Learn about the pillars of Albatross PoS
-    href: 'protocol/validators/validators-and-stakers'
-    bgColor: green
-  - title: Staking Contract
-    description:  The repository of data for validators, stakers, and staking.
-    href: 'protocol/validators/staking-contract'
-  - title: Block Format
-    description: Everything about micro and macro blocks.
+  - bgColor: green
+    icon: i-nimiq:icons-lg-cubes
+    title: Blockchain Structure
+    description: Everything about micro and macro blocks
     href: 'protocol/block-format'
-becomeValidator:
-  - title: Run a Validator
-    description: Start earning by validating blocks and securing the network.
-    bgColor: blue
-    href: '../build/becoming-a-validator'
-    icon: 'i-nimiq:icons-lg-verified'
-    duration: '30-45 min'
-prev: false
-next: false
-aside: false
-footer: false
-prose: false
+    layout: lg
+  - title: Validators and Stakers
+    description: Explore the pillars of Albatross PoS
+    href: 'protocol/validators/validators-and-stakers'
+  - title: Slots
+    description: Learn how slots are assigned to validators
+    href: 'protocol/validators/slots'
+  - title: Staking Contract
+    description:  The repository of data for validators, stakers, and staking
+    href: 'protocol/validators/staking-contract'
 ---
 
-<HeadsUp />
+# Nimiq Proof-of-Stake
 
-# Nimiq - a blockchain built from scratch
+Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features. Covering key aspects, we provide essential insights into Nimiq's Proof-of-Stake.{.subline}
 
-Everybody should be a peer: The basic idea of the Nimiq Blockchain.{.subline}
+<Grid class="raw" :items="$frontmatter.links" mt-64 />
 
-<Grid :items="$frontmatter.links" mt-64 mb-136 />
+## Validators and Stakers
 
-## Become a validator and earn by securing the network.
+[Validators](/learn/protocol/validators/validators-and-stakers.md#validators) play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at maximum f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. [Slots](/learn/protocol/validators/slots.md) determine block producers, with random selection ensuring fairness.
 
-Setting your own validator is easy.{.subline}
+Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 slots per batch ready to produce blocks.
 
-<Grid :items="$frontmatter.becomeValidator" mt-64 />
+Participants lacking the resources or expertise to become validators can delegate funds as [stakers](/learn/protocol/validators/validators-and-stakers.md#stakers). Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Stakers face penalties if their validator misbehaves. Validator rewards for stakers are processed off-chain.
+
+## Blockchain Structure
+
+### Epochs and Batches
+
+The Nimiq PoS blockchain is organized into [epochs and batches](/learn/protocol/block-format.md#blockchain-format). An epoch, comprising multiple batches, ends with a closing election macro block. While validators remain constant within an epoch, the election macro block selects new validators for the next epoch.
+
+### Micro Blocks
+
+Produced by selected validators, [micro blocks](/learn/protocol/block-format.md#micro-blocks) contain user transactions. A skip block may replace a delayed micro block, signed by over two-thirds of validators in the current epoch.
+
+### Macro Blocks
+
+After a set number of micro blocks, a [macro block](/learn/protocol/block-format.md#macro-blocks) finalizes the batch. Randomly proposed by a leader, macro blocks undergo a two-step voting process. Election blocks provide periodic finality, renewing the validator set, while checkpoint blocks retain the validator set.
+
+## Dealing with Malicious Behavior
+
+Validators earn rewards for contributions and face [penalties](/learn/protocol/penalties.md) for consensus violations, varying by severity. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a [jail](/learn/protocol/penalties.md#jail) state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.

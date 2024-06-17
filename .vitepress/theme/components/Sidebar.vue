@@ -37,7 +37,7 @@ watch(
       <template v-for="(group, i) in sidebarGroups" :key="group.text">
         <div w-full border-top sticky top-0 bottom--1 z-1 bg-neutral-0 cursor-pointer>
           <div pt-24 pb-16>
-            <a :href="withBase(group.link)" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
+            <!-- <a :href="withBase(group.link)" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
               <p v-if="group.prefix" text-16 op50 font-semibold relative text-left>
                 {{ group.prefix }}
               </p>
@@ -47,7 +47,7 @@ watch(
                   {{ group.text }}
                 </h3>
               </div>
-            </a>
+            </a> -->
             <div
               absolute inset-x-0 bottom--16 h-16 pointer-events-none
               bg-gradient="to-b from-neutral-0 to-transparent"
