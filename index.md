@@ -33,10 +33,6 @@ buildTogetherLinks:
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
     href: build/set-up-your-own-node/becoming-a-validator
-  - title: Use our Designs
-    href: build/ui/css-framework/overview
-    description: Use our components to build something awesome
-    icon: i-nimiq:icons-lg-palette
 ---
 
 # Welcome to the Nimiq Developer Center

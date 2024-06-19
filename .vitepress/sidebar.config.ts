@@ -147,35 +147,5 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/' },
       ],
     },
-    {
-      text: 'UI',
-      icon: 'i-nimiq:icons-lg-palette',
-      prefix: 'Using Nimiq\'s',
-      link: '/build/ui/css-framework/overview',
-      items: [
-        {
-          text: 'Design',
-          collapsed: false,
-          items: [
-            { text: 'Logo', link: '/build/ui/design/logo' },
-            { text: 'Icons', link: '/build/ui/design/icons' },
-            { text: 'Typography', link: '/build/ui/design/typography/' },
-          ],
-        },
-        {
-          text: 'CSS framework',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/build/ui/css-framework/overview' },
-            { text: 'Fonts', link: '/build/ui/css-framework/fonts' },
-            { text: 'Typography', link: '/build/ui/css-framework/typography' },
-            { text: 'Colors', link: '/build/ui/css-framework/colors' },
-            { text: 'Buttons', link: '/build/ui/css-framework/buttons' },
-            { text: 'Inputs', link: '/build/ui/css-framework/inputs' },
-            { text: 'Cards', link: '/build/ui/css-framework/cards' },
-          ],
-        },
-      ],
-    },
   ],
 }
