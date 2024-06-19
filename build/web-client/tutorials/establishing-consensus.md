@@ -11,7 +11,7 @@
 
 Nimiq is a blockchain-based payment protocol. This technology offers several key benefits:
 
-- **Censorship-resistant:** No one can stop you from using it." should be "No one can prevent you from using it
+- **Censorship-resistant:** No one can prevent you from using it
 - **Privacy-oriented:** You don’t need to provide any personal information to open an account
 - **Decentralized:** It’s not controlled by any single person but by all its users
 
@@ -40,7 +40,7 @@ const Nimiq = require('@nimiq/core')
 ```
 
 - To create a client configuration, use the `ClientConfiguration()` constructor
-- To configure the client to use the Nimiq Testnet use `client.network('TestAlbatross')`
+- To configure the client to use the Nimiq Testnet use `config.network('TestAlbatross')`
 - To create an instance of the Client call `Client.create(config.build())`
 
 ```js
