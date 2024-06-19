@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { consola } from 'consola'
 import { readPackageJSON } from 'pkg-types'
@@ -27,4 +27,30 @@ export async function generateWebClientDocs() {
 
   // Write version file for generated docs
   writeFileSync(versionFile, packageVersion)
+
+  // Remove the first four lines of all files in the generated docs folder
+  removeFirstFourLines(join(webClientFolder, 'reference'))
+}
+
+function removeFirstFourLines(folderPath: string) {
+  const items = readdirSync(folderPath)
+
+  for (const item of items) {
+    const itemPath = join(folderPath, item)
+    const stats = statSync(itemPath)
+
+    if (stats.isDirectory()) {
+      // Recurse into subdirectory
+      removeFirstFourLines(itemPath)
+    }
+    else if (stats.isFile()) {
+      const lines = readFileSync(itemPath, 'utf-8').split('\n')
+      if (lines.length > 4) {
+        writeFileSync(itemPath, lines.slice(4).join('\n'))
+      }
+      else {
+        consola.warn(`File ${itemPath} has less than 4 lines, skipping.`)
+      }
+    }
+  }
 }
