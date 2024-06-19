@@ -10,6 +10,7 @@ const props = defineProps<{
 }>()
 
 type SidebarItem = DefaultTheme.SidebarItem & { icon: string, items: SidebarItem[], prefix: string }
+// TODO Remove useless variaables and code
 const { sidebarGroups, hasSidebar } = useSidebar() as unknown as { sidebarGroups: ComputedRef<SidebarItem[]>, hasSidebar: boolean }
 
 // a11y: focus Nav element when menu has opened
@@ -34,7 +35,7 @@ watch(
     <nav aria-labelledby="sidebar-aria-label" tabindex="-1" pb-40 h-full relative>
       <span id="sidebar-aria-label" sr-only>Sidebar Navigation</span>
 
-      <template v-for="(group, i) in sidebarGroups" :key="group.text">
+      <template v-for="group in sidebarGroups" :key="group.text">
         <div w-full border-top sticky top-0 bottom--1 z-1 bg-neutral-0 cursor-pointer>
           <div pt-24 pb-16>
             <!-- <a :href="withBase(group.link)" :data-index="i" mx--8 px-8 focus-visible="outline-blue bg-blue/6">
