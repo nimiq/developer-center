@@ -34,7 +34,10 @@ export default defineConfig(async () => {
       __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
       __BUILD_ENVIRONMENT__: JSON.stringify(environment),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+    },
 
+    build: {
+      modules: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
     },
 
     plugins: [

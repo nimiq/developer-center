@@ -9,8 +9,8 @@ The Nimiq Web Client ships with support for Vite.
 Update your `vite.config.js`:
 
 ```javascript
-import wasm from "vite-plugin-wasm"; // [!code ++]
-import topLevelAwait from "vite-plugin-top-level-await"; // [!code ++]
+import wasm from 'vite-plugin-wasm' // [!code ++]
+import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
 
 export default defineConfig({
   plugins: [

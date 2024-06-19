@@ -80,7 +80,7 @@ export default defineConfig({
     },
   },
   rules: [
-    [/^rounded-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
+    [/^rounded-([.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
   ],
 
   shortcuts: [

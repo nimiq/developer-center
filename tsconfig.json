@@ -3,7 +3,8 @@
     "target": "es2017",
     "jsx": "preserve",
     "lib": [
-      "es2022", "dom"
+      "es2022",
+      "dom"
     ],
     "baseUrl": ".",
     "module": "esnext",

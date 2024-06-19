@@ -13,7 +13,7 @@ module.exports = {
   experiments: { // [!code ++]
     asyncWebAssembly: true, // [!code ++]
   }, // [!code ++]
-};
+}
 ```
 
 Now you are ready to go!

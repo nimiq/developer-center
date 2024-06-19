@@ -23,12 +23,12 @@ On the journey, Pixel met Sage Scripto, a wise old code wizard, who shared valua
 ```javascript
 const genesisBlock = {
   index: 0,
-  timestamp: "2021-01-01",
+  timestamp: '2021-01-01',
   transactions: [],
   proof: 1,
-  previousHash: "0"
-};
-console.log("Behold the Genesis Block:", genesisBlock);
+  previousHash: '0'
+}
+console.log('Behold the Genesis Block:', genesisBlock)
 ```
 
 ## The Dark Forest of Bugs
