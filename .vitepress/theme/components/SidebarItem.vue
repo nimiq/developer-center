@@ -52,7 +52,8 @@ function normalizeLink(url: string): string {
     = pathname.endsWith('/') || pathname.endsWith('.html')
       ? url
       : url.replace(
-        /.*$/,
+        // eslint-disable-next-line regexp/optimal-quantifier-concatenation
+        /(?:(^\.+)\/)?.*$/,
           `$1${pathname.replace(
             /(\.md)?$/,
             site.value.cleanUrls ? '' : '.html',
