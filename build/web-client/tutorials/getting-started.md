@@ -1,5 +1,5 @@
 ---
-next: ./establishing-consensus/
+next: ./connecting-to-the-network/
 ---
 
 # Getting Started
@@ -40,8 +40,8 @@ To get started with the tutorials, make sure you have the following prerequisite
 2. Node.js and NPM installed on your computer
 3. Basic knowledge of how to use the command line
 
-Ready? Start with our first tutorial on [establishing consensus](./establishing-consensus).
+Ready? Start with our first tutorial on [connecting to the network](./connecting-to-the-network).
 
 ## Tutorials Overview
 
-1. [Establishing Consensus](./establishing-consensus)
+1. [Connecting to the Network](./connecting-to-the-network)
