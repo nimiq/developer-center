@@ -25,7 +25,7 @@ Nimiq allows direct connection to the network with Zero Knowledge Proofs (ZKPs) 
 
 ### Using `@nimiq/core` to Establish Consensus
 
-You have the option to interact with the Nimiq blockchain using either a web browser or Node.js through the @nimiq/core npm module. The import instructions vary based on the environment and project setup. Check out the [integrations](/developers/build/web-client/installation) section to find the right setup for your project.
+You have the option to interact with the Nimiq blockchain using either a web browser or Node.js through the @nimiq/core npm module. The import instructions vary based on the environment and project setup. Check out the [integrations](/build/web-client/installation) section to find the right setup for your project.
 
 In order to connect to the network and establish consensus, you need to import the Nimiq Web package and configure the client.
 
