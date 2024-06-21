@@ -44,9 +44,14 @@ const Nimiq = require('@nimiq/core')
 - To create an instance of the Client call `Client.create(config.build())`
 
 ```js
-const config = new Nimiq.ClientConfiguration() // Create a configuration builder
-config.network('TestAlbatross') // Select Testnet
-const client = await Nimiq.Client.create(config.build()) // Instantiate and launch the client
+// Create a configuration builder
+const config = new Nimiq.ClientConfiguration()
+
+// Select Testnet
+config.network('TestAlbatross')
+
+// Instantiate and launch the client
+const client = await Nimiq.Client.create(config.build())
 ```
 
 These three lines are all you need to connect to the network and establish consensus. All you have to do is wait until the consensus is established. You can check the consensus state by calling `isConsensusEstablished()` which returns `true` if consesus is established.
