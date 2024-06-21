@@ -19,15 +19,13 @@ A blockchain is like a shared digital ledger. Keeping this ledger up to date acr
 
 Nimiq allows direct connection to the network with Zero Knowledge Proofs (ZKPs) for both light and full nodes. Unlike history nodes, which download and verify the entire blockchain, light and full nodes only download the necessary data to verify the [macro chain's](/learn/protocol/ZKP-and-recursive-SNARKs.md) validity. This approach significantly reduces storage and computational requirements, making light nodes ideal for devices with limited resources, such as browsers or mobile devices, and making full nodes much lighter.
 
-In Nimiq, these light nodes use Zero Knowledge Proofs (ZKPs) to efficiently verify blockchain transactions and states, providing a secure and user-friendly experience.
-
 <div dark:bg-gray-300 bg-gray-100 p-16 my-48 rounded-6>
     <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/tutorials/nimiq-network.svg" alt="Illustration of the nimiq network compared to most other blockchains" />
 </div>
 
 ### Using `@nimiq/core` to Establish Consensus
 
-You have the option to interact with the Nimiq blockchain using either a web browser or Node.js through the @nimiq/core npm module. The import instructions vary based on the environment and project setup. Check out the [integrations](/developers/build/web-client/integrations) section to find the right setup for your project.
+You have the option to interact with the Nimiq blockchain using either a web browser or Node.js through the @nimiq/core npm module. The import instructions vary based on the environment and project setup. Check out the [integrations](/developers/build/web-client/installation) section to find the right setup for your project.
 
 In order to connect to the network and establish consensus, you need to import the Nimiq Web package and configure the client.
 
