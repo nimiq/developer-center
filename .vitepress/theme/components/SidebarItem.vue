@@ -11,12 +11,9 @@ const props = defineProps<{
 
 const {
   collapsed,
-  // collapsible,
-  // isLink,
   isActiveLink,
   hasActiveLink,
   hasChildren,
-  // toggle,
 } = useSidebarControl(computed(() => props.item))
 const linkRef = ref<HTMLAnchorElement | null>(null)
 
