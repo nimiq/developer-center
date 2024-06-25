@@ -19,7 +19,7 @@ links:
 
 # Nimiq Proof-of-Stake
 
-Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features. Covering key aspects, we provide essential insights into Nimiq's Proof-of-Stake.{.subline}
+Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features.{.subline}
 
 <Grid class="raw" :items="$frontmatter.links" mt-64 />
 

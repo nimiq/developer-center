@@ -66,7 +66,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           ],
         },
         {
-          text: 'Sync',
+          text: 'Network Sync',
           collapsed: false,
           items: [
             { text: 'Nodes and sync', link: '/learn/protocol/sync-protocol/nodes-and-sync' },
@@ -74,6 +74,8 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
             { text: 'Light macro sync', link: '/learn/protocol/sync-protocol/light-macro-sync' },
             { text: 'State live sync', link: '/learn/protocol/sync-protocol/state-live-sync' },
+            { text: 'Messages and Requests', link: '/learn/protocol/sync-protocol/messages-and-requests' },
+
           ],
         },
         {
