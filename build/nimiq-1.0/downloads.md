@@ -48,7 +48,7 @@ Also works in Red Hat-Based Distributions:
 
 ## Windows
 
-[Download]()
+[Download](https://repo.nimiq.com/win/x64/nimiq-v1.6.3-1.x64.msi)
 
 Double click the downloaded MSI file ([`nimiq-v*.x64.msi`](https://repo.nimiq.com/win/x64/nimiq-v1.6.3-1.x64.msi)) and follow the instructions during the installation process.
 
