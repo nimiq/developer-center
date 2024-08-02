@@ -99,6 +99,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Guide for Validators', link: '/migration/migration-validators' },
         { text: 'Guide for Node Operators', link: '/migration/node-operators' },
+        { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
         { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },
         { text: 'Migration Technicalities', link: '/migration/migration-technical-details' },
         { text: 'FAQs', link: '/migration/faqs' },
