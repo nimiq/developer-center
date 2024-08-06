@@ -100,7 +100,7 @@ All mining-related methods have been removed as they are no longer relevant.
 - The `type` field is now one of these strings: `"basic" | "vesting" | "htlc" | "staking"`.
 - In vesting accounts, the `owner` field is now the address, the ~~`ownerAddress`~~ field has been removed.
 - In HTLC accounts, the `sender` & `recipient` fields are now the addresses, the ~~`senderAddress`~~ & ~~`recipientAddress`~~ have been removed.
-- HTLC accounts no longer have a ~~`hashAlgorithm`~~ field.
+- In HTLC accounts, the `hashRoot` field is now an object containing a `algorithm: 'blake2b' | 'sha256' | 'sha512'` field (replacing the toplevel ~~`hashAlgorithm`~~ field) and a `hash: string` field.
 
 ### 6.2 Account methods
 
