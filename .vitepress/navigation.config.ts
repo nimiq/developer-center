@@ -110,8 +110,8 @@ export const navigation = {
       },
       items: [
         {
-          title: 'Validators and Stakers',
-          href: '/learn/protocol/validators/validators-and-stakers',
+          title: 'Validators',
+          href: '/learn/protocol/validators/validators',
           description: 'Learn about the pillars of Albatross PoS',
         },
         {
