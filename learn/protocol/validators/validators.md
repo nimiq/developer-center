@@ -1,6 +1,4 @@
-# Validators and Stakers
-
-## Validators
+# Validators
 
 Validators are the block producers of PoS blockchains. They are responsible for processing and validating transactions, block validation, and maintaining the integrity of the network. Their primary function is to preserve the network's consensus by agreeing on the current state.
 
@@ -52,31 +50,3 @@ Validators send transactions to update data or change their state deliberately. 
 | Retired | The validator has withdrawn their stake from the network after waiting for the reporting window time (spans from the block following the offense to the end of the epoch after the next election block). Once retired, the validator can only delete its validator |
 
 The jailed state deactivates the validator and all of its slots, but as opposed to the inactive state, it is not a deliberate action, and becoming jailed is triggered in an inherent by an equivocation proof reported by any validator.
-
-## Stakers
-
-If a node doesn't have the resources, knowledge, or availability to be a validator, it can be a staker. A staker delegates its deposit to a validator, which validates blocks on behalf of it. The staker deposits its stake to its staker's account. Unlike validators, stakers don't have to secure a minimum amount to become a staker. Also, stakers don't get rewarded in the staking contract. Note that stakers do not receive rewards directly through the staking contract. Instead, validators handle the off-chain distribution of rewards to stakers.
-
-Stakers delegate their stake to validators, but validators are not aware of their stakers. When a validator deletes itself but still has attached stakers, these stakers are relocated to the tombstone. In the tombstone they can either reassign their stake to another validator or withdraw it. This transition simplifies the process, avoiding complex computational tasks related to staker removal from validators.
-
-| Data | Type | Description |
-| --- | --- | --- |
-| `address` | `Address` | The address of the staker. Used for most transactions, except AddStake which accepts any address. |
-| `active_balance` | `Coin` | The staker's active balance. |
-| `inactive_balance` | `Coin` | The staker's inactive balance. Only released inactive balance can be retired. |
-| `inactive_from` | `Option<u32>` | The block number at which the inactive balance was last inactivated (it becomes effectively inactive on the next election block). |
-| `retired_balance` | `Coin` | The staker's retired balance. Retired balance can be withdrawn immediately. |
-| `delegation` | `Option<Address>` | The address of the validator the staker is delegating its stake to. |
-
-### Transactions
-
-Stakers can also send transactions to the network to update their validators or change the state of their stake.
-
-| Transaction | Description |
-| --- | --- |
-| Create | Creates a new staker. |
-| AddStake | Adds coins from any outside address to the staker’s active balance. |
-| SetActiveStake | Re-balances between active and inactive stake by setting the amount of active stake. Indirectly, setting the active balance also sets the inactive balance. |
-| Update | Updates the validator address the stake is delegated to. |
-| RetireStake | Permanently marks a given balance for future withdrawal. Only inactive funds can be retired. |
-| RemoveStake | Removes the retired balance from a staker to outside of the staking contract. |

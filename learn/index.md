@@ -8,7 +8,7 @@ links:
     layout: lg
   - title: Validators and Stakers
     description: Explore the pillars of Albatross PoS
-    href: 'protocol/validators/validators-and-stakers'
+    href: 'protocol/validators/validators'
   - title: Slots
     description: Learn how slots are assigned to validators
     href: 'protocol/validators/slots'
@@ -25,11 +25,11 @@ Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus
 
 ## Validators and Stakers
 
-[Validators](/learn/protocol/validators/validators-and-stakers.md#validators) play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at maximum f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. [Slots](/learn/protocol/validators/slots.md) determine block producers, with random selection ensuring fairness.
+[Validators](/learn/protocol/validators/validators.md) play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at maximum f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. [Slots](/learn/protocol/validators/slots.md) determine block producers, with random selection ensuring fairness.
 
 Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 slots per batch ready to produce blocks.
 
-Participants lacking the resources or expertise to become validators can delegate funds as [stakers](/learn/protocol/validators/validators-and-stakers.md#stakers). Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Stakers face penalties if their validator misbehaves. Validator rewards for stakers are processed off-chain.
+Participants lacking the resources or expertise to become validators can delegate funds as [stakers](/learn/protocol/validators/stakers.md). Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Stakers face penalties if their validator misbehaves. Validator rewards for stakers are processed off-chain.
 
 ## Blockchain Structure
 

@@ -17,7 +17,7 @@ links:
     href: learn/
   - label: Validators and Stakers
     title: Learn about the pillars of Albatross PoS
-    href: learn/protocol/validators/validators-and-stakers
+    href: learn/protocol/validators/validators
   - label: Staking contract
     title: Everything for validators, stakers, and staking.
     href: learn/protocol/validators/staking-contract
