@@ -2,7 +2,7 @@
 
 A staker delegates its NIM to a validator, which validates blocks on its behalf. Validators handle the reward distribution off-chain. This document explains how the staking process works, the functions available to stakers, and the conditions and rules that govern these states.
 
-### Skate states
+### State states
 
 **Active**: Funds actively participating in staking
 
