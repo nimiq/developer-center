@@ -12,3 +12,5 @@ build/set-up-your-own-node/rpc-docs/.version
 build/set-up-your-own-node/rpc-docs/methods.md
 
 components.d.ts
+
+deployment-devcenter/
