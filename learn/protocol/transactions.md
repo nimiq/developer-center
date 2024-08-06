@@ -44,4 +44,6 @@ Hence, when a validator includes a transaction to the micro block, it may succee
 - **Succeed**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated.
 - **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted.
 
+Moreover, if the sender lacks sufficient funds to cover the transaction fee, the transaction is invalid and will not be processed.
+
 Let's consider a scenario where Alice, with 100 NIM in her balance, sends two transactions. In the first transaction (transaction 1), she intends to send 80 NIM to Bob. Following the succeed-fail principle mentioned above, transaction 1 succeeds. However, immediately after, Alice attempts to send 50 NIM to Charlie in transaction 2, which fails due to insufficient balance. Both transactions are recorded in the blockchain. Transaction 1 is logged as a successful transaction, whereas transaction 2 is marked as fail. Our protocol accommodates failed transactions, deducting the associated fees even in cases of failure.
