@@ -74,7 +74,7 @@ importers:
         version: 2.1.24
       '@nimiq/core':
         specifier: next
-        version: 2.0.0-next.22.0
+        version: 2.0.0-next.23.0
       '@types/markdown-it':
         specifier: ^14.1.1
         version: 14.1.1
@@ -987,8 +987,8 @@ packages:
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
 
-  '@nimiq/core@2.0.0-next.22.0':
-    resolution: {integrity: sha512-d7ot5m1cciP1+PYv3hglHoZ+kKhUBNqCqByTaTYlCMeUQTnGJ8g2JowBtr3Lz1SOlyHN0QPqiLSd5K+CyiImcQ==}
+  '@nimiq/core@2.0.0-next.23.0':
+    resolution: {integrity: sha512-tEeYRIMKI2iOW2LcYqjyPk1Ju+ztS5ivGKLeEQ3aYi0+2Sql+4xhjomH7nRYr6b9AcjuYkJZhPmC7XeCzwW6Ig==}
 
   '@nimiq/style@0.8.5':
     resolution: {integrity: sha512-il2+hrodQ7iL4ARPwfGmGvrEYgtMHAoQSbcyapxEQEG7vDYj5r+ssuhKB+oYmdRUxA1/HvyGDnWG3XenKvQyIA==}
@@ -5204,7 +5204,7 @@ snapshots:
       string-argv: 0.3.2
       type-detect: 4.0.8
 
-  '@nimiq/core@2.0.0-next.22.0':
+  '@nimiq/core@2.0.0-next.23.0':
     dependencies:
       comlink: 4.4.1
       websocket: 1.0.35
