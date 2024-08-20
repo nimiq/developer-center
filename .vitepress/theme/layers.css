@@ -22,7 +22,7 @@ It would be nice to declare this layers as vite plugin but when we build it is b
             &:is(ul) {
                 & li {
                     &::before {
-                        /* TODO: Fix list bullet points in nimiq-css instead @onmax */
+                        /* TODO: Remove this code once we use nimiq-css@1.0.9 or newer version @onmax */
                         float: left;
                         margin-left: -1em;
                         top: 0.625rem !important;
