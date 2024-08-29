@@ -1,8 +1,8 @@
-# Nimiq's Validator Trust Score
+# Nimiq's Validator Score
 
 An algorithm that calculates a score to help users assess how reliable a validator is.{.subline .mb-32}
 
-The Validator Trust Score (VTS) algorithm is designed to help users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. This way, stakers can make better informed decisions about which validators to trust. The VTS algorithm is based on three key factors:
+The Validator Score algorithm is designed to help users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. This way, stakers can make better informed decisions about which validators to trust. The algorithm is based on three key factors:
 
 - **Size**: Evaluates the size of the validator's stake relative to the total stake in the network, penalizing validators with higher stakes to prevent centralization.
 - **Reliability**: Assesses the consistency of a validator in producing blocks over the past 9 months.
@@ -14,18 +14,18 @@ The Validator Trust Score (VTS) algorithm is designed to help users assess the r
     Heads up
   </div>
   <p pr-32 md:pr-64>
-    The Validator Trust Score is still under heavy development and nothing is final. Feel free to share your <a href="#suggestions-feedback" underline text-inherit>Suggestions or Feedback</a>.
+    The Validator Score is still under heavy development and nothing is final. Feel free to share your <a href="#suggestions-feedback" underline text-inherit>Suggestions or Feedback</a>.
   </p>
   <div i-custom:crane absolute text-90 md:text-128 right--12 bottom--16 md:top-6 rotate-y-180 op-20 pointer-events-none />
 </div>
 
 <figure>
 
-<img src="/assets/images/learn/validators-trust-score-wallet-preview.png" alt="The Validator Trust Score in the Wallet" max-h-512 object-contain />
+<img src="/assets/images/learn/validators-wallet-preview.png" alt="The Validator Score in the Wallet" max-h-512 object-contain />
 
 <figcaption>
 
-Preview of the Validator Trust Score in the Nimiq Wallet
+Preview of the Validator Score in the Nimiq Wallet
 
 </figcaption>
 
@@ -81,13 +81,29 @@ The curves and constants presented in this document are subject to change at any
 
 The Size factor ensures that no single validator controls too much of the network's total stake. If a validator controls a large portion of the total stake, they will get a lower score. We penalize validators with a higher stake compared to those with a lower stake, as a lower stake promotes a fair distribution of control across the network.
 
-First, we calculate the stake percentage ($s$) of the validator in the network:
+#### Size Ratio
+
+To find the size ratio ($s$) of a validator, we have two methods:
+
+1. **First method**: Calculate the ratio by dividing the validator's share by the total share of the network for an active epoch:
 
 $$
 s = \frac{v}{Z}
 $$
 
-Where $v$ is the validator's stake and $Z$ is the total stake in the network.
+Where $v$ is the validator's share and $Z$ is the total network share. This method applies when the epoch is active, so we can access each validator's balance using the `getActiveValidators` function from the RPC.
+
+2. **Second method**: A different approach is used for a closed epoch. This is less accurate due to some randomness and is considered a fallback option. Here we look at the slot distribution of each voting block, which reflects the amount staked by each validator. The size ratio is calculated by dividing the number of slots allocated to a validator by the total number of slots in that epoch:
+
+$$
+s = \frac{sl}{Sl}
+$$
+
+Where $sl$ is the number of slots allocated to the validator and $Sl$ is the total number of slots.
+
+> The second method in the code is called `sizeRatioViaSlots`.
+
+#### Curve adjustment
 
 Then, we apply a curve to the stake percentage to calculate the Size score ($S$):
 
