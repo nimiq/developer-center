@@ -47,7 +47,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'Home', link: '/learn/' },
         { text: 'Overview', link: '/learn/protocol/overview' },
         { text: 'Glossary', link: '/learn/protocol/glossary' },
-        { text: 'Validator Trust Score', link: '/learn/validator-trust-score' },
+        { text: 'Validator Score', link: '/learn/validator-score' },
       ],
     },
     {
