@@ -37,7 +37,7 @@ buildTogetherLinks:
 
 # Welcome to the Nimiq Developer Center
 
-Get guides, resources and tips on how to create with Nimiq.{.subline}
+Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
 
 <HeadsUp />
 
@@ -45,6 +45,6 @@ Get guides, resources and tips on how to create with Nimiq.{.subline}
 
 ## Let's Build Together
 
-Create apps, run a validator or craft something delightful with Nimiq.{.subline}
+Create apps, run a validator or craft something delightful with Nimiq.{.nq-subline}
 
 <Grid :items="$frontmatter.buildTogetherLinks" mt-64 />

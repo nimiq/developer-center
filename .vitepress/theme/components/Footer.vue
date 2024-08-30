@@ -13,7 +13,7 @@ const isMd = computed(() => hasSidebar.value && !hasOutline.value)
 
 <template>
   <footer
-    border-top class="raw" w-full :style="{
+    border-top class="raw nq-raw" w-full :style="{
       'padding-left': hasSidebar ? 'calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width))' : '',
       'padding-right': hasSidebar ? 'calc((100vw - var(--vp-layout-max-width)) / 2 + 96px)' : '',
     }"
@@ -31,7 +31,7 @@ const isMd = computed(() => hasSidebar.value && !hasOutline.value)
       <nav>
         <ul grid="~ col-1 md:cols-2 gap-16 justify-between" ml--4 z-10 relative>
           <li v-for="(item, i) in footer" :key="item.icon" :class="{ 'md:justify-self-end': i % 2 !== 0 }">
-            <a :href="item.link" target="_blank" noopener noreferrer flex="~ items-center" px-4 w-max un-text-14 class="arrow" text-blue>
+            <a :href="item.link" target="_blank" noopener noreferrer flex="~ items-center" px-4 w-max un-text-14 class="nq-arrow" text-blue>
               <div :class="item.icon" mr-8 text="20 neutral-600" />
               <span text-neutral-700>{{ item.text }}</span>
               <span font-semibold ml-4>{{ item.social }}</span>

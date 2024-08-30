@@ -23,7 +23,7 @@ watch(route, () => open.value = false)
       >
         <div p-24 bg-neutral-100 rounded-t-24 flex-1 relative flex="~ col">
           <DrawerClose absolute top-16 right-16 z-1 grid>
-            <div close-btn text-32 pt-8 />
+            <div nq-close-btn text-32 pt-8 />
           </DrawerClose>
           <DrawerTitle sr-only>
             Nimiq Developer Center
@@ -34,7 +34,7 @@ watch(route, () => open.value = false)
               <li v-for="({ key, main, items }) in navigation.items" :key>
                 <ul>
                   <li>
-                    <a :href="withBase(main.href)" px-16 py-12 un-text="17 neutral-900" lh="22" arrow>
+                    <a :href="withBase(main.href)" px-16 py-12 un-text="17 neutral-900" lh="22" nq-arrow>
                       {{ key }}
                     </a>
                   </li>
@@ -49,7 +49,7 @@ watch(route, () => open.value = false)
           </nav>
 
           <div flex="~ gap-16 items-center" mt-40 mx-16>
-            <span label text-14>Appearance</span>
+            <span nq-labeltext-14>Appearance</span>
             <ThemeSwitcher />
           </div>
 

@@ -9,6 +9,10 @@ import mediumZoom from 'medium-zoom'
 import { createHead } from '@unhead/vue'
 import MainLayout from './MainLayout.vue'
 
+function initZoom() {
+  mediumZoom('.nq-prose img:not(:is(.not-zoomable,[not-zoomable]))', { background: 'rgb(var(--nq-neutral-0))' })
+}
+
 export default {
   extends: Theme,
   Layout: () => {
@@ -20,12 +24,7 @@ export default {
   },
   setup() {
     const route = useRoute()
-    const initZoom = () => {
-      mediumZoom('.prose img:not(:is(.not-zoomable,[not-zoomable]))', { background: 'rgb(var(--nq-neutral-0))' })
-    }
-    onMounted(() => {
-      initZoom()
-    })
+    onMounted(() => initZoom())
     watch(
       () => route.path,
       () => nextTick(() => initZoom()),

@@ -34,7 +34,7 @@ const pageName = computed(() =>
         <main class="main">
           <MarkdownContent
             :class="[
-              frontmatter.layout === 'home' || frontmatter.prose !== false && 'prose children:pb-40 children:md:pb-64 children:mx-auto',
+              frontmatter.layout === 'home' || frontmatter.prose !== false && 'nq-prose children:pb-40 children:md:pb-64 children:mx-auto',
               frontmatter.prose === false ? `px-32 md:px-96 pb-64 md:pb-128` : '',
               pageName,
               theme.externalLinkIcon && 'external-link-icon-enabled',
@@ -171,7 +171,7 @@ const pageName = computed(() =>
     --uno: bg-neutral-300 px-16 pt-16 flex gap-4 shadow-none z-1 pb-4 text-neutral-800;
 
     label {
-      --uno: ghost-btn mx-0 px-12 py-6 border-b-0 after:hidden h-max lh-[1] rounded-full;
+      --uno: nq-ghost-btn mx-0 px-12 py-6 border-b-0 after:hidden h-max lh-[1] rounded-full;
     }
 
     input:focus-visible+label {

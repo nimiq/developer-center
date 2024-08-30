@@ -46,14 +46,14 @@ webClientFeatures:
 
 # Nimiq Web Client
 
-Connect to the blockchain directly from your browser {.subline .mt-0}
+Connect to the blockchain directly from your browser {.nq-subline .mt-0}
 
 The Nimiq Web Client is a Javascript library that allows you to manage and transact on the Nimiq blockchain directly from your browser. {.mt-32}
 
-<div flex="~ gap-x-16 gap-y-12 wrap" mt-36 class="raw">
-  <a href="./getting-started" pill-blue arrow>Getting Started</a>
-  <!-- <a href="./getting-started" pill-tertiary>Tutorials</a> -->
-  <a href="./installation" pill-tertiary>Installation</a>
+<div flex="~ gap-x-16 gap-y-12 wrap" mt-36 class="nq-raw">
+  <a href="./getting-started" nq-pill-blue nq-arrow>Getting Started</a>
+  <!-- <a href="./getting-started" nq-pill-tertiary>Tutorials</a> -->
+  <a href="./installation" nq-pill-tertiary>Installation</a>
 </div>
 
 <Grid :items="$frontmatter.webClientFeatures" mt-64 mb-136 />

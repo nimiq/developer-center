@@ -2,6 +2,8 @@
 type Callout = 'warning' | 'tip' | 'info'
 const props = defineProps<{ type: Callout }>()
 
+// @unocss-include
+
 const classes = computed(() => {
   switch (props.type) {
     case 'warning': {
@@ -29,10 +31,10 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div w-full :class="classes.container" px-24 py-20 rounded-6 my-64 border-base text-pretty class="callout">
+  <div w-full :class="classes.container" px-24 py-20 rounded-6 my-64 nq-border-base text-pretty class="callout">
     <div flex="~ gap-8 items-center" mb-12>
       <div :class="classes.icon" op-80 text-14 />
-      <h5 label text-current>
+      <h5 nq-label text-current>
         {{ type }}
       </h5>
     </div>

@@ -24,9 +24,12 @@ function getFilesItemsFromFolder(folder: string, { order = [] }: GetFilesItemsFr
   return files
 }
 
+function capitalize(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
 export function Accordion({ path, collapsed = true, order }: { path: string, collapsed?: boolean } & GetFilesItemsFromFolderOption) {
   const text = (path.split('/').at(-1) || path).replace(/-/g, ' ')
-  const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
   return {
     text: capitalize(text),
     items: getFilesItemsFromFolder(path, { order }),

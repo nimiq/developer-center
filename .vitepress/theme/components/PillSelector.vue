@@ -33,7 +33,7 @@ function setPill() {
   >
     <label
       v-for="[key, option] of Object.entries(options)" :key="`${key}-input`" :tabindex="option.disabled !== true ? undefined : '1'"
-      relative z-2 px-12 text-12 label transition-colors select-none
+      relative z-2 px-12 text-12 nq-label transition-colors select-none
       :class="{
         'text-darkblue': model === key,
         'text-neutral-800': model !== key,

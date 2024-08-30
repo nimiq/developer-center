@@ -6,7 +6,7 @@ import DefaultTheme from 'vitepress/theme'
   <DefaultTheme.Layout bg-neutral-0 class="vp-raw">
     <template #not-found>
       <main px-32>
-        <div class="prose" mt-40 w-max mx-auto>
+        <div nq-prose mt-40 w-max mx-auto>
           <h1 text-24>
             <span font-bold text-28>404</span> Page not found
           </h1>
@@ -16,7 +16,7 @@ import DefaultTheme from 'vitepress/theme'
             </p>
           </blockquote>
           <div>
-            <a :href="withBase('/')" pill-blue arrow text-white mt-24 ml-0>Go home</a>
+            <a :href="withBase('/')" nq-pill-blue nq-arrow text-white mt-24 ml-0>Go home</a>
           </div>
         </div>
       </main>

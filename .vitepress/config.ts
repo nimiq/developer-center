@@ -10,6 +10,20 @@ import { navigation } from './navigation.config'
 import { generateWebClientDocs } from './scripts/web-client'
 import { generateRpcDocs } from './scripts/rpc-docs'
 
+function getCommitHash(file: string): Promise<string | undefined> {
+  return new Promise<string | undefined>((resolve, reject) => {
+    const cwd = dirname(file)
+    if (!existsSync(cwd))
+      return resolve(undefined)
+    const fileName = basename(file)
+    const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
+    let output = ''
+    child.stdout.on('data', d => (output += String(d)))
+    child.on('close', () => resolve(output.trim().replace(/"/g, '')))
+    child.on('error', reject)
+  })
+}
+
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
@@ -33,19 +47,6 @@ export default async () => {
     cleanUrls: true,
 
     async transformPageData(pageData) {
-      function getCommitHash(file: string): Promise<string | undefined> {
-        return new Promise<string | undefined>((resolve, reject) => {
-          const cwd = dirname(file)
-          if (!existsSync(cwd))
-            return resolve(undefined)
-          const fileName = basename(file)
-          const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
-          let output = ''
-          child.stdout.on('data', d => (output += String(d)))
-          child.on('close', () => resolve(output.trim().replace(/"/g, '')))
-          child.on('error', reject)
-        })
-      }
       pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
     },
 

@@ -5,10 +5,10 @@ const specUrl = __ALBATROSS_RPC_OPENRPC_URL__
 const specVersion = __ALBATROSS_RPC_OPENRPC_VERSION__
 </script>
 
-<div flex="~ items-baseline gap-32 justify-start" my-32 class="raw">
+<div flex="~ items-baseline gap-32 justify-start" my-32 class="nq-raw">
   <span op-80 text-14>Version {{specVersion}}</span>
-  <a :href="specUrl" pill-tertiary pill-sm cursor-pointer flex="~ gap-8 items-center" download un-text="neutral-900">
-    <div i-nimiq:arrow-to-bottom op-80></div>
+  <a :href="specUrl" nq-pill-tertiary nq-pill-sm cursor-pointer flex="~ gap-8 items-center" download un-text="neutral-900">
+    <div i-nimiq:nq-arrow-to-bottom op-80></div>
     Download OpenRPC.json
   </a>
 </div>

@@ -15,7 +15,7 @@ const hasLink = computed(() => props.item.href)
 
 <template>
   <component
-    :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" flex-card :class="{
+    :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" nq-flex-card :class="{
       'bg-gradient-blue': item.bgColor === 'blue',
       'bg-gradient-green': item.bgColor === 'green',
       'bg-gradient-gold': item.bgColor === 'gold',
@@ -40,7 +40,7 @@ const hasLink = computed(() => props.item.href)
     >
       <div :class="item.icon" />
     </div>
-    <span v-if="item.label" text="neutral-700 inverted:white/70" :class="{ 'text-14': centered || item.bgColor, 'text-12': !centered }" label mb-8>
+    <span v-if="item.label" text="neutral-700 inverted:white/70" :class="{ 'text-14': centered || item.bgColor, 'text-12': !centered }" nq-label mb-8>
       {{ item.label }}
     </span>
     <component

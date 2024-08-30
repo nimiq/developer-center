@@ -22,7 +22,7 @@ export function resolveTitle(theme: DefaultTheme.Config) {
 
 export function getHeaders(range: DefaultTheme.Config['outline']) {
   const headers = [
-    ...Array.from(globalThis.document?.querySelectorAll('.prose :where(h1,h2,h3,h4,h5,h6)')),
+    ...Array.from(globalThis.document?.querySelectorAll('.nq-prose :where(h1,h2,h3,h4,h5,h6)')),
   ]
     .filter(el => el.id && el.hasChildNodes())
     .map((el) => {

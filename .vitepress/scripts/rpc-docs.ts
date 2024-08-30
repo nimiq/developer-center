@@ -65,11 +65,11 @@ export async function generateRpcDocs() {
 <section>
   <div class="io">
   
-<h4 label>Parameters</h4>
+<h4 nq-label>Parameters</h4>
 
 {{ parameters }}
 
-<h4 label>Returns</h4>
+<h4 nq-label>Returns</h4>
 
 {{ returns }}
 
@@ -104,15 +104,6 @@ curl --request POST --url http://127.0.0.1:8648
 :::
 
 </section>\n\n`
-
-  function paramToValue(param: any) {
-    switch (param.schema.type) {
-      case 'string': return `"${param.name}"`
-      case 'number': return '0'
-      case 'boolean': return 'false'
-      default: return '""'
-    }
-  }
 
   const groupMethods: { tags: string[], methods: any[] }[] = spec.methods.reduce((acc, method) => {
     const tags = method.tags.map(tag => tag.name)
@@ -160,6 +151,15 @@ curl --request POST --url http://127.0.0.1:8648
   writeFileSync(versionFile, specVersion)
 
   return { specUrl, specVersion }
+}
+
+function paramToValue(param: any) {
+  switch (param.schema.type) {
+    case 'string': return `"${param.name}"`
+    case 'number': return '0'
+    case 'boolean': return 'false'
+    default: return '""'
+  }
 }
 
 function addHeader(size: string, text: string) {

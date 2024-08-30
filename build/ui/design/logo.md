@@ -17,7 +17,7 @@ Asset {.label .text-14 .text-neutral-800 .m-0}
 
 Welcome to the Nimiq design definition page. The identity has been redefined by carefully selecting colours, typography and shapes to show how powerful, useful & simple Nimiq products are.
 
-<Tags mt-24 class="raw" :tags="['Nimiq Brand Kit']" />
+<Tags mt-24 class="nq-raw" :tags="['Nimiq Brand Kit']" />
 
 ## The History
 
@@ -85,7 +85,7 @@ For the horizontal variant the clear space is the size of the letter N in our wo
 
 Horizontal logo
 
-<div grid="~ rows-[215px_215px] md:rows-[215px] md:cols-2 gap-32" class="raw" mt-24>
+<div grid="~ rows-[215px_215px] md:rows-[215px] md:cols-2 gap-32" class="nq-raw" mt-24>
 
 <div flex="~ justify-center" border-base rounded-6 bg-white>
   <img src="/assets/images/build/ui/design-kit/logo/nimiq-hexagon-spacing-1.png" alt="Space around the Nimiq Hexagon" />
@@ -125,7 +125,7 @@ These are different versions of the logo to use depending on your background.
 
 Our go-to version. Use it only with these backgrounds.
 
-<div grid="~ rows-[215px_215px] md:rows-[215px] md:cols-2 gap-32" class="raw" mt-24>
+<div grid="~ rows-[215px_215px] md:rows-[215px] md:cols-2 gap-32" class="nq-raw" mt-24>
 
 <div flex="~ justify-center items-center" border-base rounded-6 bg-white relative>
   <div i-nimiq:logos-nimiq-horizontal text-128 />
@@ -159,7 +159,7 @@ Our go-to version. Use it only with these backgrounds.
 
 You've got one option: that’s white. Use this only on photographs and color backgrounds within the Nimiq color palette. You can find those gradiants in the Nimig Design Kit in the figma link below. On aubergine backgrounds, we strongly prefer to use the full-color logo. If there are design limitations, then the logo should appear in white on aubergine.
 
-<div grid="~ cols-2 md:cols-3 gap-16 justify-center" mt-24 class="raw">
+<div grid="~ cols-2 md:cols-3 gap-16 justify-center" mt-24 class="nq-raw">
 
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square>
   <div i-nimiq:logos-nimiq-horizontal-mono text="128 white" z-2 />
@@ -192,7 +192,7 @@ You've got one option: that’s white. Use this only on photographs and color ba
 
 The don'ts with the Nimiq logo
 
-<div grid="~ cols-2 md:cols-3 gap-16 justify-center" mt-24 class="raw">
+<div grid="~ cols-2 md:cols-3 gap-16 justify-center" mt-24 class="nq-raw">
 
 <div>
 <div flex="~ justify-center items-center" border-subtle rounded-6 relative aspect-square bg-white>
@@ -308,4 +308,4 @@ The Fira Code font is used for code snippets and can be downloaded from [Bunny F
 
 Designers beware! For a more detailed explanation of how to use the components, such as using secondary colours, typography and how to use shadows. Click on the link below to see the [Nimiq Design Kit on Figma](https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0).
 
-  <a href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0" target="_blank" class="raw arrow" mt-16 pill bg-blue-400 text-blue="!">Explore in Figma</a>
+  <a href="https://www.figma.com/file/GU6cdS85S2v13QcdzW9v8Tav/NIMIQ-Style-Guide-(Oct-18)?type=design&mode=design&t=SugAiJEQEMPp2f4x-0" target="_blank" class="raw nq-arrow" mt-16 nq-pill bg-blue-400 text-blue="!">Explore in Figma</a>

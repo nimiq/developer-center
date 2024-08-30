@@ -140,7 +140,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
               align="end" :align-offset="-4" :side-offset="6" bg-neutral-100 shadow-sm
               border-base rounded-6 px-16 py-20 w="240"
             >
-              <h4 label text="11 neutral-900">
+              <h4 nq-label text="11 neutral-900">
                 Download
               </h4>
               <ul mt-10 text-12 flex="~ wrap gap-x-12">
@@ -161,7 +161,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 </li>
               </ul>
 
-              <h4 label mt-16 text="11 neutral-900">
+              <h4 nq-label mt-16 text="11 neutral-900">
                 Size
               </h4>
               <Slider.Root
@@ -190,7 +190,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </ul>
 
       <details v-if="Variant.Logos === activeVariant" my-40>
-        <summary label text-neutral-800 mt-32>
+        <summary nq-label text-neutral-800 mt-32>
           Monochromatic
         </summary>
         <ul pl-0 flex flex-wrap select-none mt-12 text-2xl class="-ml-8">
@@ -225,18 +225,18 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 How can I use it?
               </button>
             </div>
-            <button ml-auto text-32 self-start close-btn @click="selectedIcon = undefined" />
+            <button ml-auto text-32 self-start nq-close-btn @click="selectedIcon = undefined" />
           </div>
 
           <div mt-24 flex flex-wrap gap-y-24 gap-x-32>
             <div v-for="[title, options] in Object.entries(copySections)" :key="title">
-              <h4 my-1 text-11 text-neutral-800 label mb-12>
+              <h4 my-1 text-11 text-neutral-800 nq-label mb-12>
                 {{ title }}
               </h4>
               <div flex gap-6 flex-wrap>
                 <Toast v-model="copied" title="Copied to clipboard" category="success">
                   <button
-                    v-for="option in options" :key="option" ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
+                    v-for="option in options" :key="option" nq-ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
                   >
                     {{ option.replace(' TS', '') }}
                     <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 top-0>TS</sup>
@@ -263,7 +263,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         <Dialog.Content
           fixed rounded-6 bg-neutral-0
           focus="outline-none" top="50%" left="50%" translate="x--50% y--50%"
-          p="x-8 t-32 md:x-24 md:t-48" z-1000 max-h="85vh" max-w-90vw w-700 class="prose" flex="~
+          p="x-8 t-32 md:x-24 md:t-48" z-1000 max-h="85vh" max-w-90vw w-700 nq-prose flex="~
         col" shadow
           of-y-auto
         >
@@ -274,7 +274,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
             <Dialog.Description m-0>
               Learn how to use the Nimiq Icons in your project.
             </Dialog.Description>
-            <Dialog.Close fixed right="24 md:32" top="24 md:32" close-btn text-32 />
+            <Dialog.Close fixed right="24 md:32" top="24 md:32" nq-close-btn text-32 />
             <div pr-40>
               <slot mt-16 name="learn-how-to-use-the-icons" />
             </div>

@@ -54,10 +54,10 @@ function normalizeLink(url: string): string {
       : url.replace(
         // eslint-disable-next-line regexp/optimal-quantifier-concatenation
         /(?:(^\.+)\/)?.*$/,
-          `$1${pathname.replace(
-            /(\.md)?$/,
-            site.value.cleanUrls ? '' : '.html',
-          )}${search}${hash}`,
+        `$1${pathname.replace(
+          /(\.md)?$/,
+          site.value.cleanUrls ? '' : '.html',
+        )}${search}${hash}`,
       )
 
   return withBase(normalizedPath)
@@ -86,7 +86,7 @@ function treatAsHtml(filename: string): boolean {
       + `opus,otf,p10,p7c,p7m,p7s,pdf,png,ps,qt,roff,rtf,rtx,ser,svg,t,tif,`
       + `tiff,tr,ts,tsv,ttf,txt,vtt,wav,weba,webm,webp,woff,woff2,xhtml,xml,`
       + `yaml,yml,zip${
-      extraExts && typeof extraExts === 'string' ? `,${extraExts}` : ''}`
+        extraExts && typeof extraExts === 'string' ? `,${extraExts}` : ''}`
     )
       .split(',')
       .forEach(ext => KNOWN_EXTENSIONS.add(ext))
@@ -110,7 +110,7 @@ function treatAsHtml(filename: string): boolean {
         <Accordion.Header as="div">
           <Accordion.Trigger class="group" flex="~ items-center gap-8">
             <div i-nimiq:chevron-down text-10 op70 transition-transform duration-300 rotate="-90 group-data-[state=open]:!0" />
-            <span label op-80>{{ item.text }}</span>
+            <span nq-label op-80>{{ item.text }}</span>
           </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content class="accordion-content" of-hidden pl-8>

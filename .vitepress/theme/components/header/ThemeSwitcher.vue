@@ -60,7 +60,7 @@ async function toggleTheme({ clientX: x, clientY: y }: MouseEvent) {
 <template>
   <label :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`" relative h-20>
     <input
-      switch type="checkbox"
+      nq-switch type="checkbox"
       class="checked:dark:[--active-color:rgb(var(--nq-neutral-600))] peer" :checked="isDark"
       @click.prevent="toggleTheme"
     >

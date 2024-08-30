@@ -12,7 +12,7 @@ const currentTrigger = ref('')
 </script>
 
 <template>
-  <NavigationMenu.Root v-model="currentTrigger" relative w-full flex="~ justify-end items-center" class="raw">
+  <NavigationMenu.Root v-model="currentTrigger" relative w-full flex="~ justify-end items-center" class="nq-raw">
     <NavigationMenu.List flex="~ items-center" text-neutral-800>
       <NavigationMenu.Item v-for="({ key, main, items }) in navigation.items" :key>
         <NavigationMenu.Trigger flex items-center gap-8 rounded-6 lh-1 p-16 focusable transition-colors class="data-[state='open']:bg-neutral-100">
@@ -28,8 +28,8 @@ const currentTrigger = ref('')
                   :class="`focusable ${main.classes}`" :href="withBase(main.href)"
                 >
                   <div :class="main.iconClasses" text-128 absolute top-8 right--24 />
-                  <span label text="12 white/70" z-1>{{ main.label }}</span>
-                  <h4 block mt-4 text="18 white" lh-22 z-1 class="arrow" after:op-60>{{ main.title }}</h4>
+                  <span nq-label text="12 white/70" z-1>{{ main.label }}</span>
+                  <h4 block mt-4 text="18 white" lh-22 z-1 class="nq-arrow" after:op-60>{{ main.title }}</h4>
                   <p mt-6 text="14 white/80" lh-18 z-1>{{ main.description }}</p>
                 </a>
               </NavigationMenu.Link>
@@ -45,7 +45,7 @@ const currentTrigger = ref('')
                   flex="~ col gap-3" select-none rounded-6 px-8 py-10 class="focusable" transition-colors
                   :href="withBase(href)" hocus:bg-neutral-200 group
                 >
-                  <h4 label text="11 neutral" pl-2 font-bold class="arrow" after:op-60>{{ title }}</h4>
+                  <h4 nq-labeltext="11 neutral" pl-2 font-bold class="nq-arrow" after:op-60>{{ title }}</h4>
                   <p text="14 neutral-800" lh-18> {{ description }}</p>
                 </a>
               </NavigationMenu.Link>

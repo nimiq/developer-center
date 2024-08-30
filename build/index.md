@@ -40,7 +40,7 @@ footer: false
 
 # Let's build together
 
-Nimiq is made for people to build on it. You just need a browser and Internet.{.subline}
+Nimiq is made for people to build on it. You just need a browser and Internet.{.nq-subline}
 
 <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
 <Grid :items="$frontmatter.links" mt-64 />

@@ -17,6 +17,7 @@ export default defineConfig({
       }
     },
 
+    // TODO Move this to Nimiq CSS preset
     (matcher) => {
       if (!matcher.startsWith('hocus-'))
         return matcher
@@ -26,6 +27,7 @@ export default defineConfig({
       }
     },
 
+    // TODO Move this to Nimiq CSS preset
     (matcher) => {
       if (!matcher.startsWith('hocus:'))
         return matcher
@@ -35,6 +37,7 @@ export default defineConfig({
       }
     },
 
+    // TODO Move this to Nimiq CSS preset
     (matcher) => {
       if (!matcher.startsWith('group-hocus:'))
         return matcher
@@ -66,6 +69,8 @@ export default defineConfig({
     presetNimiq({
       utilities: true,
       typography: true,
+      attributifyUtilities: true,
+      icons: false, // Handled by presetIcons
     }),
     presetRemToPx({ baseFontSize: 4 }),
   ],

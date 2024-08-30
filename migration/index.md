@@ -21,9 +21,9 @@ links:
 
 # Nimiq Migration to Proof-of-Stake
 
-We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved. {.subline}
+We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved. {.nq-subline}
 
-<Grid class="raw" :items="$frontmatter.links" mt-64 />
+<Grid class="nq-raw" :items="$frontmatter.links" mt-64 />
 
 ## Understanding the Migration
 

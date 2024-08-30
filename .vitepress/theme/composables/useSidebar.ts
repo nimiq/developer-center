@@ -89,7 +89,10 @@ export function useSidebar() {
   }
 
   function toggle() {
-    isOpen.value ? close() : open()
+    if (isOpen.value)
+      close()
+    else
+      open()
   }
 
   return {
@@ -179,7 +182,8 @@ export function useSidebarControl(
   })
 
   watchPostEffect(() => {
-    ;(isActiveLink.value || hasActiveLink.value) && (collapsed.value = false)
+    if (isActiveLink.value || hasActiveLink.value)
+      collapsed.value = false
   })
 
   function toggle() {

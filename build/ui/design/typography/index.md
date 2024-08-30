@@ -22,10 +22,10 @@ yarn add nimiq-css
 
 ## Usage
 
-Now you can use the `prose` class to add sensible typography styles to any vanilla HTML:
+Now you can use the `nq-prose` class to add sensible typography styles to any vanilla HTML:
 
 ```html
-<article class="prose">
+<article class="nq-prose">
   <h1>Your awesome content</h1>
   <p>...</p>
 </article>
@@ -36,11 +36,11 @@ Now you can use the `prose` class to add sensible typography styles to any vanil
 If you have a block of markup embedded in some content that shouldn’t inherit the prose styles, use the `raw` class to sandbox it:
 
 ```html
-<article class="prose">
+<article class="nq-prose">
   <h1>My Heading</h1>
   <p>...</p>
 
-  <div class="raw">
+  <div class="nq-raw">
     <!-- Some example or demo that needs to be prose-free -->
   </div>
 
@@ -55,7 +55,7 @@ Adding a `dark` class to any preceding parent element will automatically adjust 
 
 ```html
 <body class="dark">
-  <article class="prose">
+  <article class="nq-prose">
     <h1>Your awesome content</h1>
     <p>...</p>
   </article>

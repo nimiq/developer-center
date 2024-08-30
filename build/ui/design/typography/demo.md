@@ -3,7 +3,7 @@ import { ref } from 'vue'
 const showTypography = ref(true)
 </script>
 
-<label flex="~ gap-12" class="raw" bg="darkblue/20 dark:darkblue-dimmed" w-max px-16 py-6 rounded-6>
+<label flex="~ gap-12" class="nq-raw" bg="darkblue/20 dark:darkblue-dimmed" w-max px-16 py-6 rounded-6>
 <input type="checkbox" id="showTypography" v-model="showTypography" accent="darkblue dark:white" />
 <span select-none font-mono>Typography styles enabled</span>
 </label>

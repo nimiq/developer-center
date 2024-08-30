@@ -2,7 +2,7 @@
 
 # Nimiq Design
 
-Start building with Nimiq by using our design system.{.subline}
+Start building with Nimiq by using our design system.{.nq-subline}
 
 - [Logo](./logo.md)
 - [Icons](./icons.md)

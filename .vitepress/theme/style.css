@@ -84,8 +84,8 @@ html {
   /* TODO Remove this */
 }
 
-.subline {
-  --uno: subline text-neutral-700;
+.nq-subline {
+  --uno: nq-subline text-neutral-700;
 }
 
 h1 {
@@ -96,7 +96,7 @@ h1+p {
   --uno: mt-48 md:mt-64;
 }
 
-h2+p.subline {
+h2+p.nq-subline {
   --uno: mt-40 md:mt-48;
 }
 

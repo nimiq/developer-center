@@ -39,7 +39,7 @@ watchEffect(async () => {
     <slot />
 
     <div v-if="slots.label" mb-8>
-      <span label op50>
+      <span nq-label op50>
         <slot name="label" />
       </span>
     </div>
@@ -49,7 +49,7 @@ watchEffect(async () => {
     </component>
 
     <p v-if="slots.subline" mt-24 text-24 lh="36" text="darkblue-60" max-w-520>
-      <slot name="subline" />
+      <slot name="nq-subline" />
     </p>
 
     <Tags v-if="tags?.length > 0 " :tags="tags" mt-24 />
