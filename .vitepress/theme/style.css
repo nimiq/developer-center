@@ -84,8 +84,16 @@ html {
   /* TODO Remove this */
 }
 
+h1 {
+  --uno: text-40 md:text-48;
+
+  .is-home & {
+    --uno: max-w-520;
+  }
+}
+
 .nq-subline {
-  --uno: nq-subline text-neutral-700;
+  --uno: nq-subline text-neutral-700 mt-24;
 }
 
 h1 {
