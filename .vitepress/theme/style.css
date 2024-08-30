@@ -85,27 +85,23 @@ html {
 }
 
 h1 {
-  --uno: text-40 md:text-48;
+  --uno: text-40 md:text-48 my-0;
 
   .is-home & {
     --uno: max-w-520;
   }
+
+  &+p{
+    --uno: mt-48 md:mt-64;
+  }
+}
+
+h2 {
+  --uno: text-36 md:text-40;
 }
 
 .nq-subline {
   --uno: nq-subline text-neutral-700 mt-24;
-}
-
-h1 {
-  --uno: my-0;
-}
-
-h1+p {
-  --uno: mt-48 md:mt-64;
-}
-
-h2+p.nq-subline {
-  --uno: mt-40 md:mt-48;
 }
 
 .VPHome {
