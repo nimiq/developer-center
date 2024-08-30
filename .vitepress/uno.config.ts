@@ -89,5 +89,6 @@ export default defineConfig({
   ],
 
   shortcuts: [
+    { columns: 'flex gap-32 flex-wrap children:flex-1' },
   ],
 })

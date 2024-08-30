@@ -2,6 +2,10 @@
 
 A staker delegates its NIM to a validator, which validates blocks on its behalf. Validators handle the reward distribution off-chain. This document explains how the staking process works, the functions available to stakers, and the conditions and rules that govern these states.
 
+<div class="columns">
+
+<div>
+
 ### Stake states
 
 **Active**: Funds actively participating in staking
@@ -11,6 +15,10 @@ A staker delegates its NIM to a validator, which validates blocks on its behalf.
 **Retired**: Funds permanently marked for withdrawal, not participating in staking anymore
 
 **Removed**: Funds completely withdrawn from the staking contract
+
+</div>
+
+<div>
 
 ### Balances
 
@@ -23,6 +31,10 @@ A staker delegates its NIM to a validator, which validates blocks on its behalf.
 **Non-retired balance**: The sum of the active and inactive balances
 
 **Total balance**: The sum of the active, inactive, and retired balances
+
+</div>
+
+</div>
 
 ### State transitions
 
