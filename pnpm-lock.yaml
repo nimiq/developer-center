@@ -39,8 +39,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       nimiq-css:
-        specifier: ^0.1.9
-        version: 0.1.9(typescript@5.4.5)(unocss@0.62.3(postcss@8.4.41)(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.2)))(vite@5.4.2(@types/node@20.16.2))
+        specifier: ^0.1.11
+        version: 0.1.11(typescript@5.4.5)(unocss@0.62.3(postcss@8.4.41)(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.2)))(vite@5.4.2(@types/node@20.16.2))
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1292,9 +1292,6 @@ packages:
 
   '@unocss/preset-wind@0.62.3':
     resolution: {integrity: sha512-6+VNce1he1U5EXKlXRwTIPn8KeK6bZ2jAEgcCxk8mFy8SzOlLeYzXCI9lcdiWRTjIeIiK5iSaUqmsQFtKdTyQg==}
-
-  '@unocss/reset@0.61.5':
-    resolution: {integrity: sha512-5FKNsHnke9J1Z0T4prOZn9hkWh86c6Px+Oh3xf8mDd6dDw8CjzYMRxZEKti0gt13NcsO29G1vLGM7UjG1sCamg==}
 
   '@unocss/reset@0.62.3':
     resolution: {integrity: sha512-XVKPkbm8y9SGzRaG3x+HygGZURm50MvKLVHXsbxi67RbIir9Ouyt9hQTV6Xs3RicRZFWOpJx3wMRb8iKUOe5Zw==}
@@ -3055,8 +3052,8 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  nimiq-css@0.1.9:
-    resolution: {integrity: sha512-lzvuRMiHLNUmHZRSYktb7gg/gPrwHybDt0O+a2PQiPtXvQ/oTMceoWSWWzXFFy3HHo7xsB/5U7qlso+kxVtTSg==}
+  nimiq-css@0.1.11:
+    resolution: {integrity: sha512-RLFFrp6DcraqlKsG3bxGM86EjBeVYQAlqxiAup6y+TJ90yqGHtlXgq+NK3STLpgvI9kgrWZSNOHKCC5eJ/7U6g==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: ^5.0.0
@@ -5367,8 +5364,6 @@ snapshots:
       '@unocss/preset-mini': 0.62.3
       '@unocss/rule-utils': 0.62.3
 
-  '@unocss/reset@0.61.5': {}
-
   '@unocss/reset@0.62.3': {}
 
   '@unocss/rule-utils@0.62.3':
@@ -7307,9 +7302,9 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  nimiq-css@0.1.9(typescript@5.4.5)(unocss@0.62.3(postcss@8.4.41)(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.2)))(vite@5.4.2(@types/node@20.16.2)):
+  nimiq-css@0.1.11(typescript@5.4.5)(unocss@0.62.3(postcss@8.4.41)(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.2)))(vite@5.4.2(@types/node@20.16.2)):
     dependencies:
-      '@unocss/reset': 0.61.5
+      '@unocss/reset': 0.62.3
       ts-cssjson: 3.0.1
       typescript: 5.4.5
       unocss: 0.62.3(postcss@8.4.41)(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.2))

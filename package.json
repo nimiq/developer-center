@@ -31,7 +31,7 @@
     "jszip": "^3.10.1",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
-    "nimiq-css": "^0.1.9",
+    "nimiq-css": "^0.1.11",
     "prettier": "^3.3.3",
     "radix-vue": "^1.9.5",
     "svg-packer": "^0.0.3",

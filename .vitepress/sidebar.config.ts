@@ -135,7 +135,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           { text: 'Overview', link: '/build/web-client/' },
           { text: 'Getting started', link: '/build/web-client/getting-started' },
           { text: 'Installation', link: '/build/web-client/installation' },
-          { text: 'Globals', link: '/build/web-client/globals' },
+          { text: 'Globals', link: '/build/web-client/reference/globals' },
           Accordion({ path: 'build/web-client/integrations', collapsed: false, order: ['vite.md', 'ESM.md', 'webpack.md', 'nuxt.md', 'NextJS.md', 'CommonJS.md'] }),
           Accordion({ path: 'build/web-client/reference/classes', collapsed: false }),
           Accordion({ path: 'build/web-client/reference/enumerations', collapsed: false }),

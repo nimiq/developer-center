@@ -49,11 +49,11 @@ const { hasNext, hasPrev, next, prev } = usePrevNext()
       </p>
     </div>
 
-    <a v-if="hasPrev" :href="withBase(prev.link)" nq-pill h-max nq-arrow-back text-blue bg="blue-400 hover:blue-500" transition-colors>
+    <a v-if="hasPrev" :href="withBase(prev.link)" nq-pill nq-arrow-back text-blue bg="blue-400 hover:blue-500" transition-colors>
       {{ prev.text }}
     </a>
 
-    <a v-if="hasNext" :href="withBase(next.link)" sm:justify-self-end nq-pill nq-arrow h-max text-blue bg="blue-400 hover:blue-500" transition-colors>
+    <a v-if="hasNext" :href="withBase(next.link)" sm:justify-self-end nq-pill nq-arrow text-blue bg="blue-400 hover:blue-500" transition-colors>
       {{ next.text }}
     </a>
   </nav>

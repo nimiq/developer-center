@@ -16,7 +16,7 @@ links:
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
     tags: [Validator]
-    href: becoming-a-validator
+    href: set-up-your-own-node/becoming-a-validator
   - label: Clients
     title: Web vs RPC
     tags: ['Web Client', 'Private Node']

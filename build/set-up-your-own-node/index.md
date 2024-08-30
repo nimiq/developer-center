@@ -6,7 +6,7 @@ links:
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
     tags: [Validator]
-    href: becoming-a-validator
+    href: set-up-your-own-validator/becoming-a-validator
   - label: RPC
     title: Connect via RPC
     href: rpc-docs/
