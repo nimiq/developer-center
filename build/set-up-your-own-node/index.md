@@ -13,7 +13,7 @@ links:
     tags: [RPC]
   - label: Nimiq 2.0
     title: Migration to PoS
-    href: migration-guide
+    href: ../../migration
 prose: false
 prev: false
 next: false
@@ -28,7 +28,7 @@ footer: false
 Full Control and Advanced Customization Beyond the Web Client.{.nq-subline}
 
 <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
-<Grid  :items="$frontmatter.links" mt-64 />
+<Grid :items="$frontmatter.links" mt-64 />
 
 ## Not sure which client to use? {.mt-64}
 

@@ -153,7 +153,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Overview', link: '/build/set-up-your-own-node/' },
         { text: 'Becoming a Validator', link: '/build/set-up-your-own-node/becoming-a-validator' },
-        { text: 'Migration to PoS', link: '/build/set-up-your-own-node/migration-guide' },
+        { text: 'Migration to PoS', link: '/migration' },
         { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/' },
       ],
     },
