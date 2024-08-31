@@ -7,8 +7,7 @@
       "dom"
     ],
     "baseUrl": ".",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
     "paths": {
       "~/*": [
         "./src/*"
