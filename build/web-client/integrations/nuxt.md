@@ -13,8 +13,6 @@ import wasm from 'vite-plugin-wasm' // [!code ++]
 import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
 
 export default defineNuxtConfig({
-  ssr: false, // Nimiq Web Client is client-side only. You can wrap the parts of you are that use the WebClient using <ClientOnly>
-
   vite: { // [!code ++]
     plugins: [ // [!code ++]
       wasm(), // [!code ++]
@@ -24,18 +22,18 @@ export default defineNuxtConfig({
     optimizeDeps: { // [!code ++]
       exclude: ['@nimiq/core'], // [!code ++]
     }, // [!code ++]
-  } // [!code ++]
+  }, // [!code ++]
+
+  // Only if you are using SSR or @nimiq/core in the server,
+  // otherwise use `ssr: false` or `<ClientOnly />`
+  // Check https://github.com/unjs/nitro/issues/1952 for more info
+  nitro: { // [!code ++]
+    experimental: { // [!code ++]
+      wasm: true // [!code ++]
+    }, // [!code ++]
+  }, // [!code ++]
 })
 ```
-
-<Callout type="warning">
-
-The Web Client cannot run in the server. To ensure that the package only runs on the client side, you have three options:
-
-- Set `ssr: false` in your Nuxt config. If you use this option, consider also using [loading template](https://nuxt.com/docs/api/nuxt-config#spaloadingtemplate).
-- Wrap it in `<ClientOnly>`.
-
-</Callout>
 
 Now you are ready to go!
 
