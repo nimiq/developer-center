@@ -16,7 +16,7 @@ Each validator has its own account. Once the node sends a transaction to create 
 | `reward_address` | `Address` | Address where block rewards are sent |
 | `signal_data` | `Option<Blake2bHash>` | Optional field for chain upgrades or other coordination among validators |
 | `total_stake` | `Coin` | Total stake assigned, including validator’s deposit and stakers’ delegated funds |
-| `deposit` | `Coin` | The validator's own deposit; can be decreased by fees from failed transactions (see [transactions](https://www.nimiq.com/developers/learn/protocol/penalties)) |
+| `deposit` | `Coin` | The validator's own deposit; can be decreased by fees from failed transactions (see [transactions](https://www.nimiq.com/developers/learn/protocol/transactions)) |
 | `num_stakers` | `u64` | Number of stakers delegating to this validator |
 | `inactive_from` | `Option<u32>` | Block height at which the validator becomes inactive |
 | `jailed_from` | `Option<u32>` | Block height at which the validator was jailed. Takes immediate effect to prevent fund removal |

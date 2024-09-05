@@ -1,6 +1,6 @@
 # Prover node
 
-This guide will help you configure your node as a [**prover node**](https://www.nimiq.com/developers/learn/protocol/prover-node). Follow the steps below to set up your prover node.
+This guide will help you configure your node as a [prover node](https://www.nimiq.com/developers/learn/protocol/prover-node). Follow the steps below to set up your prover node.
 
 ## Getting Started
 
@@ -10,11 +10,13 @@ Start by installing the Nimiq client. Follow the steps provided in the [Nimiq Co
 cargo run --release --bin nimiq-client
 ```
 
+## Configuration
+The next step is to configure your client to generate the configuration file. Follow the instructions provided in the [configuration guide](https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration). This will walk you through the process of creating and setting up your node’s configuration file, which includes all necessary settings for your client.
+
 ## Configuring Your Node
+The configuration file is located at `$HOME/.nimiq/client.toml` or the specified path in your local machine as defined in the previous step.
 
-To be eligible as a prover node, you must first set your node to operate in **full** sync mode. This ensures that the node has access to the blockchain data required for prover functionality.
-
-The configuration file is located at `$HOME/.nimiq/client.toml`. In the **consensus** section of the configuration file, set `sync_mode` to `full` as shown in the example below:
+To be eligible as a prover node, you must first set your node to operate in **full** sync mode. This ensures that the node has access to the blockchain data required for prover functionality. In the **consensus** section of the configuration file, set `sync_mode` to `full` as shown in the example below:
 
 ```toml
 [consensus]
