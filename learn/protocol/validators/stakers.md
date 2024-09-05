@@ -87,6 +87,8 @@ Withdraws the retired balance from a staker's account, removing it from the stak
 
 Transactions to activate, inactivate, and update stakes only take effect at the next election block. This is because validator balances, which include staker balances, cannot be changed during an epoch. For update and set active stake transactions, the reporting window time begins when the transaction is sent, but the changes to the funds are only reflected in the validator's balance at the next election block.
 
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/stakers-state.png" alt="stakers states" />
+
 ### Invariants
 
 There is a set of invariants or rules that ensure the transactions mentioned above don't fail. The following table outlines these key invariants and the transactions they affect:

@@ -1,52 +1,84 @@
 # Validators
 
-Validators are the block producers of PoS blockchains. They are responsible for processing and validating transactions, block validation, and maintaining the integrity of the network. Their primary function is to preserve the network's consensus by agreeing on the current state.
+Validators are the block producers of PoS blockchains. They are responsible for processing and validating transactions, block validation, and maintaining the integrity of the network. Their primary function is to preserve the network's consensus by agreeing on the current state. By maintaining consensus and actively participating in the network, validators earn rewards in the form of transaction fees and block rewards.
 
-Validators are rewarded for maintaining the consensus and participating in the network through transaction fees and block rewards. Any attempt to disrupt or infringe on the consensus results in [penalties](/learn/protocol/penalties.md) for the malicious validator.
+However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in penalties, including burning their rewards or jailing, effectively removing them from network participation for a defined period.
 
-To become a validator in the Nimiq blockchain network, a node must possess a Nimiq wallet and create a validator node. Our blockchain imposes a minimum deposit requirement of 100 000 NIM. This minimum deposit prevents the validator from getting offline, delaying the block production, or acting maliciously. Furthermore, validator accounts are heavy on data, so the minimum deposit prevents someone from creating a validator account with 10 NIM and forgetting about it.
+To become a validator in the Nimiq blockchain, a node must have a Nimiq wallet and create a validator node. A minimum deposit of 100 000 NIM is required to ensure the validator remains active, prevent block production delays, and discourage malicious behavior. This deposit also discourages the creation of validator accounts that could be abandoned and take up unnecessary network resources.
 
-Each validator has its account. Once it sends a transaction to create an account in the staking contract as a validator, the validator receives the following object:
+Each validator has its own account. Once the node sends a transaction to create an account in the staking contract as a validator, the following data is associated with the validator:
 
 | Data | Type | Description |
 | --- | --- | --- |
-| `address` | `Address` | The address and identifier of the validator, which can be used for signing create, update, and delete transactions. |
-| `signing_public_key` | `SchnorrPublicKey` | The validator uses the key for signing blocks, as well as signing retire and reactivate transactions. |
-| `voting_public_key` | `BlsPublicKey` | The key used by the validator for voting for casting votes on skip blocks and macro block proposals. |
-| `reward_address` | `Address` | The designated address where the validator's rewards are directed. |
-| `signal_data` | `Option<Blake2bHash>` | An optional data field that facilitates coordination among validators for chain upgrades or other necessary activities through signaling. |
-| `total_stake` | `Coin` | The cumulative stake held by the validator, including deposits from its stakers. |
-| `deposit` | `Coin` | The initial deposit made by the validator, which can decrease over time due to fees from failing transactions. |
-| `num_stakers` | `u64` | The number of stakers delegating to this validator. |
-| `inactive_from` | `Option<u32> `| An optional field that indicates whether the validator is marked as inactive. If it is, it includes the block height at which the validator transitioned into an inactive state. A validator can only effectively become inactive during the next election block. Therefore, this field may contain a future block height. |
-| `jailed_from` | `Option<u32>` | An optional field that indicates if the validator is jailed. If it is, it includes the block height at which the validator became jailed. Jailing takes effect immediately to prevent the validator and its stakers from withdrawing their total balance. |
-| `retired` | `bool` | A flag that indicates whether the validator is in the retired state or not. |
+| `address` | `Address` | The unique address of the validator, used for creating, updating, or deleting the validator |
+| `signing_key` | `SchnorrPublicKey` | Key used to sign micro blocks |
+| `voting_key` | `BlsPublicKey` | Key used for voting on skip blocks and macro blocks |
+| `reward_address` | `Address` | Address where block rewards are sent |
+| `signal_data` | `Option<Blake2bHash>` | Optional field for chain upgrades or other coordination among validators |
+| `total_stake` | `Coin` | Total stake assigned, including validator’s deposit and stakers’ delegated funds |
+| `deposit` | `Coin` | The validator's own deposit; can be decreased by fees from failed transactions (see [transactions](https://www.nimiq.com/developers/learn/protocol/penalties)) |
+| `num_stakers` | `u64` | Number of stakers delegating to this validator |
+| `inactive_from` | `Option<u32>` | Block height at which the validator becomes inactive |
+| `jailed_from` | `Option<u32>` | Block height at which the validator was jailed. Takes immediate effect to prevent fund removal |
+| `retired` | `bool` | Indicates if the validator is retired, in which case it can only delete |
 
-### Transactions
+## Transactions
 
-Validators send transactions to update data or change their state deliberately. Receipts are issued authenticating the transaction. Also all the following transactions can be reverted in case of one or more blocks are reverted.
+Validators interact with the network by sending various transactions, each designed to manage their status, update data, or change their state deliberately. These transactions include creating a new validator, updating its details, and managing states such as deactivation, reactivation, or retirement. Receipts are issued to authenticate each transaction, ensuring transparency and security. Additionally, if one or more blocks are reverted, these transactions can also be reverted. Below, we describe each transaction and its impact on the validator’s lifecycle.
 
-![Alt Text](/assets/images/protocol/validator-state.png)
+### Create
 
-| Transaction | Description | Starting point | Type of transaction |
-| --- | --- | --- | --- |
-| Create | Creates a new validator and places it in the active state. It will be eligible for the next election block | Immediately | Incoming |
-| Update | Updates the information about a validator (signing key, voting key, rewards address and/or signal data) | Immediately | Incoming |
-| Deactivate | Temporarily deactivates a validator and moves it to the inactive state. This action is reversible | Immediately | Incoming |
-| Reactivate | Reactivates a validator that has been deactivated; if the validator is jailed, it cannot reactivate | Immediately | Incoming |
-| Retire | Transitions a validator into retirement. To delete afterward, retirement must last the reporting window time | Immediately | Incoming |
-| Delete | Deletes a validator after the retired state. | After the cooldown period | Outgoing |
+Creates a new validator with an initial deposit that equals the validator's stake. The deposit is locked in the contract and can only be retrieved by deleting the validator. Validators must provide a signing key, voting key, reward address, and optional signal data.
 
-- Deactivating the validator can be voluntary or a consequence from delaying the block production. Validators can enable the `automatic_reactivate` feature in their configuration to reactivate automatically upon deactivation at the next block. The activation of this feature is optional and can be turned on or off by the validator.
-- Retire is a one-way state; once retired, a validator cannot return to an active state. Retiring the validator is also a prerequisite for deleting it. Validators follow a two-step process to unstake or delete their validator: first, they retire and wait for a cooldown period, and then proceed to delete their validator.
-- Jailed validators cannot reactivate until the end of the jailing time. If the `automatic_reactivate` feature is not activated, manual reactivation is required.
-- After a validator sends the "delete" transaction, following a cooldown period in the retired state, its address is moved to a tombstone. This process is implemented to account for stakers who may have delegated their coins to the validator. The validator's address remains in the deleted state, residing in the tombstone, until all stakers successfully remove their stake from the validator.
+### Update
 
-| State | Description |
-| --- | --- |
-| Active | The validator is marked as active and is either available for selection or is already actively participating in the consensus process |
-| Inactive | The validator is marked as inactive, either by choice or due to misbehavior. While marked as inactive in the staking contract and removed from the `active_validators` set, the validator may still be involved until the end of the epoch where the validator list is renewed at the next election block |
-| Jailed | The validator has been penalized for violating the network's rules. They cannot participate in the consensus process or earn rewards for 8 epochs. See [jail](/learn/protocol/penalties.md#jail) |
-| Retired | The validator has withdrawn their stake from the network after waiting for the reporting window time (spans from the block following the offense to the end of the epoch after the next election block). Once retired, the validator can only delete its validator |
+Allows the validator to update details such as the signing key, voting key, reward address, and signal data. The validator must be active to apply these changes.
 
-The jailed state deactivates the validator and all of its slots, but as opposed to the inactive state, it is not a deliberate action, and becoming jailed is triggered in an inherent by an equivocation proof reported by any validator.
+### Deactivate
+
+This transaction moves the validator to an inactive state, where it no longer participates in block validation. Deactivation is scheduled to take effect at the next [election block](https://www.nimiq.com/developers/learn/protocol/block-format#macro-blocks), meaning that the validator continues to be active until the next scheduled election. Deactivation is a necessary step before a validator can be retired or deleted.
+
+### Jail
+
+A validator is jailed immediately when this transaction is executed due to misbehavior, such as double-signing blocks or going offline for extended periods. The jailing process also deactivates the validator if it is not already inactive. The validator remains jailed until the penalty period is served, ensuring it cannot participate or tamper with its funds during this time.
+
+### Reactivate
+
+Once the penalty period has ended or if the validator was not jailed, this transaction reactivates the validator. The validator must meet certain conditions to be reactivated:
+
+- Must not be retired
+- Must not be jailed at the time of reactivation
+
+Reactivation restores the validator's ability to participate in block validation and earn rewards.
+
+### Retire
+
+Retiring a validator is an irreversible action that prevents further participation. It is the first step in the process of deleting a validator. Once a validator is retired, it cannot be reactivated. Retirement involves transitioning the validator to an inactive state, if it is still active, and preparing it for eventual deletion.
+
+### Delete
+
+This transaction permanently removes a retired validator from the network and returns the validator's deposit. A validator can only be deleted after completing a cooldown period and if all delegations have been withdrawn. If there are still stakers, a tombstone record is created to track the remaining stake until all stakers withdraw their funds. Tombstones ensure that stakers can retrieve their stake even after the validator is no longer active, safeguarding the network’s economic integrity.
+
+### Additional Considerations:
+
+1. **Jailing Participation:** Even when jailed, validators must continue participating in specific votes (skip blocks and macro blocks) to fulfill the 512 votes requirement and maintain network stability
+2. **Transition Delays:** Most state changes, especially those involving deactivation and reactivation, align with election blocks to prevent disruption during the epoch
+3. **Finality of Retirement:** Once a validator enters the retired state, it cannot revert to any other state except deletion, ensuring a straightforward exit process from active validation.
+
+### Penalties and Jailing
+
+If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the penalty period is served. For more detailed information on penalties and jailing, refer to [Nimiq's penalties documentation](https://www.nimiq.com/developers/learn/protocol/penalties).
+
+## States
+
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/validator-state.png" alt="validators states" />
+
+**Active:** Actively participating in block validation and earning rewards
+
+**Inactive:** Temporarily not participating in validation but can be reactivated
+
+**Jailed:** Penalized for misbehavior, temporarily barred from validation, but may still need to participate in voting (skip blocks and macro blocks)
+
+**Retired:** Permanently inactive, no longer participating in the network, and awaiting deletion
+
+**Deleted:** Permanently removed from the network, but if there are stakers still associated with the validator, a tombstone is created to manage the remaining stake and stakers until they are cleared
