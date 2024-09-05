@@ -63,7 +63,7 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Slots', link: '/learn/protocol/validators/slots' },
             { text: 'Staking Contract', link: '/learn/protocol/validators/staking-contract' },
             { text: 'Validator Keys', link: '/learn/protocol/validators/validator-keys' },
-            { text: 'Validator', link: '/learn/protocol/validators/validators' },
+            { text: 'Validators', link: '/learn/protocol/validators/validators' },
             { text: 'Skip Blocks', link: '/learn/protocol/validators/skip-blocks' },
             { text: 'Stakers', link: '/learn/protocol/validators/stakers' },
             { text: 'Verifiable Random Functions', link: '/learn/protocol/verifiable-random-functions' },
@@ -153,7 +153,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Overview', link: '/build/set-up-your-own-node/' },
         { text: 'Becoming a Validator', link: '/build/set-up-your-own-node/becoming-a-validator' },
-        { text: 'Migration to PoS', link: '/migration' },
+        { text: 'Prover Node Setup Guide', link: '/build/set-up-your-own-node/prover-node-guide' },
         { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/' },
       ],
     },

@@ -32,7 +32,7 @@ Zero-knowledge proofs are generated based on three conditions - correctness, sou
 
 There is a possible delay in the zero-knowledge proof generation, where a new election block comes in while the prover node is still generating the proof for the previous election block. Considering this delay, prover nodes provide the latest proof available.
 
-When nodes first sync to the chain, they start at block 0 or genesis block, which is an election block. The genesis block comes with a null proof as it doesn’t contain any element to enable zero-knowledge proof generation. Prover nodes generate these proofs at every election block after block 0.
+When nodes first sync to the chain, they start at block 0 or genesis block, which is an election block. The genesis block comes with a null proof as it doesn’t contain any element to enable zero-knowledge proof generation. Prover nodes generate these proofs at every election block after the PoS genesis block.
 
 ## Generating a zero-knowledge proof
 
@@ -87,3 +87,7 @@ pub struct RequestZKP {
 3. node verifies the zkp
 4. node stores the zkp
 5. node continues the syncing process
+
+#### See also
+
+To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](/build/set-up-your-own-node/prover-node-guide.md).
