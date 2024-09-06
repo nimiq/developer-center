@@ -2,7 +2,7 @@
 
 Validators are the block producers of PoS blockchains. They are responsible for processing and validating transactions, block validation, and maintaining the integrity of the network. Their primary function is to preserve the network's consensus by agreeing on the current state. By maintaining consensus and actively participating in the network, validators earn rewards in the form of transaction fees and block rewards.
 
-However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in penalties, including burning their rewards or jailing, effectively removing them from network participation for a defined period.
+However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in penalties, including burning their rewards and/or jailing, effectively removing them from network participation for a defined period.
 
 To become a validator in the Nimiq blockchain, a node must have a Nimiq wallet and create a validator node. A minimum deposit of 100 000 NIM is required to ensure the validator remains active, prevent block production delays, and discourage malicious behavior. This deposit also discourages the creation of validator accounts that could be abandoned and take up unnecessary network resources.
 
@@ -38,18 +38,21 @@ Allows the validator to update details such as the signing key, voting key, rewa
 
 This transaction moves the validator to an inactive state, where it no longer participates in block validation. Deactivation is scheduled to take effect at the next [election block](https://www.nimiq.com/developers/learn/protocol/block-format#macro-blocks), meaning that the validator continues to be active until the next scheduled election. Deactivation is a necessary step before a validator can be retired or deleted.
 
+Moreover, if a validator remains offline for an extended period, it is deactivated and loses any rewards for the time it remains inactive.
+
 ### Jail
 
-A validator is jailed immediately when this transaction is executed due to misbehavior, such as double-signing blocks or going offline for extended periods. The jailing process also deactivates the validator if it is not already inactive. The validator remains jailed until the penalty period is served, ensuring it cannot participate or tamper with its funds during this time.
+A validator is jailed immediately after an equivocation proof is submitted accounting for the misbehavior, such as double-signing blocks or attempting to fork the chain. The jailing process also deactivates the validator if it is not already inactive. The validator remains jailed until the penalty period is served, ensuring it cannot participate or tamper with its funds during this time.
 
 ### Reactivate
 
-Once the penalty period has ended or if the validator was not jailed, this transaction reactivates the validator. The validator must meet certain conditions to be reactivated:
+A validator can sed this transaction to reactivate from the inactive state. Also, once the penalty period has ended or if the validator was not jailed, this transaction reactivates the validator. The validator must meet certain conditions to be reactivated:
 
+- Must be inactive
 - Must not be retired
 - Must not be jailed at the time of reactivation
 
-Reactivation restores the validator's ability to participate in block validation and earn rewards.
+Reactivation restores the validator's ability to participate in block validation and earn rewards. Note that this transaction is unnecessary if the validator has the `automatic_reactivate` setting enabled.
 
 ### Retire
 
@@ -59,15 +62,15 @@ Retiring a validator is an irreversible action that prevents further participati
 
 This transaction permanently removes a retired validator from the network and returns the validator's deposit. A validator can only be deleted after completing a cooldown period and if all delegations have been withdrawn. If there are still stakers, a tombstone record is created to track the remaining stake until all stakers withdraw their funds. Tombstones ensure that stakers can retrieve their stake even after the validator is no longer active, safeguarding the network’s economic integrity.
 
-### Additional Considerations:
+### Additional Considerations
 
-1. **Jailing Participation:** Even when jailed, validators must continue participating in specific votes (skip blocks and macro blocks) to fulfill the 512 votes requirement and maintain network stability
-2. **Transition Delays:** Most state changes, especially those involving deactivation and reactivation, align with election blocks to prevent disruption during the epoch
-3. **Finality of Retirement:** Once a validator enters the retired state, it cannot revert to any other state except deletion, ensuring a straightforward exit process from active validation.
+1. **Jailing:** Even when jailed, validators must continue participating in specific votes (skip blocks and macro blocks) to fulfill the 512 votes requirement and maintain network stability
+2. **State Transition Delays:** Most state changes, especially those involving deactivation and reactivation, align with election blocks to prevent disruption during the epoch
+3. **Finality on Retirement:** Once a validator enters the retired state, it cannot revert to any other state except deletion, ensuring a straightforward exit process from active validation.
 
-### Penalties and Jailing
+### Punishments
 
-If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the penalty period is served. For more detailed information on penalties and jailing, refer to [Nimiq's penalties documentation](https://www.nimiq.com/developers/learn/protocol/penalties).
+If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the penalty period is served. For more detailed information on punishments, refer to [Nimiq's penalties documentation](https://www.nimiq.com/developers/learn/protocol/penalties).
 
 ## States
 
@@ -77,8 +80,8 @@ If a validator delays block production, the **penalty** is the burning of reward
 
 **Inactive:** Temporarily not participating in validation but can be reactivated
 
-**Jailed:** Penalized for misbehavior, temporarily barred from validation, but may still need to participate in voting (skip blocks and macro blocks)
+**Jailed:** Punished for severe misbehavior, temporarily banned from block production, but may still need to participate in voting (skip blocks and macro blocks)
 
-**Retired:** Permanently inactive, no longer participating in the network, and awaiting deletion
+**Retired:** Marked for permanent inactivity and pending deletion
 
 **Deleted:** Permanently removed from the network, but if there are stakers still associated with the validator, a tombstone is created to manage the remaining stake and stakers until they are cleared
