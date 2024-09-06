@@ -54,6 +54,7 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Transactions', link: '/learn/protocol/transactions' },
             { text: 'Merkle Trees', link: '/learn/protocol/merkle-trees' },
             { text: 'Mempool', link: '/learn/protocol/mempool' },
+            { text: 'History Store', link: '/learn/protocol/history-store' },
           ],
         },
         {
