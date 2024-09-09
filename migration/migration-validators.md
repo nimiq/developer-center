@@ -9,7 +9,11 @@ The Validator Registration tool facilitates the pre-registration process for val
 - Keys and corresponding address generation
 - Validator registration via transactions
 
- First, you need to clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool) and install its dependencies by executing `yarn` inside the repository.
+### Prerequisites
+
+1. Make sure you have [Node.js](https://nodejs.org) >= v18.20.4 installed.
+2. Clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool).
+3. Install its dependencies by executing `yarn` inside the repository.
 
 ### Step 1: Generate validator keys
 
@@ -25,13 +29,13 @@ The tool generates fresh keys and stores them into the `validator-keys.json` fil
 
 <Callout type='tip'>
 
-Save the private keys securely, especially the validator private key! There is no recovery mechanism for lost private keys. Once lost, access to your validator and related NIM may be permanently lost.
+Save the private keys securely, especially the validator private key! **There is no recovery mechanism for lost private keys**. Once lost, access to your validator and related NIM may be permanently lost.
 
 </Callout>
 
 #### Using your own keys
 
-You can of course also generate your validator, signing and/or voting keys yourself through other methods. Just replace the address and keys in the `validator-keys.json` file with the ones your have and continue with the next step.
+You can of course also generate your validator, signing and/or voting keys yourself through other methods. Just replace the address and keys in the `validator-keys.json` file with the ones you have and continue with the next step.
 
 ### Step 2: Fund your validator address
 
@@ -45,7 +49,7 @@ You will need funds to pay for the validator registration transactions and for t
 
 ### Step 3: Run the validator registration tool
 
-To register your validator and keys on the PoW Mainnet, you must specify the arguments as follows:
+To register your validator and the corresponding keys on the PoW Mainnet, you must specify the arguments as follows:
 
 ```shell
 node validator-registration.js --validator validator-keys.json --network main
@@ -77,8 +81,12 @@ Please note that any value below 100 000 NIM will result in permanent loss. Any 
 
 The Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the activation tool before its window begins to ensure sufficient time for migrating the history, as this process can be time-consuming.
 
+### Prerequisites
+
+- Access to a PoW chain client with RPC access enabled.
+  - Follow instructions in [the core-js repository](https://github.com/nimiq/core-js) to start your client and have your client synchronized against the main network.
+  - Follow the instructions in [this sample guide](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf) to enable RPC in your POW client.
 - Clone and compile the [PoS blockchain](https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#installation) repository and follow the instructions.
-- Enable the RPC server in the PoW chain. Follow the instructions in [this sample guide](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf).
 
 ### Step 1:  Add your Validator Data into the Configuration File
 
@@ -95,18 +103,22 @@ The Activation tool establishes a connection with the PoW chain via RPC, extract
 
 To execute the tool successfully, you need to ensure that you are fully synced and in consensus **within the PoW chain**. This requires starting the PoW client with an RPC server enabled on your imported validator address (this might take a while). As in [this example](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163), you can do it in your configuration file by adding your address and key pair.
 
-You can start the RPC server by cloning the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) then following the quickstart instructions and finally running the following command:
+Alternatively, you can start the RPC server by cloning the [Nimiq CoreJS repository](https://github.com/nimiq/core-js?tab=readme-ov-file#quickstart) then following the quickstart instructions and finally running the following command:
 
 ```shell
 node clients/nodejs/index.js --dumb --network=main --rpc=8648 --wallet-seed=private_keypublic_key
 ```
 
+Note that `private_keypublic_key` is the concatenation of your private key and public key in that order.
+
 Before executing the activation tool, make sure you run ```cargo build --release``` within the PoS repository to compile the code.
 
-Once you are in consensus in the PoW chain, proceed to execute the migration tool by running the following command **in the PoS chain**, including the path to the configuration file containing your validator data and specifying the RPC server to be used:
+Once you have consensus on the PoW chain, proceed to execute the migration tool by running the following command **in the PoS chain client** directory, including the path to the configuration file containing your validator data and specifying the RPC server to be used:
 
 ```shell
 cargo run --release --bin nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
 ```
+
+Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://172.0.0.1:8648`.
 
 After launching the tool, the readiness transaction will be automatically sent to the network. During a span of blocks, the tool will monitor for readiness transactions. At the defined candidate block, if the tool counts 80% of readiness, the migration process starts and once it is done, it will automatically start the PoS client.
