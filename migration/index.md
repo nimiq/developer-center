@@ -1,10 +1,10 @@
 ---
 links:
-  - bgColor: gold
+  - bgColor: blue
     icon: i-nimiq:icons-lg-verified
     label: Validator
-    title: Pre-register now
-    description: Join the first epoch as a validator and earn rewards from the very beginning
+    title: Pre-registration
+    description: How to be prepared to join the first epoch as a validator and earn rewards from the very beginning
     href: migration-validators
     layout: lg
     span: 6
