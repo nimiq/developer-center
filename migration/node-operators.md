@@ -26,10 +26,10 @@ This step involves configuring your PoS client settings to prepare for the trans
 
 Once you have your client compiled in the **PoS chain**, you can:
 
-- Open the file `$HOME/.nimiq/client.toml` (see [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml))
-- Set the `network` to `main`
+- Open the configuration file which is by default located in `$HOME/.nimiq/client.toml`. (see [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml))
+- Set the `network` to `main-albatross`
 - Choose your `sync_mode` setting as `full` or `history`
-- Optionally, enable the PoS RPC server by uncommenting the section in the [rpc-server] configuration if you need it
+- Optionally, enable the PoS RPC server by uncommenting the section in the `[rpc-server]` configuration section if you need it
 
 **Step 2: Check Client Sync Status**
 
@@ -45,10 +45,10 @@ The Activation Tool establishes a connection with the PoW client via RPC, extrac
 
 Ensure your PoW client is fully synced before running the Activation Tool on the PoS chain side. Before executing the Activation Tool, compile the **PoS chain** client by running `cargo build --release`.
 
-Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository**, including the path to the configuration file containing your validator data and specifying the RPC server to be used. Note that this assumes the PoS client and server are running on the same machine:
+Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository** directory, including the path to the configuration file containing your validator data and specifying the PoW RPC server to be used. Note that this assumes the PoS client and PoW client (with RPC server enabled) are running on the same machine:
 
 ```bash
-cargo run --release --bin nimiq-pow-migration --url "https://127.0.0.1:8648" --config client.toml
+cargo run --release --bin nimiq-pow-migration --url "http://127.0.0.1:8648" --config client.toml
 ```
 
 :::
@@ -64,10 +64,10 @@ This step involves configuring your PoS client settings to prepare for the trans
 
 Once you have your client compiled, you can:
 
-- Open the file `$HOME/.nimiq/client.toml` (see [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml))
-- Set the `network` to `main`
+- Open the configuration file which is by default located at `$HOME/.nimiq/client.toml` (see [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml))
+- Set the `network` to `main-albatross`
 - Choose your `sync_mode` setting as `full` or `history`
-- Optionally, enable the PoS RPC server by uncommenting the section in the [rpc-server] configuration if you need it
+- Optionally, enable the PoS RPC server by uncommenting the section in the `[rpc-server]` configuration section if you need it
 
 **Step 2: Run the Activation Tool**
 
@@ -75,10 +75,10 @@ The Activation Tool establishes a connection with the PoW chain via RPC, extract
 
 Ensure your PoW client is fully synced before running the Activation Tool on the PoS chain side. Before executing the Activation Tool, compile the **PoS chain** code by running `cargo build --release`.
 
-Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository**, including the path to the configuration file containing your validator data and specifying the RPC server to be used. Note that this assumes the PoS client and server are running on the same machine:
+Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository** directory, including the path to the configuration file containing your validator data and specifying the RPC server to be used. Note that this assumes the PoS client and the PoW client (with the RPC server enabled at port `8648`) are running on the same machine:
 
 ```bash
-cargo run --release --bin nimiq-pow-migration --url "https://127.0.0.1:8648" --config client.toml
+cargo run --release --bin nimiq-pow-migration --url "http://127.0.0.1:8648" --config client.toml
 ```
 
 :::
