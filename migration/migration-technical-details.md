@@ -64,8 +64,8 @@ The Activation Phase follows a specific sequence of events:
    Validators generate the "genesis" block deterministically. The resulting block hash should be the same across all validators.
 5. After generating the "genesis" block, validators send their readiness transaction, which includes the block hash in the data field.
 6. The activation tool monitors readiness transactions within a 24 hour window.
-7. If 80% of the total stake (represented by registered validators) signals that they are ready, by sending readiness transactions within 24 hours, the PoS chain starts at block height 3 456 000. If the threshold is not reached, the process automatically moves to the next activation window.
-8. If the 80% readiness threshold is not met within the first 24 hours, a new activation window begins, starting with a new candidate block at the block immediately following 1440 blocks or 24 hours from the first candidate block.
+7. If 80% of the total stake (represented by registered validators) signals that they are ready by sending readiness transactions within 24 hours, the PoS chain will use the produced genesis block (with a block height of 3 456 000). The process automatically moves to the next activation window if the threshold is not reached.
+8. If the 80% readiness threshold is not met within the first 24 hours, a new activation window begins, starting with a new candidate block at the block immediately following 1440 blocks or 24 hours from the first candidate block. Validators need to send the readiness transactions again for the new genesis hash produced with this new transition candidate block.
 9. In subsequent activation windows, the same exact process is repeated. Select a new candidate block 24 hours apart from the previous one by opening a new activation window until the PoS chain starts
 10. Once 80% readiness is reached, the PoS client starts, and the once candidate block becomes the transition block, marking the start of the Nimiq PoS blockchain.
 
