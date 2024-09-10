@@ -86,8 +86,8 @@ cargo run --release --bin nimiq-pow-migration --url "http://127.0.0.1:8648" --co
 The Activation Tool connects with the PoW client via RPC to extract necessary data for the migration process. The tool:
 
 - Captures the state of the PoW chain at the candidate block for the transition to the PoS chain
-- Starts migrating the state from the PoW chain to the PoS chain
-- Generates the "genesis" block for the PoS chain
+- Starts migrating the state from the PoW chain to the PoS state format
+- Generates the "genesis" block using a candidate transition block for the PoS chain
 - Monitors the readiness of validators, waiting for at least 80% of them to signal readiness
 
 Once the readiness threshold is met, the PoS client starts, marking the beginning of the PoS chain. Mind that as a non-validator, your role during this process is primarily observant, as your participation does not contribute to reach the 80% readiness threshold.
