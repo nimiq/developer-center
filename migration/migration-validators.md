@@ -121,4 +121,4 @@ cargo run --release --bin nimiq-pow-migration --url "url-according-your-configur
 
 Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://172.0.0.1:8648`.
 
-When the tool is lauched, the network will monitor for at least 80% readiness. Once this threshold is reached, the transition block marks the beginning of the PoS chain, and any transactions sent between the start of the activation window and the chain launch will be disregarded. Learn more about this [here](/migration/migration-technical-details.md).
+When the tool is launched, it will monitor the network for at least 80% readiness. Once this threshold is reached, the transition block marks the beginning of the PoS chain, and any transactions sent after the transition block are not considered part of the PoS chain. Learn more about this [here](/migration/migration-technical-details.md).
