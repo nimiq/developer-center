@@ -31,7 +31,7 @@ Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain throu
 
 - **Pre-registration Phase**: Establishing the first list of validators for the PoS blockchain within the PoW chain
 - **Pre-Staking Phase**: Users pre-stake their NIM
-- **Activation Phase**: Selecting the transition block and executing the transition to the PoS chain if at least 80% of the stake is ready
+- **Activation Phase**: Executing the transition to the PoS chain if at least 80% of the stake is ready
 
 During the migration, we will capture the entire blockchain state, including all accounts, balances, and transaction history. This means that users' balances will remain intact and will be transferred to the new PoS chain.
 
