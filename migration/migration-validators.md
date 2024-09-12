@@ -13,7 +13,8 @@ The Validator Registration tool facilitates the pre-registration process for val
 
 1. Make sure you have [Node.js](https://nodejs.org) >= v18.20.4 installed.
 2. Clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool).
-3. Install its dependencies by executing `yarn` inside the repository.
+3. Install Yarn with the command `npm install -g yarn`.
+4. Install all the dependencies by executing `yarn` inside the repository.
 
 ### Step 1: Generate validator keys
 
