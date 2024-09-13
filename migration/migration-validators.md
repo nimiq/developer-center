@@ -93,7 +93,8 @@ The Activation Tool facilitates the transition from the PoW chain to the PoS cha
 
 Once you have your client setup, you can either:
 
-- Go to the file `$HOME/.nimiq/client.toml`, which includes a dedicated validator section at the end, and paste your validator data into this section.
+- Create the `$HOME/.nimiq` folder if it doesn't exist already, and inside create a `client.toml` file based on this [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml).
+At the end of this file, the client configuration includes a dedicated validator section. You can fill in your validator data into this section.
 - Refer to [this guide](/build/set-up-your-own-node/becoming-a-validator.md#configuration).
 
 Ensure that you set your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
