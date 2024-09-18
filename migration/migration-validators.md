@@ -129,6 +129,6 @@ Once you have consensus on the PoW chain, proceed to execute the migration tool 
 cargo run --release --bin nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
 ```
 
-Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://172.0.0.1:8648`.
+Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://127.0.0.1:8648`.
 
 When the tool is launched, it will monitor the network for at least 80% readiness. Once this threshold is reached, the transition block marks the beginning of the PoS chain, and any transactions sent after the transition block are not considered part of the PoS chain. Learn more about this [here](/migration/migration-technical-details.md).
