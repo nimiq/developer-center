@@ -39,7 +39,7 @@ Once you have your client compiled in the **PoS chain**, you can:
 - IPFS is a decentralized file storage system that allows users to share and access files in a peer-to-peer network. You can find the ZIP file of the snapshot [here](https://ipfs.nimiq.io/ipfs/QmRKvFVpTdXagvgZG5cF9qdz13x9DkZhUvwXAS5YMaqTfu?filename=pow-main-full-consensus.zip). It will start the download immediately.
 - BitTorrent File: An alternative method, you can download the Torrent file [here](https://repo.nimiq.com/torrents/nimiq-pow-main-full-consensus.torrent).
 
-After downloading the snapshot, the database file must be placed in the directory where your PoW node is set up. Once the database is in place, you can proceed by running the command from [step 3](#step-3-run-the-activation-tool). After your node has reached consensus, you can then move on to continue running the Activation Tool to complete the process.
+After downloading the snapshot, the database file must be placed in the directory from where you are running your PoW node. Once the database is in place, you can proceed by running the command from [step 3](#step-3-run-the-activation-tool). After your node has reached consensus, you can then move on to continue running the Activation Tool to complete the process.
 
 **Step 3: Check Client Sync Status**
 
