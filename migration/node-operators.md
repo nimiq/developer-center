@@ -30,8 +30,18 @@ Once you have your client compiled in the **PoS chain**, you can:
 - Set the `network` to `main-albatross`
 - Choose your `sync_mode` setting as `full` or `history`
 - Optionally, enable the PoS RPC server by uncommenting the section in the `[rpc-server]` configuration section if you need it
+- **Review all other sections** of the client.toml file and ensure that the parameters are configured according to your specific setup (paths, keys, and any optional features you want to enable). Adjust these settings as needed to fit your node's configuration.
 
-**Step 2: Check Client Sync Status**
+**Step 2: Download the PoW Chain Snapshot**
+
+ If you are running the Activation Tool, a full database snapshot of the Nimiq PoW chain is available for download via IPFS or Torrent. While node operators primarily observe the migration process, downloading the snapshot is not required but can be helpful. Instead of syncing the entire chain from scratch, you will only need to sync the final portion after downloading the snapshot, enabling you to reach consensus more quickly.
+
+- IPFS is a decentralized file storage system that allows users to share and access files in a peer-to-peer network. You can find the ZIP file of the snapshot [here](https://ipfs.nimiq.io/ipfs/QmRKvFVpTdXagvgZG5cF9qdz13x9DkZhUvwXAS5YMaqTfu?filename=pow-main-full-consensus.zip). It will start the download immediately.
+- BitTorrent File: An alternative method, you can download the Torrent file [here](https://repo.nimiq.com/torrents/nimiq-pow-main-full-consensus.torrent).
+
+After downloading the snapshot, the database file must be placed in the directory where your PoW node is set up. Once the database is in place, you can proceed by running the command from [step 3](#step-3-run-the-activation-tool). After your node has reached consensus, you can then move on to continue running the Activation Tool to complete the process.
+
+**Step 3: Check Client Sync Status**
 
 **In the PoW chain**, ensure you are fully synced and in consensus. Start the PoW client with an RPC server (this might take a while). Run the following command:
 
@@ -39,7 +49,7 @@ Once you have your client compiled in the **PoS chain**, you can:
 node clients/nodejs/index.js --dumb --network=main --rpc=8648
 ```
 
-**Step 3: Run the Activation Tool**
+**Step 4: Run the Activation Tool**
 
 The Activation Tool establishes a connection with the PoW client via RPC, extracting data from your PoW client with the PoS client configuration.
 
@@ -68,6 +78,7 @@ Once you have your client compiled, you can:
 - Set the `network` to `main-albatross`
 - Choose your `sync_mode` setting as `full` or `history`
 - Optionally, enable the PoS RPC server by uncommenting the section in the `[rpc-server]` configuration section if you need it
+- **Review all other sections** of the client.toml file and ensure that the parameters are configured according to your specific setup (paths, keys, and any optional features you want to enable). Adjust these settings as needed to fit your node's configuration.
 
 **Step 2: Run the Activation Tool**
 

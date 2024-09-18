@@ -96,9 +96,18 @@ Once you have your client setup, you can either:
 - Go to the file `$HOME/.nimiq/client.toml`, which includes a dedicated validator section at the end, and paste your validator data into this section.
 - Refer to [this guide](/build/set-up-your-own-node/becoming-a-validator.md#configuration).
 
-Ensure that you set your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
+Ensure that you set the network to `main-albatross` and your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
 
-### Step 2:  Run the Activation Tool
+### Step 2: Download the PoW Chain Snapshot
+
+This step is intended for those who are setting up a PoW node from scratch and have not yet synced the chain. A full database snapshot of the Nimiq PoW chain is available for download via IPFS or Torrent. This snapshot is particularly useful before running the Activation Tool, as it removes the need to sync the entire PoW chain from scratch. After downloading the snapshot, only a small portion of the chain needs to be synced, allowing you to reach consensus on your PoW node more quickly.
+
+- IPFS is a decentralized file storage system that allows users to share and access files in a peer-to-peer network. You can find the ZIP file of the snapshot [here](https://ipfs.nimiq.io/ipfs/QmRKvFVpTdXagvgZG5cF9qdz13x9DkZhUvwXAS5YMaqTfu?filename=pow-main-full-consensus.zip). It will start the download immediately.
+- BitTorrent File: An alternative method, you can download the Torrent file [here](https://repo.nimiq.com/torrents/nimiq-pow-main-full-consensus.torrent).
+
+After downloading the snapshot, the database file must be placed in the directory where your PoW node is set up. Once the database is in place, you can proceed by running the command from [step 3](#step-3-run-the-activation-tool). After your node has reached consensus, you can then move on to continue running the Activation Tool to complete the process.
+
+### Step 3: Run the Activation Tool
 
 The Activation tool establishes a connection with the PoW chain via RPC, extracting data from your configuration file and crosschecking it with the information in the JSON file within the PoW chain.
 
