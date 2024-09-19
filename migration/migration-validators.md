@@ -96,10 +96,20 @@ Once you have your client setup, you can either:
 - Create the `$HOME/.nimiq` folder if it doesn't exist already, and inside create a `client.toml` file based on this [example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml).
 At the end of this file, the client configuration includes a dedicated validator section. You can fill in your validator data into this section.
 - Refer to [this guide](/build/set-up-your-own-node/becoming-a-validator.md#configuration).
+- **Review all other sections** of the client.toml file and ensure that the parameters are configured according to your specific setup (paths, keys, and any optional features you want to enable). Adjust these settings as needed to fit your node's configuration.
 
-Ensure that you set your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
+Ensure that you set the network to `main-albatross` and your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
 
-### Step 2:  Run the Activation Tool
+### Step 2: Download the PoW Chain Snapshot
+
+This step is intended for those who are setting up a PoW node from scratch and have not yet synced the chain. A full database snapshot of the Nimiq PoW chain is available for download via IPFS or Torrent. This snapshot is particularly useful before running the Activation Tool, as it removes the need to sync the entire PoW chain from scratch. After downloading the snapshot, only a small portion of the chain needs to be synced, allowing you to reach consensus on your PoW node more quickly.
+
+- IPFS is a decentralized file storage system that allows users to share and access files in a peer-to-peer network. You can find the ZIP file of the snapshot [here](https://ipfs.nimiq.io/ipfs/QmRKvFVpTdXagvgZG5cF9qdz13x9DkZhUvwXAS5YMaqTfu?filename=pow-main-full-consensus.zip). It will start the download immediately.
+- BitTorrent File: An alternative method, you can download the Torrent file [here](https://repo.nimiq.com/torrents/nimiq-pow-main-full-consensus.torrent).
+
+After downloading the snapshot, the database file must be placed in the directory from where you are running your PoW node. Once the database is in place, you can proceed by running the command from [step 3](#step-3-run-the-activation-tool). After your node has reached consensus, you can then move on to continue running the Activation Tool to complete the process.
+
+### Step 3: Run the Activation Tool
 
 The Activation tool establishes a connection with the PoW chain via RPC, extracting data from your configuration file and crosschecking it with the information in the JSON file within the PoW chain.
 
@@ -121,6 +131,6 @@ Once you have consensus on the PoW chain, proceed to execute the migration tool 
 cargo run --release --bin nimiq-pow-migration --url "url-according-your-configuration" --config client.toml
 ```
 
-Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://172.0.0.1:8648`.
+Where `url-according-your-configuration` is the PoW client RPC url. For example: `http://127.0.0.1:8648`.
 
 When the tool is launched, it will monitor the network for at least 80% readiness. Once this threshold is reached, the transition block marks the beginning of the PoS chain, and any transactions sent after the transition block are not considered part of the PoS chain. Learn more about this [here](/migration/migration-technical-details.md).

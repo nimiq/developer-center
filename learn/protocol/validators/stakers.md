@@ -71,7 +71,7 @@ Sets the desired active stake, which automatically adjusts the inactive balance 
 Updates the validator address to which the stake is delegated. This process involves several steps:
 
 1. The staker must set the active stake to 0, making all non-retired funds inactive
-2. The staker must wait for the inactive balance to be released, which involves waiting for the required period
+2. The staker must wait for the inactive balance to be released, which involves waiting for one epoch + the blocks left in the current epoch
 3. Once the inactive funds are released, the staker can update the validator address
 4. Finally, the staker needs to return the inactive stake to active as desired
 
