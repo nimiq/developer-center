@@ -95,6 +95,7 @@ Once you have your client setup, you can either:
 
 - Go to the file `$HOME/.nimiq/client.toml`, which includes a dedicated validator section at the end, and paste your validator data into this section.
 - Refer to [this guide](/build/set-up-your-own-node/becoming-a-validator.md#configuration).
+- **Review all other sections** of the client.toml file and ensure that the parameters are configured according to your specific setup (paths, keys, and any optional features you want to enable). Adjust these settings as needed to fit your node's configuration.
 
 Ensure that you set the network to `main-albatross` and your `sync_mode` as `full` or `history` in the consensus part of the configuration file. Only full or history nodes are eligible to be validators.
 
