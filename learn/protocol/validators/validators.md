@@ -2,7 +2,7 @@
 
 Validators are the block producers of PoS blockchains. They are responsible for processing and validating transactions, block validation, and maintaining the integrity of the network. Their primary function is to preserve the network's consensus by agreeing on the current state. By maintaining consensus and actively participating in the network, validators earn rewards in the form of transaction fees and block rewards.
 
-However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in penalties, including burning their rewards and/or jailing, effectively removing them from network participation for a defined period.
+However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in punishments, including burning their rewards and/or jailing, effectively removing them from network participation for a defined period.
 
 To become a validator in the Nimiq blockchain, a node must have a Nimiq wallet and create a validator node. A minimum deposit of 100 000 NIM is required to ensure the validator remains active, prevent block production delays, and discourage malicious behavior. This deposit also discourages the creation of validator accounts that could be abandoned and take up unnecessary network resources.
 
@@ -42,11 +42,11 @@ Moreover, if a validator remains offline for an extended period, it is deactivat
 
 ### Jail
 
-A validator is jailed immediately after an equivocation proof is submitted accounting for the misbehavior, such as double-signing blocks or attempting to fork the chain. The jailing process also deactivates the validator if it is not already inactive. The validator remains jailed until the penalty period is served, ensuring it cannot participate or tamper with its funds during this time.
+A validator is jailed immediately after an equivocation proof is submitted accounting for the misbehavior, such as double-signing blocks or attempting to fork the chain. The jailing process also deactivates the validator if it is not already inactive. The validator remains jailed until the jailing period is served, ensuring it cannot participate or tamper with its funds during this time.
 
 ### Reactivate
 
-A validator can sed this transaction to reactivate from the inactive state. Also, once the penalty period has ended or if the validator was not jailed, this transaction reactivates the validator. The validator must meet certain conditions to be reactivated:
+A validator can send this transaction to reactivate from the inactive state. Once the punishment period has ended (whether penalized for delaying block production or jailed), or if the validator is inactive for other reasons, this transaction reactivates the validator. The validator must meet certain conditions to be reactivated:
 
 - Must be inactive
 - Must not be retired
@@ -70,7 +70,7 @@ This transaction permanently removes a retired validator from the network and re
 
 ### Punishments
 
-If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the penalty period is served. For more detailed information on punishments, refer to [Nimiq's penalties documentation](https://www.nimiq.com/developers/learn/protocol/penalties).
+If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the jailing period is served. For more detailed information on punishments, refer to [Nimiq's punishments documentation](https://www.nimiq.com/developers/learn/protocol/punishments).
 
 ## States
 

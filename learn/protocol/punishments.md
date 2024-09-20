@@ -1,6 +1,6 @@
-# Penalties
+# Punishments
 
-Validators are responsible for ensuring the security and stability of a blockchain network. They are rewarded for participating and penalized if they fail to contribute according to the consensus. Misbehaving always results in either losing the rewards or going to jail, where the validator gets locked up for a period and loses the rewards. The types of penalties are divided based on the severity of the misbehavior.
+Validators are responsible for ensuring the security and stability of a blockchain network. They are rewarded for participating and punished if they fail to contribute according to the consensus. Misbehaving always results in either losing the rewards or going to jail, where the validator gets locked up for a period and loses the rewards. The types of punishment are divided based on the severity of the misbehavior.
 
 Our blockchain deals with misbehavior based on the nature of the offense:
 
@@ -33,7 +33,7 @@ Any rational validator that witnesses one of these behaviors can report it by in
 
 As these are more severe offenses that interfere with the blockchain, the consequences are also more severe. When a validator is jailed:
 
-- It is immediately removed from the `active_validators` set, and all its slots are marked as penalized in the `punished_slots` set in the staking contract.
+- It is immediately removed from the `active_validators` set, and all its slots are marked as punished in the `punished_slots` set in the staking contract.
 - It gets locked for 8 epochs. However, it is required to continue the block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
 - It loses its rewards for the jail period.
 
@@ -51,4 +51,4 @@ There is a reporting window for when validators can submit such proofs. From the
 
 ### Impact on stakers
 
-The penalties also affect the validator's stakers, as the locking period for the staker's stake aligns with the validator's locking period. Stakers can either maintain their stake with their validator or remove it once the jail period ends if their stake remains inactive.
+Punishments also affect the validator's stakers, as the locking period for the staker's stake aligns with the validator's locking period. Stakers can either maintain their stake with their validator or remove it once the jail period ends if their stake remains inactive.

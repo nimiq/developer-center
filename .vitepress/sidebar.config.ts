@@ -48,7 +48,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           collapsed: false,
           items: [
             { text: 'Block Format', link: '/learn/protocol/block-format' },
-            { text: 'Penalties', link: '/learn/protocol/penalties' },
+            { text: 'Punishments', link: '/learn/protocol/punishments' },
             { text: 'Equivocation Proofs', link: '/learn/protocol/equivocation-proofs' },
             { text: 'Accounts', link: '/learn/protocol/accounts' },
             { text: 'Transactions', link: '/learn/protocol/transactions' },

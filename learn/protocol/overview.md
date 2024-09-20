@@ -8,7 +8,7 @@ Welcome to the Nimiq Proof-of-Stake documentation. Introducing our new consensus
 
 Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 slots per batch ready to produce blocks.
 
-Participants lacking the resources or expertise to become validators can delegate funds as stakers. Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Stakers face penalties if their validator misbehaves, but their stake is secure. Validator rewards for stakers are processed off-chain.
+Participants lacking the resources or expertise to become validators can delegate funds as stakers. Validators produce and validate blocks on behalf of stakers, who receive rewards even if offline. Validator rewards for stakers are processed off-chain. Stakers face the same punishment of their validator in case of misbehavior.
 
 ## Blockchain Structure
 
@@ -26,4 +26,4 @@ After a set number of micro blocks, a macro block finalizes the batch. Randomly 
 
 ## Dealing with Malicious Behavior
 
-Validators face rewards for contributions and penalties for consensus violations, varying by severity. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a jail state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
+Validators face rewards for contributions and punishments for consensus violations, varying by severity. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a jail state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
