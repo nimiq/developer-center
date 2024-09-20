@@ -98,7 +98,7 @@ An inherent is a type of data that is intrinsic to the block. Unlike transaction
 
 ## Jail
 
-Going to jail refers to the validator's state characterized by incurring severe penalties for actions such as forking or continuing on a fork. When a validator is in a jailed state, it is locked for an 8-epoch period and cannot be re-elected during this lockup. Additionally, all the validator’s rewards are burned.
+Going to jail refers to the validator's state characterized by incurring severe misbehaviors for actions such as forking or continuing on a fork. When a validator is in a jailed state, it is locked for an 8-epoch period and cannot be re-elected during this lockup. Additionally, all the validator’s rewards are burned.
 
 ## Justification
 

@@ -24,7 +24,7 @@ This set is stored in a binary tree map that efficiently organizes active valida
 
 ## Punished slots
 
-The slots marked as punished. Depending on the nature of their misbehavior, validators may have either one slot or all slots marked as punished. The `punished_slots` set keeps track of these penalized slots for both the current and previous batch.
+The slots marked as punished. Depending on the nature of their misbehavior, validators may have either one slot or all slots marked as punished. The `punished_slots` set keeps track of these punished slots for both the current and previous batch.
 
 In the reward distribution phase, the staking contract cross-verifies slots from the previous batch's `punished_slots` to identify and burn rewards linked to those specific slots. Additionally, at every macro block, the staking contract determines the block producers for the next batch. Slots marked as punished are excluded from consideration in the selection of block producers for subsequent batches.
 

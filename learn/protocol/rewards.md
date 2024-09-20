@@ -1,6 +1,6 @@
 # Rewards
 
-Validators stake a minimum deposit to participate in block production. Following consensus rules yields rewards; failing results in [penalties](/learn/protocol/penalties.md) and loss of rewards.
+Validators stake a minimum deposit to participate in block production. Following consensus rules yields rewards; failing results in [punishments](/learn/protocol/punishments.md) and loss of rewards.
 
 Validators receive rewards under these conditions:
 

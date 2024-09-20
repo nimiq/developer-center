@@ -1,6 +1,6 @@
 # Skip blocks
 
-Our consensus protocol adapts to the presence of validators who intend to [act maliciously](/learn/protocol/penalties.md) and disrupt the standard behavior of the blockchain. A single validator is enough to delay block production. In Nimiq consensus algorithm, when a validator doesn't produce a micro block in the expected time, any validator can add a skip block to the chain.
+Our consensus protocol adapts to the presence of validators who intend to [act maliciously](/learn/protocol/punishments.md) and disrupt the standard behavior of the blockchain. A single validator is enough to delay block production. In Nimiq consensus algorithm, when a validator doesn't produce a micro block in the expected time, any validator can add a skip block to the chain.
 
 Despite the cause of the delay, which could be for various reasons such as the validator going offline or wanting to delay the block production purposely, including a skip block avoids a significant delay. Instead of waiting for the delayed validator, any active validator can produce a skip block in place of the expected micro block.
 
