@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot, DrawerTitle, DrawerTrigger } from 'vaul-vue'
 import type { NavigationType } from './navigation-types'
+import { DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot, DrawerTitle, DrawerTrigger } from 'vaul-vue'
 
 defineProps<{ navigation: NavigationType }>()
 

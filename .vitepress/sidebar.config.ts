@@ -1,6 +1,6 @@
+import type { DefaultTheme } from 'vitepress'
 import fs from 'node:fs'
 import path from 'node:path'
-import type { DefaultTheme } from 'vitepress'
 
 // @unocss-include
 

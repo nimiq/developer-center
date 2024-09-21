@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useScrollLock } from '@vueuse/core'
 import type { DefaultTheme } from 'vitepress'
+import { useScrollLock } from '@vueuse/core'
 import { inBrowser } from 'vitepress'
 import { ref, watch } from 'vue'
 import { useSidebar } from '../composables/useSidebar'

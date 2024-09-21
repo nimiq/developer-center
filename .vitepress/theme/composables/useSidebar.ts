@@ -1,17 +1,16 @@
-import { useMediaQuery } from '@vueuse/core'
 import type { DefaultTheme } from 'vitepress/theme'
+import { useMediaQuery } from '@vueuse/core'
 import {
-  type ComputedRef,
-  type Ref,
   computed,
+  type ComputedRef,
   onMounted,
   onUnmounted,
+  type Ref,
   ref,
   watch,
   watchEffect,
   watchPostEffect,
 } from 'vue'
-import { isActive } from './useIsActive'
 import {
   hasActiveLink as containsActiveLink,
   getSidebar,
@@ -19,6 +18,7 @@ import {
 } from './sidebar'
 import { useData } from './useData'
 import { hashRef } from './useHash'
+import { isActive } from './useIsActive'
 
 export interface SidebarControl {
   collapsed: Ref<boolean>

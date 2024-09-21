@@ -1,6 +1,6 @@
+import type { BuiltInParserName } from 'prettier'
 import { getIcon } from '@iconify/vue'
 import { buildIcon } from 'iconify-icon'
-import type { BuiltInParserName } from 'prettier'
 
 const API_ENTRY = 'https://api.iconify.design'
 

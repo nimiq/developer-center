@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
 import type { Card, Tag } from '../utils/types'
+import { useHead } from '@unhead/vue'
 
 const props = defineProps<{
   tags?: Array<Tag>

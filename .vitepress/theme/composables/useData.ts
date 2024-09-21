@@ -1,5 +1,5 @@
-import { useData as useData$ } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/theme'
+import { useData as useData$ } from 'vitepress'
 
 // copied from https://github.com/vuejs/vitepress/blob/main/src/client/app/data.ts
 

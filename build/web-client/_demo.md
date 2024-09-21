@@ -1,3 +1,4 @@
+<!-- eslint-disable antfu/no-top-level-await -->
 ```js
 import init, { Client, ClientConfiguration } from '@nimiq/core/web'
 

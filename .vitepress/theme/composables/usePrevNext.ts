@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { getFlatSideBarLinks, getSidebar } from './sidebar'
-import { isActive } from './useIsActive'
 import { useData } from './useData'
+import { isActive } from './useIsActive'
 
 interface PrevNext { text?: string, link?: string }
 export function usePrevNext() {

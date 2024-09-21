@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Icon, addCollection, listIcons } from '@iconify/vue'
-import { computed, onMounted, ref, watch } from 'vue'
+import { addCollection, Icon, listIcons } from '@iconify/vue'
 import { useClipboard, useElementSize, useLocalStorage, useScriptTag, useTimeAgo } from '@vueuse/core'
 import { Dialog, Popover, Slider } from 'radix-vue/namespaced'
+import { computed, onMounted, ref, watch } from 'vue'
 import { getIconSnippet } from '../composables/icons/icon'
 import { downloadBlob, downloadIconFont, downloadSVGSprite, downloadZip } from '../composables/icons/pack'
 
