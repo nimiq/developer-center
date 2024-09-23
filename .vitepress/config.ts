@@ -1,14 +1,14 @@
 import { existsSync } from 'node:fs'
 import { basename, dirname } from 'node:path'
 import { env } from 'node:process'
-import { defineConfig } from 'vitepress'
+import consola from 'consola'
 import { spawn } from 'cross-spawn'
 import { readPackageJSON } from 'pkg-types'
-import consola from 'consola'
-import { sidebar } from './sidebar.config'
+import { defineConfig } from 'vitepress'
 import { navigation } from './navigation.config'
-import { generateWebClientDocs } from './scripts/web-client'
 import { generateRpcDocs } from './scripts/rpc-docs'
+import { generateWebClientDocs } from './scripts/web-client'
+import { sidebar } from './sidebar.config'
 
 function getCommitHash(file: string): Promise<string | undefined> {
   return new Promise<string | undefined>((resolve, reject) => {

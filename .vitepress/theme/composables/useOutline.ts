@@ -1,6 +1,6 @@
-import { type Header, getScrollOffset } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/theme'
-import { type Ref, onUpdated } from 'vue'
+import { getScrollOffset, type Header } from 'vitepress'
+import { onUpdated, type Ref } from 'vue'
 import { useAside } from './useAside'
 
 // cached list of anchor elements from resolveHeaders
@@ -14,9 +14,9 @@ export type MenuItem = Omit<Header, 'slug' | 'children'> & {
 export function resolveTitle(theme: DefaultTheme.Config) {
   return (
     (typeof theme.outline === 'object'
-    && !Array.isArray(theme.outline)
-    && theme.outline.label)
-    || 'On this page'
+      && !Array.isArray(theme.outline)
+      && theme.outline.label)
+      || 'On this page'
   )
 }
 

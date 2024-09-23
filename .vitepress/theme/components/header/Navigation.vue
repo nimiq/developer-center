@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { NavigationMenu } from 'radix-vue/namespaced'
-import ThemeSwitcher from './ThemeSwitcher.vue'
 import type { NavigationType } from './navigation-types'
+import { NavigationMenu } from 'radix-vue/namespaced'
 import Community from './Community.vue'
+import ThemeSwitcher from './ThemeSwitcher.vue'
 
 // @unocss-include
 

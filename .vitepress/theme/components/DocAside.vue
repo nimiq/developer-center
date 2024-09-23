@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue'
-import { onContentUpdated } from '../utils/markdown-content'
 import { useData } from '../composables/useData'
 import {
-  type MenuItem,
   getHeaders,
+  type MenuItem,
   resolveTitle,
   useActiveAnchor,
 } from '../composables/useOutline'
+import { onContentUpdated } from '../utils/markdown-content'
 import DocAsideItem from './DocAsideItem.vue'
 
 const { theme } = useData()

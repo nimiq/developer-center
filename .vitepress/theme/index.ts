@@ -1,13 +1,13 @@
+import { createHead } from '@unhead/vue'
+import mediumZoom from 'medium-zoom'
+import { useRoute } from 'vitepress'
+import Theme from 'vitepress/theme'
+import { h, nextTick, onMounted, watch } from 'vue'
+import MainLayout from './MainLayout.vue'
 // https://vitepress.dev/guide/custom-theme
 import './layers.css'
-import Theme from 'vitepress/theme'
 import './style.css'
 import 'uno.css'
-import { h, nextTick, onMounted, watch } from 'vue'
-import { useRoute } from 'vitepress'
-import mediumZoom from 'medium-zoom'
-import { createHead } from '@unhead/vue'
-import MainLayout from './MainLayout.vue'
 
 function initZoom() {
   mediumZoom('.nq-prose img:not(:is(.not-zoomable,[not-zoomable]))', { background: 'rgb(var(--nq-neutral-0))' })

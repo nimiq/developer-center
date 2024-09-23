@@ -1,5 +1,5 @@
-import { defineComponent, h } from 'vue'
 import { useRoute } from 'vitepress'
+import { defineComponent, h } from 'vue'
 import { contentUpdatedCallbacks } from '../utils/markdown-content'
 
 const runCbs = () => contentUpdatedCallbacks.forEach(fn => fn())

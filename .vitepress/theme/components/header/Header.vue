@@ -3,8 +3,8 @@ import { breakpointsTailwind } from '@vueuse/core'
 import { ContextMenu } from 'radix-vue/namespaced'
 import { inBrowser } from 'vitepress'
 
-import Navigation from './Navigation.vue'
 import MobileMenu from './MobileMenu.vue'
+import Navigation from './Navigation.vue'
 
 const SearchBox = defineAsyncComponent(() => import('vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue'))
 

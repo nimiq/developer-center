@@ -18,6 +18,7 @@ module.exports = {
 
 Now you are ready to go!
 
+<!-- eslint-disable antfu/no-top-level-await -->
 ```js
 const Nimiq = await import('@nimiq/core') // You need to use await import() to load the WebAssembly module
 

@@ -1,4 +1,4 @@
-import { SvgToJSX, SvgToTSX, SvgToVue, getSvg, getSvgSymbol } from './icon'
+import { getSvg, getSvgSymbol, SvgToJSX, SvgToTSX, SvgToVue } from './icon'
 
 export async function downloadBlob(blob: Blob, name: string) {
   const url = URL.createObjectURL(blob)

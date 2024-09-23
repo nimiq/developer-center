@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Card } from '../utils/types'
 import { computed } from 'vue'
 import { CardType } from '../utils/types'
-import type { Card } from '../utils/types'
 
 const props = defineProps<{ item: Card }>()
 
@@ -15,7 +15,7 @@ const hasLink = computed(() => props.item.href)
 
 <template>
   <component
-    :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" nq-flex-card :class="{
+    :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" nq-hoverable :class="{
       'bg-gradient-blue': item.bgColor === 'blue',
       'bg-gradient-green': item.bgColor === 'green',
       'bg-gradient-gold': item.bgColor === 'gold',

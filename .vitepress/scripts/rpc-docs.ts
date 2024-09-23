@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import json2md from 'json2md'
 import { consola } from 'consola'
+import json2md from 'json2md'
 
 export async function generateRpcDocs() {
   let content: Response
