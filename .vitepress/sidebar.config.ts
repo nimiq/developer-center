@@ -110,8 +110,6 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Activation Phase', link: '/migration/validator-activation' },
           ],
         },
-        { text: '', link: '' },
-        { text: '', link: '' },
         { text: 'Guide for Node Operators', link: '/migration/node-operators' },
         { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
         { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },

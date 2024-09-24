@@ -16,7 +16,7 @@ The steps outlined in this guide are only applicable during the **Validator Acti
 
 ### Prerequisites
 - **Validator Registration**: You must have already [registered as a validator](validator-registration)
-- **PoW Client**: You need access to a fully synchronized Nimiq PoW client with RPC access enabled. If you are not already running a PoW client, follow the instructions in the [core-js repository](https://github.com/nimiq/core-js) to set it up and sync with the main network
+- **PoW Full Node**: You need access to a fully synchronized Nimiq PoW full node with RPC access enabled. If you are not already running a full node, follow the instructions in the [core-js repository](https://github.com/nimiq/core-js) to set it up and sync with the main network
     - If you are running a PoW client, ensure it is fully synced and configured properly
     - Use this [sample configuration file](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf) to enable RPC access on your PoW client
     - During this phase, you will need to run both the PoW and PoS clients. Ensure they are configured to run on **different RPC ports** to avoid conflicts if you are running both clients on the same machine. Alternatively, running them on separate servers is also possible.
