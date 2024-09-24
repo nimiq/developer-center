@@ -1,6 +1,6 @@
 # PoS Migration Guide for Node Operators
 
-Our migration guides are designed for users who want to actively participate in the transition process. This specific guide is for those who want to run the migration process without becoming validators (if you want to become one of the first validators from the start of the PoS chain, please refer to this [guide](migration-validators)). It is suitable for:
+Our migration guides are designed for users who want to actively participate in the transition process. This specific guide is for those who want to run the migration process without becoming validators (if you want to become one of the first validators from the start of the PoS chain, please refer to this [guide](validator-registration)). It is suitable for:
 
 - Node Operators
 - Exchanges
