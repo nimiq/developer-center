@@ -50,7 +50,7 @@ For detailed guidance through the scripts and their options, run `node validato
 
 **Using your own keys**
 
-You can of course also generate your own validator, signing, and/or voting keys using other methods. To do so, create a `validator-keys.json` file and replace the auto-generated address and keys with your own. Once you have added your keys, continue with the next step.
+You can of course also generate your own validator, signing, and/or voting keys using other methods. To do so, copy the `validator-keys.json` file generated in the previous step and replace the auto-generated address and keys with your own. Once you have added your keys, continue with the next step.
 
 ### Step 2: Fund your Validator Address
 
@@ -75,7 +75,7 @@ To send the transaction manually via Nimiq Wallet, you need the following data:
 |                       |                                                                      |
 | --------------------- | -------------------------------------------------------------------- |
 | **Recipient Address** | `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`                       |
-| **Value**             | `100 000` NIM or more                                                 |
+| **Value**             | `100 000` NIM or more                                                |
 | **Public Message**    | Your validator address in human-readable format (starting with `NQ`) |
 
 <Callout type='warning'>

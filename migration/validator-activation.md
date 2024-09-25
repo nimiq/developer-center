@@ -43,7 +43,7 @@ If your PoW client is not synced or you’re setting it up from scratch, you can
 After downloading the snapshot, the database file must be placed in the directory from where you are running your PoW node. Once in place, follow steps [3](#step-3-prepare-the-pow-client-for-the-transition) and [4](#step-4-run-the-activation-tool). After your node reaches consensus, continue with the Activation Tool to complete the process.
 
 ### **Step 3: Prepare the PoW Client for the Transition**
-Ensure the **PoW client is running with RPC enabled** on a distinct port from the PoS client. Configure the PoW client’s RPC settings in its configuration file by adding your validator address and key pair. Refer to [**this example**](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163).
+Ensure the **PoW client is running with RPC enabled** on a distinct port from the PoS client. Configure the PoW client’s wallet settings in its configuration file by adding your validator address and key pair. Refer to [**this example**](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163).
 
 Run the following command to start the PoW client:
 
