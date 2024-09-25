@@ -54,7 +54,7 @@ export const navigation = {
       items: [
         {
           title: 'For validators',
-          href: '/migration/migration-validators',
+          href: '/migration/validator-registration',
           description: 'Join the first epoch as a validator and earn rewards from the very beginning',
         },
         {

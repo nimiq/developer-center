@@ -102,7 +102,14 @@ export const sidebar: DefaultTheme.Sidebar = {
       icon: 'i-nimiq:icons-lg-sparkling-swap',
       link: '/migration/',
       items: [
-        { text: 'Guide for Validators', link: '/migration/migration-validators' },
+        {
+          text: 'Validators',
+          collapsed: false,
+          items: [
+            { text: 'Registration Phase', link: '/migration/validator-registration' },
+            { text: 'Activation Phase', link: '/migration/validator-activation' },
+          ],
+        },
         { text: 'Guide for Node Operators', link: '/migration/node-operators' },
         { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
         { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },

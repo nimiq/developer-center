@@ -5,7 +5,7 @@ links:
     label: Validator
     title: Pre-registration
     description: How to be prepared to join the first epoch as a validator and earn rewards from the very beginning
-    href: migration-validators
+    href: validator-registration
     layout: lg
     span: 6
   - title: Be part of the migration
@@ -35,7 +35,7 @@ Nimiq is transitioning from a Proof-of-Work to a Proof-of-Stake blockchain throu
 
 During the migration, we will capture the entire blockchain state, including all accounts, balances, and transaction history. This means that users' balances will remain intact and will be transferred to the new PoS chain.
 
-**There is no requirement to participate in the migration.** However, if you want, you can [become one of the first validators](migration-validators) or [migrate as an observer](node-operators). Nimiq ensures that no NIM will be lost during the process. We have [guides](#nimiq-migration-to-proof-of-stake) available for those who want to actively engage in the transition.
+**There is no requirement to participate in the migration.** However, if you want, you can [become one of the first validators](validator-registration) or [migrate as an observer](node-operators). Nimiq ensures that no NIM will be lost during the process. We have [guides](#nimiq-migration-to-proof-of-stake) available for those who want to actively engage in the transition.
 
 ## Most Asked Questions
 
