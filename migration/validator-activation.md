@@ -1,6 +1,8 @@
 # Activation Guide
 
-This guide is part of the Nimiq PoW to PoS migration process and is intended for users who have already registered as validators during the Validator Registration Phase by **October 6th, 2024**. For registering a validator post-transition, refer to the [Becoming a Validator](/build/set-up-your-own-node/becoming-a-validator.md) guide. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
+This guide is part of the Nimiq PoW to PoS migration process and is intended for users who have already registered as validators during the Validator Registration Phase by **October 6th, 2024**. If you missed the registration deadline, you can still participate in the activation as an observer by following [this guide](node-operators).
+
+For registering a validator post-transition, refer to the [Becoming a Validator](/build/set-up-your-own-node/becoming-a-validator.md) guide. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
 
 ## Validator Activation Tool
 
@@ -12,7 +14,7 @@ This guide covers **Phase 3: Validator Activation**, which starts on **November 
 | Pre-Stake Phase | 7th October | 10th November |
 | **Validator Activation** | **19th November** | - |
 
-The steps outlined in this guide are only applicable during the **Validator Activation Phase**.
+The steps outlined in this guide are only applicable for the **Validator Activation Phase**. However, you can prepare by following these steps before that date.
 
 ### Prerequisites
 - **Validator Registration**: You must have already [registered as a validator](validator-registration)
@@ -40,10 +42,10 @@ If your PoW client is not synced or you’re setting it up from scratch, you can
 - **IPFS**: Download the full PoW chain snapshot [here](https://ipfs.nimiq.io/ipfs/QmRKvFVpTdXagvgZG5cF9qdz13x9DkZhUvwXAS5YMaqTfu?filename=pow-main-full-consensus.zip)
 - **Torrent**: Alternatively, download the snapshot via Torrent [here](https://repo.nimiq.com/torrents/nimiq-pow-main-full-consensus.torrent)
 
-After downloading the snapshot, the database file must be placed in the directory from where you are running your PoW node. Once in place, follow steps [3](#step-3-prepare-the-pow-client-for-the-transition) and [4](#step-4-run-the-activation-tool). After your node reaches consensus, continue with the Activation Tool to complete the process.
+After downloading the snapshot, extract the file and place the database in the directory from where you are running your PoW client configuration. Once in place, follow steps [3](#step-3-prepare-the-pow-client-for-the-transition) and [4](#step-4-run-the-activation-tool). After your node reaches consensus, continue with the Activation Tool to complete the process.
 
 ### **Step 3: Prepare the PoW Client for the Transition**
-Ensure the **PoW client is running with RPC enabled** on a distinct port from the PoS client. Configure the PoW client’s wallet settings in its configuration file by adding your validator address and key pair. Refer to [**this example**](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163).
+Ensure the **PoW client is running with RPC enabled** on a distinct port from the PoS client, as the following command both clients are running in the same machine. Configure the PoW client’s RPC settings in its configuration file by adding your validator address and key pair. Refer to [**this example**](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf#L163).
 
 Run the following command to start the PoW client:
 
@@ -51,7 +53,7 @@ Run the following command to start the PoW client:
     node clients/nodejs/index.js --dumb --network=main --rpc=8648 --wallet-seed=private_keypublic_key
 ```
 
-The `private_keypublic_key` is the concatenation of your private key and public key in that order
+The `private_keypublic_key` is the concatenation of your private key and public key in that order. It's necessary because the activation tool will use these keys to send and sign transactions on behalf of your validator, signaling readiness.
 
 ### **Step 4: Run the Activation Tool**
 Once your PoW client is synced and in consensus, you are ready to run the Validator Activation Tool. This tool establishes a connection with the PoW chain via RPC and sets your validator ready for the PoS transition.
@@ -69,8 +71,8 @@ Ensure your PoS client is [properly configured](#step-1-add-validator-data-into-
 
     Where `pow-rpc` is the **PoW client RPC url**. For example: `http://127.0.0.1:8648`
 
-The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the transition block will be generated. Read more about the activation process [here](migration-technical-details#readiness-and-activation-tool).
+The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the activation tool will automatically start the PoS client. Read more about the activation process [here](migration-technical-details#readiness-and-activation-tool).
 
 ### PoS Activation
 
-On **November 19**, the network will initiate the transition from PoW to PoS. Once 80% of the total stake signals their readiness, the activation process will begin. The transition block will be generated, and validators will officially start securing the PoS network. Ensure your validator is ready and synced before this date to avoid delays.
+On **November 19**, the network will initiate the transition from PoW to PoS. Once 80% of the total stake signals their readiness, PoS chain starts with the [candidate block](migration-technical-details) as the genesis block. The transition block will be generated, and validators will officially start securing the PoS network. Ensure your validator is ready and synced before this date to avoid delays.

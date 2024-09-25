@@ -11,7 +11,7 @@ Nimiq has developed a **Validator Registration Tool** specifically for this proc
 - **Key and Address Generation**: Generates the validator's keys and corresponding address
 - **Validator Registration**: Registers the validator by sending the necessary transactions on the PoW chain
 
-| **Phase** | **Start** | **End** |
+| **Phase** | **Start Date** | **End Date** |
 | --- | --- | --- |
 | **Validator Registration** | **12th September** | **6th October** |
 | Pre-Stake Phase | 7th October | 10th November |
@@ -19,12 +19,10 @@ Nimiq has developed a **Validator Registration Tool** specifically for this proc
 
 The steps outlined in this guide are only applicable during the **Validator Registration Phase**.
 
-The **Activation Phase** begins on **November 19**, and we recommend running the activation tool **before** this date to allow your node to download the database early. Learn more about the activation process [here](#what-s-next).
-
 ### Prerequisites
 
 - Ensure [Node.js](https://nodejs.org) ≥ v18.20.4 is installed
-- Clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool) and move to the directory
+- Clone the [Nimiq Validator Registration Tool repository](https://github.com/nimiq/validator-registration-tool) and move to the cloned directory
 - Install Yarn globally with `npm install -g yarn`
 - Install all dependencies by executing `yarn` inside the cloned repository
 
@@ -81,6 +79,8 @@ To send the transaction manually via Nimiq Wallet, you need the following data:
 <Callout type='warning'>
 
 Please note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
+
+
 
 </Callout>
 
