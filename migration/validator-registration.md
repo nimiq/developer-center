@@ -68,7 +68,7 @@ node validator-registration.js --validator validator-keys.json --network main
 
 The final step involves committing to the registration and paying the validator's deposit of 100 000 NIM. This transaction can be sent from any address, but **you must include your validator address** in the transaction’s “public message” field. This allows the deposit to be linked to your validator.
 
-To send the transaction manually via Nimiq Wallet, you need the following data:
+To send the transaction manually via **Nimiq Wallet**, you need the following data:
 
 |                       |                                                                      |
 | --------------------- | -------------------------------------------------------------------- |
@@ -78,9 +78,9 @@ To send the transaction manually via Nimiq Wallet, you need the following data:
 
 <Callout type='warning'>
 
-Please note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
+**We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To avoid errors, test with a small amount of NIM first to ensure the transaction is processed correctly.
 
-
+Please also note that any value below 100 000 NIM will result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
 
 </Callout>
 
