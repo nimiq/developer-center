@@ -78,7 +78,7 @@ To send the transaction manually via **Nimiq Wallet**, you need the following da
 
 <Callout type='warning'>
 
-**We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly.
+**We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly. You can verify the address included the message with a block explorer like [nimiq.watch](https://nimiq.watch).
 
 Ensure you follow these steps carefully, as failure to do so could result in permanent loss of your funds. Any value below 100 000 NIM will also result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
 
