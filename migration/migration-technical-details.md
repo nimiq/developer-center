@@ -45,11 +45,11 @@ The registration window takes place within a specific range of blocks. The count
 
 ## Pre-staking Phase
 
-The pre-staking phase occurs within a specific range of blocks and is exclusive for staking. During this phase, validator registration transactions are not accepted anymore.
+The pre-staking phase occurs within a specific range of blocks and is exclusive for staking. During this phase, validator registration transactions are no longer accepted.
 
-Users who wish to stake their NIM for the PoS chain launch can send a pre-stake transaction of a minimum of 100 NIM specifying which preregistered validator they want to stake with. Users can only stake for pre-registered validators. Attempting to stake with non-registered validators will result in the loss of the sent NIM. Please note that once NIMs are pre-staked for a pre-registered validator, unstaking is not possible in the PoW chain. Stake can only be recovered when the PoS chain begins.
+Users who wish to stake their NIM for the PoS chain launch can send a pre-stake transaction of a minimum of 100 NIM, specifying which pre-registered validator they want to stake with. Any attempt to stake with non-registered validators or incorrect transaction details will result in the loss of the sent NIM. It is critical to follow the instructions exactly to avoid losing funds. Please note that once NIMs are pre-staked for a pre-registered validator, unstaking is not possible in the PoW chain. Stake can only be recovered when the PoS chain begins.
 
-For convenience, the Nimiq Wallet will feature an interface to facilitate this process. Users can send one pre-stake transaction per address. This feature will provide users with the list of pre-registered validators, allow to select one and send their pre-staking transaction.
+Pre-staking can be done through the Nimiq Wallet, which features an interface specifically designed to facilitate this. The Nimiq Wallet will provide users with a list of pre-registered validators, allow them to select one, and send their pre-staking transaction. Users can send one pre-stake transaction per address.
 
 After the pre-staking phase, a clear overview of the registered validators and the total allocated stake will be provided.
 
