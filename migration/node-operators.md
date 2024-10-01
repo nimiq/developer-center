@@ -58,7 +58,7 @@ Ensure your PoW client is fully synced before running the Activation Tool on the
 Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository** directory, including the path to the configuration file containing your validator data and specifying the PoW RPC server to be used. Note that this assumes the PoS client and PoW client (with RPC server enabled) are running on the same machine:
 
 ```bash
-cargo run --release --bin nimiq-pow-migration --url "http://127.0.0.1:8648" --config client.toml
+cargo run --release --bin nimiq-pow-migration -- --url "http://127.0.0.1:8648" --config client.toml
 ```
 
 :::
@@ -89,7 +89,7 @@ Ensure your PoW client is fully synced before running the Activation Tool on the
 Once you are in consensus in the PoW chain, proceed to execute the Activation Tool by running the following command **in the PoS client repository** directory, including the path to the configuration file containing your validator data and specifying the RPC server to be used. Note that this assumes the PoS client and the PoW client (with the RPC server enabled at port `8648`) are running on the same machine:
 
 ```bash
-cargo run --release --bin nimiq-pow-migration --url "http://127.0.0.1:8648" --config client.toml
+cargo run --release --bin nimiq-pow-migration -- --url "http://127.0.0.1:8648" --config client.toml
 ```
 
 :::
