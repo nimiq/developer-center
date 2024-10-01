@@ -25,7 +25,7 @@ const currentTrigger = ref('')
               <NavigationMenu.Link as-child>
                 <a
                   relative of-hidden transition-colors flex="~ col justify-end" rounded-6 h-full w-full p-16
-                  :class="`focusable ${main.classes}`" :href="withBase(main.href)" target="_blank"
+                  :class="`focusable ${main.classes}`" :href="withBase(main.href)"
                 >
                   <div :class="main.iconClasses" text-128 absolute top-8 right--24 />
                   <span nq-label text="12 white/70" z-1>{{ main.label }}</span>
@@ -43,7 +43,7 @@ const currentTrigger = ref('')
               <NavigationMenu.Link as-child>
                 <a
                   flex="~ col gap-3" select-none rounded-6 px-8 py-10 class="focusable" transition-colors
-                  :href="withBase(href)" hocus:bg-neutral-200 group target="_blank"
+                  :href="withBase(href)" hocus:bg-neutral-200 group
                 >
                   <h4 nq-labeltext="11 neutral" pl-2 font-bold class="nq-arrow" after:op-60>{{ title }}</h4>
                   <p text="14 neutral-800" lh-18> {{ description }}</p>
