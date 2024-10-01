@@ -2,7 +2,7 @@
 search: false
 ---
 
-# Get started with PoW
+# Get started with Nimiq PoW
 
 Build your own Nimiq-enabled app. Step by step with code snippets and a full running example at the end of each tutorial.
 
