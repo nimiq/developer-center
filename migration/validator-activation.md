@@ -66,7 +66,7 @@ Ensure your PoS client is [properly configured](#step-1-add-validator-data-into-
 2. **Run the Activation Tool** using the following command in the PoS client directory:
 
     ```
-    cargo run --release --bin nimiq-pow-migration --url "pow-rpc" --config client.toml
+    cargo run --release --bin nimiq-pow-migration -- --url "pow-rpc" --config client.toml
     ```
 
     Where `pow-rpc` is the **PoW client RPC url**. For example: `http://127.0.0.1:8648`
