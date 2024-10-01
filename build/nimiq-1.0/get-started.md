@@ -2,7 +2,7 @@
 search: false
 ---
 
-# Get started with Nimiq 1.0
+# Get started with PoW
 
 Build your own Nimiq-enabled app. Step by step with code snippets and a full running example at the end of each tutorial.
 
@@ -49,7 +49,7 @@ Just clone the App-Starter Kit repo on GitHub and get the entire infrastructure 
 
 [Installation](https://nimiq.github.io/tutorials/wordpress-payment-plugin-installation.html). Setup an online shop with WordPress + WooCommerce and configure the Nimiq Payment Plugin to receive payments in NIM.
 
-### Run a node on Nimiq 1.0
+### Run a node on Nimiq PoW
 
 **The minimum example**: On Linux and Mac, all you need is an IP and an open or forwarded port to run a full node.
 
@@ -95,8 +95,8 @@ Nuts and bolts of Nimiq. Detailed documentation of front-end, core and community
 
 ### More
 
-- [Nimiq 1.0 Whitepaper](https://www.nimiq.com/whitepaper-1/). Better understand the technical aspects and goals of the current Nimiq 1.0 Blockchain.
-- [Nimiq 2.0 Whitepaper](https://www.nimiq.com/whitepaper/). Get insights on the upcoming Nimiq 2.0 release.
+- [Nimiq PoW Whitepaper](https://www.nimiq.com/whitepaper-1/). Better understand the technical aspects and goals of the current Nimiq PoW Blockchain.
+- [Nimiq PoS Whitepaper](https://www.nimiq.com/whitepaper/). Get insights on the upcoming Nimiq 2.0 release.
 Community Tools and APIs. Useful tools and APIs developed by the Nimiq Community.
 
 ## Assets
