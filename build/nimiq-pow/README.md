@@ -8,3 +8,5 @@ The content of this folder is a port of the old Nimiq PoW documentation, scatter
 - [Index](./index)
 - [Get started](./get-started)
 - [Downloads](./downloads)
+
+> This page will not be shown in the Developer Center, it is just information for developers and content editors
