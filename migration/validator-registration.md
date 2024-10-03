@@ -1,6 +1,6 @@
 # Registration Guide
 
-This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For registering a validator post-transition, refer to the [Becoming a Validator](/build/set-up-your-own-node/becoming-a-validator.md) guide. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
+This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
 
 ## Validator Registration Tool
 

@@ -2,8 +2,6 @@
 
 This guide is part of the Nimiq PoW to PoS migration process and is intended for users who have already registered as validators during the Validator Registration Phase by **October 6th, 2024**. If you missed the registration deadline, you can still participate in the activation as an observer by following [this guide](node-operators).
 
-For registering a validator post-transition, refer to the [Becoming a Validator](/build/set-up-your-own-node/becoming-a-validator.md) guide. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
-
 ## Validator Activation Tool
 
 This guide covers **Phase 3: Validator Activation**, which starts on **November 19th**. The Validator Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the tool before the activation window begins to allow time for database synchronization, as this process can take some time.
