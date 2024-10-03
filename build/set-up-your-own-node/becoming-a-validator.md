@@ -155,7 +155,7 @@ arpl repl -u ws://<host>:<port>/ws
 # -u is short for --url
 
 # With default settings:
-arpl repl -u ws://locahost:8648/ws
+arpl repl -u ws://localhost:8648/ws
 
 # You can also use other ways of specifying the connection parameters:
 arpl repl -h localhost -p 8648
