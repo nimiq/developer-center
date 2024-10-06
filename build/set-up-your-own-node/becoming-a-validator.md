@@ -136,7 +136,7 @@ certificates = "/path/to/full_certificates_file.pem"
 
 ### Start your node and sync the blockchain
 
-After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run —release —bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
+After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run --release --bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
 
 ::: info Note
 When running your node through other means, such as a Docker container, refer to their respective documentation on how to start you node with your own config.
