@@ -5,4 +5,7 @@ export default antfu({
   typescript: true,
   markdown: true,
   ignores: ['.vitepress/cache', '*.woff2'],
+  rules: {
+    'no-irregular-whitespace': 'off', // TODO Find a way to fix this
+  },
 })

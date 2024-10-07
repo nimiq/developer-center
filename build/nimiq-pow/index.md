@@ -1,7 +1,7 @@
 ---
 search: false
 ---
-# Nimiq 1.0
+# Nimiq PoW
 
 Dive into the Nimiq Ecosystem documentation with links to resources, tutorials, and assets.
 
