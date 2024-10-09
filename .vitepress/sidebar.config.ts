@@ -52,6 +52,7 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Equivocation Proofs', link: '/learn/protocol/equivocation-proofs' },
             { text: 'Accounts', link: '/learn/protocol/accounts' },
             { text: 'Transactions', link: '/learn/protocol/transactions' },
+            { text: 'Rewards', link: '/learn/protocol/rewards' },
             { text: 'Merkle Trees', link: '/learn/protocol/merkle-trees' },
             { text: 'Mempool', link: '/learn/protocol/mempool' },
             { text: 'History Store', link: '/learn/protocol/history-store' },
