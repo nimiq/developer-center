@@ -52,7 +52,7 @@ You can of course also generate your own validator, signing, and/or voting keys 
 
 ### Step 2: Fund your Validator Address
 
-To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **10 Lunas** (0.00010 NIM) for both the registration and activation transactions. You can use any Nimiq Wallet to send Lunas to this address.
+To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **1 NIM** for both the registration and activation transactions. You can use any Nimiq Wallet to send NIM to this address.
 
 ### Step 3: Run the Validator Registration Tool
 
