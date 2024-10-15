@@ -166,5 +166,19 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/' },
       ],
     },
+    {
+      prefix: 'Build with',
+      text: 'Nimiq CSS',
+      icon: 'i-nimiq:icons-lg-three-hands-hexagon',
+      link: '/build/ui/nimiq-css/',
+      items: [
+        { text: 'Overview', link: '/build/nimiq-css/' },
+        { text: 'Getting started', link: '/build/nimiq-css/getting-started' },
+        { text: 'Installation', link: '/build/nimiq-css/installation' },
+        { text: 'Usage', link: '/build/nimiq-css/usage' },
+        { text: 'Customization', link: '/build/nimiq-css/customization' },
+        { text: 'Components', link: '/build/nimiq-css/components' },
+      ],
+    },
   ],
 }
