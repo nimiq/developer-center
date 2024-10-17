@@ -73,7 +73,7 @@ The following methods are particularly useful when interacting with the network:
 
 ### Shutdown of PoW Nodes
 
-Once the PoS chain has started, PoW nodes are no longer needed and can be shut down. This also acts as a commitment to leave the PoW chain behind. Make sure that accessing transactions on the PoW chain is no longer necessary once the PoS Mainnet chain is live.
+Once the PoS chain has started, PoW nodes are no longer needed and can be shut down. This also acts as a commitment to leave the PoW chain behind. Make sure that accessing transactions on the PoW chain is no longer necessary once the PoS Mainnet chain is live. **If you need to access transaction history from before the transition, you will need to complete the migration process as described in the [Migration Tool Guide](node-operators.md).**
 
 ## Getting Started with the PoS Bode
 
