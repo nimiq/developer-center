@@ -112,6 +112,7 @@ export const sidebar: DefaultTheme.Sidebar = {
           ],
         },
         { text: 'Guide for Node Operators', link: '/migration/node-operators' },
+        { text: 'Guide for Integrators', link: '/migration/migration-integrators' },
         { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
         { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },
         { text: 'Migration Technicalities', link: '/migration/migration-technical-details' },
