@@ -57,7 +57,7 @@ For developers, tech-savvies, and validators looking for more advanced control o
 Now that you know the differences, why not start building?
 
 <div flex="~ gap-16 items-center" class="nq-raw" mt-16>
-  <a href="./web-client/" nq-arrow nq-pill-sm nq-pill-blue>Web Client</a>
+  <a href="./web-client/" nq-arrow nq-pill-sm nq-pill-blue un-text-white>Web Client</a>
   <a href="./set-up-your-own-node/" nq-arrow nq-pill-sm nq-pill-secondary>Your private node</a>
 </div>
 
