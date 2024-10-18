@@ -45,33 +45,40 @@ The registration window takes place within a specific range of blocks. The count
 
 ## Pre-staking Phase
 
-The pre-staking phase occurs within a specific range of blocks and is exclusive for staking. During this phase, validator registration transactions are no longer accepted.
+The Pre-Staking phase occurs within a specific range of blocks and is exclusive for staking. During this phase, validator registration transactions are no longer accepted.
 
 Users who wish to stake their NIM for the PoS chain launch can send a pre-stake transaction of a minimum of 100 NIM, specifying which pre-registered validator they want to stake with. Any attempt to stake with non-registered validators or incorrect transaction details will result in the loss of the sent NIM. It is critical to follow the instructions exactly to avoid losing funds. Please note that once NIMs are pre-staked for a pre-registered validator, unstaking is not possible in the PoW chain. The stake can only be accessed once the PoS chain begins.
 
-Pre-staking can be done through the Nimiq Wallet, which features an interface specifically designed to facilitate this. The Nimiq Wallet will provide users with a list of pre-registered validators, allow them to select one, and send their pre-staking transaction. Every Address can only pre-stake for one pre-registered validator.
+Pre-staking can be done through the [Nimiq Wallet](https://wallet.nimiq.com/), which features an interface specifically designed to facilitate this. The Nimiq Wallet will provide users with a list of pre-registered validators and pools, allow them to select one, and send their pre-staking transaction. Every Address can only pre-stake for one pre-registered validator.
 
 After the pre-staking phase, a clear overview of the registered validators and the total allocated stake will be provided.
 
 ## Activation Phase
 
-Only pre-registered validators can participate in this phase. The activation phase serves the purpose of executing the transition. At the first candidate block's height (block 3 456 000), if at least 80% of the total stake signals readiness for the transition, the candidate block becomes the transition block. A special activation tool captures and migrates the state of the PoW chain at the transition block, including the transaction history, to generate the "genesis block" for the new PoS chain.
+Only pre-registered validators can participate in this phase. The activation phase serves the purpose of executing the transition, planned to start on **November 19th, 2024**. At the first candidate block's height (block 3'456'000), if at least 80% of the total stake signals readiness for the transition, the candidate block becomes the transition block. A special activation tool captures and migrates the state of the PoW chain at the transition block, including the transaction history, to generate the "genesis block" for the new PoS chain.
 
-The Activation Phase follows a specific sequence of events:
-1. The candidate block is mined at block height 3 456 000, which opens the first activation window.
-2. The network waits for 10 confirmations to prevent block reversion.
-3. After 10 block confirmations, registered validators capture the state at block 3 456 000 and start generating the PoS "genesis" block.
-   Validators generate the "genesis" block deterministically. The resulting block hash should be the same across all validators.
-5. After generating the "genesis" block, validators send their readiness transaction, which includes the block hash in the data field.
-6. The activation tool monitors readiness transactions within a 24 hour window.
-7. If 80% of the total stake (represented by registered validators) signals that they are ready by sending readiness transactions within 24 hours, the PoS chain will use the produced genesis block (with a block height of 3 456 000). The process automatically moves to the next activation window if the threshold is not reached.
-8. If the 80% readiness threshold is not met within the first 24 hours, a new activation window begins, starting with a new candidate block at the block immediately following 1440 blocks or 24 hours from the first candidate block. Validators need to send the readiness transactions again for the new genesis hash produced with this new transition candidate block.
-9. In subsequent activation windows, the same exact process is repeated. Select a new candidate block 24 hours apart from the previous one by opening a new activation window until the PoS chain starts
-10. Once 80% readiness is reached, the PoS client starts, and the once candidate block becomes the transition block, marking the start of the Nimiq PoS blockchain.
+The activation phase follows a specific sequence of events, outlined in the following list. The overall process will be explained in more detail afterward.
+1. **3 days** before November 19th, validators running the activation tool will begin sending automatic **online transactions** every hour before the first candidate block is mined to signal their online status.
+2. The candidate block is mined at the block height 3,456,000, officially opening the first activation window.
+3. The network waits for 10 confirmations after the candidate block to prevent block reversion. 
+4. After the 10 confirmations, pre-registered validators capture the state at block 3,456,000 and begin generating the PoS "genesis" block. Validators generate the "genesis" block deterministically. The block hash generated should be the same across all validators.
+5. After generating the "genesis" block, validators send their readiness transactions, which include the block hash in the data field.
+6. The activation tool monitors readiness transactions within a 24-hour window.
+7. If 80% of the total stake (represented by registered validators) sends readiness transactions within 24 hours, the PoS chain starts at block height 3,456,000, disregarding any blocks mined after this point.
+8. If the 80% readiness threshold is not met within the first 24 hours, a new activation window begins, starting with a new candidate block 1,440 PoW blocks (~24 hours) after the first.
+9. Validators who do not send readiness transactions by the **5th activation window** will be removed and deactivated from the first epoch of the PoS chain. This process ensures that inactive validators are removed from consideration to the required threshold.
+10. The activation windows will continue every 24 hours until 80% readiness is achieved. Validators who fail to signal readiness in subsequent windows will be progressively removed until the required threshold is reached, ensuring that only active validators participate in the PoS chain when it starts.
+11. Once 80% readiness is reached, the PoS client starts, and the once-candidate block becomes the transition block, marking the start of the Nimiq PoS blockchain.
 
-#### Readiness and Activation Tool
+### Online Transactions and Monitoring
 
-During the activation phase, validators send a transaction signaling their readiness. Pre-registered validators are encouraged to run the activation tool before the phase begins, as migrating the entire transaction history is time-consuming. An activation tool has been developed to facilitate this process. The tool migrates the history and scans the PoW chain for readiness transactions selecting the valid ones, which come from pre-registered validators who have completed the registration process. The tool also verifies the `data` field to ensure the genesis hash that validators signaled readiness for, matches the candidate transition block generated.
+To ensure a smooth activation, pre-registered validators are encouraged to run the activation tool at least 3 days before November 19th. Once the tool is launched, it will send automatic online transactions every hour (costing 1 Luna each) starting 3 days before the first candidate block is mined to signal that the validator is online. These transactions continue until the validator sends the readiness transaction at block height 3,456,000. Validators who run the tool earlier will only start sending these automatic online transactions start 3 days before activation.
+
+The purpose of these online transactions is to allow Team Nimiq to monitor which validators are online and ready for the transition. Validators will receive 100 Luna from Team Nimiq to cover the cost of these online and readiness transactions. These transactions help ensure all validators are ready and provide the team with a way to contact those who haven’t shown they are prepared.
+
+### Readiness Transactions
+
+Once the first activation window opens, validators send a transaction signaling their readiness. Pre-registered validators are encouraged to run the activation tool before the phase begins, as migrating the entire transaction history is time-consuming. An activation tool has been developed to facilitate this process. The tool migrates the history and scans the PoW chain for readiness transactions, selecting the valid ones that come from pre-registered validators who have completed the registration process. The tool also verifies the `data` field to ensure the genesis hash that validators signaled readiness for matches the candidate transition block generated.
 
 The readiness transaction is as follows:
 
@@ -83,15 +90,24 @@ The readiness transaction is as follows:
 | Data      | Hash of the generated `GenesisConfig` |
 | Validity  | Activation block window               |
 
-#### Transition Block
+### Transition Block
 
 The `GenesisConfig` is generated after the candidate block is mined. If the pre-registered validators run the tool before the activation window starts, the tool will have already migrated most of the history by the time the candidate block is mined. After the candidate block is mined and the network reaches 80% readiness, the tool migrates the final part of the history and generates the "genesis" block, which becomes the candidate transition block for the PoS chain.
 
 The activation process activates at the candidate block. At this point, the tool scans and analyzes transactions sent to the PoW chain. The transition starts if at least 80% of the total stake is ready for the specified candidate transition block.
 
-#### Failing 80% of Readiness
+### Ensuring Migration Completion
 
-If the transition does not succeed within the initial activation window, a new one opens immediately. Each new window starts at the block following the first 24 hours and spans 1 440 PoW blocks (24 hours), repeating until the 80% readiness target is achieved.
+If the transition does not succeed in the initial activation window, a new window opens immediately, starting from the block after 1,440 PoW blocks (~24 hours). This process repeats every 24 hours until the 80% readiness threshold is reached, or until the 5th window, at which point unready validators will be removed.
+
+#### Process Breakdown:
+
+- **First Activation Window**: The process begins on November 19th with the first activation window. This window lasts 24 hours, during which validators must send readiness transactions to reach the 80% readiness threshold.
+- **Subsequent Windows (2–5)**: If the 80% threshold is not met during the first window, new activation windows will open every 24 hours, starting with a new candidate block. This process continues for up to 5 windows. Readiness can be achieved in any of these windows, in which case the PoS chain will start immediately.
+- **Evaluation at the End of Window 5**: If readiness is still not achieved by the end of the 5th window, validators who have not sent their readiness transactions will be removed from the validator list. This ensures that only active validators are considered for the migration.
+- **Window 6 and Onward**: Starting from window 6, we expect to reach 80% readiness more quickly, as unready validators will have been removed. This allows the migration process to progress faster, ensuring the PoS chain can launch as soon as possible.
+
+This process guarantees the migration will succeed by excluding inactive validators, ensuring that only active participants contribute to the readiness threshold. By removing unready validators, the system ensures that the PoS chain can start efficiently. This mechanism is designed to secure completion of the migration, even if initial readiness is not achieved.
 
 ## Nimiq PoS
 

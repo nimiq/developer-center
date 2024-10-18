@@ -8,6 +8,8 @@ For registering a validator post-transition, refer to the [Becoming a Validator]
 
 This guide covers **Phase 3: Validator Activation**, which starts on **November 19th**. The Validator Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the tool before the activation window begins to allow time for database synchronization, as this process can take some time.
 
+The tool will also automatically send online transactions every hour, signaling which validators are ready for the transition. These transactions will be covered by Team Nimiq. For more detailed information, click [here](migration-technical-details#activation-phase).
+
 | **Phase** | **Start Date** | **End Date** |
 | --- | --- | --- |
 | Validator Registration | 12th September | 6th October |
@@ -71,7 +73,7 @@ Ensure your PoS client is [properly configured](#step-1-add-validator-data-into-
 
     Where `pow-rpc` is the **PoW client RPC url**. For example: `http://127.0.0.1:8648`
 
-The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the activation tool will automatically start the PoS client. Read more about the activation process [here](migration-technical-details#readiness-and-activation-tool).
+The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the activation tool will automatically start the PoS client. Read more about the activation process [here](migration-technical-details#activation-phase).
 
 ### PoS Activation
 
