@@ -75,7 +75,7 @@ The following methods are particularly useful when interacting with the network:
 
 Once the PoS chain has started, PoW nodes are no longer needed and can be shut down. This also acts as a commitment to leave the PoW chain behind. Make sure that accessing transactions on the PoW chain is no longer necessary once the PoS Mainnet chain is live. **If you need to access transaction history from before the transition, you will need to complete the migration process as described in the [Migration Tool Guide](node-operators.md).**
 
-## Getting Started with the PoS Bode
+## Getting Started with the PoS Node
 
 This section focuses on how to set up and configure your PoS node. The most important configuration settings are outlined below, but it is strongly recommended to review all the sections and apply them based on your requirements. Currently, two methods are supported for running a node: via Docker or by compiling from source code.
 
@@ -96,7 +96,7 @@ When setting up a node, ensure the following settings are properly configured in
 - **consensus.network**: Set to `main-albatross` in order to connect to the PoS Mainnet (default is Testnet).
 - **consensus.sync_mode**: **Must** be `history` or `full` as outlined in [General Considerations](#general-considerations-for-different-node-options).
 - **consensus.max_epochs_stored:** Only applies if `consensus.sync_mode` is set to `full`; configures how long blocks and transactions are kept around before they get pruned (1 epoch translates roughly to 12 hours).
-- **rpc-server**: Uncomment the JSON-RPC server section (which it is by default) and configure the bind address and port for remote communication if desired. However, it is not recommended to allow communication outside of localhost unless TLS is used (please verify if TLS support is enabled in your setup).
+- **rpc-server**: Uncomment the JSON-RPC server section (which it is by default) and configure the bind address and port for remote communication if desired. However, it is not recommended to allow communication outside of localhost unless TLS is used.
 
 ### Mainnet and Testnet Seed Nodes
 
