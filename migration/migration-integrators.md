@@ -26,7 +26,7 @@ As part of the transition from PoW to PoS, the terminology of the node types has
 | PoS Node Type | Memory | CPU | Storage | Network | Syncing Time |
 | --- | --- | --- | --- | --- | --- |
 | History (recommend) | Minimum 16GB RAM (higher recommended) | Minimum 4 vCPUs, 8 recommended | Starts from a few gigabytes, grows linearly with blockchain size | High-speed, reliable internet connection; Good I/O performance (SSDs required) | Sync time increases over the life of the blockchain |
-| Full | Minimum 4GB RAM, 8GB recommended | Minimum 2 vCPUs, 4 recommended | Minimum 80GB of storage, 160GB recommended | High-speed, reliable internet connection; Good I/O performance (SSDs recommended) | Sync time grows linearly but slowly |
+| Full | Minimum 8GB RAM | Minimum 4 vCPUs, 8 recommended | Minimum 80GB of storage, 160GB recommended | High-speed, reliable internet connection; Good I/O performance (SSDs recommended) | Sync time grows linearly but slowly |
 | Light | 1GB RAM recommended | 64-bit recommended | Works with minimal storage | Moderate-speed internet connection (e.g., 1 Mbps or higher) | Syncs in a few seconds |
 
 ## Integration Considerations when Migrating from PoW to PoS
@@ -66,10 +66,10 @@ The following methods are particularly useful when interacting with the network:
 2. [`getTransactionHashesByAddress`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#gettransactionhashesbyaddress): Fetch transaction hashes associated with a given address.
 3. [`getBlockNumber`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#getblocknumber): Returns the current head block of the node.
 4. [`getBlockByNumber`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#getblockbynumber): Returns the block at the specified height
-5. [`getRawTransactionInfo`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#getrawtransactioninfo): Get raw transaction details, including the block number and number of confirmations.
+5. [`getRawTransactionInfo`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#getrawtransactioninfo): Get raw transaction details by decoding a serialized transaction.
 6. [`isConsensusEstablished`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#isconsensusestablished): Returns a boolean specifying if the node has established consensus with the network.
 7. [`createBasicTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#createbasictransaction): Create a signed transaction and returns a hex-encoded representation without broadcasting it. All `create*Transaction` RPC methods also have an equivalent `send*Transaction` version in order to create and broadcast the transaction one-go.
-8. [`sendRawTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#sendrawtransaction): Sends the given serialised and signed transaction to the network.
+8. [`sendRawTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#sendrawtransaction): Sends the given serialized and signed transaction to the network.
 
 ### Shutdown of PoW Nodes
 
@@ -81,11 +81,11 @@ This section focuses on how to set up and configure your PoS node. The most impo
 
 ### The `nimiq-client`
 
-The `nimiq-client` is the central software for operating a PoS node and connecting to the blockchain. Written in Rust, it is completely [open source](https://github.com/nimiq/core-rs-albatross). While we make no guarantees about the minimum supported Rust version, we currently test two versions older than the current Rust stable version. Releases follow SemVer rules, meaning patch releases are non-breaking. If you are compiling from source we therefore **recommend** to use the [Github releases](https://github.com/nimiq/core-rs-albatross/releases) rather than the main branch, as the latter may include breaking changes. A new Docker image is automatically uploaded to the [Github Container registry](https://github.com/nimiq/core-rs-albatross/pkgs/container/core-rs-albatross) with every new release.
+The `nimiq-client` is the central software for operating a PoS node and connecting to the blockchain. Written in Rust, it is completely [open source](https://github.com/nimiq/core-rs-albatross). While we make no guarantees about the minimum supported Rust version, we currently test two versions older than the current Rust stable version. Releases follow [Semantic Versioning](https://semver.org/) rules, meaning patch releases are non-breaking. If you are compiling from source we therefore **recommend** to use the [Github releases](https://github.com/nimiq/core-rs-albatross/releases) rather than the main branch, as the latter may include breaking changes. A new Docker image is automatically uploaded to the [Github Container registry](https://github.com/nimiq/core-rs-albatross/pkgs/container/core-rs-albatross) with every new release.
 
 ### The `client.toml`
 
-The `client.toml` is the configuration file for the `nimiq-client`. It is divided into multiple sections, and most of the properties have default values. Upon running the `nimiq-client` for the first time, an example file is generated by the client and stored at `~/.nimiq/client.example.toml`. Rename this file to `client.toml`  as `~/.nimiq/client.toml` is the default location where the `nimiq-client` will look for configurations. The example file of the `client.toml` is available here: [GitHub](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml).
+The `client.toml` is the configuration file for the `nimiq-client`. It is divided into multiple sections, and most of the properties have default values. Upon running the `nimiq-client` for the first time, an example file is generated by the client and stored at `~/.nimiq/client.example.toml`. Rename this file to `client.toml`,  as `~/.nimiq/client.toml` is the default location where the `nimiq-client` will look for configurations. The example file of the `client.toml` is available here: [GitHub](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml).
 
 ### Important Configuration File Settings
 
@@ -96,7 +96,7 @@ When setting up a node, ensure the following settings are properly configured in
 - **consensus.network**: Set to `main-albatross` in order to connect to the PoS Mainnet (default is Testnet).
 - **consensus.sync_mode**: **Must** be `history` or `full` as outlined in [General Considerations](#general-considerations-for-different-node-options).
 - **consensus.max_epochs_stored:** Only applies if `consensus.sync_mode` is set to `full`; configures how long blocks and transactions are kept around before they get pruned (1 epoch translates roughly to 12 hours).
-- **rpc-server**: Uncomment the JSON-RPC server section (which it is by default) and configure the bind address and port for remote communication if desired.
+- **rpc-server**: Uncomment the JSON-RPC server section (which it is by default) and configure the bind address and port for remote communication if desired. However, it is not recommended to allow communication outside of localhost unless TLS is used (please verify if TLS support is enabled in your setup).
 
 ### Mainnet and Testnet Seed Nodes
 
