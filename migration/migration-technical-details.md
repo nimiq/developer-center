@@ -55,7 +55,7 @@ After the pre-staking phase, a clear overview of the registered validators and t
 
 ## Activation Phase
 
-Only pre-registered validators can participate in this phase. The activation phase serves the purpose of executing the transition, planned to start on **November 19th, 2024**. At the first candidate block's height (block 3'456'000), if at least 80% of the total stake signals readiness for the transition, the candidate block becomes the transition block. A special activation tool captures and migrates the state of the PoW chain at the transition block, including the transaction history, to generate the "genesis block" for the new PoS chain.
+Only pre-registered validators can participate in this phase. The activation phase serves the purpose of executing the transition, planned to start approximately on **November 19th, 2024**. At the first candidate block's height (block 3'456'000), if at least 80% of the total stake signals readiness for the transition, the candidate block becomes the transition block. A special activation tool captures and migrates the state of the PoW chain at the transition block, including the transaction history, to generate the "genesis block" for the new PoS chain.
 
 The activation phase follows a specific sequence of events, outlined in the following list. The overall process will be explained in more detail afterward.
 1. **3 days** before November 19th, validators running the activation tool will begin sending automatic **online transactions** every hour before the first candidate block is mined to signal their online status.
@@ -72,7 +72,7 @@ The activation phase follows a specific sequence of events, outlined in the foll
 
 ### Online Transactions and Monitoring
 
-To ensure a smooth activation, pre-registered validators are encouraged to run the activation tool at least 3 days before November 19th. Once the tool is launched, it will send automatic online transactions every hour (costing 1 Luna each) starting 3 days before the first candidate block is mined to signal that the validator is online. These transactions continue until the validator sends the readiness transaction at block height 3'456'000. Validators who run the tool earlier will only start sending these automatic online transactions start 3 days before activation.
+To ensure a smooth activation, pre-registered validators are encouraged to run the activation tool at least 3 days before November 19th. Once the tool is launched, it will send automatic online transactions every hour (costing 1 Luna each) starting 3 days before the first candidate block is mined to signal that the validator is online. These transactions continue until the validator sends the readiness transaction at block height 3'456'000. Validators who run the tool earlier will only start sending these automatic online transactions 3 days before activation.
 
 The purpose of these online transactions is to allow Team Nimiq to monitor which validators are online and ready for the transition. Validators will receive 100 Luna from Team Nimiq to cover the cost of these online and readiness transactions. These transactions help ensure all validators are ready and provide the team with a way to contact those who haven’t shown they are prepared.
 
@@ -98,7 +98,7 @@ The activation process activates at the candidate block. At this point, the tool
 
 ### Ensuring Migration Completion
 
-If the transition does not succeed in the initial activation window, a new window opens immediately, starting from the block after 1,440 PoW blocks (~24 hours). This process repeats every 24 hours until the 80% readiness threshold is reached, or until the 5th window, at which point unready validators will be removed.
+If the transition does not succeed in the initial activation window, a new window opens immediately, starting from the block after 1,440 PoW blocks (~24 hours). This process repeats every 24 hours until the 80% readiness threshold is reached, or until the 5th window, at which point unready validators will be marked as inactive and will not count towards the 80% readiness threshold.
 
 #### Process Breakdown:
 
