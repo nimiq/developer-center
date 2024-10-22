@@ -59,14 +59,14 @@ Only pre-registered validators can participate in this phase. The activation pha
 
 The activation phase follows a specific sequence of events, outlined in the following list. The overall process will be explained in more detail afterward.
 1. **3 days** before November 19th, validators running the activation tool will begin sending automatic **online transactions** every hour before the first candidate block is mined to signal their online status.
-2. The candidate block is mined at the block height 3,456,000, officially opening the first activation window.
+2. The candidate block is mined at the block height 3'456'000, officially opening the first activation window.
 3. The network waits for 10 confirmations after the candidate block to prevent block reversion. 
 4. After the 10 confirmations, pre-registered validators capture the state at block 3,456,000 and begin generating the PoS "genesis" block. Validators generate the "genesis" block deterministically. The block hash generated should be the same across all validators.
 5. After generating the "genesis" block, validators send their readiness transactions, which include the block hash in the data field.
 6. The activation tool monitors readiness transactions within a 24-hour window.
 7. If 80% of the total stake (represented by registered validators) sends readiness transactions within 24 hours, the PoS chain starts at block height 3,456,000, disregarding any blocks mined after this point.
 8. If the 80% readiness threshold is not met within the first 24 hours, a new activation window begins, starting with a new candidate block 1,440 PoW blocks (~24 hours) after the first.
-9. Validators who do not send readiness transactions by the **5th activation window** will be removed and deactivated from the first epoch of the PoS chain. This process ensures that inactive validators are removed from consideration to the required threshold.
+9. Validators who do not send readiness transactions by the **5th activation window** will no longer be considered part of the readiness voting process and will be deactivated from the first epoch of the PoS chain. This process ensures that inactive validators are removed from consideration to the required threshold.
 10. The activation windows will continue every 24 hours until 80% readiness is achieved. Validators who fail to signal readiness in subsequent windows will be progressively removed until the required threshold is reached, ensuring that only active validators participate in the PoS chain when it starts.
 11. Once 80% readiness is reached, the PoS client starts, and the once-candidate block becomes the transition block, marking the start of the Nimiq PoS blockchain.
 
@@ -104,7 +104,7 @@ If the transition does not succeed in the initial activation window, a new windo
 
 - **First Activation Window**: The process begins on November 19th with the first activation window. This window lasts 24 hours, during which validators must send readiness transactions to reach the 80% readiness threshold.
 - **Subsequent Windows (2–5)**: If the 80% threshold is not met during the first window, new activation windows will open every 24 hours, starting with a new candidate block. This process continues for up to 5 windows. Readiness can be achieved in any of these windows, in which case the PoS chain will start immediately.
-- **Evaluation at the End of Window 5**: If readiness is still not achieved by the end of the 5th window, validators who have not sent their readiness transactions will be removed from the validator list. This ensures that only active validators are considered for the migration.
+- **Evaluation at the End of Window 5**: If readiness is still not achieved by the end of the 5th window, validators who have not sent their readiness transactions will be marked as inactive and won't be considered for the 80% readiness threshold. This ensures that only active validators are considered for the migration.
 - **Window 6 and Onward**: Starting from window 6, we expect to reach 80% readiness more quickly, as unready validators will have been marked as inactive. This allows the migration process to progress faster, ensuring the PoS chain can launch as soon as possible.
 
 This process guarantees the migration will succeed by excluding inactive validators, ensuring that only active participants contribute to the readiness threshold. By marking unready validators as inactive, the system ensures that the PoS chain can start efficiently. This mechanism is designed to secure completion of the migration, even if initial readiness is not achieved.
