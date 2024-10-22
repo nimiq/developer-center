@@ -72,7 +72,7 @@ The activation phase follows a specific sequence of events, outlined in the foll
 
 ### Online Transactions and Monitoring
 
-To ensure a smooth activation, pre-registered validators are encouraged to run the activation tool at least 3 days before November 19th. Once the tool is launched, it will send automatic online transactions every hour (costing 1 Luna each) starting 3 days before the first candidate block is mined to signal that the validator is online. These transactions continue until the validator sends the readiness transaction at block height 3,456,000. Validators who run the tool earlier will only start sending these automatic online transactions start 3 days before activation.
+To ensure a smooth activation, pre-registered validators are encouraged to run the activation tool at least 3 days before November 19th. Once the tool is launched, it will send automatic online transactions every hour (costing 1 Luna each) starting 3 days before the first candidate block is mined to signal that the validator is online. These transactions continue until the validator sends the readiness transaction at block height 3'456'000. Validators who run the tool earlier will only start sending these automatic online transactions start 3 days before activation.
 
 The purpose of these online transactions is to allow Team Nimiq to monitor which validators are online and ready for the transition. Validators will receive 100 Luna from Team Nimiq to cover the cost of these online and readiness transactions. These transactions help ensure all validators are ready and provide the team with a way to contact those who haven’t shown they are prepared.
 
@@ -105,9 +105,9 @@ If the transition does not succeed in the initial activation window, a new windo
 - **First Activation Window**: The process begins on November 19th with the first activation window. This window lasts 24 hours, during which validators must send readiness transactions to reach the 80% readiness threshold.
 - **Subsequent Windows (2–5)**: If the 80% threshold is not met during the first window, new activation windows will open every 24 hours, starting with a new candidate block. This process continues for up to 5 windows. Readiness can be achieved in any of these windows, in which case the PoS chain will start immediately.
 - **Evaluation at the End of Window 5**: If readiness is still not achieved by the end of the 5th window, validators who have not sent their readiness transactions will be removed from the validator list. This ensures that only active validators are considered for the migration.
-- **Window 6 and Onward**: Starting from window 6, we expect to reach 80% readiness more quickly, as unready validators will have been removed. This allows the migration process to progress faster, ensuring the PoS chain can launch as soon as possible.
+- **Window 6 and Onward**: Starting from window 6, we expect to reach 80% readiness more quickly, as unready validators will have been marked as inactive. This allows the migration process to progress faster, ensuring the PoS chain can launch as soon as possible.
 
-This process guarantees the migration will succeed by excluding inactive validators, ensuring that only active participants contribute to the readiness threshold. By removing unready validators, the system ensures that the PoS chain can start efficiently. This mechanism is designed to secure completion of the migration, even if initial readiness is not achieved.
+This process guarantees the migration will succeed by excluding inactive validators, ensuring that only active participants contribute to the readiness threshold. By marking unready validators as inactive, the system ensures that the PoS chain can start efficiently. This mechanism is designed to secure completion of the migration, even if initial readiness is not achieved.
 
 ## Nimiq PoS
 
