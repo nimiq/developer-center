@@ -1,49 +1,124 @@
 # Transactions
 
-Transactions serve as the means to interact with the blockchain. A transaction modifies the state of the blockchain in accordance with the established rules. These transactions are stored in the [micro block](block-format.md#micro-blocks) body. The Nimiq blockchain features four types of [accounts](accounts.md) tailored to serve distinct purposes and thus enable a node to send and receive transactions:
+Transactions modify the state of the Nimiq blockchain according to protocol rules and enable transfers of value and contract interactions. These transactions are stored in the micro block's body. This document provides a technical overview of transaction structure, common transaction issues, transaction finality, and system operations known as inherents in the Nimiq blockchain.
 
-- Basic account
-- HTLC contract
-- Vesting contract
-- [Staking contract](validators/staking-contract.md)
+#### Types of Accounts
 
-Once transactions are sent, they are temporarily held in the mempool, where they remain until a validator includes them in the blockchain. The transaction is included once the validator confirms and validates the transaction.
+Nimiq supports four types of accounts, each designed for different purposes:
 
-The blockchain includes 2 mempools catered to different purposes:
+- **Basic Account**: The most commonly used account for standard transactions between individuals or entities
+- **Hashed Time-Locked Contract (HTLC)**: Handles conditional transfers, such as atomic swaps, based on cryptographic conditions and time constraints
+- **Vesting Contract**: Manages funds released gradually over time, often used to lock funds with a defined release schedule
+- **Staking Contract**: Enables validators to lock their NIM, participate in network consensus, and earn rewards
 
-- **Regular mempool** includes Basic, HTLC, and Vesting transactions
-- **Control mempool** includes transactions associated with the staking contract, which are prioritized over regular mempool transactions.
+Each account type processes transactions differently to meet its specific use case. For more details, refer to the [accounts](accounts.md) documentation.
 
-Transactions cannot have the same sender and recipient, except for staking-related transactions, where validators and stakers can send a transaction from the staking contract to the staking contract.
+#### Transaction Prioritization and Mempool
 
-## Transaction data
+Transactions are first placed in the mempool, waiting for validation. Nimiq has two mempools:
 
-| Data field | Description |
-| --- | --- |
-| `sender` | The sender's address. |
-| `sender_type` | The type of account of the sender. |
-| `sender_data` | The sender_data field serves a purpose based on the transaction's sender_type. It is currently only used for extra information in transactions from the staking contract. |
-| `recipient` | The recipient’s address. |
-| `recipient_type` | The type of account of the sender. |
-| `recipient_data` | The recipient_data field serves a purpose based on the transaction's recipient_type. It is currently only used for extra information in transactions from the staking contract, but also HTLCs and vesting contracts. |
-| `value` | Amount of NIM to transfer. This field can be zero for transactions without any value. In such cases, the data to transact is filled in the data field. |
-| `fee` | Fees for the transaction. The sender pays fees of their choice. Fees are part of the rewards, ensuring validators are rewarded for their work. |
-| `validity_start_height` | The expiration date for a specific transaction. Validators has a window of x blocks to upload the transaction. If included after that window, the transaction is disregarded. |
-| `network_id` | Specifies the ID of the network. When the sender sends a transaction, they must include the particular network to which the transaction is sent. |
-| `flags` | A flag signaling the type of transaction. There are two types of flags: contract creation and signaling. |
-| `proof` | The information above is hashed and calculated with the sender’s private key, resulting in the proof of the transaction. This proof authenticates the sender of the transaction.|
+- **Regular Mempool**: For basic, HTLC, and vesting transactions
+- **Control Mempool**: For staking transactions, which are prioritized
 
-A transaction must be valid. Once the transaction is validated, the boolean variable `valid` is set to `true`. This way, anyone can verify the transaction has been authenticated.
+Once selected by a validator, transactions are validated and included in a block if they meet the protocol’s requirements. For more details on how the mempool operates, refer to the [mempool](mempool.md) documentation.
 
-## Failing transactions
+## Transaction Structure
 
-The validator's responsibility is to ensure that senders have enough balance (at least to pay the transaction fees) to send a transaction before the transaction enters the mempool. Once the validator establishes that the sender has sufficient funds to cover the transaction fees, the transaction is considered valid and is then added to the mempool.
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `sender` | `Address` | The sender’s address |
+| `sender_type` | `AccountType` | Specifies the [type](#types-of-accounts) of the sender account |
+| `sender_data` | `Vec<u8>` | Additional data specific to the sender account’s type, primarily used for extra info in transactions from the [staking contract](validators/staking-contract.md) |
+| `recipient` | `Address` | The recipient’s address |
+| `recipient_type` | `AccountType` | Specifies the type of the recipient account  |
+| `recipient_data` | `Vec<u8>` | Additional data specific to the recipient account. Used in transactions involving contracts such as staking, HTLCs, and vesting contracts. |
+| `value` | `Coin` | The amount of NIM to transfer. This field can be zero for transactions that do not transfer value but interact with the staking contract |
+| `fee` | `Coin` | The fee paid by the sender for the transaction. Validators earn this fee as part of the block rewards for including the transaction in the blockchain as an incentive |
+| `validity_start_height` | `u32` | The block height from which the transaction becomes valid. A transaction can be submitted before this height, but will only be eligible for inclusion once the blockchain reaches this height. If not included in a block within the window of 120 blocks after, the transaction will expire |
+| `network_id` | `NetworkId` | Specifies the network (mainnet, testnet) on which the transaction is valid to ensure the transaction is only processed on the correct network |
+| `flags` | `TransactionFlags` | Flags that indicate special transaction types, such as contract creation or signaling |
+| `proof` | `Vec<u8>` | A cryptographic proof, generated by signing the transaction data with the sender’s private key, which authenticates the sender |
 
-Hence, when a validator includes a transaction to the micro block, it may succeed or fail, depending on the sender’s balance:
+A transaction must pass validity checks before being processed. Once the transaction is successfully validated, the boolean variable `valid` is set to `true`, confirming that the transaction has been authenticated and is ready to be included in the blockchain.
 
-- **Succeed**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated.
-- **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted.
+**Additional Considerations**
 
-Moreover, if the sender lacks sufficient funds to cover the transaction fee, the transaction is invalid and will not be processed.
+- **Staking-Related Transactions**: In staking-related transactions, the **sender** and **recipient** addresses can be the same, which is a specific feature of transactions interacting with the staking contract
+- **Variations in Transaction Structure**: Different account types (basic, HTLC, vesting, staking) may have variations in their transaction structure. These variations ensure that each account type processes transactions according to its purpose and function within the protocol
+- **Incoming and Outgoing Transactions**: The network distinguishes between incoming and outgoing transactions. **Incoming transactions** are related to operations within the blockchain such as adding stake or creating an account, while **outgoing transactions** involve external operations that affect the network state, such as deleting a validator or removing stake
+- **Zero-Value Transactions**: Staking transactions can have a zero `value` field for contract interaction without fund transfer.
+- **Serialization and Deserialization**: Transactions are **serialized** to reduce size for transmission and **deserialized** by nodes for validation and processing across the network
 
-Let's consider a scenario where Alice, with 100 NIM in her balance, sends two transactions. In the first transaction (transaction 1), she intends to send 80 NIM to Bob. Following the succeed-fail principle mentioned above, transaction 1 succeeds. However, immediately after, Alice attempts to send 50 NIM to Charlie in transaction 2, which fails due to insufficient balance. Both transactions are recorded in the blockchain. Transaction 1 is logged as a successful transaction, whereas transaction 2 is marked as fail. Our protocol accommodates failed transactions, deducting the associated fees even in cases of failure.
+## Transaction Flow and Potential Issues
+
+Transactions go through multiple stages of verification before being added to a block, and there are potential issues that might arise at each stage:
+
+1. **Transaction Builder Errors**: These occur when creating a transaction and required fields (such as the sender, recipient, or value) are missing or invalid
+2. **Transaction Errors**: These errors happen when the transaction is submitted to the network, where the transaction fails checks like invalid proof, wrong network, or serialization errors
+3. **Failed Transactions**: Even after the previous steps have been successfully verified with no errors, a transaction can fail if the sender lacks sufficient funds to cover the transaction value or the fees
+
+### Transaction Builder Errors
+
+Deals with missing or invalid fields when creating transaction. If any of the following errors occur, the transaction will not even be sent:
+
+- **No Sender**: The sender address is missing from the transaction
+- **No Recipient**: The recipient address is missing. A valid recipient must be provided
+- **No Value**: The transaction value (amount to be transferred) is missing
+- **No Validity Start Height**: The transaction’s validity start height, which defines from when the transaction becomes valid, is not set
+- **No Network ID**: The transaction’s network ID is missing. The ID identifies which network the transaction is intended, whether Testnet or Mainnet
+- **Invalid Sender**: The sender is not valid for the recipient. Some transactions, particularly staking-related ones, have special restrictions on the sender field. For example, self-transactions in the staking contract require the sender to be the same as the recipient. This error occurs if these conditions are not met (retire and reactivate)
+- **Invalid Value**: For signaling transactions, the value must be zero, whereas other transactions require a non-zero value. This error is triggered when the value does not match the requirements for the specific transaction type
+
+### Transaction Error
+
+Deals with transaction execution issues once it is submitted to the network:
+
+- **Foreign Network**: The transaction is intended for a network other than the one it was submitted to (a transaction for the Testnet being submitted to the Mainnet)
+- **Zero Value**: The transaction’s value is set to zero when it’s not allowed. Transactions that transfer funds must have a non-zero value unless they are specific contract interactions that permit zero-value transactions
+- **Invalid Value**: The value of the transaction is not valid for the specific operation being attempted (incorrect value for contract-related transactions)
+- **Overflow**: The transaction causes an overflow in calculations, due to large values that cannot be processed
+- **Sender Equals Recipient**: The sender and recipient of the transaction are the same, which is not allowed unless under specific conditions (e.g., in staking-related transactions)
+- **Invalid For Sender**: The transaction is not valid for the sender’s account type or current state
+- **Invalid Proof**: The cryptographic proof for the transaction is incorrect, meaning the transaction was not correctly signed by the sender
+- **Invalid For Recipient**: The transaction is not valid for the recipient’s account type or current state
+- **Invalid Data**: The transaction contains invalid data, which could refer to incorrect parameters or malformed data fields
+- **Invalid Serialization**: There is an issue with the serialization of the transaction, typically occurring during the encoding or decoding process
+
+### Failed transactions
+
+The final verification of a transaction occurs before it enters the mempool. Even if it passes earlier stages, it can fail if the sender lacks sufficient funds. Validators ensure the sender can cover the transaction fees before adding it to the mempool. If the sender does not even have enough for the fees, the transaction is deemed invalid and not processed.
+
+Including a transaction in a block may succeed or fail:
+
+- **Successful**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated
+- **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted
+
+**Example Scenario**
+
+Consider a scenario where Alice has 100 NIM in her balance. She sends 3 transactions:
+
+- **Transaction 1**: Alice sends 80 NIM to Bob. Since she has sufficient funds (80 NIM + fees), this transaction succeeds, and both the value and fees are deducted from her account
+- **Transaction 2**: Alice attempts to send 50 NIM to Charlie immediately after. Since her remaining balance is insufficient to cover both the value and fees, this transaction fails, but the transaction fees are still deducted
+- **Transaction 3**: Alice tries to send another transaction but does not have enough NIM to cover even the fees. In this case, the transaction is deemed **invalid** and is not processed by the network. Neither the value nor the fees are deducted
+
+## Transaction Finality
+
+Finality is periodically reinforced through the Tendermint protocol, which ensures that blocks and the transactions within them cannot be reversed with once they are finalized by a macro block. For more details on how finality is achieved through the block structure, please refer to the [block format](block-format.md) documentation.
+
+## Inherents
+
+In addition to user-initiated transactions, Nimiq also processes **inherents**—system-generated operations that modify the blockchain’s state without requiring a transaction from a user. These are used for tasks like distributing rewards and enforcing penalties, ensuring network stability.
+
+**Key Characteristics of Inherents:**
+
+- **No Account Interaction**: Inherents don’t originate from user accounts or affect balances
+- **System-Driven**: These operations are generated by the protocol itself based on network rules and conditions
+- **No Signature Requirement**: Inherents don’t require digital signatures for validation.
+
+There are 5 types of inherents in the Nimiq protocol:
+
+- **Reward**: Automatically issued to validators who successfully fulfill their assigned slots without misbehavior
+- **Penalty**: Applied to validators who delay block production. The penalty removes their reward for the slot, and the validator can be deactivated
+- **Jail**: Enforced when validators are involved in severe misbehavior, such as double voting or creating forks. In this case, all of their slots are punished, and the validator is jailed, preventing further participation in the network for 8 epochs
+- **Finalize Batch**: Triggered at the end of each batch of micro blocks, marking the completion of a micro block batch
+- **Finalize Epoch**: Occurs at the end of an epoch, marking a significant period in the blockchain's state updates. This ensures that all transactions and state changes for the epoch are finalized and the validator list is updated
