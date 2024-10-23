@@ -47,12 +47,12 @@ async function download() {
       </p>
       <div flex ml-auto>
         <Toast v-if="copyIsSupported" v-model="copied" title="Copied to clipboard!" category="success">
-          <button nq-ghost-btn mr-12 @click="copySnippet('SVG')">
+          <button nq-ghost-btn mr-12 text-12 @click="copySnippet('SVG')">
             SVG
           </button>
         </Toast>
 
-        <button nq-ghost-btn @click="download()">
+        <button nq-ghost-btn text-12 @click="download()">
           PNG
         </button>
       </div>

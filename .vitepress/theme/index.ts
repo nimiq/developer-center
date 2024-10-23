@@ -5,7 +5,6 @@ import Theme from 'vitepress/theme'
 import { h, nextTick, onMounted, watch } from 'vue'
 import MainLayout from './MainLayout.vue'
 // https://vitepress.dev/guide/custom-theme
-import './layers.css'
 import './style.css'
 import 'uno.css'
 

@@ -16,9 +16,10 @@ const hasLink = computed(() => props.item.href)
 <template>
   <component
     :is="hasLink ? 'a' : 'div'" :href="item.href" group :data-inverted="item.bgColor" nq-hoverable :class="{
+      'before:hidden': item.bgColor,
       'bg-gradient-blue': item.bgColor === 'blue',
-      'bg-gradient-green': item.bgColor === 'green',
-      'bg-gradient-gold': item.bgColor === 'gold',
+      'bg-gradient-green hocus:bg-gradient-green': item.bgColor === 'green',
+      'bg-gradient-gold hocus:bg-inherit': item.bgColor === 'gold',
       'bg-gradient-red': item.bgColor === 'red',
       'p-24 md:p-40': hasBgIcon,
       'p-20 md:p-40': isIcon,

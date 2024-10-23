@@ -50,7 +50,7 @@ During the transition from PoW to PoS, a snapshot of the PoW state is captured a
 
 Due to the fundamental differences between the PoW and PoS chains, breaking changes to the JSON-RPC interface are necessary. All references around mining have been removed, and general naming conventions, input parameters, and response bodies have been updated.
 
-Methods like generating addresses, creating/sending transactions, retrieving balances/transactions by address and hash remain available in the PoS JSON-RPC interface, though the method names have changed. 
+Methods like generating addresses, creating/sending transactions, retrieving balances/transactions by address and hash remain available in the PoS JSON-RPC interface, though the method names have changed.
 
 A document outlining all the changes can be found here: [Guide for migrating JSON-RPC](https://www.nimiq.com/developers/migration/migration-json-rpc).
 
@@ -116,7 +116,7 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 ### Running the `nimiq-client` — Docker Setup (recommended)
 
 - Create a `data` folder in the $HOME directory: `mkdir ~/data` .
-- Pull the latest image from the container registry: 
+- Pull the latest image from the container registry:
 `docker pull ghcr.io/nimiq/core-rs-albatross:latest` .
 - Create a `client.toml` in `~/data` and populate it with [the example](https://github.com/nimiq/core-rs-albatross/blob/albatross/lib/src/config/config_file/client.example.toml). Adjust the configuration based on your requirements and [Important Configuration File Settings](#important-configuration-file-settings).
 - Run `nimiq-client` via Docker:
@@ -136,7 +136,7 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 - Install required build packages: `apt update && apt install clang cmake libssl-dev pkg-config`
 - Clone the [source code](https://github.com/nimiq/core-rs-albatross) and change directory into the repository directory
 - Checkout to the [latest release](https://github.com/nimiq/core-rs-albatross/releases)
-- Within the root of the source code repository, compile the binaries: 
+- Within the root of the source code repository, compile the binaries:
 `cargo build --release --bin nimiq-client`
 - Run the `nimiq-client`: `cargo run --release --bin nimiq-client`
 
@@ -151,27 +151,25 @@ For PoW, we recommend [Nimiq.Watch](https://nimiq.watch).
 Besides the `nimiq-client` we provide a set of other binaries to facilitate interactions with the network and simplify key tasks. To run these binaries, you need to [compile them from source](#running-the-nimiq-client-—-from-source-code-ubuntu).
 
 - `nimiq-address`: Generates a Nimiq address and corresponding key pair. Outputs the user-friendly address, raw address, public key and private key.
-    
+
     ```bash
     cargo run --release --bin nimiq-address -- --help
     cargo run --release --bin nimiq-address
     ```
-    
+
 - `nimiq-signtx`: Signs a transaction using key parameters such as sender address, recipient address, value and fee. Outputs the signed transaction in hexadecimal format.
-    
+
     ```bash
     cargo run --release --bin nimiq-signtx -- --help
     cargo run --release --bin nimiq-signtx -- --secret-key <secret_key> --from <sender_address> --to <recipient_address> --value <amount> --fee <fee> --validity-start-height <start_height> --network <network_id>
     ```
-    
 
 - `nimiq-rpc`: A CLI RPC client that can query all the supported JSON-RPC methods.
-    
+
     ```bash
     cargo run --release --bin nimiq-rpc -- --help
     cargo run --release --bin nimiq-rpc -- -u URL -U username -P password
     ```
-    
 
 ## Important PoS Blockchain Properties
 

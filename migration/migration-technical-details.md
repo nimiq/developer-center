@@ -60,7 +60,7 @@ Only pre-registered validators can participate in this phase. The activation pha
 The activation phase follows a specific sequence of events, outlined in the following list. The overall process will be explained in more detail afterward.
 1. **3 days** before November 19th, validators running the activation tool will begin sending automatic **online transactions** every hour before the first candidate block is mined to signal their online status.
 2. The candidate block is mined at the block height 3'456'000, officially opening the first activation window.
-3. The network waits for 10 confirmations after the candidate block to prevent block reversion. 
+3. The network waits for 10 confirmations after the candidate block to prevent block reversion.
 4. After the 10 confirmations, pre-registered validators capture the state at block 3,456,000 and begin generating the PoS "genesis" block. Validators generate the "genesis" block deterministically. The block hash generated should be the same across all validators.
 5. After generating the "genesis" block, validators send their readiness transactions, which include the block hash in the data field.
 6. The activation tool monitors readiness transactions within a 24-hour window.
