@@ -8,7 +8,7 @@ For registering a validator post-transition, refer to the [Becoming a Validator]
 
 This guide covers **Phase 3: Validator Activation**, which starts on **November 19th**. The Validator Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the tool before the activation window begins to allow time for database synchronization, as this process can take some time.
 
-The tool will also automatically send online transactions every hour, signaling which validators are ready for the transition. These transactions will be covered by Team Nimiq. For more detailed information, click [here](migration-technical-details#activation-phase).
+The tool will also automatically send online transactions every hour, signaling which validators are ready for the transition. Team Nimiq will fund all registered validator addresses with 100 Lunas before the activation window to cover these transactions. For more detailed information, click [here](migration-technical-details#activation-phase).
 
 | **Phase** | **Start Date** | **End Date** |
 | --- | --- | --- |
