@@ -132,11 +132,11 @@ async function downloadPng() {
               </h3>
 
               <p mt-12>
-                Using the text input on top of this page, you need to find the secret word that creates the initial identicon. Good luck!
+                Using the text input on top of this page, you need to find the secret word that creates the identicon.
               </p>
 
               <button nq-pill nq-pill-blue px-12 py-2 font-semibold mb-8 nq-mt-24 @click="reset">
-                Reset identicon
+                See identicon
               </button>
               <TooltipArrow as-child>
                 <div i-nimiq:tooltip-triangle text-darkblue rotate-180 h-7 />
