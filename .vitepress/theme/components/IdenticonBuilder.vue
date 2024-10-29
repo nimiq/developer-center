@@ -64,6 +64,16 @@ function reset() {
   activeBackground.value = initialParams.value?.colors.background
 }
 
+const isDirty = computed(() => {
+  return activeBottom.value !== initialParams.value?.sections.bottom
+    || activeTop.value !== initialParams.value?.sections.top
+    || activeFace.value !== initialParams.value?.sections.face
+    || activeSides.value !== initialParams.value?.sections.sides
+    || activeMain.value !== initialParams.value?.colors.main
+    || activeAccent.value !== initialParams.value?.colors.accent
+    || activeBackground.value !== initialParams.value?.colors.background
+})
+
 const identicon = computed(() => ensambleSvg({ colors: colors.value, sections: sections.value }))
 
 function getSvg(svgContent: string) {
@@ -135,7 +145,7 @@ async function downloadPng() {
                 Using the text input on top of this page, you need to find the secret word that creates the identicon.
               </p>
 
-              <button nq-pill nq-pill-blue px-12 py-2 font-semibold mb-8 nq-mt-24 @click="reset">
+              <button v-if="isDirty" nq-pill nq-pill-blue px-12 py-2 font-semibold mb-8 nq-mt-24 @click="reset">
                 See identicon
               </button>
               <TooltipArrow as-child>
