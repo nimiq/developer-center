@@ -132,11 +132,11 @@ async function downloadPng() {
       <div nq-mb-32 size-196 v-html="identicon" />
       <TooltipProvider>
         <TooltipRoot>
-          <TooltipTrigger bottom-40 op-80 aria-label="Let's play a game">
-            <div i-nimiq:info text-16 />
+          <TooltipTrigger bottom-40 op-80 aria-label="Let's play a game" flex="~ items-center gap-8" absolute right-0>
+            <div i-nimiq:basketball text-16 />
           </TooltipTrigger>
           <TooltipPortal>
-            <TooltipContent z-100 side="bottom" :side-offset="5" :collision-padding="8" align="start" bg="gradient-neutral dark:neutral-100" border-subtle-light text-white p-20 pb-12 rounded-8 max-w-360 text-14 border="base white/20" nq-prose-compact>
+            <TooltipContent z-100 side="bottom" :collision-padding="8" align="start" bg="gradient-neutral dark:neutral-100" border-subtle-light text-white p-20 pb-12 rounded-8 max-w-360 text-14 border="base white/20" nq-prose-compact>
               <h3>
                 Let's play a game!
               </h3>

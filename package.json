@@ -28,7 +28,7 @@
     "@vueuse/core": "^11.1.0",
     "canvas-confetti": "^1.9.3",
     "iconify-icon": "^2.1.0",
-    "identicons-esm": "^0.0.6",
+    "identicons-esm": "^0.0.8",
     "json2md": "^2.0.1",
     "jszip": "^3.10.1",
     "markdown-it-mathjax3": "^4.3.2",
