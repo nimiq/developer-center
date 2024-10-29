@@ -62,13 +62,20 @@ const svg = await createIdenticon(input)
 For specific colors or sections of the identicon, use `getIdenticonsParams`:
 
 ```ts
-import { getIdenticonsParams } from 'identicons-esm'
+import { ensambleSvg, formatIdenticon, getIdenticonsParams } from 'identicons-esm'
 
 const input = 'Your input here'
 const { colors, sections } = await getIdenticonsParams(input)
 
+// You can modify any parameter as you wish
 // colors.background, colors.main, colors.accent
 // sections.top, sections.bottom, sections.sides, sections.face (SVG paths)
+
+// Generate SVG string
+const customSvg = ensambleSvg({ colors, sections })
+
+// Also possible to change the Identicon format
+const formatted = formatIdenticon(customSvg, { format: 'image/svg+xml' })
 ```
 
 ## Migration from Legacy
