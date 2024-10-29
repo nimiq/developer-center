@@ -5,7 +5,7 @@
       <div i-nimiq:info op-80 />
       Blog Post
     </a>
-    <a href="https://github.com/onmax/identicons" nq-pill-tertiary nq-pill-sm cursor-pointer nq-arrow flex="~ gap-8 items-center" un-text="neutral-900">
+    <a href="https://github.com/onmax/nimiq-identicons" nq-pill-tertiary nq-pill-sm cursor-pointer nq-arrow flex="~ gap-8 items-center" un-text="neutral-900">
       <div i-nimiq:logos-github op-80 />
       Source code
     </a>
