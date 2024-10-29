@@ -12,6 +12,13 @@ watch(input, async () => {
     return
   identicon.value = await createIdenticon(input.value, { format: 'image/svg+xml' })
 }, { immediate: true })
+
+watch(input, async () => {
+  if (input.value === 'nimiq') {
+    const { default: confetti } = await import('canvas-confetti')
+    confetti({ particleCount: 300, spread: 360, origin: { y: 0.6 } })
+  }
+})
 </script>
 
 <template>
@@ -24,6 +31,9 @@ watch(input, async () => {
         You can write anything!
       </p>
     </template>
+    <p v-if="input === 'nimiq'" absolute right-0 top-32 text-xs op-80>
+      You found a secret! Take a cookie 🍪
+    </p>
   </form>
   <img :src="identicon" alt="Identicon" nq-mt-16 size-180 mx-auto>
 </template>

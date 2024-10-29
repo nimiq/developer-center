@@ -15,7 +15,7 @@ A simple, visually recognizable way to verify addresses.{.nq-subline}
 
 <Identicon />
 
-## More than 9 Million Identicons!
+## More than 9 Million combintations!
 
 Each Identicon is a unique combination of colors and shapes based on an account's hash, providing instant visual confirmation.
 
