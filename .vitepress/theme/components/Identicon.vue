@@ -31,14 +31,14 @@ watch(input, async () => {
         You can write anything!
       </p>
     </template>
-    <p v-if="input === 'nimiq'" absolute right-0 top-32 text-xs op-80>
+    <p v-if="input === 'nimiq'" absolute right-0 top-36 text-xs op-80>
       You found the secret word! Take a cookie 🍪
     </p>
-    <p v-if="input === 'albatross'" absolute right-0 top-30 text-xs op-80 text-right>
+    <p v-if="input === 'albatross'" absolute right-0 top-36 text-xs op-80 text-right>
       Nope. Keep trying.
       <br>
       Nonetheless, this identicon rocks 🤘
     </p>
   </form>
-  <img :src="identicon" alt="Identicon" nq-mt-16 size-180 mx-auto>
+  <img :src="identicon" alt="Identicon" class="not-zoomable" nq-mt-16 size-180 mx-auto>
 </template>

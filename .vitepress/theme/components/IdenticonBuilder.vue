@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Colors, Section, Sections } from 'identicons-esm'
 import { useLocalStorage } from '@vueuse/core'
-import { ensambleSvg, formatIdenticon, getIdenticonsFeatures, getIdenticonsParams, colors as identiconColors } from 'identicons-esm'
+import { ensambleSvg, formatIdenticon, getIdenticonsParams, colors as identiconColors, identiconFeatures } from 'identicons-esm'
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'radix-vue'
 import { computed, onMounted, ref } from 'vue'
 import { downloadBlob } from '../composables/icons/pack'
@@ -11,8 +11,7 @@ const initialParams = ref<{ sections: Sections, colors: Colors }>()
 
 interface Svg { path: string, svg: string }
 
-const features = await getIdenticonsFeatures()
-const entries = Object.entries(features)
+const entries = Object.entries(identiconFeatures)
 const bottom = ref<Svg[]>(entries.filter(([path]) => path.includes('bottom')).map(([path, svg]) => ({ path, svg })))
 const top = ref<Svg[]>(entries.filter(([path]) => path.includes('top')).map(([path, svg]) => ({ path, svg })))
 const face = ref<Svg[]>(entries.filter(([path]) => path.includes('face')).map(([path, svg]) => ({ path, svg })))
@@ -112,21 +111,14 @@ function select(svg: string) {
 }
 
 async function downloadSvg() {
-  const svg = await formatIdenticon(identicon.value, { format: 'svg', size: 160 })
+  const svg = await formatIdenticon(identicon.value, { format: 'svg' })
   downloadBlob(new Blob([svg], { type: 'image/svg+xml;charset=utf-8' }), 'identicon.svg')
-}
-
-async function downloadPng() {
-  // eslint-disable-next-line no-alert
-  const size = prompt('Please enter the size of the PNG image:', '160')
-  const png = await formatIdenticon(identicon.value, { format: 'image/png', size: Number(size) })
-  downloadBlob(new Blob([png], { type: 'image/png' }), 'identicon.png')
 }
 </script>
 
 <template>
   <div class="nq-no-prose">
-    <div nq-mb-32 flex="~ items-end justify-center gap-16" relative>
+    <div nq-mb-32 flex="~ items-end justify-center wrap gap-x-16" relative>
       <div nq-mb-32 size-80 v-html="identicon" />
       <div nq-mb-32 size-128 v-html="identicon" />
       <div nq-mb-32 size-196 v-html="identicon" />
@@ -136,7 +128,7 @@ async function downloadPng() {
             <div i-nimiq:basketball text-16 />
           </TooltipTrigger>
           <TooltipPortal>
-            <TooltipContent z-100 side="bottom" :collision-padding="8" align="start" bg="gradient-neutral dark:neutral-100" border-subtle-light text-white p-20 pb-12 rounded-8 max-w-360 text-14 border="base white/20" nq-prose-compact>
+            <TooltipContent z-100 side="bottom" :collision-padding="8" :side-offset="4" align="start" bg="gradient-neutral dark:neutral-100" border-subtle-light text-white p-20 pb-12 rounded-8 max-w-360 text-14 border="base white/20" nq-prose-compact>
               <h3>
                 Let's play a game!
               </h3>
@@ -156,12 +148,9 @@ async function downloadPng() {
         </TooltipRoot>
       </TooltipProvider>
       <div flex="~ col items-end" absolute top-0 right-0>
-        <span nq-label text-10>Download</span>
-        <button nq-ghost-btn mt-8 text-12 px-4 py-2 font-semibold op-80 @click="downloadSvg">
+        <span nq-label text-10 hidden sm:block>Download</span>
+        <button nq-ghost-btn mt-8 text-12 px-4 bg-neutral-0 py-2 font-semibold op-80 @click="downloadSvg">
           SVG
-        </button>
-        <button nq-ghost-btn mt-8 text-12 px-4 py-2 font-semibold op-80 @click="downloadPng">
-          PNG
         </button>
       </div>
     </div>
@@ -177,37 +166,42 @@ async function downloadPng() {
           </button>
         </li>
       </ul>
-      <div v-if="activeSection === 'colors'" w-full nq-mt-32>
-        <label flex="~ items-center gap-8">
-          <span mr-auto text-10 nq-label>Main color</span>
-          <div v-for="color in identiconColors" :key="color">
+      <div v-if="activeSection === 'colors'" w-full nq-mt-32 sm:w-max mx-auto>
+        <div flex="~ col sm:row sm:items-center gap-8" nq-mt-32 w-full block>
+          <span sm:ml-auto sm:mr-16 text-10 nq-label>Main color</span>
+          <div flex="~ wrap gap-8" max-sm:nq-mt-12>
             <div
-              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full
-              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeMain }" @click="activeMain = color"
+              v-for="color in identiconColors" :key="color"
+              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full transition-colors
+              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeMain, 'op-45 hocus:op-100': color !== activeMain }"
+              @click="activeMain = color"
             />
           </div>
-        </label>
+        </div>
 
-        <label flex="~ items-center gap-8" nq-mt-32>
-          <span mr-auto text-10 nq-label>Background color</span>
-          <div v-for="color in identiconColors" :key="color">
+        <div flex="~ col sm:row sm:items-center gap-8" nq-mt-32 w-full block>
+          <span sm:ml-auto sm:mr-16 text-10 nq-label>Background color</span>
+          <div flex="~ wrap gap-8" max-sm:nq-mt-12>
             <div
-              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full
-              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeBackground }"
+              v-for="color in identiconColors" :key="color"
+              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full transition-colors
+              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeBackground, 'op-45 hocus:op-100': color !== activeBackground }"
               @click="activeBackground = color"
             />
           </div>
-        </label>
+        </div>
 
-        <label flex="~ items-center gap-8" nq-mt-32>
-          <span mr-auto text-10 nq-label>Accent color</span>
-          <div v-for="color in identiconColors" :key="color">
+        <div flex="~ col sm:row sm:items-center gap-8" nq-mt-32 w-full block>
+          <span sm:ml-auto sm:mr-16 text-10 nq-label>Accent color</span>
+          <div flex="~ wrap gap-8" max-sm:nq-mt-12>
             <div
-              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full
-              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeAccent }" @click="activeAccent = color"
+              v-for="color in identiconColors" :key="color"
+              :style="`--c: ${color}; background: ${color}`" size-20 cursor-pointer rounded-full transition-colors
+              :class="{ 'ring-2.5 ring-offset-2 ring-$c': color === activeAccent, 'op-45 hocus:op-100': color !== activeAccent }"
+              @click="activeAccent = color"
             />
           </div>
-        </label>
+        </div>
       </div>
     </form>
   </div>
