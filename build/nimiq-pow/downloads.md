@@ -83,7 +83,3 @@ On Windows systems, to access the configuration go to the Windows Start Menu and
 ```bash
 systemctl start|stop|restart nimiq
 ```
-
-### Windows
-
-Start the Nimiq Application from the Windows Start Menu. If the miner is enabled in the configuration file, mining will start automatically.
