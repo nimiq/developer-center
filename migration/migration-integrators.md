@@ -105,6 +105,9 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 **Testnet**:
 
 - `/dns4/seed1.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed2.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed3.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed4.pos.nimiq-testnet.com/tcp/8443/wss`
 
 **Mainnet**:
 
