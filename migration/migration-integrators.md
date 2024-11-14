@@ -105,13 +105,26 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 **Testnet**:
 
 - `/dns4/seed1.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed2.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed3.pos.nimiq-testnet.com/tcp/8443/wss`
+- `/dns4/seed4.pos.nimiq-testnet.com/tcp/8443/wss`
 
 **Mainnet**:
 
-- `/dns4/seed-1.pos.nimiq.com/tcp/8443/wss`
-- `/dns4/seed-2.pos.nimiq.com/tcp/8443/wss`
-- `/dns4/seed-3.pos.nimiq.com/tcp/8443/wss`
-- `/dns4/seed-4.pos.nimiq.com/tcp/8443/wss`
+- `/dns4/aurora.seed.nimiq.com/tcp/443/wss`
+- `/dns4/catalyst.seed.nimiq.network/tcp/443/wss`
+- `/dns4/cipher.seed.nimiq-network.com/tcp/443/wss`
+- `/dns4/eclipse.seed.nimiq.cloud/tcp/443/wss`
+- `/dns4/lumina.seed.nimiq.systems/tcp/443/wss`
+- `/dns4/nebula.seed.nimiq.com/tcp/443/wss`
+- `/dns4/nexus.seed.nimiq.network/tcp/443/wss`
+- `/dns4/polaris.seed.nimiq-network.com/tcp/443/wss`
+- `/dns4/photon.seed.nimiq.cloud/tcp/443/wss`
+- `/dns4/pulsar.seed.nimiq.systems/tcp/443/wss`
+- `/dns4/quasar.seed.nimiq.com/tcp/443/wss`
+- `/dns4/solstice.seed.nimiq.network/tcp/443/wss`
+- `/dns4/vortex.seed.nimiq.cloud/tcp/443/wss`
+- `/dns4/zenith.seed.nimiq.systems/tcp/443/wss`
 
 ### Running the `nimiq-client` — Docker Setup (recommended)
 
