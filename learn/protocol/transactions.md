@@ -42,9 +42,11 @@ Once selected by a validator, transactions are validated and included in a block
 **Additional Considerations**
 
 - **Variations in Transaction Structure**: Different account types (basic, HTLC, vesting, staking) may have variations in their transaction structure. These variations ensure that each account type processes transactions according to its purpose and function within the protocol
-- **Incoming and Outgoing Transactions**: The network distinguishes between incoming and outgoing transactions. **Incoming transactions** are related to operations within an account blockchain such as adding stake or creating an account, while **outgoing transactions** involve external account operations that affect the network state, such as deleting a validator or removing stake
+- **Incoming and Outgoing Transactions**: The network distinguishes between incoming and outgoing transactions. **Incoming transactions** are related to operations within an account such as adding stake or creating an account, while **outgoing transactions** involve external account operations that affect the network state, such as deleting a validator or removing stake
 - **Zero-Value Transactions**: Staking transactions can have a zero `value` field for contract interaction without fund transfer
 - **Serialization and Deserialization**: Transactions are **serialized** to reduce size for transmission and **deserialized** by nodes for validation and processing across the network
+
+For a deeper dive into the transactions and serialization specifics, refer to the document [Albatross Transaction Serialization](https://gist.github.com/sisou/33ece69190cf38f884b1781ad9d5a106).
 
 ## Transaction Flow and Potential Issues
 
