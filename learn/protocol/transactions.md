@@ -99,15 +99,15 @@ Consider a scenario where Alice has 100 NIM in her balance. She sends 3 transact
 
 - **Transaction 1**: Alice sends 80 NIM to Bob. Since she has sufficient funds (80 NIM + fees), this transaction succeeds, and both the value and fees are deducted from her account
 - **Transaction 2**: Alice attempts to send 50 NIM to Charlie immediately after. Since her remaining balance is insufficient to cover both the value and fees, this transaction fails, but the transaction fees are still deducted
-- **Transaction 3**: Alice tries to send another transaction but does not have enough NIM to cover even the fees. In this case, the transaction is deemed **invalid** and is not processed by the network. Neither the value nor the fees are deducted
+- **Transaction 3**: Alice tries to send another transaction but does not have enough NIM to cover the fee. In this case, the transaction is deemed **invalid** and is not processed by the network. Neither the value nor the fees are deducted
 
 ## Transaction Finality
 
-Finality is periodically reinforced through the Tendermint protocol, which ensures that blocks and the transactions within them cannot be reversed with once they are finalized by a macro block. For more details on how finality is achieved through the block structure, please refer to the [block format](block-format.md) documentation.
+Finality is periodically reinforced through the Tendermint protocol, which ensures that blocks and the transactions within them cannot be reversed once they are finalized by a macro block. For more details on how finality is achieved through the block structure, please refer to the [block format](block-format.md) documentation.
 
 ## Inherents
 
-In addition to user-initiated transactions, Nimiq also processes **inherents**—system-generated operations that modify the blockchain’s state without requiring a transaction from a user. These are used for tasks like distributing rewards and enforcing penalties, ensuring network stability.
+In addition to user-initiated transactions, Nimiq also processes **inherents**—system-generated operations that modify the blockchain’s state without requiring a transaction from a user. These are used for tasks like distributing rewards and enforcing punishments, ensuring network stability.
 
 **Key Characteristics of Inherents:**
 
@@ -120,5 +120,5 @@ There are 5 types of inherents in the Nimiq protocol:
 - **Reward**: Automatically issued to validators who successfully fulfill their assigned slots without misbehavior
 - **Penalty**: Applied to validators who delay block production. The penalty removes their reward for the slot, and the validator can be deactivated
 - **Jail**: Enforced when validators are involved in severe misbehavior, such as double voting or creating forks. In this case, all of their slots are punished, and the validator is jailed, preventing further participation in the network for 8 epochs
-- **Finalize Batch**: Triggered at the end of each batch of micro blocks, marking the completion of a micro block batch
+- **Finalize Batch**: Triggered at the end of each batch of micro blocks, marking its completion
 - **Finalize Epoch**: Occurs at the end of an epoch, marking a significant period in the blockchain's state updates. This ensures that all transactions and state changes for the epoch are finalized and the validator list is updated
