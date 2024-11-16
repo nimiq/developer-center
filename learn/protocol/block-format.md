@@ -1,95 +1,105 @@
-# Block format
+# Block Format
 
-The Nimiq Proof-of-Stake consensus algorithm has micro and macro blocks. Validators produce micro blocks and propose macro blocks. Both types of blocks have different functions in the blockchain. Micro and macro blocks are divided into three sections: header, body, and justification.
+In the Nimiq PoS blockchain, blocks are categorized into **microblocks** and **macroblocks**. Each type has a different role in maintaining the blockchain:
 
-- Header: Contains data of the block itself and commitments to the body and state of the blockchain.
-- Body: The part of the block where transactions or data regarding the staking contract is stored, depending on whether it is a micro or macro block.
-- Justification: Includes necessary data to make the block valid according to the consensus rules and verify the block producer or multi signature.
+- **Micro Blocks**: include user-generated transactions and are produced and signed by a validator according to the validator selection process. If a validator fails to produce a micro block on time, a [skip block](/learn/protocol/validators/skip-blocks.md) is added.
+- **Macro Blocks**: these do not contain user transactions, ensure finality, and are produced using the Tendermint consensus algorithm. There are two types: election and checkpoint.
 
 ## Micro Blocks
 
-Micro blocks contain user transactions, and each micro block is produced and signed by a validator according to the validator selection. There is also another type of micro block, that is produced when there is a delay in the block production - a [skip block](/learn/protocol/validators/skip-blocks.md).
+Micro blocks are the blocks for processing transactions on the Nimiq PoS blockchain. A validator, randomly selected through a [VRF based process](/learn/protocol/verifiable-random-functions.md) that ensures randomness and decentralization, produces a new micro block. If a validator fails to produce a block, the remaining validators can agree on a skip block to maintain the blockchain's continuity. The structure of a micro block is divided into three parts: **header**, **body**, and **justification**.
 
-### Micro header
+### Micro Header
 
-| Data field | Description |
-| --- | --- |
-| `network` | The network ID associated with the block, such as mainnet or devnet. |
-| `version` | The block’s version number. A change in the version number implies a hard fork. |
-| `block_number` | The block’s number. |
-| `timestamp` | The block's Unix time with millisecond precision. |
-| `parent_hash` | The hash of the preceding block's header (micro or macro). |
-| `seed` | The block’s seed. Derived from the preceding block's seed, utilizing the validator key of the block producer, following the algorithm specified in [VXEdDSA](https://signal.org/docs/specifications/xeddsa/#vxeddsa/) |
-| `extra_data` | Field reserved for arbitrary data. |
-| `state_root` | The root of the Merkle tree representing the blockchain state, acting as a commitment to its current state. |
-| `diff_root` | The root of the trie diff tree proof, authenticating the output of the RequestChunk. |
-| `body_root` | The root of the Merkle tree representing the body of the block, serving as a commitment to its content. |
-| `history_root` | The root of a Merkle Mountain Range covering all transactions in the current epoch. |
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `network` | `NetworkId` | The network ID associated with the block, such as Mainnet or Testnet |
+| `version` | `u16` | The block's version number. A change in the version number implies a hard fork |
+| `block_number` | `u32` | The number of the block, representing its height in the blockchain |
+| `timestamp` | `u64` | The block's Unix time in milliseconds, indicating when the block was produced |
+| `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (micro or macro). This ensures a direct link to its predecessor |
+| `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block producer |
+| `extra_data` | `Vec<u8>` | Space reserved for arbitrary data (currently unused) |
+| `state_root` | `Blake2bHash` | The root of the Merkle tree representing the blockchain state, acting as a commitment to the current state |
+| `body_root` | `Blake2sHash` | The root of the Merkle tree representing the body of the block, serving as a commitment to its content |
+| `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, authenticating the state changes between blocks |
+| `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions in the current epoch |
+| `cached_hash` | `Option<Blake2bHash>` | The cached hash of the block header, stored temporarily for performance optimization and not transmitted over the network |
 
-### Micro body
+### Micro Body
 
-| Data field | Description |
-| --- | --- |
-| `equivocation_proofs` | Equivocation proofs for this block. This field could be empty as equivocation proofs aren't present in every block. |
-| `transactions` | Contains all the transactions of the block. This field might be empty in blocks without any transactions. (see [skip blocks](/learn/protocol/validators/skip-blocks.md)). |
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `equivocation_proofs` | `Vec<EquivocationProof>` | A vector containing equivocation proofs for this block. This field may be empty if no such proofs exist in the block |
+| `transactions` | `Vec<ExecutedTransaction>` | A vector containing the transactions for this block. It may be empty in blocks without any transactions, as in skip blocks |
 
-### Micro justification
+### Micro Justification
 
-| Data field | Description |
-| --- | --- |
-| `Micro(Ed25519Signature)` | Block producer's signature. |
-| `Skip(SkipBlockProof)` | Contains aggregated signatures for a skip block. This field might be empty as skip blocks might not occur in a batch. |
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `Micro(Ed25519Signature)` | `Ed25519Signature` | The block producer's signature. This is used as the justification when the block is produced within the expected time |
+| `Skip(SkipBlockProof)` | `SkipBlockProof` | Contains the aggregated signatures of validators for a skip block. Used as justification when the block isn't produced within the expected time |
 
-Note that only one of those is added as justification. The block producer signs the block when the micro block is produced within the expected time. But when the micro block isn't produced in the expected time, a `SkipBlockProof` is added instead.
+Only one of these fields is used at a time as justification, depending on whether the block is produced within the expected timeframe or not.
+
+### Skip Blocks
+
+When a micro block is not produced within the expected timeframe, the validator list steps in and creates a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks documentation](/learn/protocol/validators/skip-blocks.md).
 
 ## Macro Blocks
 
-There are two types of macro blocks: election and checkpoint. A new validator list is elected in every election macro block, and the staking contract is updated accordingly. Macro blocks are produced with Tendermint, where a random validator is chosen to propose the new macro block. User transactions are not included in macro blocks.
+Macro blocks come in two types—**election** and **checkpoint**—each serving a specific role. Election macro blocks are used to update the validator list, defining which validators will participate in the next epoch. Checkpoint macro blocks finalize transactions but do not change validator list.
 
-### Macro header
+Macro blocks need +2/3 of consensus from the validator list to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
 
-| Data field | Description |
-| --- | --- |
-| `network` | The network ID associated with the block, such as mainnet or devnet. |
-| `version` | The block’s version number. A change in the version number implies a hard fork. |
-| `block_number` | The block’s number. |
-| `round` | The specific round where the block was proposed. |
-| `timestamp` | The block's Unix time with millisecond precision. |
-| `parent_hash` | The hash of the preceding block's header (micro or macro). |
-| `parent_election_hash` | The hash of the header from the previous election macro block |
-| `interlink` | A vector of hashes that establishes a connection to previous blocks divisible by 2^x, facilitating proof of a series of transactions. |
-| `seed` | The block’s seed. Derived from the preceding block's seed (micro or macro), utilizing the validator key of the block producer, following the algorithm specified in [VXEdDSA](https://signal.org/docs/specifications/xeddsa/#vxeddsa/) |
-| `extra_data` | Field reserved for arbitrary data. |
-| `state_root` | The root of the Merkle tree representing the blockchain state, acting as a commitment to its current state. |
-| `body_root` | The root of the Merkle tree representing the body of the block, serving as a commitment to its content. |
-| `diff_root` | The root of the trie diff tree proof, authenticating the output of the RequestChunk. |
-| `history_root` | The root of a Merkle Mountain Range covering all transactions in the current epoch. |
+### Macro Header
 
-### Macro body
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `network` | `NetworkId` | The network ID associated with the block, such as Mainnet or Testnet |
+| `version` | `u16` | The block's version number. Changing this implies a hard fork |
+| `block_number` | `u32` | The number of the block, representing its height in the blockchain |
+| `round` | `u32` | The specific round in which this block was proposed |
+| `timestamp` | `u64` | The Unix timestamp (in milliseconds) indicating when the block was produced |
+| `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (can be either micro or macro) |
+| `parent_election_hash` | `Blake2bHash` | The hash of the header from the previous election macro block |
+| `interlink` | `Option<Vec<Blake2bHash>>` | A vector of hashes linking to previous macro blocks at defined intervals. This allows nodes to verify past blocks efficiently without needing to traverse the entire chain |
+| `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block proposer |
+| `extra_data` | `Vec<u8>` | Space reserved for arbitrary data (currently unused) |
+| `state_root` | `Blake2bHash` | The Merkle root representing the blockchain state, acting as a commitment to the current state |
+| `body_root` | `Blake2sHash` | The Merkle root representing the body of the block, serving as a commitment to its content |
+| `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, which authenticates the state transitions or changes between blocks |
+| `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions that occurred in the current epoch |
+| `validators` | `Option<Validators>` | Information about the upcoming validator list. Present only in election macro blocks |
+| `next_batch_initial_punished_set` | `BitSet` | A bitset representing validator slots that are banned from producing blocks in the next batch due to misbehavior |
+| `cached_hash` | `Option<Blake2bHash>` | A cached hash of the block header, used to optimize performance. Not transmitted over the network |
 
-| Data field | Description |
-| --- | --- |
-| `validators` | Contains details of the upcoming validator set, including their public keys, reward addresses, and assigned slots. This field is present only when the macro block serves as an election block. |
-| `next_batch_initial_punished_set` | A bitset denoting which slots are forbidden from producing micro blocks or proposing macro blocks in the subsequent batch following this macro block. This information is essential for nodes that don’t have the state as it's usually computed within the staking contract. |
-| `transactions` | The reward related transactions of this block. |
+### Macro Body
 
-### Macro justification
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `transactions` | `Vec<RewardTransaction>` | Contains the reward-related transactions of this block, distributing rewards to validators |
 
-Checkpoint or election macro blocks contain a `TendermintProof` as justification.
+### Macro Justification
 
-| Data field | Description                                                             |
-| :--------- | :---------------------------------------------------------------------- |
-| `round`    | The specific round where the block was accepted.                        |
-| `sig`      | Aggregated signatures of the validators that have signed precommit for the block. |
+| **Field** | **Data Type** | **Description** |
+| --- | --- | --- |
+| `round` | `u32` | The specific round in which the block was accepted. This is used to verify that the signature corresponds to the correct round |
+| `sig` | `MultiSignature` | The aggregated signature of the validators’ precommit votes for the block, confirming validator consensus |
 
-The following figure demonstrates the connection between a macro block and a micro block. Every block, macro or micro, is connected to the previous one by the parent hash and the random seed.
+The figure below illustrates how a macro block and a micro block are linked. Each block, whether macro or micro, is directly connected to its predecessor through the **parent hash** and the **random seed**.
 
-<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/macro-micro.png" alt="skip block struct" />
+<img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/macro-micro.png" alt="macro and micro block connection" />
 
-## Blockchain format
+## Blockchain Format
 
-The blockchain is divided into batches and epochs:
-- Batch: The interval between two macro blocks. A batch consists of several micro blocks, closing on a macro block.
-- Epoch: The interval between two election macro blocks marks an epoch. It starts with the first micro block after an election macro block and ends at an election macro block, including multiple micro blocks and checkpoint macro blocks in between.
+The Nimiq blockchain is structured into several subsets of blocks called epochs and batches.
 
-![blockchain-structure](/assets/images/protocol/block-struct-3.png)
+- **Batches**: A batch consists of a fixed number of **micro blocks** produced one after the other. Each batch ends with a **checkpoint** macro block, which finalizes the transactions included in the preceding micro blocks.
+- **Epochs**: An epoch is a set of multiple batches together. Each epoch ends with an **election** macro block, which not only finalizes the transactions in the preceding batch but also updates the validator list of the entire epoch.
+
+<img class="object-contain max-h-[max(300px)]" src="/assets/images/protocol/block-struct-3.png" alt="blockchain structure" />
+
+## Block Finality
+
+Block finality in the Nimiq PoS blockchain ensures that all transactions within the finalized blocks are permanent and cannot be reversed. This is achieved through a balance of micro block production and periodic macro block consensus. While micro blocks add transactions to the chain, these transactions only reach finality when confirmed by a macro block. Macro blocks, produced at regular intervals using Tendermint consensus, finalize the state of all preceding micro blocks in a batch.
