@@ -72,7 +72,7 @@ const { colors, sections } = await getIdenticonsParams(input)
 // sections.top, sections.bottom, sections.sides, sections.face (SVG paths)
 
 // Generate SVG string
-const customSvg = ensambleSvg({ colors, sections })
+const customSvg = ensambleSvg({ colors, sections, /* Other optional values to overwrite default backgroundShape, innerShadow, circleShape */ })
 
 // Also possible to change the Identicon format
 const formatted = formatIdenticon(customSvg, { format: 'image/svg+xml' })
