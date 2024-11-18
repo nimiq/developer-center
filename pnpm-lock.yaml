@@ -23,9 +23,15 @@ importers:
       '@vueuse/core':
         specifier: ^11.1.0
         version: 11.1.0(vue@3.5.12(typescript@5.6.3))
+      canvas-confetti:
+        specifier: ^1.9.3
+        version: 1.9.3
       iconify-icon:
         specifier: ^2.1.0
         version: 2.1.0
+      identicons-esm:
+        specifier: ^0.0.9
+        version: 0.0.9
       json2md:
         specifier: ^2.0.1
         version: 2.0.1
@@ -1685,6 +1691,9 @@ packages:
   caniuse-lite@1.0.30001669:
     resolution: {integrity: sha512-DlWzFDJqstqtIVx1zeSpIMLjunf5SmwOw0N2Ck/QSQdS8PLS4+9HrLaYei4w8BIAL7IB/UEDu889d8vhCTPA0w==}
 
+  canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
+
   caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
 
@@ -2695,6 +2704,9 @@ packages:
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
+
+  identicons-esm@0.0.9:
+    resolution: {integrity: sha512-X3ltGKmsAVnruBUZ80Px0cSizNvGJLSFsEBd9194ODTclYQuZhfXX0J5/qR62dj87fcfMS+9YJRvGGzC/WXxZQ==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -6222,6 +6234,8 @@ snapshots:
 
   caniuse-lite@1.0.30001669: {}
 
+  canvas-confetti@1.9.3: {}
+
   caseless@0.12.0: {}
 
   ccount@2.0.1: {}
@@ -7424,6 +7438,8 @@ snapshots:
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
+
+  identicons-esm@0.0.9: {}
 
   ieee754@1.2.1: {}
 

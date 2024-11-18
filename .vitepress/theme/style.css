@@ -101,7 +101,7 @@ h2 {
 }
 
 .nq-subline {
-  --uno: nq-subline text-neutral-700 mt-24;
+  --uno: nq-subline text-neutral-700 mt-24 text-20|22;
 }
 
 .VPHome {
