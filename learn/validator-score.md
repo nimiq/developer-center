@@ -1,12 +1,12 @@
-# Nimiq's Validator Score
+# Nimiq Validator Trustscore
 
 An algorithm that calculates a score to help users assess how reliable a validator is.{.subline .mb-32}
 
-The Validator Score algorithm is designed to help users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. This way, stakers can make better informed decisions about which validators to trust. The algorithm is based on three key factors:
+The Validator Trustscore (VTS) algorithm is designed to help users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. This way, stakers can make better informed decisions about which validators to trust. The algorithm is based on three key factors:
 
-- **Size**: Evaluates the size of the validator's stake relative to the total stake in the network, penalizing validators with higher stakes to prevent centralization.
+- **Dominance**: Evaluates the dominance of the validator's stake relative to the total stake in the network, penalizing validators with higher stakes to prevent centralization.
 - **Reliability**: Assesses the consistency of a validator in producing blocks over the past 9 months.
-- **Liveness**: Measures how often a validator is online and selected to produce blocks.
+- **Availability**: Measures how often a validator is online and selected to produce blocks.
 
 <div my-64 rounded-6 bg-orange-400 bg-op-50 text="[#E07802]" px-24 py-16 ring="1.5 orange-600" relative of-hidden class="raw">
   <div flex="~ items-center gap-12" text-18 font-bold mb-8>
@@ -14,7 +14,7 @@ The Validator Score algorithm is designed to help users assess the reliability o
     Heads up
   </div>
   <p pr-32 md:pr-64>
-    The Validator Score is still under heavy development and nothing is final. Feel free to share your <a href="#suggestions-feedback" underline text-inherit>Suggestions or Feedback</a>.
+    The Validator Trustscore is still under heavy development and nothing is final. Feel free to share your <a href="#suggestions-feedback" underline text-inherit>Suggestions or Feedback</a>.
   </p>
   <div i-custom:crane absolute text-90 md:text-128 right--12 bottom--16 md:top-6 rotate-y-180 op-20 pointer-events-none />
 </div>
@@ -25,7 +25,7 @@ The Validator Score algorithm is designed to help users assess the reliability o
 
 <figcaption>
 
-Preview of the Validator Score in the Nimiq Wallet
+Preview of the Validator Trustscore in the Nimiq Wallet
 
 </figcaption>
 
@@ -37,13 +37,13 @@ The VTS algorithm is open source, with its design and implementation available t
 
 ## The VTS algorithm
 
-The algorithm uses three factors: **S**ize, **R**eliability, and **L**iveness. Each factor ranges from 0 to 1.
+The algorithm uses three factors: **D**ominance, **R**eliability, and **L**iveness. Each factor ranges from 0 to 1.
 
 $$
-T = S \times R \times L
+T = D \times R \times L
 $$
 
-The Size factor is based on the size of the validator's stake relative to the total stake in the network. Reliability and Liveness are based on behaviour over the last 9 months. For these parameters we only consider completed epochs, not the currently active one. Therefore, the score is not live and can have a delay of up to 12 hours (an epoch lasts 12 hours).
+The dominance factor is based on the dominance of the validator's stake relative to the total stake in the network. Reliability and availability are based on behaviour over the last 9 months. For these parameters we only consider completed epochs, not the currently active one. Therefore, the score is not live and can have a delay of up to 12 hours (an epoch lasts 12 hours).
 
 Before going any further, we define $m$, the number of epochs to consider, knowing that the duration of the window is 9 months.
 
@@ -77,13 +77,13 @@ The curves and constants presented in this document are subject to change at any
 
 </Callout>
 
-### Size
+### Dominance
 
-The Size factor ensures that no single validator controls too much of the network's total stake. If a validator controls a large portion of the total stake, they will get a lower score. We penalize validators with a higher stake compared to those with a lower stake, as a lower stake promotes a fair distribution of control across the network.
+The dominance factor ensures that no single validator controls too much of the network's total stake. If a validator controls a large portion of the total stake, they will get a lower score. We penalize validators with a higher stake compared to those with a lower stake, as a lower stake promotes a fair distribution of control across the network.
 
-#### Size Ratio
+#### Dominance Ratio
 
-To find the size ratio ($s$) of a validator, we have two methods:
+To find the dominance ratio ($s$) of a validator, we have two methods:
 
 1. **First method**: Calculate the ratio by dividing the validator's share by the total share of the network for an active epoch:
 
@@ -93,7 +93,7 @@ $$
 
 Where $v$ is the validator's share and $Z$ is the total network share. This method applies when the epoch is active, so we can access each validator's balance using the `getActiveValidators` function from the RPC.
 
-2. **Second method**: A different approach is used for a closed epoch. This is less accurate due to some randomness and is considered a fallback option. Here we look at the slot distribution of each voting block, which reflects the amount staked by each validator. The size ratio is calculated by dividing the number of slots allocated to a validator by the total number of slots in that epoch:
+2. **Second method**: A different approach is used for a closed epoch. This is less accurate due to some randomness and is considered a fallback option. Here we look at the slot distribution of each voting block, which reflects the amount staked by each validator. The dominance ratio is calculated by dividing the number of slots allocated to a validator by the total number of slots in that epoch:
 
 $$
 s = \frac{sl}{Sl}
@@ -101,11 +101,11 @@ $$
 
 Where $sl$ is the number of slots allocated to the validator and $Sl$ is the total number of slots.
 
-> The second method in the code is called `sizeRatioViaSlots`.
+> The second method in the code is called `dominanceRatioViaSlots`.
 
 #### Curve adjustment
 
-Then, we apply a curve to the stake percentage to calculate the Size score ($S$):
+Then, we apply a curve to the stake percentage to calculate the dominance score ($S$):
 
 $$
 S = \max \left( 0 , 1 - s^{k} \right), \quad \text{being } t = 0.25 \text{ and } k=4
@@ -119,7 +119,7 @@ Where $t$ is the threshold and $k$ is the slope of the curve.
 
 <figcaption>
 
-Graph of the size factor. The x-axis represents the size of the validator, and the y-axis represents the size factor.
+Graph of the dominance factor. The x-axis represents the dominance of the validator, and the y-axis represents the dominance factor.
 
 </figcaption>
 
@@ -127,7 +127,7 @@ Graph of the size factor. The x-axis represents the size of the validator, and t
 
 Here you can see some examples depending on the stake percentage:
 
-| Stake Percentage | Size Score  |
+| Stake Percentage | Dominance Score  |
 | ---------------- | ----------- |
 | 0%               | 1           |
 | 5%               | 0.998       |
@@ -138,7 +138,7 @@ Here you can see some examples depending on the stake percentage:
 
 <Callout type="info" no-title>
 
-Due to technical limitations, we can currently only calculate the size of validators that are active in the current epoch. We cannot calculate the score of a validator at a given timestamp.
+Due to technical limitations, we can currently only calculate the dominance of validators that are active in the current epoch. We cannot calculate the score of a validator at a given timestamp.
 
 </Callout>
 
@@ -239,21 +239,21 @@ What we achieve with this adjustment is to penalise more severely those validato
 * Using 10% is only a heavy approximation. The value of $0.9 could represent 10% downtime, but also 20% or 5%, depending on when the downtime occurred. We say 10% to help the reader understand the scale of the score.
 </small>
 
-### Liveliness
+### Availability
 
-The Liveness factor measures how often a validator is online and selected to produce blocks. We want validators to be active because it ensures the network runs smoothly and securely. Validators that are frequently online and producing blocks receive a higher score, promoting consistent participation and reliability.
+The availability factor measures how often a validator is online and selected to produce blocks. We want validators to be active because it ensures the network runs smoothly and securely. Validators that are frequently online and producing blocks receive a higher score, promoting consistent participation and reliability.
 
-#### Why Liveness
+#### Why availability
 
-If a validator is not active and producing blocks, it could still have a high Size and Reliability score. This would be misleading because they are not contributing to the operation of the network. The Liveness factor ensures that only active validators that are actually selected to produce blocks receive a higher score. We want to penalise validators that are not selected to produce blocks because they are inactive, jailed, offline, etc.
+If a validator is not active and producing blocks, it could still have a high dominance and Reliability score. This would be misleading because they are not contributing to the operation of the network. The availability factor ensures that only active validators that are actually selected to produce blocks receive a higher score. We want to penalise validators that are not selected to produce blocks because they are inactive, jailed, offline, etc.
 
-We use the term _liveness_ instead of _uptime_ because _uptime_ implies precise measurement, as in server contexts where you can measure online time. In our case, we can't measure how long a validator has been online. We can only see when validators are active and producing blocks. There's no way of telling when they're active but not producing blocks, or when they're offline.
+We use the term _availability_ instead of _uptime_ because _uptime_ implies precise measurement, as in server contexts where you can measure online time. In our case, we can't measure how long a validator has been online. We can only see when validators are active and producing blocks. There's no way of telling when they're active but not producing blocks, or when they're offline.
 
-To be clear, a validator can be active and offline at the same time. It could be offline and not producing blocks because it's offline, or it could be active but not producing blocks because it hasn't been selected in a certain period. This is why we use _liveness_ to show how often a validator is selected to produce blocks.
+To be clear, a validator can be active and offline at the same time. It could be offline and not producing blocks because it's offline, or it could be active but not producing blocks because it hasn't been selected in a certain period. This is why we use _availability_ to show how often a validator is selected to produce blocks.
 
-#### How to calculate Liveness
+#### How to calculate availability
 
-The score is a moving average of the liveness score for each epoch. First, we calculate the liveness ($l_i$) for each epoch.
+The score is a moving average of the availability score for each epoch. First, we calculate the availability ($l_i$) for each epoch.
 
 <Callout type="info" no-title>
 
@@ -269,9 +269,9 @@ l_i =
 \end{cases} \quad \text{for } i = 0, 1, 2, \ldots, m-1
 $$
 
-where $l_0$ is the liveness value of the most recent epoch and $l_{m-1}$ is the liveness of the oldest epoch.
+where $l_0$ is the availability value of the most recent epoch and $l_{m-1}$ is the availability of the oldest epoch.
 
-To combine all the liveness scores into a single value, we do a moving average, where more recent epochs have higher weights than older ones.
+To combine all the availability scores into a single value, we do a moving average, where more recent epochs have higher weights than older ones.
 
 $$
 \bar{L} = \frac{\sum_{i=0}^{m-1} \left( 1-a\frac{i}{m-1} \right) l_i}{\sum_{i=0}^{m-1} \left( 1-a\frac{i}{m-1} \right)}, \quad a = 0.5
@@ -283,7 +283,7 @@ Being $a$, the parameter determining how much the observation of the oldest epoc
 
 To better support smaller validators in our PoS network, we use a curve to represent the value of the previous step. This adjustment aims to reduce the penalty for validators who are not frequently selected for block production, while still incentivising active participation.
 
-The adjusted liveness score is calculated using the following formula:
+The adjusted availability score is calculated using the following formula:
 
 $$
 L=-\bar{L}^{2}+2\bar{L}
@@ -295,7 +295,7 @@ $$
 
 <figcaption>
 
-Graph of the liveness score adjustment. The x-axis represents the liveness score, and the y-axis represents the adjusted liveness score.
+Graph of the availability score adjustment. The x-axis represents the availability score, and the y-axis represents the adjusted availability score.
 
 </figcaption>
 
