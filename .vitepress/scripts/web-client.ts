@@ -25,11 +25,39 @@ export async function generateWebClientDocs() {
   consola.info(`Generating Web-Client docs ${packageVersion}...`)
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
+  // get all the README.md files in the generated docs folder and rename them to index.md
+  // then go to ./globals.md and change the links to the README.md files to index.md
+  const generatedDocsFolder = join(webClientFolder, 'reference')
+
+  lsFiles(generatedDocsFolder)
+    .filter(file => file.endsWith('README.md'))
+    .forEach(file => execSync(`mv ${file} ${file.replace('README.md', 'index.md')}`))
+
+  lsFiles(generatedDocsFolder).map(file => execSync(`sed -i 's/README.md/index.md/g' ${file}`))
+
   // Write version file for generated docs
   writeFileSync(versionFile, packageVersion)
 
   // Remove the first four lines of all files in the generated docs folder
   removeFirstFourLines(join(webClientFolder, 'reference'))
+}
+
+function lsFiles(folderPath: string): string[] {
+  // recursively list all files in a folder
+  const items = readdirSync(folderPath)
+  const files: string[] = []
+  for (const item of items) {
+    const itemPath = join(folderPath, item)
+    const stats = statSync(itemPath)
+    if (stats.isDirectory()) {
+      // Recurse into subdirectory
+      files.push(...lsFiles(itemPath))
+    }
+    else if (stats.isFile()) {
+      files.push(itemPath)
+    }
+  }
+  return files
 }
 
 function removeFirstFourLines(folderPath: string) {

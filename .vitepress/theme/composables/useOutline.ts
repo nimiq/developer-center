@@ -16,7 +16,7 @@ export function resolveTitle(theme: DefaultTheme.Config) {
     (typeof theme.outline === 'object'
       && !Array.isArray(theme.outline)
       && theme.outline.label)
-      || 'On this page'
+    || 'On this page'
   )
 }
 
