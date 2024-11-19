@@ -21,7 +21,7 @@ The Validator Trustscore (VTS) algorithm is designed to help users assess the re
 
 <figure>
 
-<img src="/assets/images/learn/validators-wallet-preview.png" alt="The Validator Score in the Wallet" max-h-512 object-contain />
+<img src="/assets/images/learn/validators-trustscore-wallet-preview.png" alt="The Validator Score in the Wallet" max-h-512 object-contain />
 
 <figcaption>
 
