@@ -37,10 +37,10 @@ The VTS algorithm is open source, with its design and implementation available t
 
 ## The VTS algorithm
 
-The algorithm uses three factors: **D**ominance, **R**eliability, and **L**iveness. Each factor ranges from 0 to 1.
+The algorithm uses three factors: **D**ominance, **R**eliability, and **A**vailability. Each factor ranges from 0 to 1.
 
 $$
-T = D \times R \times L
+T = D \times R \times A
 $$
 
 The dominance factor is based on the dominance of the validator's stake relative to the total stake in the network. Reliability and availability are based on behaviour over the last 9 months. For these parameters we only consider completed epochs, not the currently active one. Therefore, the score is not live and can have a delay of up to 12 hours (an epoch lasts 12 hours).
