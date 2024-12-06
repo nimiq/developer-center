@@ -113,3 +113,8 @@ h2 {
 .VPLocalNav.has-sidebar .container {
   margin: 0 auto;
 }
+
+.MathJax svg {
+  margin: 0;
+  display: inline;
+}

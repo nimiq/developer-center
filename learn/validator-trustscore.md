@@ -8,7 +8,7 @@ The Validator Trustscore (VTS) algorithm is designed to help users assess the re
 - **Reliability**: Assesses the consistency of a validator in producing blocks over the past 9 months.
 - **Availability**: Measures how often a validator is online and selected to produce blocks.
 
-<div my-64 rounded-6 bg-orange-400 bg-op-50 text="[#E07802]" px-24 py-16 ring="1.5 orange-600" relative of-hidden class="raw">
+<div my-64 rounded-6 bg-orange-400 bg-op-50 text="[#E07802]" px-24 py-16 ring="1.5 orange-600" relative of-hidden class="raw nq-raw">
   <div flex="~ items-center gap-12" text-18 font-bold mb-8>
     <div i-nimiq:bell text-16 op-70 />
     Heads up
