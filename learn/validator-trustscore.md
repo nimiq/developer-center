@@ -108,14 +108,14 @@ Where $sl$ is the number of slots allocated to the validator and $Sl$ is the tot
 Then, we apply a curve to the stake percentage to calculate the dominance score ($S$):
 
 $$
-S = \max \left( 0 , 1 - s^{k} \right), \quad \text{being } t = 0.25 \text{ and } k=4
+S = \max \left( 0 , 1 - s^{k} \right), \quad \text{being } t = 0.15 \text{ and } k=7.5
 $$
 
 Where $t$ is the threshold and $k$ is the slope of the curve.
 
 <figure mb-16>
 
-<iframe src="https://www.desmos.com/calculator/89yvaeqxff?embed" aspect-video frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.desmos.com/calculator/xynm6uphlq?embed" aspect-video frameborder="0" allowfullscreen></iframe>
 
 <figcaption>
 
@@ -130,11 +130,11 @@ Here you can see some examples depending on the stake percentage:
 | Stake Percentage | Dominance Score  |
 | ---------------- | ----------- |
 | 0%               | 1           |
-| 5%               | 0.998       |
-| 10%              | 0.974       |
-| 15%              | 0.87        |
-| 20%              | 0.59        |
-| >=25%            | 0           |
+| 5%               | 0.999       |
+| 7.5%             | 0.994       |
+| 10%              | 0.952       |
+| 12.5%            | 0.745       |
+| >=15%            | 0           |
 
 <Callout type="info" no-title>
 
