@@ -76,7 +76,7 @@ The output must be saved because it will be needed later in this guide.
 ### Configuration
 
 Run the node once. It will generate an example configuration file in the default config folder. On Linux, that's `~/.nimiq`.
-You need to copy `~/.nimiq/client.toml.example` to `~/.nimiq/client.toml`. You can leave most configuration options as they are for now to start a basic full node.
+You need to copy `~/.nimiq/client.example.toml` to `~/.nimiq/client.toml`. You can leave most configuration options as they are for now to start a basic full node.
 
 To be able to control your node and to stake and validate, you need to enable the JSON-RPC server in your `client.toml`. Make sure the RPC section called `[rpc-server]` in the configuration file is enabled by uncommenting it.
 
