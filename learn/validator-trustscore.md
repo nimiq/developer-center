@@ -2,7 +2,7 @@
 
 <Callout type='warning'>
 
- The Validator Trustscore is still under heavy development and nothing is final. Feel free to share your [Suggestions and Feedback](#suggestions-feedback).
+The Validator Trustscore is still under development and we are open to discuss changes to the algorithm.
 
 </Callout>
 
@@ -87,7 +87,7 @@ Where:
 
 This method relies on the `getActiveValidators` function from the [RPC](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#getactivevalidators), which provides real-time balances of each active validator.
 
-**Closed Epoch Method**:
+**Finished Epoch Method**:
 For a closed epoch, a less precise fallback method exists, but is not currently implemented. This approach calculates the dominance ratio based on slot distribution across voting blocks. The ratio is derived by dividing the number of slots allocated to a validator by the total slots in the epoch:
 
 $$
@@ -142,6 +142,7 @@ The following table illustrates how the dominance score varies with the stake pe
 The Reliability factor measures how consistently a validator produces blocks when expected. Validators who reliably produce their assigned blocks will have a high score, while those who fail frequently will receive a lower score. The reliability score is calculated as a weighted moving average over multiple epochs, emphasizing recent performance.
 
 #### Calculating Reliability for an Epoch
+
 The reliability score for a single epoch $r_i$ is calculated as:
 
 $$
