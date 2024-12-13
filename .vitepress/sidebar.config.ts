@@ -108,7 +108,19 @@ export const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
-
+  '/validators/': [
+    {
+      text: 'Validators',
+      icon: 'i-nimiq:icons-lg-three-hands-hexagon text-white/20 rotate-y-180 rotate-z-180',
+      link: '/validators/',
+      items: [
+        { text: 'Home', link: '/validators/' },
+        { text: 'Staking Pools Handbook', link: '/validators/staking-handbook' },
+        { text: 'Validator Trustscore', link: '/validators/validator-trustscore' },
+        { text: 'Staking FAQ', link: '/validators/staking-faq' },
+      ],
+    },
+  ],
   '/migration/': [
     {
       text: 'Migration',

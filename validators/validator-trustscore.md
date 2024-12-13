@@ -116,7 +116,7 @@ Where:
 
 <figure mb-16>
 
-<iframe src="https://www.desmos.com/calculator/xynm6uphlq" aspect-video frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.desmos.com/calculator/xynm6uphlq?embed" aspect-video frameborder="0" allowfullscreen></iframe>
 
 <figcaption>
 
