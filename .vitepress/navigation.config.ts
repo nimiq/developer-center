@@ -99,6 +99,34 @@ export const navigation = {
       ],
     },
     {
+      key: 'Validators',
+      main: {
+        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
+        iconClasses: 'i-nimiq:icons-lg-three-hands-hexagon text-white/20 rotate-y-180 rotate-z-180',
+        label: 'Validators',
+        title: 'Your Staking and Pools Hub',
+        description: 'Find all the resources needed for stakers and staking pools in the Nimiq ecosystem.',
+        href: '/validators/',
+      },
+      items: [
+        {
+          title: 'Add Your Pool to the Wallet',
+          href: 'https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators',
+          description: 'Follow this guide to make your pool available in the Nimiq Wallet.',
+        },
+        {
+          title: 'Validator Trustscore',
+          href: '/validators/validator-trustscore/',
+          description: 'Understand the scoring system.',
+        },
+        {
+          title: 'FAQs for Stakers and Pools',
+          href: '/validators/staking-faq/',
+          description: 'Get answers to common questions about staking and pools.',
+        },
+      ],
+    },
+    {
       key: 'Learn',
       main: {
         classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
