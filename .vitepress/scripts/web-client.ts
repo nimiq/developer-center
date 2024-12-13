@@ -33,7 +33,11 @@ export async function generateWebClientDocs() {
     .filter(file => file.endsWith('README.md'))
     .forEach(file => execSync(`mv ${file} ${file.replace('README.md', 'index.md')}`))
 
-  lsFiles(generatedDocsFolder).map(file => execSync(`sed -i 's/README.md/index.md/g' ${file}`))
+  lsFiles(generatedDocsFolder).forEach((file) => {
+    const content = readFileSync(file, 'utf-8')
+    const updatedContent = content.replace(/README.md/g, 'index.md')
+    writeFileSync(file, updatedContent, 'utf-8')
+  })
 
   // Write version file for generated docs
   writeFileSync(versionFile, packageVersion)

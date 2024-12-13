@@ -114,7 +114,7 @@ h2 {
   margin: 0 auto;
 }
 
-.MathJax svg {
-  margin: 0;
-  display: inline;
+.MathJax {
+  display: inline-block;
+  overflow: hidden;
 }
