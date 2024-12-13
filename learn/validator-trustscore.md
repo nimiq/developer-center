@@ -106,7 +106,7 @@ While this method is defined in the code as `dominanceRatioViaSlots`, it is not 
 After determining the dominance ratio, a curve is applied to calculate the dominance score $S$:
 
 $$
-S = \max \left( 0 , 1 - s^{k} \right), \quad \text{being } t = 0.25 \text{ and } k=4
+S = \max \left( 0 , 1 - s^{k} \right), \quad \text{being } t = 0.15 \text{ and } k=7.5
 $$
 
 Where:
@@ -116,7 +116,7 @@ Where:
 
 <figure mb-16>
 
-<iframe src="https://www.desmos.com/calculator/89yvaeqxff?embed" aspect-video frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.desmos.com/calculator/xynm6uphlq?embed" aspect-video frameborder="0" allowfullscreen></iframe>
 
 <figcaption>
 
@@ -131,11 +131,11 @@ The following table illustrates how the dominance score varies with the stake pe
 | Stake Percentage | Dominance Score  |
 | ---------------- | ----------- |
 | 0%               | 1           |
-| 5%               | 0.998       |
-| 10%              | 0.974       |
-| 15%              | 0.87        |
-| 20%              | 0.59        |
-| >=25%            | 0           |
+| 5%               | 0.999       |
+| 7.5%             | 0.994       |
+| 10%              | 0.952       |
+| 12.5%            | 0.745       |
+| >=15%            | 0           |
 
 ### Reliability
 
