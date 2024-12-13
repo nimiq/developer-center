@@ -150,7 +150,7 @@ The Client class is a central component of the Nimiq's new Web Client framework 
 #### Previous (PoW)
 
 ```JavaScript
-import Nimiq from '@nimiq/core-web';
+import Nimiq from '@nimiq/core';
 
 await Nimiq.init();
 Nimiq.GenesisConfig.test(); // Select testnet
@@ -164,7 +164,7 @@ When using the /web package export, you need to manually call the init function:
 
 ```JavaScript
 // When using the /web package export
-import init, * as Nimiq from '@nimiq/core-web/web';
+import init, * as Nimiq from '@nimiq/core/web';
 await init();
 ```
 
