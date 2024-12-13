@@ -6,7 +6,7 @@ The Validator Trustscore is still under development and we are open to discuss c
 
 </Callout>
 
-The Validator Trustscore (VTS) helps users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. The VTS enables stakers make informed decisions when selecting validators.
+The Validator Trustscore (VTS) helps users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. The VTS enables stakers to make informed decisions when selecting validators.
 
 The VTS score is calculated using three key factors:
 - **Dominance**: Ensures no validator has excessive influence by penalizing validators with a higher share of the total network stake.
@@ -111,12 +111,12 @@ $$
 
 Where:
 
-- $t = 0.25$ is the threshold.
-- $k = 4$ is the slope of the curve.
+- $t = 0.15$ is the threshold.
+- $k = 7.5$ is the slope of the curve.
 
 <figure mb-16>
 
-<iframe src="https://www.desmos.com/calculator/xynm6uphlq?embed" aspect-video frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.desmos.com/calculator/xynm6uphlq" aspect-video frameborder="0" allowfullscreen></iframe>
 
 <figcaption>
 
@@ -227,7 +227,7 @@ The availability factor measures how often a validator is online and selected to
 
 #### Why Availability Matters
 
-Without availability, a validator could have high dominance and reliability scores but still not actively contribute to the network. This would misrepresent their role in maintaining the network's operation. The availability factor ensures only validators actively selected to produce blocks receive a higher score, penalizing those that are inactive, jailed, or offline.
+Without availability, a validator could have high dominance and reliability scores but still not actively contribute to the network. This would misrepresent their role in maintaining the network's operation. The availability factor ensures that only validators selected to produce blocks are evaluated, penalizing those that fail to participate effectively, whether due to inactivity, being jailed, or missing blocks when offline.
 
 In this context, we cannot measure how long a validator is online but can only determine when they are selected to produce blocks. A validator may be considered active yet fail to produce blocks. Availability focuses on participation in block production, regardless of online or offline status. For instance:
 
