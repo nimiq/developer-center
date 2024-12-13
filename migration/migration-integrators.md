@@ -1,25 +1,15 @@
-# Migration for Integrators and Exchanges
+# Guide for Integrators and Exchanges
 
-## Migration Overview
-
-Nimiq is transitioning from Proof-of-Work (PoW) to Proof-of-Stake (PoS), where validators will replace miners to confirm transactions and produce blocks. This shift in the consensus algorithm enables more sustainable, energy-efficient, and cost-effective blockchain operations. PoS also allows faster transactions by reducing block confirmation times and improving overall throughput. Nimiq uses an account-based model, where each account holds the balance information. This guide focuses on the requirements for integrators, like exchanges, who either have an existing PoW node and migrate to PoS or are setting up a PoS node from scratch.
-
-## Start of the PoS Mainnet Chain
-
-The PoS Mainnet activation is scheduled on **November 19th, 2024**, starting at the PoW block height **3’456’000**. However, this does not necessarily mean the PoS chain will continue at that block height. The activation is a window of the next ~24 hours (1440 PoW blocks) where at least 80% of the registered validators’ stake must signal readiness on-chain. If the activation does not occur in the first window, additional windows allow the activation in subsequent attempts until the PoS chain starts. Once the minimal readiness threshold to bootstrap the PoS chain is reached, the final PoW block number will become the genesis block number of the PoS chain. To summarise, the start of the activation phase with the first window on November 19th, 2024, as outlined in the [migration technical details](https://www.nimiq.com/developers/migration/migration-technical-details), **should not** be considered a fixed date but rather a potential moment for the PoS chain to begin. This is important when temporarily disabling on-chain deposits and withdrawals is relevant.
-
-As we approach the first activation window on November 19, and since the validator registration window has already closed, the current community sentiment suggests that the actual start of the PoS chain will likely happen within the first 7 windows.
+This guide outlines the key steps and requirements for integrators, such as exchanges, who want to set up and operate a Proof-of-Stake (PoS) node on the Nimiq blockchain. It provides detailed information on node types, hardware requirements, and configuration options to facilitate an efficient integration.
 
 ### General Considerations for Different Node Options
 
-As part of the transition from PoW to PoS, the terminology of the node types has changed:
+We have the following node types:
+- **History nodes** (recommend): Stores all transactions since genesis but **does not permanently retain all block data**. However, transactions are never pruned and remain retrievable by their hash and block number.
 
-- **PoW Full nodes** are now called **PoS History nodes (recommend)**
-    - Stores all transactions since genesis but **does not permanently retain all block data**. However, transactions are never pruned and remain retrievable by their hash and block number.
-- **PoW Light nodes** are now called **PoS Full nodes**
-    - Holds all the blocks and transactions of only roughly the last 24 hours. The configuration of this duration is explained later in this document via the `client.toml`.
-- **PoW Nano/Pico nodes** are now called **PoS Light nodes**
-    - This node type is **not** suitable for integrators, as it lacks capabilities like a mempool, transaction inclusion and block bodies. It is meant to run on low-end devices like in mobile phones and browsers.
+- **Full nodes**: Holds all the blocks and transactions of only roughly the last 24 hours. The configuration of this duration is explained later in this document via the `client.toml`.
+
+- **Light nodes**: This node type is **not** suitable for integrators, as it lacks capabilities like a mempool, transaction inclusion and block bodies. It is meant to run on low-end devices like mobile phones and browsers.
 
 ### Hardware Requirements and Recommendations per Node Type
 
@@ -29,36 +19,11 @@ As part of the transition from PoW to PoS, the terminology of the node types has
 | Full | Minimum 8GB RAM | Minimum 4 vCPUs, 8 recommended | Minimum 80GB of storage, 160GB recommended | High-speed, reliable internet connection; Good I/O performance (SSDs recommended) | Sync time grows linearly but slowly |
 | Light | 1GB RAM recommended | 64-bit recommended | Works with minimal storage | Moderate-speed internet connection (e.g., 1 Mbps or higher) | Syncs in a few seconds |
 
-## Integration Considerations when Migrating from PoW to PoS
+### JSON-RPC Interface
 
-This section is meant for you if you already have integrated with PoW. If you haven’t integrated with Nimiq before the migration, you can skip this section and continue with the [next chapter](#getting-started-with-the-pos-node).
+The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, and retrieving balances/transactions by address and hash. These methods remain consistent across the PoS JSON-RPC interface. The full specification is available here: [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/).
 
-### Account Balances, Private Keys, and Contract Address
-
-For all intents and purposes, the PoS chain is a direct **continuation** of the PoW chain.
-
-- **All** account balances from PoW are part of the activation snapshot and will be migrated to the PoS chain.
-- Private keys remain usable on the PoS chain and will derive into the same addresses.
-- NIM are migrated with a 1:1 ratio from PoW to PoS.
-- Since Nimiq is a Layer 1 blockchain, there is **no** new contract address since there hasn’t been one from the beginning.
-
-### Pausing Deposits and Withdrawals during PoW to PoS migration
-
-During the transition from PoW to PoS, a snapshot of the PoW state is captured and migrated to the PoS chain. We recommend pausing on-chain deposits and withdrawals on November 18th, 2024, to prevent transaction losses - that is **1 day before** PoW block 3’456’000, expected to be mined on November 19th, 2024. Since the start of the PoS chain is a dynamic process (as stated in the [intro](#start-of-the-pos-mainnet-chain)), a [manual monitoring](https://nimiq.watch/) of the start of the PoS chain is required. Additionally, we will notify integrators once the migration is successful and the network is confirmed stable. Off-chain transactions and trading within the exchange **do not** need to pause during the migration.
-
-### JSON-RPC Interface Changes
-
-Due to the fundamental differences between the PoW and PoS chains, breaking changes to the JSON-RPC interface are necessary. All references around mining have been removed, and general naming conventions, input parameters, and response bodies have been updated.
-
-Methods like generating addresses, creating/sending transactions, retrieving balances/transactions by address and hash remain available in the PoS JSON-RPC interface, though the method names have changed.
-
-A document outlining all the changes can be found here: [Guide for migrating JSON-RPC](https://www.nimiq.com/developers/migration/migration-json-rpc).
-
-The full JSON-RPC interfaces for both PoS and PoW are documented below:
-- [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/)
-- [PoW JSON-RPC Specification](https://github.com/nimiq/core-js/wiki/JSON-RPC-API)
-
-### Key PoS JSON-RPC Methods
+### Key JSON-RPC Methods
 
 The following methods are particularly useful when interacting with the network:
 
@@ -71,9 +36,8 @@ The following methods are particularly useful when interacting with the network:
 7. [`createBasicTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#createbasictransaction): Create a signed transaction and returns a hex-encoded representation without broadcasting it. All `create*Transaction` RPC methods also have an equivalent `send*Transaction` version in order to create and broadcast the transaction one-go.
 8. [`sendRawTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#sendrawtransaction): Sends the given serialized and signed transaction to the network.
 
-### Shutdown of PoW Nodes
-
-Once the PoS chain has started, PoW nodes are no longer needed and can be shut down. This also acts as a commitment to leave the PoW chain behind. Make sure that accessing transactions on the PoW chain is no longer necessary once the PoS Mainnet chain is live. **If you need to access transaction history from before the transition, you will need to complete the migration process as described in the [Migration Tool Guide](node-operators.md).**
+#### Legacy Data Access
+The ability to fetch transactions from before the PoS genesis (PoW transactions) will be documented in a future update. These transactions use a different format compared to PoS transactions. Instructions on how to handle and query these pregenesis transactions will be provided soon.
 
 ## Getting Started with the PoS Node
 
@@ -155,9 +119,7 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 
 ## Blockchain Explorers
 
-For a visual representation of the activity on the PoS blockchain, we recommend the [NimiqHub](https://www.nimiqhub.com) blockchain explorer, which allows you to switch between the PoS Testnet and Mainnet. Note that depending on when you read this document, the PoS Mainnet explorer may not yet exist.
-
-For PoW, we recommend [Nimiq.Watch](https://nimiq.watch).
+For a visual representation of the activity on the PoS blockchain, we recommend the [NimiqHub](https://www.nimiqhub.com) blockchain explorer.
 
 ## Useful Utility Binaries
 
@@ -201,7 +163,7 @@ Besides the `nimiq-client` we provide a set of other binaries to facilitate inte
 
 ### Transaction Validity Window
 
-The blockchain has a  **~2 hours** validity window, just like PoW did, meaning that a transaction is valid to be included in a block within that timeframe after the transaction's validity start height. If a transaction is not included within this window, it becomes invalid and will be rejected by the network.
+The blockchain has a  **~2 hours** validity window, meaning that a transaction is valid to be included in a block within that timeframe after the transaction's validity start height. If a transaction is not included within this window, it becomes invalid and will be rejected by the network.
 
 ### **Transaction Failure**
 
@@ -221,4 +183,3 @@ Once a valid transaction is included in a **micro block** (blocks containing use
 
 - Albatross White Paper: https://arxiv.org/pdf/1903.01589
 - Protocol: https://www.nimiq.com/developers/learn/
-- Migration: https://www.nimiq.com/developers/migration/
