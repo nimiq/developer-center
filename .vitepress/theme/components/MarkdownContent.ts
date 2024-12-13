@@ -18,10 +18,10 @@ export const MarkdownContent = defineComponent({
         [
           route.component
             ? h(route.component, {
-              onVnodeMounted: runCbs,
-              onVnodeUpdated: runCbs,
-              onVnodeUnmounted: runCbs,
-            })
+                onVnodeMounted: runCbs,
+                onVnodeUpdated: runCbs,
+                onVnodeUnmounted: runCbs,
+              })
             : '404 Page Not Found',
         ],
       )

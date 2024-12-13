@@ -39,8 +39,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       nimiq-css:
-        specifier: ^0.2.58
-        version: 0.2.58(postcss@8.4.49)(rollup@4.28.1)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.4.5))
+        specifier: ^0.2.59
+        version: 0.2.59(postcss@8.4.49)(rollup@4.28.1)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.4.5))
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -3509,8 +3509,8 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  nimiq-css@0.2.58:
-    resolution: {integrity: sha512-wIeHtF69KddChFnu99TpqlaYY0GlEDonAXXya7/FqaMRrxqCG3YxjR/4a09WLYq5gGh2jnJIN34Swznr1znJTQ==}
+  nimiq-css@0.2.59:
+    resolution: {integrity: sha512-33hZNZRd1mOh57tCH8uxg+jlquvY0On0yG6JRXgx/Q7QPgLDLWO8ZzLVZRp+fmk1khOqAs4sqBK/trZN7UEJqw==}
     engines: {node: '>=14'}
 
   nimiq-icons@https://pkg.pr.new/onmax/nimiq-ui/nimiq-icons@24e0317:
@@ -8637,7 +8637,7 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  nimiq-css@0.2.58(postcss@8.4.49)(rollup@4.28.1)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.4.5)):
+  nimiq-css@0.2.59(postcss@8.4.49)(rollup@4.28.1)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.4.5)):
     dependencies:
       '@unocss/reset': 0.65.1
       ts-cssjson: 3.0.1

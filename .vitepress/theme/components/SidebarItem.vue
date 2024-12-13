@@ -53,12 +53,12 @@ function normalizeLink(url: string): string {
       ? url
       : url.replace(
         // eslint-disable-next-line regexp/optimal-quantifier-concatenation
-        /(?:(^\.+)\/)?.*$/,
-        `$1${pathname.replace(
-          /(\.md)?$/,
-          site.value.cleanUrls ? '' : '.html',
-        )}${search}${hash}`,
-      )
+          /(?:(^\.+)\/)?.*$/,
+          `$1${pathname.replace(
+            /(\.md)?$/,
+            site.value.cleanUrls ? '' : '.html',
+          )}${search}${hash}`,
+        )
 
   return withBase(normalizedPath)
 }
