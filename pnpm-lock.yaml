@@ -76,8 +76,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       '@nimiq/core':
-        specifier: next
-        version: 2.0.0-next.rc.5
+        specifier: ^2.0.0
+        version: 2.0.5
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -1138,8 +1138,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@nimiq/core@2.0.0-next.rc.5':
-    resolution: {integrity: sha512-vXqsBv8Yacbnu+O9/3KPk9JcM1w0xq3LrHpwb6uXop1rIpe2+p55B1MT/1EvwNcHce8hQk/ghtC1Vau4fyhELQ==}
+  '@nimiq/core@2.0.5':
+    resolution: {integrity: sha512-fqTXjPqU3+uCa0W/3X//grMzu96eyyFdJR+aaZ5jlZrEah/Pb/ERjHuTgsC3y0TBBuYT8ohTDHktvs+p8MKPPA==}
 
   '@nimiq/style@0.8.5':
     resolution: {integrity: sha512-il2+hrodQ7iL4ARPwfGmGvrEYgtMHAoQSbcyapxEQEG7vDYj5r+ssuhKB+oYmdRUxA1/HvyGDnWG3XenKvQyIA==}
@@ -3861,8 +3861,8 @@ packages:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
 
-  readable-stream@4.5.2:
-    resolution: {integrity: sha512-yjavECdqeZ3GLXNgRXgeQEdz9fvDDkNKyHnbHRFtOr7/LcfgBcmct7t/ET+HaCTqfh06OzoAxrkN/IfjJBVe+g==}
+  readable-stream@4.6.0:
+    resolution: {integrity: sha512-cbAdYt0VcnpN2Bekq7PU+k363ZRsPwJoEEJOEtSJQlJXzwaxt3FIo/uL+KeDSGIjJqtkwyge4KQgD2S2kd+CQw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   readdirp@3.6.0:
@@ -5749,7 +5749,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@nimiq/core@2.0.0-next.rc.5':
+  '@nimiq/core@2.0.5':
     dependencies:
       comlink: 4.4.2
       websocket: 1.0.35
@@ -9011,7 +9011,7 @@ snapshots:
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
 
-  readable-stream@4.5.2:
+  readable-stream@4.6.0:
     dependencies:
       abort-controller: 3.0.0
       buffer: 6.0.3
@@ -9460,7 +9460,7 @@ snapshots:
   svg-packer@0.0.3:
     dependencies:
       jszip: 2.5.0
-      readable-stream: 4.5.2
+      readable-stream: 4.6.0
       svg2ttf: 5.0.0
       svgicons2svgfont: 9.1.1
       ttf2eot: 2.0.0

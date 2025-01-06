@@ -11,7 +11,6 @@ export async function generateWebClientDocs() {
   // Read package version of generated docs, if already built
   const versionFile = join(webClientFolder, '.version')
   if (existsSync(versionFile)) {
-    consola.info(`Web-Client docs ${packageVersion} already generated`)
     const generatedVersion = readFileSync(versionFile, 'utf-8')
 
     // Skip build if package version and generated version match
