@@ -18,7 +18,7 @@ Reaching consensus with the network is easy:
 
 <figure>
 
-<!--@include: ./_demo.md-->
+<!--@include: ./_demo.web.md-->
 
 <figcaption mt--16 mb-32 op-80 mx-0>
 

@@ -8,6 +8,6 @@ The Nimiq Web Client ships with support for NextJS.
 
 And now you are ready to go!
 
-<!--@include: ../_demo.md-->
+<!--@include: ../_demo.bundler.md-->
 
 <!--@include: ./_contribute.md-->

@@ -18,6 +18,12 @@ export default defineNuxtConfig({
       wasm(), // [!code ++]
       topLevelAwait(), // [!code ++]
     ], // [!code ++]
+    worker: { // [!code ++]
+      plugins: () => [ // [!code ++]
+        wasm(), // [!code ++]
+        topLevelAwait(), // [!code ++]
+      ] // [!code ++]
+    }, // [!code ++]
 
     optimizeDeps: { // [!code ++]
       exclude: ['@nimiq/core'], // [!code ++]
@@ -37,6 +43,6 @@ export default defineNuxtConfig({
 
 Now you are ready to go!
 
-<!--@include: ../_demo.md-->
+<!--@include: ../_demo.bundler.md-->
 
 <!--@include: ./_contribute.md-->
