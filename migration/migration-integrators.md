@@ -1,6 +1,6 @@
 # Guide for Integrators and Exchanges
 
-This guide outlines the key steps and requirements for integrators, such as exchanges, who want to set up and operate a Proof-of-Stake (PoS) node on the Nimiq blockchain. It provides detailed information on node types, hardware requirements, and configuration options to facilitate an efficient integration.
+This guide outlines the key steps and requirements for integrators, such as exchanges, who want to set up and operate a Proof-of-Stake (PoS) node for the Nimiq blockchain. It provides detailed information on node types, hardware requirements and configuration options to facilitate an efficient integration.
 
 ### General Considerations for Different Node Options
 
@@ -21,7 +21,7 @@ We have the following node types:
 
 ### JSON-RPC Interface
 
-The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, and retrieving balances/transactions by address and hash. These methods remain consistent across the PoS JSON-RPC interface. The full specification is available here: [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/).
+The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. These methods remain consistent across the PoS JSON-RPC interface. The full specification is available here: [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/).
 
 ### Key JSON-RPC Methods
 
@@ -36,7 +36,7 @@ The following methods are particularly useful when interacting with the network:
 7. [`createBasicTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#createbasictransaction): Create a signed transaction and returns a hex-encoded representation without broadcasting it. All `create*Transaction` RPC methods also have an equivalent `send*Transaction` version in order to create and broadcast the transaction one-go.
 8. [`sendRawTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#sendrawtransaction): Sends the given serialized and signed transaction to the network.
 
-#### Legacy Data Access
+### PoW Account and Transaction history
 The ability to fetch transactions from before the PoS genesis (PoW transactions) will be documented in a future update. These transactions use a different format compared to PoS transactions. Instructions on how to handle and query these pregenesis transactions will be provided soon.
 
 ## Getting Started with the PoS Node
