@@ -21,7 +21,7 @@ We have the following node types:
 
 ### JSON-RPC Interface
 
-The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. These methods remain consistent across the PoS JSON-RPC interface. The full specification is available here: [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/).
+The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. The full specification is available here: [PoS JSON-RPC Specification](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/).
 
 ### Key JSON-RPC Methods
 
@@ -37,7 +37,9 @@ The following methods are particularly useful when interacting with the network:
 8. [`sendRawTransaction`](https://www.nimiq.com/developers/build/set-up-your-own-node/rpc-docs/#sendrawtransaction): Sends the given serialized and signed transaction to the network.
 
 ### PoW Account and Transaction history
-The ability to fetch transactions from before the PoS genesis (PoW transactions) will be documented in a future update. These transactions use a different format compared to PoS transactions. Instructions on how to handle and query these pregenesis transactions will be provided soon.
+Nimiq has transitioned from a PoW system to a PoS system. For those needing access to historical transaction data before the PoS genesis block, a read-only database of the PoW chain is available and can be queried using the [JSON-RPC interface](#json-rpc-interface).
+
+Pre-genesis transactions use a different format compared to PoS transactions. Instructions on how to handle and query these pre-genesis transactions will be provided in a future update.
 
 ## Getting Started with the PoS Node
 
@@ -119,7 +121,15 @@ Both the PoS Mainnet and Testnet have their own seed nodes for initial connectio
 
 ## Blockchain Explorers
 
-For a visual representation of the activity on the PoS blockchain, we recommend the [NimiqHub](https://www.nimiqhub.com) blockchain explorer.
+For a visual representation of the activity on the PoS blockchain, the following blockchain explorers are available:
+
+**Mainnet**:
+- [NimiqHub](https://nimiqhub.com)
+- [Nimiq Watch](https://nimiq.watch)
+
+**Testnet**:
+- [NimiqHub](https://testnet.nimiqhub.com)
+- [Nimiq Watch](https://test.nimiq.watch)
 
 ## Useful Utility Binaries
 
