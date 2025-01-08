@@ -23,7 +23,7 @@ All pool operators must comply with the following ethical and behavioral standar
 - Avoid sharing or promoting illegal content.
 - Ensure all claims about the pool, such as fees and performance metrics, are accurate and verifiable.
 
-Failure to comply with this will result in immediate actions, including potential suspension or removal from the network.
+Failure to comply with this will result in immediate actions, including potential suspension or removal from the wallet.
 
 ## **Submitting your Pool via PR**
 
