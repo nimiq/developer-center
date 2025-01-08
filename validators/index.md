@@ -17,8 +17,9 @@ links:
     description: Understand how trust scores are calculated and maintained.
     href: validator-trustscore
   - label: FAQ
+    title: Any Question?
     href: staking-faq
-    description: Most asked questions for Stakers and Pools.
+    description: Check our most frequent questions.
 ---
 
 # Validators Hub

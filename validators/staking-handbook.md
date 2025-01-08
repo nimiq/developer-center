@@ -40,7 +40,7 @@ The review process consists of two steps:
 1. **PR Review**: When a pool submits a PR with a JSON file describing its information, someone from the Nimiq team will review it within 3 business days. This step ensures the JSON file is complete, adheres to the guidelines, and accurately describes the pool's setup. If any required information is missing, the pool operator will be contacted to provide the details. The PR will be rejected if there is any misconduct or lack of transparency. Monitoring is currently manual, with plans to automate in the future.
 2. **Fee Verification**: After the initial review and approval, the pool will undergo continuous monitoring to verify its fee structure and payout distributions. This is an ongoing process to ensure transparency and compliance with the stated terms.
 
-#### **Links and References**
+### **Links and References**
 
 - [Validator Staking Pools README](https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators)
 - [Become a Validator Guide](https://www.nimiq.com/developers/build/set-up-your-own-node/becoming-a-validator)

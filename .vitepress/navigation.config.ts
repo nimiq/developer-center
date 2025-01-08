@@ -44,8 +44,8 @@ export const navigation = {
     {
       key: 'Migration',
       main: {
-        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
-        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-white/20 rotate-y-180 rotate-z-180',
+        classes: 'bg-gradient-orange hocus:bg-gradient-orange-darkened',
+        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-white/20',
         label: 'Migration',
         title: 'PoW to PoS',
         description: 'Everything about the migration.',
@@ -101,8 +101,8 @@ export const navigation = {
     {
       key: 'Validators',
       main: {
-        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
-        iconClasses: 'i-nimiq:icons-lg-three-hands-hexagon text-white/20 rotate-y-180 rotate-z-180',
+        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
+        iconClasses: 'i-nimiq:icons-lg-verified text-white/20',
         label: 'Validators',
         title: 'Your Staking and Pools Hub',
         description: 'Find all the resources needed for stakers and staking pools in the Nimiq ecosystem.',
@@ -129,8 +129,8 @@ export const navigation = {
     {
       key: 'Learn',
       main: {
-        classes: 'bg-gradient-green hocus:bg-gradient-green-darkened',
-        iconClasses: 'i-nimiq:icons-lg-cubes text-[#1DA186] rotate-y-180 rotate-z-180',
+        classes: 'bg-gradient-gold hocus:bg-gradient-gold-darkened',
+        iconClasses: 'i-nimiq:icons-lg-cubes text-white/20',
         label: 'Learn',
         title: 'The technology',
         description: 'What makes Nimiq a truly unique blockchain.',
