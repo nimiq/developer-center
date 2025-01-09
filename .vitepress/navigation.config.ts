@@ -42,35 +42,6 @@ export const navigation = {
   },
   items: [
     {
-      key: 'Migration',
-      main: {
-        classes: 'bg-gradient-orange hocus:bg-gradient-orange-darkened',
-        iconClasses: 'i-nimiq:icons-lg-sparkling-swap text-white/20',
-        label: 'Migration',
-        title: 'PoW to PoS',
-        description: 'Everything about the migration.',
-        href: '/migration/',
-      },
-      items: [
-        {
-          title: 'For validators',
-          href: '/migration/validator-registration',
-          description: 'Join the first epoch as a validator and earn rewards from the very beginning',
-        },
-        {
-          title: 'For Node Operators',
-          href: '/migration/node-operators',
-          description: 'Our guide on how to migrate as a node operator',
-        },
-        {
-          title: 'Technical details',
-          href: '/migration/migration-technical-details',
-          description: 'Deep dive into the technical details',
-        },
-      ],
-    },
-
-    {
       key: 'Build',
       main: {
         classes: 'bg-gradient-blue hocus:bg-gradient-blue-darkened',

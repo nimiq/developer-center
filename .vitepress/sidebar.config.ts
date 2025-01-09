@@ -108,6 +108,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
+<<<<<<< HEAD
   '/validators/': [
     {
       text: 'Validators',
@@ -144,6 +145,8 @@ export const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
+=======
+>>>>>>> b0dffe2 (Remove migration section from sidebar and navigation configuration and update integrator guide link)
 
   '/build/': [
     {
@@ -152,7 +155,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
-
+        { text: 'Integrator guide', link: '/build/integrator-guide' },
         { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },
