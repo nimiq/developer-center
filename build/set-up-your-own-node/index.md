@@ -11,9 +11,6 @@ links:
     title: Connect via RPC
     href: rpc-docs/
     tags: [RPC]
-  - label: Nimiq 2.0
-    title: Migration to PoS
-    href: ../../migration
 prose: false
 prev: false
 next: false

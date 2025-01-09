@@ -109,30 +109,6 @@ export const sidebar: DefaultTheme.Sidebar = {
     },
   ],
 
-  '/migration/': [
-    {
-      text: 'Migration',
-      icon: 'i-nimiq:icons-lg-sparkling-swap',
-      link: '/migration/',
-      items: [
-        {
-          text: 'Validators',
-          collapsed: false,
-          items: [
-            { text: 'Registration Phase', link: '/migration/validator-registration' },
-            { text: 'Activation Phase', link: '/migration/validator-activation' },
-          ],
-        },
-        { text: 'Guide for Node Operators', link: '/migration/node-operators' },
-        { text: 'Guide for Integrators', link: '/migration/migration-integrators' },
-        { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
-        { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },
-        { text: 'Migration Technicalities', link: '/migration/migration-technical-details' },
-        { text: 'FAQs', link: '/migration/faqs' },
-      ],
-    },
-  ],
-
   '/build/': [
     {
       text: 'Build',
@@ -140,7 +116,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
-
+        { text: 'Integrator guide', link: '/build/integrator-guide' },
         { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },
