@@ -1,0 +1,2 @@
+# Redirects for Netlify (dev only), prod is managed by nginx
+/developer-center/migration/migration-integrators /developer-center/build/integrator-guide
