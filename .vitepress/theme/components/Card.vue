@@ -34,7 +34,7 @@ const hasLink = computed(() => props.item.href)
         'text-[#0E65C9]': item.bgColor === 'blue',
         'text-[#1DA186]': item.bgColor === 'green',
         'text-white/12': item.bgColor === 'gold' || item.bgColor === 'red',
-        'text-96 mb-56 op-80 group-hocus:op-100': centered,
+        'text-96 mb-56 text-neutral group-hocus:text-darkblue': centered,
         'text-24 text-neutral': isIconSmall,
         'dark:group-hocus:text-neutral-600': isIconSmall && hasLink,
       }"
@@ -52,6 +52,7 @@ const hasLink = computed(() => props.item.href)
         'mb-20': item.icon && !isIconSmall,
         'mb-12': !item.icon && (item.description || item.tags?.length || 0 > 0 || item.duration),
         'text-white text-24 font-semibold': item.bgColor,
+        'dark:group-hocus:text-darkblue': !item.bgColor,
       }" z-1 inverted:max-w-256
     >
       {{ item.title }}
@@ -62,7 +63,7 @@ const hasLink = computed(() => props.item.href)
         'col-span-full !mt-0 text-14': isIconSmall,
         'text-white/80 group-hocus:text-white/90': item.bgColor,
         'text-white/90 group-hocus:text-white': item.bgColor === 'gold',
-        'inverted:text-neutral-900 inverted:group-hocus:text-neutral': !item.bgColor,
+        'dark:text-neutral-900 dark:group-hocus:text-darkblue': !item.bgColor,
       }]"
     >
       {{ item.description }}

@@ -85,7 +85,7 @@ html {
 }
 
 h1 {
-  --uno: text-40 md:text-48 my-0;
+  --uno: text-40 md:text-48 my-0 text-neutral;
 
   .is-home & {
     --uno: max-w-520;
@@ -97,7 +97,7 @@ h1 {
 }
 
 h2 {
-  --uno: text-36 md:text-40;
+  --uno: text-36 md:text-40 text-neutral;
 }
 
 .nq-subline {
