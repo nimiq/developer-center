@@ -108,42 +108,6 @@ export const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
-  '/validators/': [
-    {
-      text: 'Validators',
-      icon: 'i-nimiq:icons-lg-three-hands-hexagon text-white/20 rotate-y-180 rotate-z-180',
-      link: '/validators/',
-      items: [
-        { text: 'Home', link: '/validators/' },
-        { text: 'Staking Pools Handbook', link: '/validators/staking-handbook' },
-        { text: 'Validator Trustscore', link: '/validators/validator-trustscore' },
-        { text: 'Staking FAQ', link: '/validators/staking-faq' },
-      ],
-    },
-  ],
-  '/migration/': [
-    {
-      text: 'Migration',
-      icon: 'i-nimiq:icons-lg-sparkling-swap',
-      link: '/migration/',
-      items: [
-        {
-          text: 'Validators',
-          collapsed: false,
-          items: [
-            { text: 'Registration Phase', link: '/migration/validator-registration' },
-            { text: 'Activation Phase', link: '/migration/validator-activation' },
-          ],
-        },
-        { text: 'Guide for Node Operators', link: '/migration/node-operators' },
-        { text: 'Guide for Integrators', link: '/migration/migration-integrators' },
-        { text: 'Guide for JSON-RPC', link: '/migration/migration-json-rpc' },
-        { text: 'Guide for Web Developers', link: '/migration/migration-web-developers' },
-        { text: 'Migration Technicalities', link: '/migration/migration-technical-details' },
-        { text: 'FAQs', link: '/migration/faqs' },
-      ],
-    },
-  ],
 
   '/build/': [
     {
@@ -152,7 +116,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       link: '/build/',
       items: [
         { text: 'Overview', link: '/build/' },
-
+        { text: 'Integrator guide', link: '/build/integrator-guide' },
         { text: 'Web Client VS RPC Client', link: '/build/web-client-rpc' },
       ],
     },

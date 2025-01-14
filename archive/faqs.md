@@ -2,7 +2,7 @@
 
 #### Does every Nimiq user need to run the migration tools to transition to PoS?
 
-The migration process is only mandatory for those who want to be the first validators in the PoS chain or those who wish to have their nodes running from the very beginning. For regular users, no action is required. If you want to participate in the transition, you can find the appropriate guide [here](/migration/).
+The migration process is only mandatory for those who want to be the first validators in the PoS chain or those who wish to have their nodes running from the very beginning. For regular users, no action is required. If you want to participate in the transition, you can find the appropriate guide [here](/archive/).
 
 #### I own a Nimiq Wallet. Do I need to participate in the migration?
 
