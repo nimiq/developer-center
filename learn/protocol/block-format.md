@@ -19,12 +19,11 @@ Micro blocks are the blocks for including transactions on the Nimiq PoS blockcha
 | `timestamp` | `u64` | The block's Unix creation timestamp in milliseconds, indicating when the block was produced |
 | `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (micro or macro). This ensures a direct link to its predecessor |
 | `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block producer |
-| `extra_data` | `Vec<u8>` | Data freely choosable by the producing validator, the default client leaves it empty |
+| `extra_data` | `Vec<u8>` | Data that can be freely chosen by the producing validator, the default client leaves it empty |
 | `state_root` | `Blake2bHash` | The root of the Merkle tree representing the blockchain state, acting as a commitment to the current state |
-| `body_root` | `Blake2sHash` | The root of the Merkle tree representing the body of the block, serving as a commitment to its content |
+| `body_root` | `Blake2sHash` | The hash of the block's body, serving as a commitment to its content |
 | `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, authenticating the state changes between blocks |
 | `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions in the current epoch up until the current block|
-| `cached_hash` | `Option<Blake2bHash>` | The cached hash of the block header, stored temporarily for performance optimization and not transmitted over the network |
 
 ### Micro Body
 
@@ -59,26 +58,25 @@ Macro blocks need +2/3 of consensus from the validator list to be confirmed, ens
 | `network` | `NetworkId` | The network ID associated with the block, such as Mainnet or Testnet |
 | `version` | `u16` | The block's version number. Changing this implies a hard fork |
 | `block_number` | `u32` | The number of the block, representing its height in the blockchain |
-| `round` | `u32` | The specific tendermint round in which this block was proposed |
+| `round` | `u32` | The specific Tendermint round in which this block was proposed |
 | `timestamp` | `u64` | The Unix creation timestamp (in milliseconds) indicating when the block was produced |
 | `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (can only be micro) |
 | `parent_election_hash` | `Blake2bHash` | The hash of the header from the previous election macro block |
 | `interlink` | `Option<Vec<Blake2bHash>>` | A vector of hashes linking to previous election blocks with epoch numbers ending in *n* zeros in binary representation. This allows nodes to verify past blocks efficiently without needing to traverse the entire chain |
 | `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block proposer |
-| `extra_data` | `Vec<u8>` | Space reserved for arbitrary data (currently unused) |
+| `extra_data` | `Vec<u8>` | Data that can be freely chosen by the producing validator, the default client leaves it empty |
 | `state_root` | `Blake2bHash` | The Merkle root representing the blockchain state, acting as a commitment to the current state |
-| `body_root` | `Blake2sHash` | The Merkle root representing the body of the block, serving as a commitment to its content |
+| `body_root` | `Blake2sHash` | The hash of the block body, serving as a commitment to its content |
 | `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, which authenticates the state transitions or changes between blocks |
 | `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions that occurred in the current epoch up until this block |
 | `validators` | `Option<Validators>` | Information about the upcoming validator list. Present only in election macro blocks |
 | `next_batch_initial_punished_set` | `BitSet` | A bitset representing validator slots that are banned from producing blocks in the next batch due to misbehavior |
-| `cached_hash` | `Option<Blake2bHash>` | A cached hash of the block header, used to optimize performance. Not transmitted over the network |
 
 ### Macro Body
 
 | **Field** | **Data Type** | **Description** |
 | --- | --- | --- |
-| `transactions` | `Vec<RewardTransaction>` | Contains the reward transactions of this block, distributing block rewards and transaction fees of the current batch to validators |
+| `transactions` | `Vec<RewardTransaction>` | Contains the reward transactions of this block, distributing block rewards and transaction fees of the current batch to validators. Macro blocks do not include user-generated transactions. |
 
 ### Macro Justification
 
@@ -87,9 +85,18 @@ Macro blocks need +2/3 of consensus from the validator list to be confirmed, ens
 | `round` | `u32` | The specific tendermint round in which the block was accepted. This is used to verify that the signature corresponds to the correct round |
 | `sig` | `MultiSignature` | The aggregated BLS signature of the validators’ precommit votes for the block, confirming validator consensus |
 
-The figure below illustrates how a macro block and a micro block are linked. Each block, whether macro or micro, is directly connected to its predecessor through the **parent hash** and the **random seed**.
+## Relation Between Micro and Macro Blocks
+Micro and macro blocks are interconnected. This connection ensures blockchain continuity and finality. This section focuses on how these block types interact.
+
+**Block Connections**
+All blocks are sequentially linked by the parent hash, forming a continuous chain: and every checkpoint macro block points to its election macro block by the parent election hash. The following diagram illustrates the connection between micro and macro blocks. Each block is directly connected to its predecessor through the parent hash.
 
 <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/protocol/macro-micro.png" alt="macro and micro block connection" />
+
+*Note: This diagram is a simplified representation. The actual blockchain includes a fixed number of blocks per batch and epoch, which this diagram does not reflect.*
+
+- **Parent Hash**: Links each block to its direct predecessor.
+- **Election Parent Hash**: Connects checkpoint macro blocks to their preceding election macro block (macro block 20 to macro block 10).
 
 ## Blockchain Format
 
