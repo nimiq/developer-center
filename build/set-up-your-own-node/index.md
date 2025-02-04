@@ -18,8 +18,6 @@ aside: false
 footer: false
 ---
 
-<HeadsUp />
-
 # Set up your Nimiq Albatross node
 
 Full Control and Advanced Customization Beyond the Web Client.{.nq-subline}
