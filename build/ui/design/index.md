@@ -1,5 +1,3 @@
-<HeadsUp />
-
 # Nimiq Design
 
 Start building with Nimiq by using our design system.{.nq-subline}

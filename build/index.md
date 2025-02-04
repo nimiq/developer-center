@@ -36,8 +36,6 @@ aside: false
 footer: false
 ---
 
-<HeadsUp />
-
 # Let's build together
 
 Nimiq is made for people to build on it. You just need a browser and Internet.{.nq-subline}

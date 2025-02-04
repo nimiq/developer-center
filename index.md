@@ -39,8 +39,6 @@ buildTogetherLinks:
 
 Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
 
-<HeadsUp />
-
 <Grid :items="$frontmatter.links" mt-64 mb-136 />
 
 ## Let's Build Together
