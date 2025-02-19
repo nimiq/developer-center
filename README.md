@@ -39,3 +39,9 @@ cd developer-center
 pnpm install # Install pnpm first if you don't have it -> https://pnpm.io/installation
 pnpm dev # Start dev server
 ```
+
+## License
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](./LICENSE.md) file for details.
+
+The documentation and written content are licensed under the [Creative Commons Attribution 4.0 International License (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
