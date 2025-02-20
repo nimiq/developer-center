@@ -1,7 +1,10 @@
 import { createExternalPackageIconLoader } from '@iconify/utils/lib/loader/external-pkg'
 import transformerDirectives from '@unocss/transformer-directives'
 import { presetNimiq } from 'nimiq-css'
-import { defineConfig, presetAttributify, presetIcons, presetMini, presetUno } from 'unocss'
+import { dirname } from 'pathe'
+import { defineConfig, presetAttributify, presetIcons, presetWind3 } from 'unocss'
+import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
+import { presetScalePx } from 'unocss-preset-scale-px'
 
 export default defineConfig({
   content: {
@@ -53,8 +56,7 @@ export default defineConfig({
   ],
 
   presets: [
-    presetMini(),
-    presetUno({ attributifyPseudo: true }),
+    presetWind3({ attributifyPseudo: true }),
     presetAttributify(),
     presetIcons({
       collections: {
@@ -68,8 +70,14 @@ export default defineConfig({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
-      scrollbar: true,
+      fonts: {
+        cwd: dirname(import.meta.url),
+        fontAssetsDir: '../public/assets/fonts',
+        fontServeBaseUrl: '/assets/fonts',
+      },
     }),
+    presetScalePx(),
+    presetFluidSizing(),
   ],
   theme: {
     breakpoints: {
