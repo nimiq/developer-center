@@ -1,6 +1,8 @@
+import type { Header } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/theme'
-import { getScrollOffset, type Header } from 'vitepress'
-import { onUpdated, type Ref } from 'vue'
+import type { Ref } from 'vue'
+import { getScrollOffset } from 'vitepress'
+import { onUpdated } from 'vue'
 import { useAside } from './useAside'
 
 // cached list of anchor elements from resolveHeaders

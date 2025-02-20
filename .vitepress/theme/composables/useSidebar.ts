@@ -1,11 +1,12 @@
 import type { DefaultTheme } from 'vitepress/theme'
+import type { ComputedRef, Ref } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import {
   computed,
-  type ComputedRef,
+
   onMounted,
   onUnmounted,
-  type Ref,
+
   ref,
   watch,
   watchEffect,

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { Card } from '../utils/types'
 import { computed } from 'vue'
-import { type Card, CardType } from '../utils/types'
+import { CardType } from '../utils/types'
 
 const props = withDefaults(defineProps<{ items: Card[] }>(), { items: () => [] })
 
