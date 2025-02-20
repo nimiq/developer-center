@@ -47,7 +47,6 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'Home', link: '/learn/' },
         { text: 'Overview', link: '/learn/protocol/overview' },
         { text: 'Glossary', link: '/learn/protocol/glossary' },
-        { text: 'Validator Trustscore', link: '/learn/validator-trustscore' },
       ],
     },
     {
@@ -104,7 +103,6 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Prover node', link: '/learn/protocol/prover-node' },
           ],
         },
-        { text: 'Glossary', link: '/learn/protocol/glossary' },
       ],
     },
   ],
