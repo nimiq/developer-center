@@ -87,12 +87,12 @@ export const navigation = {
         },
         {
           title: 'Validator Trustscore',
-          href: '/validators/validator-trustscore/',
+          href: '/validators/validator-trustscore',
           description: 'Understand the scoring system.',
         },
         {
           title: 'FAQs for Stakers and Pools',
-          href: '/validators/staking-faq/',
+          href: '/validators/staking-faq',
           description: 'Get answers to common questions about staking and pools.',
         },
       ],
