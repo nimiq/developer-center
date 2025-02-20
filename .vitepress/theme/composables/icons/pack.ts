@@ -72,7 +72,7 @@ export async function downloadZip(
   const { default: JSZip } = await import('jszip')
   const zip = new JSZip()
 
-  const zipActions: Record<PackType, (name: string, svg: string) => void | (() => void) > = {
+  const zipActions: Record<PackType, (name: string, svg: string) => void | (() => void)> = {
     vue(name: string, svg: string) {
       zip.file(`${name}.vue`, SvgToVue(svg, name))
     },

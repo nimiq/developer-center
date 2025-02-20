@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { MenuItem } from '../composables/useOutline'
 import { ref, shallowRef } from 'vue'
 import { useData } from '../composables/useData'
 import {
   getHeaders,
-  type MenuItem,
+
   resolveTitle,
   useActiveAnchor,
 } from '../composables/useOutline'
