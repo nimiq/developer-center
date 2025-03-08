@@ -23,11 +23,8 @@ To be eligible as a prover node, you must first set your node to operate in **fu
 sync_mode = "full"
 ```
 
-<Callout type="info">
-
-Only nodes with `sync_mode` set to either `full` or `history` can become prover nodes. We recommend using **full** mode to ensure full prover functionality. History nodes require downloading the entire blockchain history, which is more resource-intensive.
-
-</Callout>
+> [!NOTE]
+> Only nodes with `sync_mode` set to either `full` or `history` can become prover nodes. We recommend using **full** mode to ensure full prover functionality. History nodes require downloading the entire blockchain history, which is more resource-intensive.
 
 ## Download the Proving Keys
 

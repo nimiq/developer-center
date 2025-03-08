@@ -137,8 +137,8 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 
           <Popover.Portal>
             <Popover.Content
-              align="end" :align-offset="-4" :side-offset="6" bg-neutral-100 shadow-sm
-              border-base rounded-6 px-16 py-20 w="240"
+              align="end" :align-offset="-4" :side-offset="6"
+              border-base bg-neutral-100 px-16 py-20 shadow-sm rounded-6 w="240"
             >
               <h4 nq-label text="11 neutral-900">
                 Download
@@ -161,19 +161,19 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 </li>
               </ul>
 
-              <h4 nq-label mt-16 text="11 neutral-900">
+              <h4 mt-16 nq-label text="11 neutral-900">
                 Size
               </h4>
               <Slider.Root
-                v-model="iconSize" relative flex="~ items-center" select-none touch-none h-6 mt-12 w-full
+                v-model="iconSize" flex="~ items-center" relative mt-12 h-6 w-full touch-none select-none
                 :max="48" :min="8" :step="1"
               >
-                <Slider.Track bg-neutral-500 relative grow rounded-full h-4>
-                  <Slider.Range absolute bg-neutral-600 rounded-full h-full />
+                <Slider.Track relative h-4 grow rounded-full bg-neutral-500>
+                  <Slider.Range absolute h-full rounded-full bg-neutral-600 />
                 </Slider.Track>
                 <Slider.Thumb
-                  block w-12 h-12 bg-neutral-900 rounded-8
-                  class="after:w20 after:h20 after:absolute" aria-label="Size"
+                  block h-12 w-12 bg-neutral-900 rounded-8
+                  class="after:absolute after:h20 after:w20" aria-label="Size"
                 />
               </Slider.Root>
             </Popover.Content>
@@ -181,7 +181,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
         </Popover.Root>
       </div>
 
-      <ul v-for="variant in Object.keys(variants)" :key="variant" pl-0 flex flex-wrap select-none text-2xl class="-ml-8">
+      <ul v-for="variant in Object.keys(variants)" :key="variant" flex flex-wrap select-none pl-0 text-2xl class="-ml-8">
         <li v-for="icon in variant !== Variant.Logos ? variants[variant] : logosColor" v-show="variant === activeVariant" :key="icon" flex>
           <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
             <Icon :icon="icon" text-neutral />
@@ -190,10 +190,10 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </ul>
 
       <details v-if="Variant.Logos === activeVariant" my-40>
-        <summary nq-label text-neutral-800 mt-32>
+        <summary mt-32 text-neutral-800 nq-label>
           Monochromatic
         </summary>
-        <ul pl-0 flex flex-wrap select-none mt-12 text-2xl class="-ml-8">
+        <ul mt-12 flex flex-wrap select-none pl-0 text-2xl class="-ml-8">
           <li v-for="icon in logosMono" v-show="activeVariant === activeVariant" :key="icon" flex>
             <button w-max :style="`font-size: ${sizes[activeVariant]}px; padding: ${sizes[activeVariant] / 4}px`" @click="selectedIcon = icon">
               <Icon :icon="icon" />
@@ -203,8 +203,8 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
       </details>
 
       <div
-        ref="modal" fixed :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }" transition-bottom border-top
-        ease-in-out duration-300 right-0 bg-neutral-50 mt-32 border="base x-none b-none" px-32 z-10 py-24
+        ref="modal" :class="{ '-bottom-full': !selectedIcon, 'bottom-0': !!selectedIcon }"
+        border="base x-none b-none" border-top fixed right-0 z-10 mt-32 bg-neutral-50 px-32 py-24 transition-bottom duration-300 ease-in-out
         class="w-full md2:w-[calc(100vw-max(calc(var(--vp-sidebar-width)),calc((100%-(var(--vp-layout-max-width)-64px))/2+var(--vp-sidebar-width)-32px)))]"
       >
         <div relative>
@@ -212,11 +212,11 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
             <Icon :icon="selectedIcon || ''" text="96 blue" />
             <div>
               <div flex="~ items-center gap-12" text="24 neutral">
-                <h3 leading-none mt-6>
+                <h3 mt-6 leading-none>
                   i-{{ selectedIcon }}
                 </h3>
 
-                <button p-8 rounded-6 hover-bg-neutral-200 group @click="copyToClipboard(`i-${selectedIcon}`)">
+                <button group p-8 rounded-6 hover-bg-neutral-200 @click="copyToClipboard(`i-${selectedIcon}`)">
                   <div i-nimiq:copy text="16 neutral-800 group-hocus:neutral" />
                 </button>
               </div>
@@ -225,21 +225,21 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
                 How can I use it?
               </button>
             </div>
-            <button ml-auto text-32 self-start nq-close-btn @click="selectedIcon = undefined" />
+            <button ml-auto self-start text-32 nq-close-btn @click="selectedIcon = undefined" />
           </div>
 
-          <div mt-24 flex flex-wrap gap-y-24 gap-x-32>
+          <div mt-24 flex flex-wrap gap-x-32 gap-y-24>
             <div v-for="[title, options] in Object.entries(copySections)" :key="title">
-              <h4 my-1 text-11 text-neutral-800 nq-label mb-12>
+              <h4 my-1 mb-12 text-11 text-neutral-800 nq-label>
                 {{ title }}
               </h4>
-              <div flex gap-6 flex-wrap>
+              <div flex flex-wrap gap-6>
                 <Toast v-model="copied" title="Copied to clipboard" category="success">
                   <button
-                    v-for="option in options" :key="option" nq-ghost-btn flex @click="title === 'Download' ? download(option) : copySnippet(option)"
+                    v-for="option in options" :key="option" flex nq-ghost-btn @click="title === 'Download' ? download(option) : copySnippet(option)"
                   >
                     {{ option.replace(' TS', '') }}
-                    <sup v-if="option.endsWith('TS')" text-neutral-600 mr--1 top-0>TS</sup>
+                    <sup v-if="option.endsWith('TS')" top-0 mr--1 text-neutral-600>TS</sup>
                   </button>
                 </Toast>
               </div>
@@ -259,13 +259,13 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
 
     <Dialog.Root v-model:open="helpOpen">
       <Dialog.Portal>
-        <Dialog.Overlay bg-neutral op10 fixed inset-0 z-1000 />
+        <Dialog.Overlay fixed inset-0 z-1000 bg-neutral op10 />
         <Dialog.Content
-          fixed rounded-6 bg-neutral-0
+
           focus="outline-none" top="50%" left="50%" translate="x--50% y--50%"
-          p="x-8 t-32 md:x-24 md:t-48" z-1000 max-h="85vh" max-w-90vw w-700 nq-prose flex="~
-        col" shadow
-          of-y-auto
+          p="x-8 t-32 md:x-24 md:t-48" max-h="85vh" flex="~
+        col"
+          nq-prose fixed z-1000 max-w-90vw w-700 of-y-auto bg-neutral-0 shadow rounded-6
         >
           <div>
             <Dialog.Title m-0>
@@ -274,7 +274,7 @@ useScriptTag('https://cdn.jsdelivr.net/npm/svg-packer')
             <Dialog.Description m-0>
               Learn how to use the Nimiq Icons in your project.
             </Dialog.Description>
-            <Dialog.Close fixed right="24 md:32" top="24 md:32" nq-close-btn text-32 />
+            <Dialog.Close right="24 md:32" top="24 md:32" fixed text-32 nq-close-btn />
             <div pr-40>
               <slot mt-16 name="learn-how-to-use-the-icons" />
             </div>

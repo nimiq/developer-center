@@ -1,10 +1,7 @@
 # Nimiq Validator Trustscore
 
-<Callout type='warning'>
-
-The Validator Trustscore is still under development and we are open to discuss changes to the algorithm.
-
-</Callout>
+> [!WARNING]
+> The Validator Trustscore is still under development and we are open to discuss changes to the algorithm.
 
 The Validator Trustscore (VTS) helps users assess the reliability of validators in the Nimiq Wallet. This score ranges from 0 to 1, where 0 indicates a validator is not trustworthy, and 1 indicates a highly trustworthy validator. The VTS enables stakers to make informed decisions when selecting validators.
 
@@ -13,11 +10,8 @@ The VTS score is calculated using three key factors:
 - **Reliability**: Measures how consistently a validator produces blocks over the past nine months.
 - **Availability**: Assesses how often a validator is online and actively selected to produce blocks.
 
-<Callout type='info'>
-
-The VTS evaluates validators' performance and reliability during block production. It does not assess staking pool reliability or reward payment processes. For insights into staking pools, refer to the [Validators API](https://github.com/nimiq/validators-api) or the [Staking Pools Handbook](https://forum.nimiq.community/t/staking-pools-handbook/2169).
-
-</Callout>
+> [!NOTE]
+> The VTS evaluates validators' performance and reliability during block production. It does not assess staking pool reliability or reward payment processes. For insights into staking pools, refer to the [Validators API](https://github.com/nimiq/validators-api) or the [Staking Pools Handbook](https://forum.nimiq.community/t/staking-pools-handbook/2169).
 
 The algorithm is designed to promote decentralization, fairness, and consistent network participation. Below is an example of how the VTS might appear in the Nimiq Wallet:
 
@@ -60,11 +54,8 @@ $$
 
 Block duration and blocks per epoch are constants defined in the [policy](https://github.com/nimiq/core-rs-albatross/blob/albatross/primitives/src/policy.rs).
 
-<Callout type="info">
-
-The curves and constants presented in this document are subject to change at any time in the future. Any updates will be communicated to the community to ensure transparency.
-
-</Callout>
+> [!NOTE]
+> The curves and constants presented in this document are subject to change at any time in the future. Any updates will be communicated to the community to ensure transparency.
 
 ### Dominance
 

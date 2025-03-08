@@ -25,16 +25,12 @@ links:
     href: '/'
 ---
 
-:::raw
 # Welcome to the Nimiq Developer Center
 
 Get guides, resources and tips on how to create with Nimiq.
 
-<Grid my-64 :items="$frontmatter.links" />
+<NqGrid f-my-xl :cards="$frontmatter.links" />
 
 ## Let's build together
 
 Create apps, contribute to the network or run a validator.
-
-<Grid my-64 :items="$frontmatter.buildTogetherLinks" />
-:::

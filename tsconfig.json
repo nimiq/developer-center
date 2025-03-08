@@ -1,26 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2018",
     "jsx": "preserve",
     "lib": [
-      "es2022",
-      "dom"
+      "esnext"
     ],
-    "baseUrl": ".",
-    "module": "NodeNext",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
+    "module": "esnext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "types": [
-      "node"
+      "node",
+      "vite/client"
     ],
-    "allowSyntheticDefaultImports": true
-  },
-  "include": [".vitepress/**/*", "**/**.d.ts"],
-  "exclude": [
-    "**/dist/**"
-  ]
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  }
 }

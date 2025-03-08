@@ -6,11 +6,8 @@ Each phase operates within a specified block window, enabling transactions to be
 
 Our approach consists of targeting a specific block height within the PoW chain designated as the *transition block*. At this block height, the blockchain state will be captured and used to generate the "genesis block" for the PoS chain. Instead of starting from block height 0, the PoS chain will start from the same block number as the transition block, if the conditions covered in this document are met.
 
-<Callout type="info">
-
-Quotes are used around "genesis block" because it refers to the first block of the PoS chain, though not block 0, as is typical for a genesis block. It is also called the transition block since it marks the shift from PoW to PoS.
-
-</Callout>
+> [!NOTE]
+> Quotes are used around "genesis block" because it refers to the first block of the PoS chain, though not block 0, as is typical for a genesis block. It is also called the transition block since it marks the shift from PoW to PoS.
 
 ## Validator Registration Phase
 

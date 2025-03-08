@@ -21,7 +21,7 @@ links:
 
 Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features.{.nq-subline}
 
-<Grid class="nq-raw" :items="$frontmatter.links" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.links"  />
 
 ## Validators and Stakers
 

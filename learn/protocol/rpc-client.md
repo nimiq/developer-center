@@ -16,11 +16,8 @@ The usage of the RPC client is exclusive to Nimiq clients. To interact with the 
 5. Run `./nimiq-rpc` to fetch a list of all available commands
 6. For a detailed description of a command usage, add the desired command followed by `--help`
 
-<Callout type="tip">
-
-Commands may require additional arguments and/or allow further options as input. Commands with available options work without the option added; however, commands with arguments return an error if the argument is not added.
-
-</Callout>
+> [!TIP]
+> Commands may require additional arguments and/or allow further options as input. Commands with available options work without the option added; however, commands with arguments return an error if the argument is not added.
 
 Listed below are the commands grouped by subject and a few examples of the usage of the RPC client.
 

@@ -6,8 +6,7 @@ links:
     title: Guide for Staking Pools
     description: Learn how to set up and integrate your pool in the Nimiq ecosystem.
     href: https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators
-    layout: lg
-    span: 6
+    span: full
   - label: Pool Handbook
     title: Staking Pools Handbook
     description: Explore guidelines and best practices for pool operators.
@@ -26,7 +25,7 @@ links:
 
 Welcome to the Validators Hub, the go-to resource for stakers and pool operators in the Nimiq ecosystem. Whether you’re setting up a new staking pool, managing an existing one, or looking for key resources to support your efforts, this section offers comprehensive guidance and tools.
 
-<Grid class="nq-raw" :items="$frontmatter.links" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.links"  />
 
 ### What You'll Find Here
 

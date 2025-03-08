@@ -38,11 +38,8 @@ The tool generates fresh keys and stores them into the `validator-keys.json` f
 
 <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="Validator example keys" />
 
-<Callout type='tip'>
-
-Save the private keys securely, especially the validator private key! **There is no recovery mechanism for lost private keys**. Once lost, access to your validator and related NIM may be permanently lost.
-
-</Callout>
+> [!TIP]
+> Save the private keys securely, especially the validator private key! **There is no recovery mechanism for lost private keys**. Once lost, access to your validator and related NIM may be permanently lost.
 
 For detailed guidance through the scripts and their options, run `node validator-registration.js --help`. This will print out the usage instructions.
 
@@ -76,13 +73,10 @@ To send the transaction manually via **Nimiq Wallet**, you need the following da
 | **Value**             | `100 000` NIM or more                                                |
 | **Public Message**    | Your validator address in human-readable format (starting with `NQ`) |
 
-<Callout type='warning'>
-
-**We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly. You can verify the address included the message with a block explorer like [nimiq.watch](https://nimiq.watch).
-
-Ensure you follow these steps carefully, as failure to do so could result in permanent loss of your funds. Any value below 100 000 NIM will also result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
-
-</Callout>
+> [!WARNING]
+> **We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly. You can verify the address included the message with a block explorer like [nimiq.watch](https://nimiq.watch).
+>
+> Ensure you follow these steps carefully, as failure to do so could result in permanent loss of your funds. Any value below 100 000 NIM will also result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
 
 **Verify Registration and Deposit**
 

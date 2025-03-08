@@ -4,11 +4,8 @@ search: false
 
 # Downloads
 
-<Callout type='warning'>
-
-This page describes the installation and usage of the precompiled packages linked below. For better performance, you might also consider to compile the miner [source code](https://github.com/nimiq/core-js) on the machine where it is intended to be used.
-
-</Callout>
+> [!NOTE]
+> This page describes the installation and usage of the precompiled packages linked below. For better performance, you might also consider to compile the miner [source code](https://github.com/nimiq/core-js) on the machine where it is intended to be used.
 
 ## Packages
 
@@ -49,11 +46,8 @@ Also works in Red Hat-Based Distributions:
 
 ## Configuration
 
-<Callout type='warning'>
-
-To run a Nimiq Full Node and receive connections from other peers you need a valid domain name and SSL certificate.
-
-</Callout>
+> [!WARNING]
+> To run a Nimiq Full Node and receive connections from other peers you need a valid domain name and SSL certificate.
 
 The configuration file for Linux is located in `/etc/nimiq/nimiq.conf`
 

@@ -24,8 +24,5 @@ bun add -D vite-plugin-top-level-await vite-plugin-wasm
 
 :::
 
-<Callout type="info">
-
-Currently, Vite does not support WebAssembly out of the box. To enable WebAssembly support, you need to install the `vite-plugin-wasm` plugin. Learn more <b>[here](https://vitejs.dev/guide/features#webassembly)</b>.
-
-</Callout>
+> [!NOTE]
+> Currently, Vite does not support WebAssembly out of the box. To enable WebAssembly support, you need to install the `vite-plugin-wasm` plugin. Learn more <b>[here](https://vitejs.dev/guide/features#webassembly)</b>.

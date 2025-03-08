@@ -1,6 +1,6 @@
 ---
-layout: home
-prose: false
+sidebar: false
+secondarySidebar: false
 
 links:
   - bgColor: blue
@@ -26,7 +26,7 @@ links:
     href: learn/protocol/block-format
 buildTogetherLinks:
   - title: Start Building
-    icon: i-nimiq:icons-lg-tools
+    icon: i-nimiq:tools-wench-hammer-outline
     description: Connect and interact with Albatross using JS
     href: build/web-client/
   - title: Run a Validator
@@ -39,10 +39,10 @@ buildTogetherLinks:
 
 Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
 
-<Grid :items="$frontmatter.links" mt-64 mb-136 />
+<NqGrid f-my-xl :cards="$frontmatter.links"  />
 
 ## Let's Build Together
 
 Create apps, run a validator or craft something delightful with Nimiq.{.nq-subline}
 
-<Grid :items="$frontmatter.buildTogetherLinks" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.buildTogetherLinks" />

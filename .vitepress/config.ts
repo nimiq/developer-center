@@ -1,28 +1,11 @@
-import { existsSync } from 'node:fs'
-import { basename, dirname } from 'node:path'
+import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 import { env } from 'node:process'
 import consola from 'consola'
-import { spawn } from 'cross-spawn'
 import { readPackageJSON } from 'pkg-types'
-import { defineConfig } from 'vitepress'
-import { navigation } from './navigation.config'
-import { generateRpcDocs } from './scripts/rpc-docs'
-import { generateWebClientDocs } from './scripts/web-client'
-import { sidebar } from './sidebar.config'
-
-function getCommitHash(file: string): Promise<string | undefined> {
-  return new Promise<string | undefined>((resolve, reject) => {
-    const cwd = dirname(file)
-    if (!existsSync(cwd))
-      return resolve(undefined)
-    const fileName = basename(file)
-    const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
-    let output = ''
-    child.stdout.on('data', d => (output += String(d)))
-    child.on('close', () => resolve(output.trim().replace(/"/g, '')))
-    child.on('error', reject)
-  })
-}
+import { defineConfigWithTheme } from 'vitepress'
+import { generateRpcDocs } from './scripts/rpc-docs.js'
+import { generateWebClientDocs } from './scripts/web-client.js'
+import { themeConfig } from './theme.config.js'
 
 // https://vitepress.dev/reference/site-config
 export default async () => {
@@ -38,7 +21,7 @@ export default async () => {
   await generateWebClientDocs()
   const { specUrl, specVersion } = await generateRpcDocs()
 
-  return defineConfig({
+  return defineConfigWithTheme<NimiqVitepressThemeConfig>({
     base,
     title,
     srcExclude: ['**/README.md'],
@@ -46,32 +29,7 @@ export default async () => {
     lastUpdated: true,
     cleanUrls: true,
 
-    async transformPageData(pageData) {
-      pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
-    },
-
-    themeConfig: {
-      navigation,
-
-      sidebar,
-
-      footerItems: [
-        {
-          link: 'https://forum.nimiq.community',
-          icon: 'i-nimiq:logos-nimiq-forum-mono',
-          text: 'Question? Checkout the ',
-          social: 'Nimiq Forum',
-        },
-        {
-          link: 'https://t.me/nimiq',
-          icon: 'i-nimiq:logos-telegram-mono',
-          text: 'Give us feedback on ',
-          social: 'Telegram',
-        },
-      ],
-
-      search: { provider: 'local' },
-    },
+    themeConfig,
 
     vite: {
       define: {

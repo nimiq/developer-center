@@ -18,7 +18,7 @@ const show = defineModel<boolean>()
       rounded-full px-16 py-8 shadow class="ToastRoot"
       :class="{ 'bg-gradient-green': category === 'success', 'bg-gradient-neutral': category === 'info' }"
     >
-      <Toast.Title class="flex gap-x-10 items-center text-white">
+      <Toast.Title class="flex items-center gap-x-10 text-white">
         <div v-if="category === 'success'" i-nimiq:check />
         {{ title }}
       </Toast.Title>

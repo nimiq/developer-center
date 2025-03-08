@@ -7,11 +7,8 @@ Our blockchain deals with misbehavior based on the nature of the offense:
 - A delay in block production constitutes a minor offense. In such cases, the associated slot is deactivated, and the rewards are burned.
 - For more severe offenses like forking, double voting, or double proposals, the validator is jailed. All validator slots are deactivated for a set period, and rewards for these slots are burned.
 
-<Callout type='info'>
-
-Burned rewards are sent to the burned address: `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`. Note that no one _can_ or _will_ use the funds sent to this address.
-
-</Callout>
+> [!NOTE]
+> Burned rewards are sent to the burned address: `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`. Note that no one _can_ or _will_ use the funds sent to this address.
 
 ## Block production delay
 

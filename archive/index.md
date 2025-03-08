@@ -6,7 +6,6 @@ links:
     title: Pre-registration
     description: How to be prepared to join the first epoch as a validator and earn rewards from the very beginning
     href: validator-registration
-    layout: lg
     span: 6
   - title: Be part of the migration
     label: Node Operators
@@ -23,7 +22,7 @@ links:
 
 We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved. {.nq-subline}
 
-<Grid class="nq-raw" :items="$frontmatter.links" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.links" />
 
 ## Understanding the Migration
 

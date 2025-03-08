@@ -5,12 +5,10 @@ links:
     label: Connect
     icon: i-nimiq:icons-lg-verified
     description: Collect stake, validate blocks and earn.
-    tags: [Validator]
     href: becoming-a-validator
   - label: RPC
     title: Connect via RPC
     href: rpc-docs/
-    tags: [RPC]
 prose: false
 prev: false
 next: false
@@ -22,9 +20,9 @@ footer: false
 
 Full Control and Advanced Customization Beyond the Web Client.{.nq-subline}
 
-<Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 />
-<Grid :items="$frontmatter.links" mt-64 />
+<!-- <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 /> -->
+<NqGrid f-my-xl :cards="$frontmatter.links" />
 
-## Not sure which client to use? {.mt-64}
+## Not sure which client to use? {.f-my-xl}
 
 Most applications will not require a private node. To learn more, explore the differences between the [Web Client and RPC](/build/web-client-rpc.md).{.mt-16}

@@ -17,7 +17,7 @@ Asset {.label .text-14 .text-neutral-800 .m-0}
 
 Welcome to the Nimiq design definition page. The identity has been redefined by carefully selecting colours, typography and shapes to show how powerful, useful & simple Nimiq products are.
 
-<Tags mt-24 class="nq-raw" :tags="['Nimiq Brand Kit']" />
+<!-- <Tags mt-24 class="nq-raw" :tags="['Nimiq Brand Kit']" /> -->
 
 ## The History
 
@@ -63,7 +63,7 @@ The Nimiq logo is a plain hexagon – with rounded corners and a subtle golden r
 
 </div>
 
-<div grid="~ cols-1 md:cols-2 gap-32" mt-64>
+<div grid="~ cols-1 md:cols-2 gap-32" f-my-xl>
   <div md-pb-64>
 
   ### Logo Mark
@@ -271,7 +271,7 @@ The don'ts with the Nimiq logo
 
 <!-- ### Icon
 
-<div flex="~ gap-32 justify-center wrap" mt-64>
+<div flex="~ gap-32 justify-center wrap" f-my-xl>
 <DesignKitItem label="Hexagon" logo="i-nimiq:logos-nimiq" size="64"/>
 </div>
 

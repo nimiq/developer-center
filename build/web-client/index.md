@@ -6,31 +6,24 @@ webClientFeatures:
   - title: No Servers
     icon: i-nimiq:icons-lg-network
     description: Become a node in the network without the need for servers.
-    type: 'icon-small'
   - title: Client-Side
     icon: i-nimiq:icons-lg-incognito
     description: Private and secure by design.
-    type: 'icon-small'
   - title: Light and Fast
     icon: i-nimiq:icons-lg-speedmeter
     description: Compiled to WASM for speed and efficiency.
-    type: 'icon-small'
   - title: Proof-of-Stake
     icon: i-nimiq:icons-lg-verified
     description: A true PoS client that's light on resources.
-    type: 'icon-small'
   - title: Cross-Platform
     icon: i-nimiq:icons-lg-widget
     description: Works anywhere, adapts to different environments.
-    type: 'icon-small'
   - title: Real-Time Updates
     icon: i-nimiq:watch-1-50
     description: Subscribe to real-time updates from the network.
-    type: 'icon-small'
   - title: TypeScript
-    icon: i-nimiq:icons-lg-tools
+    icon: i-nimiq:tools-wench-hammer-outline
     description: Great type support for a better development experience.
-    type: 'icon-small'
 
   # - title: Interactive Tutorials
   #   icon: i-nimiq:icons-lg-school
@@ -41,7 +34,6 @@ webClientFeatures:
     icon: i-nimiq:logos-telegram-mono
     description: Access to the Nimiq Coders Dojo for support and collaboration.
     href: https://t.me/nimiq
-    type: 'icon-small'
 ---
 
 # Nimiq Web Client
@@ -56,4 +48,4 @@ The Nimiq Web Client is a Javascript library that allows you to manage and trans
   <a href="./installation" nq-pill-tertiary>Installation</a>
 </div>
 
-<Grid :items="$frontmatter.webClientFeatures" mt-64 mb-136 />
+<NqGrid f-my-xl :cards="$frontmatter.webClientFeatures"  />

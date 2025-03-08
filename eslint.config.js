@@ -1,11 +1,13 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  vue: true,
+  unocss: true,
   typescript: true,
-  markdown: true,
+  vue: true,
   ignores: ['.vitepress/cache', '*.woff2'],
+}, {
+  files: ['**/*.md'],
   rules: {
-    'no-irregular-whitespace': 'off', // TODO Find a way to fix this
+    'no-irregular-whitespace': 'off', // TODO Test i this works
   },
 })
