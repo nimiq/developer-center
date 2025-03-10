@@ -62,12 +62,16 @@ The requesting node, rather than downloading and verifying all election macro bl
 
 Whether a node is syncing for the first time or reconnecting to the network, it must request proof to be up-to-date. The request looks as follows:
 
+::: code-group
+
 ```rust
 pub struct RequestZKP {
     pub(crate) block_number: u32,
     pub(crate) request_election_block: bool,
 }
 ```
+
+:::
 
 - The `block_number` expected is the last election block the node knows of.
 - If the `request_election_block` is `true`, the node expects to receive the complete election block; if set to `false`, the node expects to receive the most recent election block number and the proof.

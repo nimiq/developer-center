@@ -4,6 +4,8 @@ The staking contract is a special contract serving as a central repository for t
 
 The **staking contract** includes three fields:
 
+::: code-group
+
 ```rust
 pub struct StakingContract {
     pub balance: Coin,
@@ -11,6 +13,8 @@ pub struct StakingContract {
     pub punished_slots: PunishedSlots,
 }
 ```
+
+:::
 
 ## Balance
 

@@ -45,4 +45,4 @@ Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
 
 Create apps, run a validator or craft something delightful with Nimiq.{.nq-subline}
 
-<NqGrid f-my-xl :cards="$frontmatter.buildTogetherLinks" />
+<NqGrid f-my-xl :cards="$frontmatter.buildTogetherLinks" large-cards />
