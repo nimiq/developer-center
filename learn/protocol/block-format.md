@@ -23,7 +23,7 @@ Micro blocks are the blocks for including transactions on the Nimiq PoS blockcha
 | `state_root` | `Blake2bHash` | The root of the Merkle tree representing the blockchain state, acting as a commitment to the current state |
 | `body_root` | `Blake2sHash` | The hash of the block's body, serving as a commitment to its content |
 | `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, authenticating the state changes between blocks |
-| `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions in the current epoch up until the current block|
+| `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions in the current epoch up until the current block |
 
 ### Micro Body
 
@@ -43,7 +43,7 @@ Only one of these fields is used at a time as justification, depending on whethe
 
 ### Skip Blocks
 
-When a micro block is not produced within the expected timeframe, the validator list steps in and creates a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks documentation](/learn/protocol/validators/skip-blocks.md).
+When a micro block is not produced within the expected timeframe, the remaining elected validators step in and create a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks documentation](/learn/protocol/validators/skip-blocks.md).
 
 ## Macro Blocks
 
@@ -60,7 +60,7 @@ Macro blocks need consensus of 2/3 the validator [slots](/learn/protocol/validat
 | `block_number` | `u32` | The number of the block, representing its height in the blockchain |
 | `round` | `u32` | The specific Tendermint round in which this block was proposed |
 | `timestamp` | `u64` | The Unix creation timestamp (in milliseconds) indicating when the block was produced |
-| `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (can only be micro) |
+| `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (can only be a micro block) |
 | `parent_election_hash` | `Blake2bHash` | The hash of the header from the previous election macro block |
 | `interlink` | `Option<Vec<Blake2bHash>>` | A vector of hashes linking to previous election blocks with epoch numbers ending in *n* zeros in binary representation. This allows nodes to verify past blocks efficiently without needing to traverse the entire chain |
 | `seed` | `VrfSeed` | The output of the VxEdsa VRF function derived from the seed of the previous block, using the validator key of the block producer |

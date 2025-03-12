@@ -1,6 +1,6 @@
 # Skip blocks
 
-Skip blocks are a special type of [micro block](/learn/protocol/block-format.md#micro-blocks) in the consensus protocol. When a validator fails to produce a block within the expected timeframe, the remaining validators can collectively agree to add a skip block instead of the missing micro block. This prevents delays and ensures the blockchain progresses smoothly. Once a supermajority of validators agrees to add the skip block, the chain resumes its regular progression.
+Skip blocks are a special type of [micro block](/learn/protocol/block-format.md#micro-blocks) in the consensus protocol. When a validator fails to produce a block within the expected timeframe, the remaining elected validators can collectively agree to add a skip block instead of the missing micro block. This prevents delays and ensures the blockchain progresses smoothly. Once a supermajority of elected validators agrees to add the skip block, the chain resumes its regular progression.
 
 The primary purpose of skip blocks is to ensure blockchain continuity by serving a structural role rather than a transactional one. Unlike micro blocks, which process transactions, skip blocks are like placeholders that prevent interruptions when a validator fails to produce a block.
 
