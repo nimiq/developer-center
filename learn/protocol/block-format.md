@@ -18,7 +18,7 @@ Micro blocks are the blocks for including transactions on the Nimiq PoS blockcha
 | `block_number` | `u32` | The number of the block, representing its height in the blockchain |
 | `timestamp` | `u64` | The block's Unix creation timestamp in milliseconds, indicating when the block was produced |
 | `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (micro or macro). This ensures a direct link to its predecessor |
-| `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block producer |
+| `seed` | `VrfSeed` | The output of the VxEdsa VRF function derived from the seed of the previous block, using the validator key of the block producer |
 | `extra_data` | `Vec<u8>` | Data that can be freely chosen by the producing validator, the default client leaves it empty |
 | `state_root` | `Blake2bHash` | The root of the Merkle tree representing the blockchain state, acting as a commitment to the current state |
 | `body_root` | `Blake2sHash` | The hash of the block's body, serving as a commitment to its content |
@@ -29,8 +29,8 @@ Micro blocks are the blocks for including transactions on the Nimiq PoS blockcha
 
 | **Field** | **Data Type** | **Description** |
 | --- | --- | --- |
-| `equivocation_proofs` | `Vec<EquivocationProof>` | A vector containing equivocation proofs for this block. This field may be empty if no such proofs exist in the block |
-| `transactions` | `Vec<ExecutedTransaction>` | A vector containing the transactions for this block. It may be empty in blocks without any transactions, as in skip blocks |
+| `equivocation_proofs` | `Vec<EquivocationProof>` | A vector containing equivocation proofs for this block. This field may be empty if no such proofs exist or if the block producer chooses not to include any |
+| `transactions` | `Vec<ExecutedTransaction>` | A vector containing the transactions for this block. It may be empty if there are no transactions available for inclusion or if the block producer chooses not to include any |
 
 ### Micro Justification
 
@@ -47,9 +47,9 @@ When a micro block is not produced within the expected timeframe, the validator 
 
 ## Macro Blocks
 
-Macro blocks come in two types—**election** and **checkpoint**—each serving a specific role. Election macro blocks are used to update the validator list, defining which validators will participate in the next epoch. Checkpoint macro blocks finalize transactions but do not change validator list.
+There are two types of macro blocks: **election** and **checkpoint**, each serving a specific role. Election macro blocks update the validator list, defining which validators will participate in the next epoch; these blocks also close epochs. Checkpoint macro blocks finalize transactions and close batches but do not change the validator list.
 
-Macro blocks need +2/3 of consensus from the validator list to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
+Macro blocks need consensus of 2/3 the validator [slots](/learn/protocol/validators/slots.md) to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
 
 ### Macro Header
 
@@ -63,13 +63,13 @@ Macro blocks need +2/3 of consensus from the validator list to be confirmed, ens
 | `parent_hash` | `Blake2bHash` | The hash of the preceding block's header (can only be micro) |
 | `parent_election_hash` | `Blake2bHash` | The hash of the header from the previous election macro block |
 | `interlink` | `Option<Vec<Blake2bHash>>` | A vector of hashes linking to previous election blocks with epoch numbers ending in *n* zeros in binary representation. This allows nodes to verify past blocks efficiently without needing to traverse the entire chain |
-| `seed` | `VrfSeed` | The BLS signature derived from the seed of the previous block, using the validator key of the block proposer |
+| `seed` | `VrfSeed` | The output of the VxEdsa VRF function derived from the seed of the previous block, using the validator key of the block producer |
 | `extra_data` | `Vec<u8>` | Data that can be freely chosen by the producing validator, the default client leaves it empty |
 | `state_root` | `Blake2bHash` | The Merkle root representing the blockchain state, acting as a commitment to the current state |
 | `body_root` | `Blake2sHash` | The hash of the block body, serving as a commitment to its content |
 | `diff_root` | `Blake2bHash` | The root of the trie diff tree proof, which authenticates the state transitions or changes between blocks |
 | `history_root` | `Blake2bHash` | The root of a Merkle Mountain Range covering all transactions that occurred in the current epoch up until this block |
-| `validators` | `Option<Validators>` | Information about the upcoming validator list. Present only in election macro blocks |
+| `validators` | `Option<Validators>` | Information about the upcoming validator list. Present only in election macro blocks. The `Validators` struct contains a list of validators ordered by their slots and a mapping of validator addresses to their slot range. |
 | `next_batch_initial_punished_set` | `BitSet` | A bitset representing validator slots that are banned from producing blocks in the next batch due to misbehavior |
 
 ### Macro Body
@@ -96,7 +96,7 @@ All blocks are sequentially linked by the parent hash, forming a continuous chai
 *Note: This diagram is a simplified representation. The actual blockchain includes a fixed number of blocks per batch and epoch, which this diagram does not reflect.*
 
 - **Parent Hash**: Links each block to its direct predecessor.
-- **Election Parent Hash**: Connects checkpoint macro blocks to their preceding election macro block (macro block 20 to macro block 10).
+- **Election Parent Hash**: Connects checkpoint macro blocks to their preceding election macro block.
 
 ## Blockchain Format
 
