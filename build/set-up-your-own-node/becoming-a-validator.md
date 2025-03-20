@@ -39,10 +39,9 @@ For running a validator you need the following items wich we are generating now:
 
 Note that we will use these in the following steps to configure your validator.
 
-::: tip
-Keep your public and private keys accessible by writing them down or saving them on your computer.
-Make sure you save the private keys securely, there is no way to recover them!
-:::
+> [!TIP]
+> Keep your public and private keys accessible by writing them down or saving them on your computer.
+> Make sure you save the private keys securely, there is no way to recover them!
 
 <!--
 > **Note**<br>
@@ -57,9 +56,8 @@ To generate the Schnorr keypairs and the validator address, you can use:
 cargo run --release --bin nimiq-address
 ```
 
-::: info Note
-Since we will need at least one Schnorr keypair and a Nimiq address, the command must be run 2 separate times and the output must be saved because it will be needed later in this guide.
-:::
+> [!NOTE]
+> Since we will need at least one Schnorr keypair and a Nimiq address, the command must be run 2 separate times and the output must be saved because it will be needed later in this guide.
 
 Run the command a third time, if you want to set a specific fee keypair - otherwise it will be auto-generated when you start your node, which will still work for sending control transactions without a fee.
 
@@ -69,9 +67,8 @@ To generate a BLS keypair, you can use:
 cargo run --release --bin nimiq-bls
 ```
 
-::: info Note
-The output must be saved because it will be needed later in this guide.
-:::
+> [!NOTE]
+> The output must be saved because it will be needed later in this guide.
 
 ### Configuration
 
@@ -87,10 +84,9 @@ Note that you can also configure your node to use `history` as the `sync_mode`. 
 sync_mode = "history"
 ```
 
-::: info Note
-History sync mode uses much more storage (disk) space and can take very long to sync.
-As such, we recommend opting for a full node setup to get started quicker.
-:::
+> [!NOTE]
+> History sync mode uses much more storage (disk) space and can take very long to sync.
+> As such, we recommend opting for a full node setup to get started quicker.
 
 The next step is to set up your validator address and keys in the `[validator]` section of your config file:
 
@@ -114,11 +110,9 @@ Replace the validator address and keys generated accordingly:
 * The `voting_key` in the config file corresponds to the secret key of the `nimiq-bls` command. Paste your BLS secret key here.
 * Leave `automatic_reactivate` as is.
 
-::: info Note
-As previously mentioned, if you are creating a new validator from scratch, and you need to generate all those keys, then you will need to use the `nimiq-address` command three times and the `nimiq-bls` command one time.<br>
-
-The `fee_key` is used to pay the fees for automatic reactivate transactions (if enabled). Since these fees default to 0 NIM, having the node auto-generate a fee key is safe.
-:::
+> [!NOTE]
+> As previously mentioned, if you are creating a new validator from scratch, and you need to generate all those keys, then you will need to use the `nimiq-address` command three times and the `nimiq-bls` command one time.<br>
+>The `fee_key` is used to pay the fees for automatic reactivate transactions (if enabled). Since these fees default to 0 NIM, having the node auto-generate a fee key is safe.
 
 ### TLS Certificate
 
@@ -138,9 +132,8 @@ certificates = "/path/to/full_certificates_file.pem"
 
 After you finish your configuration, run the client from inside the `core-rs-albatross` directory with `cargo run --release --bin nimiq-client`. It will connect to the seed node(s), then to other nodes in the network, and start syncing the blockchain. Next, we will query your node for its status.
 
-::: info Note
-When running your node through other means, such as a Docker container, refer to their respective documentation on how to start you node with your own config.
-:::
+> [!NOTE]
+> When running your node through other means, such as a Docker container, refer to their respective documentation on how to start your node with your own config.
 
 ### Check your status with JSON-RPC
 
@@ -273,7 +266,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
     --data-raw '{"method": "unlockAccount", "params": ["<address>", null, null], "jsonrpc": "2.0", "id": 1}'
 ```
 
-::: info Note
+> [!NOTE]
 In case you are wondering, the `null` as the second parameter is an optional password. You can set a password to lock the account when you import it, which you then need to provide during unlocking, too. The other `null` as the third parameter for unlocking is an unused duration parameter, that nontheless needs to be provided.
 :::
 
@@ -311,16 +304,15 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 
 :::
 
-::: info Note
+> [!NOTE]
 Your node must have established consensus and be up-to-date with the blockchain for the transaction to send successfully.
 Remember, you can check your node's status with the `status` command.
 :::
 
-::: info 💡
-When sending the create transaction, the validator deposit will be deducted from the wallet linked to the validator address.
-:::
+> [!TIP]
+> When sending the create transaction, the validator deposit will be deducted from the wallet linked to the validator address.
 
-::: info Note
+> [!NOTE]
 Validators are only selected to produce blocks at the start of every epoch (every election block), so it may take some time for your validator to be elected to produce blocks.
 :::
 
@@ -347,7 +339,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 
 It will tell your the public keys of your registered signing and voting keys, as well as which reward address is set to receive block rewards. It'll also tell you your validator's staking balance (which should be the same as the deposit for now), how many stakers are staking with your validator (none yet) and if the validator is inactive or retired (it should not be).
 
-::: info Note
+> [!NOTE]
 If the command responds with an error, your validator creation transaction was likely not successfull. You can ask for support in our Telegram channels, in our Github, or in the community forum.
 :::
 
@@ -355,9 +347,8 @@ If the command responds with an error, your validator creation transaction was l
 
 A validator itself can only maintain the validator deposit as stake. To stake more than that, you need to _add stake_ to your validator as a staker.
 
-::: tip Note
-You can stake your NIM on behalf of any registered validator. Your staked NIM then count towards that validator's stake, increasing their (randomly) assigned number of block production slots and thus rewards. Importantly, all staking rewards are received by the validator's reward address, not the stakers. The arrangement of distributing rewards among a validator's stakers is made off-chain and is usually handled by a pool operator or the people who are operating the validator themselves.
-:::
+> [!TIP] Note
+> You can stake your NIM on behalf of any registered validator. Your staked NIM then count towards that validator's stake, increasing their (randomly) assigned number of block production slots and thus rewards. Importantly, all staking rewards are received by the validator's reward address, not the stakers. The arrangement of distributing rewards among a validator's stakers is made off-chain and is usually handled by a pool operator or the people who are operating the validator themselves.
 
 ### Stake from the Nimiq Wallet
 
