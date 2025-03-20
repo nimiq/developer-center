@@ -4,13 +4,13 @@ secondarySidebar: false
 
 links:
   - bgColor: blue
-    icon: i-nimiq:icons-lg-browsermesh
+    icon: i-nimiq:browsermesh
     label: Build
     title: Get Started with Nimiq
     description:  Create an app on Nimiq and have it running in 5 minutes.
     href: build/
   - bgColor: green
-    icon: i-nimiq:icons-lg-cubes
+    icon: i-nimiq:cubes
     label: Learn
     title: The Underlying Technology
     description: Learn what makes Nimiq a truly unique blockchain.
@@ -30,7 +30,7 @@ buildTogetherLinks:
     description: Connect and interact with Albatross using JS
     href: build/web-client/
   - title: Run a Validator
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     description: Collect stake, validate blocks and earn.
     href: build/set-up-your-own-node/becoming-a-validator
 ---

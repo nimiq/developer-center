@@ -1,7 +1,7 @@
 ---
 links:
   - bgColor: blue
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     label: Validator
     title: Pre-registration
     description: How to be prepared to join the first epoch as a validator and earn rewards from the very beginning

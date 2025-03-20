@@ -3,7 +3,7 @@ links:
   - title: Run a Validator
     bgColor: green
     label: Connect
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     description: Collect stake, validate blocks and earn.
     href: becoming-a-validator
   - label: RPC

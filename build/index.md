@@ -1,7 +1,7 @@
 ---
 links:
   - bgColor: blue
-    icon: i-nimiq:icons-lg-browsermesh
+    icon: i-nimiq:browsermesh
     label: Build
     title: Get Started with the Web Client
     description:  Get a Nimiq App up and running in the browser under 5 minutes.
@@ -9,7 +9,7 @@ links:
   - title: Run a Validator
     bgColor: green
     label: Connect
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     description: Collect stake, validate blocks and earn.
     href: set-up-your-own-node/becoming-a-validator
   - label: Clients
@@ -21,10 +21,7 @@ links:
   - label: Our design rules
     title: Design Something Awesome
     href: ui/design/
-prose: false
-prev: false
-next: false
-aside: false
+secondarySidebar: false
 footer: false
 ---
 

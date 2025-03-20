@@ -1,7 +1,7 @@
 ---
 links:
   - bgColor: gold
-    icon: i-nimiq:icons-lg-three-hands-hexagon
+    icon: i-nimiq:duotone-three-hands-hexagon
     label: Staking Pool Guide
     title: Guide for Staking Pools
     description: Learn how to set up and integrate your pool in the Nimiq ecosystem.

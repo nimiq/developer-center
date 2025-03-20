@@ -1,7 +1,7 @@
 ---
 links:
   - bgColor: green
-    icon: i-nimiq:icons-lg-cubes
+    icon: i-nimiq:cubes
     title: Blockchain Structure
     description: Everything about micro and macro blocks
     href: 'protocol/block-format'

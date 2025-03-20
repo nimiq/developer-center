@@ -4,19 +4,19 @@ aside: false
 footer: false
 webClientFeatures:
   - title: No Servers
-    icon: i-nimiq:icons-lg-network
+    icon: i-nimiq:duotone-network
     description: Become a node in the network without the need for servers.
   - title: Client-Side
-    icon: i-nimiq:icons-lg-incognito
+    icon: i-nimiq:duotone-incognito
     description: Private and secure by design.
   - title: Light and Fast
-    icon: i-nimiq:icons-lg-speedmeter
+    icon: i-nimiq:duotone-speedmeter
     description: Compiled to WASM for speed and efficiency.
   - title: Proof-of-Stake
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     description: A true PoS client that's light on resources.
   - title: Cross-Platform
-    icon: i-nimiq:icons-lg-widget
+    icon: i-nimiq:duotone-widget
     description: Works anywhere, adapts to different environments.
   - title: Real-Time Updates
     icon: i-nimiq:watch-1-50
@@ -26,7 +26,7 @@ webClientFeatures:
     description: Great type support for a better development experience.
 
   # - title: Interactive Tutorials
-  #   icon: i-nimiq:icons-lg-school
+  #   icon: i-nimiq:duotone-school
   #   description: Learn through step-by-step guides and examples.
   #   href: features/interactive-tutorials
   #   type: 'icon-small'
