@@ -12,11 +12,8 @@ next: false
 
 ### Installing via NPM
 
-<Callout type='warning'>
-
-Work in Progress
-
-</Callout>
+> [!WARNING]
+> Work in Progress
 
 ### Copy per Icon
 

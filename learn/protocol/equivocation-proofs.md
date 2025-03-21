@@ -20,6 +20,8 @@ The fork concludes once a honest validator is chosen as the subsequent block pro
 
 Forks may also end if the next block is a macro block. Although a malicious validator may attempt to propose 2 blocks at the same block height (refer to the double proposal proof below), the consensus requirement dictates that more than 2/3 of validators must agree on a block proposal before it is added to the blockchain; thus, there is no way to continuing a fork.
 
+::: code-group
+
 ```rust
 pub struct ForkProof {
     validator_address: Address,
@@ -30,6 +32,8 @@ pub struct ForkProof {
 }
 ```
 
+:::
+
 The offending validator address, two micro headers from the same block height and the respective signatures are enough to prove the malicious behavior.
 
 ### Double proposal proofs
@@ -37,6 +41,8 @@ The offending validator address, two micro headers from the same block height an
 Macro blocks are produced using the Tendermint algorithm. A validator, selected as the round leader, proposes a macro block and gossips its proposal. Malicious validators may attempt to propose two different macro headers at the same block height, round and step.
 
 Honest validators vote for one proposal per round; therefore, receiving more than one proposal from the same validator for the same block indicates misbehavior from a malicious validator. Double proposal proofs serve to identify and punish a validator if it attempts to sign conflicting blocks, demonstrating malicious behavior.
+
+::: code-group
 
 ```rust
 pub struct DoubleProposalProof {
@@ -48,11 +54,15 @@ pub struct DoubleProposalProof {
 }
 ```
 
+:::
+
 The offending validator address, two macro headers from the same round and the respective signatures are enough to prove the malicious behavior.
 
 ### Double vote proofs
 
 Validators are expected to vote block or _nil_ for a single Tendermint proposal per round and step. Voting for different proposals at the same block height, round, and step is considered a double vote, disrupting Tendermint's voting principle. The double vote proof is used to identify and punish validators for their misbehavior.
+
+::: code-group
 
 ```rust
 pub struct DoubleVoteProof {
@@ -66,5 +76,7 @@ pub struct DoubleVoteProof {
     signers2: BitSet,
 }
 ```
+
+:::
 
 The proof serves to identify the malicious validator, pointing the block height, round, and step at which the double voting occurred, along with the two proposal hashes. Validators combine their signatures into a single aggregate signature. However, aggregate signatures cannot be verified without knowing who voted. To verify the signature, the bitset of signers is included. This bitset identifies the validators who participated in signing the specific proposals, thus also pinpointing and confirming instances of double voting by a malicious validator.

@@ -28,10 +28,7 @@ const client = await Nimiq.Client.create(config.build())
 await client.waitForConsensusEstablished()
 ```
 
-<Callout type='warning'>
-
-You need to use `await import()` to load the WebAssembly module and also experiment in your config.
-
-</Callout>
+> [!WARNING]
+> You need to use `await import()` to load the WebAssembly module and also experiment in your config.
 
 <!--@include: ./_contribute.md-->

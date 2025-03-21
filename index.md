@@ -1,16 +1,16 @@
 ---
-layout: home
-prose: false
+sidebar: false
+secondarySidebar: false
 
 links:
   - bgColor: blue
-    icon: i-nimiq:icons-lg-browsermesh
+    icon: i-nimiq:browsermesh
     label: Build
     title: Get Started with Nimiq
     description:  Create an app on Nimiq and have it running in 5 minutes.
     href: build/
   - bgColor: green
-    icon: i-nimiq:icons-lg-cubes
+    icon: i-nimiq:cubes
     label: Learn
     title: The Underlying Technology
     description: Learn what makes Nimiq a truly unique blockchain.
@@ -26,11 +26,11 @@ links:
     href: learn/protocol/block-format
 buildTogetherLinks:
   - title: Start Building
-    icon: i-nimiq:icons-lg-tools
+    icon: i-nimiq:tools-wench-hammer-outline
     description: Connect and interact with Albatross using JS
     href: build/web-client/
   - title: Run a Validator
-    icon: i-nimiq:icons-lg-verified
+    icon: i-nimiq:verified
     description: Collect stake, validate blocks and earn.
     href: build/set-up-your-own-node/becoming-a-validator
 ---
@@ -39,10 +39,10 @@ buildTogetherLinks:
 
 Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
 
-<Grid :items="$frontmatter.links" mt-64 mb-136 />
+<NqGrid f-my-xl :cards="$frontmatter.links"  />
 
 ## Let's Build Together
 
 Create apps, run a validator or craft something delightful with Nimiq.{.nq-subline}
 
-<Grid :items="$frontmatter.buildTogetherLinks" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.buildTogetherLinks" large-cards />

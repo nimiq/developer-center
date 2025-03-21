@@ -3,7 +3,7 @@ layout: page
 
 links:
   - bgColor: blue
-    icon: 'i-nimiq:build'
+    icon: 'i-nimiq:tools'
     label: 'Build'
     title: 'Get Started with Nimiq'
     description:  'Create an app on Nimiq and have it running in 5 minutes.'
@@ -25,16 +25,12 @@ links:
     href: '/'
 ---
 
-:::raw
 # Welcome to the Nimiq Developer Center
 
 Get guides, resources and tips on how to create with Nimiq.
 
-<Grid my-64 :items="$frontmatter.links" />
+<NqGrid f-my-xl :cards="$frontmatter.links" />
 
 ## Let's build together
 
 Create apps, contribute to the network or run a validator.
-
-<Grid my-64 :items="$frontmatter.buildTogetherLinks" />
-:::

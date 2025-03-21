@@ -1,7 +1,7 @@
 ---
 links:
   - bgColor: green
-    icon: i-nimiq:icons-lg-cubes
+    icon: i-nimiq:cubes
     title: Blockchain Structure
     description: Everything about micro and macro blocks
     href: 'protocol/block-format'
@@ -21,7 +21,7 @@ links:
 
 Welcome to the Nimiq Proof-of-Stake documentation! Introducing our new consensus protocol, Albatross. This page provides a brief yet comprehensive overview of our protocol and its unique features.{.nq-subline}
 
-<Grid class="nq-raw" :items="$frontmatter.links" mt-64 />
+<NqGrid f-my-xl :cards="$frontmatter.links"  />
 
 ## Validators and Stakers
 
