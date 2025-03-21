@@ -16,7 +16,7 @@ webClientFeatures:
     icon: i-nimiq:verified
     description: A true PoS client that's light on resources.
   - title: Cross-Platform
-    icon: i-nimiq:duotone-widget
+    icon: i-nimiq:widget
     description: Works anywhere, adapts to different environments.
   - title: Real-Time Updates
     icon: i-nimiq:watch-1-50
@@ -26,7 +26,6 @@ webClientFeatures:
     description: Great type support for a better development experience.
 
   # - title: Interactive Tutorials
-  #   icon: i-nimiq:duotone-school
   #   description: Learn through step-by-step guides and examples.
   #   href: features/interactive-tutorials
   #   type: 'icon-small'

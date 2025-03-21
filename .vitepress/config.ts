@@ -1,9 +1,7 @@
-import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 import { env } from 'node:process'
 import consola from 'consola'
+import { defineNimiqVitepressConfig } from 'nimiq-vitepress-theme'
 import { readPackageJSON } from 'pkg-types'
-import { defineConfigWithTheme } from 'vitepress'
-import { generateRpcDocs } from './scripts/rpc-docs.js'
 import { generateWebClientDocs } from './scripts/web-client.js'
 import { themeConfig } from './theme.config.js'
 
@@ -15,13 +13,13 @@ export default async () => {
     development: '/developer-center',
     staging: '/',
   }
-  const base = basesUrl[env.DEPLOYMENT_MODE]
+  const base = basesUrl[env.DEPLOYMENT_MODE!]
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
   await generateWebClientDocs()
-  const { specUrl, specVersion } = await generateRpcDocs()
+  // const { specUrl, specVersion } = await generateRpcDocs()
 
-  return defineConfigWithTheme<NimiqVitepressThemeConfig>({
+  return defineNimiqVitepressConfig({
     base,
     title,
     srcExclude: ['**/README.md'],
@@ -33,8 +31,8 @@ export default async () => {
 
     vite: {
       define: {
-        __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(specUrl),
-        __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(specVersion),
+        __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(''),
+        __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(''),
       },
       configFile: '.vitepress/vite.config.ts',
     },

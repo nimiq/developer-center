@@ -3,7 +3,7 @@ layout: page
 
 links:
   - bgColor: blue
-    icon: 'i-nimiq:build'
+    icon: 'i-nimiq:tools'
     label: 'Build'
     title: 'Get Started with Nimiq'
     description:  'Create an app on Nimiq and have it running in 5 minutes.'

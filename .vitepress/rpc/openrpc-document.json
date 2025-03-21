@@ -1,0 +1,5114 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "Nimiq JSON-RPC Specification",
+    "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
+    "version": "v1.0.8",
+    "contact": {
+      "name": "The Nimiq Core Development Team <info@nimiq.com>",
+      "email": "",
+      "url": "https://nimiq.com"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": ""
+    }
+  },
+  "methods": [
+    {
+      "name": "addVotingKey",
+      "description": "",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [
+        {
+          "name": "secretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "null",
+        "schema": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "name": "createAccount",
+      "description": "Generates a new account and store it.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "passphrase",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "ReturnAccount",
+        "schema": {
+          "$ref": "#/components/schemas/ReturnAccount"
+        }
+      }
+    },
+    {
+      "name": "createBasicTransaction",
+      "description": "Returns a serialized basic transaction.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createBasicTransactionWithData",
+      "description": "Returns a serialized basic transaction with an arbitrary data field.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "data",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createDeactivateValidatorTransaction",
+      "description": "Returns a serialized `deactivate_validator` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createDeleteValidatorTransaction",
+      "description": "Returns a serialized `delete_validator` transaction. The transaction fee will be paid from the validator deposit that is being returned. Note in order for this transaction to be accepted fee + value should be equal to the validator deposit, which is not a fixed value: Failed delete validator transactions can diminish the validator deposit",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createNewHtlcTransaction",
+      "description": "Returns a serialized transaction creating a new HTLC contract.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcSender",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcRecipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashRoot",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashCount",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "timeout",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createNewStakerTransaction",
+      "description": "Returns a serialized `new_staker` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "delegation",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createNewValidatorTransaction",
+      "description": "Returns a serialized `new_validator` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee and the validator deposit. Since JSON doesn't have a primitive for Option (it just has the null primitive), we can't have a double Option. So we use the following work-around for the signal data: \\\"\\\" = Set the signal data field to None. \\\"0x29a4b...\\\" = Set the signal data field to Some(0x29a4b...).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "votingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "rewardAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createNewVestingTransaction",
+      "description": "Returns a serialized transaction creating a new vesting contract.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "owner",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "startTime",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "timeStep",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "numSteps",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createReactivateValidatorTransaction",
+      "description": "Returns a serialized `reactivate_validator` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRedeemEarlyHtlcTransaction",
+      "description": "Returns a serialized transaction redeeming a HTLC contract using the `EarlyResolve` method.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcSenderSignature",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcRecipientSignature",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRedeemRegularHtlcTransaction",
+      "description": "Returns a serialized transaction redeeming a HTLC contract using the `RegularTransfer` method.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "preImage",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashRoot",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashCount",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRedeemTimeoutHtlcTransaction",
+      "description": "Returns a serialized transaction redeeming a HTLC contract using the `TimeoutResolve` method.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRedeemVestingTransaction",
+      "description": "Returns a serialized transaction redeeming a vesting contract.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRemoveStakeTransaction",
+      "description": "Returns a serialized `remove_stake` transaction. The transaction fee will be paid from the funds being removed.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRetireStakeTransaction",
+      "description": "Returns a serialized `retire_stake` transaction. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "retireStake",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRetireValidatorTransaction",
+      "description": "Returns a serialized `retire_validator` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createSetActiveStakeTransaction",
+      "description": "Returns a serialized `set_active_stake` transaction. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newActiveBalance",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createStakeTransaction",
+      "description": "Returns a serialized `stake` transaction. The funds to be staked and the transaction fee will be paid from the `sender_wallet`.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createUpdateStakerTransaction",
+      "description": "Returns a serialized `update_staker` transaction. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newDelegation",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "reactivateAllStake",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createUpdateValidatorTransaction",
+      "description": "Returns a serialized `update_validator` transaction. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee. Since JSON doesn't have a primitive for Option (it just has the null primitive), we can't have a double Option. So we use the following work-around for the signal data: null = No change in the signal data field. \\\"\\\" = Change the signal data field to None. \\\"0x29a4b...\\\" = Change the signal data field to Some(0x29a4b...).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSigningSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newVotingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newRewardAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSignalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getAccountByAddress",
+      "description": "Tries to fetch the account at the given address.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Account",
+        "schema": {
+          "$ref": "#/components/schemas/Account"
+        }
+      }
+    },
+    {
+      "name": "getAccounts",
+      "description": "Fetches all accounts in the accounts tree. IMPORTANT: This operation iterates over all accounts in the accounts tree and thus is extremely computationally expensive.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Account"
+          }
+        }
+      }
+    },
+    {
+      "name": "getActiveValidators",
+      "description": "Returns a collection of the currently active validator's addresses and balances.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Validator"
+          }
+        }
+      }
+    },
+    {
+      "name": "getAddress",
+      "description": "Returns our validator address.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Address",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getBatchAt",
+      "description": "Returns the batch number at a given `block_number` (height).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getBatchIndexAt",
+      "description": "Returns the batch index at a given block number. The batch index is the number of a block relative to the batch it is in. For example, the first block of any batch always has an batch index of 0.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getBatchNumber",
+      "description": "Returns the batch number for the current head.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getBlockAfterJail",
+      "description": "Returns the first block after the jail period of a given block number has ended.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getBlockAfterReportingWindow",
+      "description": "Returns the first block after the reporting window of a given block number has ended.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getBlockByHash",
+      "description": "Tries to fetch a block given its hash. It has an option to include the transactions in the block, which defaults to false.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "hash",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "includeBody",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Block",
+        "schema": {
+          "$ref": "#/components/schemas/Block"
+        }
+      }
+    },
+    {
+      "name": "getBlockByNumber",
+      "description": "Tries to fetch a block given its number. It has an option to include the transactions in the block, which defaults to false. Note that this function will only fetch blocks that are part of the main chain.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "includeBody",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Block",
+        "schema": {
+          "$ref": "#/components/schemas/Block"
+        }
+      }
+    },
+    {
+      "name": "getBlockNumber",
+      "description": "Returns the block number for the current head.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getCurrentPenalizedSlots",
+      "description": "Returns information about the currently penalized slots. This includes slots that lost rewards and that were disabled.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "PenalizedSlots",
+        "schema": {
+          "$ref": "#/components/schemas/PenalizedSlots"
+        }
+      }
+    },
+    {
+      "name": "getElectionBlockAfter",
+      "description": "Returns the number (height) of the next election macro block after a given block number (height).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getElectionBlockBefore",
+      "description": "Returns the number block (height) of the preceding election macro block before a given block number (height). If the given block number is an election macro block, it returns the election macro block before it.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getElectionBlockOf",
+      "description": "Returns the block number of the election macro block of the given epoch (which is always the last block).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "epoch",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getEpochAt",
+      "description": "Returns the epoch number at a given block number (height).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getEpochIndexAt",
+      "description": "Returns the epoch index at a given block number. The epoch index is the number of a block relative to the epoch it is in. For example, the first block of any epoch always has an epoch index of 0.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getEpochNumber",
+      "description": "Returns the epoch number for the current head.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getFirstBatchOfEpoch",
+      "description": "Returns a boolean expressing if the batch at a given block number (height) is the first batch of the epoch.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "getFirstBlockOf",
+      "description": "Returns the block number of the first block of the given epoch (which is always a micro block).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "epoch",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getFirstBlockOfBatch",
+      "description": "Returns the block number of the first block of the given batch (which is always a micro block).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "batch",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getInherentsByBatchNumber",
+      "description": "Returns all the inherents (including reward inherents) for the given batch number. Note that this only considers blocks in the main chain.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "batchNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "getInherentsByBlockNumber",
+      "description": "Returns all the inherents (including reward inherents) for the given block number. Note that this only considers blocks in the main chain.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "getLastElectionBlock",
+      "description": "Returns the block number (height) of the last election macro block at a given block number (height). If the given block number is an election macro block, then it returns that block number.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getLastMacroBlock",
+      "description": "Returns block the number (height) of the last macro block at a given block number (height). If the given block number is a macro block, then it returns that block number.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getLatestBlock",
+      "description": "Returns the block at the head of the main chain. It has an option to include the transactions in the block, which defaults to false.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "includeBody",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Block",
+        "schema": {
+          "$ref": "#/components/schemas/Block"
+        }
+      }
+    },
+    {
+      "name": "getMacroBlockAfter",
+      "description": "Returns the block number (height) of the next macro block after a given block number (height).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getMacroBlockBefore",
+      "description": "Returns the block number (height) of the preceding macro block before a given block number (height). If the given block number is a macro block, it returns the macro block before it.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getMacroBlockOf",
+      "description": "Returns the block number of the macro block (checkpoint or election) of the given batch (which is always the last block).",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "batch",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getMinFeePerByte",
+      "description": "Obtains the minimum fee per byte as per mempool configuration.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "f64",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getPeerCount",
+      "description": "Returns the number of peers.",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "usize",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getPeerId",
+      "description": "Returns the peer ID for our local peer.",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getPeerList",
+      "description": "Returns a list with the IDs of all our peers.",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "getPolicyConstants",
+      "description": "Returns a bundle of policy constants.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "PolicyConstants",
+        "schema": {
+          "$ref": "#/components/schemas/PolicyConstants"
+        }
+      }
+    },
+    {
+      "name": "getPreviousPenalizedSlots",
+      "description": "Returns information about the penalized slots of the previous batch. This includes slots that lost rewards and that were disabled.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "PenalizedSlots",
+        "schema": {
+          "$ref": "#/components/schemas/PenalizedSlots"
+        }
+      }
+    },
+    {
+      "name": "getRawTransactionInfo",
+      "description": "Given a serialized transaction, it will return the corresponding transaction struct.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "rawTx",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Transaction",
+        "schema": {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      }
+    },
+    {
+      "name": "getSigningKey",
+      "description": "Returns our validator signing key.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getSlotAt",
+      "description": "Returns information about the proposer slot at the given block height and offset. The offset is optional, it will default to getting the offset for the existing block at the given height. We only have this information available for the last 2 batches at most.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "offsetOpt",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Slot",
+        "schema": {
+          "$ref": "#/components/schemas/Slot"
+        }
+      }
+    },
+    {
+      "name": "getStakerByAddress",
+      "description": "Tries to fetch a staker information given its address.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Staker",
+        "schema": {
+          "$ref": "#/components/schemas/Staker"
+        }
+      }
+    },
+    {
+      "name": "getStakersByValidatorAddress",
+      "description": "Fetches all stakers for a given validator. IMPORTANT: This operation iterates over all stakers of the staking contract and thus is extremely computationally expensive.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Staker"
+          }
+        }
+      }
+    },
+    {
+      "name": "getSupplyAt",
+      "description": "Returns the supply at a given time (as Unix time) in Lunas (1 NIM = 100,000 Lunas). It is calculated using the following formula: ```text supply(t) = total_supply - (total_supply - genesis_supply) * supply_decay^t ``` Where t is the time in milliseconds since the PoS genesis block and `genesis_supply` is the supply at the genesis of the Nimiq 2.0 chain.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "genesisSupply",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "genesisTime",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "currentTime",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u64",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getTransactionByHash",
+      "description": "Tries to fetch a transaction (including reward transactions) given its hash.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "hash",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "ExecutedTransaction",
+        "schema": {
+          "$ref": "#/components/schemas/ExecutedTransaction"
+        }
+      }
+    },
+    {
+      "name": "getTransactionFromMempool",
+      "description": "Tries to obtain the given transaction (using its hash) from the mempool.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [
+        {
+          "name": "hash",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Transaction",
+        "schema": {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      }
+    },
+    {
+      "name": "getTransactionHashesByAddress",
+      "description": "Returns the hashes for the latest transactions for a given address. All the transactions where the given address is listed as a recipient or as a sender are considered. Reward transactions are also returned. It has an option to specify the maximum number of hashes to fetch, it defaults to 500. It has also an option to retrieve transactions before a given transaction hash (exclusive). If this hash is not found or does not belong to this address, it will return an empty list. The transaction hashes are returned in descending order, meaning the latest transaction is the first.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "max",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "startAt",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "getTransactionsByAddress",
+      "description": "Returns the latest transactions for a given address. All the transactions where the given address is listed as a recipient or as a sender are considered. Reward transactions are also returned. It has an option to specify the maximum number of transactions to fetch, it defaults to 500. It has also an option to retrieve transactions before a given transaction hash (exclusive). If this hash is not found or does not belong to this address, it will return an empty list. The transactions are returned in descending order, meaning the latest transaction is the first.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "max",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "startAt",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExecutedTransaction"
+          }
+        }
+      }
+    },
+    {
+      "name": "getTransactionsByBatchNumber",
+      "description": "Returns all the transactions (including reward transactions) for the given batch number. Note that this only considers blocks in the main chain.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "batchNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExecutedTransaction"
+          }
+        }
+      }
+    },
+    {
+      "name": "getTransactionsByBlockNumber",
+      "description": "Returns all the transactions (including reward transactions) for the given block number. Note that this only considers blocks in the main chain.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExecutedTransaction"
+          }
+        }
+      }
+    },
+    {
+      "name": "getValidatorByAddress",
+      "description": "Tries to fetch a validator information given its address.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Validator",
+        "schema": {
+          "$ref": "#/components/schemas/Validator"
+        }
+      }
+    },
+    {
+      "name": "getValidators",
+      "description": "Fetches all validators in the staking contract. IMPORTANT: This operation iterates over all validators in the staking contract and thus is extremely computationally expensive.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Validator"
+          }
+        }
+      }
+    },
+    {
+      "name": "getVotingKey",
+      "description": "Returns our current validator voting key.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getVotingKeys",
+      "description": "Returns all available voting keys.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "getZkpState",
+      "description": "Returns the current ZKP state (proof with its related block hash and block number).",
+      "tags": [
+        {
+          "name": "zkp_component"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "ZKPState",
+        "schema": {
+          "$ref": "#/components/schemas/ZKPState"
+        }
+      }
+    },
+    {
+      "name": "importRawKey",
+      "description": "Import an account by its private key, in hexadecimal format, and lock it with the passphrase.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "keyData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "passphrase",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Address",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "isAccountImported",
+      "description": "Returns if an account has been imported.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isAccountUnlocked",
+      "description": "Returns if the account currently is unlocked.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isConsensusEstablished",
+      "description": "Returns a boolean specifying if we have established consensus with the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isElectionBlockAt",
+      "description": "Returns a boolean expressing if the block at a given block number (height) is an election macro block.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isMacroBlockAt",
+      "description": "Returns a boolean expressing if the block at a given block number (height) is a macro block.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isMicroBlockAt",
+      "description": "Returns a boolean expressing if the block at a given block number (height) is a micro block.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isValidatorElected",
+      "description": "Returns if our validator is currently elected.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "isValidatorSynced",
+      "description": "Returns if our validator is currently synced.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "listAccounts",
+      "description": "Returns the accounts that have been imported.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "lockAccount",
+      "description": "Locks the account to prevent further usage.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "null",
+        "schema": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "name": "mempool",
+      "description": "Obtains the mempool content in fee per byte buckets.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "MempoolInfo",
+        "schema": {
+          "$ref": "#/components/schemas/MempoolInfo"
+        }
+      }
+    },
+    {
+      "name": "mempoolContent",
+      "description": "Obtains the list of transactions that are currently in the mempool.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [
+        {
+          "name": "includeTransactions",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "pushHighPriorityTransaction",
+      "description": "Pushes a raw transaction with a high priority assigned into the mempool and broadcast it to the network.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [
+        {
+          "name": "rawTx",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "pushTransaction",
+      "description": "Pushes a raw transaction with a default priority assigned into the mempool and broadcast it to the network.",
+      "tags": [
+        {
+          "name": "mempool"
+        }
+      ],
+      "params": [
+        {
+          "name": "rawTx",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "removeAccount",
+      "description": "Removes an imported account. IMPORTANT: This action is irreversible, and the account can only be recovered with its private key.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "sendBasicTransaction",
+      "description": "Sends a basic transaction to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendBasicTransactionWithData",
+      "description": "Sends a basic transaction, with an arbitrary data field, to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "data",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendDeactivateValidatorTransaction",
+      "description": "Sends a `deactivate_validator` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendDeleteValidatorTransaction",
+      "description": "Sends a `delete_validator` transaction to the network. The transaction fee will be paid from the validator deposit that is being returned.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendNewHtlcTransaction",
+      "description": "Sends a transaction creating a new HTLC contract to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcSender",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcRecipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashRoot",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashCount",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "timeout",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendNewStakerTransaction",
+      "description": "Sends a `new_staker` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "delegation",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendNewValidatorTransaction",
+      "description": "Sends a `new_validator` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee and the validator deposit. Since JSON doesn't have a primitive for Option (it just has the null primitive), we can't have a double Option. So we use the following work-around for the signal data: \\\"\\\" = Set the signal data field to None. \\\"0x29a4b...\\\" = Set the signal data field to Some(0x29a4b...).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "votingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "rewardAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendNewVestingTransaction",
+      "description": "Sends a transaction creating a new vesting contract to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "owner",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "startTime",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "timeStep",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "numSteps",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRawTransaction",
+      "description": "Sends the given serialized transaction to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "rawTx",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendReactivateValidatorTransaction",
+      "description": "Sends a `reactivate_validator` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRedeemEarlyHtlcTransaction",
+      "description": "Sends a transaction redeeming a HTLC contract, using the `EarlyResolve` method, to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcSenderSignature",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "htlcRecipientSignature",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRedeemRegularHtlcTransaction",
+      "description": "Sends a transaction redeeming a HTLC contract, using the `RegularTransfer` method, to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "preImage",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashRoot",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "hashCount",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRedeemTimeoutHtlcTransaction",
+      "description": "Sends a transaction redeeming a HTLC contract, using the `TimeoutResolve` method, to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRedeemVestingTransaction",
+      "description": "Sends a transaction redeeming a vesting contract to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRemoveStakeTransaction",
+      "description": "Sends a `remove_stake` transaction to the network. The transaction fee will be paid from the funds being removed.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRetireStakeTransaction",
+      "description": "Sends a `retire_stake` transaction to the network. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "retireStake",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendRetireValidatorTransaction",
+      "description": "Sends a `retire_validator` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendSetActiveStakeTransaction",
+      "description": "Sends a `set_active_stake` transaction to the network. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newActiveBalance",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendStakeTransaction",
+      "description": "Sends a `stake` transaction to the network. The funds to be staked and the transaction fee will be paid from the `sender_wallet`.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendUpdateStakerTransaction",
+      "description": "Sends a `update_staker` transaction to the network. You can pay the transaction fee from a basic account (by providing the sender wallet) or from the staker account's balance (by not providing a sender wallet).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "stakerWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newDelegation",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "reactivateAllStake",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendUpdateValidatorTransaction",
+      "description": "Sends a `update_validator` transaction to the network. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee. Since JSON doesn't have a primitive for Option (it just has the null primitive), we can't have a double Option. So we use the following work-around for the signal data: null = No change in the signal data field. \\\"\\\" = Change the signal data field to None. \\\"0x29a4b...\\\" = Change the signal data field to Some(0x29a4b...).",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSigningSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newVotingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newRewardAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSignalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "setAutomaticReactivation",
+      "description": "Updates the configuration setting to automatically reactivate our validator.",
+      "tags": [
+        {
+          "name": "validator"
+        }
+      ],
+      "params": [
+        {
+          "name": "automaticReactivate",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "null",
+        "schema": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "name": "sign",
+      "description": "",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "message",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "passphrase",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "isHex",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "ReturnSignature",
+        "schema": {
+          "$ref": "#/components/schemas/ReturnSignature"
+        }
+      }
+    },
+    {
+      "name": "signRedeemEarlyHtlcTransaction",
+      "description": "Returns a serialized signature that can be used to redeem funds from a HTLC contract using the `EarlyResolve` method.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "wallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "contractAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "recipient",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "subscribeForHeadBlock",
+      "description": "Subscribes to new block events (retrieves the full block).",
+      "tags": [
+        {
+          "name": "blockchain"
+        },
+        {
+          "name": "stream"
+        }
+      ],
+      "params": [
+        {
+          "name": "includeBody",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "BoxStream",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "subscribeForHeadBlockHash",
+      "description": "Subscribes to new block events (only retrieves the block hash).",
+      "tags": [
+        {
+          "name": "blockchain"
+        },
+        {
+          "name": "stream"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "BoxStream",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "subscribeForLogsByAddressesAndTypes",
+      "description": "Subscribes to log events related to a given list of addresses and of any of the log types provided. If addresses is empty it does not filter by address. If log_types is empty it won't filter by log types. Thus the behavior is to assume all addresses or log_types are to be provided if the corresponding vec is empty.",
+      "tags": [
+        {
+          "name": "blockchain"
+        },
+        {
+          "name": "stream"
+        }
+      ],
+      "params": [
+        {
+          "name": "addresses",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "logTypes",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "BoxStream",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "subscribeForValidatorElectionByAddress",
+      "description": "Subscribes to pre epoch validators events.",
+      "tags": [
+        {
+          "name": "blockchain"
+        },
+        {
+          "name": "stream"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "BoxStream",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "unlockAccount",
+      "description": "Unlocks the account.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "passphrase",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "duration",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "verifySignature",
+      "description": "Verifies the signature based on the provided public key and message.",
+      "tags": [
+        {
+          "name": "wallet"
+        }
+      ],
+      "params": [
+        {
+          "name": "message",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "publicKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signature",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "isHex",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "bool",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Account": {
+        "title": "Account",
+        "description": "",
+        "required": [
+          "address",
+          "balance",
+          "accountAdditionalFields"
+        ],
+        "properties": {
+          "address": {
+            "title": "address",
+            "type": "string"
+          },
+          "balance": {
+            "title": "balance",
+            "type": "number"
+          },
+          "accountAdditionalFields": {
+            "title": "accountAdditionalFields",
+            "type": "object"
+          }
+        }
+      },
+      "Block": {
+        "title": "Block",
+        "description": "",
+        "required": [
+          "hash",
+          "size",
+          "batch",
+          "epoch",
+          "network",
+          "version",
+          "number",
+          "timestamp",
+          "parentHash",
+          "seed",
+          "extraData",
+          "stateHash",
+          "bodyHash",
+          "historyHash",
+          "additionalFields"
+        ],
+        "properties": {
+          "hash": {
+            "title": "hash",
+            "type": "string"
+          },
+          "size": {
+            "title": "size",
+            "type": "number"
+          },
+          "batch": {
+            "title": "batch",
+            "type": "number"
+          },
+          "epoch": {
+            "title": "epoch",
+            "type": "number"
+          },
+          "network": {
+            "title": "network",
+            "type": "string"
+          },
+          "version": {
+            "title": "version",
+            "type": "number"
+          },
+          "number": {
+            "title": "number",
+            "type": "number"
+          },
+          "timestamp": {
+            "title": "timestamp",
+            "type": "number"
+          },
+          "parentHash": {
+            "title": "parentHash",
+            "type": "string"
+          },
+          "seed": {
+            "title": "seed",
+            "type": "string"
+          },
+          "extraData": {
+            "title": "extraData",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "stateHash": {
+            "title": "stateHash",
+            "type": "string"
+          },
+          "bodyHash": {
+            "title": "bodyHash",
+            "type": "string"
+          },
+          "historyHash": {
+            "title": "historyHash",
+            "type": "string"
+          },
+          "transactions": {
+            "title": "transactions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExecutedTransaction"
+            }
+          },
+          "additionalFields": {
+            "title": "additionalFields",
+            "type": "object"
+          }
+        }
+      },
+      "BlockchainState": {
+        "title": "BlockchainState",
+        "description": "",
+        "required": [
+          "blockNumber",
+          "blockHash"
+        ],
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          },
+          "blockHash": {
+            "title": "blockHash",
+            "type": "string"
+          }
+        }
+      },
+      "DoubleProposalProof": {
+        "title": "DoubleProposalProof",
+        "description": "",
+        "required": [
+          "blockNumber",
+          "hashes"
+        ],
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          }
+        }
+      },
+      "DoubleVoteProof": {
+        "title": "DoubleVoteProof",
+        "description": "",
+        "required": [
+          "blockNumber"
+        ],
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          }
+        }
+      },
+      "ExecutedTransaction": {
+        "title": "ExecutedTransaction",
+        "description": "",
+        "required": [
+          "transaction",
+          "executionResult"
+        ],
+        "properties": {
+          "transaction": {
+            "title": "transaction",
+            "$ref": "#/components/schemas/Transaction"
+          },
+          "executionResult": {
+            "title": "executionResult",
+            "type": "boolean"
+          }
+        }
+      },
+      "ForkProof": {
+        "title": "ForkProof",
+        "description": "",
+        "required": [
+          "blockNumber",
+          "hashes"
+        ],
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          }
+        }
+      },
+      "MempoolInfo": {
+        "title": "MempoolInfo",
+        "description": "",
+        "required": [
+          "total",
+          "buckets"
+        ],
+        "properties": {
+          "0": {
+            "title": "0",
+            "type": "number"
+          },
+          "1": {
+            "title": "1",
+            "type": "number"
+          },
+          "2": {
+            "title": "2",
+            "type": "number"
+          },
+          "5": {
+            "title": "5",
+            "type": "number"
+          },
+          "10": {
+            "title": "10",
+            "type": "number"
+          },
+          "20": {
+            "title": "20",
+            "type": "number"
+          },
+          "50": {
+            "title": "50",
+            "type": "number"
+          },
+          "100": {
+            "title": "100",
+            "type": "number"
+          },
+          "200": {
+            "title": "200",
+            "type": "number"
+          },
+          "500": {
+            "title": "500",
+            "type": "number"
+          },
+          "1000": {
+            "title": "1000",
+            "type": "number"
+          },
+          "2000": {
+            "title": "2000",
+            "type": "number"
+          },
+          "5000": {
+            "title": "5000",
+            "type": "number"
+          },
+          "10000": {
+            "title": "10000",
+            "type": "number"
+          },
+          "total": {
+            "title": "total",
+            "type": "number"
+          },
+          "buckets": {
+            "title": "buckets",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "PenalizedSlots": {
+        "title": "PenalizedSlots",
+        "description": "",
+        "required": [
+          "blockNumber",
+          "disabled"
+        ],
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          },
+          "disabled": {
+            "title": "disabled",
+            "type": "object"
+          }
+        }
+      },
+      "PolicyConstants": {
+        "title": "PolicyConstants",
+        "description": "",
+        "required": [
+          "stakingContractAddress",
+          "coinbaseAddress",
+          "transactionValidityWindow",
+          "maxSizeMicroBody",
+          "version",
+          "slots",
+          "blocksPerBatch",
+          "batchesPerEpoch",
+          "blocksPerEpoch",
+          "validatorDeposit",
+          "minimumStake",
+          "totalSupply",
+          "blockSeparationTime",
+          "jailEpochs",
+          "genesisBlockNumber"
+        ],
+        "properties": {
+          "stakingContractAddress": {
+            "title": "stakingContractAddress",
+            "type": "string"
+          },
+          "coinbaseAddress": {
+            "title": "coinbaseAddress",
+            "type": "string"
+          },
+          "transactionValidityWindow": {
+            "title": "transactionValidityWindow",
+            "type": "number"
+          },
+          "maxSizeMicroBody": {
+            "title": "maxSizeMicroBody",
+            "type": "number"
+          },
+          "version": {
+            "title": "version",
+            "type": "number"
+          },
+          "slots": {
+            "title": "slots",
+            "type": "number"
+          },
+          "blocksPerBatch": {
+            "title": "blocksPerBatch",
+            "type": "number"
+          },
+          "batchesPerEpoch": {
+            "title": "batchesPerEpoch",
+            "type": "number"
+          },
+          "blocksPerEpoch": {
+            "title": "blocksPerEpoch",
+            "type": "number"
+          },
+          "validatorDeposit": {
+            "title": "validatorDeposit",
+            "type": "number"
+          },
+          "minimumStake": {
+            "title": "minimumStake",
+            "type": "number"
+          },
+          "totalSupply": {
+            "title": "totalSupply",
+            "type": "number"
+          },
+          "blockSeparationTime": {
+            "title": "blockSeparationTime",
+            "type": "number"
+          },
+          "jailEpochs": {
+            "title": "jailEpochs",
+            "type": "number"
+          },
+          "genesisBlockNumber": {
+            "title": "genesisBlockNumber",
+            "type": "number"
+          }
+        }
+      },
+      "RPCData": {
+        "title": "RPCData",
+        "description": "",
+        "required": [
+          "data",
+          "metadata"
+        ],
+        "properties": {
+          "data": {
+            "title": "data",
+            "type": "object"
+          },
+          "metadata": {
+            "title": "metadata",
+            "type": "object"
+          }
+        }
+      },
+      "ReturnAccount": {
+        "title": "ReturnAccount",
+        "description": "",
+        "required": [
+          "address",
+          "publicKey",
+          "privateKey"
+        ],
+        "properties": {
+          "address": {
+            "title": "address",
+            "type": "string"
+          },
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
+          },
+          "privateKey": {
+            "title": "privateKey",
+            "type": "string"
+          }
+        }
+      },
+      "ReturnSignature": {
+        "title": "ReturnSignature",
+        "description": "",
+        "required": [
+          "publicKey",
+          "signature"
+        ],
+        "properties": {
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
+          },
+          "signature": {
+            "title": "signature",
+            "type": "string"
+          }
+        }
+      },
+      "Slot": {
+        "title": "Slot",
+        "description": "",
+        "required": [
+          "slotNumber",
+          "validator",
+          "publicKey"
+        ],
+        "properties": {
+          "slotNumber": {
+            "title": "slotNumber",
+            "type": "number"
+          },
+          "validator": {
+            "title": "validator",
+            "type": "string"
+          },
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
+          }
+        }
+      },
+      "Slots": {
+        "title": "Slots",
+        "description": "",
+        "required": [
+          "firstSlotNumber",
+          "numSlots",
+          "validator",
+          "publicKey"
+        ],
+        "properties": {
+          "firstSlotNumber": {
+            "title": "firstSlotNumber",
+            "type": "number"
+          },
+          "numSlots": {
+            "title": "numSlots",
+            "type": "number"
+          },
+          "validator": {
+            "title": "validator",
+            "type": "string"
+          },
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
+          }
+        }
+      },
+      "Staker": {
+        "title": "Staker",
+        "description": "",
+        "required": [
+          "address",
+          "balance",
+          "inactiveBalance",
+          "retiredBalance"
+        ],
+        "properties": {
+          "address": {
+            "title": "address",
+            "type": "string"
+          },
+          "balance": {
+            "title": "balance",
+            "type": "number"
+          },
+          "delegation": {
+            "title": "delegation",
+            "type": "string"
+          },
+          "inactiveBalance": {
+            "title": "inactiveBalance",
+            "type": "number"
+          },
+          "inactiveFrom": {
+            "title": "inactiveFrom",
+            "type": "number"
+          },
+          "retiredBalance": {
+            "title": "retiredBalance",
+            "type": "number"
+          }
+        }
+      },
+      "TendermintProof": {
+        "title": "TendermintProof",
+        "description": "",
+        "required": [
+          "round",
+          "sig"
+        ],
+        "properties": {
+          "round": {
+            "title": "round",
+            "type": "number"
+          },
+          "sig": {
+            "title": "sig",
+            "type": "object"
+          }
+        }
+      },
+      "Transaction": {
+        "title": "Transaction",
+        "description": "",
+        "required": [
+          "hash",
+          "size",
+          "relatedAddresses",
+          "from",
+          "fromType",
+          "to",
+          "toType",
+          "value",
+          "fee",
+          "senderData",
+          "recipientData",
+          "flags",
+          "validityStartHeight",
+          "proof",
+          "networkId"
+        ],
+        "properties": {
+          "hash": {
+            "title": "hash",
+            "type": "string"
+          },
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          },
+          "timestamp": {
+            "title": "timestamp",
+            "type": "number"
+          },
+          "confirmations": {
+            "title": "confirmations",
+            "type": "number"
+          },
+          "size": {
+            "title": "size",
+            "type": "number"
+          },
+          "relatedAddresses": {
+            "title": "relatedAddresses",
+            "type": "object"
+          },
+          "from": {
+            "title": "from",
+            "type": "string"
+          },
+          "fromType": {
+            "title": "fromType",
+            "type": "number"
+          },
+          "to": {
+            "title": "to",
+            "type": "string"
+          },
+          "toType": {
+            "title": "toType",
+            "type": "number"
+          },
+          "value": {
+            "title": "value",
+            "type": "number"
+          },
+          "fee": {
+            "title": "fee",
+            "type": "number"
+          },
+          "senderData": {
+            "title": "senderData",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "recipientData": {
+            "title": "recipientData",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "flags": {
+            "title": "flags",
+            "type": "number"
+          },
+          "validityStartHeight": {
+            "title": "validityStartHeight",
+            "type": "number"
+          },
+          "proof": {
+            "title": "proof",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "networkId": {
+            "title": "networkId",
+            "type": "number"
+          }
+        }
+      },
+      "Validator": {
+        "title": "Validator",
+        "description": "",
+        "required": [
+          "address",
+          "signingKey",
+          "votingKey",
+          "rewardAddress",
+          "balance",
+          "numStakers",
+          "retired"
+        ],
+        "properties": {
+          "address": {
+            "title": "address",
+            "type": "string"
+          },
+          "signingKey": {
+            "title": "signingKey",
+            "type": "string"
+          },
+          "votingKey": {
+            "title": "votingKey",
+            "type": "string"
+          },
+          "rewardAddress": {
+            "title": "rewardAddress",
+            "type": "string"
+          },
+          "signalData": {
+            "title": "signalData",
+            "type": "string"
+          },
+          "balance": {
+            "title": "balance",
+            "type": "number"
+          },
+          "numStakers": {
+            "title": "numStakers",
+            "type": "number"
+          },
+          "inactivityFlag": {
+            "title": "inactivityFlag",
+            "type": "number"
+          },
+          "retired": {
+            "title": "retired",
+            "type": "boolean"
+          },
+          "jailedFrom": {
+            "title": "jailedFrom",
+            "type": "number"
+          }
+        }
+      },
+      "ZKPState": {
+        "title": "ZKPState",
+        "description": "",
+        "required": [
+          "latestBlock"
+        ],
+        "properties": {
+          "latestBlock": {
+            "title": "latestBlock",
+            "$ref": "#/components/schemas/Block"
+          },
+          "latestProof": {
+            "title": "latestProof",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "examplePairings": {}
+  }
+}

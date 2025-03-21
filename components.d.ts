@@ -13,6 +13,7 @@ declare module 'vue' {
     IconSet: typeof import('./.vitepress/theme/components/IconSet.vue')['default']
     PillSelector: typeof import('./.vitepress/theme/components/PillSelector.vue')['default']
     RpcDocsHeaderActions: typeof import('./.vitepress/theme/components/RpcDocsHeaderActions.vue')['default']
+    RpcMethod: typeof import('./.vitepress/theme/components/RpcMethod.vue')['default']
     Toast: typeof import('./.vitepress/theme/components/Toast.vue')['default']
   }
 }

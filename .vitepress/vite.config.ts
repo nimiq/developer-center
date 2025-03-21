@@ -1,11 +1,14 @@
 import { env } from 'node:process'
+import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import { consola } from 'consola'
+import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { RpcDocsGeneratorPlugin } from './rpc/vite'
 
 export default defineConfig(async () => {
   const environment = env.DEPLOYMENT_MODE
@@ -19,6 +22,12 @@ export default defineConfig(async () => {
     },
     server: {
       hmr: { overlay: false },
+    },
+
+    resolve: {
+      alias: {
+        'rpc-docs.json': '/.vitepress/rpc/openrpc-document.json',
+      },
     },
 
     plugins: [
@@ -43,11 +52,11 @@ export default defineConfig(async () => {
       VueDevTools(),
 
       ViteImageOptimizer(),
+
+      RpcDocsGeneratorPlugin(),
+
+      GitChangelog({ repoURL: 'https://github.com/nimi/developer-center' }),
+      NimiqVitepressVitePlugin(),
     ],
-    ssr: {
-      noExternal: [
-        'nimiq-vitepress-theme',
-      ],
-    },
   }
 })

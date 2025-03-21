@@ -1,8 +1,8 @@
 import { createExternalPackageIconLoader } from '@iconify/utils/lib/loader/external-pkg'
 import { presetNimiq } from 'nimiq-css/unocss'
-import { defineConfig, presetIcons } from 'unocss'
-import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
+import { defineConfig, presetIcons, presetWind3 } from 'unocss'
 import { presetOnmax } from 'unocss-preset-onmax'
+import { presetScalePx } from 'unocss-preset-scale-px'
 
 export default defineConfig({
   content: {
@@ -15,13 +15,14 @@ export default defineConfig({
   },
 
   presets: [
-    presetOnmax(),
+    presetWind3(),
+    presetOnmax({ presets: { wind4: false } }),
     presetNimiq({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
     }),
-    presetFluidSizing(),
+    presetScalePx(),
     presetIcons({
       collections: {
         ...createExternalPackageIconLoader('@iconify-json/tabler'),

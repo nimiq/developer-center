@@ -10,7 +10,7 @@ const specVersion = __ALBATROSS_RPC_OPENRPC_VERSION__
       Migrate from Nimiq PoW
     </a>
     <a :href="specUrl" flex="~ gap-8 items-center" nq-pill-sm download cursor-pointer nq-pill-tertiary un-text="neutral-900">
-      <div i-nimiq:arrow-to-bottom op-80 />
+      <div op-80 i-nimiq:arrow-to-bottom />
       Download OpenRPC.json
     </a>
   </div>

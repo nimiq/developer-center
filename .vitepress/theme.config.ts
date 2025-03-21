@@ -1,12 +1,30 @@
-import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme'
+import type { NimiqVitepressSidebar } from 'nimiq-vitepress-theme/types'
+import rpcDocs from './cache/openrpc-document.json'
+
+const slugify = (str: string) => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+const capitalizeFirstLetter = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 
 // @unocss-include
 
-export const themeConfig: NimiqVitepressThemeConfig = {
+// Helper function to generate RPC method items
+function getRpcMethodItems(): NimiqVitepressSidebar['items'] {
+  const tagOrder = ['validator', 'blockchain', 'consensus', 'wallet', 'policy', 'mempool', 'network', 'zkp_component']
+  const accordions: NimiqVitepressSidebar['items'] = tagOrder.map(tag => ({
+    text: capitalizeFirstLetter(tag).replace(/_/g, ' '),
+    icon: 'i-tabler:chevron-down',
+    items: rpcDocs.methods.filter(method => method.tags.map(t => t.name).includes(tag)).map(method => ({
+      text: `\`${method.name}\``,
+      link: `/rpc-docs/methods/${slugify(method.name)}`,
+    })),
+  }))
+  return accordions
+}
+
+export const themeConfig = {
   modules: [
     {
       text: 'Build',
-      subpath: '/build/',
+      subpath: 'build',
       icon: 'i-tabler:hammer',
       defaultPageLink: '/build/',
       description: 'On top of Nimiq',
@@ -26,14 +44,18 @@ export const themeConfig: NimiqVitepressThemeConfig = {
             { text: 'Getting started', link: '/build/web-client/getting-started', icon: 'i-tabler:player-play' },
             { text: 'Installation', link: '/build/web-client/installation', icon: 'i-tabler:download' },
             { text: 'Integrations', link: '/build/web-client/integrations', icon: 'i-tabler:plug' },
-            { text: 'Reference', icon: 'i-tabler:list', items: [
-              { text: 'Classes', link: '/build/web-client/reference/classes' },
-              { text: 'Enumerations', link: '/build/web-client/reference/enumerations' },
-              { text: 'Functions', link: '/build/web-client/reference/functions' },
-              { text: 'Globals', link: '/build/web-client/reference/globals' },
-              { text: 'Interfaces', link: '/build/web-client/reference/interfaces' },
-              { text: 'Type Aliases', link: '/build/web-client/reference/type-aliases' },
-            ] },
+            {
+              text: 'Reference',
+              icon: 'i-tabler:list',
+              items: [
+                { text: 'Classes', link: '/build/web-client/reference/classes' },
+                { text: 'Enumerations', link: '/build/web-client/reference/enumerations' },
+                { text: 'Functions', link: '/build/web-client/reference/functions' },
+                { text: 'Globals', link: '/build/web-client/reference/globals' },
+                { text: 'Interfaces', link: '/build/web-client/reference/interfaces' },
+                { text: 'Type Aliases', link: '/build/web-client/reference/type-aliases' },
+              ],
+            },
           ],
         },
         {
@@ -42,15 +64,15 @@ export const themeConfig: NimiqVitepressThemeConfig = {
             { text: 'Overview', link: '/build/set-up-your-own-node/', icon: 'i-tabler:server' },
             { text: 'Becoming a Validator', link: '/build/set-up-your-own-node/becoming-a-validator', icon: 'i-tabler:user-check' },
             { text: 'Prover Node Setup Guide', link: '/build/set-up-your-own-node/prover-node-guide', icon: 'i-tabler:book' },
-            { text: 'JSON-RPC Specification', link: '/build/set-up-your-own-node/rpc-docs/', icon: 'i-tabler:code' },
+            { text: 'RPC Docs', link: '/rpc-docs/index', icon: 'i-tabler:code' },
           ],
         },
       ],
     },
     {
       text: 'Validators',
-      subpath: '/validators/',
-      icon: 'i-tabler:shield-check',
+      subpath: 'validators',
+      icon: 'i-nimiq:verified',
       defaultPageLink: '/validators/',
       description: 'Your Staking and Pools Hub',
       sidebar: [
@@ -66,7 +88,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
     },
     {
       text: 'Learn',
-      subpath: '/learn/',
+      subpath: 'learn',
       icon: 'i-tabler:book',
       defaultPageLink: '/learn/',
       description: 'The technology',
@@ -131,6 +153,21 @@ export const themeConfig: NimiqVitepressThemeConfig = {
               ],
             },
           ],
+        },
+      ],
+    },
+    {
+      text: 'JSON-RPC',
+      subpath: 'rpc-docs',
+      icon: 'i-tabler:code',
+      defaultPageLink: '/rpc-docs/',
+      description: 'Interact with a node',
+      sidebar: [
+        {
+          text: 'Overview',
+          link: '/rpc-docs',
+          icon: 'i-tabler:api',
+          items: getRpcMethodItems(),
         },
       ],
     },

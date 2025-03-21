@@ -4,7 +4,7 @@ defineProps<{ href: string }>()
 
 <template>
   <a :href un-text="xs neutral-900 hocus:blue" flex="~ items-center" mx-0 mt-12 w-max font-semibold nq-arrow target="_blank">
-    <div i-nimiq:logos-github-mono mr-6 op-70 />
+    <div mr-6 op-70 i-nimiq:logos-github-mono />
     View source
   </a>
 </template>
