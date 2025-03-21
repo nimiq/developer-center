@@ -6,10 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const CardType: typeof import('.vitepress/theme/utils/types')['CardType']
   const EffectScope: typeof import('vue')['EffectScope']
-  const MarkdownContent: typeof import('.vitepress/theme/components/MarkdownContent')['MarkdownContent']
-  const Tag: typeof import('.vitepress/theme/utils/types')['Tag']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -17,7 +14,6 @@ declare global {
   const computedEager: typeof import('@vueuse/core')['computedEager']
   const computedInject: typeof import('@vueuse/core')['computedInject']
   const computedWithControl: typeof import('@vueuse/core')['computedWithControl']
-  const contentUpdatedCallbacks: typeof import('.vitepress/theme/utils/markdown-content')['contentUpdatedCallbacks']
   const controlledComputed: typeof import('@vueuse/core')['controlledComputed']
   const controlledRef: typeof import('@vueuse/core')['controlledRef']
   const createApp: typeof import('vue')['createApp']
@@ -57,7 +53,6 @@ declare global {
   const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
   const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
   const onClickOutside: typeof import('@vueuse/core')['onClickOutside']
-  const onContentUpdated: typeof import('.vitepress/theme/utils/markdown-content')['onContentUpdated']
   const onDeactivated: typeof import('vue')['onDeactivated']
   const onElementRemoval: typeof import('@vueuse/core')['onElementRemoval']
   const onErrorCaptured: typeof import('vue')['onErrorCaptured']

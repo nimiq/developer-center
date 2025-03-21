@@ -33,6 +33,7 @@ export default defineConfig(async () => {
     plugins: [
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],
+        dts: './.vitepress/components.d.ts',
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       }),
       AutoImport({
@@ -42,6 +43,7 @@ export default defineConfig(async () => {
           'vitepress',
         ],
 
+        dts: './.vitepress/auto-imports.d.ts',
         dirs: ['.vitepress/theme/components', '.vitepress/theme/utils'],
 
         vueTemplate: true,
@@ -55,7 +57,10 @@ export default defineConfig(async () => {
 
       RpcDocsGeneratorPlugin(),
 
-      GitChangelog({ repoURL: 'https://github.com/nimi/developer-center' }),
+      GitChangelog({
+        repoURL: 'https://github.com/nimi/developer-center',
+        include: ['{build,learn,validators}/**/*.md', 'rpc-docs/index.md'],
+      }),
       NimiqVitepressVitePlugin(),
     ],
   }
