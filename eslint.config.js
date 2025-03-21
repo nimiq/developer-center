@@ -4,7 +4,7 @@ export default antfu({
   unocss: true,
   typescript: true,
   vue: true,
-  ignores: ['.vitepress/cache', '*.woff2'],
+  ignores: ['.vitepress/cache', '*.woff2', '.vitepress/rpc/*.json'],
 }, {
   files: ['**/*.md'],
   rules: {
