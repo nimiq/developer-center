@@ -90,6 +90,7 @@ export const sidebar: DefaultTheme.Sidebar = {
             { text: 'Block live sync', link: '/learn/protocol/sync-protocol/block-live-sync' },
             { text: 'History macro sync', link: '/learn/protocol/sync-protocol/history-macro-sync' },
             { text: 'Light macro sync', link: '/learn/protocol/sync-protocol/light-macro-sync' },
+            { text: 'Pico macro sync', link: '/learn/protocol/sync-protocol/pico-macro-sync' },
             { text: 'State live sync', link: '/learn/protocol/sync-protocol/state-live-sync' },
             { text: 'Messages and Requests', link: '/learn/protocol/sync-protocol/messages-and-requests' },
 
