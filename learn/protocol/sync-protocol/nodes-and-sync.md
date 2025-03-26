@@ -28,16 +28,6 @@ Pico nodes rely on full or history nodes to sync through two mechanisms:
 - [Pico Macro Sync](pico-macro-sync.md)
 - [Block Live Sync](block-live-sync.md)
 
-The table below compares light and pico nodes:
-
-|  | **Light Node** | **Pico Node** |
-| --- | --- | --- |
-| **Verification** | Uses ZKPs | No ZKPs |
-| **Sync Method** | Light Macro Sync | Pico Macro Sync |
-| **Consensus** | Verified | Trust-based |
-| **Fallback** | Not applicable | Falls back to Light Macro Sync |
-| **Sync Speed** | Fast, includes proof verification | Faster, based on peer responses |
-
 ## Full nodes
 
 Full nodes are an essential component of our blockchain, providing high levels of reliability and security to the network. While full nodes may skip most of the blockchain when syncing and don’t hold a copy of the entire blockchain, they are qualified of generating zero-knowledge proofs, producing blocks, validating transactions, and pruning old data reducing the amount of data in their database.
@@ -57,6 +47,17 @@ History nodes rely on other history nodes to sync through two mechanisms:
 
 - [History Macro Sync](history-macro-sync.md)
 - [Block Live Sync](block-live-sync.md)
+
+## Sync Comparison Table
+
+|  | **History Node** | **Full Node** | **Light Node** | **Pico Node** |
+| --- | --- | --- | --- | --- |
+| **Verification** | Entire history | Full blocks and uses ZKP | Uses ZKPs | No ZKPs |
+| **Sync Method** | History Macro Sync | Light Macro Sync | Light Macro Sync | Pico Macro Sync |
+| **Consensus** | Fully verified | Verified | Verified | Trust-based |
+| **Fallback** | Not applicable | Not applicable | Not applicable | Falls back to Light Macro Sync |
+| **Sync Speed** | Slower, syncs full chain from genesis | Efficient, sync time grows over time | Fast, includes proof verification | Faster, based on peer responses |
+| **Web Client** | Not supported | Not supported | Supported | Supported |
 
 ## Other nodes
 
