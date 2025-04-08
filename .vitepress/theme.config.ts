@@ -1,17 +1,25 @@
 import type { NimiqVitepressSidebar } from 'nimiq-vitepress-theme/types'
 import rpcDocs from './cache/openrpc-document.json'
-
-const slugify = (str: string) => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
-const capitalizeFirstLetter = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
+import { capitalizeFirstLetter, slugify } from './utils'
 
 // @unocss-include
 
 // Helper function to generate RPC method items
+const tagOrder = ['validator', 'blockchain', 'consensus', 'wallet', 'policy', 'mempool', 'network', 'zkp_component'] as const
+const rpcAccordionIcons: Record<typeof tagOrder[number], string> = {
+  validator: 'i-nimiq:verified-filled',
+  blockchain: 'i-nimiq:nodes',
+  consensus: 'i-tabler:network',
+  wallet: 'i-tabler:wallet',
+  policy: 'i-tabler:road',
+  mempool: 'i-tabler:arrow-merge-alt-left',
+  network: 'i-tabler:cloud-network',
+  zkp_component: 'i-tabler:lock',
+}
 function getRpcMethodItems(): NimiqVitepressSidebar['items'] {
-  const tagOrder = ['validator', 'blockchain', 'consensus', 'wallet', 'policy', 'mempool', 'network', 'zkp_component']
   const accordions: NimiqVitepressSidebar['items'] = tagOrder.map(tag => ({
     text: capitalizeFirstLetter(tag).replace(/_/g, ' '),
-    icon: 'i-tabler:chevron-down',
+    icon: rpcAccordionIcons[tag],
     items: rpcDocs.methods.filter(method => method.tags.map(t => t.name).includes(tag)).map(method => ({
       text: `\`${method.name}\``,
       link: `/rpc-docs/methods/${slugify(method.name)}`,
@@ -164,10 +172,18 @@ export const themeConfig = {
       description: 'Interact with a node',
       sidebar: [
         {
-          text: 'Overview',
-          link: '/rpc-docs',
-          icon: 'i-tabler:api',
-          items: getRpcMethodItems(),
+          label: 'Overview',
+          items: [
+            { text: 'Overview', link: '/rpc-docs/', icon: 'i-tabler:layout-grid' },
+            { text: 'Clients', link: '/rpc-docs/clients', icon: 'i-tabler:plug' },
+            { text: 'Playground', link: '/rpc-docs/playground', icon: 'i-nimiq:basketball' },
+          ],
+        },
+        {
+          label: 'Methods',
+          items: [
+            ...getRpcMethodItems(),
+          ],
         },
       ],
     },

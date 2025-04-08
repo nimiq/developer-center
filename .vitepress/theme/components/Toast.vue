@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Toast } from 'radix-vue/namespaced'
+import { Toast } from 'reka-ui/namespaced'
 
 defineProps<{
   title: string

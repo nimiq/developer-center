@@ -22,6 +22,25 @@ export default defineConfig(async () => {
     },
     server: {
       hmr: { overlay: false },
+
+      // TODO move proxy to real backend
+      proxy: {
+        // Create a proxy for RPC requests to nimiqwatch
+        '/api/rpc': {
+          target: 'https://rpc.nimiqwatch.com/',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api\/rpc/, ''),
+          configure: (proxy) => {
+            proxy.on('proxyReq', (_proxyReq, req, _res) => {
+              // Log RPC requests for debugging
+              consola.info(`Proxying RPC request to nimiqwatch: ${req.method} ${req.url}`)
+            })
+            proxy.on('error', (err, _req, _res) => {
+              consola.error(`Proxy error: ${err}`)
+            })
+          },
+        },
+      },
     },
 
     resolve: {
@@ -59,7 +78,6 @@ export default defineConfig(async () => {
 
       GitChangelog({
         repoURL: 'https://github.com/nimi/developer-center',
-        include: ['{build,learn,validators}/**/*.md', 'rpc-docs/index.md'],
       }),
       NimiqVitepressVitePlugin(),
     ],

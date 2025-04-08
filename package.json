@@ -28,12 +28,14 @@
     "iconify-icon": "^2.3.0",
     "json2md": "^2.0.2",
     "medium-zoom": "^1.1.0",
-    "radix-vue": "^1.9.17",
+    "nimiq-rpc-client-ts": "1.0.0-beta.7",
+    "reka-ui": "^2.1.0",
     "vaul-vue": "^0.4.1",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.10.2",
+    "@apidevtools/json-schema-ref-parser": "^11.9.3",
     "@iconify-json/logos": "^1.2.4",
     "@iconify-json/tabler": "^1.2.17",
     "@iconify/utils": "^2.3.0",
@@ -54,6 +56,7 @@
     "pkg-types": "^2.1.0",
     "postcss": "^8.5.3",
     "sharp": "^0.33.5",
+    "shiki": "^3.2.1",
     "simple-git-hooks": "^2.12.1",
     "svgo": "^3.3.2",
     "typedoc": "^0.28.1",
