@@ -391,3 +391,92 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 ```
 
 :::
+
+## Remove your Validator
+
+Anyone can remove their validator when they no longer want to participate in the consensus. This process involves three transactions: `deactivate`, `retire`, and `delete` — and it may take up to 2 days to complete before the full 100'000 NIM deposit can be recovered.
+
+- `deactivate` marks the validator as inactive
+- `retire` confirms the validator is leaving permanently
+- `delete` removes the validator and returns the deposit  
+
+The process may take up to 2 days due to the protocol’s requirement to allow time for reporting any potential misbehavior before the validator can be fully removed and the deposit returned.
+
+#### Deactivate your Validator
+
+::: details ARPL {open}
+
+```
+validator:deactivate <validator_address> <signing_private_key>
+```
+
+:::
+
+::: details CURL
+
+The manual way with `curl` requires a few more parameters:
+1. The address paying the transaction fee
+2. The address of the validator you are deactivating
+3. The signing key of the validator for validity and authorization
+4. The fee for the transaction (can be zero)
+5. The validity start height of the transaction (+0 means the node takes the current block height)
+
+```bash
+curl 'http://localhost:8648' -H 'Content-Type: application/json' \
+    --data-raw '{"method": "sendDeactivateValidatorTransaction", "params": ["<sender_wallet>", "<validator_address>", "<signing_secret_key>", 0, 0], "jsonrpc": "2.0", "id": 1}'
+```
+
+:::
+
+
+#### Retire you Validator
+
+::: details ARPL {open}
+
+```
+validator:retire <validator_address>
+```
+
+:::
+
+::: details CURL
+
+The manual way with `curl` requires a few more parameters:
+1. The address paying the transaction fee
+2. The address of the validator you are retiring
+3. The fee for the transaction (can be zero)
+4. The validity start height of the transaction (+0 means the node takes the current block height)
+
+```bash
+curl 'http://localhost:8648' -H 'Content-Type: application/json' \
+    --data-raw '{"method": "sendRetireValidatorTransaction", "params": ["<sender_wallet>", "<validator_wallet>", 0, 0], "jsonrpc": "2.0", "id": 1}'
+```
+
+:::
+
+
+#### Delete your Validator
+
+::: details ARPL {open}
+
+```
+validator:delete <validator_address>
+```
+
+:::
+
+::: details CURL
+
+The manual way with `curl` requires a few more parameters:
+1. The address of your validator wallet submitting the `delete` transaction
+2. The address where the funds will be sent
+3. The amount in NIM to withdraw
+4. The fee for the transaction (can be zero)
+5. The validity start height of the transaction (+0 means the node takes the current block height)
+
+```bash
+curl 'http://localhost:8648' -H 'Content-Type: application/json' \
+    --data-raw '{"method": "sendDeleteValidatorTransaction", "params": ["<validator_wallet>", "<recipient>", 0, 0, 0], "jsonrpc": "2.0", "id": 1}'
+```
+
+:::
