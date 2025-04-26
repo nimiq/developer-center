@@ -45,12 +45,16 @@ function getCurlCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMetho
 }
 
 function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>) {
-  const { name, userParams: params, tags } = toValue(method)
+  const { name, userParams: params } = toValue(method)
   const paramsStr = params.length > 0 ? JSON.stringify(params) : ''
-  return `import { NimiqRPCClient } from 'albatross-rpc-client-ts'
+  return `import { ${name} } from 'nimiq-rpc-client-ts/http'
+import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
 
-const client = new NimiqRPCClient('${nodeUrl}')
-const { data, error } = await client.${tags[0].name}.${name}(${paramsStr})
+// Make sure to set \`ALBATROSS_NODE_URL\`, \`ALBATROSS_NODE_USERNAME\` and \`ALBATROSS_NODE_PASSWORD\` environment variables
+// or
+const options: HttpOptions = { url: '${nodeUrl}', auth: { username: '', password: '' } }
+
+const { data, error } = await ${name}(${paramsStr}, options)
 console.log(data, error)`
 }
 

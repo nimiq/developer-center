@@ -6,7 +6,7 @@ import Input from './Input.vue'
 
 const props = defineProps<RpcMethodProps>()
 
-const { callRpc, widget, history, clearHistory, playgroundConfig } = usePlaygroundRpc(props)
+const { callRpc, widget, history, clearHistory, playgroundConfig, defaultNodeUrl } = usePlaygroundRpc(props)
 </script>
 
 <template>
@@ -30,10 +30,10 @@ const { callRpc, widget, history, clearHistory, playgroundConfig } = usePlaygrou
             <Popover.Portal>
               <Popover.Content :collision-padding="12" side="bottom" :side-offset="1.5" will-change="transform,opacity" reka-open="animate-in slide-in-t fade-in" reka-close="animate-out slide-in-b fade-out" outline="~ 1.5 offset--1.5 neutral-200" relative max-w-320 w-max bg-neutral-0 shadow f-p-xs rounded-8>
                 <h3 text-neutral>
-                  RPC Request Config
+                  RPC Config
                 </h3>
 
-                <Input v-model="playgroundConfig.nodeUrl" label="URL" f-text-xs f-mt-2xs />
+                <Input v-model="playgroundConfig.nodeUrl" required label="URL" f-text-xs f-mt-2xs :default-value="defaultNodeUrl" />
 
                 <Input v-model="playgroundConfig.auth.username" label="User" f-text-xs f-mt-sm />
                 <Input v-model="playgroundConfig.auth.password" label="Password" f-text-xs f-mt-2xs />
@@ -78,21 +78,20 @@ const { callRpc, widget, history, clearHistory, playgroundConfig } = usePlaygrou
             Today
           </h4>
           <Accordion.Root type="multiple" :collapsible="true">
-            <Accordion.Item v-for="({ context, data, error }, index) in history" :key="index" :value="`${context.timestamp}`">
+            <Accordion.Item v-for="([isOk, error, data, { request: { timestamp, body } }], index) in history" :key="index" :value="`${timestamp}`">
               <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" w-full flex="~ items-center gap-8" p-4 px-8 rounded-4>
                 <div text-6 op-80 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
                 <code font-semibold f-text-2xs>
-                  {{ context.body.method }}
+                  {{ body.method }}
                 </code>
                 <div ml-auto>
-                  <div v-if="error" bg-red-400 p-3 stack rounded-2 outline="1.5 ~ neutral-0/10" :title="error.message">
+                  <div v-if="!isOk" bg-red-400 p-3 stack rounded-2 outline="1.5 ~ neutral-0/10" :title="error">
                     <div v-if="error" text-12 text-red op-80 i-nimiq:alert />
                   </div>
                 </div>
               </Accordion.Trigger>
-              <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" of-hidden :value="`${context.timestamp}`" f-pb-2xs>
-                {{ context }}
-                {{ data }}
+              <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" of-hidden :value="timestamp" f-pb-2xs>
+                <pre mt-4 bg-neutral-100 f-px-2xs rounded-8>{{ isOk ? data : error }}</pre>
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root>

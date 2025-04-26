@@ -3,7 +3,7 @@
   "info": {
     "title": "Nimiq JSON-RPC Specification",
     "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
-    "version": "v1.0.8",
+    "version": "v1.0.9",
     "contact": {
       "name": "The Nimiq Core Development Team <info@nimiq.com>",
       "email": "",
