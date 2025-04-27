@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import type { RpcMethodProps } from '../composables/rpc/types'
+import type { NimiqRpcMethod } from '../../../rpc/utils'
 import { Tabs } from 'reka-ui/namespaced'
 import { toValue } from 'vue'
-import { useCodeSnippet } from '../composables/rpc/code-snippet'
-import { usePlaygroundRpc } from '../composables/rpc/playground'
+import { useCodeSnippet } from './code-snippet'
+import { usePlaygroundRpc } from './playground'
 import RpcPlayground from './RpcPlayground.vue'
 
-const props = defineProps<RpcMethodProps>()
+const props = defineProps<NimiqRpcMethod>()
 
-const { widget, playgroundConfig } = usePlaygroundRpc(props)
-const { tabs, currentTab } = useCodeSnippet(playgroundConfig, widget)
+const { widget } = usePlaygroundRpc(props)
+const { tabs, currentTab } = useCodeSnippet(widget)
 </script>
 
 <template>
   <div>
     <h1 font-semibold f-text-2xl f-mb-2xs>
-      <code>{{ name }}</code> method
+      <code>{{ props.name }}</code> method
     </h1>
-    <p v-if="description" f-mt-xs>
-      {{ description }}
+    <p v-if="props.description" f-mt-xs>
+      {{ props.description }}
     </p>
 
-    <div grid="~ cols-[32ch_1fr] gap-32" :class="{ 'f-mt-lg': !description }">
+    <div grid="~ cols-[32ch_1fr] gap-32" :class="{ 'f-mt-lg': !props.description }">
       <div mx-0>
         <h2 nq-label mt-0="!">
           Params
         </h2>
 
-        <p v-if="input.length === 0" font-italic>
+        <p v-if="props.input.length === 0" font-italic>
           This method does not require any parameters.
         </p>
         <ul v-else>
-          <li v-for="({ required, key, type }) in input" :key my-4 ml-0 before:hidden>
+          <li v-for="({ required, key, type }) in props.input" :key my-4 ml-0 before:hidden>
             <code bg-transparent font-semibold text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
           </li>
         </ul>
@@ -39,11 +39,11 @@ const { tabs, currentTab } = useCodeSnippet(playgroundConfig, widget)
         <h2 nq-label f-mt-lg="!">
           Result
         </h2>
-        <p v-if="output.length === 0" font-italic>
+        <p v-if="props.output.length === 0" font-italic>
           This method does not return any result.
         </p>
         <ul v-else>
-          <li v-for="({ required, key, type }) in output" :key my-4 ml-0 before:hidden>
+          <li v-for="({ required, key, type }) in props.output" :key my-4 ml-0 before:hidden>
             <code bg-transparent font-semibold text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
           </li>
         </ul>
@@ -51,7 +51,7 @@ const { tabs, currentTab } = useCodeSnippet(playgroundConfig, widget)
       <!-- .25em .65em .25em .75em -->
 
       <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" h-max max-w-none min-w-0 w-full rounded-8>
-        <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${method}`" h-44 bg-neutral-50 py-8 border="b-1.5 solid neutral/8">
+        <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" h-44 bg-neutral-50 py-8 border="b-1.5 solid neutral/8">
           <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" mx-0 ml--8 px-0.65em py-4 font-bold rounded-6>
             <div :class="icon" grayscale="reka-active:0 100" transition-filter />
             <span reka-active:text-blue>

@@ -1,7 +1,9 @@
 import type { Auth, HttpOptions, HttpRpcResult } from 'nimiq-rpc-client-ts/types'
-import type { RpcMethodProps } from './types'
+import type { MaybeRef } from 'vue'
+import type { NimiqRpcMethod } from '../../../rpc/utils'
 import { useLocalStorage } from '@vueuse/core'
 import { rpcCall } from 'nimiq-rpc-client-ts/http'
+import { computed, toValue } from 'vue'
 
 export interface RpcPlaygroundConfig {
   nodeUrl: string
@@ -11,29 +13,28 @@ export interface RpcPlaygroundConfig {
   }
 }
 
-export type RpcPlaygroundMethod = (RpcMethodProps & {
+export type RpcPlaygroundMethod = (NimiqRpcMethod & {
   state: 'loading' | 'success' | 'error' | 'idle'
   userParams: any[]
-}) | Partial<RpcMethodProps> & {
+}) | Partial<NimiqRpcMethod> & {
   state: 'unselected'
   userParams: []
 }
 
 export type UsePlaygroundRpcOptions = RpcPlaygroundMethod & {
   method: string
-  name: string
 }
 
-export function usePlaygroundRpc(props: Partial<RpcMethodProps>) {
+export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   const defaultNodeUrl = '/api/rpc'
-  const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_${props.method || 'playground'}`, {
+  const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_playground`, {
     nodeUrl: defaultNodeUrl,
     auth: { username: '', password: '' },
   })
 
-  const playground = useLocalStorage<RpcPlaygroundMethod>(``, {
-    ...props as RpcMethodProps,
-    state: props ? 'idle' : 'unselected',
+  const playground = useLocalStorage<RpcPlaygroundMethod>(computed(() => `v1_rpc_playground_${toValue(props).method}`), {
+    ...toValue(props) as NimiqRpcMethod,
+    state: toValue(props) ? 'idle' : 'unselected',
     userParams: [],
   })
 
@@ -47,7 +48,7 @@ export function usePlaygroundRpc(props: Partial<RpcMethodProps>) {
     history.value = []
   }
 
-  async function callRpc() {
+  async function callRpc(method: string, params: any[]) {
     if (!playground.value.name) {
       console.error('No method name provided')
       return
@@ -57,9 +58,9 @@ export function usePlaygroundRpc(props: Partial<RpcMethodProps>) {
       const url = new URL(playgroundConfig.value.nodeUrl, window.location.origin)
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
       const options: HttpOptions = { url, auth }
-      const res = await rpcCall(playground.value.name, playground.value.userParams, options)
+      const res = await rpcCall(method, params, options)
       playground.value.state = 'success'
-      history.value.push(res)
+      history.value = [res, ...history.value]
     }
     catch (error) {
       playground.value.state = 'error'
@@ -67,11 +68,32 @@ export function usePlaygroundRpc(props: Partial<RpcMethodProps>) {
     }
   }
 
+  const groupedHistory = computed(() => {
+    const today: HttpRpcResult<any>[] = []
+    const yesterday: HttpRpcResult<any>[] = []
+    const older: HttpRpcResult<any>[] = []
+
+    const now = new Date()
+    for (const item of history.value) {
+      const date = new Date(item[3].request.timestamp)
+      const diff = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
+
+      if (diff === 0)
+        today.push(item)
+      else if (diff === 1)
+        yesterday.push(item)
+      else
+        older.push(item)
+    }
+    return [{ label: 'Today', items: today }, { label: 'Yesterday', items: yesterday }, { label: 'Older', items: older }]
+  })
+
   return {
     defaultNodeUrl,
     widget: playground,
     callRpc,
     history,
+    groupedHistory,
     clearHistory,
     playgroundConfig,
   }

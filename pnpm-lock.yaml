@@ -68,6 +68,9 @@ importers:
       '@nolebase/vitepress-plugin-git-changelog':
         specifier: ^2.16.0
         version: 2.16.0(patch_hash=d3c7e3e90d785e34a0e66e3d50bdc7af700d62101274ea8570e916866d07873f)(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.23.4)(@types/node@22.15.2)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3)(yaml@2.7.1))
+      '@open-rpc/meta-schema':
+        specifier: ^1.14.9
+        version: 1.14.9
       '@types/node':
         specifier: ^22.15.2
         version: 22.15.2
@@ -920,6 +923,9 @@ packages:
     resolution: {integrity: sha512-ztCK3Jk2UybktWl5O64hPJKsJEG1aqaxRRoI3CeiA3N1xOd+FC6iCHKj/rM6mzeEUqUcYzcj+EZ1YBUAqsfnag==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.1
+
+  '@open-rpc/meta-schema@1.14.9':
+    resolution: {integrity: sha512-2/CbDzOVpcaSnMs28TsRv8MKJwJi0TTYFlQ6q6qobAH26oIuhYgcZooKf4l71emgntU6MMcFQCA0h4mJ4dBCdA==}
 
   '@pkgr/core@0.1.2':
     resolution: {integrity: sha512-fdDH1LSGfZdTH2sxdpVMw31BanV28K/Gry0cVFxaNP77neJSkd82mM8ErPNYs9e+0O7SdHBLTDzDgwUuy18RnQ==}
@@ -4717,6 +4723,8 @@ snapshots:
       vitepress: 2.0.0-alpha.5(@algolia/client-search@5.23.4)(@types/node@22.15.2)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3)(yaml@2.7.1)
     transitivePeerDependencies:
       - typescript
+
+  '@open-rpc/meta-schema@1.14.9': {}
 
   '@pkgr/core@0.1.2': {}
 

@@ -11,6 +11,7 @@ export default defineConfig({
       '**/**.md',
       '.vitepress/theme/components/**/*.vue',
       '.vitepress/theme.config.ts',
+      '.vitepress/rpc/utils.ts',
     ],
   },
 

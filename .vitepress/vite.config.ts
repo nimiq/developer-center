@@ -1,20 +1,26 @@
-import { env } from 'node:process'
+import { readFileSync } from 'node:fs'
 import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import { consola } from 'consola'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
+import { resolve } from 'pathe'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { loadMethods } from './rpc/utils'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
+import { generateWebClientDocs } from './scripts/web-client'
 
 export default defineConfig(async () => {
-  const environment = env.DEPLOYMENT_MODE
-  consola.info(`Building for ${environment}`)
+  await generateWebClientDocs()
 
-  // const { albatrossCommitDate, albatrossCommitHash, repoUrl } = await getGitStats()
+  // Load the OpenRPC document
+  const openRpcDocPath = resolve(__dirname, 'rpc/openrpc-document.json')
+  const openRpcDoc = JSON.parse(readFileSync(openRpcDocPath, 'utf-8'))
+  const openRpcDocInfo = openRpcDoc.info
+  const methods = await loadMethods(openRpcDoc)
 
   return {
     optimizeDeps: {
@@ -43,10 +49,9 @@ export default defineConfig(async () => {
       },
     },
 
-    resolve: {
-      alias: {
-        'rpc-docs.json': '/.vitepress/rpc/openrpc-document.json',
-      },
+    define: {
+      __NIMIQ_OPENRPC_INFO__: JSON.stringify(openRpcDocInfo),
+      __NIMIQ_OPENRPC_METHODS__: JSON.stringify(methods),
     },
 
     plugins: [

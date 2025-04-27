@@ -2,7 +2,6 @@ import { env } from 'node:process'
 import consola from 'consola'
 import { defineNimiqVitepressConfig } from 'nimiq-vitepress-theme'
 import { readPackageJSON } from 'pkg-types'
-import { generateWebClientDocs } from './scripts/web-client.js'
 import { themeConfig } from './theme.config.js'
 
 // https://vitepress.dev/reference/site-config
@@ -16,9 +15,6 @@ export default async () => {
   const base = basesUrl[env.DEPLOYMENT_MODE!]
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
-  await generateWebClientDocs()
-  // const { specUrl, specVersion } = await generateRpcDocs()
-
   return defineNimiqVitepressConfig({
     base,
     title,
@@ -30,10 +26,6 @@ export default async () => {
     themeConfig,
 
     vite: {
-      define: {
-        __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(''),
-        __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(''),
-      },
       configFile: '.vitepress/vite.config.ts',
     },
 

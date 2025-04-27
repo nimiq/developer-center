@@ -1,13 +1,15 @@
 // @unocss-include
 
 import type { MaybeRef } from 'vue'
-import type { RpcPlaygroundConfig, RpcPlaygroundMethod } from './playground'
+import type { RpcPlaygroundMethod } from './playground'
 import { useDark, useLocalStorage } from '@vueuse/core'
 import { codeToHtml } from 'shiki'
 import { computed, ref, toValue } from 'vue'
+import { usePlaygroundRpc } from './playground'
 
-export function useCodeSnippet(playgroundConfig: MaybeRef<RpcPlaygroundConfig>, method: MaybeRef<RpcPlaygroundMethod>) {
-  const { nodeUrl } = toValue(playgroundConfig)
+export function useCodeSnippet(method: MaybeRef<RpcPlaygroundMethod>) {
+  const { playgroundConfig } = usePlaygroundRpc(method)
+  const nodeUrl = computed(() => playgroundConfig.value.nodeUrl)
   type TabName = 'curl' | 'js' | 'ts'
   const currentTab = useLocalStorage<TabName>(`v1_rpc_tabs`, 'curl')
 
@@ -22,9 +24,9 @@ export function useCodeSnippet(playgroundConfig: MaybeRef<RpcPlaygroundConfig>, 
   }
 
   const tabs = computed(() => [
-    { lang: 'curl', label: 'Curl', icon: 'i-tabler:terminal', html: toHtml(getCurlCodeSnippet(nodeUrl, method), 'bash') },
-    { lang: 'js', label: 'Javascript', icon: 'i-logos:javascript', html: toHtml(getJsCodeSnippet(nodeUrl, method), 'javascript') },
-    { lang: 'ts', label: 'Typescript', icon: 'i-logos:typescript-icon', html: toHtml(getTsCodeSnippet(nodeUrl, method), 'typescript') },
+    { lang: 'curl', label: 'Curl', icon: 'i-tabler:terminal', html: toHtml(getCurlCodeSnippet(nodeUrl.value, method), 'bash') },
+    { lang: 'js', label: 'Javascript', icon: 'i-logos:javascript', html: toHtml(getJsCodeSnippet(nodeUrl.value, method), 'javascript') },
+    { lang: 'ts', label: 'Typescript', icon: 'i-logos:typescript-icon', html: toHtml(getTsCodeSnippet(nodeUrl.value, method), 'typescript') },
   ])
 
   return {
@@ -46,7 +48,7 @@ function getCurlCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMetho
 
 function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>) {
   const { name, userParams: params } = toValue(method)
-  const paramsStr = params.length > 0 ? JSON.stringify(params) : ''
+  const paramsStr = params.length > 0 ? `${JSON.stringify(params)}, options` : 'options'
   return `import { ${name} } from 'nimiq-rpc-client-ts/http'
 import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
 
@@ -54,7 +56,7 @@ import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
 // or
 const options: HttpOptions = { url: '${nodeUrl}', auth: { username: '', password: '' } }
 
-const { data, error } = await ${name}(${paramsStr}, options)
+const { data, error } = await ${name}(${paramsStr})
 console.log(data, error)`
 }
 
