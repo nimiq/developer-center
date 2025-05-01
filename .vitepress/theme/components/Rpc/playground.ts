@@ -3,7 +3,7 @@ import type { MaybeRef } from 'vue'
 import type { NimiqRpcMethod } from '../../../rpc/utils'
 import { useLocalStorage } from '@vueuse/core'
 import { rpcCall } from 'nimiq-rpc-client-ts/http'
-import { computed, toValue } from 'vue'
+import { computed, toValue, watchEffect } from 'vue'
 
 export interface RpcPlaygroundConfig {
   nodeUrl: string
@@ -18,7 +18,7 @@ export type RpcPlaygroundMethod = (NimiqRpcMethod & {
   userParams: any[]
 }) | Partial<NimiqRpcMethod> & {
   state: 'unselected'
-  userParams: []
+  userParams: Record<string, any>
 }
 
 export type UsePlaygroundRpcOptions = RpcPlaygroundMethod & {
@@ -32,10 +32,17 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     auth: { username: '', password: '' },
   })
 
-  const playground = useLocalStorage<RpcPlaygroundMethod>(computed(() => `v1_rpc_playground_${toValue(props).method}`), {
+  const method = computed(() => toValue(props).method)
+  const key = computed(() => `v1_rpc_playground_${method.value}`)
+
+  const playground = useLocalStorage<RpcPlaygroundMethod>(key, {
     ...toValue(props) as NimiqRpcMethod,
     state: toValue(props) ? 'idle' : 'unselected',
     userParams: [],
+  })
+
+  watchEffect(() => {
+    playground.value.userParams = Object.fromEntries((playground.value.input || []).map(param => [param.key, undefined]))
   })
 
   const history = useLocalStorage<HttpRpcResult<any>[]>(`v1_rpc_history`, [])
@@ -58,7 +65,14 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       const url = new URL(playgroundConfig.value.nodeUrl, window.location.origin)
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
       const options: HttpOptions = { url, auth }
-      const res = await rpcCall(method, params, options)
+      const parsedParams = Object.values(params).map((p, i) => {
+        if (playground.value.input?.at(i)?.type === 'number')
+          return Number(p.trim())
+        else if (playground.value.input?.at(i)?.type === 'boolean')
+          return p.trim() === 'true'
+        return p.trim()
+      })
+      const res = await rpcCall(method, parsedParams, options)
       playground.value.state = 'success'
       history.value = [res, ...history.value]
     }

@@ -22,6 +22,7 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
       <header border="b-1 solid neutral-400">
         <code f-text-2xs>{{ props.name }}</code>
       </header>
+      {{ widget.userParams }}]
       <form of-hidden f-p-2xs @submit.prevent="() => callRpc(props.name, widget.userParams)">
         <p v-if="props.input.length === 0" font-italic>
           It does not require any parameters.
