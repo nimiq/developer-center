@@ -402,7 +402,28 @@ Anyone can remove their validator when they no longer want to participate in blo
 
 The process may take up to 2 days due to the protocol’s requirement to allow time for reporting any potential misbehavior before the validator can be fully removed and the deposit returned.
 
-#### Deactivate your Validator
+#### Disable Automatic Reactivation
+
+Before deactivating your validator, check whether the node is configured to automatically reactivate. If automatic reactivation is enabled, the node will detect the deactivation and reactivate itself, preventing a successful removal.
+
+**Check your configuration**: Open your [client.toml](https://github.com/nimiq/core-rs-albatross/blob/b1e8c0f26f55039861c1cc9a5112ad08ce87067c/lib/src/config/config_file/client.example.toml#L356) file and locate the `automatic_reactivate` setting. If this flag is already set to `false`, no further action is needed.
+
+If set to `true`, disable it using the following RPC method:
+
+::: details CURL {open}
+
+```bash
+curl 'http://localhost:8648' -H 'Content-Type: application/json' \
+    --data-raw '{"method": "setValidatorAutomaticReactivation", "params": [false], "jsonrpc": "2.0", "id": 1}'
+```
+
+:::
+
+::: tip Note
+This change is temporary. If you restart the node, it will fall back to the value defined in your configuration file.
+:::
+
+### Deactivate your Validator
 
 ::: details ARPL {open}
 
@@ -429,7 +450,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 :::
 
 
-#### Retire you Validator
+### Retire your Validator
 
 ::: details ARPL {open}
 
@@ -455,7 +476,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 :::
 
 
-#### Delete your Validator
+### Delete your Validator
 
 ::: details ARPL {open}
 
