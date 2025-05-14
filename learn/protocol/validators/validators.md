@@ -85,3 +85,18 @@ If a validator delays block production, the **penalty** is the burning of reward
 **Retired:** Marked for permanent inactivity and pending deletion
 
 **Deleted:** Permanently removed from the network, but if there are stakers still associated with the validator, a tombstone is created to manage the remaining stake and stakers until they are cleared
+
+## Validator Deletion Process
+
+Removing a validator is a process that ensures the network has time to detect and report any misbehavior.  
+The following table outlines each transaction involved and the conditions under which they take effect:
+
+| **Transaction** | **Description** | **Effective Timing** | **Notes** |
+| --- | --- | --- | --- |
+| **Deactivate** | Marks the validator as inactive. | Takes effect at the start of the next epoch. | Validator cannot be elected in the next epoch. Triggers the reporting window, which lasts until the end of the next epoch (current + 1). |
+| **Retire** | Marks the validator as retired. Required before deletion. | Can be submitted after the reporting window ends. | **Irreversible.** Once retired, validator cannot return to active state. |
+| **Delete** | Deletes the validator and returns the 100'000 NIM deposit. | After retirement and once all funds are withdrawn. | Only allowed after the reporting window ends. If stake remains, a tombstone record manages withdrawals. |
+
+::: info Note
+If the validator has active stakers at the time of deletion, a tombstone is created to allow those stakers to switch to a different validator or withdraw their stake.
+:::
