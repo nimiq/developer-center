@@ -394,7 +394,7 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 
 ## Remove your Validator
 
-Anyone can remove their validator when they no longer want to participate in the consensus. This process involves three transactions: `deactivate`, `retire`, and `delete` — and it may take up to 2 days to complete before the full 100'000 NIM deposit can be recovered.
+Anyone can remove their validator when they no longer want to participate in block production. This process involves three transactions: `deactivate`, `retire`, and `delete` — and it may take up to 2 days to complete before the full 100'000 NIM deposit can be recovered.
 
 - `deactivate` marks the validator as inactive
 - `retire` confirms the validator is leaving permanently
@@ -423,7 +423,7 @@ The manual way with `curl` requires a few more parameters:
 
 ```bash
 curl 'http://localhost:8648' -H 'Content-Type: application/json' \
-    --data-raw '{"method": "sendDeactivateValidatorTransaction", "params": ["<sender_wallet>", "<validator_address>", "<signing_secret_key>", 0, 0], "jsonrpc": "2.0", "id": 1}'
+    --data-raw '{"method": "sendDeactivateValidatorTransaction", "params": ["<sender_wallet>", "<validator_address>", "<signing_secret_key>", 0, "+0"], "jsonrpc": "2.0", "id": 1}'
 ```
 
 :::
@@ -449,7 +449,7 @@ The manual way with `curl` requires a few more parameters:
 
 ```bash
 curl 'http://localhost:8648' -H 'Content-Type: application/json' \
-    --data-raw '{"method": "sendRetireValidatorTransaction", "params": ["<sender_wallet>", "<validator_wallet>", 0, 0], "jsonrpc": "2.0", "id": 1}'
+    --data-raw '{"method": "sendRetireValidatorTransaction", "params": ["<sender_wallet>", "<validator_wallet>", 0, "+0"], "jsonrpc": "2.0", "id": 1}'
 ```
 
 :::
@@ -476,7 +476,7 @@ The manual way with `curl` requires a few more parameters:
 
 ```bash
 curl 'http://localhost:8648' -H 'Content-Type: application/json' \
-    --data-raw '{"method": "sendDeleteValidatorTransaction", "params": ["<validator_wallet>", "<recipient>", 0, 0, 0], "jsonrpc": "2.0", "id": 1}'
+    --data-raw '{"method": "sendDeleteValidatorTransaction", "params": ["<validator_wallet>", "<recipient>", 0, 0, "+0"], "jsonrpc": "2.0", "id": 1}'
 ```
 
 :::
