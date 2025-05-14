@@ -82,7 +82,7 @@ export const navigation = {
       items: [
         {
           title: 'Add Your Pool to the Wallet',
-          href: 'https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators',
+          href: 'https://github.com/nimiq/validators-api#add-your-validator-information',
           description: 'Follow this guide to make your pool available in the Nimiq Wallet.',
         },
         {

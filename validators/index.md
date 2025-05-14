@@ -5,7 +5,7 @@ links:
     label: Staking Pool Guide
     title: Guide for Staking Pools
     description: Learn how to set up and integrate your pool in the Nimiq ecosystem.
-    href: https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators
+    href: https://github.com/nimiq/validators-api#add-your-validator-information
     layout: lg
     span: 6
   - label: Pool Handbook
