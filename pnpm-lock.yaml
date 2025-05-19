@@ -35,8 +35,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       nimiq-rpc-client-ts:
-        specifier: 1.0.0-beta.26
-        version: 1.0.0-beta.26(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+        specifier: 1.0.0-beta.27
+        version: 1.0.0-beta.27(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       reka-ui:
         specifier: ^2.2.1
         version: 2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
@@ -2861,8 +2861,8 @@ packages:
   nimiq-icons@1.0.0-beta.27:
     resolution: {integrity: sha512-G4GMaVrHG7O61Rtz1BhrCN7AYVstsjyhihQsLgAhot2bwsn05ieQ1Hc2ycV6Zo/zbn5f32pk+zoXH5hn3sRH9A==}
 
-  nimiq-rpc-client-ts@1.0.0-beta.26:
-    resolution: {integrity: sha512-x9oq/ZAio5Qwf3ZAM4nY//yj2CXu1tHNSpojECzSqkkBti79JDNgt8sIsoU4PURL8bs1XkqW0Zhg6ROQh5ZkpQ==}
+  nimiq-rpc-client-ts@1.0.0-beta.27:
+    resolution: {integrity: sha512-OYE6DLlaSB+9VmTddRm+W/EIcobCTZ4kvu/8Lr7WJAaxG2NpTuawwUyfsSGMIZDGfgxbUUNomZRkkl7iV078SA==}
 
   nimiq-vitepress-theme@1.0.0-beta.27:
     resolution: {integrity: sha512-A1UQDfpbroHZ2RuwHWQwJ6iyAS3mhW4TZETMqIeD2Ivw9v+Be+SK2RCOQXjyloFH990iPsVIdd9cJjFBMfX8HA==}
@@ -6877,7 +6877,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  nimiq-rpc-client-ts@1.0.0-beta.26(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
+  nimiq-rpc-client-ts@1.0.0-beta.27(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
     dependencies:
       isomorphic-ws: 5.0.0(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))
     transitivePeerDependencies:
