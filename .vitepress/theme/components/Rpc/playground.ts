@@ -64,7 +64,7 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       playground.value.state = 'loading'
       const url = new URL(playgroundConfig.value.nodeUrl, window.location.origin)
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
-      const options: HttpOptions = { url, auth }
+      const options: HttpOptions = { url, auth, target: 'browser' }
       const parsedParams = Object.values(params).map((p, i) => {
         if (playground.value.input?.at(i)?.type === 'number')
           return Number(p.trim())

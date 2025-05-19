@@ -52,9 +52,11 @@ function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>
   return `import { ${name} } from 'nimiq-rpc-client-ts/http'
 import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
 
-// Make sure to set \`ALBATROSS_NODE_URL\`, \`ALBATROSS_NODE_USERNAME\` and \`ALBATROSS_NODE_PASSWORD\` environment variables
+// Set \`ALBATROSS_NODE_URL\`, \`ALBATROSS_NODE_USERNAME\` and \`ALBATROSS_NODE_PASSWORD\` environment variables
+// or use \`initRpcClient\` function to set the node URL and authentication options
 // or
 const options: HttpOptions = { url: '${nodeUrl}', auth: { username: '', password: '' } }
+
 
 const { data, error } = await ${name}(${paramsStr})
 console.log(data, error)`
