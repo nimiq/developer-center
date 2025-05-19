@@ -11,10 +11,10 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { loadMethods } from './rpc/utils'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
-import { generateWebClientDocs } from './scripts/web-client'
 
 export default defineConfig(async () => {
-  await generateWebClientDocs()
+  //  FIXME Generation is broken
+  // await generateWebClientDocs()
 
   // Load the OpenRPC document
   const openRpcDocPath = resolve(__dirname, 'rpc/openrpc-document.json')
