@@ -32,7 +32,7 @@ const { tabs, currentTab } = useCodeSnippet(widget)
         </p>
         <ul v-else>
           <li v-for="({ required, key, type }) in props.input" :key my-4 ml-0 before:hidden>
-            <code bg-transparent font-semibold text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
+            <code font-semibold bg-transparent text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
           </li>
         </ul>
 
@@ -44,15 +44,15 @@ const { tabs, currentTab } = useCodeSnippet(widget)
         </p>
         <ul v-else>
           <li v-for="({ required, key, type }) in props.output" :key my-4 ml-0 before:hidden>
-            <code bg-transparent font-semibold text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
+            <code font-semibold bg-transparent text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
           </li>
         </ul>
       </div>
       <!-- .25em .65em .25em .75em -->
 
-      <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" h-max max-w-none min-w-0 w-full rounded-8>
-        <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" h-44 bg-neutral-50 py-8 border="b-1.5 solid neutral/8">
-          <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" mx-0 ml--8 px-0.65em py-4 font-bold rounded-6>
+      <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" rounded-8 h-max max-w-none min-w-0 w-full>
+        <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" py-8 bg-neutral-50 h-44 border="b-1.5 solid neutral/8">
+          <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" font-bold mx-0 ml--8 px-0.65em py-4 rounded-6>
             <div :class="icon" grayscale="reka-active:0 100" transition-filter />
             <span reka-active:text-blue>
               {{ label }}

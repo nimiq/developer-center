@@ -30,7 +30,7 @@ async function download() {
 <template>
   <div flex="~ col gap-16 items-center" m-0 class="nq-raw raw" w-full>
     <div
-      w-288 w-full flex-1 p-24 rounded-6
+      p-24 rounded-6 flex-1 w-288 w-full
       :class="{
         'bg-[rgb(var(--nq-neutral-on-light-0))] border-subtle': !dark,
         'bg-[rgb(var(--nq-neutral-on-dark-0))] border-subtle-light': dark,
@@ -45,7 +45,7 @@ async function download() {
       </p>
       <div ml-auto flex>
         <Toast v-if="copyIsSupported" v-model="copied" title="Copied to clipboard!" category="success">
-          <button mr-12 text-12 nq-ghost-btn @click="copySnippet('SVG')">
+          <button text-12 mr-12 nq-ghost-btn @click="copySnippet('SVG')">
             SVG
           </button>
         </Toast>

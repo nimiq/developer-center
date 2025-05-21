@@ -32,11 +32,11 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
         </fieldset>
         <div flex="~ items-center justify-end gap-6" f-mt-xs>
           <Popover.Root>
-            <Popover.Trigger w="!initial" outline="~ 1.5 offset--1 neutral-400" bg="transparent hocus:neutral-200" aspect-square h-24 rounded-full text-14 transition-colors stack aria-label="Update RPC config">
+            <Popover.Trigger w="!initial" outline="~ 1.5 offset--1 neutral-400" bg="transparent hocus:neutral-200" stack text-14 rounded-full h-24 aspect-square transition-colors aria-label="Update RPC config">
               <div i-tabler:settings />
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Content :collision-padding="12" side="bottom" :side-offset="1.5" will-change="transform,opacity" reka-open="animate-in slide-in-t fade-in" reka-close="animate-out slide-in-b fade-out" outline="~ 1.5 offset--1.5 neutral-200" relative max-w-320 w-max bg-neutral-0 shadow f-p-xs rounded-8>
+              <Popover.Content :collision-padding="12" side="bottom" :side-offset="1.5" will-change="transform,opacity" reka-open="animate-in slide-in-t fade-in" reka-close="animate-out slide-in-b fade-out" outline="~ 1.5 offset--1.5 neutral-200" rounded-8 bg-neutral-0 max-w-320 w-max shadow relative f-p-xs>
                 <h3 text-neutral>
                   RPC Config
                 </h3>
@@ -48,12 +48,12 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
 
                 <hr border="b-1 solid neutral-400" mx-auto max-w-32 w-full f-mt-sm>
 
-                <p lh="[1.2]" text="neutral-800 f-2xs" relative bottom--4 mt-6 italic flex="~ items-center gap-4">
+                <p lh="[1.2]" text="neutral-800 f-2xs" mt-6 italic bottom--4 relative flex="~ items-center gap-4">
                   <span scale-85 i-nimiq:info />
                   The information is <b>stored locally</b>.
                 </p>
 
-                <Popover.Close bg="neutral-300 hocus:neutral-400" outline="~ 1.5 offset--1.5 neutral/2" absolute right-12 top-12 rounded-full transition stack size-20="!">
+                <Popover.Close bg="neutral-300 hocus:neutral-400" outline="~ 1.5 offset--1.5 neutral/2" stack rounded-full transition right-12 top-12 absolute size-20="!">
                   <div text-8 i-nimiq:cross />
                 </Popover.Close>
               </Popover.Content>
@@ -61,7 +61,7 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
           </Popover.Root>
           <button scale-90 nq-pill nq-pill-gold :disabled="widget.state === 'loading' || props.name.startsWith('subscribe')" :class="{ 'cursor-not-allowed': widget.state === 'loading' }" type="submit">
             Run
-            <div bottom--1 ml-6 text-10 i-nimiq:triangle-right />
+            <div text-10 ml-6 bottom--1 i-nimiq:triangle-right />
           </button>
         </div>
       </form>
@@ -70,10 +70,10 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
     <div class="nq-raw widget-container" f-mt-sm>
       <header flex="~ items-center gap-8">
         <div text-10 op-70 i-nimiq:watch-1-50 />
-        <span flex-1 font-semibold op-80>
+        <span font-semibold op-80 flex-1>
           History
         </span>
-        <button w-max="!" bg-transparent p-2 stack @click="() => clearHistory()">
+        <button w-max="!" stack p-2 bg-transparent @click="() => clearHistory()">
           <div text-11 i-nimiq:trash />
         </button>
       </header>
@@ -89,13 +89,13 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
               </h4>
               <Accordion.Root type="multiple" :collapsible="true">
                 <Accordion.Item v-for="([isOk, error, data, { request: { timestamp, body } }], index) in items" :key="index" :value="`${timestamp}`">
-                  <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" w-full flex="~ items-center gap-8" p-4 px-8 rounded="4 data-open:b-0">
-                    <div shrink-0 text-6 op-80 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
-                    <code of-hidden text-ellipsis font-semibold f-text-2xs>
+                  <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" flex="~ items-center gap-8" p-4 px-8 w-full rounded="4 data-open:b-0">
+                    <div text-6 op-80 shrink-0 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
+                    <code font-semibold text-ellipsis of-hidden f-text-2xs>
                       {{ body.method }}
                     </code>
                     <div ml-auto flex="~ items-center gap-8" shrink-0>
-                      <div v-if="!isOk" bg-red-400 p-3 stack rounded-2 outline="1.5 ~ neutral-0/10" :title="error">
+                      <div v-if="!isOk" stack p-3 rounded-2 bg-red-400 outline="1.5 ~ neutral-0/10" :title="error">
                         <div v-if="error" text-12 text-red op-80 i-nimiq:alert />
                       </div>
                       <span text="9 neutral-700" font-semibold>
@@ -103,8 +103,8 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
                       </span>
                     </div>
                   </Accordion.Trigger>
-                  <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" :value="timestamp" outline="1.5 neutral-200 ~ offset--1.5" of-hidden rounded-b-4 bg-neutral-50 f-mb-2xs>
-                    <pre of-x-auto bg-neutral-50 py-4 f-text-2xs f-px-2xs rounded-8>{{ isOk ? data : error }}</pre>
+                  <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" :value="timestamp" outline="1.5 neutral-200 ~ offset--1.5" rounded-b-4 bg-neutral-50 of-hidden f-mb-2xs>
+                    <pre py-4 rounded-8 bg-neutral-50 of-x-auto f-text-2xs f-px-2xs>{{ isOk ? data : error }}</pre>
                   </Accordion.Content>
                 </Accordion.Item>
               </Accordion.Root>

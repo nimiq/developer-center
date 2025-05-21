@@ -16,10 +16,10 @@ function reset() {
 
 <template>
   <label :key="label" flex="~ col items-center">
-    <span text="f-2xs neutral-800" :title="`${type}${required ? ' (required)' : ''}`" mb-4 w-full flex self-start bg-transparent px-12 font-semibold lh-none>
-      {{ label }}<sup v-if="required" top-0 inline-block size-5 i-nimiq:asterisk />
-      <button v-if="model !== defaultValue" ml-auto bg-transparent text-left underline @click="reset">Reset</button>
+    <span text="f-2xs neutral-800" :title="`${type}${required ? ' (required)' : ''}`" font-semibold lh-none mb-4 px-12 bg-transparent flex w-full self-start>
+      {{ label }}<sup v-if="required" size-5 inline-block top-0 i-nimiq:asterisk />
+      <button v-if="model !== defaultValue" ml-auto text-left bg-transparent underline @click="reset">Reset</button>
     </span>
-    <input v-model="model" type="string" :placeholder="`${capitalizeFirstLetter(type)}${required ? ' (required)' : ''}`" :required mt-0 nq-input-box rounded-4>
+    <input v-model="model" type="string" :placeholder="`${capitalizeFirstLetter(type)}${required ? ' (required)' : ''}`" :required mt-0 rounded-4 nq-input-box>
   </label>
 </template>
