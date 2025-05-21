@@ -65,9 +65,6 @@ importers:
       '@nimiq/core':
         specifier: ^2.1.0
         version: 2.1.0
-      '@nolebase/vitepress-plugin-git-changelog':
-        specifier: ^2.17.0
-        version: 2.17.0(patch_hash=d3c7e3e90d785e34a0e66e3d50bdc7af700d62101274ea8570e916866d07873f)(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
       '@open-rpc/meta-schema':
         specifier: ^1.14.9
         version: 1.14.9
@@ -93,14 +90,14 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2
       nimiq-css:
-        specifier: ^1.0.0-beta.32
-        version: 1.0.0-beta.32(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
+        specifier: ^1.0.0-beta.37
+        version: 1.0.0-beta.37(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
       nimiq-icons:
-        specifier: ^1.0.0-beta.32
-        version: 1.0.0-beta.32
+        specifier: ^1.0.0-beta.37
+        version: 1.0.0-beta.37
       nimiq-vitepress-theme:
-        specifier: ^1.0.0-beta.32
-        version: 1.0.0-beta.32(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
+        specifier: ^1.0.0-beta.37
+        version: 1.0.0-beta.37(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
       ofetch:
         specifier: ^1.4.1
         version: 1.4.1
@@ -143,9 +140,6 @@ importers:
       unocss-preset-onmax:
         specifier: ^1.0.0-beta.25
         version: 1.0.0-beta.25(@unocss/preset-wind3@66.1.2)(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
-      unocss-preset-scale-px:
-        specifier: 1.0.0-beta.25
-        version: 1.0.0-beta.25(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
       unplugin-auto-import:
         specifier: ^19.2.0
         version: 19.2.0(@vueuse/core@13.2.0(vue@3.5.14(typescript@5.8.3)))
@@ -2857,18 +2851,18 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  nimiq-css@1.0.0-beta.32:
-    resolution: {integrity: sha512-4YnHuEsKdS5jAe7hreOxhm2mDIxRBCuy2Yf3K6GWIFMk8rcd0ai19zwUvzmhP2bjTOx+tSPLy9sUNKHdRTWWxA==}
+  nimiq-css@1.0.0-beta.37:
+    resolution: {integrity: sha512-4ppVLrZyZ5GiZjkVwSXr4tdVd+Nd9Iy2MBqpfRhnhlsG7SPiHIQ+ePjvII4mwIgVsvAsrfLfiZWCHRkDsr7ZoA==}
     engines: {node: '>=18'}
 
-  nimiq-icons@1.0.0-beta.32:
-    resolution: {integrity: sha512-mLsEiBiG6WB1XXlZxlRh3pvePMEf5LqfMZVUzntUClY4ASpIhw6SejwFYe0vQqiDEdH5PQeH2B55S/DrS2QE5g==}
+  nimiq-icons@1.0.0-beta.37:
+    resolution: {integrity: sha512-pjvb72Tl+m23+5OVwk0ITdY5NLGkhHnGSh5/zF49oGswWMGDDKRluBMd+rlhF5pP+UsKdReN8/IMbK4G79Y8Lg==}
 
   nimiq-rpc-client-ts@1.0.0-beta.28:
     resolution: {integrity: sha512-whZ0SOyJ1IDeLMWJDkOBPhwtnrClAt/EuNnsoPhCqswqcb7wlYV3Sap3S60Q06IE1JGqfHB+4a4N5HSLeYwkZQ==}
 
-  nimiq-vitepress-theme@1.0.0-beta.32:
-    resolution: {integrity: sha512-5RM4ZtmKE/m0p5n6vkR+eXbJNu7RwwJcbP8YXuqXWEAeL4VLRbDGy7yLDQxCK2RFRkqE2oecPw+eQBW4r6RFIg==}
+  nimiq-vitepress-theme@1.0.0-beta.37:
+    resolution: {integrity: sha512-hpfnLN9sGQIV75X3t5Ewth49opYF9GjVfcJtm+ItZkC7jezTgVS+hbuhsAu9ofXrwcY3n8piEsjkO1kH7gaMMQ==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -6858,12 +6852,12 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  nimiq-css@1.0.0-beta.32(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3)):
+  nimiq-css@1.0.0-beta.37(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3)):
     dependencies:
       '@iconify/utils': 2.3.0
       '@unocss/preset-web-fonts': 66.1.2
       '@unocss/preset-wind4': 66.1.2
-      nimiq-icons: 1.0.0-beta.32
+      nimiq-icons: 1.0.0-beta.37
       ts-cssjson: 3.0.1
       unocss: 66.1.2(postcss@8.5.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
     transitivePeerDependencies:
@@ -6873,7 +6867,7 @@ snapshots:
       - vite
       - vue
 
-  nimiq-icons@1.0.0-beta.32:
+  nimiq-icons@1.0.0-beta.37:
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6883,14 +6877,15 @@ snapshots:
     transitivePeerDependencies:
       - ws
 
-  nimiq-vitepress-theme@1.0.0-beta.32(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)):
+  nimiq-vitepress-theme@1.0.0-beta.37(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
       '@iconify-json/tabler': 1.2.18
       '@iconify-json/vscode-icons': 1.2.21
+      '@nolebase/vitepress-plugin-git-changelog': 2.17.0(patch_hash=d3c7e3e90d785e34a0e66e3d50bdc7af700d62101274ea8570e916866d07873f)(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
       '@vueuse/core': 13.2.0(vue@3.5.14(typescript@5.8.3))
       mark.js: 8.11.1
       minisearch: 7.1.2
-      nimiq-icons: 1.0.0-beta.32
+      nimiq-icons: 1.0.0-beta.37
       reka-ui: 2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
       vaul-vue: 0.4.1(reka-ui@2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3))
       vitepress: 2.0.0-alpha.5(@algolia/client-search@5.25.0)(@types/node@22.15.21)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)

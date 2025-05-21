@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs'
-import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import { consola } from 'consola'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import { resolve } from 'pathe'
@@ -81,10 +80,9 @@ export default defineConfig(async () => {
 
       RpcDocsGeneratorPlugin(),
 
-      GitChangelog({
-        repoURL: 'https://github.com/nimi/developer-center',
+      NimiqVitepressVitePlugin({
+        gitChangelog: { repoURL: 'https://github.com/nimiq/developer-center' },
       }),
-      NimiqVitepressVitePlugin(),
     ],
   }
 })
