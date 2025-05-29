@@ -8,6 +8,7 @@ import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { postcssIsolateStyles } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
 import { version } from '../package.json'
 import { getGitStats } from './scripts/git-stats'
 
@@ -62,6 +63,8 @@ export default defineConfig(async () => {
       VueDevTools(),
 
       ViteImageOptimizer(),
+
+      llmstxt(),
 
       // {
       //   name: 'layer-definition',
