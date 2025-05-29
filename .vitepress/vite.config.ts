@@ -64,7 +64,24 @@ export default defineConfig(async () => {
 
       ViteImageOptimizer(),
 
-      llmstxt(),
+      llmstxt(
+        {
+          ignoreFiles: [
+            'archive/**',
+            '**/migration*',
+            '**/nimiq-styles/**',
+            '**/*nimiq-style*',
+            'build/nimiq-pow/**',
+            '**/*.json',
+            '**/*.js',
+            '**/*.ts',
+            '**/_*',
+            'README.md',
+            'LICENSE.md',
+            '.*',
+          ],
+        },
+      ),
 
       // {
       //   name: 'layer-definition',
