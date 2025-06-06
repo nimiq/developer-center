@@ -1,6 +1,7 @@
 import { env } from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import { consola } from 'consola'
+import llmstxt from 'onmax-vitepress-plugin-llms'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -8,9 +9,8 @@ import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { postcssIsolateStyles } from 'vitepress'
-import llmstxt from 'vitepress-plugin-llms'
-import { version } from '../package.json'
-import { getGitStats } from './scripts/git-stats'
+import packageJson from '../package.json' with { type: 'json' }
+import { getGitStats } from './scripts/git-stats.js'
 
 export default defineConfig(async () => {
   const environment = env.DEPLOYMENT_MODE
@@ -32,13 +32,13 @@ export default defineConfig(async () => {
       __ALBATROSS_COMMIT_HASH__: JSON.stringify(albatrossCommitHash),
       __ALBATROSS_COMMIT_DATE__: JSON.stringify(albatrossCommitDate.toString()),
       __REPO_URL__: JSON.stringify(repoUrl),
-      __DEVELOPER_CENTER_VERSION__: JSON.stringify(version),
+      __DEVELOPER_CENTER_VERSION__: JSON.stringify(packageJson.version),
       __BUILD_ENVIRONMENT__: JSON.stringify(environment),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     },
 
     build: {
-      modules: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
+      target: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
     },
 
     plugins: [
@@ -80,6 +80,7 @@ export default defineConfig(async () => {
             'LICENSE.md',
             '.*',
           ],
+          depth: 2,
         },
       ),
 

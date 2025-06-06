@@ -1,7 +1,15 @@
 {
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
   "files": ["node_modules/@nimiq/core/types/web.d.ts"],
+  "exclude": [
+    "node_modules/@nimiq/core/types/wasm/bundler.d.ts"
+  ],
   "typedocOptions": {
     "entryPoints": ["node_modules/@nimiq/core/types/web.d.ts"],
-    "out": "build/web-client/reference"
+    "out": "build/web-client/reference",
+    "skipErrorChecking": true
   }
 }
