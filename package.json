@@ -57,6 +57,7 @@
     "lint-staged": "^15.4.3",
     "markdown-it": "^14.1.0",
     "node-html-parser": "^7.0.1",
+    "onmax-vitepress-plugin-llms": "^0.0.7",
     "pathe": "^2.0.3",
     "pkg-types": "^1.3.1",
     "postcss": "^8.5.3",
@@ -74,8 +75,14 @@
     "vite": "6.1.1",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vite-plugin-vue-devtools": "7.7.2",
-    "vitepress": "1.6.3",
-    "vitepress-plugin-llms": "^1.3.4"
+    "vitepress": "1.6.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "ttf2woff2"
+    ]
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
