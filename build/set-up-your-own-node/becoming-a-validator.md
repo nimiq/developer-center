@@ -398,7 +398,7 @@ Anyone can remove their validator when they no longer want to participate in blo
 
 - `deactivate` marks the validator as inactive
 - `retire` confirms the validator is leaving permanently
-- `delete` removes the validator and returns the deposit  
+- `delete` removes the validator and returns the deposit
 
 The process may take up to 2 days due to the protocol’s requirement to allow time for reporting any potential misbehavior before the validator can be fully removed and the deposit returned.
 
@@ -449,7 +449,6 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 
 :::
 
-
 ### Retire your Validator
 
 ::: details ARPL {open}
@@ -474,7 +473,6 @@ curl 'http://localhost:8648' -H 'Content-Type: application/json' \
 ```
 
 :::
-
 
 ### Delete your Validator
 

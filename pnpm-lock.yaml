@@ -111,9 +111,6 @@ importers:
       node-html-parser:
         specifier: ^7.0.1
         version: 7.0.1
-      onmax-vitepress-plugin-llms:
-        specifier: ^0.0.7
-        version: 0.0.7
       pathe:
         specifier: ^2.0.3
         version: 2.0.3
@@ -168,6 +165,9 @@ importers:
       vitepress:
         specifier: 1.6.3
         version: 1.6.3(@algolia/client-search@5.27.0)(@types/node@22.15.30)(axios@1.9.0)(markdown-it-mathjax3@4.3.2(encoding@0.1.13))(postcss@8.5.4)(search-insights@2.13.0)(typescript@5.4.5)
+      vitepress-plugin-llms:
+        specifier: https://pkg.pr.new/vitepress-plugin-llms@59
+        version: https://pkg.pr.new/vitepress-plugin-llms@59
 
 packages:
 
@@ -3880,9 +3880,6 @@ packages:
   oniguruma-to-es@3.1.1:
     resolution: {integrity: sha512-bUH8SDvPkH3ho3dvwJwfonjlQ4R80vjyvrU8YpxuROddv55vAEJrTuCuCVUhhsHbtlD9tGGbaNApGQckXhS8iQ==}
 
-  onmax-vitepress-plugin-llms@0.0.7:
-    resolution: {integrity: sha512-1O3R4vUHr/2Y765og7i98MPuuYn7RfLwz/f5hotmuu7dBaePfJ/Kctf0Q8XweUHZX4iAJrdUCFH2wHttSBVPlA==}
-
   open@10.1.2:
     resolution: {integrity: sha512-cxN6aIDPz6rm8hbebcP7vrQNhvRcveZoJU72Y7vskh4oIm+BZwBECnx5nTmrlres1Qapvx27Qo1Auukpf8PKXw==}
     engines: {node: '>=18'}
@@ -3985,6 +3982,10 @@ packages:
 
   path-to-regexp@0.1.12:
     resolution: {integrity: sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ==}
+
+  path-to-regexp@8.2.0:
+    resolution: {integrity: sha512-TdrF7fW9Rphjq4RjrW0Kp2AW0Ahwu9sRGTkS6bvDi0SCwZlEZYmcfDbEsTz8RVk0EHIS/Vd1bv3JhG+1xZuAyQ==}
+    engines: {node: '>=16'}
 
   pathe@1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
@@ -4984,6 +4985,10 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  vitepress-plugin-llms@https://pkg.pr.new/vitepress-plugin-llms@59:
+    resolution: {tarball: https://pkg.pr.new/vitepress-plugin-llms@59}
+    version: 1.4.0
 
   vitepress@1.6.3:
     resolution: {integrity: sha512-fCkfdOk8yRZT8GD9BFqusW3+GggWYZ/rYncOfmgcDtP3ualNHCAg+Robxp2/6xfH1WwPHtGpPwv7mbA3qomtBw==}
@@ -9277,23 +9282,6 @@ snapshots:
       regex: 6.0.1
       regex-recursion: 6.0.2
 
-  onmax-vitepress-plugin-llms@0.0.7:
-    dependencies:
-      byte-size: 9.0.1
-      gray-matter: 4.0.3
-      markdown-title: 1.0.2
-      millify: 6.1.0
-      minimatch: 10.0.1
-      picocolors: 1.1.1
-      remark: 15.0.1
-      remark-frontmatter: 5.0.0
-      tokenx: 1.0.1
-      unist-util-remove: 4.0.0
-      unist-util-visit: 5.0.0
-    transitivePeerDependencies:
-      - '@75lb/nature'
-      - supports-color
-
   open@10.1.2:
     dependencies:
       default-browser: 5.2.1
@@ -9388,6 +9376,8 @@ snapshots:
     optional: true
 
   path-to-regexp@0.1.12: {}
+
+  path-to-regexp@8.2.0: {}
 
   pathe@1.1.2: {}
 
@@ -10568,6 +10558,24 @@ snapshots:
       jiti: 2.4.2
       tsx: 4.19.2
       yaml: 2.8.0
+
+  vitepress-plugin-llms@https://pkg.pr.new/vitepress-plugin-llms@59:
+    dependencies:
+      byte-size: 9.0.1
+      gray-matter: 4.0.3
+      markdown-title: 1.0.2
+      millify: 6.1.0
+      minimatch: 10.0.1
+      path-to-regexp: 8.2.0
+      picocolors: 1.1.1
+      remark: 15.0.1
+      remark-frontmatter: 5.0.0
+      tokenx: 1.0.1
+      unist-util-remove: 4.0.0
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - '@75lb/nature'
+      - supports-color
 
   vitepress@1.6.3(@algolia/client-search@5.27.0)(@types/node@22.15.30)(axios@1.9.0)(markdown-it-mathjax3@4.3.2(encoding@0.1.13))(postcss@8.5.4)(search-insights@2.13.0)(typescript@5.4.5):
     dependencies:

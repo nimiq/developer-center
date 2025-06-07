@@ -88,7 +88,7 @@ If a validator delays block production, the **penalty** is the burning of reward
 
 ## Validator Deletion Process
 
-Removing a validator is a process that ensures the network has time to detect and report any misbehavior.  
+Removing a validator is a process that ensures the network has time to detect and report any misbehavior.
 The following table outlines each transaction involved and the conditions under which they take effect:
 
 | **Transaction** | **Description** | **Effective Timing** | **Notes** |

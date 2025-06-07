@@ -1,7 +1,6 @@
 import { env } from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import { consola } from 'consola'
-import llmstxt from 'onmax-vitepress-plugin-llms'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -9,6 +8,7 @@ import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { postcssIsolateStyles } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
 import packageJson from '../package.json' with { type: 'json' }
 import { getGitStats } from './scripts/git-stats.js'
 
@@ -80,7 +80,9 @@ export default defineConfig(async () => {
             'LICENSE.md',
             '.*',
           ],
-          depth: 2,
+          experimental: {
+            depth: 3,
+          },
         },
       ),
 
