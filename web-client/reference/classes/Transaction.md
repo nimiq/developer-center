@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Transaction
-
-# Class: Transaction
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1959
 
 Transactions describe a transfer of value, usually from the sender to the recipient.

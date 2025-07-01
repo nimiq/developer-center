@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / ES256PublicKey
-
-# Class: ES256PublicKey
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1163
 
 The non-secret (public) part of an ES256 asymmetric key pair that is typically used to digitally verify or encrypt data.

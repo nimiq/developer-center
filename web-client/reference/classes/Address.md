@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Address
-
-# Class: Address
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:617
 
 An object representing a Nimiq address.

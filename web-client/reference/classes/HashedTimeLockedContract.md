@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / HashedTimeLockedContract
-
-# Class: HashedTimeLockedContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1324
 
 Utility class providing methods to parse Hashed Time Locked Contract transaction data and proofs.

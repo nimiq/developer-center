@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainHtlcContract
-
-# Interface: PlainHtlcContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:361
 
 ## Properties

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainHtlcTimeoutResolveProof
-
-# Interface: PlainHtlcTimeoutResolveProof
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:195
 
 JSON-compatible and human-readable format of HTLC timeout proofs.

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / ES256Signature
-
-# Class: ES256Signature
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1242
 
 An ES256 Signature represents a cryptographic proof that an ES256 private key signed some data.

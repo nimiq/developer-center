@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / default
-
-# Function: default()
-
 > **default**(`module_or_path?`): `Promise`\<[`InitOutput`](../interfaces/InitOutput.md)\>
 
 Defined in: @nimiq/core/types/wasm/web.d.ts:2624

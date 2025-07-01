@@ -81,27 +81,50 @@ export const themeConfig = {
       subpath: 'web-client',
       icon: 'i-tabler:browser',
       defaultPageLink: '/web-client/',
-      description: 'Build web applications with Nimiq',
+      description: 'Build blockchain applications in the browser',
       sidebar: [
         {
-          label: 'Web Client',
+          label: 'Getting Started',
           items: [
-            { text: 'Overview', link: '/web-client/', icon: 'i-tabler:browser' },
-            { text: 'Getting started', link: '/web-client/getting-started', icon: 'i-tabler:player-play' },
+            { text: 'Overview', link: '/web-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Getting Started', link: '/web-client/getting-started', icon: 'i-tabler:player-play' },
             { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
-            { text: 'Integrations', link: '/web-client/integrations', icon: 'i-tabler:plug' },
-            {
-              text: 'Reference',
-              icon: 'i-tabler:list',
-              items: [
-                { text: 'Classes', link: '/web-client/reference/classes' },
-                { text: 'Enumerations', link: '/web-client/reference/enumerations' },
-                { text: 'Functions', link: '/web-client/reference/functions' },
-                { text: 'Globals', link: '/web-client/reference/globals' },
-                { text: 'Interfaces', link: '/web-client/reference/interfaces' },
-                { text: 'Type Aliases', link: '/web-client/reference/type-aliases' },
-              ],
-            },
+            { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
+          ],
+        },
+        {
+          label: 'Framework Integration',
+          items: [
+            { text: 'Integrations Overview', link: '/web-client/integrations', icon: 'i-tabler:plug' },
+            { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs' },
+            { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon' },
+            { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon' },
+            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack' },
+            { text: 'CommonJS', link: '/web-client/integrations/CommonJS', icon: 'i-tabler:package' },
+            { text: 'ESM', link: '/web-client/integrations/ESM', icon: 'i-tabler:package' },
+          ],
+        },
+        {
+          label: 'Developer Tools',
+          items: [
+            { text: 'Nimiq Utils', link: '/web-client/nimiq-utils', icon: 'i-tabler:tools' },
+          ],
+        },
+        {
+          label: 'UI Components',
+          items: [
+            { text: 'Nimiq UI', link: 'https://onmax.github.io/nimiq-ui/', icon: 'i-tabler:palette' },
+          ],
+        },
+        {
+          label: 'API Reference',
+          items: [
+            { text: 'Classes', link: '/web-client/reference/classes', icon: 'i-tabler:building-factory' },
+            { text: 'Enumerations', link: '/web-client/reference/enumerations', icon: 'i-tabler:list' },
+            { text: 'Functions', link: '/web-client/reference/functions', icon: 'i-tabler:function' },
+            { text: 'Globals', link: '/web-client/reference/globals', icon: 'i-tabler:world' },
+            { text: 'Interfaces', link: '/web-client/reference/interfaces', icon: 'i-tabler:components' },
+            { text: 'Type Aliases', link: '/web-client/reference/type-aliases', icon: 'i-tabler:variable' },
           ],
         },
       ],

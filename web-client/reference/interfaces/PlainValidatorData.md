@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainValidatorData
-
-# Interface: PlainValidatorData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:105
 
 JSON-compatible and human-readable format of validator deactivation/reactivation data.

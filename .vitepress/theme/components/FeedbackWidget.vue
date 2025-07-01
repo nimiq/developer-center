@@ -10,6 +10,9 @@ const isMounted = useMounted()
 const isLoading = ref(false)
 const hasError = ref(false)
 
+// Widget state tracking
+const isInFormView = ref(false)
+
 // Load external script using VueUse
 const { load: loadScript } = useScriptTag(
   'https://nimiq-feedback.je-cf9.workers.dev/widget.js',
@@ -56,6 +59,20 @@ async function mountWidget() {
           app: 'developer-center',
           feedbackEndpoint: 'https://nimiq-feedback.je-cf9.workers.dev/api/feedback',
         })
+
+        // Set up event listeners to track widget state
+        if (widgetInstance.value.communication) {
+          // When a form is selected, we're in form view
+          widgetInstance.value.communication.on('form-selected', () => {
+            isInFormView.value = true
+          })
+
+          // When going back, we're back in grid view
+          widgetInstance.value.communication.on('go-back', () => {
+            isInFormView.value = false
+          })
+        }
+
         return
       }
     }
@@ -124,6 +141,7 @@ watchEffect(() => {
   if (!open.value) {
     isLoading.value = false
     hasError.value = false
+    isInFormView.value = false // Reset form view state when dialog closes
     // Don't reset widgetLoaded - keep it loaded for subsequent opens
   }
 })
@@ -155,8 +173,9 @@ watchEffect(() => {
               We're always looking for ways to improve the Developer Center. Please share your thoughts with us.
             </Dialog.Description>
 
-            <!-- Back arrow button -->
+            <!-- Back arrow button - only show when in form view -->
             <button
+              v-if="isInFormView"
               aria-label="Go back"
               flex="~ items-center justify-center"
               rounded-full size-32 left-16 top-16 absolute text="neutral-600 20" hover:bg="neutral/10" transition="colors duration-200" @click="goBack"

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / MerkleTree
-
-# Class: MerkleTree
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1395
 
 The Merkle tree is a data structure that allows for efficient verification of the membership of an element in a set.

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainValidator
-
-# Interface: PlainValidator
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:429
 
 JSON-compatible and human-readable format of a validator. E.g. reward addresses and public keys are presented in

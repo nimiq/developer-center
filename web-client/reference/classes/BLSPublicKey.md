@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / BLSPublicKey
-
-# Class: BLSPublicKey
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:716
 
 The public part of the BLS keypair.

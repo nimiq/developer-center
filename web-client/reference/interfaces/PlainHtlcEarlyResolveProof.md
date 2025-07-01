@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainHtlcEarlyResolveProof
-
-# Interface: PlainHtlcEarlyResolveProof
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:209
 
 JSON-compatible and human-readable format of HTLC early resolve proofs.

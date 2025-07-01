@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / VestingContract
-
-# Class: VestingContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:2242
 
 Utility class providing methods to parse Vesting Contract transaction data and proofs.

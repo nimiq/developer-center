@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainHtlcData
-
-# Interface: PlainHtlcData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:67
 
 JSON-compatible and human-readable format of HTLC creation data.

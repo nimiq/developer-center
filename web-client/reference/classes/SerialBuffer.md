@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / SerialBuffer
-
-# Class: SerialBuffer
-
 Defined in: @nimiq/core/lib/index.d.ts:7
 
 ## Extends

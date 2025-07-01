@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / BLSKeyPair
-
-# Class: BLSKeyPair
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:680
 
 A BLS keypair

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Entropy
-
-# Class: Entropy
-
 Defined in: @nimiq/core/lib/index.d.ts:206
 
 ## Extends

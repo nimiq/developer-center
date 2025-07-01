@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Secret
-
-# Class: `abstract` Secret
-
 Defined in: @nimiq/core/lib/index.d.ts:175
 
 ## Extends

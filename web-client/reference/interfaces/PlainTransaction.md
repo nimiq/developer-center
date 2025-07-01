@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainTransaction
-
-# Interface: PlainTransaction
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:232
 
 JSON-compatible and human-readable format of transactions. E.g. addresses are presented in their human-readable

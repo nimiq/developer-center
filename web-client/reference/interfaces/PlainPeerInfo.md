@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainPeerInfo
-
-# Interface: PlainPeerInfo
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:580
 
 Information about a networking peer.

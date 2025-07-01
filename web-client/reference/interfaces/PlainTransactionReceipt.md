@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainTransactionReceipt
-
-# Interface: PlainTransactionReceipt
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:337
 
 JSON-compatible and human-readable format of transaction receipts.

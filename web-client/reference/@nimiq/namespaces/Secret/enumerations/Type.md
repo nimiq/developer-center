@@ -1,7 +1,3 @@
-[@nimiq/core](../../../../globals.md) / [Secret](../index.md) / Type
-
-# Enumeration: Type
-
 Defined in: @nimiq/core/lib/index.d.ts:200
 
 ## Enumeration Members

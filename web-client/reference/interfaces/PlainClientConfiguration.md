@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainClientConfiguration
-
-# Interface: PlainClientConfiguration
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:23
 
 ## Properties

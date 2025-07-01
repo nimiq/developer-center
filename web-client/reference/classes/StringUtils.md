@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / StringUtils
-
-# Class: StringUtils
-
 Defined in: @nimiq/core/lib/index.d.ts:327
 
 ## Constructors

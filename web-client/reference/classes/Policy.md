@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Policy
-
-# Class: Policy
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1450
 
 ## Properties

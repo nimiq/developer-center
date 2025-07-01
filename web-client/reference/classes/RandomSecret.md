@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / RandomSecret
-
-# Class: RandomSecret
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1801
 
 A random secret that proves a [Commitment](Commitment.md) for signing multisignature transactions.

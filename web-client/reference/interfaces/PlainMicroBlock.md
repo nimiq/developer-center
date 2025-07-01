@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainMicroBlock
-
-# Interface: PlainMicroBlock
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:573
 
 JSON-compatible and human-readable format of blocks.

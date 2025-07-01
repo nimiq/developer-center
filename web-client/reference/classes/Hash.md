@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Hash
-
-# Class: Hash
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1271
 
 ## Methods

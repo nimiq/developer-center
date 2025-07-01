@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / ClientConfiguration
-
-# Class: ClientConfiguration
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:967
 
 Use this to provide initialization-time configuration to the Client.

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / CommitmentPair
-
-# Class: CommitmentPair
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1088
 
 A structure holding both a random secret and its corresponding public commitment.

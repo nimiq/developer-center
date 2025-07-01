@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainStaker
-
-# Interface: PlainStaker
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:385
 
 JSON-compatible and human-readable format of a staker. E.g. delegation addresses are presented in their

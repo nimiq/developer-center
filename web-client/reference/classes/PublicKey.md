@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PublicKey
-
-# Class: PublicKey
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1728
 
 The non-secret (public) part of an asymmetric key pair that is typically used to digitally verify or encrypt data.

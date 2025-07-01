@@ -7,7 +7,7 @@ import { readPackageJSON } from 'pkg-types'
 export async function generateWebClientDocs() {
   consola.info('Generating Web-Client docs...')
   const packageVersion = await readPackageJSON(join(__dirname, '../../node_modules/@nimiq/core')).then(pkg => pkg.version)
-  const webClientFolder = join(__dirname, '../../build/web-client')
+  const webClientFolder = join(__dirname, '../../web-client')
   // Read package version of generated docs, if already built
   const versionFile = join(webClientFolder, '.version')
   if (existsSync(versionFile)) {

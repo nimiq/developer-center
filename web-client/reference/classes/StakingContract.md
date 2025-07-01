@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / StakingContract
-
-# Class: StakingContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1938
 
 Utility class providing methods to parse Staking Contract transaction data and proofs.

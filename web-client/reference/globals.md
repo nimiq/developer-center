@@ -1,7 +1,3 @@
-# @nimiq/core
-
-## Namespaces
-
 - [MnemonicUtils](@nimiq/namespaces/MnemonicUtils/index.md)
 - [Secret](@nimiq/namespaces/Secret/index.md)
 

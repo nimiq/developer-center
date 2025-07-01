@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainHtlcRegularTransferProof
-
-# Interface: PlainHtlcRegularTransferProof
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:177
 
 JSON-compatible and human-readable format of HTLC transfer proofs.

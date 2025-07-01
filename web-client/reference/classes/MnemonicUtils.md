@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / MnemonicUtils
-
-# Class: MnemonicUtils
-
 Defined in: @nimiq/core/lib/index.d.ts:252
 
 ## Constructors

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainStandardProof
-
-# Interface: PlainStandardProof
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:166
 
 JSON-compatible and human-readable format of standard transaction proofs.

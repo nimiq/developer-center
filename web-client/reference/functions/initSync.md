@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / initSync
-
-# Function: initSync()
-
 > **initSync**(`module`): [`InitOutput`](../interfaces/InitOutput.md)
 
 Defined in: @nimiq/core/types/wasm/web.d.ts:2614

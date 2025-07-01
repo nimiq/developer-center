@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / KeyPair
-
-# Class: KeyPair
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1340
 
 A keypair represents a private key and its respective public key.

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Signature
-
-# Class: Signature
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1847
 
 An Ed25519 Signature represents a cryptographic proof that a private key signed some data.

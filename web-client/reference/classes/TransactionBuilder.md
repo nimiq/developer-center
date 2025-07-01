@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / TransactionBuilder
-
-# Class: TransactionBuilder
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:2123
 
 The TransactionBuilder class provides helper methods to easily create standard types of transactions.

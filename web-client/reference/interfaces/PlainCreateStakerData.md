@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainCreateStakerData
-
-# Interface: PlainCreateStakerData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:113
 
 JSON-compatible and human-readable format of staker creation data.

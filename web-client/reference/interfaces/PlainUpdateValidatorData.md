@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainUpdateValidatorData
-
-# Interface: PlainUpdateValidatorData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:92
 
 JSON-compatible and human-readable format of validator update data.

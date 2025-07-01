@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / InitOutput
-
-# Interface: InitOutput
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:2257
 
 ## Properties

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainCreateValidatorData
-
-# Interface: PlainCreateValidatorData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:80
 
 JSON-compatible and human-readable format of validator creation data.

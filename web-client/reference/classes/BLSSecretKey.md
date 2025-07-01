@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / BLSSecretKey
-
-# Class: BLSSecretKey
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:747
 
 The secret part of the BLS keypair.

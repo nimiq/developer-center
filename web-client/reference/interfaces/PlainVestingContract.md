@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainVestingContract
-
-# Interface: PlainVestingContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:352
 
 ## Properties

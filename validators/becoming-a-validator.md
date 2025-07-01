@@ -6,6 +6,10 @@ This guide will walk you through the process of setting up a Nimiq validator in 
 
 This guide assumes the proof-of-stake network client (the node) has been compiled, or that you are running the node through other means, such as Docker. Check [this guide](https://github.com/nimiq/core-rs-albatross/blob/albatross/README.md#installation) for more information on compiling the code yourself.
 
+::: info Community Docker Image
+An unofficial Docker image is available at [maestroi/nimiq-albatross](https://hub.docker.com/r/maestroi/nimiq-albatross) for those who prefer containerized deployment. This is a community-maintained image and not officially supported by the Nimiq team.
+:::
+
 This guide provides two methods for sending [JSON-RPC commands](./rpc-docs/index.md#methods) to your node:
 
 1. [arpl](https://github.com/sisou/arpl), an RPC client specific to Nimiq's PoS node

@@ -1,7 +1,3 @@
-# Nimiq Albatross Light Client
-
-A very light Nimiq Proof-of-Stake client for browsers and NodeJS, compiled from Rust to WebAssembly.
-
 > **Note**
 > This light client is intended to be used in web browsers or NodeJS only (no WASI support either). Other webworker-enabled environments are not yet supported.
 

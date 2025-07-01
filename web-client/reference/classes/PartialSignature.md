@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PartialSignature
-
-# Class: PartialSignature
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1407
 
 A partial signature is a signature of one of the co-signers in a multisig.

@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / BufferUtils
-
-# Class: BufferUtils
-
 Defined in: @nimiq/core/lib/index.d.ts:48
 
 ## Constructors

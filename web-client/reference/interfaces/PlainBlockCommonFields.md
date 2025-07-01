@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainBlockCommonFields
-
-# Interface: PlainBlockCommonFields
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:494
 
 JSON-compatible and human-readable format of blocks.

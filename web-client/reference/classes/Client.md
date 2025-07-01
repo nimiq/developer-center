@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Client
-
-# Class: Client
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:789
 
 Nimiq Albatross client that runs in browsers via WASM and is exposed to Javascript.

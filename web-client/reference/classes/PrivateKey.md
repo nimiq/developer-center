@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PrivateKey
-
-# Class: PrivateKey
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1685
 
 The secret (private) part of an asymmetric key pair that is typically used to digitally sign or decrypt data.

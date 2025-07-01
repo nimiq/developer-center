@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainStakingContract
-
-# Interface: PlainStakingContract
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:372
 
 ## Properties

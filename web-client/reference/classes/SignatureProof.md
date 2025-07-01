@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / SignatureProof
-
-# Class: SignatureProof
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1884
 
 A signature proof represents a signature together with its public key and the public key's merkle path.

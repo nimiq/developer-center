@@ -1,7 +1,12 @@
 ---
 search: false
 ---
-# Nimiq PoW
+# Nimiq PoW (Legacy)
+
+::: warning Deprecated Content
+This content is for the legacy Nimiq 1.0 (Proof-of-Work) blockchain which has been deprecated.
+For current development, please use [Nimiq 2.0 (Proof-of-Stake)](/web-client/).
+:::
 
 Dive into the Nimiq Ecosystem documentation with links to resources, tutorials, and assets.
 

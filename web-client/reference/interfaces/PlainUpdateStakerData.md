@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainUpdateStakerData
-
-# Interface: PlainUpdateStakerData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:129
 
 JSON-compatible and human-readable format of update staker data.

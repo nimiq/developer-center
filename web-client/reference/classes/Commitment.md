@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / Commitment
-
-# Class: Commitment
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:1034
 
 A cryptographic commitment to a [RandomSecret](RandomSecret.md). The commitment is public, while the secret is, well, secret.

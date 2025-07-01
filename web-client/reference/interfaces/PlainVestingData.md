@@ -1,7 +1,3 @@
-[@nimiq/core](../globals.md) / PlainVestingData
-
-# Interface: PlainVestingData
-
 Defined in: @nimiq/core/types/wasm/web.d.ts:56
 
 JSON-compatible and human-readable format of vesting creation data.
