@@ -1,0 +1,169 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Nimiq VitePress Theme Usage
+
+This project uses **Nimiq VitePress Theme** (version ^1.0.0-beta.54) which provides specialized components, utilities, and configuration for Nimiq ecosystem documentation.
+
+> **Related Rules**: This theme integrates with [UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc), [Reka UI components](mdc:.cursor/rules/reka-ui-usage.mdc), and the [icon system](mdc:.cursor/rules/icons-usage.mdc). For content creation, see [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc) and [copywriting style](mdc:.cursor/rules/copywriting-style.mdc).
+
+## Theme Configuration
+
+### Setup Files
+- **Main config**: [.vitepress/config.ts](mdc:.vitepress/config.ts) - Uses `defineNimiqVitepressConfig`
+- **Theme config**: [.vitepress/theme/index.ts](mdc:.vitepress/theme/index.ts) - Uses `defineNimiqThemeConfig`
+- **Modules config**: [.vitepress/theme.config.ts](mdc:.vitepress/theme.config.ts) - Defines navigation modules
+- **Vite config**: [.vitepress/vite.config.ts](mdc:.vitepress/vite.config.ts) - Includes `NimiqVitepressVitePlugin`
+
+### Auto-Import System
+Components are automatically imported from two directories:
+```javascript
+dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components']
+```
+No manual imports needed - all theme components are globally available.
+
+## Built-in Theme Components
+
+### NqGrid - Primary Grid Component
+**Usage**: Display cards in responsive grid layouts
+```html
+<NqGrid f-my-xl :cards="$frontmatter.cards" />
+```
+
+**Card Structure**:
+```typescript
+interface Card {
+  bgColor?: string    // 'blue', 'teal', 'green', 'purple'
+  icon?: string      // Icon class (see icon usage rule)
+  title: string      // Card title
+  description: string // Card description  
+  href: string       // Link URL
+  label?: string     // Optional label
+}
+```
+
+**Examples in codebase**:
+- [index.md](mdc:index.md) - Homepage cards
+- [protocol/index.md](mdc:protocol/index.md) - Protocol links
+- [web-client/index.md](mdc:web-client/index.md) - Feature grid
+
+## Nimiq CSS Utilities (nq- prefix)
+
+The theme includes Nimiq-specific CSS utilities via `presetNimiq()`. For complete UnoCSS usage patterns, see [UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc).
+
+### Typography & Content Classes
+- `.nq-subline` - Styled subtitle text (markdown: `{.nq-subline}`)
+- `.nq-prose` - Typography styles for content
+- `.nq-label` - Label styling for headings
+- `.nq-raw` - Escape VitePress styling
+
+### Interactive Element Classes
+- `nq-pill-blue` - Primary blue pill button
+- `nq-pill-tertiary` - Secondary pill button
+- `nq-pill-gold` - Gold accent pill button
+- `nq-pill-secondary` - Secondary styled pill
+- `nq-arrow` - Adds arrow decoration to links
+- `nq-hoverable` - Hover interaction styles
+- `nq-ghost-btn` - Ghost button style
+- `nq-input-box` - Input field styling
+
+## Modules System
+
+### Module Structure
+The [theme.config.ts](mdc:.vitepress/theme.config.ts) defines navigation modules:
+
+```typescript
+export const themeConfig = {
+  modules: [
+    {
+      text: 'Module Name',           // Display name
+      subpath: 'module-path',        // URL subpath  
+      icon: 'i-tabler:icon-name',    // Module icon (see icon usage rule)
+      defaultPageLink: '/path/',     // Default landing page
+      description: 'Module description',
+      hidden?: boolean,              // Hide from navigation
+      sidebar: [                     // Sidebar configuration
+        {
+          label: 'Section Name',
+          items: [
+            { 
+              text: 'Page Name', 
+              link: '/path/page', 
+              icon: 'i-tabler:icon' 
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  links: [...],                     // Social/external links
+  showLastUpdated: false,
+  showEditContent: false
+}
+```
+
+### Current Modules
+1. **Protocol** - Albatross protocol documentation
+2. **Web Client** - Browser-based client docs  
+3. **RPC Client** - JSON-RPC API documentation
+4. **Validators** - Staking and validation guides
+5. **Migration** - Migration guides (hidden)
+
+## Integration with Other Systems
+
+This theme is designed to work seamlessly with:
+- **[UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc)** - Styling and responsive design
+- **[Reka UI components](mdc:.cursor/rules/reka-ui-usage.mdc)** - Accessible interactive components
+- **[Icon system](mdc:.cursor/rules/icons-usage.mdc)** - Nimiq and Tabler icons
+
+### VitePress Enhancements
+- Custom markdown extensions
+- Enhanced navigation structure
+- Automatic sidebar generation
+- Git changelog integration via `NimiqVitepressVitePlugin`
+
+## Common Patterns
+
+### Landing Pages
+```html
+---
+prose: false
+aside: false  
+footer: false
+cards:
+  - title: "Feature"
+    icon: "i-nimiq:icon"
+    description: "Description"
+    href: "/path"
+---
+
+# Page Title
+Subtitle with styling {.nq-subline}
+
+<NqGrid f-my-xl :cards="$frontmatter.cards" />
+```
+
+### Interactive Elements
+```html
+<!-- Pill buttons -->
+<a href="/path" nq-pill-blue nq-arrow>Primary Action</a>
+<a href="/path" nq-pill-tertiary>Secondary Action</a>
+
+<!-- Content sections with fluid spacing -->
+<div class="nq-raw" f-my-xl>
+  <p>Content that escapes VitePress styling</p>
+</div>
+```
+
+## Best Practices
+
+1. **Use built-in components**: Prefer `NqGrid` over custom card layouts
+2. **Follow module patterns**: Use consistent structure in `theme.config.ts`
+3. **Leverage nq- utilities**: Use Nimiq-specific styles for brand consistency
+4. **Icon selection**: Follow [icon usage guidelines](mdc:.cursor/rules/icons-usage.mdc)
+5. **Content structure**: Follow [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc) and [copywriting style](mdc:.cursor/rules/copywriting-style.mdc)
+6. **Navigation**: Structure content using the modules system for optimal UX
+
+The theme provides a complete documentation system specifically designed for blockchain/cryptocurrency projects with Nimiq branding and optimal developer experience.

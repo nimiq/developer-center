@@ -2,47 +2,59 @@
 sidebar: false
 secondarySidebar: false
 
-links:
-  - bgColor: blue
-    icon: i-nimiq:browsermesh
-    label: Build
-    title: Get Started with Nimiq
-    description:  Create an app on Nimiq and have it running in 5 minutes.
-    href: build/
-  - bgColor: green
-    icon: i-nimiq:cubes
-    label: Learn
-    title: The Underlying Technology
-    description: Learn what makes Nimiq a truly unique blockchain.
-    href: learn/
-  - label: Validators and Stakers
-    title: Learn about the pillars of Albatross PoS
-    href: learn/protocol/validators/validators
-  - label: Staking contract
-    title: Everything for validators, stakers, and staking.
-    href: learn/protocol/validators/staking-contract
-  - label: Block format
-    title: Everything about micro and macro blocks.
-    href: learn/protocol/block-format
-buildTogetherLinks:
-  - title: Start Building
-    icon: i-nimiq:tools-wench-hammer-outline
-    description: Connect and interact with Albatross using JS
-    href: build/web-client/
-  - title: Run a Validator
-    icon: i-nimiq:verified
-    description: Collect stake, validate blocks and earn.
-    href: build/set-up-your-own-node/becoming-a-validator
+quickstarts:
+  - label: Web App Quick-Start
+    href: web-client/getting-started
+  - label: Backend Quick-Start
+    href: rpc-client/
+  - label: Validator Quick-Start
+    href: validators/becoming-a-validator
 ---
 
-# Welcome to the Nimiq Developer Center
+<script setup lang="ts">
+import Hero from './.vitepress/theme/components/Hero.vue'
+import YellowPages from './.vitepress/theme/components/YellowPages.vue'
+</script>
 
-Get guides, resources and tips on how to create with Nimiq.{.nq-subline}
+# Build, Connect, Validate {.nq-headline}
 
-<NqGrid f-my-xl :cards="$frontmatter.links"  />
+Everything you need to create with Nimiq — pick the toolkit that fits your stack.
 
-## Let's Build Together
+<Hero />
 
-Create apps, run a validator or craft something delightful with Nimiq.{.nq-subline}
+In a nutshel{.nq-label}
 
-<NqGrid f-my-xl :cards="$frontmatter.buildTogetherLinks" large-cards />
+## What is Nimiq?{.mt-0!}
+
+Nimiq is a browser-first blockchain designed for seamless Web3 integration. Built on Albatross consensus, it delivers instant finality and energy-efficient validation while maintaining full decentralization. Whether you're building web apps, managing backend services, or securing the network, Nimiq provides the tools to get you started in minutes.
+
+<YellowPages />
+
+## Quick-Start Guides {.nq-label}
+
+<div f-mt-2xl>
+  <div flex="~ gap-f-md wrap" f-mb-xl>
+    <a v-for="q in $frontmatter.quickstarts" :key="q.label" :href="q.href" nq-pill-blue nq-arrow>{{ q.label }}</a>
+  </div>
+</div>
+
+## Pick Your Path {.nq-label}
+
+<div f-mt-2xl class="nq-raw">
+  <div f-p-lg f-rounded-lg bg="neutral-50/50" border="1 neutral-200">
+
+| Goal | Where to Start | Popular Guides |
+|---|---|---|
+| Embed Nimiq in a web or mobile-web app | [Web Client](web-client/getting-started) | [Installation](web-client/installation) · [Integrations](web-client/integrations) |
+| Query balances & history from a backend | [RPC Client](rpc-client/) | [Clients overview](rpc-client/clients) · Method list |
+| Operate a high-performance validator | [Validator Setup](validators/becoming-a-validator) | [Prover node guide](validators/prover-node-guide) · [Trustscore](validators/validator-trustscore) |
+| Understand the math behind Albatross | [Protocol Overview](protocol/protocol/overview) | [Block format](protocol/protocol/block-format) · [ZKP](protocol/protocol/ZKP-and-recursive-SNARKs) |
+
+  </div>
+</div>
+
+<div f-mt-2xl f-pt-xl border="t-1 neutral-200">
+  <p text="f-base neutral-600">
+    Need something else? Browse the sidebar or ask the community on <a href="https://discord.gg/cMHemg8" nq-arrow text="blue hover:blue-600">Discord</a>.
+  </p>
+</div>

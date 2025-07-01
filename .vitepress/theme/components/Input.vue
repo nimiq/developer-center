@@ -16,7 +16,7 @@ function reset() {
 
 <template>
   <label :key="label" flex="~ col items-center">
-    <span text="f-2xs neutral-800" :title="`${type}${required ? ' (required)' : ''}`" font-semibold lh-none mb-4 px-12 bg-transparent flex w-full self-start>
+    <span text="f-2xs neutral-800" :title="`${type}${required ? ' (required)' : ''}`" lh-none font-semibold mb-4 px-12 bg-transparent flex w-full self-start>
       {{ label }}<sup v-if="required" size-5 inline-block top-0 i-nimiq:asterisk />
       <button v-if="model !== defaultValue" ml-auto text-left bg-transparent underline @click="reset">Reset</button>
     </span>

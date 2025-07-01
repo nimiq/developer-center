@@ -1,0 +1,79 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Copywriting Style Guide – Nimiq Developer Center
+
+This rule defines **mandatory copywriting conventions** that apply to *every* documentation page, example, or UI text in the Nimiq Developer Center. Follow these guidelines in addition to broader [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc) rules.
+
+> **Related Rules**: This style guide works with [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc) for structure, [personas](mdc:.cursor/rules/personas.mdc) for audience understanding, and the [Nimiq theme](mdc:.cursor/rules/nimiq-vitepress-theme.mdc) for implementation.
+
+---
+
+## 1. Voice & Tone
+1. **Direct and Conversational** – Address the reader as *you*. Use *we* sparingly to indicate collective action.
+2. **Active Voice, Present Tense** – "Run the command" not "The command should be run".
+3. **Confident, Not Over-Selling** – State capabilities plainly; avoid hype words like *revolutionary* or *game-changing*.
+4. **Inclusive Language** – Use gender-neutral pronouns and avoid idioms that may not translate culturally.
+
+## 2. Clarity & Brevity
+- Prefer short sentences (< 20 words) and single-idea paragraphs.
+- Delete filler phrases such as *simply*, *actually*, *basically*.
+- Explain acronyms on first use: "Simplified Payment Verification (SPV)".
+
+## 3. Terminology Consistency
+- Use terms exactly as defined in the glossary; do not invent synonyms (e.g., always **validator**, never *minter*).
+- Capitalize protocol components (e.g., **Albatross**, **Nimiq Node**) but keep generic nouns lowercase.
+
+## 4. Formatting Conventions
+| Element           | Style                                                                          |
+|-------------------|---------------------------------------------------------------------------------|
+| Headings          | Sentence case (`## Send a transaction`)                                         |
+| Inline code       | Backticks `like_this`                                                           |
+| File paths        | Italic monospace *`/home/user/nimiq.conf`*                                      |
+| Buttons / UI text | **Bold**                                                                        |
+| Placeholders      | `<angle-brackets>`                                                              |
+
+## 5. Content Structure Patterns
+> **For complete document structure**: See [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc)
+
+1. **Context → Action → Result**
+   - *Context*: "You have a running node."
+   - *Action*: "Run `nimiq --status`"
+   - *Result*: "You see the current block height and peer count."
+2. Place the most common path first; move edge-cases to a **Troubleshooting** or **Advanced** subsection.
+
+## 6. Callouts & Alerts
+- `> Note:` for supplementary information.
+- `> Tip:` for best practices.
+- `> Warning:` for risk of data loss or security issues.
+
+## 7. Technical Content Guidelines
+- Use SI units; add non-SI only in parentheses if helpful.
+- For block heights, include both decimal and hex when relevant.
+- Use the Oxford comma.
+- Use en-dashes (–) for ranges, em-dashes (—) sparingly for breaks.
+- Do **not** use "&" unless part of an official name.
+
+## 8. Integration with Theme Elements
+> **For technical implementation**: See [Nimiq VitePress theme](mdc:.cursor/rules/nimiq-vitepress-theme.mdc)
+
+When writing content that uses theme components:
+- Use `.nq-subline` class for subtitles: `{.nq-subline}`
+- Reference icons properly: see [icon usage](mdc:.cursor/rules/icons-usage.mdc)
+- Follow [fluid spacing](mdc:.cursor/rules/fluid-spacing.mdc) patterns in examples
+
+## 9. Quality Checklist
+Before finalising any copy:
+- [ ] Sentences are active, present tense.
+- [ ] Acronyms explained on first occurrence.
+- [ ] Terminology matches glossary.
+- [ ] No filler words.
+- [ ] Headings follow sentence case.
+- [ ] Content structure follows [documentation authoring](mdc:.cursor/rules/documentation-authoring.mdc) patterns.
+- [ ] Target [persona](mdc:.cursor/rules/personas.mdc) can achieve goals quickly.
+
+---
+
+Applying this copywriting guide consistently ensures that Nimiq documentation remains clear, approachable, and professional for all developer personas.

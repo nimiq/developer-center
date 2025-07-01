@@ -49,7 +49,10 @@ function setPill() {
       >
       {{ option.label }}
     </label>
-    <div rounded-full bg-white h-27 top-2 absolute z-1 :style="{ ...pillStyles, transition: loaded ? 'left 300ms, width 200ms' : '' }" />
+    <div
+      rounded-full bg-white h-27 top-2 absolute z-1 :style="{ ...pillStyles,
+                                                              transition: loaded ? 'left 300ms, width 200ms' : '' }"
+    />
   </div>
 </template>
 

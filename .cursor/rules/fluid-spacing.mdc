@@ -1,0 +1,160 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Fluid Spacing with UnoCSS Preset Onmax
+
+This project uses **fluid spacing** through the `unocss-preset-onmax` which provides responsive sizing that adapts automatically across all screen sizes without media queries.
+
+> **Related Rules**: Fluid spacing is part of the [UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc) and integrates with [Nimiq theme components](mdc:.cursor/rules/nimiq-vitepress-theme.mdc).
+
+## Core Concept
+
+Instead of using media queries (`md:p-8`, `lg:p-12`), fluid spacing uses mathematical interpolation to create smooth transitions between mobile and desktop sizes using a single utility class.
+
+**Traditional approach:**
+```html
+<div class="p-4 md:p-6 lg:p-8 xl:p-10">
+```
+
+**Fluid approach:**
+```html
+<div f-p-lg>
+```
+
+## Fluid Spacing Tokens
+
+All fluid spacing uses the `f-` prefix and scales automatically:
+
+### Spacing Scale
+- `f-p-xs` - Extra small padding (responsive)
+- `f-p-sm` - Small padding (responsive) 
+- `f-p-md` - Medium padding (responsive)
+- `f-p-lg` - Large padding (responsive)
+- `f-p-xl` - Extra large padding (responsive)
+- `f-p-2xl` - 2X large padding (responsive)
+
+### Complete Fluid Properties
+- **Padding**: `f-p-*`, `f-px-*`, `f-py-*`, `f-pt-*`, `f-pr-*`, `f-pb-*`, `f-pl-*`
+- **Margin**: `f-m-*`, `f-mx-*`, `f-my-*`, `f-mt-*`, `f-mr-*`, `f-mb-*`, `f-ml-*`
+- **Width**: `f-w-xs`, `f-w-sm`, `f-w-md`, `f-w-lg`, `f-w-xl`, `f-w-2xl`, `f-w-3xl`, `f-w-4xl`, `f-w-5xl`
+- **Height**: `f-h-xs`, `f-h-sm`, `f-h-md`, `f-h-lg`, `f-h-xl`, `f-h-2xl`, `f-h-3xl`, `f-h-4xl`, `f-h-5xl`
+- **Font Size**: `text="f-xs"`, `text="f-sm"`, `text="f-base"`, `text="f-lg"`, `text="f-xl"`, `text="f-2xl"`, `text="f-3xl"`, `text="f-4xl"`, `text="f-5xl"`
+- **Gap**: `gap-f-xs`, `gap-f-sm`, `gap-f-md`, `gap-f-lg`, `gap-f-xl`
+- **Border Radius**: `f-rounded-sm`, `f-rounded-md`, `f-rounded-lg`, `f-rounded-xl`
+
+## Advanced Fluid Sizing
+
+### Custom Range Values
+You can specify exact pixel ranges for mobile/desktop:
+
+```html
+<!-- Width: 320px on mobile, 420px on desktop -->
+<div f-max-w="320/420">
+
+<!-- Padding: 12px on mobile, 24px on desktop -->
+<div f-p="12/24">
+
+<!-- Font size: 14px on mobile, 18px on desktop -->
+<div text="f-14/18">
+```
+
+### Fluid Grid Gaps
+```html
+<!-- Grid with responsive gaps -->
+<div grid="~ cols-2 gap-f-lg">
+
+<!-- Flexbox with responsive gaps -->
+<div flex="~ gap-f-md wrap">
+```
+
+### Fluid Typography
+```html
+<!-- Heading that scales from 24px to 32px -->
+<h1 text="f-2xl" font-bold>
+
+<!-- Body text that scales from 14px to 16px -->
+<p text="f-sm">
+```
+
+## Integration with UnoCSS Attributify
+
+> **For complete attributify patterns**: See [UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc)
+
+Fluid spacing works seamlessly with UnoCSS attributify syntax:
+
+```html
+<!-- Traditional class approach -->
+<div class="f-p-lg f-m-xl f-rounded-md">
+
+<!-- Attributify approach (preferred) -->
+<div f-p-lg f-m-xl f-rounded-md>
+
+<!-- Grouped attributify -->
+<div f="p-lg m-xl rounded-md">
+```
+
+## Practical Examples
+
+### Card Component
+```html
+<div 
+  f-p-xl 
+  f-rounded-lg 
+  f-mb-lg
+  class="bg-white shadow-lg"
+>
+  <h3 text="f-xl" f-mb-md>Card Title</h3>
+  <p text="f-base" f-mb-lg>Card content</p>
+  <button f-px-lg f-py-md f-rounded-md>Action</button>
+</div>
+```
+
+### Hero Section
+```html
+<section f-py-4xl f-px-xl>
+  <h1 text="f-4xl" f-mb-xl>Hero Title</h1>
+  <p text="f-lg" f-mb-2xl max-w="f-w-3xl">Hero description</p>
+  <button f-px-2xl f-py-lg f-rounded-lg>Get Started</button>
+</section>
+```
+
+### Responsive Grid
+```html
+<div 
+  grid="~ cols-1 md:cols-3" 
+  gap-f-xl 
+  f-p-xl
+>
+  <div f-p-lg f-rounded-md>Item 1</div>
+  <div f-p-lg f-rounded-md>Item 2</div>
+  <div f-p-lg f-rounded-md>Item 3</div>
+</div>
+```
+
+## Key Benefits
+
+1. **No Media Queries**: Single utility class handles all screen sizes
+2. **Smooth Scaling**: Mathematical interpolation creates fluid transitions
+3. **Consistent Design**: Predefined scale ensures visual harmony
+4. **Less Code**: Dramatically reduces CSS and markup complexity
+5. **Better UX**: Smoother responsive behavior across all devices
+
+## Best Practices
+
+1. **Always prefer fluid spacing** over fixed pixel values when possible
+2. **Use semantic scale** (`f-p-lg`) rather than custom ranges unless specific requirements
+3. **Combine with attributify** for cleaner markup
+4. **Test across devices** to ensure fluid behavior meets design requirements
+5. **Use consistent scale** throughout the project for visual coherence
+
+## Configuration Reference
+
+Fluid spacing is configured in [uno.config.ts](mdc:uno.config.ts) through the `presetOnmax()` preset, which provides:
+- Responsive breakpoints
+- Fluid interpolation functions
+- Semantic spacing tokens
+- Typography scale integration
+
+For more details: https://github.com/onmax/unocss-preset-onmax/tree/main/docs/unocss-preset-fluid-sizing

@@ -1,0 +1,155 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# UnoCSS Conventions
+
+The docs and theme rely heavily on UnoCSS **attributify** syntax instead of traditional `class="…"` strings.
+
+> **Related Rules**: UnoCSS integrates with [fluid spacing](mdc:.cursor/rules/fluid-spacing.mdc), [Nimiq theme components](mdc:.cursor/rules/nimiq-vitepress-theme.mdc), [Reka UI styling](mdc:.cursor/rules/reka-ui-usage.mdc), and the [icon system](mdc:.cursor/rules/icons-usage.mdc).
+
+## Configuration Overview
+
+### Main Config: [uno.config.ts](mdc:uno.config.ts)
+- **`presetOnmax()`** – [Fluid spacing system](mdc:.cursor/rules/fluid-spacing.mdc) (`f-my-xl`, `text="f-2xs"`)
+- **`presetNimiq()`** – [Nimiq theme utilities](mdc:.cursor/rules/nimiq-vitepress-theme.mdc) (`nq-pill-blue`, `nq-input-box`)
+- **`presetIcons()`** – [Icon system integration](mdc:.cursor/rules/icons-usage.mdc) (`i-nimiq:*`, `i-tabler:*`)
+
+### Scanned Files
+UnoCSS scans `.md`, `.vue`, and specific TS files listed under `content.filesystem` in the config.
+
+## Sizing Conventions
+
+### Standard UnoCSS Sizing
+- **Pixel-based**: `w-8` = 8px, `h-16` = 16px, `p-4` = 4px padding
+
+### Fluid Spacing (Preferred)
+> **See detailed guide**: [Fluid spacing usage](mdc:.cursor/rules/fluid-spacing.mdc)
+
+Use fluid spacing tokens for responsive design:
+- `f-p-lg` = responsive padding
+- `f-m-xl` = responsive margin  
+- `text="f-xl"` = responsive font sizes
+- `f-rounded-lg` = responsive border radius
+
+## Attributify Syntax Patterns
+
+### Single vs Grouped Attributes
+- **Single attribute**: Use when you have only one utility for that prefix
+  ```html
+  <!-- Single text utility -->
+  <div text-red>
+  
+  <!-- Single padding utility -->
+  <div p-4>
+  
+  <!-- Single border utility -->
+  <div border-2>
+  ```
+
+- **Grouped attributes**: Use quoted values when combining multiple utilities with the same prefix
+  ```html
+  <!-- Multiple text utilities grouped -->
+  <div text="red bold lg">
+  
+  <!-- Multiple padding utilities grouped -->
+  <div p="x-4 y-2">
+  
+  <!-- Multiple border utilities grouped -->
+  <div border="2 solid red rounded">
+  ```
+
+- **Mixed approach**: You can combine both single and grouped attributes in the same element
+  ```html
+  <!-- Single margin, grouped text utilities, single background -->
+  <div m-4 text="f-lg bold neutral-800" bg-white>
+  
+  <!-- Single rounded, grouped padding, grouped flex -->
+  <button rounded text="f-base white" p="x-6 y-3" flex="~ items-center gap-2">
+  ```
+
+### Special Value Requirements
+**MUST use quoted values** when attributes contain:
+- **Percentages**: `left="50%"` `top="50%"` (not `left-50p top-50p`)
+- **Opacity separators**: `bg="orange/80"` (not `bg-orange/80`)
+- **Complex values**: `transform="translate-x-1/2 -translate-y-1/2"`
+
+```html
+<!-- ❌ Invalid: Special characters not quoted -->
+<div left-50p top-50p bg-orange/80>
+
+<!-- ✅ Valid: Special characters properly quoted -->
+<div left="50%" top="50%" bg="orange/80">
+
+<!-- ✅ Also valid: Multiple values with special characters (one-line preferred) -->
+<div left="50%" top="50%" bg="orange/80" transform="translate-x-1/2 -translate-y-1/2">
+```
+
+### Decision Guidelines
+- Use **single attribute** (`text-red`) when you have only one utility for that prefix
+- Use **grouped attribute** (`text="red bold lg"`) when you have 2+ utilities sharing the same prefix
+- **Always use quotes** when values contain special characters (`%`, `/`, spaces)
+- **Prefer one-line attributes** - IDE auto-wrapping handles long lines, so fewer lines are better
+- Mix both approaches freely within the same element as needed
+
+## Common UnoCSS Patterns
+
+### Layout Patterns
+- **Grid**: `grid="~ cols-1 md:cols-3 gap-32"`
+- **Flexbox**: `flex="~ gap-32 wrap"`
+- **Self-referencing**: Use `~` for utilities with same prefix: `<button border="~ red">`
+- **Positioning**: `absolute left="50%" top="50%" transform="translate-x-1/2 -translate-y-1/2"`
+
+### Typography Patterns
+- **Fluid text**: `text="f-2xs neutral-800"` (combines size and color)
+- **Standard text**: `text="lg bold"` or `text-red`
+
+### Spacing Patterns
+> **See detailed guide**: [Fluid spacing usage](mdc:.cursor/rules/fluid-spacing.mdc)
+- **Fluid spacing**: `f-my-xl`, `f-p-lg`, `f-rounded-lg` (preferred for responsive design)
+- **Standard spacing**: `my-8`, `p-4`, `rounded-lg` (for fixed layouts)
+
+### Interactive Elements
+> **See theme components**: [Nimiq VitePress theme](mdc:.cursor/rules/nimiq-vitepress-theme.mdc)
+- **Nimiq buttons**: `nq-pill-blue`, `nq-pill-tertiary`, `nq-arrow`
+- **Inputs**: `nq-input-box`
+- **States**: `hover:bg-blue`, `focus:ring-2`
+- **Opacity effects**: `bg="blue/20"`, `hover:bg="blue/30"`
+- **Accessibility**: `sr-only` for screen reader only content (use existing utility, don't create custom)
+
+### Icons
+> **See complete icon guide**: [Icon usage](mdc:.cursor/rules/icons-usage.mdc)
+- **Inline icons**: `<span i-nimiq:asterisk />`
+- **In attributes**: `<div class="i-tabler:wallet">`
+
+## Property Conflicts & Solutions
+
+### Avoiding Attribute Conflicts
+- **Property conflicts**: Use `un-` prefix when attributes conflict with HTML properties
+  - `<a un-text="red">` instead of `<a text="red">` (conflicts with link's text property)
+  - `<input un-border="2">` instead of `<input border="2">` (conflicts with input's border property)
+- **Framework compatibility**: JSX/TSX may need `un-` prefix to avoid component prop conflicts
+
+## Project-Specific Shortcuts
+
+### Custom Shortcuts in [uno.config.ts](mdc:uno.config.ts)
+- **`columns`** → `flex gap-32 flex-wrap children:flex-1`
+
+## Best Practices
+
+1. **Prefer fluid sizing**: Use `f-*` tokens (`f-p-lg`, `f-m-xl`, `f-rounded-lg`) over pixel values (`p-16`, `m-32`, `rounded-lg`) when possible
+2. **Use attributify syntax**: `flex="~ items-center"` instead of long class strings
+3. **Keep attributes on one line**: IDE auto-wrapping handles long lines better than manual line breaks
+4. **Group related utilities**: `text="f-lg bold neutral-800"` for typography
+5. **Quote special values**: Always use quotes for percentages (`left="50%"`), opacity (`bg="blue/80"`), and complex transforms
+6. **Use existing accessibility utilities**: `sr-only` is available - don't create custom screen reader utilities
+7. **Leverage semantic spacing**: Use fluid spacing tokens from `presetOnmax` for visual consistency
+8. **Check theme utilities**: Use `nq-*` utilities for Nimiq-specific styling before creating custom classes
+
+## Adding New Utilities
+
+New utilities can be added via the `rules` or `shortcuts` arrays in [uno.config.ts](mdc:uno.config.ts). Consider whether the utility should be:
+- A **preset rule** (if it's reusable across projects)
+- A **project shortcut** (if it's specific to Nimiq)
+- Part of **theme utilities** (if it's brand-specific)

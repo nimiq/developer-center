@@ -1,35 +1,28 @@
 ---
 links:
-  - bgColor: gold
-    icon: i-nimiq:duotone-three-hands-hexagon
-    label: Staking Pool Guide
-    title: Guide for Staking Pools
-    description: Learn how to set up and integrate your pool in the Nimiq ecosystem.
-    href: https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators
-    span: full
-  - label: Pool Handbook
-    title: Staking Pools Handbook
-    description: Explore guidelines and best practices for pool operators.
-    href: staking-handbook
-  - label: Trustscore
-    title: Validator Trustscore
-    description: Understand how trust scores are calculated and maintained.
-    href: validator-trustscore
-  - label: FAQ
-    title: Any Question?
-    href: staking-faq
-    description: Check our most frequent questions.
+  - title: Run a Validator
+    bgColor: green
+    label: Connect
+    icon: i-nimiq:verified
+    description: Collect stake, validate blocks and earn.
+    href: becoming-a-validator
+  - label: RPC
+    title: Connect via RPC
+    href: /rpc-client/
+prose: false
+prev: false
+next: false
+aside: false
+footer: false
 ---
 
-# Validators Hub
+# Set up your Nimiq Albatross node
 
-Welcome to the Validators Hub, the go-to resource for stakers and pool operators in the Nimiq ecosystem. Whether you’re setting up a new staking pool, managing an existing one, or looking for key resources to support your efforts, this section offers comprehensive guidance and tools.
+Full Control and Advanced Customization Beyond the Web Client.{.nq-subline}
 
-<NqGrid f-my-xl :cards="$frontmatter.links"  />
+<!-- <Tags :tags="$frontmatter.links.map(l => l.tags).filter(Boolean).flat()" mt-24 /> -->
+<NqGrid f-my-xl :cards="$frontmatter.links" />
 
-### What You'll Find Here
+## Not sure which client to use? {.f-my-xl}
 
-- **Staking Pool Guide**: Step-by-step instructions for setting up and integrating your pool with the Nimiq ecosystem.
-- **Staking Pool Handbook**: Detailed guidelines for pool operators, focusing on best practices, transparency, and ethical operations.
-- **Validator Trustscore**: Insights into the trust score system, its calculation, and maintaining a good reputation.
-- **Most Asked Questions**: Find answers to common questions from stakers and pool operators to help you navigate the staking process.
+Most applications will not require a private node. To learn more, explore the differences between the [Web Client vs RPC Client](/web-client/).{.mt-16}

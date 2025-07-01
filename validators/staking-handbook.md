@@ -4,7 +4,7 @@ This handbook provides guidelines for the staking pools on the Nimiq network. It
 
 Pool operators are **fully responsible for setting up and maintaining their pools**, including creating the payout system and ensuring compliance with these guidelines. While validators can operate independently, staking pools allow multiple users to stake their funds with a single validator.
 
-This page is intended for those operating a staking pool who wish to be listed on the [Nimiq Wallet](https://wallet.nimiq.com/). The [validators-API repository](https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators) provides the tools and JSON schema for integrating staking pools with the wallet. By following these guidelines and submitting a complete JSON file via PR (pull request), pool operators can ensure their pool is displayed correctly in the wallet.
+This page is intended for those operating a staking pool who wish to be listed on the [Nimiq Wallet](https://wallet.nimiq.com/). The [validators-API repository](https://github.com/nimiq/validators-api#add-your-validator-information) provides the tools and JSON schema for integrating staking pools with the wallet. By following these guidelines and submitting a complete JSON file via PR (pull request), pool operators can ensure their pool is displayed correctly in the wallet.
 
 ## General Rules
 
@@ -42,5 +42,5 @@ The review process consists of two steps:
 
 ### **Links and References**
 
-- [Validator Staking Pools README](https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators)
+- [Validator Staking Pools README](https://github.com/nimiq/validators-api#add-your-validator-information)
 - [Become a Validator Guide](https://www.nimiq.com/developers/build/set-up-your-own-node/becoming-a-validator)

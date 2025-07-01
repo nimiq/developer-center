@@ -8,12 +8,13 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import llmstxt from 'vitepress-plugin-llms'
 import { loadMethods } from './rpc/utils'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
+import { generateWebClientDocs } from './scripts/web-client'
 
 export default defineConfig(async () => {
-  //  FIXME Generation is broken
-  // await generateWebClientDocs()
+  await generateWebClientDocs()
 
   // Load the OpenRPC document
   const openRpcDocPath = resolve(__dirname, 'rpc/openrpc-document.json')
@@ -53,6 +54,10 @@ export default defineConfig(async () => {
       __NIMIQ_OPENRPC_METHODS__: JSON.stringify(methods),
     },
 
+    build: {
+      target: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
+    },
+
     plugins: [
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],
@@ -79,6 +84,27 @@ export default defineConfig(async () => {
       ViteImageOptimizer(),
 
       RpcDocsGeneratorPlugin(),
+      llmstxt(
+        {
+          ignoreFiles: [
+            'archive/**',
+            '**/migration*',
+            '**/nimiq-styles/**',
+            '**/*nimiq-style*',
+            'build/nimiq-pow/**',
+            '**/*.json',
+            '**/*.js',
+            '**/*.ts',
+            '**/_*',
+            'README.md',
+            'LICENSE.md',
+            '.*',
+          ],
+          experimental: {
+            depth: 4,
+          },
+        },
+      ),
 
       NimiqVitepressVitePlugin({
         gitChangelog: { repoURL: 'https://github.com/nimiq/developer-center' },

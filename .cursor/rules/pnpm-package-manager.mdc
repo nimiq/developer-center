@@ -1,0 +1,181 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# pnpm Package Manager
+
+This project **exclusively uses pnpm** for all package management operations. Never use npm or yarn.
+
+> **Related Rules**: pnpm integrates with all Node.js workflows and should be used consistently across development, CI/CD, and deployment processes.
+
+## Core Principle
+
+**Always use pnpm commands** instead of npm or yarn equivalents for all package management tasks.
+
+## Command Mappings
+
+### Package Installation
+```bash
+# ✅ Correct - Use pnpm
+pnpm install
+pnpm i
+
+# ❌ Incorrect - Don't use npm/yarn
+npm install
+yarn install
+```
+
+### Adding Dependencies
+```bash
+# ✅ Correct - Use pnpm
+pnpm add <package>
+pnpm add -D <package>           # Dev dependency
+pnpm add -g <package>           # Global package
+
+# ❌ Incorrect - Don't use npm/yarn
+npm install <package>
+yarn add <package>
+```
+
+### Removing Dependencies
+```bash
+# ✅ Correct - Use pnpm
+pnpm remove <package>
+pnpm rm <package>
+
+# ❌ Incorrect - Don't use npm/yarn
+npm uninstall <package>
+yarn remove <package>
+```
+
+### Running Scripts
+```bash
+# ✅ Correct - Use pnpm
+pnpm run <script>
+pnpm <script>                   # Short form
+pnpm dev
+pnpm build
+pnpm test
+
+# ❌ Incorrect - Don't use npm/yarn
+npm run <script>
+yarn <script>
+```
+
+### Package Updates
+```bash
+# ✅ Correct - Use pnpm
+pnpm update
+pnpm up <package>
+pnpm outdated
+
+# ❌ Incorrect - Don't use npm/yarn
+npm update
+yarn upgrade
+```
+
+## pnpm-Specific Features
+
+### Workspace Management
+```bash
+# Install dependencies for all workspace packages
+pnpm install -r
+
+# Run script in all workspace packages
+pnpm -r run build
+
+# Add dependency to specific workspace
+pnpm --filter <workspace> add <package>
+```
+
+### Efficient Commands
+```bash
+# Install only production dependencies
+pnpm install --prod
+
+# Install with frozen lockfile (CI/CD)
+pnpm install --frozen-lockfile
+
+# Clean install (remove node_modules first)
+pnpm install --frozen-lockfile --prefer-offline
+```
+
+### Package Execution
+```bash
+# ✅ Correct - Use pnpx (pnpm's npx equivalent)
+pnpx <package>
+pnpx create-vue@latest
+pnpx eslint .
+
+# ❌ Incorrect - Don't use npx
+npx <package>
+```
+
+## Project Files
+
+### Lock File
+- **Use**: `pnpm-lock.yaml` (committed to version control)
+- **Don't commit**: `package-lock.json` or `yarn.lock`
+
+### Configuration
+- **pnpm workspace**: Configure in `pnpm-workspace.yaml` if using workspaces
+- **pnpm config**: Use `.npmrc` for pnpm-specific settings
+
+## CI/CD Integration
+
+### GitHub Actions Example
+```yaml
+- name: Setup pnpm
+  uses: pnpm/action-setup@v2
+  with:
+    version: latest
+
+- name: Install dependencies
+  run: pnpm install --frozen-lockfile
+
+- name: Build
+  run: pnpm build
+```
+
+### Docker Example
+```dockerfile
+# Use pnpm in Docker
+RUN npm install -g pnpm
+COPY pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+```
+
+## Benefits of pnpm
+
+1. **Faster installs**: Symlinks and content-addressable storage
+2. **Disk space efficient**: Shared dependency storage
+3. **Strict dependency resolution**: Prevents phantom dependencies
+4. **Monorepo support**: Built-in workspace management
+5. **Drop-in replacement**: Compatible with npm registry and package.json
+
+## Best Practices
+
+1. **Always use pnpm commands** - Never mix with npm/yarn in the same project
+2. **Commit pnpm-lock.yaml** - Ensures consistent dependency resolution
+3. **Use --frozen-lockfile in CI** - Prevents unexpected dependency changes
+4. **Leverage pnpm workspaces** - For monorepo management
+5. **Use pnpx instead of npx** - For package execution
+6. **Configure .npmrc** - For pnpm-specific settings and registry configuration
+
+## Troubleshooting
+
+### Common Issues
+- **Phantom dependencies**: pnpm's strict resolution prevents accessing uninstalled packages
+- **Peer dependencies**: pnpm is stricter about peer dependency warnings
+- **Global packages**: Use `pnpm add -g` instead of `npm install -g`
+
+### Migration from npm/yarn
+1. Delete `node_modules` and `package-lock.json`/`yarn.lock`
+2. Run `pnpm install`
+3. Update CI/CD scripts to use pnpm commands
+4. Update documentation to reference pnpm commands
+
+## Enforcement
+
+When suggesting or running package management commands, **always default to pnpm**. If you see npm or yarn commands in existing code or documentation, recommend migrating to the pnpm equivalent.
