@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="35.56" height="32" viewBox="0 0 20 18"><g fill="none"><path fill="url(#nimiq-logos-nimiq-kzreae8zi8h7bu8syy27aa)" d="M19.734 8.156 15.576.844A1.66 1.66 0 0014.135 0H5.819C5.226 0 4.677.32 4.38.844L.222 8.156a1.71 1.71 0 000 1.688l4.158 7.312c.297.523.846.844 1.439.844h8.316c.593 0 1.142-.32 1.438-.844l4.158-7.312c.3-.523.3-1.165.003-1.688"/><defs><radialGradient id="nimiq-logos-nimiq-kzreae8zi8h7bu8syy27aa" cx="0" cy="0" r="1" gradientTransform="matrix(-19.9562 0 0 -18 19.956 18)" gradientUnits="userSpaceOnUse"><stop stop-color="#EC991C"/><stop offset="1" stop-color="#E9B213"/></radialGradient></defs></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 166 147">
+  <path fill="url(#a)" d="M163.354 66.6 128.936 6.89A13.794 13.794 0 0 0 117.005 0H48.168A13.73 13.73 0 0 0 36.26 6.89L1.84 66.6a13.81 13.81 0 0 0 0 13.779l34.419 59.71a13.73 13.73 0 0 0 11.908 6.889h68.837a13.73 13.73 0 0 0 11.908-6.889l34.418-59.71a13.75 13.75 0 0 0 .023-13.78Z"/>
+  <path stroke="url(#b)" stroke-linecap="round" stroke-linejoin="round" stroke-width="14" d="m112.812 52.735 11.156 11.216c4.686 4.717 7.032 7.075 7.032 10.003s-2.346 5.287-7.032 10.003l-11.156 11.216M52.188 52.735 41.032 63.951C36.346 68.668 34 71.026 34 73.954s2.346 5.287 7.032 10.003l11.156 11.216M90.791 43 82.5 73.945l-8.292 30.946"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(165.25 0 0 165.393 124.271 145.064)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EC991C"/>
+      <stop offset="1" stop-color="#E9B213"/>
+    </radialGradient>
+    <linearGradient id="b" x1="131" x2="43" y1="39.977" y2="120.477" gradientUnits="userSpaceOnUse">
+      <stop offset=".19" stop-color="white"/>
+      <stop offset=".61" stop-color="white" stop-opacity=".86"/>
+      <stop offset="1" stop-color="white" stop-opacity=".6"/>
+    </linearGradient>
+  </defs>
+</svg>

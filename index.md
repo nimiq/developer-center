@@ -1,132 +1,196 @@
 ---
+layout: home
 sidebar: false
 secondarySidebar: false
 
-quickstarts:
-  - label: Web App Quick-Start
-    href: web-client/getting-started
-  - label: Backend Quick-Start
-    href: rpc-client/
-  - label: Validator Quick-Start
-    href: validators/becoming-a-validator
+title: Build. Connect. Validate.
+description: Everything you need to create with Nimiq — pick the toolkit that fits your stack.
 
-showcaseApps:
-  - title: Nimiq Wallet
-    description: Browser-based cryptocurrency wallet
-    href: https://wallet.nimiq.com
-    icon: i-tabler:wallet
-  - title: Nimiq Watch
-    description: Blockchain explorer and analytics
-    href: https://nimiq.watch
-    icon: i-tabler:chart-line
-  - title: Nimiq Pool
-    description: Decentralized mining pool
-    href: https://pool.nimiq.com
-    icon: i-tabler:pool
+heroCards:
+  - icon: i-nimiq:browsermesh
+    title: Web Client
+    description: Build web and mobile-web apps that interact with Nimiq directly in the browser. Completely decentralized, no server required
+    label: Build in Browser
+    href: /web-client
+    bgColor: blue
+    iconClass: absolute bottom--48 right--32 text-256
+    class: "md:grid-row-span-full [&_p]:max-w-none"
+  - icon: i-tabler:api
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: RPC Client
+    description: Build full-stack applications with Nimiq
+    href: /rpc-client
+    hoverColor: gold
+  - icon: i-nimiq:verified
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: Validators
+    description: Secure the nework and earn rewards
+    href: /validators
+    hoverColor: green
+  - icon: i-tabler:book
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: Protocol
+    description: Albatross consensus and protocol specifications
+    href: /protocol
+    hoverColor: "red"
 
-whyNimiq:
+quickStartLabel: Quick Start
+quickStartTitle: Start Building in Minutes
+quickStartDescription: Jump in and start experimenting with Nimiq right away. No setup required.
+quickStartActions:
+  - title: WebClient Tutorial
+    description: Interactive tutorial in the browser
+    href: https://tutorial.nimiq.com
+    icon: i-local:nimiq-tutorial
+  - title: RPC Playground
+    description: Test the RPC calls directly from your browser
+    href: /rpc-client/
+    icon: i-local:nimiq-rpc
+  - title: Nimiq MCP
+    description: Build with AI using our MCP server integration
+    href: https://github.com/onmax/nimiq-mcp
+    icon: i-local:nimiq-mcp
+    iconClass: op-100
+
+nimiqFeaturesLabel: Why Nimiq
+nimiqFeaturesTitle: Browser-first blockchain
+nimiqFeaturesDescription: No middlemen. No servers. No barriers. No fees. Connect directly to from any browser.
+nimiqFeatures:
   - title: Browser-First
     description: Build directly in the browser without servers or infrastructure
-    icon: i-tabler:browser
+    icon: i-nimiq:browsermesh
+    iconBgColor: bg-gradient-blue
+  - title: Zero Fees
+    description: Send transactions without paying any fees, ever
+    icon: i-nimiq:cash
+    iconBgColor: bg-gradient-green
   - title: Instant Finality
     description: Albatross consensus delivers sub-second confirmation times
-    icon: i-tabler:bolt
+    icon: i-nimiq:bolt
+    iconClass: text-orange
+    iconBgColor: bg-gradient-orange
   - title: Energy Efficient
     description: Proof-of-Stake consensus uses 99.9% less energy than PoW
-    icon: i-tabler:leaf
-  - title: AI-First Development
-    description: Official MCP server lets AI assistants interact with Nimiq directly
-    icon: i-tabler:robot
+    icon: i-nimiq:leaf-2
+    iconBgColor: bg-gradient-gold
+  - title: Community-Driven
+    description: Open-source development with active community contributions
+    icon: i-tabler:users
+    iconBgColor: bg-purple
   - title: Developer Friendly
     description: Simple APIs, extensive docs, and active community support
-    icon: i-tabler:code
+    icon: i-nimiq:code
+    iconBgColor: bg-gradient-red
+
+nimiqAppsLabel: Community Projects
+nimiqAppsTitle: Explore the Nimiq Ecosystem
+nimiqAppsDescription: Discover community-built apps, games, tools and services powered by Nimiq's ecosystem.
+
+popularResourcesTitle: Popular Resources
+popularResources:
+  - title: Web Development
+    links:
+      - text: Getting Started
+        href: /web-client/getting-started
+      - text: Installation Guide
+        href: /web-client/installation
+      - text: Framework Integration
+        href: /web-client/integrations
+      - text: UI Components
+        href: https://onmax.github.io/nimiq-ui/
+        target: _blank
+      - text: Interactive Tutorial
+        href: https://tutorial.nimiq.com
+        target: _blank
+      - text: Nimiq Utils
+        href: /web-client/nimiq-utils
+  - title: Backend & API
+    links:
+      - text: RPC Playground
+        href: /rpc-client/playground
+      - text: RPC Methods
+        href: /rpc-client/methods/
+      - text: Client Libraries
+        href: /rpc-client/clients
+      - text: Account Queries
+        href: /rpc-client/getAccount
+      - text: Send Transactions
+        href: /rpc-client/sendRawTransaction
+  - title: Validators
+    links:
+      - text: Becoming a Validator
+        href: /validators/becoming-a-validator
+      - text: Prover Node Setup
+        href: /validators/prover-node-guide
+      - text: Staking Handbook
+        href: /validators/staking-handbook
+      - text: Trustscore System
+        href: /validators/validator-trustscore
+      - text: Staking FAQ
+        href: /validators/staking-faq
+  - title: Migration
+    links:
+      - text: Migration Overview
+        href: /migration/
+      - text: For Integrators
+        href: /migration/migration-integrators
+      - text: JSON-RPC Migration
+        href: /migration/migration-json-rpc
+      - text: Web Developers
+        href: /migration/migration-web-developers
+      - text: Technical Details
+        href: /migration/migration-technical-details
+  - title: Community
+    links:
+      - text: Protocol Docs
+        href: /protocol/protocol/block-format
+      - text: Community Forum
+        href: https://forum.nimiq.community/
+        target: _blank
+      - text: Telegram
+        href: https://t.me/nimiq
+        target: _blank
+      - text: Awesome Nimiq
+        href: https://github.com/onmax/nimiq-awesome
+        target: _blank
+      - text: AI MCP Server
+        href: https://github.com/onmax/nimiq-mcp
+        target: _blank
+
 ---
 
 <script setup lang="ts">
 import Hero from './.vitepress/theme/components/Hero.vue'
-// import './node_modules/nimiq-css/dist/css/static-content.css'
+import QuickStart from './.vitepress/theme/components/QuickStart.vue'
+import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
+import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue'
 </script>
 
-<section bg-white>
+<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
 
-# Build, Connect, Validate {.nq-headline}
+<NimiqFeatures f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
 
-Everything you need to create with Nimiq — pick the toolkit that fits your stack.
+<QuickStart f-py-3xl :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
 
-<Hero />
+<NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" />
 
-</section>
+---
 
-<section bg-darkblue>
+## {{ $frontmatter.popularResourcesTitle }} {.nq-label}
 
-## What is Nimiq? {.nq-label}
-
-Nimiq is a browser-first blockchain designed for seamless Web3 integration. Built on Albatross consensus, it delivers instant finality and energy-efficient validation while maintaining full decentralization.
-
-### Why Choose Nimiq? {.nq-label}
-
-<NqGrid f-mt-lg f-mb-2xl :cards="$frontmatter.whyNimiq" />
-
-## Start Building in Minutes {.nq-label}
-
-Get your first Nimiq app running in under 5 minutes with our quick-start guides:
-
-<div f-mt-lg f-mb-2xl>
-  <div flex="~ gap-f-md wrap">
-    <a v-for="q in $frontmatter.quickstarts" :key="q.label" :href="q.href" nq-pill-blue nq-arrow>{{ q.label }}</a>
-  </div>
-</div>
-
-</section>
-
-## Built with Nimiq {.nq-label}
-
-See what's possible with Nimiq's developer tools:
-
-<NqGrid f-mt-lg f-mb-2xl :cards="$frontmatter.showcaseApps" />
-
-## Popular Resources {.nq-label}
-
-<div f-mt-lg grid="~ cols-1 md:cols-2 lg:cols-4 gap-f-md">
-  <div>
-    <h4 text="f-sm neutral-800" font-bold mb-8>Web Development</h4>
+<div f-mt-lg flex="~ wrap gap-16" class="nq-raw">
+  <div v-for="resource in $frontmatter.popularResources" :key="resource.title">
+    <h4 text="f-sm neutral-800" font-bold mb-8>{{ resource.title }}</h4>
     <ul list-none space-y-4 text="f-xs">
-      <li><a href="/web-client/installation" hover:underline>Installation Guide</a></li>
-      <li><a href="/web-client/integrations" hover:underline>Framework Integration</a></li>
-      <li><a href="https://onmax.github.io/nimiq-ui/" hover:underline target="_blank">UI Components</a></li>
+      <li v-for="link in resource.links" :key="link.text" my-8="!" ml-4>
+        <a :href="link.href" :target="link.target" hover:underline>{{ link.text }}</a>
+      </li>
     </ul>
-  </div>
-
-  <div>
-    <h4 text="f-sm neutral-800" font-bold mb-8>Backend & API</h4>
-    <ul list-none space-y-4 text="f-xs">
-      <li><a href="/rpc-client/clients" hover:underline>RPC Clients</a></li>
-      <li><a href="/rpc-client/getAccount" hover:underline>Account Queries</a></li>
-      <li><a href="/rpc-client/sendRawTransaction" hover:underline>Send Transactions</a></li>
-    </ul>
-  </div>
-
-  <div>
-    <h4 text="f-sm neutral-800" font-bold mb-8>Validators</h4>
-    <ul list-none space-y-4 text="f-xs">
-      <li><a href="/validators/prover-node-guide" hover:underline>Prover Node Setup</a></li>
-      <li><a href="/validators/staking-handbook" hover:underline>Staking Handbook</a></li>
-      <li><a href="/validators/validator-trustscore" hover:underline>Trustscore System</a></li>
-    </ul>
-  </div>
-
-  <div>
-    <h4 text="f-sm neutral-800" font-bold mb-8>Community</h4>
-    <ul list-none space-y-4 text="f-xs">
-      <li><a href="/protocol/protocol/block-format" hover:underline>Protocol Docs</a></li>
-      <li><a href="https://github.com/onmax/nimiq-awesome" hover:underline target="_blank">Awesome Nimiq</a></li>
-      <li><a href="https://github.com/onmax/nimiq-mcp" hover:underline target="_blank">AI MCP Server</a></li>
-    </ul>
-  </div>
+    </div>
 </div>
 
 <div f-mt-2xl f-pt-xl border="t-1 neutral-200">
   <p text="f-base neutral-600">
-    Need help getting started? Join our community on <a href="https://discord.gg/cMHemg8" nq-arrow text="blue hover:blue-600">Discord</a> or check out the <a href="https://forum.nimiq.community/" nq-arrow text="blue hover:blue-600">Community Forum</a>.
+    Need help getting started? Join our community on <a href="https://t.me/Nimiq" nq-arrow un-text-blue>Telegram</a> or check out the <a href="https://forum.nimiq.community/" nq-arrow un-text-blue>Community Forum</a>.
   </p>
 </div>
