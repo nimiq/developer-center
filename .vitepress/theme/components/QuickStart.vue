@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Headline from './Headline.vue'
-
 interface QuickStartAction {
   title: string
   description: string
@@ -19,7 +17,7 @@ defineProps<{
 
 <template>
   <section class="quick-start">
-    <Headline :label :title :description :align />
+    <NqHeadline :label :title :description :align :h1="false" />
     <NqGrid :cards="actions" large-cards my-0 />
   </section>
 </template>

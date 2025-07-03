@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import confetti from 'canvas-confetti'
-import Headline from './Headline.vue'
 
 const clicked = useLocalStorage('web-client-conffeti-clicked', false)
 
@@ -36,9 +35,10 @@ function triggerConfetti() {
 
 <template>
   <section f-py-3xl class="nq-raw">
-    <Headline
+    <NqHeadline
       align="left" label="How It Works" title="Connect Directly to the Blockchain"
       description="No servers, no APIs, no middlemen — just your browser connecting directly to the Nimiq network."
+      :h1="false"
     />
 
     <div grid="~ cols-1 lg:cols-2 gap-32" relative>

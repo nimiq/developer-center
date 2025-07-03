@@ -113,7 +113,9 @@ export const themeConfig = {
         {
           label: 'UI Components',
           items: [
-            { text: 'Nimiq UI', link: 'https://onmax.github.io/nimiq-ui/', icon: 'i-tabler:palette' },
+            { text: 'Nimiq CSS', link: 'https://onmax.github.io/nimiq-ui/nimiq-css/getting-started', icon: 'i-tabler:palette' },
+            { text: 'Nimiq Icons', link: 'https://onmax.github.io/nimiq-ui/nimiq-icons/explorer', icon: 'i-nimiq:asterisk' },
+            { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
           ],
         },
         {

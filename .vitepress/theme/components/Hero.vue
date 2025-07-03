@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Headline from './Headline.vue'
 import HexagonsBackground from './HexagonsBackground.vue'
 
 interface Card {
@@ -26,7 +25,7 @@ defineProps<Props>()
 
 <template>
   <section flex="~ items-center justify-center col" relative>
-    <Headline :title :description :align h1 z-100 />
+    <NqHeadline :title :description :align z-100 />
     <div max-w-none="!" op-30 w-screen bottom-32 absolute>
       <HexagonsBackground />
     </div>

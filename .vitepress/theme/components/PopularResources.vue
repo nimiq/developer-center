@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Headline from './Headline.vue'
-
 interface PopularResourceLink {
   text: string
   href: string
@@ -23,7 +21,7 @@ defineProps<{
 
 <template>
   <section>
-    <Headline :label :title :description :align />
+    <NqHeadline :label :title :description :align :h1="false" />
 
     <div grid="~ cols-1 md:cols-2 lg:cols-4 gap-x-32 gap-y-48" class="nq-raw">
       <div v-for="resource in resources" :key="resource.title">

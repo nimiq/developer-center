@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Headline from './Headline.vue'
-
 const { showBorders = true } = defineProps<{
   label: string
   title: string
@@ -19,7 +17,7 @@ const { showBorders = true } = defineProps<{
 
 <template>
   <section class="nq-raw">
-    <Headline :label :title :description :align />
+    <NqHeadline :label :title :description :align :class="showBorders ? 'f-mb-2xl' : 'f-mb-lg'" :h1="false" />
 
     <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3" :class="showBorders ? 'gap-32' : 'gap-40'">
       <li v-for="(feature, index) in features" :key="index" flex-1>
