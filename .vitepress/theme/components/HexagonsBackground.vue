@@ -35,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section group mx-0 px-0 w-full relative z-2 of-x-hidden f-pt-2xl>
+  <div group mx-0 px-0 w-full relative z-2 of-x-hidden f-pt-2xl>
     <div aria-hidden="true" class="grid-parent" max-w-none :style="`--rows:${rows}; --cols:${columns}`">
       <div
         v-for="item in items" :key="`${item.rowIndex}-${item.colIndex}`" :style="{
@@ -49,7 +49,7 @@ onMounted(() => {
         text="neutral-300 dark:neutral-500 hocus:neutral-500 dark:hocus:neutral-700"
       />
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
@@ -57,11 +57,11 @@ onMounted(() => {
 
   0%,
   100% {
-    background-color: rgb(var(--nq-neutral-400));
+    background-color: var(--colors-neutral-400);
   }
 
   50% {
-    background-color: rgb(var(--nq-neutral-500));
+    background-color: var(--colors-neutral-500);
   }
 }
 

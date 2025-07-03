@@ -43,4 +43,4 @@ The review process consists of two steps:
 ### **Links and References**
 
 - [Validator Staking Pools README](https://github.com/nimiq/validators-api#add-your-validator-information)
-- [Become a Validator Guide](https://www.nimiq.com/developers/build/set-up-your-own-node/becoming-a-validator)
+- [Become a Validator Guide](/validators/becoming-a-validator)

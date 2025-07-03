@@ -26,7 +26,6 @@ export default defineConfig({
       collections: {
         ...createExternalPackageIconLoader('@iconify-json/tabler'),
         ...createExternalPackageIconLoader('@iconify-json/logos'),
-        ...createExternalPackageIconLoader('@iconify-json/nimiq'),
         local: FileSystemIconLoader('./public/assets/icons'),
       },
     }),

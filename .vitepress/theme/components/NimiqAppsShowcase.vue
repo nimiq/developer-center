@@ -106,7 +106,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div f-py-lg>
+  <div>
     <!-- Loading State -->
     <div v-if="pending" text-center f-py-xl>
       <div border="2 blue t-transparent" mx-auto rounded-full size-8 animate-spin />
@@ -128,7 +128,7 @@ onMounted(() => {
 
     <!-- Apps Showcase -->
     <div v-else-if="displayApps.length > 0">
-      <InfiniteScroll :pause-on-hover="true" :duration="`${displayApps.length * 10}s`" gap="1.5rem" class="mask-edges" pb-64>
+      <InfiniteScroll :pause-on-hover="true" :duration="`${displayApps.length * 10}s`" gap="1.5rem" pb-64>
         <NqAppCard v-for="app in displayApps" :key="`${app.name}-${app.type}`" v-bind="app" />
       </InfiniteScroll>
 
@@ -148,10 +148,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.mask-edges {
-  mask-image: linear-gradient(to right, transparent 0%, black 32px, black calc(100% - 32px), transparent 100%);
-  -webkit-mask-image: linear-gradient(  to right,transparent 0%,black 32px,black calc(100% - 32px),transparent 100%);
-}
-</style>

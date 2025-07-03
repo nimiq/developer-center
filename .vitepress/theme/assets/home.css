@@ -1,0 +1,24 @@
+main {
+  margin: 0;
+  max-width: inherit !important;
+  > div {
+    padding: 0 !important;
+
+    article>div {
+      padding: 0 !important;
+    }
+  }
+}
+
+article {
+  --uno: 'pb-0!';
+}
+article + div {
+  --uno: 'bg-darkerblue f-pb-xl mt-0!';
+  padding: 64px calc((100vw - 1440px) / 2) !important;
+
+
+  * {
+    --uno: 'text-neutral-100';
+  }
+}

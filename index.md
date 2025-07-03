@@ -11,7 +11,7 @@ heroCards:
     title: Web Client
     description: Build web and mobile-web apps that interact with Nimiq directly in the browser. Completely decentralized, no server required
     label: Build in Browser
-    href: /web-client
+    href: ./web-client/
     bgColor: blue
     iconClass: absolute bottom--48 right--32 text-256
     class: "md:grid-row-span-full [&_p]:max-w-none"
@@ -19,19 +19,19 @@ heroCards:
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: RPC Client
     description: Build full-stack applications with Nimiq
-    href: /rpc-client
+    href: ./rpc-client/
     hoverColor: gold
   - icon: i-nimiq:verified
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Validators
     description: Secure the nework and earn rewards
-    href: /validators
+    href: ./validators/
     hoverColor: green
   - icon: i-tabler:book
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Albatross
     description: Learn about the protocol
-    href: /protocol
+    href: ./protocol/
     hoverColor: "red"
 
 nimiqFeaturesLabel: Why Nimiq
@@ -74,7 +74,7 @@ quickStartActions:
     icon: i-local:nimiq-tutorial
   - title: RPC Playground
     description: Test the RPC calls directly from your browser
-    href: /rpc-client/
+    href: ./rpc-client/
     icon: i-local:nimiq-rpc
   - title: Nimiq MCP
     description: Build with AI using our MCP server integration
@@ -93,113 +93,101 @@ popularResources:
   - title: Web Development
     links:
       - text: Getting Started
-        href: /web-client/getting-started
+        href: ./web-client/getting-started
       - text: Installation Guide
-        href: /web-client/installation
+        href: ./web-client/installation
       - text: Framework Integration
-        href: /web-client/integrations
+        href: ./web-client/integrations
       - text: Interactive Tutorial
         href: https://tutorial.nimiq.com
-        target: _blank
       - text: Nimiq Utils
-        href: /web-client/nimiq-utils
+        href: ./web-client/nimiq-utils
+      - text: Web Client vs RPC
+        href: ./web-client/web-client-vs-rpc
   - title: UI & Design
     links:
       - text: UI Components
         href: https://onmax.github.io/nimiq-ui/
-        target: _blank
       - text: Nimiq Icons
         href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
-        target: _blank
       - text: Nimiq CSS
         href: https://onmax.github.io/nimiq-ui/nimiq-css/getting-started
-        target: _blank
       - text: Identicons Library
         href: https://github.com/onmax/nimiq-identicons
-        target: _blank
   - title: Backend & API
     links:
       - text: RPC Playground
-        href: /rpc-client/playground
+        href: ./rpc-client/playground
       - text: RPC Methods
-        href: /rpc-client/methods/
+        href: ./rpc-client/methods/
       - text: Client Libraries
-        href: /rpc-client/clients
+        href: ./rpc-client/clients
       - text: Account Queries
-        href: /rpc-client/getAccount
+        href: ./rpc-client/getAccount
       - text: Send Transactions
-        href: /rpc-client/sendRawTransaction
-  - title: Validators
+        href: ./rpc-client/sendRawTransaction
+  - title: Migration
+    links:
+      - text: Migration Overview
+        href: ./migration/
+      - text: For Integrators
+        href: ./migration/migration-integrators
+      - text: JSON-RPC Migration
+        href: ./migration/migration-json-rpc
+      - text: Technical Details
+        href: ./migration/migration-technical-details
+  - title: Node Operators
+    links:
+      - text: Node Setup Guide
+        href: ./validators/prover-node-guide
+  - title: Validator Operators
     links:
       - text: Becoming a Validator
-        href: /validators/becoming-a-validator
-      - text: Prover Node Setup
-        href: /validators/prover-node-guide
+        href: ./validators/becoming-a-validator
       - text: Staking Handbook
-        href: /validators/staking-handbook
+        href: ./validators/staking-handbook
       - text: Trustscore System
-        href: /validators/validator-trustscore
+        href: ./validators/validator-trustscore
       - text: Staking FAQ
-        href: /validators/staking-faq
+        href: ./validators/staking-faq
       - text: Validators API
         href: https://github.com/nimiq/validators-api
-        target: _blank
         # TODO: TS library. ARPL
   - title: Core & Protocol
     links:
       - text: Protocol Docs
-        href: /protocol/protocol/block-format
+        href: ./protocol/protocol/block-format
       - text: Core Implementation
         href: https://github.com/nimiq/core-rs-albatross
-        target: _blank
-      - text: Migration Overview
-        href: /migration/
-      - text: For Integrators
-        href: /migration/migration-integrators
-      - text: JSON-RPC Migration
-        href: /migration/migration-json-rpc
-      - text: Technical Details
-        href: /migration/migration-technical-details
   - title: Community
     links:
       - text: Community Forum
         href: https://forum.nimiq.community/
-        target: _blank
       - text: Telegram
         href: https://t.me/nimiq
-        target: _blank
       - text: Awesome Nimiq
         href: https://github.com/onmax/nimiq-awesome
-        target: _blank
       - text: AI MCP Server
         href: https://github.com/onmax/nimiq-mcp
-        target: _blank
 
 ---
 
 <script setup lang="ts">
+import './node_modules/nimiq-css/dist/css/static-content.css'
+import './.vitepress/theme/assets/home.css'
 import Hero from './.vitepress/theme/components/Hero.vue'
 import QuickStart from './.vitepress/theme/components/QuickStart.vue'
 import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
 import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue'
-import HexagonsBackground from './.vitepress/theme/components/HexagonsBackground.vue'
 import PopularResources from './.vitepress/theme/components/PopularResources.vue'
 </script>
 
-<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
+<Hero bg-neutral-0 :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
 
-<HexagonsBackground />
-
-<NimiqFeatures f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
+<NimiqFeatures bg-darkerblue f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
 
 <QuickStart f-py-3xl :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
 
-<NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" />
+<NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" bg-neutral-0 />
 
 <PopularResources :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
-
-<div f-mt-2xl f-pt-xl border="t-1 neutral-200">
-  <p text="f-base neutral-600">
-    Need help getting started? Join our community on <a href="https://t.me/Nimiq" nq-arrow un-text-blue>Telegram</a> or check out the <a href="https://forum.nimiq.community/" nq-arrow un-text-blue>Community Forum</a>.
-  </p>
-</div>

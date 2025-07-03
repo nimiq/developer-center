@@ -1,0 +1,12 @@
+/* main[data-layout="docs"] { */
+main {
+  padding: 32px;
+
+  @media (min-width: 768px) {
+    padding: 32px 64px;
+  }
+}
+/* } */
+
+/* TODO add data-layout:home or data-layout:docs */
+/* View source is broken and copy md */

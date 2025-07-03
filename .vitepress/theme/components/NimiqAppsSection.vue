@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Headline from './Headline.vue'
 import NimiqAppsShowcase from './NimiqAppsShowcase.vue'
 
 interface Props {
@@ -12,17 +13,9 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section>
-    <div v-if="label" nq-label>
-      {{ label }}
-    </div>
-    <h2 mt-8="!" class="nq-headline">
-      {{ title }}
-    </h2>
-    <p class="nq-subline">
-      {{ description }}
-    </p>
+  <section px-0="!">
+    <Headline px="$px" :label :title :description />
 
-    <NimiqAppsShowcase :show-all-apps="showAllApps" />
+    <NimiqAppsShowcase max-w-none="!" style="width: 100vw; margin-left: calc(50% - 50vw);" :show-all-apps="showAllApps" />
   </section>
 </template>

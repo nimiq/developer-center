@@ -20,7 +20,7 @@ This package contains the WASM file bundled for three [targets](https://rustwasm
 
 If you use any bundler for your project, like Webpack or Vite, you should probably use the `bundler` target exported from the package root. If that doesn't work, or you require the `web` target for your use-case, jump to the [With ES Modules](#with-es-modules) section.
 
-For detailed installation instructions for your bundler/framework, refer to the [Nimiq Developer Center](https://www.nimiq.com/developers/build/web-client/installation).
+For detailed installation instructions for your bundler/framework, refer to the [Nimiq Developer Center](/web-client/installation).
 
 ```js
 // With Webpack: import the package asynchronously:

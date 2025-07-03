@@ -152,8 +152,8 @@ watchEffect(() => {
     <!-- Trigger Button -->
     <Dialog.Trigger as-child>
       <button
-        class="dark:bg-gradient-neutral-dark text-white rounded-full bg-gradient-neutral flex size-48 shadow-lg transition-all duration-200 items-center bottom-16 right-16 justify-center fixed z-50 hover:scale-105"
-        aria-label="Send feedback"
+        class="text-white rounded-full bg-darkerblue flex size-48 shadow-lg transition-all duration-200 items-center bottom-24 right-24 justify-center fixed z-50 hover:scale-105"
+        aria-label="Send feedback" outline="white/15 offset--1.5 1.5"
       >
         <div class="text-20 i-nimiq:thumb-up-thumb-down" />
       </button>

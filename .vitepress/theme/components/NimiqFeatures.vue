@@ -1,33 +1,26 @@
 <script setup lang="ts">
-interface FeatureCard {
-  title: string
-  description: string
-  icon: string
-  iconBgColor: string
-}
+import Headline from './Headline.vue'
+
 defineProps<{
   label: string
   title: string
   description: string
-  features: FeatureCard[]
+  features: {
+    title: string
+    description: string
+    icon: string
+    iconBgColor: string
+  }[]
 }>()
 </script>
 
 <template>
-  <section>
-    <div nq-label>
-      {{ label }}
-    </div>
-    <h2 mt-0="!" class="nq-headline">
-      {{ title }}
-    </h2>
-    <p class="nq-subline">
-      {{ description }}
-    </p>
+  <section bg-darkerblue style="color-scheme: dark" class="nq-raw">
+    <Headline :label :title :description />
 
-    <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3 gap-8 md:gap-16" class="nq-raw" f-my-md>
+    <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3 gap-16 md:gap-32">
       <li v-for="(feature, index) in features" :key="index" flex-1>
-        <div class="nq-raw" outline="~ 1.5 neutral-300" group bg-neutral-50 h-full relative f-p-md f-rounded-md>
+        <div class="nq-raw" outline="~ 1.5 neutral-400" group bg-neutral-100 h-full relative f-p-md f-rounded-md>
           <div v-if="feature.icon" :class="feature.iconBgColor" stack rounded-8 size-40>
             <div :class="feature.icon" text-white size-24 />
           </div>

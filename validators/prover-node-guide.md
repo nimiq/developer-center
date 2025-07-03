@@ -1,6 +1,6 @@
 # Prover node
 
-This guide will help you configure your node as a [prover node](https://www.nimiq.com/developers/learn/protocol/prover-node). Follow the steps below to set up your prover node.
+This guide will help you configure your node as a [prover node](/protocol/protocol/prover-node). Follow the steps below to set up your prover node.
 
 ## Getting Started
 
