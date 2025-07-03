@@ -101,7 +101,7 @@ popularResources:
       - text: Interactive Tutorial
         href: https://tutorial.nimiq.com
       - text: Nimiq Utils
-        href: ./web-client/nimiq-utils
+        href: ./nimiq-utils/
       - text: Web Client vs RPC
         href: ./web-client/web-client-vs-rpc
   - title: UI & Design

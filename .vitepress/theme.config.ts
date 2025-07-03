@@ -90,32 +90,16 @@ export const themeConfig = {
             { text: 'Getting Started', link: '/web-client/getting-started', icon: 'i-tabler:player-play' },
             { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
             { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
+            { text: 'Nimiq Tutorial', link: 'https://nimiq.github.io/core-js/tutorial/', icon: 'i-tabler:school' },
           ],
         },
         {
-          label: 'Framework Integration',
+          label: 'Integrations',
           items: [
-            { text: 'Integrations Overview', link: '/web-client/integrations', icon: 'i-tabler:plug' },
             { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs' },
             { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon' },
             { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon' },
             { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack' },
-            { text: 'CommonJS', link: '/web-client/integrations/CommonJS', icon: 'i-tabler:package' },
-            { text: 'ESM', link: '/web-client/integrations/ESM', icon: 'i-tabler:package' },
-          ],
-        },
-        {
-          label: 'Developer Tools',
-          items: [
-            { text: 'Nimiq Utils', link: '/web-client/nimiq-utils', icon: 'i-tabler:tools' },
-          ],
-        },
-        {
-          label: 'UI Components',
-          items: [
-            { text: 'Nimiq CSS', link: 'https://onmax.github.io/nimiq-ui/nimiq-css/getting-started', icon: 'i-tabler:palette' },
-            { text: 'Nimiq Icons', link: 'https://onmax.github.io/nimiq-ui/nimiq-icons/explorer', icon: 'i-nimiq:asterisk' },
-            { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
           ],
         },
         {
@@ -127,6 +111,78 @@ export const themeConfig = {
             { text: 'Globals', link: '/web-client/reference/globals', icon: 'i-tabler:world' },
             { text: 'Interfaces', link: '/web-client/reference/interfaces', icon: 'i-tabler:components' },
             { text: 'Type Aliases', link: '/web-client/reference/type-aliases', icon: 'i-tabler:variable' },
+          ],
+        },
+        {
+          label: 'UI Components',
+          items: [
+            { text: 'Nimiq CSS', link: 'https://onmax.github.io/nimiq-ui/nimiq-css/getting-started', icon: 'i-tabler:palette' },
+            { text: 'Nimiq Icons', link: 'https://onmax.github.io/nimiq-ui/nimiq-icons/explorer', icon: 'i-nimiq:asterisk' },
+            { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'Nimiq Utils',
+      subpath: 'nimiq-utils',
+      icon: 'i-nimiq:cubes',
+      defaultPageLink: '/nimiq-utils/',
+      description: 'Production-ready utility library for Nimiq applications',
+      sidebar: [
+        {
+          label: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/nimiq-utils/', icon: 'i-tabler:layout-grid' },
+            { text: 'Installation', link: '/nimiq-utils/installation', icon: 'i-tabler:download' },
+            { text: 'Why Nimiq Utils?', link: '/nimiq-utils/why', icon: 'i-tabler:help' },
+          ],
+        },
+        {
+          label: 'Blockchain Utilities',
+          items: [
+            { text: 'AddressBook', link: '/nimiq-utils/address-book', icon: 'i-nimiq:contact-book' },
+            { text: 'ValidationUtils', link: '/nimiq-utils/validation-utils', icon: 'i-nimiq:verified' },
+            { text: 'Albatross Policy', link: '/nimiq-utils/albatross-policy', icon: 'i-nimiq:nodes' },
+            { text: 'Supply Calculator', link: '/nimiq-utils/supply-calculator', icon: 'i-tabler:calculator' },
+            { text: 'Staking Rewards Calculator', link: '/nimiq-utils/staking-rewards-calculator', icon: 'i-nimiq:digital-gold' },
+          ],
+        },
+        {
+          label: 'Formatting & Display',
+          items: [
+            { text: 'FormattableNumber', link: '/nimiq-utils/formattable-number', icon: 'i-tabler:hash' },
+            { text: 'CurrencyInfo', link: '/nimiq-utils/currency-info', icon: 'i-tabler:currency-dollar' },
+          ],
+        },
+        {
+          label: 'Data & API Utilities',
+          items: [
+            { text: 'Fiat API', link: '/nimiq-utils/fiat-api', icon: 'i-tabler:api' },
+            { text: 'Rate Limit Scheduler', link: '/nimiq-utils/rate-limit-scheduler', icon: 'i-tabler:clock' },
+          ],
+        },
+        {
+          label: 'Browser & Environment',
+          items: [
+            { text: 'Browser Detection', link: '/nimiq-utils/browser-detection', icon: 'i-tabler:browser' },
+            { text: 'Clipboard', link: '/nimiq-utils/clipboard', icon: 'i-tabler:clipboard' },
+            { text: 'Cookie Utilities', link: '/nimiq-utils/cookie-utilities', icon: 'i-tabler:cookie' },
+          ],
+        },
+        {
+          label: 'Miscellaneous',
+          items: [
+            { text: 'Request Link Encoding', link: '/nimiq-utils/request-link-encoding', icon: 'i-tabler:link' },
+            { text: 'Utf8Tools', link: '/nimiq-utils/utf8-tools', icon: 'i-tabler:code' },
+            { text: 'Tweenable', link: '/nimiq-utils/tweenable', icon: 'i-tabler:timeline' },
+          ],
+        },
+        {
+          label: 'Resources',
+          items: [
+            { text: 'GitHub Repository', link: 'https://github.com/nimiq/nimiq-utils', icon: 'i-tabler:brand-github' },
+            { text: 'Report Issues', link: 'https://github.com/nimiq/nimiq-utils/issues', icon: 'i-tabler:bug' },
           ],
         },
       ],
