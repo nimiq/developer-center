@@ -29,7 +29,6 @@ export default defineConfig(async () => {
     server: {
       hmr: { overlay: false },
 
-      // TODO move proxy to real backend
       proxy: {
         // Create a proxy for RPC requests to nimiqwatch
         '/api/rpc': {
@@ -91,7 +90,7 @@ export default defineConfig(async () => {
             '**/migration*',
             '**/nimiq-styles/**',
             '**/*nimiq-style*',
-            'build/nimiq-pow/**',
+            'nimiq-pow/**',
             '**/*.json',
             '**/*.js',
             '**/*.ts',

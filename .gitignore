@@ -4,12 +4,12 @@ node_modules
 .vitepress/.temp
 
 # Ignore dynamically built web-client docs
-build/web-client/reference
-build/web-client/.version
+web-client/reference
+web-client/.version
 
 # Ignore dynamically built RPC spec docs
-build/set-up-your-own-node/rpc-docs/.version
-build/set-up-your-own-node/rpc-docs/methods.md
+set-up-your-own-node/rpc-docs/.version
+set-up-your-own-node/rpc-docs/methods.md
 
 components.d.ts
 

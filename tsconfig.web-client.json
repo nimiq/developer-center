@@ -9,7 +9,7 @@
   ],
   "typedocOptions": {
     "entryPoints": ["node_modules/@nimiq/core/types/web.d.ts"],
-    "out": "build/web-client/reference",
+    "out": "web-client/reference",
     "skipErrorChecking": true
   }
 }
