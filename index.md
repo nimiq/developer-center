@@ -29,28 +29,10 @@ heroCards:
     hoverColor: green
   - icon: i-tabler:book
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Protocol
-    description: Albatross consensus and protocol specifications
+    title: Albatross
+    description: Learn about the protocol
     href: /protocol
     hoverColor: "red"
-
-quickStartLabel: Quick Start
-quickStartTitle: Start Building in Minutes
-quickStartDescription: Jump in and start experimenting with Nimiq right away. No setup required.
-quickStartActions:
-  - title: WebClient Tutorial
-    description: Interactive tutorial in the browser
-    href: https://tutorial.nimiq.com
-    icon: i-local:nimiq-tutorial
-  - title: RPC Playground
-    description: Test the RPC calls directly from your browser
-    href: /rpc-client/
-    icon: i-local:nimiq-rpc
-  - title: Nimiq MCP
-    description: Build with AI using our MCP server integration
-    href: https://github.com/onmax/nimiq-mcp
-    icon: i-local:nimiq-mcp
-    iconClass: op-100
 
 nimiqFeaturesLabel: Why Nimiq
 nimiqFeaturesTitle: Browser-first blockchain
@@ -82,11 +64,31 @@ nimiqFeatures:
     icon: i-nimiq:code
     iconBgColor: bg-gradient-red
 
+quickStartLabel: Quick Start
+quickStartTitle: Start Building in Minutes
+quickStartDescription: Jump in and start experimenting with Nimiq right away. No setup required.
+quickStartActions:
+  - title: WebClient Tutorial
+    description: Interactive tutorial in the browser
+    href: https://tutorial.nimiq.com
+    icon: i-local:nimiq-tutorial
+  - title: RPC Playground
+    description: Test the RPC calls directly from your browser
+    href: /rpc-client/
+    icon: i-local:nimiq-rpc
+  - title: Nimiq MCP
+    description: Build with AI using our MCP server integration
+    href: https://github.com/onmax/nimiq-mcp
+    icon: i-local:nimiq-mcp
+    iconClass: op-100
+
 nimiqAppsLabel: Community Projects
 nimiqAppsTitle: Explore the Nimiq Ecosystem
 nimiqAppsDescription: Discover community-built apps, games, tools and services powered by Nimiq's ecosystem.
 
-popularResourcesTitle: Popular Resources
+popularResourcesLabel: Popular Resources
+popularResourcesTitle: Everything You Need to Build with Nimiq
+popularResourcesDescription: Comprehensive guides, tools, and resources to help you build amazing applications with Nimiq.
 popularResources:
   - title: Web Development
     links:
@@ -96,14 +98,25 @@ popularResources:
         href: /web-client/installation
       - text: Framework Integration
         href: /web-client/integrations
-      - text: UI Components
-        href: https://onmax.github.io/nimiq-ui/
-        target: _blank
       - text: Interactive Tutorial
         href: https://tutorial.nimiq.com
         target: _blank
       - text: Nimiq Utils
         href: /web-client/nimiq-utils
+  - title: UI & Design
+    links:
+      - text: UI Components
+        href: https://onmax.github.io/nimiq-ui/
+        target: _blank
+      - text: Nimiq Icons
+        href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
+        target: _blank
+      - text: Nimiq CSS
+        href: https://onmax.github.io/nimiq-ui/nimiq-css/getting-started
+        target: _blank
+      - text: Identicons Library
+        href: https://github.com/onmax/nimiq-identicons
+        target: _blank
   - title: Backend & API
     links:
       - text: RPC Playground
@@ -128,22 +141,27 @@ popularResources:
         href: /validators/validator-trustscore
       - text: Staking FAQ
         href: /validators/staking-faq
-  - title: Migration
+      - text: Validators API
+        href: https://github.com/nimiq/validators-api
+        target: _blank
+        # TODO: TS library. ARPL
+  - title: Core & Protocol
     links:
+      - text: Protocol Docs
+        href: /protocol/protocol/block-format
+      - text: Core Implementation
+        href: https://github.com/nimiq/core-rs-albatross
+        target: _blank
       - text: Migration Overview
         href: /migration/
       - text: For Integrators
         href: /migration/migration-integrators
       - text: JSON-RPC Migration
         href: /migration/migration-json-rpc
-      - text: Web Developers
-        href: /migration/migration-web-developers
       - text: Technical Details
         href: /migration/migration-technical-details
   - title: Community
     links:
-      - text: Protocol Docs
-        href: /protocol/protocol/block-format
       - text: Community Forum
         href: https://forum.nimiq.community/
         target: _blank
@@ -164,6 +182,7 @@ import Hero from './.vitepress/theme/components/Hero.vue'
 import QuickStart from './.vitepress/theme/components/QuickStart.vue'
 import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
 import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue'
+import PopularResources from './.vitepress/theme/components/PopularResources.vue'
 </script>
 
 <Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
@@ -174,20 +193,7 @@ import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue
 
 <NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" />
 
----
-
-## {{ $frontmatter.popularResourcesTitle }} {.nq-label}
-
-<div f-mt-lg flex="~ wrap gap-16" class="nq-raw">
-  <div v-for="resource in $frontmatter.popularResources" :key="resource.title">
-    <h4 text="f-sm neutral-800" font-bold mb-8>{{ resource.title }}</h4>
-    <ul list-none space-y-4 text="f-xs">
-      <li v-for="link in resource.links" :key="link.text" my-8="!" ml-4>
-        <a :href="link.href" :target="link.target" hover:underline>{{ link.text }}</a>
-      </li>
-    </ul>
-    </div>
-</div>
+<PopularResources :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
 
 <div f-mt-2xl f-pt-xl border="t-1 neutral-200">
   <p text="f-base neutral-600">
