@@ -76,7 +76,7 @@ Where:
 - $v$: The validator's share.
 - $Z$: The total network share.
 
-This method relies on the `getActiveValidators` function from the [RPC](/rpc-client/methods/#getactivevalidators), which provides real-time balances of each active validator.
+This method relies on the `getActiveValidators` function from the [RPC](/rpc-client/methods/get-active-validators), which provides real-time balances of each active validator.
 
 **Finished Epoch Method**:
 For a closed epoch, a less precise fallback method exists, but is not currently implemented. This approach calculates the dominance ratio based on slot distribution across voting blocks. The ratio is derived by dividing the number of slots allocated to a validator by the total slots in the epoch:
