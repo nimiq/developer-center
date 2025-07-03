@@ -13,12 +13,13 @@ defineProps<{
   title: string
   description: string
   actions: QuickStartAction[]
+  align?: 'center' | 'left'
 }>()
 </script>
 
 <template>
   <section class="quick-start">
-    <Headline :label :title :description />
+    <Headline :label :title :description :align />
     <NqGrid :cards="actions" large-cards my-0 />
   </section>
 </template>

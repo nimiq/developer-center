@@ -10,3 +10,9 @@ main {
 
 /* TODO add data-layout:home or data-layout:docs */
 /* View source is broken and copy md */
+
+article.nq-prose >div {
+  padding-left: 0;
+  padding-right: 0;
+  
+}

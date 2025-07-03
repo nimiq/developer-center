@@ -2,63 +2,187 @@
 prose: false
 aside: false
 footer: false
+
+title: Nimiq Web Client
+description: Build blockchain applications that run entirely in the browser — no servers required.
+
+heroCards:
+  - icon: i-tabler:player-play
+    title: Interactive Tutorial
+    description: Learn by building a complete wallet app directly in your browser. No setup required, just start coding!
+    label: Start Learning
+    href: https://tutorial.nimiq.com
+    bgColor: gold
+    iconClass: absolute bottom--48 right--32 text-256
+    class: "md:grid-row-span-full [&_p]:max-w-none"
+    hoverColor: gold
+  - icon: i-tabler:download
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: Installation Guide
+    description: Get started with Nimiq Web Client in your project
+    href: ./installation
+  - icon: i-tabler:plug
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: Framework Integrations
+    description: Setup guides for Vite, Next.js, Nuxt, and more
+    href: ./integrations/
+  - icon: i-tabler:tools
+    iconClass: text-neutral-800 absolute top-16 right-16 text-32
+    title: Nimiq Utils
+    description: Essential utilities for Nimiq development
+    href: ./nimiq-utils
+
+webClientFeaturesLabel: Why Web Client
+webClientFeaturesTitle: Browser-First Blockchain Development
+webClientFeaturesDescription: Build decentralized applications that run entirely in the browser without servers or infrastructure.
 webClientFeatures:
-  - title: No Servers Required
+  - title: No Servers
+    description: Just you and the browser
     icon: i-nimiq:duotone-network
-    description: Connect directly to the Nimiq network without intermediary servers.
-  - title: Client-Side Security
+    iconColor: text-blue
+  - title: Secure
+    description: Built-in crypto modules
     icon: i-nimiq:duotone-incognito
-    description: Your keys never leave your device. Private and secure by design.
-  - title: WebAssembly Performance
+    iconColor: text-green
+  - title: It's fast
+    description: Establish consensus in less than 10s.
     icon: i-nimiq:duotone-speedmeter
-    description: Compiled to WASM for near-native performance in browsers.
-  - title: Proof-of-Stake Ready
+    iconColor: text-orange
+  - title: WASM
+    description: Built for the future
     icon: i-nimiq:verified
-    description: Built for Nimiq's efficient PoS consensus with minimal resource usage.
-  - title: Cross-Platform Compatible
-    icon: i-nimiq:widget
-    description: Works across browsers, Node.js, and hybrid mobile applications.
-  - title: Real-Time Blockchain Data
-    icon: i-nimiq:watch-1-50
-    description: Subscribe to live blockchain events and updates.
-  - title: Full TypeScript Support
-    icon: i-nimiq:tools-wench-hammer-outline
-    description: Complete type definitions for enhanced developer experience.
-  - title: Community & Support
-    icon: i-nimiq:logos-telegram-mono
-    description: Join the Nimiq Coders Dojo for technical support and collaboration.
-    href: https://t.me/nimiq
+    iconColor: text-gold
+  - title: Compatible
+    description: Works seamlessly in multiple JS runtimes
+    icon: 'scale-80 i-nimiq:widget origin-left'
+    iconColor: text-purple
+  - title: Real-Time Data
+    description: Subscribe to live blockchain events
+    icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
+    iconColor: text-red
+
+quickStartLabel: Quick Start
+quickStartTitle: Start Building in Minutes
+quickStartDescription: Jump in and start experimenting with Nimiq Web Client right away. No setup required.
+quickStartActions:
+  - title: Interactive Tutorial
+    description: Learn by building a complete wallet app in your browser
+    href: https://tutorial.nimiq.com
+    icon: i-local:nimiq-tutorial
+  - title: Vite Integration
+    description: Get started with Vite and modern build tools
+    href: ./integrations/vite
+    icon: i-tabler:brand-vite
+  - title: Next.js Integration
+    description: Build full-stack apps with Next.js and Nimiq
+    href: ./integrations/NextJS
+    icon: i-tabler:brand-nextjs
+  - title: Nimiq MCP
+    description: Build with AI using our MCP server integration
+    href: https://github.com/onmax/nimiq-mcp
+    icon: i-local:nimiq-mcp
+
+popularResourcesLabel: Popular Resources
+popularResourcesTitle: Everything You Need to Build with Web Client
+popularResourcesDescription: Comprehensive guides, tools, and resources to help you build amazing blockchain applications.
+popularResources:
+  - title: Getting Started
+    links:
+      - text: Installation Guide
+        href: ./installation
+      - text: Quick Start Tutorial
+        href: ./getting-started
+      - text: Interactive Tutorial
+        href: https://tutorial.nimiq.com
+      - text: Web Client vs RPC
+        href: ./web-client-vs-rpc
+  - title: Framework Integration
+    links:
+      - text: Vite Setup
+        href: ./integrations/vite
+      - text: Next.js Setup
+        href: ./integrations/NextJS
+      - text: Nuxt Setup
+        href: ./integrations/nuxt
+      - text: Webpack Setup
+        href: ./integrations/webpack
+      - text: All Integrations
+        href: ./integrations/
+  - title: UI & Components
+    links:
+      - text: Nimiq UI Components
+        href: https://onmax.github.io/nimiq-ui/
+        target: _blank
+      - text: Nimiq Icons
+        href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
+        target: _blank
+      - text: Nimiq CSS
+        href: https://onmax.github.io/nimiq-ui/nimiq-css/getting-started
+        target: _blank
+      - text: Identicons Library
+        href: https://github.com/onmax/nimiq-identicons
+        target: _blank
+  - title: API Reference
+    links:
+      - text: Web Client Reference
+        href: ./reference/
+      - text: Global Functions
+        href: ./reference/globals
+      - text: Client Classes
+        href: ./reference/classes/
+      - text: Core Interfaces
+        href: ./reference/interfaces/
+      - text: Nimiq Utils
+        href: ./nimiq-utils
+  - title: Tools & Development
+    links:
+      - text: Nimiq MCP (AI)
+        href: https://github.com/onmax/nimiq-mcp
+        target: _blank
+      - text: RPC Playground
+        href: ../rpc-client/playground
+      - text: Community Forum
+        href: https://forum.nimiq.community/
+        target: _blank
+      - text: Telegram Community
+        href: https://t.me/nimiq
+        target: _blank
+  - title: Advanced Topics
+    links:
+      - text: Network Connection
+        href: ./reference/classes/Client
+      - text: Transaction Handling
+        href: ./reference/interfaces/
+      - text: Account Management
+        href: ./reference/globals
+      - text: WebAssembly Core
+        href: ./reference/@nimiq/
 ---
 
-# Nimiq Web Client
+<script setup lang="ts">
+import Hero from '../.vitepress/theme/components/Hero.vue'
+import WebClientExplainer from '../.vitepress/theme/components/WebClientExplainer.vue'
+import GetStartedSection from '../.vitepress/theme/components/GetStartedSection.vue'
+import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
+import QuickStart from '../.vitepress/theme/components/QuickStart.vue'
+import PopularResources from '../.vitepress/theme/components/PopularResources.vue'
+</script>
 
-Build blockchain applications that run entirely in the browser {.nq-subline .mt-0}
+<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left" />
 
-The Nimiq Web Client is a powerful TypeScript/JavaScript library that enables direct blockchain interaction from web browsers. Unlike traditional blockchain applications that require server infrastructure, Nimiq applications can run entirely client-side while maintaining full security and decentralization. {.mt-32}
+<WebClientExplainer />
 
-## Quick Start
+<GetStartedSection />
 
-<div flex="~ gap-x-16 gap-y-12 wrap" mt-36 class="nq-raw">
-  <a href="./getting-started" nq-pill-blue nq-arrow>Getting Started</a>
-  <a href="./installation" nq-pill-tertiary>Installation Guide</a>
-  <a href="./integrations" nq-pill-tertiary>Framework Integrations</a>
-  <a href="https://onmax.github.io/nimiq-ui/" nq-pill-tertiary target="_blank">UI Components</a>
-  <a href="https://github.com/onmax/nimiq-mcp" nq-pill-tertiary target="_blank">AI MCP Server</a>
-</div>
+<NimiqFeatures align="left" f-pb-3xl f-pt-2xl :title="$frontmatter.webClientFeaturesTitle" :description="$frontmatter.webClientFeaturesDescription" :label="$frontmatter.webClientFeaturesLabel" :features="$frontmatter.webClientFeatures" :show-borders="false" />
 
-## What Makes It Special
+<QuickStart align="left" :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
 
-The Nimiq Web Client transforms how blockchain applications are built and deployed:
-
-- **Zero Infrastructure**: No servers, databases, or backend APIs required
-- **Instant Deployment**: Deploy to any static hosting service (GitHub Pages, Netlify, Vercel)
-- **Full Node Capabilities**: Your app becomes a light node in the Nimiq network
-- **Native Browser Experience**: Works with standard web technologies and frameworks
-- **AI-Powered Development**: Use the [Nimiq MCP Server](https://github.com/onmax/nimiq-mcp) to let AI assistants help you build and interact with Nimiq
-
-<NqGrid f-my-xl :cards="$frontmatter.webClientFeatures" />
+<PopularResources align="left" :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
 
 ## Architecture Overview
+
+The Nimiq Web Client transforms how blockchain applications are built and deployed by enabling direct browser-to-blockchain connections.
 
 ```mermaid
 graph TD
@@ -68,6 +192,11 @@ graph TD
     C --> E[Blockchain State]
     D --> F[Nimiq Network]
     F --> G[Validators & Peers]
+
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#fff3e0
+    style D fill:#e8f5e8
 ```
 
 The Web Client consists of several key components:
@@ -80,25 +209,16 @@ The Web Client consists of several key components:
 ## Use Cases
 
 ### DeFi Applications
-Build decentralized exchanges, lending protocols, and yield farming applications with real-time market data.
-
-### NFT Marketplaces
-Create, trade, and manage non-fungible tokens with integrated wallet functionality.
+Build decentralized exchanges, lending protocols, and yield farming applications with real-time market data and zero infrastructure costs.
 
 ### Payment Solutions
-Integrate cryptocurrency payments into e-commerce platforms and business applications.
+Integrate cryptocurrency payments into e-commerce platforms and business applications with instant confirmations and no fees.
+
+### NFT Marketplaces
+Create, trade, and manage non-fungible tokens with integrated wallet functionality and seamless user experience.
 
 ### Gaming & Rewards
-Develop blockchain games, loyalty programs, and reward systems with instant transactions.
-
-## Next Steps
-
-Ready to start building? Choose your path:
-
-1. **New to Nimiq**: Start with our [Getting Started](/web-client/getting-started) guide
-2. **Framework Integration**: Check out [framework-specific guides](/web-client/integrations/)
-3. **UI Components**: Explore [Nimiq UI](https://onmax.github.io/nimiq-ui/) for ready-to-use components
-4. **API Reference**: Browse the complete [Web Client Reference](/web-client/reference/)
+Develop blockchain games, loyalty programs, and reward systems with instant transactions and client-side security.
 
 <div mt-48 p-24 bg="neutral-100 dark:neutral-900" f-rounded-lg>
   <h3 text="f-lg" font-bold mb-12>Need Help?</h3>

@@ -18,6 +18,7 @@ interface Props {
   title: string
   description: string
   cards: Card[]
+  align?: 'center' | 'left'
 }
 
 defineProps<Props>()
@@ -25,7 +26,7 @@ defineProps<Props>()
 
 <template>
   <section flex="~ items-center justify-center col" relative>
-    <Headline :title :description h1 z-100 />
+    <Headline :title :description :align h1 z-100 />
     <div max-w-none="!" op-30 w-screen bottom-32 absolute>
       <HexagonsBackground />
     </div>
@@ -34,8 +35,8 @@ defineProps<Props>()
       <NqCard
         v-for="card in cards" :key="card.title" v-bind="card"
         :icon-class="!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 right--12 bottom--24'"
-        :style="`--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)`"
-        hover="[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white"
+        :style="card.hoverColor ? `--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)` : undefined"
+        :hover="card.hoverColor ? '[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white' : ''"
       />
     </div>
   </section>

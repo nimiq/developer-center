@@ -184,10 +184,10 @@ import PopularResources from './.vitepress/theme/components/PopularResources.vue
 
 <Hero bg-neutral-0 :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
 
-<NimiqFeatures bg-darkerblue f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
+<NimiqFeatures scheme-dark bg-darkerblue f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
 
 <QuickStart f-py-3xl :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
 
 <NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" bg-neutral-0 />
 
-<PopularResources :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
+<PopularResources bg-darkerblue scheme-dark :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources"  />

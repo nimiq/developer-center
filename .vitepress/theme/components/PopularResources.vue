@@ -17,12 +17,13 @@ defineProps<{
   title: string
   description: string
   resources: PopularResource[]
+  align?: 'center' | 'left'
 }>()
 </script>
 
 <template>
-  <section bg-darkerblue style="color-scheme: dark">
-    <Headline :label :title :description />
+  <section>
+    <Headline :label :title :description :align />
 
     <div grid="~ cols-1 md:cols-2 lg:cols-4 gap-x-32 gap-y-48" class="nq-raw">
       <div v-for="resource in resources" :key="resource.title">
