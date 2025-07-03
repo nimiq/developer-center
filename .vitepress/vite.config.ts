@@ -98,6 +98,10 @@ export default defineConfig(async () => {
             'README.md',
             'LICENSE.md',
             '.*',
+            'rpc-client/methods/*',
+            '!rpc-client/methods/index.md',
+            '!rpc-client/methods/[method].md',
+            '!rpc-client/methods/[method].paths.ts',
           ],
           experimental: {
             depth: 2,

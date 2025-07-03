@@ -79,7 +79,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
     humanReadableName: toHumanReadable(method.name),
     input: parseInput(method.params),
     output: parseOutput(method.result),
-    link: `/rpc-docs/methods/${slugify(method.name)}`,
+    link: `/rpc-client/methods/${slugify(method.name)}`,
   })) as NimiqRpcMethod[]
 
   const result: NimiqRpcMethods[] = []
@@ -91,7 +91,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
       text: capitalizeFirstLetter(tag),
       items: methodsByTag.map(method => ({
         text: `\`${method.name}\``,
-        link: `/rpc-docs/methods/${slugify(method.method)}`,
+        link: `/rpc-client/methods/${slugify(method.name)}`,
       })),
 
     })
