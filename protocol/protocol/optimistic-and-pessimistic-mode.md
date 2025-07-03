@@ -17,7 +17,7 @@ Nimiq Proof-of-Stake has two modes for consensus: optimistic and pessimistic mod
 
 - Micro blocks: Each micro block is produced by a selected validator. Malicious validators can tamper with the blockchain by:
 
-  - Attempting to fork the chain. In this case, as soon as a rational validator notices the fork, it can submit a [fork proof](/learn/protocol/equivocation-proofs.md). The malicious validator is punished once this fork proof is sent to the network.
+  - Attempting to fork the chain. In this case, as soon as a rational validator notices the fork, it can submit a [fork proof](/protocol/protocol/equivocation-proofs.md). The malicious validator is punished once this fork proof is sent to the network.
   - Delaying the micro block production. A rational validator can sign a skip block message and wait for 2*f*+1 signatures. As soon as the skip blocks receive 2*f*+1 signatures, a validator from the validator list can add this block. The delayed validator is then punished.
   - Producing an invalid micro block. Given this case, the rest of the validator list can ignore the invalid micro block.
 

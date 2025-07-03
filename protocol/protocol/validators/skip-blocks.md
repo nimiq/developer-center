@@ -1,6 +1,6 @@
 # Skip blocks
 
-Skip blocks are a special type of [micro block](/learn/protocol/block-format.md#micro-blocks) in the consensus protocol. When a validator fails to produce a block within the expected timeframe, the remaining elected validators can collectively agree to add a skip block instead of the missing micro block. This prevents delays and ensures the blockchain progresses smoothly. Once a supermajority of elected validators agrees to add the skip block, the chain resumes its regular progression.
+Skip blocks are a special type of [micro block](/protocol/protocol/block-format.md#micro-blocks) in the consensus protocol. When a validator fails to produce a block within the expected timeframe, the remaining elected validators can collectively agree to add a skip block instead of the missing micro block. This prevents delays and ensures the blockchain progresses smoothly. Once a supermajority of elected validators agrees to add the skip block, the chain resumes its regular progression.
 
 The primary purpose of skip blocks is to ensure blockchain continuity by serving a structural role rather than a transactional one. Unlike micro blocks, which process transactions, skip blocks are like placeholders that prevent interruptions when a validator fails to produce a block.
 
@@ -39,4 +39,4 @@ A skip block is an agreement among validators to confirm they did not see a micr
 
 ### Validator Penalty for Misbehavior
 
-A delay in the block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also results in the deactivation of the validator slot, although it can reactivate itself after one block. For more information on this misbehavior, see the [punishments document](/learn/protocol/punishments.md#block-production-delay).
+A delay in the block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also results in the deactivation of the validator slot, although it can reactivate itself after one block. For more information on this misbehavior, see the [punishments document](/protocol/protocol/punishments.md#block-production-delay).

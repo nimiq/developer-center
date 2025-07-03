@@ -17,7 +17,7 @@ To become a validator, users need a validator account, a signing key, and a voti
 
 This phase involves a series of six transactions to register the validator keys and an additional one to confirm by paying the validator deposit. Users must complete the entire sequence of transactions to have their validator included in the PoS "genesis" block. NIM spent on incomplete registrations will be burned.
 
-Nimiq provides a two-mode tool to generate validator keys and send formatted registration transactions to the blockchain. Please refer to [our guide](validator-registration) to learn how to use the tool and pre-register.
+Nimiq provides a two-mode tool to generate validator keys and send formatted registration transactions to the blockchain. Please refer to [our guide](../archive/validator-registration) to learn how to use the tool and pre-register.
 
 ### Registration Transactions
 

@@ -96,7 +96,7 @@ Develop blockchain games, loyalty programs, and reward systems with instant tran
 Ready to start building? Choose your path:
 
 1. **New to Nimiq**: Start with our [Getting Started](/web-client/getting-started) guide
-2. **Framework Integration**: Check out [framework-specific guides](/web-client/integrations)
+2. **Framework Integration**: Check out [framework-specific guides](/web-client/integrations/)
 3. **UI Components**: Explore [Nimiq UI](https://onmax.github.io/nimiq-ui/) for ready-to-use components
 4. **API Reference**: Browse the complete [Web Client Reference](/web-client/reference/)
 

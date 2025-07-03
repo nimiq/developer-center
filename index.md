@@ -182,10 +182,13 @@ import Hero from './.vitepress/theme/components/Hero.vue'
 import QuickStart from './.vitepress/theme/components/QuickStart.vue'
 import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
 import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue'
+import HexagonsBackground from './.vitepress/theme/components/HexagonsBackground.vue'
 import PopularResources from './.vitepress/theme/components/PopularResources.vue'
 </script>
 
 <Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
+
+<HexagonsBackground />
 
 <NimiqFeatures f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
 

@@ -4,10 +4,10 @@ The History Store is a component of the blockchain that is responsible for recor
 
 ### Transaction Lifecycle
 
-1. **Transaction submission:** A user creates a transaction and sends it to the network. The transaction is then placed into the validator’s [mempool](/learn/protocol/mempool.md). The mempool temporarily holds pending transactions before they are included in a block.
+1. **Transaction submission:** A user creates a transaction and sends it to the network. The transaction is then placed into the validator’s [mempool](/protocol/protocol/mempool.md). The mempool temporarily holds pending transactions before they are included in a block.
 2. **Transaction validation:** Validators check the validity store to ensure the transaction has not already been included in a block within the validity window. This prevents duplicate transactions.
 3. **Block inclusion:** If the transaction is valid, a validator includes it in a new block. Once the block is validated, it is added to the blockchain, officially recording the transaction.
-4. **Recording in the History Store:** After a block is added to the blockchain, its transactions are moved to the History Store, becoming historic transactions. These transactions are stored in [MMR](/learn/protocol/merkle-trees.md#merkle-mountain-range) trees, allowing for efficient inclusion proofs.
+4. **Recording in the History Store:** After a block is added to the blockchain, its transactions are moved to the History Store, becoming historic transactions. These transactions are stored in [MMR](/protocol/protocol/merkle-trees.md#merkle-mountain-range) trees, allowing for efficient inclusion proofs.
 
 ### History Store
 
@@ -37,6 +37,6 @@ History nodes use this indexing system mainly to serve clients seeking their tra
 
 ### Syncing and Building the History
 
-When a node syncs with the network using the [History Macro Sync](/learn/protocol/sync-protocol/history-macro-sync.md) protocol, it downloads the history for each epoch, which is essential for reconstructing the transaction history up to the blockchain's current state. As the node processes and verifies each macro block, it builds its local History Store by storing historic transactions, organizing them into MMR trees, and updating relevant records.
+When a node syncs with the network using the [History Macro Sync](/protocol/protocol/sync-protocol/history-macro-sync.md) protocol, it downloads the history for each epoch, which is essential for reconstructing the transaction history up to the blockchain's current state. As the node processes and verifies each macro block, it builds its local History Store by storing historic transactions, organizing them into MMR trees, and updating relevant records.
 
 After syncing, the node compares the root of its constructed history tree with the root provided by the current block in the blockchain. If the roots match, it confirms that the node's History Store is accurate and fully synchronized with the network.

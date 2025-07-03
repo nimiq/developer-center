@@ -6,7 +6,7 @@ next: ./installation/
 
 Nimiq is an open source crypto designed for simplicity and ease of use. With our browser-first approach, Nimiq works directly within web browsers without the need for additional software, providing easy integration for developers and seamless interaction for users.
 
-The protocol is based on the [Albatross consensus algorithm](/learn/), a proof-of-stake system renowned for its speed, security and low power consumption. Albatross supports high transaction throughput, and can handle thousands of transactions per second.
+The protocol is based on the [Albatross consensus algorithm](/protocol/), a proof-of-stake system renowned for its speed, security and low power consumption. Albatross supports high transaction throughput, and can handle thousands of transactions per second.
 
 ## The Nimiq Web Client
 
@@ -38,7 +38,7 @@ client.addHeadChangedListener((head) => {
 
 ## Using your private node
 
-Although the Web Client already offers a lot of functionality, you can also set up your own private node for full control and advanced customisation. [Find out more about their differences](../web-client-rpc.md).
+Although the Web Client already offers a lot of functionality, you can also set up your own private node for full control and advanced customisation. [Find out more about their differences](./web-client-vs-rpc.md).
 
 ## Issues, bugs and feedback
 

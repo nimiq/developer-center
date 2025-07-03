@@ -1,6 +1,6 @@
 # Registration Guide
 
-This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
+This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For more technical details on the migration, see [Migration Technical Details](../migration/migration-technical-details).
 
 ## Validator Registration Tool
 
@@ -49,7 +49,7 @@ You can of course also generate your own validator, signing, and/or voting keys 
 
 ### Step 2: Fund your Validator Address
 
-To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **1 NIM** for both the registration and activation transactions. You can use any Nimiq Wallet to send NIM to this address.
+To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](../migration/migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **1 NIM** for both the registration and activation transactions. You can use any Nimiq Wallet to send NIM to this address.
 
 ### Step 3: Run the Validator Registration Tool
 
@@ -86,4 +86,4 @@ After the command runs successfully and the deposit is sent, you can verify both
 
 Congratulations! You have successfully registered your validator and paid the deposit. The next step is to prepare for the Activation Phase, which begins on **November 19**.
 
-You will need to follow the [Activation Tool](validator-activation) guide, and we recommend running it before November 19, allowing your node to download the database snapshot early and speeding up the activation process. Click [here](migration-technical-details#activation-phase) to learn more about the activation phase.
+You will need to follow the [Activation Tool](validator-activation) guide, and we recommend running it before November 19, allowing your node to download the database snapshot early and speeding up the activation process. Click [here](../migration/migration-technical-details#activation-phase) to learn more about the activation phase.

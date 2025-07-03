@@ -4,7 +4,7 @@ Validators hold a set of keys in order to participate in the consensus. Besides 
 
 A key pair consists of public and private keys, mathematically linked. The private key is used for authentication by the validator, while the corresponding public key is used to validate the authenticity of the validator. Validators use their private key to sign transactions. Then anyone can verify the validity of such transaction by using the validator’s corresponding public key.
 
-For a node to become a validator, it must generate an address and a set of keypairs. Validators also own a fee key from a basic account, which has the sole purpose of paying `automatic_reactivate` transaction fees. To learn how to generate these keys, click [here](/build/set-up-your-own-node/becoming-a-validator.md#generating-your-validator-address-and-keys).
+For a node to become a validator, it must generate an address and a set of keypairs. Validators also own a fee key from a basic account, which has the sole purpose of paying `automatic_reactivate` transaction fees. To learn how to generate these keys, click [here](/validators/becoming-a-validator.md#generating-your-validator-address-and-keys).
 
 The [Schnorr](https://en.wikipedia.org/wiki/Schnorr_signature) signature scheme is used for generating the cold and warm key pairs, providing simplicity and short signatures. The [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature) signature scheme is used for the hot key for signature aggregation and voting efficiency.
 

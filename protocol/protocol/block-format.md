@@ -2,12 +2,12 @@
 
 In the Nimiq PoS blockchain, blocks are categorized into **microblocks** and **macroblocks**. Each type has a different role in maintaining the blockchain:
 
-- **Micro Blocks**: include user-generated transactions and are produced and signed by a validator according to the validator selection process. If a validator fails to produce a micro block on time, a [skip block](/learn/protocol/validators/skip-blocks.md) is produced instead.
+- **Micro Blocks**: include user-generated transactions and are produced and signed by a validator according to the validator selection process. If a validator fails to produce a micro block on time, a [skip block](/protocol/protocol/validators/skip-blocks.md) is produced instead.
 - **Macro Blocks**: these do not contain user transactions, ensure finality, and are produced using the Tendermint consensus algorithm. There are two types: election and checkpoint.
 
 ## Micro Blocks
 
-Micro blocks are the blocks for including transactions on the Nimiq PoS blockchain. A validator, randomly selected through a [VRF based process](/learn/protocol/verifiable-random-functions.md) that ensures randomness and decentralization, produces a new micro block. If a validator fails to produce a block, the remaining validators can agree on a skip block to maintain the blockchain's continuity. The structure of a micro block is divided into three parts: **header**, **body**, and **justification**.
+Micro blocks are the blocks for including transactions on the Nimiq PoS blockchain. A validator, randomly selected through a [VRF based process](/protocol/protocol/verifiable-random-functions.md) that ensures randomness and decentralization, produces a new micro block. If a validator fails to produce a block, the remaining validators can agree on a skip block to maintain the blockchain's continuity. The structure of a micro block is divided into three parts: **header**, **body**, and **justification**.
 
 ### Micro Header
 
@@ -43,13 +43,13 @@ Only one of these fields is used at a time as justification, depending on whethe
 
 ### Skip Blocks
 
-When a micro block is not produced within the expected timeframe, the remaining elected validators step in and create a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks documentation](/learn/protocol/validators/skip-blocks.md).
+When a micro block is not produced within the expected timeframe, the remaining elected validators step in and create a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks documentation](/protocol/protocol/validators/skip-blocks.md).
 
 ## Macro Blocks
 
 There are two types of macro blocks: **election** and **checkpoint**, each serving a specific role. Election macro blocks update the validator list, defining which validators will participate in the next epoch; these blocks also close epochs. Checkpoint macro blocks finalize transactions and close batches but do not change the validator list.
 
-Macro blocks need consensus of 2/3 the validator [slots](/learn/protocol/validators/slots.md) to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
+Macro blocks need consensus of 2/3 the validator [slots](/protocol/protocol/validators/slots.md) to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
 
 ### Macro Header
 

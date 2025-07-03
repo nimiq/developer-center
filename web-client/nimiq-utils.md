@@ -407,5 +407,5 @@ For complete documentation, source code, and additional examples, visit the [Nim
 ## Next Steps
 
 - Explore the [Web Client Getting Started](/web-client/getting-started) guide
-- Check out [framework integrations](/web-client/integrations) for your preferred development setup
+- Check out [framework integrations](/web-client/integrations/) for your preferred development setup
 - Browse the [Nimiq UI components](https://onmax.github.io/nimiq-ui/) for ready-to-use interface elements
