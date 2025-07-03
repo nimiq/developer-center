@@ -101,7 +101,7 @@ export default defineConfig(async () => {
             '.*',
           ],
           experimental: {
-            depth: 4,
+            depth: 2,
           },
         },
       ),
