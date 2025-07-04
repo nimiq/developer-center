@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / BufferUtils
+
+# Class: BufferUtils
+
 Defined in: @nimiq/core/lib/index.d.ts:48
 
 ## Constructors
@@ -193,7 +197,7 @@ Defined in: @nimiq/core/lib/index.d.ts:76
 
 ##### o
 
-`string` | `Uint8Array`
+`string` | `Uint8Array`\<`ArrayBufferLike`\>
 
 ##### length?
 

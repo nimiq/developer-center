@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / ArrayUtils
+
+# Class: ArrayUtils
+
 Defined in: @nimiq/core/lib/index.d.ts:3
 
 ## Constructors

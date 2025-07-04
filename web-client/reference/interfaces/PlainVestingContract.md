@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:352
+[@nimiq/core](../globals.md) / PlainVestingContract
+
+# Interface: PlainVestingContract
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:438
 
 ## Properties
 
@@ -6,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:352
 
 > **balance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:353
+Defined in: @nimiq/core/types/wasm/web.d.ts:439
 
 ***
 
@@ -14,7 +18,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:353
 
 > **owner**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:354
+Defined in: @nimiq/core/types/wasm/web.d.ts:440
 
 ***
 
@@ -22,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:354
 
 > **startTime**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:355
+Defined in: @nimiq/core/types/wasm/web.d.ts:441
 
 ***
 
@@ -30,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:355
 
 > **stepAmount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:357
+Defined in: @nimiq/core/types/wasm/web.d.ts:443
 
 ***
 
@@ -38,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:357
 
 > **timeStep**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:356
+Defined in: @nimiq/core/types/wasm/web.d.ts:442
 
 ***
 
@@ -46,4 +50,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:356
 
 > **totalAmount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:358
+Defined in: @nimiq/core/types/wasm/web.d.ts:444

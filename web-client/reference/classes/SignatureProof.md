@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:1884
+[@nimiq/core](../globals.md) / SignatureProof
+
+# Class: SignatureProof
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1883
 
 A signature proof represents a signature together with its public key and the public key's merkle path.
 It is used as the proof for transactions.
@@ -9,7 +13,7 @@ It is used as the proof for transactions.
 
 > `readonly` **publicKey**: [`PublicKey`](PublicKey.md) \| [`ES256PublicKey`](ES256PublicKey.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1933
+Defined in: @nimiq/core/types/wasm/web.d.ts:1932
 
 The embedded public key.
 
@@ -19,7 +23,7 @@ The embedded public key.
 
 > `readonly` **signature**: [`ES256Signature`](ES256Signature.md) \| [`Signature`](Signature.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1929
+Defined in: @nimiq/core/types/wasm/web.d.ts:1928
 
 The embedded signature.
 
@@ -29,7 +33,7 @@ The embedded signature.
 
 > `readonly` `static` **ES256\_SINGLE\_SIG\_SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1925
+Defined in: @nimiq/core/types/wasm/web.d.ts:1924
 
 ***
 
@@ -37,7 +41,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1925
 
 > `readonly` `static` **SINGLE\_SIG\_SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1924
+Defined in: @nimiq/core/types/wasm/web.d.ts:1923
 
 ## Methods
 
@@ -45,7 +49,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1924
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1886
+Defined in: @nimiq/core/types/wasm/web.d.ts:1885
 
 #### Returns
 
@@ -57,7 +61,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1886
 
 > **isSignedBy**(`sender`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1911
+Defined in: @nimiq/core/types/wasm/web.d.ts:1910
 
 Checks if the signature proof is signed by the provided address.
 
@@ -77,7 +81,7 @@ Checks if the signature proof is signed by the provided address.
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1915
+Defined in: @nimiq/core/types/wasm/web.d.ts:1914
 
 Serializes the proof to a byte array, e.g. for assigning it to a `transaction.proof` field.
 
@@ -91,7 +95,7 @@ Serializes the proof to a byte array, e.g. for assigning it to a `transaction.pr
 
 > **toPlain**(): [`PlainTransactionProof`](../type-aliases/PlainTransactionProof.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1919
+Defined in: @nimiq/core/types/wasm/web.d.ts:1918
 
 Creates a JSON-compatible plain object representing the signature proof.
 
@@ -105,7 +109,7 @@ Creates a JSON-compatible plain object representing the signature proof.
 
 > **verify**(`data`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1907
+Defined in: @nimiq/core/types/wasm/web.d.ts:1906
 
 Verifies the signature proof against the provided data.
 
@@ -125,7 +129,7 @@ Verifies the signature proof against the provided data.
 
 > `static` **deserialize**(`bytes`): `SignatureProof`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1923
+Defined in: @nimiq/core/types/wasm/web.d.ts:1922
 
 Deserializes a signature proof from a byte array.
 
@@ -145,7 +149,7 @@ Deserializes a signature proof from a byte array.
 
 > `static` **multiSig**(`signer_key`, `public_keys`, `signature`): `SignatureProof`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1895
+Defined in: @nimiq/core/types/wasm/web.d.ts:1894
 
 Creates a Ed25519/Schnorr signature proof for a multi-sig signature.
 The public keys can also include ES256 keys.
@@ -174,7 +178,7 @@ The public keys can also include ES256 keys.
 
 > `static` **singleSig**(`public_key`, `signature`): `SignatureProof`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1890
+Defined in: @nimiq/core/types/wasm/web.d.ts:1889
 
 Creates a Ed25519/Schnorr signature proof for a single-sig signature.
 
@@ -198,7 +202,7 @@ Creates a Ed25519/Schnorr signature proof for a single-sig signature.
 
 > `static` **webauthnMultiSig**(`signer_key`, `public_keys`, `signature`, `authenticator_data`, `client_data_json`): `SignatureProof`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1903
+Defined in: @nimiq/core/types/wasm/web.d.ts:1902
 
 Creates a Webauthn signature proof for a multi-sig signature.
 
@@ -234,7 +238,7 @@ Creates a Webauthn signature proof for a multi-sig signature.
 
 > `static` **webauthnSingleSig**(`public_key`, `signature`, `authenticator_data`, `client_data_json`): `SignatureProof`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1899
+Defined in: @nimiq/core/types/wasm/web.d.ts:1898
 
 Creates a Webauthn signature proof for a single-sig signature.
 

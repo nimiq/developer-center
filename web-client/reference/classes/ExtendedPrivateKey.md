@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / ExtendedPrivateKey
+
+# Class: ExtendedPrivateKey
+
 Defined in: @nimiq/core/lib/index.d.ts:113
 
 ## Extends

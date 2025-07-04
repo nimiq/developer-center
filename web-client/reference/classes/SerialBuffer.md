@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / SerialBuffer
+
+# Class: SerialBuffer
+
 Defined in: @nimiq/core/lib/index.d.ts:7
 
 ## Extends
@@ -40,7 +44,7 @@ Defined in: @nimiq/core/lib/index.d.ts:13
 
 ##### array
 
-`ArrayLike`\<`number`\> | `ArrayBufferLike`
+`ArrayBufferLike` | `ArrayLike`\<`number`\>
 
 #### Returns
 
@@ -56,7 +60,7 @@ Defined in: @nimiq/core/lib/index.d.ts:13
 
 > `readonly` **\[toStringTag\]**: `"Uint8Array"`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:284
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:284
 
 #### Inherited from
 
@@ -66,9 +70,9 @@ Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.symbo
 
 ### buffer
 
-> `readonly` **buffer**: `ArrayBufferLike`
+> `readonly` **buffer**: `ArrayBuffer`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2166
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2167
 
 The ArrayBuffer instance referenced by the array.
 
@@ -82,7 +86,7 @@ The ArrayBuffer instance referenced by the array.
 
 > `readonly` **byteLength**: `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2171
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2172
 
 The length in bytes of the array.
 
@@ -96,7 +100,7 @@ The length in bytes of the array.
 
 > `readonly` **byteOffset**: `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2176
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2177
 
 The offset in bytes of the array.
 
@@ -110,7 +114,7 @@ The offset in bytes of the array.
 
 > `readonly` **BYTES\_PER\_ELEMENT**: `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2161
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2162
 
 The size in bytes of each element in the array.
 
@@ -124,7 +128,7 @@ The size in bytes of each element in the array.
 
 > `readonly` **length**: `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2275
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2276
 
 The length of the array.
 
@@ -138,7 +142,7 @@ The length of the array.
 
 > `readonly` `static` **BYTES\_PER\_ELEMENT**: `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2410
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2412
 
 The size in bytes of each element in the array.
 
@@ -218,13 +222,13 @@ Defined in: @nimiq/core/lib/index.d.ts:18
 
 ### \[iterator\]()
 
-> **\[iterator\]**(): `IterableIterator`\<`number`\>
+> **\[iterator\]**(): `ArrayIterator`\<`number`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:270
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:313
 
 #### Returns
 
-`IterableIterator`\<`number`\>
+`ArrayIterator`\<`number`\>
 
 #### Inherited from
 
@@ -232,33 +236,11 @@ Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.itera
 
 ***
 
-### at()
-
-> **at**(`index`): `number`
-
-Defined in: .pnpm/@types+node@22.15.30/node\_modules/@types/node/compatibility/indexable.d.ts:7
-
-#### Parameters
-
-##### index
-
-`number`
-
-#### Returns
-
-`number`
-
-#### Inherited from
-
-`Uint8Array.at`
-
-***
-
 ### copyWithin()
 
 > **copyWithin**(`target`, `start`, `end?`): `this`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2187
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2188
 
 Returns the this object after copying a section of the array identified by start and end
 to the same array starting at position target
@@ -297,15 +279,15 @@ If not specified, length of the this object is used as its default value.
 
 ### entries()
 
-> **entries**(): `IterableIterator`\<\[`number`, `number`\]\>
+> **entries**(): `ArrayIterator`\<\[`number`, `number`\]\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:274
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:318
 
 Returns an array of key, value pairs for every entry in the array
 
 #### Returns
 
-`IterableIterator`\<\[`number`, `number`\]\>
+`ArrayIterator`\<\[`number`, `number`\]\>
 
 #### Inherited from
 
@@ -317,7 +299,7 @@ Returns an array of key, value pairs for every entry in the array
 
 > **every**(`predicate`, `thisArg?`): `boolean`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2197
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2198
 
 Determines whether all the members of an array satisfy the specified test.
 
@@ -352,7 +334,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 > **fill**(`value`, `start?`, `end?`): `this`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2207
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2208
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
@@ -390,9 +372,9 @@ length+end.
 
 ### filter()
 
-> **filter**(`predicate`, `thisArg?`): `Uint8Array`
+> **filter**(`predicate`, `thisArg?`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2216
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2217
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
@@ -414,7 +396,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 #### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 #### Inherited from
 
@@ -426,7 +408,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 > **find**(`predicate`, `thisArg?`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2227
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2228
 
 Returns the value of the first element in the array where predicate is true, and undefined
 otherwise.
@@ -462,7 +444,7 @@ predicate. If it is not provided, undefined is used instead.
 
 > **findIndex**(`predicate`, `thisArg?`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2238
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2239
 
 Returns the index of the first element in the array where predicate is true, and -1
 otherwise.
@@ -498,7 +480,7 @@ predicate. If it is not provided, undefined is used instead.
 
 > **forEach**(`callbackfn`, `thisArg?`): `void`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2247
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2248
 
 Performs the specified action for each element in an array.
 
@@ -532,7 +514,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 > **includes**(`searchElement`, `fromIndex?`): `boolean`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2016.array.include.d.ts:52
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2016.array.include.d.ts:52
 
 Determines whether an array includes a certain element, returning true or false as appropriate.
 
@@ -564,7 +546,7 @@ The position in this array at which to begin searching for searchElement.
 
 > **indexOf**(`searchElement`, `fromIndex?`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2255
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2256
 
 Returns the index of the first occurrence of a value in an array.
 
@@ -581,7 +563,7 @@ The value to locate in the array.
 `number`
 
 The array index at which to begin the search. If fromIndex is omitted, the
- search starts at index 0.
+search starts at index 0.
 
 #### Returns
 
@@ -597,7 +579,7 @@ The array index at which to begin the search. If fromIndex is omitted, the
 
 > **join**(`separator?`): `string`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2262
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2263
 
 Adds all the elements of an array separated by the specified separator string.
 
@@ -622,15 +604,15 @@ resulting String. If omitted, the array elements are separated with a comma.
 
 ### keys()
 
-> **keys**(): `IterableIterator`\<`number`\>
+> **keys**(): `ArrayIterator`\<`number`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:278
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:323
 
 Returns an list of keys in the array
 
 #### Returns
 
-`IterableIterator`\<`number`\>
+`ArrayIterator`\<`number`\>
 
 #### Inherited from
 
@@ -642,7 +624,7 @@ Returns an list of keys in the array
 
 > **lastIndexOf**(`searchElement`, `fromIndex?`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2270
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2271
 
 Returns the index of the last occurrence of a value in an array.
 
@@ -673,9 +655,9 @@ search starts at index 0.
 
 ### map()
 
-> **map**(`callbackfn`, `thisArg?`): `Uint8Array`
+> **map**(`callbackfn`, `thisArg?`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2285
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2286
 
 Calls a defined callback function on each element of an array, and returns an array that
 contains the results.
@@ -698,7 +680,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 #### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 #### Inherited from
 
@@ -850,7 +832,7 @@ Defined in: @nimiq/core/lib/index.d.ts:33
 
 > **reduce**(`callbackfn`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2297
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2298
 
 Calls the specified callback function for all the elements in an array. The return value of
 the callback function is the accumulated result, and is provided as an argument in the next
@@ -877,7 +859,7 @@ callbackfn function one time for each element in the array.
 
 > **reduce**(`callbackfn`, `initialValue`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2298
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2299
 
 ##### Parameters
 
@@ -901,7 +883,7 @@ Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:229
 
 > **reduce**\<`U`\>(`callbackfn`, `initialValue`): `U`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2310
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2311
 
 Calls the specified callback function for all the elements in an array. The return value of
 the callback function is the accumulated result, and is provided as an argument in the next
@@ -946,7 +928,7 @@ instead of an array value.
 
 > **reduceRight**(`callbackfn`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2322
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2323
 
 Calls the specified callback function for all the elements in an array, in descending order.
 The return value of the callback function is the accumulated result, and is provided as an
@@ -973,7 +955,7 @@ the callbackfn function one time for each element in the array.
 
 > **reduceRight**(`callbackfn`, `initialValue`): `number`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2323
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2324
 
 ##### Parameters
 
@@ -997,7 +979,7 @@ Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:232
 
 > **reduceRight**\<`U`\>(`callbackfn`, `initialValue`): `U`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2335
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2336
 
 Calls the specified callback function for all the elements in an array, in descending order.
 The return value of the callback function is the accumulated result, and is provided as an
@@ -1052,15 +1034,15 @@ Resets the read and write position of the buffer to zero.
 
 ### reverse()
 
-> **reverse**(): `Uint8Array`
+> **reverse**(): `this`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2340
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2341
 
 Reverses the elements in an Array.
 
 #### Returns
 
-`Uint8Array`
+`this`
 
 #### Inherited from
 
@@ -1072,7 +1054,7 @@ Reverses the elements in an Array.
 
 > **set**(`array`, `offset?`): `void`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2347
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2348
 
 Sets a value or an array of values.
 
@@ -1102,9 +1084,9 @@ The index in the current array at which the values are to be written.
 
 ### slice()
 
-> **slice**(`start?`, `end?`): `Uint8Array`
+> **slice**(`start?`, `end?`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2354
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2355
 
 Returns a section of an array.
 
@@ -1124,7 +1106,7 @@ The end of the specified portion of the array. This is exclusive of the element 
 
 #### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 #### Inherited from
 
@@ -1136,7 +1118,7 @@ The end of the specified portion of the array. This is exclusive of the element 
 
 > **some**(`predicate`, `thisArg?`): `boolean`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2364
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2365
 
 Determines whether the specified callback function returns true for any element of an array.
 
@@ -1171,7 +1153,7 @@ If thisArg is omitted, undefined is used as the this value.
 
 > **sort**(`compareFn?`): `this`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2375
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2376
 
 Sorts an array.
 
@@ -1185,7 +1167,7 @@ Function used to determine the order of the elements. It is expected to return
 a negative value if first argument is less than second argument, zero if they're equal and a positive
 value otherwise. If omitted, the elements are sorted in ascending order.
 ```ts
-[11, 2, 22, 1].sort((a, b) => a - b)
+[11,2,22,1].sort((a, b) => a - b)
 ```
 
 #### Returns
@@ -1231,17 +1213,43 @@ The index of the end of the array.
 
 ### toLocaleString()
 
+#### Call Signature
+
 > **toLocaleString**(): `string`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2388
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2389
 
 Converts a number to a string by using the current locale.
 
-#### Returns
+##### Returns
 
 `string`
 
-#### Inherited from
+##### Inherited from
+
+`Uint8Array.toLocaleString`
+
+#### Call Signature
+
+> **toLocaleString**(`locales`, `options?`): `string`
+
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.core.d.ts:568
+
+##### Parameters
+
+###### locales
+
+`string` | `string`[]
+
+###### options?
+
+`NumberFormatOptions`
+
+##### Returns
+
+`string`
+
+##### Inherited from
 
 `Uint8Array.toLocaleString`
 
@@ -1251,7 +1259,7 @@ Converts a number to a string by using the current locale.
 
 > **toString**(): `string`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2393
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2394
 
 Returns a string representation of an array.
 
@@ -1267,15 +1275,15 @@ Returns a string representation of an array.
 
 ### valueOf()
 
-> **valueOf**(): `Uint8Array`
+> **valueOf**(): `this`
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2396
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2397
 
 Returns the primitive value of the specified object.
 
 #### Returns
 
-`Uint8Array`
+`this`
 
 #### Inherited from
 
@@ -1285,15 +1293,15 @@ Returns the primitive value of the specified object.
 
 ### values()
 
-> **values**(): `IterableIterator`\<`number`\>
+> **values**(): `ArrayIterator`\<`number`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:282
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:328
 
 Returns an list of values in the array
 
 #### Returns
 
-`IterableIterator`\<`number`\>
+`ArrayIterator`\<`number`\>
 
 #### Inherited from
 
@@ -1493,9 +1501,9 @@ Defined in: @nimiq/core/lib/index.d.ts:34
 
 #### Call Signature
 
-> `static` **from**(`arrayLike`): `Uint8Array`
+> `static` **from**(`arrayLike`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2422
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2424
 
 Creates an array from an array-like or iterable object.
 
@@ -1505,11 +1513,11 @@ Creates an array from an array-like or iterable object.
 
 `ArrayLike`\<`number`\>
 
-An array-like or iterable object to convert to an array.
+An array-like object to convert to an array.
 
 ##### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 ##### Inherited from
 
@@ -1517,9 +1525,9 @@ An array-like or iterable object to convert to an array.
 
 #### Call Signature
 
-> `static` **from**\<`T`\>(`arrayLike`, `mapfn`, `thisArg?`): `Uint8Array`
+> `static` **from**\<`T`\>(`arrayLike`, `mapfn`, `thisArg?`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2430
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2432
 
 Creates an array from an array-like or iterable object.
 
@@ -1535,7 +1543,7 @@ Creates an array from an array-like or iterable object.
 
 `ArrayLike`\<`T`\>
 
-An array-like or iterable object to convert to an array.
+An array-like object to convert to an array.
 
 ###### mapfn
 
@@ -1551,7 +1559,7 @@ Value of 'this' used to invoke the mapfn.
 
 ##### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 ##### Inherited from
 
@@ -1559,19 +1567,49 @@ Value of 'this' used to invoke the mapfn.
 
 #### Call Signature
 
-> `static` **from**(`arrayLike`, `mapfn?`, `thisArg?`): `Uint8Array`
+> `static` **from**(`elements`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:294
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:338
 
 Creates an array from an array-like or iterable object.
 
 ##### Parameters
 
-###### arrayLike
+###### elements
 
 `Iterable`\<`number`\>
 
-An array-like or iterable object to convert to an array.
+An iterable object to convert to an array.
+
+##### Returns
+
+`Uint8Array`\<`ArrayBuffer`\>
+
+##### Inherited from
+
+`Uint8Array.from`
+
+#### Call Signature
+
+> `static` **from**\<`T`\>(`elements`, `mapfn?`, `thisArg?`): `Uint8Array`\<`ArrayBuffer`\>
+
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:346
+
+Creates an array from an array-like or iterable object.
+
+##### Type Parameters
+
+###### T
+
+`T`
+
+##### Parameters
+
+###### elements
+
+`Iterable`\<`T`\>
+
+An iterable object to convert to an array.
 
 ###### mapfn?
 
@@ -1587,7 +1625,7 @@ Value of 'this' used to invoke the mapfn.
 
 ##### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 ##### Inherited from
 
@@ -1597,9 +1635,9 @@ Value of 'this' used to invoke the mapfn.
 
 ### of()
 
-> `static` **of**(...`items`): `Uint8Array`
+> `static` **of**(...`items`): `Uint8Array`\<`ArrayBuffer`\>
 
-Defined in: .pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:2416
+Defined in: .pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:2418
 
 Returns a new array from a set of elements.
 
@@ -1613,7 +1651,7 @@ A set of elements to include in the new array object.
 
 #### Returns
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBuffer`\>
 
 #### Inherited from
 

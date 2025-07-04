@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:138
+[@nimiq/core](../globals.md) / PlainSetActiveStakeData
+
+# Interface: PlainSetActiveStakeData
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:224
 
 JSON-compatible and human-readable format of set active stake data.
 
@@ -8,7 +12,7 @@ JSON-compatible and human-readable format of set active stake data.
 
 > **newActiveBalance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:140
+Defined in: @nimiq/core/types/wasm/web.d.ts:226
 
 ***
 
@@ -16,4 +20,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:140
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:139
+Defined in: @nimiq/core/types/wasm/web.d.ts:225

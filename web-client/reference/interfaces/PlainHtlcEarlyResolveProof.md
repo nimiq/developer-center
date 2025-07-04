@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:209
+[@nimiq/core](../globals.md) / PlainHtlcEarlyResolveProof
+
+# Interface: PlainHtlcEarlyResolveProof
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:295
 
 JSON-compatible and human-readable format of HTLC early resolve proofs.
 
@@ -8,7 +12,7 @@ JSON-compatible and human-readable format of HTLC early resolve proofs.
 
 > **creator**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:221
+Defined in: @nimiq/core/types/wasm/web.d.ts:307
 
 The creator (also called the \"sender\") of the HTLC
 
@@ -18,7 +22,7 @@ The creator (also called the \"sender\") of the HTLC
 
 > **creatorPathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:224
+Defined in: @nimiq/core/types/wasm/web.d.ts:310
 
 ***
 
@@ -26,7 +30,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:224
 
 > **creatorPublicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:223
+Defined in: @nimiq/core/types/wasm/web.d.ts:309
 
 ***
 
@@ -34,7 +38,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:223
 
 > **creatorSignature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:222
+Defined in: @nimiq/core/types/wasm/web.d.ts:308
 
 ***
 
@@ -42,7 +46,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:222
 
 > **pathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:217
+Defined in: @nimiq/core/types/wasm/web.d.ts:303
 
 ***
 
@@ -50,7 +54,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:217
 
 > **publicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:216
+Defined in: @nimiq/core/types/wasm/web.d.ts:302
 
 ***
 
@@ -58,7 +62,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:216
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:210
+Defined in: @nimiq/core/types/wasm/web.d.ts:296
 
 ***
 
@@ -66,7 +70,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:210
 
 > **signature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:215
+Defined in: @nimiq/core/types/wasm/web.d.ts:301
 
 ***
 
@@ -74,6 +78,6 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:215
 
 > **signer**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:214
+Defined in: @nimiq/core/types/wasm/web.d.ts:300
 
 The signer (also called the \"recipient\") of the HTLC

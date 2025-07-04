@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / NumberUtils
+
+# Class: NumberUtils
+
 Defined in: @nimiq/core/lib/index.d.ts:315
 
 ## Constructors

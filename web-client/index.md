@@ -1,19 +1,14 @@
 ---
-prose: false
-aside: false
-footer: false
-
 title: Nimiq Web Client
-description: Build blockchain applications that run entirely in the browser — no servers required.
-outline: false
-widget: false
-showSecondarySidebar: false
+description: The JavaScript library that lets you build blockchain applications directly in the browser — zero servers, zero complexity.
+secondarySidebar: false
+wide: true
 
 heroCards:
-  - icon: i-tabler:player-play
-    title: Interactive Tutorial
-    description: Learn by building a complete wallet app directly in your browser. No setup required, just start coding!
-    label: Start Learning
+  - icon: i-tabler:school
+    title: Start Building Now
+    description: Interactive tutorial that builds a complete wallet app in your browser. No setup, no downloads, just code.
+    label: Try Now
     href: https://tutorial.nimiq.com
     bgColor: gold
     iconClass: absolute bottom--48 right--32 text-256
@@ -21,99 +16,114 @@ heroCards:
     hoverColor: gold
   - icon: i-tabler:download
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Installation Guide
-    description: Get started with Nimiq Web Client in your project
+    title: Quick Install
+    description: Add to your project in 30 seconds
     href: ./installation
-  - icon: i-tabler:plug
+    hoverColor: blue
+  - icon: i-tabler:puzzle
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Framework Integrations
-    description: Setup guides for Vite, Next.js, Nuxt, and more
+    title: Framework Guides
+    description: Vite, Next.js, Nuxt, Webpack — we've got you covered
     href: ./integrations/
+    hoverColor: green
   - icon: i-tabler:tools
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Nimiq Utils
-    description: Essential utilities for Nimiq development
-    href: ./nimiq-utils
+    title: Utilities Library
+    description: Production-ready helpers for addresses, validation, and more
+    href: ../nimiq-utils/
+    hoverColor: orange
 
-webClientFeaturesLabel: Why Web Client
-webClientFeaturesTitle: Browser-First Blockchain Development
-webClientFeaturesDescription: Build decentralized applications that run entirely in the browser without servers or infrastructure.
-webClientFeatures:
-  - title: No Servers
-    description: Just you and the browser
-    icon: i-nimiq:duotone-network
-    iconColor: text-blue
-  - title: Secure
-    description: Built-in crypto modules
-    icon: i-nimiq:duotone-incognito
-    iconColor: text-green
-  - title: It's fast
-    description: Establish consensus in less than 10s.
-    icon: i-nimiq:duotone-speedmeter
-    iconColor: text-orange
-  - title: WASM
-    description: Built for the future
-    icon: i-nimiq:verified
-    iconColor: text-gold
-  - title: Compatible
-    description: Works seamlessly in multiple JS runtimes
-    icon: 'scale-80 i-nimiq:widget origin-left'
-    iconColor: text-purple
-  - title: Real-Time Data
-    description: Subscribe to live blockchain events
-    icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
-    iconColor: text-red
+whyNimiq:
+  label: Why Choose Web Client
+  title: Skip the Infrastructure, Build the Future
+  description: Traditional blockchain apps require servers, databases, and complex setups. Nimiq Web Client connects directly to the blockchain from any browser.
+  features:
+    - title: Zero Infrastructure
+      description: No servers, APIs, or third-party dependencies
+      icon: i-nimiq:duotone-network
+      iconColor: text-blue
+    - title: Instant Sync
+      description: Connect to the network in seconds, not hours
+      icon: i-nimiq:duotone-speedmeter
+      iconColor: text-green
+    - title: Mobile Ready
+      description: Works on phones, tablets, and desktops
+      icon: i-nimiq:duotone-incognito
+      iconColor: text-orange
+    - title: WebAssembly Powered
+      description: Rust performance compiled to WASM
+      icon: i-nimiq:verified
+      iconColor: text-gold
+    - title: Developer Friendly
+      description: Modern JavaScript APIs you already know
+      icon: 'scale-80 i-nimiq:widget origin-left'
+      iconColor: text-purple
+    - title: Always Online
+      description: Your users' data stays with them
+      icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
+      iconColor: text-red
 
-quickStartLabel: Quick Start
-quickStartTitle: Start Building in Minutes
-quickStartDescription: Jump in and start experimenting with Nimiq Web Client right away. No setup required.
-quickStartActions:
-  - title: Interactive Tutorial
-    description: Learn by building a complete wallet app in your browser
-    href: https://tutorial.nimiq.com
-    icon: i-local:nimiq-tutorial
-  - title: Vite Integration
-    description: Get started with Vite and modern build tools
+banner:
+  label: 'RPC vs. Web Client'
+  headline: Not sure if you need RPC or Web Client?
+  subline: "We've created a comprehensive guide to help you choose the right approach for your project."
+  linkHref: './web-client-vs-rpc'
+  linkLabel: 'Read Our Guide'
+
+integrationsLabel: Get Started
+integrationsTitle: Choose Your Stack
+integrationsDescription: Nimiq works with the tools you already use. Pick your framework and start building in minutes.
+integrationsActions:
+  - title: Vite
+    description: Lightning-fast development with hot reload
     href: ./integrations/vite
-    icon: i-tabler:brand-vite
-  - title: Next.js Integration
-    description: Build full-stack apps with Next.js and Nimiq
+    icon: i-logos:vitejs
+    iconClass: gray group-hocus:filter-none
+  - title: Next.js
+    description: Full-stack React with server-side rendering
     href: ./integrations/NextJS
-    icon: i-tabler:brand-nextjs
-  - title: Nimiq MCP
-    description: Build with AI using our MCP server integration
-    href: https://github.com/onmax/nimiq-mcp
-    icon: i-local:nimiq-mcp
+    icon: i-logos:nextjs-icon
+    iconClass: gray group-hocus:filter-none
+  - title: Nuxt
+    description: Vue.js framework with auto-imports
+    href: ./integrations/nuxt
+    icon: i-logos:nuxt-icon
+    iconClass: gray group-hocus:filter-none
+  - title: Webpack
+    description: Traditional bundling with full control
+    href: ./integrations/webpack
+    icon: i-logos:webpack
+    iconClass: gray group-hocus:filter-none
 
 popularResourcesLabel: Popular Resources
-popularResourcesTitle: Everything You Need to Build with Web Client
-popularResourcesDescription: Comprehensive guides, tools, and resources to help you build amazing blockchain applications.
+popularResourcesTitle: Everything You Need to Build
+popularResourcesDescription: From getting started to advanced features, find the resources that match your experience level.
 popularResources:
-  - title: Getting Started
+  - title: First Steps
     links:
+      - text: What is Nimiq?
+        href: ./getting-started
       - text: Installation Guide
         href: ./installation
-      - text: Quick Start Tutorial
-        href: ./getting-started
       - text: Interactive Tutorial
         href: https://tutorial.nimiq.com
       - text: Web Client vs RPC
         href: ./web-client-vs-rpc
-  - title: Framework Integration
+  - title: Framework Setup
     links:
-      - text: Vite Setup
+      - text: Vite Integration
         href: ./integrations/vite
-      - text: Next.js Setup
+      - text: Next.js Integration
         href: ./integrations/NextJS
-      - text: Nuxt Setup
+      - text: Nuxt Integration
         href: ./integrations/nuxt
-      - text: Webpack Setup
+      - text: Webpack Integration
         href: ./integrations/webpack
       - text: All Integrations
         href: ./integrations/
   - title: UI & Components
     links:
-      - text: Nimiq UI Components
+      - text: Nimiq UI Library
         href: https://onmax.github.io/nimiq-ui/
         target: _blank
       - text: Nimiq Icons
@@ -127,39 +137,46 @@ popularResources:
         target: _blank
   - title: API Reference
     links:
-      - text: Web Client Reference
+      - text: Complete API Docs
         href: ./reference/
-      - text: Global Functions
-        href: ./reference/globals
       - text: Client Classes
         href: ./reference/classes/
       - text: Core Interfaces
         href: ./reference/interfaces/
-      - text: Nimiq Utils
-        href: ./nimiq-utils
-  - title: Tools & Development
+      - text: Global Functions
+        href: ./reference/globals
+      - text: Utility Functions
+        href: ../nimiq-utils/
+  - title: Advanced
     links:
-      - text: Nimiq MCP (AI)
-        href: https://github.com/onmax/nimiq-mcp
-        target: _blank
-      - text: RPC Playground
-        href: ../rpc-client/playground
-      - text: Community Forum
-        href: https://forum.nimiq.community/
-        target: _blank
-      - text: Telegram Community
-        href: https://t.me/nimiq
-        target: _blank
-  - title: Advanced Topics
-    links:
-      - text: Network Connection
+      - text: Network Configuration
         href: ./reference/classes/Client
       - text: Transaction Handling
         href: ./reference/interfaces/
       - text: Account Management
         href: ./reference/globals
-      - text: WebAssembly Core
-        href: ./reference/@nimiq/
+      - text: Custom Integrations
+        href: ./integrations/
+      - text: Nimiq MCP
+        href: https://github.com/onmax/nimiq-mcp
+        target: _blank
+  - title: Community
+    links:
+      - text: Nimiq Awesome
+        href: https://github.com/onmax/nimiq-awesome
+        target: _blank
+      - text: GitHub Repository
+        href: https://github.com/nimiq/core-rs-albatross
+        target: _blank
+      - text: Community Forum
+        href: https://forum.nimiq.community/
+        target: _blank
+      - text: Telegram Chat
+        href: https://t.me/nimiq
+        target: _blank
+      - text: Discord Server
+        href: https://discord.gg/cMHemg8
+        target: _blank
 ---
 
 <script setup lang="ts">
@@ -167,14 +184,13 @@ import Hero from '../.vitepress/theme/components/Hero.vue'
 import WebClientExplainer from '../.vitepress/theme/components/WebClientExplainer.vue'
 import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
 import QuickStart from '../.vitepress/theme/components/QuickStart.vue'
+import Banner from '../.vitepress/theme/components/Banner.vue'
 import PopularResources from '../.vitepress/theme/components/PopularResources.vue'
 </script>
 
 <Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left" />
 
-<WebClientExplainer />
-
-<NqHeadline class="f-mb-sm" title="Get started with 4 lines of code" label="JavaScript" align="left" description="It's easy" />
+<NqHeadline f-mt-5xl f-mb-sm title="Start with 4 lines of code" label="JavaScript" align="left" description="Get up and running in under a minute" />
 
 <div class="nq-raw" >
 
@@ -204,8 +220,12 @@ await client.waitForConsensusEstablished()
 
 </div>
 
-<NimiqFeatures align="left" f-pb-3xl f-pt-2xl :title="$frontmatter.webClientFeaturesTitle" :description="$frontmatter.webClientFeaturesDescription" :label="$frontmatter.webClientFeaturesLabel" :features="$frontmatter.webClientFeatures" :show-borders="false" />
+<WebClientExplainer />
 
-<QuickStart align="left" :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
+<Banner f-my-xl v-bind="$frontmatter.banner" />
 
-<PopularResources align="left" :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
+<NimiqFeatures align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
+
+<QuickStart align="left" :title="$frontmatter.integrationsTitle" :description="$frontmatter.integrationsDescription" :label="$frontmatter.integrationsLabel" :actions="$frontmatter.integrationsActions" />
+
+<PopularResources f-py-4xl align="left" :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />

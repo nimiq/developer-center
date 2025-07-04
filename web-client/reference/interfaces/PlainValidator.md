@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:429
+[@nimiq/core](../globals.md) / PlainValidator
+
+# Interface: PlainValidator
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:515
 
 JSON-compatible and human-readable format of a validator. E.g. reward addresses and public keys are presented in
 their human-readable format.
@@ -9,7 +13,7 @@ their human-readable format.
 
 > **deposit**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:456
+Defined in: @nimiq/core/types/wasm/web.d.ts:542
 
 The amount of coins deposited by this validator. The initial deposit is a fixed amount,
 however this value can be decremented by failing staking transactions due to fees.
@@ -20,7 +24,7 @@ however this value can be decremented by failing staking transactions due to fee
 
 > **inactiveFrom**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:467
+Defined in: @nimiq/core/types/wasm/web.d.ts:553
 
 An option indicating if the validator is marked as inactive. If it is, then it contains the
 block height at which it becomes inactive.
@@ -33,7 +37,7 @@ contain a block height in the future.
 
 > **inactiveRelease**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:472
+Defined in: @nimiq/core/types/wasm/web.d.ts:558
 
 An option indicating if the validator is marked as inactive. If it is, then it contains the
 block height at which the inactive stake gets released and the validator can be retired.
@@ -44,7 +48,7 @@ block height at which the inactive stake gets released and the validator can be 
 
 > **jailedFrom**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:483
+Defined in: @nimiq/core/types/wasm/web.d.ts:569
 
 An option indicating if the validator is jailed. If it is, then it contains the
 block height at which it became jailed.
@@ -57,7 +61,7 @@ the validator and its stakers from modifying their funds and or delegation.
 
 > **jailedRelease**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:488
+Defined in: @nimiq/core/types/wasm/web.d.ts:574
 
 An option indicating if the validator is jailed. If it is, then it contains the
 block height at which the jail period ends and the validator becomes interactive again.
@@ -68,7 +72,7 @@ block height at which the jail period ends and the validator becomes interactive
 
 > **numStakers**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:460
+Defined in: @nimiq/core/types/wasm/web.d.ts:546
 
 The number of stakers that are delegating to this validator.
 
@@ -78,7 +82,7 @@ The number of stakers that are delegating to this validator.
 
 > **retired**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:476
+Defined in: @nimiq/core/types/wasm/web.d.ts:562
 
 A flag indicating if the validator is retired.
 
@@ -88,7 +92,7 @@ A flag indicating if the validator is retired.
 
 > **rewardAddress**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:441
+Defined in: @nimiq/core/types/wasm/web.d.ts:527
 
 The reward address of the validator. All the block rewards are paid to this address.
 
@@ -98,7 +102,7 @@ The reward address of the validator. All the block rewards are paid to this addr
 
 > **signalData**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:446
+Defined in: @nimiq/core/types/wasm/web.d.ts:532
 
 Signaling field. Can be used to do chain upgrades or for any other purpose that requires
 validators to coordinate among themselves.
@@ -109,7 +113,7 @@ validators to coordinate among themselves.
 
 > **signingPublicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:433
+Defined in: @nimiq/core/types/wasm/web.d.ts:519
 
 The public key used to sign blocks. It is also used to retire and reactivate the validator.
 
@@ -119,7 +123,7 @@ The public key used to sign blocks. It is also used to retire and reactivate the
 
 > **totalStake**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:451
+Defined in: @nimiq/core/types/wasm/web.d.ts:537
 
 The total stake assigned to this validator. It includes the validator deposit as well as the
 coins delegated to him by stakers.
@@ -130,6 +134,6 @@ coins delegated to him by stakers.
 
 > **votingPublicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:437
+Defined in: @nimiq/core/types/wasm/web.d.ts:523
 
 The voting public key, it is used to vote for skip and macro blocks.

@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:177
+[@nimiq/core](../globals.md) / PlainHtlcRegularTransferProof
+
+# Interface: PlainHtlcRegularTransferProof
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:263
 
 JSON-compatible and human-readable format of HTLC transfer proofs.
 
@@ -8,7 +12,7 @@ JSON-compatible and human-readable format of HTLC transfer proofs.
 
 > **hashAlgorithm**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:179
+Defined in: @nimiq/core/types/wasm/web.d.ts:265
 
 ***
 
@@ -16,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:179
 
 > **hashDepth**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:180
+Defined in: @nimiq/core/types/wasm/web.d.ts:266
 
 ***
 
@@ -24,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:180
 
 > **hashRoot**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:181
+Defined in: @nimiq/core/types/wasm/web.d.ts:267
 
 ***
 
@@ -32,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:181
 
 > **pathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:189
+Defined in: @nimiq/core/types/wasm/web.d.ts:275
 
 ***
 
@@ -40,7 +44,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:189
 
 > **preImage**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:182
+Defined in: @nimiq/core/types/wasm/web.d.ts:268
 
 ***
 
@@ -48,7 +52,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:182
 
 > **publicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:188
+Defined in: @nimiq/core/types/wasm/web.d.ts:274
 
 ***
 
@@ -56,7 +60,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:188
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:178
+Defined in: @nimiq/core/types/wasm/web.d.ts:264
 
 ***
 
@@ -64,7 +68,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:178
 
 > **signature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:187
+Defined in: @nimiq/core/types/wasm/web.d.ts:273
 
 ***
 
@@ -72,6 +76,6 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:187
 
 > **signer**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:186
+Defined in: @nimiq/core/types/wasm/web.d.ts:272
 
 The signer (also called the \"recipient\") of the HTLC

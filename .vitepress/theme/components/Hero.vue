@@ -24,7 +24,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section flex="~ items-center justify-center col" relative>
+  <section relative>
     <NqHeadline :title :description :align z-100 />
     <div max-w-none="!" op-30 w-screen bottom-32 absolute>
       <HexagonsBackground />

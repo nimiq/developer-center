@@ -9,7 +9,7 @@ The Nimiq Web Client establishes direct connections with other peers in the netw
 
 ## Nimiq Web Client
 
-The [Nimiq Web Client](/web-client/getting-started) is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem. It can run in environments including web browsers as well as server-side environments like Node.js. This client is compiled from Rust to WebAssembly using `wasm-pack` and it offers a lightweight solution for users who want to interact with the Nimiq blockchain.
+The [Nimiq Web Client](/web-client) is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem. It can run in environments including web browsers as well as server-side environments like Node.js. This client is compiled from Rust to WebAssembly using `wasm-pack` and it offers a lightweight solution for users who want to interact with the Nimiq blockchain.
 
 The Web Client provides a user-friendly interface for building consensus with other nodes, creating wallets, sending transactions, and interacting with the blockchain with simple operations. It simplifies user interaction and offers easy integration.
 
@@ -17,7 +17,7 @@ Users can access the Web Client on mobile devices, such as smartphones and table
 
 ## Nimiq RPC
 
-[Nimiq RPC](/rpc-client/) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
+[Nimiq RPC](/rpc-client) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
 
 RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
@@ -78,11 +78,11 @@ For developers, tech-savvies, and validators looking for more advanced control o
 
 Now that you know the differences, why not start building?
 
-<div flex="~ gap-16 items-center" class="nq-raw" mt-16>
-  <a href="/web-client/getting-started" nq-arrow nq-pill-sm nq-pill-blue>Web Client</a>
-  <a href="/rpc-client/" nq-arrow nq-pill-sm nq-pill-secondary>RPC Client</a>
-  <a href="/validators/" nq-arrow nq-pill-sm nq-pill-tertiary>Run a Validator</a>
-</div>
+<NqGrid :cards="[
+  { icon: 'i-local:nimiq-web-client', title: 'Web Client', href: "/web-client" },
+  { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '/rpc-client' },
+  { icon: 'i-local:nimiq-validors', title: 'Validators', href: '/validators' },
+]" />
 
 ## Learn More
 

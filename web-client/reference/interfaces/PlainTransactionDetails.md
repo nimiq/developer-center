@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:326
+[@nimiq/core](../globals.md) / PlainTransactionDetails
+
+# Interface: PlainTransactionDetails
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:412
 
 JSON-compatible and human-readable format of transactions, including details about its state in the
 blockchain. Contains all fields from [PlainTransaction](PlainTransaction.md), plus additional fields such as
@@ -14,7 +18,7 @@ blockchain. Contains all fields from [PlainTransaction](PlainTransaction.md), pl
 
 > `optional` **blockHeight**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:329
+Defined in: @nimiq/core/types/wasm/web.d.ts:415
 
 ***
 
@@ -22,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:329
 
 > `optional` **confirmations**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:330
+Defined in: @nimiq/core/types/wasm/web.d.ts:416
 
 ***
 
@@ -30,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:330
 
 > **data**: [`PlainTransactionRecipientData`](../type-aliases/PlainTransactionRecipientData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:297
+Defined in: @nimiq/core/types/wasm/web.d.ts:383
 
 The `data` field of a transaction serves different purposes based on the transaction\'s recipient type.
 For transactions to \"basic\" address types, this field can contain up to 64 bytes of unstructured data.
@@ -48,7 +52,7 @@ changed.
 
 > `optional` **executionResult**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:328
+Defined in: @nimiq/core/types/wasm/web.d.ts:414
 
 ***
 
@@ -56,7 +60,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:328
 
 > **fee**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:267
+Defined in: @nimiq/core/types/wasm/web.d.ts:353
 
 The transaction\'s fee in luna (NIM\'s smallest unit).
 
@@ -70,7 +74,7 @@ The transaction\'s fee in luna (NIM\'s smallest unit).
 
 > **feePerByte**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:271
+Defined in: @nimiq/core/types/wasm/web.d.ts:357
 
 The transaction\'s fee-per-byte in luna (NIM\'s smallest unit).
 
@@ -84,7 +88,7 @@ The transaction\'s fee-per-byte in luna (NIM\'s smallest unit).
 
 > **flags**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:284
+Defined in: @nimiq/core/types/wasm/web.d.ts:370
 
 Any flags that this transaction carries. `0b1 = 1` means it\'s a contract-creation transaction, `0b10 = 2`
 means it\'s a signalling transaction with 0 value.
@@ -97,9 +101,9 @@ means it\'s a signalling transaction with 0 value.
 
 ### format
 
-> **format**: `PlainTransactionFormat`
+> **format**: `"basic"` \| `"extended"`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:244
+Defined in: @nimiq/core/types/wasm/web.d.ts:330
 
 The transaction\'s format. Nimiq transactions can have one of two formats: \"basic\" and \"extended\".
 Basic transactions are simple value transfers between two regular address types and cannot contain
@@ -117,7 +121,7 @@ and interactions, staking transactions, transactions with exta data, etc.
 
 > **network**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:279
+Defined in: @nimiq/core/types/wasm/web.d.ts:365
 
 The network name on which this transaction is valid.
 
@@ -131,7 +135,7 @@ The network name on which this transaction is valid.
 
 > **proof**: [`PlainTransactionProof`](../type-aliases/PlainTransactionProof.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:303
+Defined in: @nimiq/core/types/wasm/web.d.ts:389
 
 The `proof` field contains the signature of the eligible signer. The proof field\'s structure depends on
 the transaction\'s sender type. For transactions from contracts it can also contain additional structured
@@ -147,7 +151,7 @@ data before the signature.
 
 > **recipient**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:257
+Defined in: @nimiq/core/types/wasm/web.d.ts:343
 
 The transaction\'s recipient address in human-readable IBAN format.
 
@@ -159,9 +163,9 @@ The transaction\'s recipient address in human-readable IBAN format.
 
 ### recipientType
 
-> **recipientType**: `PlainAccountType`
+> **recipientType**: `"vesting"` \| `"htlc"` \| `"basic"` \| `"staking"`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:262
+Defined in: @nimiq/core/types/wasm/web.d.ts:348
 
 The account type of the transaction\'s recipient. \"basic\" are regular private-key controlled accounts,
 \"vesting\" and \"htlc\" are contracts, and \"staking\" is the staking contract.
@@ -176,7 +180,7 @@ The account type of the transaction\'s recipient. \"basic\" are regular private-
 
 > **sender**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:248
+Defined in: @nimiq/core/types/wasm/web.d.ts:334
 
 The transaction\'s sender address in human-readable IBAN format.
 
@@ -190,7 +194,7 @@ The transaction\'s sender address in human-readable IBAN format.
 
 > `optional` **senderData**: [`PlainTransactionSenderData`](../type-aliases/PlainTransactionSenderData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:289
+Defined in: @nimiq/core/types/wasm/web.d.ts:375
 
 The `sender_data` field serves a purpose based on the transaction\'s sender type.
 It is currently only used for extra information in transactions from the staking contract.
@@ -203,9 +207,9 @@ It is currently only used for extra information in transactions from the staking
 
 ### senderType
 
-> **senderType**: `PlainAccountType`
+> **senderType**: `"vesting"` \| `"htlc"` \| `"basic"` \| `"staking"`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:253
+Defined in: @nimiq/core/types/wasm/web.d.ts:339
 
 The account type of the transaction\'s sender. \"basic\" are regular private-key controlled accounts,
 \"vesting\" and \"htlc\" are contracts, and \"staking\" is the staking contract.
@@ -220,7 +224,7 @@ The account type of the transaction\'s sender. \"basic\" are regular private-key
 
 > **size**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:308
+Defined in: @nimiq/core/types/wasm/web.d.ts:394
 
 The transaction\'s serialized size in bytes. It is used to determine the fee-per-byte that this
 transaction pays.
@@ -235,7 +239,7 @@ transaction pays.
 
 > **state**: [`TransactionState`](../type-aliases/TransactionState.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:327
+Defined in: @nimiq/core/types/wasm/web.d.ts:413
 
 ***
 
@@ -243,7 +247,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:327
 
 > `optional` **timestamp**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:331
+Defined in: @nimiq/core/types/wasm/web.d.ts:417
 
 ***
 
@@ -251,7 +255,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:331
 
 > **transactionHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:236
+Defined in: @nimiq/core/types/wasm/web.d.ts:322
 
 The transaction\'s unique hash, used as its identifier. Sometimes also called `txId`.
 
@@ -265,7 +269,7 @@ The transaction\'s unique hash, used as its identifier. Sometimes also called `t
 
 > **valid**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:313
+Defined in: @nimiq/core/types/wasm/web.d.ts:399
 
 Encodes if the transaction is valid, meaning the signature is valid and the `data` and `proof` fields
 follow the correct format for the transaction\'s recipient and sender type, respectively.
@@ -280,7 +284,7 @@ follow the correct format for the transaction\'s recipient and sender type, resp
 
 > **validityStartHeight**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:275
+Defined in: @nimiq/core/types/wasm/web.d.ts:361
 
 The block height at which this transaction becomes valid. It is then valid for 7200 blocks (~2 hours).
 
@@ -294,7 +298,7 @@ The block height at which this transaction becomes valid. It is then valid for 7
 
 > **value**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:263
+Defined in: @nimiq/core/types/wasm/web.d.ts:349
 
 #### Inherited from
 

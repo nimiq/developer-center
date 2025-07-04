@@ -1,3 +1,7 @@
+[@nimiq/core](../../../../globals.md) / [MnemonicUtils](../index.md) / MnemonicType
+
+# Enumeration: MnemonicType
+
 Defined in: @nimiq/core/lib/index.d.ts:308
 
 ## Enumeration Members

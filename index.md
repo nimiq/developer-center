@@ -7,7 +7,7 @@ title: Build. Connect. Validate.
 description: Everything you need to create with Nimiq — pick the toolkit that fits your stack.
 
 heroCards:
-  - icon: i-nimiq:browsermesh
+  - icon: i-carbon:ibm-cloud-vpc-client-vpn
     title: Web Client
     description: Build web and mobile-web apps that interact with Nimiq directly in the browser. Completely decentralized, no server required
     label: Build in Browser
@@ -15,19 +15,19 @@ heroCards:
     bgColor: blue
     iconClass: absolute bottom--48 right--32 text-256
     class: "md:grid-row-span-full [&_p]:max-w-none"
-  - icon: i-tabler:api
+  - icon: i-local:nimiq-rpc
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: RPC Client
     description: Build full-stack applications with Nimiq
     href: ./rpc-client/
     hoverColor: gold
-  - icon: i-nimiq:verified
+  - icon: i-local:nimiq-validators
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Validators
     description: Secure the nework and earn rewards
     href: ./validators/
     hoverColor: green
-  - icon: i-tabler:book
+  - icon: i-local:nimiq-albatross
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Albatross
     description: Learn about the protocol
@@ -43,7 +43,7 @@ nimiqFeatures:
     icon: i-nimiq:browsermesh
     iconBgColor: bg-gradient-blue
   - title: Zero Fees
-    description: Send transactions without paying any fees, ever
+    description: Send transactions with no fees
     icon: i-nimiq:cash
     iconBgColor: bg-gradient-green
   - title: Instant Finality
@@ -184,10 +184,10 @@ import PopularResources from './.vitepress/theme/components/PopularResources.vue
 
 <Hero bg-neutral-0 :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" />
 
-<NimiqFeatures scheme-dark bg-darkerblue f-pb-3xl f-pt-2xl :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
+<NimiqFeatures scheme-dark bg-darkerblue :title="$frontmatter.nimiqFeaturesTitle" :description="$frontmatter.nimiqFeaturesDescription" :label="$frontmatter.nimiqFeaturesLabel" :features="$frontmatter.nimiqFeatures" />
 
-<QuickStart f-py-3xl :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
+<QuickStart bg-neutral-100 :title="$frontmatter.quickStartTitle" :description="$frontmatter.quickStartDescription" :label="$frontmatter.quickStartLabel" :actions="$frontmatter.quickStartActions" />
 
-<NimiqAppsSection f-py-3xl :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" bg-neutral-0 />
+<NimiqAppsSection :title="$frontmatter.nimiqAppsTitle" :description="$frontmatter.nimiqAppsDescription" :label="$frontmatter.nimiqAppsLabel" bg-neutral-0 />
 
-<PopularResources bg-darkerblue scheme-dark :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources"  />
+<PopularResources bg-darkerblue scheme-dark :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources"   />

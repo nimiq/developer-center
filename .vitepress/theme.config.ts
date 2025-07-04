@@ -9,9 +9,9 @@ export const themeConfig = {
     {
       text: 'Protocol',
       subpath: 'protocol',
-      icon: 'i-tabler:book',
+      icon: 'i-local:nimiq-albatross',
       defaultPageLink: '/protocol/',
-      description: 'Learn about Nimiq\'s Albatross protocol',
+      description: 'Albatross protocol docs',
       sidebar: [
         {
           label: 'Protocol',
@@ -26,7 +26,7 @@ export const themeConfig = {
           items: [
             {
               text: 'Protocol',
-              icon: 'i-tabler:api',
+              icon: 'i-tabler:file-text',
               items: [
                 { text: 'Block Format', link: '/protocol/protocol/block-format' },
                 { text: 'Punishments', link: '/protocol/protocol/punishments' },
@@ -41,7 +41,7 @@ export const themeConfig = {
             },
             {
               text: 'Validators',
-              icon: 'i-tabler:user-shield',
+              icon: 'i-tabler:users',
               items: [
                 { text: 'Slots', link: '/protocol/protocol/validators/slots' },
                 { text: 'Staking Contract', link: '/protocol/protocol/validators/staking-contract' },
@@ -79,16 +79,16 @@ export const themeConfig = {
     {
       text: 'Web Client',
       subpath: 'web-client',
-      icon: 'i-tabler:browser',
+      icon: 'i-local:nimiq-web-client',
       defaultPageLink: '/web-client/',
-      description: 'Build blockchain applications in the browser',
+      description: 'Build in the browser',
       sidebar: [
         {
           label: 'Getting Started',
           items: [
             { text: 'Overview', link: '/web-client/', icon: 'i-tabler:layout-grid' },
-            { text: 'Getting Started', link: '/web-client/getting-started', icon: 'i-tabler:player-play' },
             { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
+            { text: 'Browser vs Server-Side', link: '/web-client/browser-vs-server', icon: 'i-tabler:device-desktop' },
             { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
             { text: 'Nimiq Tutorial', link: 'https://nimiq.github.io/core-js/tutorial/', icon: 'i-tabler:school' },
           ],
@@ -96,10 +96,10 @@ export const themeConfig = {
         {
           label: 'Integrations',
           items: [
-            { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs' },
-            { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon' },
-            { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon' },
-            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack' },
+            { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs gray group-hocus:filter-none' },
+            { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon gray group-hocus:filter-none' },
+            { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon gray group-hocus:filter-none' },
+            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack gray group-hocus:filter-none' },
           ],
         },
         {
@@ -121,14 +121,20 @@ export const themeConfig = {
             { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
           ],
         },
+        {
+          label: 'Utilities',
+          items: [
+            { text: 'Nimiq Utils', link: '/nimiq-utils/', icon: 'i-tabler:tools' },
+          ],
+        },
       ],
     },
     {
       text: 'Nimiq Utils',
       subpath: 'nimiq-utils',
-      icon: 'i-nimiq:cubes',
+      icon: 'i-local:nimiq-utils',
       defaultPageLink: '/nimiq-utils/',
-      description: 'Production-ready utility library for Nimiq applications',
+      description: 'Utility library',
       sidebar: [
         {
           label: 'Getting Started',
@@ -190,9 +196,9 @@ export const themeConfig = {
     {
       text: 'RPC Client',
       subpath: 'rpc-client',
-      icon: 'i-tabler:code',
+      icon: 'i-local:nimiq-rpc',
       defaultPageLink: '/rpc-client/',
-      description: 'Interact with Nimiq nodes via JSON-RPC',
+      description: 'JSON-RPC client',
       sidebar: [
         {
           label: 'Overview',
@@ -210,9 +216,9 @@ export const themeConfig = {
     {
       text: 'Validators',
       subpath: 'validators',
-      icon: 'i-nimiq:verified',
+      icon: 'i-local:nimiq-validators',
       defaultPageLink: '/validators/',
-      description: 'Your Staking and Pools Hub',
+      description: 'Staking and pools',
       sidebar: [
         {
           label: 'Validators',
@@ -233,7 +239,7 @@ export const themeConfig = {
       subpath: 'migration',
       icon: 'i-tabler:git-merge',
       defaultPageLink: '/migration/',
-      description: 'Migration guides for Nimiq 2.0',
+      description: 'Nimiq 2.0 migration',
       hidden: true,
       sidebar: [
         {

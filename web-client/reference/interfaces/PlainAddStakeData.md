@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:121
+[@nimiq/core](../globals.md) / PlainAddStakeData
+
+# Interface: PlainAddStakeData
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:207
 
 JSON-compatible and human-readable format of add stake data.
 
@@ -8,7 +12,7 @@ JSON-compatible and human-readable format of add stake data.
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:122
+Defined in: @nimiq/core/types/wasm/web.d.ts:208
 
 ***
 
@@ -16,4 +20,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:122
 
 > **staker**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:123
+Defined in: @nimiq/core/types/wasm/web.d.ts:209

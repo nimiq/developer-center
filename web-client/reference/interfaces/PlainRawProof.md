@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:159
+[@nimiq/core](../globals.md) / PlainRawProof
+
+# Interface: PlainRawProof
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:245
 
 Placeholder struct to serialize a raw proof of transactions, also works for empty/unset proofs
 
@@ -8,4 +12,4 @@ Placeholder struct to serialize a raw proof of transactions, also works for empt
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:160
+Defined in: @nimiq/core/types/wasm/web.d.ts:246

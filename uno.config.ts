@@ -26,13 +26,12 @@ export default defineConfig({
       collections: {
         ...createExternalPackageIconLoader('@iconify-json/tabler'),
         ...createExternalPackageIconLoader('@iconify-json/logos'),
+        ...createExternalPackageIconLoader('@iconify-json/vscode-icons'),
+        ...createExternalPackageIconLoader('@iconify-json/carbon'),
         local: FileSystemIconLoader('./public/assets/icons'),
       },
     }),
   ],
-  // rules: [
-  //   [/^rounded-([.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
-  // ],
 
   shortcuts: [
     { columns: 'flex gap-32 flex-wrap children:flex-1' },

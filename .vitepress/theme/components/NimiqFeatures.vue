@@ -16,10 +16,10 @@ const { showBorders = true } = defineProps<{
 </script>
 
 <template>
-  <section class="nq-raw">
-    <NqHeadline :label :title :description :align :class="showBorders ? 'f-mb-2xl' : 'f-mb-lg'" :h1="false" />
+  <section>
+    <NqHeadline :label :title :description :align :class="showBorders ? 'f-mb-2xl' : 'f-mb-lg'" mt-0 :h1="false" />
 
-    <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3" :class="showBorders ? 'gap-32' : 'gap-40'">
+    <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3" :class="showBorders ? 'gap-32' : 'gap-40'" class="nq-raw">
       <li v-for="(feature, index) in features" :key="index" flex-1>
         <div class="nq-raw" :class="showBorders ? 'f-rounded-md f-p-md outline bg-neutral-100 outline-1.5 outline-neutral-400' : ''" group h-full relative>
           <div v-if="feature.icon" :class="showBorders ? `${feature.iconBgColor} rounded-8 stack size-40` : ''">

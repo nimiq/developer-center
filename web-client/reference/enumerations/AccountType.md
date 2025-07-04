@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / AccountType
+
+# Enumeration: AccountType
+
 Defined in: @nimiq/core/types/wasm/web.d.ts:3
 
 ## Enumeration Members

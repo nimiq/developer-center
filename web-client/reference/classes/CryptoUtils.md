@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:1132
+[@nimiq/core](../globals.md) / CryptoUtils
+
+# Class: CryptoUtils
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1128
 
 ## Methods
 
@@ -6,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1132
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1134
+Defined in: @nimiq/core/types/wasm/web.d.ts:1130
 
 #### Returns
 
@@ -18,7 +22,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1134
 
 > `static` **computeHmacSha512**(`key`, `data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1144
+Defined in: @nimiq/core/types/wasm/web.d.ts:1140
 
 Computes a 64-byte [HMAC]-SHA512 hash from the input key and data.
 
@@ -44,7 +48,7 @@ Computes a 64-byte [HMAC]-SHA512 hash from the input key and data.
 
 > `static` **computePBKDF2sha512**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1150
+Defined in: @nimiq/core/types/wasm/web.d.ts:1146
 
 Computes a [PBKDF2]-over-SHA512 key from the password with the given parameters.
 
@@ -78,7 +82,7 @@ Computes a [PBKDF2]-over-SHA512 key from the password with the given parameters.
 
 > `static` **getRandomValues**(`length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1138
+Defined in: @nimiq/core/types/wasm/web.d.ts:1134
 
 Generates a secure random byte array of the given length.
 
@@ -96,9 +100,9 @@ Generates a secure random byte array of the given length.
 
 ### otpKdf()
 
-> `static` **otpKdf**(`message`, `key`, `salt`, `iterations`): `Promise`\<`Uint8Array`\>
+> `static` **otpKdf**(`message`, `key`, `salt`, `iterations`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1158
+Defined in: @nimiq/core/types/wasm/web.d.ts:1154
 
 Encrypts a message with an [OTP] [KDF] and the given parameters.
 The KDF uses Argon2d for hashing.
@@ -126,4 +130,4 @@ The KDF uses Argon2d for hashing.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>

@@ -1,6 +1,5 @@
 ---
-prose: false
-aside: false
+secondarySidebar: false
 footer: false
 quickstarts:
   - label: Try the Playground

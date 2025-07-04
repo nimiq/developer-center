@@ -1,5 +1,7 @@
 ---
+changelog: false
 prose: false
+
 aside: false
 footer: false
 integrations:

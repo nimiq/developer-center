@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:1034
+[@nimiq/core](../globals.md) / Commitment
+
+# Class: Commitment
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1030
 
 A cryptographic commitment to a [RandomSecret](RandomSecret.md). The commitment is public, while the secret is, well, secret.
 
@@ -8,7 +12,7 @@ A cryptographic commitment to a [RandomSecret](RandomSecret.md). The commitment 
 
 > **new Commitment**(`bytes`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1062
+Defined in: @nimiq/core/types/wasm/web.d.ts:1058
 
 Creates a new commitment from a byte array.
 
@@ -30,7 +34,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1082
+Defined in: @nimiq/core/types/wasm/web.d.ts:1078
 
 ***
 
@@ -38,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1082
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1081
+Defined in: @nimiq/core/types/wasm/web.d.ts:1077
 
 ## Methods
 
@@ -46,7 +50,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1081
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1036
+Defined in: @nimiq/core/types/wasm/web.d.ts:1032
 
 #### Returns
 
@@ -58,7 +62,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1036
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1080
+Defined in: @nimiq/core/types/wasm/web.d.ts:1076
 
 Returns if this commitment is equal to the other commitment.
 
@@ -78,7 +82,7 @@ Returns if this commitment is equal to the other commitment.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1035
+Defined in: @nimiq/core/types/wasm/web.d.ts:1031
 
 #### Returns
 
@@ -90,7 +94,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1035
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1066
+Defined in: @nimiq/core/types/wasm/web.d.ts:1062
 
 Serializes the commitment to a byte array.
 
@@ -104,7 +108,7 @@ Serializes the commitment to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1076
+Defined in: @nimiq/core/types/wasm/web.d.ts:1072
 
 Formats the commitment into a hex string.
 
@@ -118,7 +122,7 @@ Formats the commitment into a hex string.
 
 > `static` **derive**(`random_secret`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1040
+Defined in: @nimiq/core/types/wasm/web.d.ts:1036
 
 Derives a commitment from an existing random secret.
 
@@ -138,7 +142,7 @@ Derives a commitment from an existing random secret.
 
 > `static` **deserialize**(`bytes`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1056
+Defined in: @nimiq/core/types/wasm/web.d.ts:1052
 
 Deserializes a commitment from a byte array.
 
@@ -160,7 +164,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`commitment`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1050
+Defined in: @nimiq/core/types/wasm/web.d.ts:1046
 
 Parses a commitment from a Commitment instance, a hex string representation, or a byte array.
 
@@ -170,7 +174,7 @@ Throws when a Commitment cannot be parsed from the argument.
 
 ##### commitment
 
-`string` | `Uint8Array` | `Commitment`
+`string` | `Uint8Array`\<`ArrayBufferLike`\> | `Commitment`
 
 #### Returns
 
@@ -182,7 +186,7 @@ Throws when a Commitment cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1072
+Defined in: @nimiq/core/types/wasm/web.d.ts:1068
 
 Parses a commitment from its hex representation.
 
@@ -204,7 +208,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **sum**(`commitments`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1044
+Defined in: @nimiq/core/types/wasm/web.d.ts:1040
 
 Sums up multiple commitments into one aggregated commitment.
 
@@ -212,7 +216,7 @@ Sums up multiple commitments into one aggregated commitment.
 
 ##### commitments
 
-(`string` \| `Uint8Array` \| `Commitment`)[]
+(`string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Commitment`)[]
 
 #### Returns
 

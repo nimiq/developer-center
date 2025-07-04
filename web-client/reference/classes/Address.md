@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:617
+[@nimiq/core](../globals.md) / Address
+
+# Class: Address
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:613
 
 An object representing a Nimiq address.
 Offers methods to parse and format addresses from and to strings.
@@ -9,7 +13,7 @@ Offers methods to parse and format addresses from and to strings.
 
 > **new Address**(`bytes`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:620
+Defined in: @nimiq/core/types/wasm/web.d.ts:616
 
 #### Parameters
 
@@ -27,7 +31,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:620
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:619
+Defined in: @nimiq/core/types/wasm/web.d.ts:615
 
 #### Returns
 
@@ -39,7 +43,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:619
 
 > **compare**(`other`): `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:673
+Defined in: @nimiq/core/types/wasm/web.d.ts:669
 
 Compares this address to the other address.
 
@@ -62,7 +66,7 @@ and 1 if this address is larger than the other address.
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:666
+Defined in: @nimiq/core/types/wasm/web.d.ts:662
 
 Returns if this address is equal to the other address.
 
@@ -82,7 +86,7 @@ Returns if this address is equal to the other address.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:618
+Defined in: @nimiq/core/types/wasm/web.d.ts:614
 
 #### Returns
 
@@ -94,7 +98,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:618
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:662
+Defined in: @nimiq/core/types/wasm/web.d.ts:658
 
 Returns the byte representation of the address.
 
@@ -108,7 +112,7 @@ Returns the byte representation of the address.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:658
+Defined in: @nimiq/core/types/wasm/web.d.ts:654
 
 Formats the address into hex format.
 
@@ -122,7 +126,7 @@ Formats the address into hex format.
 
 > **toPlain**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:650
+Defined in: @nimiq/core/types/wasm/web.d.ts:646
 
 Formats the address into a plain string format.
 
@@ -136,7 +140,7 @@ Formats the address into a plain string format.
 
 > **toUserFriendlyAddress**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:654
+Defined in: @nimiq/core/types/wasm/web.d.ts:650
 
 Formats the address into user-friendly IBAN format.
 
@@ -150,7 +154,7 @@ Formats the address into user-friendly IBAN format.
 
 > `static` **deserialize**(`bytes`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:624
+Defined in: @nimiq/core/types/wasm/web.d.ts:620
 
 Deserializes an address from a byte array.
 
@@ -170,7 +174,7 @@ Deserializes an address from a byte array.
 
 > `static` **fromAny**(`addr`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:630
+Defined in: @nimiq/core/types/wasm/web.d.ts:626
 
 Parses an address from an Address instance, a hex string representation, or a byte array.
 
@@ -180,7 +184,7 @@ Throws when an address cannot be parsed from the argument.
 
 ##### addr
 
-`string` | `Address` | `Uint8Array`
+`string` | `Address` | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -192,7 +196,7 @@ Throws when an address cannot be parsed from the argument.
 
 > `static` **fromPublicKeys**(`public_keys`, `num_signers`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:646
+Defined in: @nimiq/core/types/wasm/web.d.ts:642
 
 Computes the multisig address of a list of signer public keys.
 
@@ -200,7 +204,7 @@ Computes the multisig address of a list of signer public keys.
 
 ##### public\_keys
 
-(`string` \| `Uint8Array` \| [`PublicKey`](PublicKey.md))[]
+(`string` \| `Uint8Array`\<`ArrayBufferLike`\> \| [`PublicKey`](PublicKey.md))[]
 
 ##### num\_signers
 
@@ -216,7 +220,7 @@ Computes the multisig address of a list of signer public keys.
 
 > `static` **fromString**(`str`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:636
+Defined in: @nimiq/core/types/wasm/web.d.ts:632
 
 Parses an address from a string representation, either user-friendly or hex format.
 
@@ -238,7 +242,7 @@ Throws when an address cannot be parsed from the string.
 
 > `static` **fromUserFriendlyAddress**(`str`): `Address`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:642
+Defined in: @nimiq/core/types/wasm/web.d.ts:638
 
 Parses an address from its user-friendly string representation.
 

@@ -1,17 +1,21 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:789
+[@nimiq/core](../globals.md) / Client
+
+# Class: Client
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:785
 
 Nimiq Albatross client that runs in browsers via WASM and is exposed to Javascript.
 
 ### Usage:
 
 ```js
-import init, * as Nimiq from './pkg/nimiq_web_client.js'
+import init, * as Nimiq from "./pkg/nimiq_web_client.js";
 
 init().then(async () => {
-  const config = new Nimiq.ClientConfiguration()
-  const client = await config.instantiateClient()
-  // ...
-})
+    const config = new Nimiq.ClientConfiguration();
+    const client = await config.instantiateClient();
+    // ...
+});
 ```
 
 ## Methods
@@ -20,7 +24,7 @@ init().then(async () => {
 
 > **addConsensusChangedListener**(`listener`): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:799
+Defined in: @nimiq/core/types/wasm/web.d.ts:795
 
 Adds an event listener for consensus-change events, such as when consensus is established or lost.
 
@@ -40,7 +44,7 @@ Adds an event listener for consensus-change events, such as when consensus is es
 
 > **addHeadChangedListener**(`listener`): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:803
+Defined in: @nimiq/core/types/wasm/web.d.ts:799
 
 Adds an event listener for new blocks added to the blockchain.
 
@@ -60,7 +64,7 @@ Adds an event listener for new blocks added to the blockchain.
 
 > **addPeerChangedListener**(`listener`): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:807
+Defined in: @nimiq/core/types/wasm/web.d.ts:803
 
 Adds an event listener for peer-change events, such as when a new peer joins, or a peer leaves.
 
@@ -80,7 +84,7 @@ Adds an event listener for peer-change events, such as when a new peer joins, or
 
 > **addTransactionListener**(`listener`, `addresses`): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:813
+Defined in: @nimiq/core/types/wasm/web.d.ts:809
 
 Adds an event listener for transactions to and from the provided addresses.
 
@@ -94,7 +98,7 @@ The listener is called for transactions when they are _included_ in the blockcha
 
 ##### addresses
 
-(`string` \| [`Address`](Address.md) \| `Uint8Array`)[]
+(`string` \| [`Address`](Address.md) \| `Uint8Array`\<`ArrayBufferLike`\>)[]
 
 #### Returns
 
@@ -106,7 +110,7 @@ The listener is called for transactions when they are _included_ in the blockcha
 
 > **connectNetwork**(): `Promise`\<`void`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:960
+Defined in: @nimiq/core/types/wasm/web.d.ts:956
 
 This function is used to tell the network to (re)start connecting to peers.
 This is could be used to tell the network to restart connection operations after
@@ -122,7 +126,7 @@ disconnect network is called.
 
 > **disconnectNetwork**(): `Promise`\<`void`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:954
+Defined in: @nimiq/core/types/wasm/web.d.ts:950
 
 This function is used to tell the network to disconnect from every connected
 peer and stop trying to connect to other peers.
@@ -141,7 +145,7 @@ network is disconnected, wait for all peers to disappear after calling.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:791
+Defined in: @nimiq/core/types/wasm/web.d.ts:787
 
 #### Returns
 
@@ -153,7 +157,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:791
 
 > **getAccount**(`address`): `Promise`\<[`PlainAccount`](../type-aliases/PlainAccount.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:871
+Defined in: @nimiq/core/types/wasm/web.d.ts:867
 
 Fetches the account for the provided address from the network.
 
@@ -163,7 +167,7 @@ Throws if the address cannot be parsed and on network errors.
 
 ##### address
 
-`string` | [`Address`](Address.md) | `Uint8Array`
+`string` | [`Address`](Address.md) | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -175,7 +179,7 @@ Throws if the address cannot be parsed and on network errors.
 
 > **getAccounts**(`addresses`): `Promise`\<[`PlainAccount`](../type-aliases/PlainAccount.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:877
+Defined in: @nimiq/core/types/wasm/web.d.ts:873
 
 Fetches the accounts for the provided addresses from the network.
 
@@ -185,7 +189,7 @@ Throws if an address cannot be parsed and on network errors.
 
 ##### addresses
 
-(`string` \| [`Address`](Address.md) \| `Uint8Array`)[]
+(`string` \| [`Address`](Address.md) \| `Uint8Array`\<`ArrayBufferLike`\>)[]
 
 #### Returns
 
@@ -197,7 +201,7 @@ Throws if an address cannot be parsed and on network errors.
 
 > **getAddressBook**(): `Promise`\<[`PlainPeerInfo`](../interfaces/PlainPeerInfo.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:849
+Defined in: @nimiq/core/types/wasm/web.d.ts:845
 
 Returns the current address books peers.
 Each peer will have one address and currently no guarantee for the usefulness of that address can be given.
@@ -214,7 +218,7 @@ The resulting Array may be empty if there is no peers in the address book.
 
 > **getBlock**(`hash`): `Promise`\<[`PlainBlock`](../type-aliases/PlainBlock.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:857
+Defined in: @nimiq/core/types/wasm/web.d.ts:853
 
 Fetches a block by its hash.
 
@@ -238,7 +242,7 @@ Fetching blocks from the network is not yet available.
 
 > **getBlockAt**(`height`): `Promise`\<[`PlainBlock`](../type-aliases/PlainBlock.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:865
+Defined in: @nimiq/core/types/wasm/web.d.ts:861
 
 Fetches a block by its height (block number).
 
@@ -262,7 +266,7 @@ Fetching blocks from the network is not yet available.
 
 > **getHeadBlock**(): `Promise`\<[`PlainBlock`](../type-aliases/PlainBlock.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:842
+Defined in: @nimiq/core/types/wasm/web.d.ts:838
 
 Returns the current blockchain head block.
 Note that the web client is a light client and does not have block bodies, i.e. no transactions.
@@ -277,7 +281,7 @@ Note that the web client is a light client and does not have block bodies, i.e. 
 
 > **getHeadHash**(): `Promise`\<`string`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:833
+Defined in: @nimiq/core/types/wasm/web.d.ts:829
 
 Returns the block hash of the current blockchain head.
 
@@ -291,7 +295,7 @@ Returns the block hash of the current blockchain head.
 
 > **getHeadHeight**(): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:837
+Defined in: @nimiq/core/types/wasm/web.d.ts:833
 
 Returns the block number of the current blockchain head.
 
@@ -305,7 +309,7 @@ Returns the block number of the current blockchain head.
 
 > **getNetworkId**(): `Promise`\<`number`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:821
+Defined in: @nimiq/core/types/wasm/web.d.ts:817
 
 Returns the network ID that the client is connecting to.
 
@@ -319,7 +323,7 @@ Returns the network ID that the client is connecting to.
 
 > **getStaker**(`address`): `Promise`\<[`PlainStaker`](../interfaces/PlainStaker.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:883
+Defined in: @nimiq/core/types/wasm/web.d.ts:879
 
 Fetches the staker for the provided address from the network.
 
@@ -329,7 +333,7 @@ Throws if the address cannot be parsed and on network errors.
 
 ##### address
 
-`string` | [`Address`](Address.md) | `Uint8Array`
+`string` | [`Address`](Address.md) | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -341,7 +345,7 @@ Throws if the address cannot be parsed and on network errors.
 
 > **getStakers**(`addresses`): `Promise`\<[`PlainStaker`](../interfaces/PlainStaker.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:889
+Defined in: @nimiq/core/types/wasm/web.d.ts:885
 
 Fetches the stakers for the provided addresses from the network.
 
@@ -351,7 +355,7 @@ Throws if an address cannot be parsed and on network errors.
 
 ##### addresses
 
-(`string` \| [`Address`](Address.md) \| `Uint8Array`)[]
+(`string` \| [`Address`](Address.md) \| `Uint8Array`\<`ArrayBufferLike`\>)[]
 
 #### Returns
 
@@ -363,7 +367,7 @@ Throws if an address cannot be parsed and on network errors.
 
 > **getTransaction**(`hash`): `Promise`\<[`PlainTransactionDetails`](../interfaces/PlainTransactionDetails.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:911
+Defined in: @nimiq/core/types/wasm/web.d.ts:907
 
 Fetches the transaction details for the given transaction hash.
 
@@ -383,7 +387,7 @@ Fetches the transaction details for the given transaction hash.
 
 > **getTransactionReceiptsByAddress**(`address`, `limit?`, `start_at?`, `min_peers?`): `Promise`\<[`PlainTransactionReceipt`](../interfaces/PlainTransactionReceipt.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:923
+Defined in: @nimiq/core/types/wasm/web.d.ts:919
 
 This function is used to query the network for transaction receipts from and to a
 specific address, that have been included in the chain.
@@ -399,7 +403,7 @@ If the network does not have at least `min_peers` to query, then an error is ret
 
 ##### address
 
-`string` | [`Address`](Address.md) | `Uint8Array`
+`string` | [`Address`](Address.md) | `Uint8Array`\<`ArrayBufferLike`\>
 
 ##### limit?
 
@@ -423,7 +427,7 @@ If the network does not have at least `min_peers` to query, then an error is ret
 
 > **getTransactionsByAddress**(`address`, `since_block_height?`, `known_transaction_details?`, `start_at?`, `limit?`, `min_peers?`): `Promise`\<[`PlainTransactionDetails`](../interfaces/PlainTransactionDetails.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:945
+Defined in: @nimiq/core/types/wasm/web.d.ts:941
 
 This function is used to query the network for transactions from and to a specific
 address, that have been included in the chain.
@@ -449,7 +453,7 @@ If the network does not have at least `min_peers` to query, an error is returned
 
 ##### address
 
-`string` | [`Address`](Address.md) | `Uint8Array`
+`string` | [`Address`](Address.md) | `Uint8Array`\<`ArrayBufferLike`\>
 
 ##### since\_block\_height?
 
@@ -481,7 +485,7 @@ If the network does not have at least `min_peers` to query, an error is returned
 
 > **getValidator**(`address`): `Promise`\<[`PlainValidator`](../interfaces/PlainValidator.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:895
+Defined in: @nimiq/core/types/wasm/web.d.ts:891
 
 Fetches the validator for the provided address from the network.
 
@@ -491,7 +495,7 @@ Throws if the address cannot be parsed and on network errors.
 
 ##### address
 
-`string` | [`Address`](Address.md) | `Uint8Array`
+`string` | [`Address`](Address.md) | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -503,7 +507,7 @@ Throws if the address cannot be parsed and on network errors.
 
 > **getValidators**(`addresses`): `Promise`\<[`PlainValidator`](../interfaces/PlainValidator.md)[]\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:901
+Defined in: @nimiq/core/types/wasm/web.d.ts:897
 
 Fetches the validators for the provided addresses from the network.
 
@@ -513,7 +517,7 @@ Throws if an address cannot be parsed and on network errors.
 
 ##### addresses
 
-(`string` \| [`Address`](Address.md) \| `Uint8Array`)[]
+(`string` \| [`Address`](Address.md) \| `Uint8Array`\<`ArrayBufferLike`\>)[]
 
 #### Returns
 
@@ -525,7 +529,7 @@ Throws if an address cannot be parsed and on network errors.
 
 > **isConsensusEstablished**(): `Promise`\<`boolean`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:825
+Defined in: @nimiq/core/types/wasm/web.d.ts:821
 
 Returns if the client currently has consensus with the network.
 
@@ -539,7 +543,7 @@ Returns if the client currently has consensus with the network.
 
 > **removeListener**(`handle`): `Promise`\<`void`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:817
+Defined in: @nimiq/core/types/wasm/web.d.ts:813
 
 Removes an event listener by its handle.
 
@@ -559,7 +563,7 @@ Removes an event listener by its handle.
 
 > **sendTransaction**(`transaction`): `Promise`\<[`PlainTransactionDetails`](../interfaces/PlainTransactionDetails.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:907
+Defined in: @nimiq/core/types/wasm/web.d.ts:903
 
 Sends a transaction to the network and returns [PlainTransactionDetails](../interfaces/PlainTransactionDetails.md).
 
@@ -569,7 +573,7 @@ Throws in case of network errors.
 
 ##### transaction
 
-`string` | [`PlainTransaction`](../interfaces/PlainTransaction.md) | `Uint8Array` | [`Transaction`](Transaction.md)
+`string` | [`PlainTransaction`](../interfaces/PlainTransaction.md) | `Uint8Array`\<`ArrayBufferLike`\> | [`Transaction`](Transaction.md)
 
 #### Returns
 
@@ -581,7 +585,7 @@ Throws in case of network errors.
 
 > **waitForConsensusEstablished**(): `Promise`\<`void`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:829
+Defined in: @nimiq/core/types/wasm/web.d.ts:825
 
 Returns a promise that resolves when the client has established consensus with the network.
 
@@ -595,7 +599,7 @@ Returns a promise that resolves when the client has established consensus with t
 
 > `static` **create**(`config`): `Promise`\<`Client`\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:795
+Defined in: @nimiq/core/types/wasm/web.d.ts:791
 
 Creates a new Client that automatically starts connecting to the network.
 

@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / TransactionFlag
+
+# Enumeration: TransactionFlag
+
 Defined in: @nimiq/core/types/wasm/web.d.ts:14
 
 A transaction flag signals a special purpose of the transaction. `ContractCreation` must be set

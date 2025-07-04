@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:113
+[@nimiq/core](../globals.md) / PlainCreateStakerData
+
+# Interface: PlainCreateStakerData
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:199
 
 JSON-compatible and human-readable format of staker creation data.
 
@@ -8,7 +12,7 @@ JSON-compatible and human-readable format of staker creation data.
 
 > **delegation**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:115
+Defined in: @nimiq/core/types/wasm/web.d.ts:201
 
 ***
 
@@ -16,4 +20,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:115
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:114
+Defined in: @nimiq/core/types/wasm/web.d.ts:200

@@ -132,7 +132,7 @@ onMounted(() => {
         <NqAppCard v-for="app in displayApps" :key="`${app.name}-${app.type}`" v-bind="app" />
       </InfiniteScroll>
 
-      <div text-center>
+      <div text-center flex="~ col items-center">
         <a href="https://github.com/onmax/nimiq-awesome" target="_blank" nq-arrow nq-pill-lg nq-pill-blue>
           View All Apps
         </a>

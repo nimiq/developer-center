@@ -20,8 +20,8 @@ defineProps<{
 </script>
 
 <template>
-  <section>
-    <NqHeadline :label :title :description :align :h1="false" />
+  <section pb="128!">
+    <NqHeadline :label :title :description :align :h1="false" mt-0 />
 
     <div grid="~ cols-1 md:cols-2 lg:cols-4 gap-x-32 gap-y-48" class="nq-raw">
       <div v-for="resource in resources" :key="resource.title">

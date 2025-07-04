@@ -71,14 +71,15 @@ Works everywhere JavaScript runs - browsers, Node.js, serverless functions, and 
 ```typescript
 // Browser
 import { Clipboard } from '@nimiq/utils/clipboard'
-Clipboard.copy('NQ48 8CKH BA24...')
-
-// Node.js / Server
-import { posSupplyAt } from '@nimiq/utils/supply-calculator'
-const supply = posSupplyAt(Date.now())
 
 // Edge Runtime / Serverless
 import { getExchangeRates } from '@nimiq/utils/fiat-api'
+
+// Node.js / Server
+import { posSupplyAt } from '@nimiq/utils/supply-calculator'
+
+Clipboard.copy('NQ48 8CKH BA24...')
+const supply = posSupplyAt(Date.now())
 const rates = await getExchangeRates(['nim'], ['usd'])
 ```
 

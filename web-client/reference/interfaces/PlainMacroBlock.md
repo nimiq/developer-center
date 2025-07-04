@@ -1,4 +1,8 @@
-Defined in: @nimiq/core/types/wasm/web.d.ts:558
+[@nimiq/core](../globals.md) / PlainMacroBlock
+
+# Interface: PlainMacroBlock
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:90
 
 JSON-compatible and human-readable format of blocks.
 
@@ -12,7 +16,7 @@ JSON-compatible and human-readable format of blocks.
 
 > **batch**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:510
+Defined in: @nimiq/core/types/wasm/web.d.ts:42
 
 The batch number that the block is in.
 
@@ -26,7 +30,7 @@ The batch number that the block is in.
 
 > **bodyHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:551
+Defined in: @nimiq/core/types/wasm/web.d.ts:83
 
 The root of the Merkle tree of the body, in HEX format. It acts as a commitment to the body.
 
@@ -40,7 +44,7 @@ The root of the Merkle tree of the body, in HEX format. It acts as a commitment 
 
 > **epoch**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:514
+Defined in: @nimiq/core/types/wasm/web.d.ts:46
 
 The epoch number that the block is in.
 
@@ -54,7 +58,7 @@ The epoch number that the block is in.
 
 > **extraData**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:543
+Defined in: @nimiq/core/types/wasm/web.d.ts:75
 
 The extra data of the block, in HEX format. Up to 32 raw bytes.
 
@@ -72,7 +76,7 @@ No planned use otherwise.
 
 > **hash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:498
+Defined in: @nimiq/core/types/wasm/web.d.ts:30
 
 The block\'s unique hash, used as its identifier, in HEX format.
 
@@ -86,7 +90,7 @@ The block\'s unique hash, used as its identifier, in HEX format.
 
 > **height**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:506
+Defined in: @nimiq/core/types/wasm/web.d.ts:38
 
 The block\'s block height, also called block number.
 
@@ -100,7 +104,7 @@ The block\'s block height, also called block number.
 
 > **historyHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:555
+Defined in: @nimiq/core/types/wasm/web.d.ts:87
 
 A Merkle root over all of the transactions that happened in the current epoch, in HEX format.
 
@@ -114,7 +118,7 @@ A Merkle root over all of the transactions that happened in the current epoch, i
 
 > **isElectionBlock**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:562
+Defined in: @nimiq/core/types/wasm/web.d.ts:94
 
 If true, this macro block is an election block finalizing an epoch.
 
@@ -124,7 +128,7 @@ If true, this macro block is an election block finalizing an epoch.
 
 > **network**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:522
+Defined in: @nimiq/core/types/wasm/web.d.ts:54
 
 The network that this block is valid for.
 
@@ -138,7 +142,7 @@ The network that this block is valid for.
 
 > **prevElectionHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:570
+Defined in: @nimiq/core/types/wasm/web.d.ts:102
 
 The hash of the header of the preceding election macro block, in HEX format.
 
@@ -148,7 +152,7 @@ The hash of the header of the preceding election macro block, in HEX format.
 
 > **prevHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:530
+Defined in: @nimiq/core/types/wasm/web.d.ts:62
 
 The hash of the header of the immediately preceding block (either micro or macro), in HEX format.
 
@@ -162,7 +166,7 @@ The hash of the header of the immediately preceding block (either micro or macro
 
 > **round**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:566
+Defined in: @nimiq/core/types/wasm/web.d.ts:98
 
 The round number this block was proposed in.
 
@@ -172,7 +176,7 @@ The round number this block was proposed in.
 
 > **seed**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:535
+Defined in: @nimiq/core/types/wasm/web.d.ts:67
 
 The seed of the block. This is the BLS signature of the seed of the immediately preceding
 block (either micro or macro) using the validator key of the block producer.
@@ -187,7 +191,7 @@ block (either micro or macro) using the validator key of the block producer.
 
 > **size**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:502
+Defined in: @nimiq/core/types/wasm/web.d.ts:34
 
 The block\'s on-chain size, in bytes.
 
@@ -201,7 +205,7 @@ The block\'s on-chain size, in bytes.
 
 > **stateHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:547
+Defined in: @nimiq/core/types/wasm/web.d.ts:79
 
 The root of the Merkle tree of the blockchain state, in HEX format. It acts as a commitment to the state.
 
@@ -215,7 +219,7 @@ The root of the Merkle tree of the blockchain state, in HEX format. It acts as a
 
 > **timestamp**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:518
+Defined in: @nimiq/core/types/wasm/web.d.ts:50
 
 The timestamp of the block. It follows the Unix time and has millisecond precision.
 
@@ -229,7 +233,7 @@ The timestamp of the block. It follows the Unix time and has millisecond precisi
 
 > **version**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:526
+Defined in: @nimiq/core/types/wasm/web.d.ts:58
 
 The protocol version that this block is valid for.
 

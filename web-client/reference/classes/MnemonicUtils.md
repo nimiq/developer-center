@@ -1,3 +1,7 @@
+[@nimiq/core](../globals.md) / MnemonicUtils
+
+# Class: MnemonicUtils
+
 Defined in: @nimiq/core/lib/index.d.ts:252
 
 ## Constructors
@@ -44,7 +48,7 @@ Converts an Entropy to a mnemonic.
 
 ##### entropy
 
-`string` | `ArrayBuffer` | `Uint8Array` | [`Entropy`](Entropy.md)
+`string` | `ArrayBuffer` | `Uint8Array`\<`ArrayBufferLike`\> | [`Entropy`](Entropy.md)
 
 ##### wordlist?
 

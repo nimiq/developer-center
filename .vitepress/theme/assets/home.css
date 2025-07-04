@@ -1,4 +1,4 @@
-main {
+/* main {
   margin: 0;
   max-width: inherit !important;
   > div {
@@ -21,4 +21,4 @@ article + div {
   * {
     --uno: 'text-neutral-100';
   }
-}
+} */
