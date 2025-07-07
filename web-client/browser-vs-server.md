@@ -38,8 +38,6 @@ yarn add @nimiq/core
 
 The package includes the WebAssembly binary and TypeScript declarations – no additional build steps required.
 
----
-
 ## Browser Environments
 
 ### Vanilla JavaScript (ES Modules)
@@ -77,8 +75,6 @@ await init('/cdn/path/to/nimiq_core_bg.wasm')
 ```
 
 Modern browsers cache WebAssembly binaries, so this only adds one network request on first load.
-
----
 
 ## Bundler Integration
 
@@ -118,8 +114,6 @@ const client = await NimiqCore.Client.create(
 )
 ```
 
----
-
 ## Server Environments
 
 ### Node.js (v16+)
@@ -156,8 +150,6 @@ await init()
 ```
 
 Choose the approach that best fits your application architecture.
-
----
 
 ## Edge Runtime Environments
 
@@ -203,8 +195,6 @@ const client = await DenoNimiq.Client.create(
 )
 ```
 
----
-
 ## TypeScript Integration
 
 The package includes complete TypeScript definitions. For advanced usage with the web build:
@@ -218,8 +208,6 @@ The package includes complete TypeScript definitions. For advanced usage with th
 ```
 
 This enables proper typing for the `init()` function and WebAssembly loader utilities.
-
----
 
 ## Troubleshooting
 
@@ -246,8 +234,6 @@ The client needs to connect to Nimiq seed nodes. If you're behind a corporate fi
 - **Bundlers**: Consider code splitting for large applications
 - **Edge**: Pre-compile WebAssembly when possible (like Cloudflare Workers)
 
----
-
 ## Quick Start Guide
 
 Choose your path based on your environment:
@@ -264,16 +250,12 @@ Choose your path based on your environment:
 ### I'm deploying to Cloudflare Workers
 → Use the web build with pre-compiled modules
 
----
-
 ## Additional Resources
 
 - [Nimiq Core Package on npm](https://www.npmjs.com/package/@nimiq/core)
 - [WebAssembly Build Targets Documentation](https://rustwasm.github.io/wasm-pack/book/commands/build.html#target)
 - [Nimiq Webpack Integration Guide](https://nimiq.com/developers/build-with-nimiq/web-client/webpack)
 - [Node.js WebAssembly Documentation](https://nodejs.org/api/wasi.html)
-
----
 
 **Ready to build with Nimiq?** 🚀
 

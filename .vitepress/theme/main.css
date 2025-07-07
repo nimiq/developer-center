@@ -1,1 +1,58 @@
+article.nq-prose blockquote {
+  background-color: var(--colors-green-400);
+  border-radius: 0.35em;
+  outline: 1.5px solid var(--colors-green-600);
+}
 
+
+/* container with breadcrumbs and buttons */
+
+div:has(+ article) {
+  margin: 0 auto;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  width: 100%;
+
+}
+
+
+.nq-prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  + p.nq-subline {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--colors-neutral-700) 100%, transparent);
+    margin-top: 0.5lh;
+    padding-bottom: 1.5lh;
+    border-bottom: 1px solid var(--colors-neutral-500);
+  }
+}
+
+.nq-prose h2 {
+  font-size: 1.5rem;
+}
+
+.nq-prose h3 {
+  font-size: 1.25rem;
+}
+
+.nq-prose h4 {
+  font-size: 1rem;
+}
+
+.blocks [class*="language-"] {
+  margin-top: 0;
+  border: 0;
+  outline: none;
+}
+
+article + nav {
+  margin: 0 auto;
+
+  a div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+}

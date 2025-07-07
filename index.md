@@ -174,7 +174,6 @@ popularResources:
 
 <script setup lang="ts">
 import './node_modules/nimiq-css/dist/css/static-content.css'
-import './.vitepress/theme/assets/home.css'
 import Hero from './.vitepress/theme/components/Hero.vue'
 import QuickStart from './.vitepress/theme/components/QuickStart.vue'
 import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
