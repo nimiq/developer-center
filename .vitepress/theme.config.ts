@@ -56,12 +56,25 @@ export const themeConfig = {
               text: 'Network Sync',
               icon: 'i-tabler:network',
               items: [
-                { text: 'Nodes and sync', link: '/protocol/protocol/sync-protocol/nodes-and-sync' },
-                { text: 'Block live sync', link: '/protocol/protocol/sync-protocol/block-live-sync' },
-                { text: 'History macro sync', link: '/protocol/protocol/sync-protocol/history-macro-sync' },
-                { text: 'Light macro sync', link: '/protocol/protocol/sync-protocol/light-macro-sync' },
-                { text: 'State live sync', link: '/protocol/protocol/sync-protocol/state-live-sync' },
-                { text: 'Messages and Requests', link: '/protocol/protocol/sync-protocol/messages-and-requests' },
+                { text: 'Sync and Network Consensus', link: '/protocol/protocol/node-sync/' },
+                {
+                  text: 'Macro Sync Strategies',
+                  items: [
+                    { text: 'History Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/history-macro-sync' },
+                    { text: 'Light Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/light-macro-sync' },
+                    { text: 'Pico Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/pico-macro-sync' },
+                  ],
+                },
+                {
+                  text: 'Live Sync Strategies',
+                  items: [
+                    { text: 'Block Live Sync', link: '/protocol/protocol/node-sync/live-sync/block-live-sync' },
+                    { text: 'State Live Sync', link: '/protocol/protocol/node-sync/live-sync/state-live-sync' },
+                  ],
+                },
+                { text: 'Architecture', link: '/protocol/protocol/node-sync/architecture' },
+                { text: 'Traits and Abstractions', link: '/protocol/protocol/node-sync/traits-and-abstractions' },
+                { text: 'Network Protocol', link: '/protocol/protocol/node-sync/network-protocol' },
               ],
             },
             {

@@ -4,7 +4,7 @@ A prover node is a particular type of node that generates zero-knowledge proofs 
 
 The blockchain uses zero-knowledge proofs to:
 
-- Facilitate light nodes and full nodes to [sync](sync-protocol/light-macro-sync.md) with the blockchain
+- Facilitate light nodes and full nodes to [sync](/protocol/protocol/node-sync/macro-sync/light-macro-sync.md) with the blockchain
 - Enable nodes to reconnect with the blockchain faster
 - Secure the network
 

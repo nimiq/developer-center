@@ -1,6 +1,6 @@
 # ZKP and recursive SNARKs
 
-Nimiq supports several types of users and [syncing mechanisms](sync-protocol/nodes-and-sync.md). Light and full nodes can synchronize to the network by requesting a proof of the current state of the blockchain. The blockchain implements zero-knowledge proofs capable of proving most of the chain in a small proof.
+Nimiq supports several types of users and [syncing mechanisms](/protocol/protocol/node-sync/index.md). Light and full nodes can synchronize to the network by requesting a proof of the current state of the blockchain. The blockchain implements zero-knowledge proofs capable of proving most of the chain in a small proof.
 
 ## Zero-knowledge proofs
 
