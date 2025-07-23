@@ -37,6 +37,6 @@ History nodes use this indexing system mainly to serve clients seeking their tra
 
 ### Syncing and Building the History
 
-When a node syncs with the network using the [History Macro Sync](/protocol/protocol/sync-protocol/history-macro-sync.md) protocol, it downloads the history for each epoch, which is essential for reconstructing the transaction history up to the blockchain's current state. As the node processes and verifies each macro block, it builds its local History Store by storing historic transactions, organizing them into MMR trees, and updating relevant records.
+When a node syncs with the network using the [History Macro Sync](/protocol/protocol/node-sync/macro-sync/history-macro-sync.md) protocol, it downloads the history for each epoch, which is essential for reconstructing the transaction history up to the blockchain's current state. As the node processes and verifies each macro block, it builds its local History Store by storing historic transactions, organizing them into MMR trees, and updating relevant records.
 
 After syncing, the node compares the root of its constructed history tree with the root provided by the current block in the blockchain. If the roots match, it confirms that the node's History Store is accurate and fully synchronized with the network.
