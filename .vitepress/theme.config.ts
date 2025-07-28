@@ -11,80 +11,84 @@ export const themeConfig = {
       subpath: 'protocol',
       icon: 'i-local:nimiq-albatross',
       defaultPageLink: '/protocol/',
-      description: 'Albatross protocol docs',
+      description: 'Albatross Protocol Docs',
       sidebar: [
         {
-          label: 'Protocol',
+          label: 'Overview & Fundamentals',
           items: [
             { text: 'Home', link: '/protocol/', icon: 'i-tabler:home' },
-            { text: 'Overview', link: '/protocol/protocol/overview', icon: 'i-tabler:layout-grid' },
-            { text: 'Glossary', link: '/protocol/protocol/glossary', icon: 'i-tabler:book-2' },
+            { text: 'Overview', link: '/protocol/overview', icon: 'i-tabler:layout-grid' },
+            { text: 'Glossary', link: '/protocol/glossary', icon: 'i-tabler:book-2' },
+            { text: 'Accounts', link: '/protocol/accounts', icon: 'i-tabler:user' },
+            { text: 'Transactions', link: '/protocol/transactions', icon: 'i-tabler:receipt' },
           ],
         },
         {
-          label: 'Technical Details',
+          label: 'Consensus & Security',
           items: [
+            { text: 'Block Format', link: '/protocol/consensus/block-format', icon: 'i-tabler:file-text' },
+            { text: 'Verifiable Random Functions', link: '/protocol/consensus/verifiable-random-functions', icon: 'i-tabler:dice' },
+            { text: 'Equivocation Proofs', link: '/protocol/consensus/equivocation-proofs', icon: 'i-tabler:shield-check' },
+            { text: 'Punishments', link: '/protocol/consensus/punishments', icon: 'i-tabler:alert-triangle' },
+          ],
+        },
+        {
+          label: 'Economic Model',
+          items: [
+            { text: 'Rewards', link: '/protocol/economics/rewards', icon: 'i-tabler:gift' },
+          ],
+        },
+        {
+          label: 'Storage & Data Structures',
+          items: [
+            { text: 'Mempool', link: '/protocol/storage/mempool', icon: 'i-tabler:list' },
+            { text: 'Merkle Trees', link: '/protocol/storage/merkle-trees', icon: 'i-tabler:tree' },
+            { text: 'History Store', link: '/protocol/storage/history-store', icon: 'i-tabler:database' },
+          ],
+        },
+        {
+          label: 'Validators & Staking',
+          items: [
+            { text: 'Slots', link: '/protocol/validators/slots', icon: 'i-tabler:calendar' },
+            { text: 'Staking Contract', link: '/protocol/validators/staking-contract', icon: 'i-tabler:wallet' },
+            { text: 'Validators', link: '/protocol/validators/validators', icon: 'i-tabler:users' },
+            { text: 'Validator Keys', link: '/protocol/validators/validator-keys', icon: 'i-tabler:key' },
+            { text: 'Stakers', link: '/protocol/validators/stakers', icon: 'i-tabler:user-star' },
+            { text: 'Skip Blocks', link: '/protocol/validators/skip-blocks', icon: 'i-tabler:skip-forward' },
+          ],
+        },
+        {
+          label: 'Network Sync',
+          icon: 'i-tabler:network',
+          items: [
+            { text: 'Sync and Network Consensus', link: '/protocol/node-sync/', icon: 'i-tabler:network' },
             {
-              text: 'Protocol',
-              icon: 'i-tabler:file-text',
+              text: 'Macro Sync',
+              icon: 'i-tabler:download',
               items: [
-                { text: 'Block Format', link: '/protocol/protocol/block-format' },
-                { text: 'Punishments', link: '/protocol/protocol/punishments' },
-                { text: 'Equivocation Proofs', link: '/protocol/protocol/equivocation-proofs' },
-                { text: 'Accounts', link: '/protocol/protocol/accounts' },
-                { text: 'Transactions', link: '/protocol/protocol/transactions' },
-                { text: 'Rewards', link: '/protocol/protocol/rewards' },
-                { text: 'Merkle Trees', link: '/protocol/protocol/merkle-trees' },
-                { text: 'Mempool', link: '/protocol/protocol/mempool' },
-                { text: 'History Store', link: '/protocol/protocol/history-store' },
+                { text: 'History Macro Sync', link: '/protocol/node-sync/macro-sync/history-macro-sync' },
+                { text: 'Light Macro Sync', link: '/protocol/node-sync/macro-sync/light-macro-sync' },
+                { text: 'Pico Macro Sync', link: '/protocol/node-sync/macro-sync/pico-macro-sync' },
               ],
             },
             {
-              text: 'Validators',
-              icon: 'i-tabler:users',
+              text: 'Live Sync',
+              icon: 'i-tabler:refresh',
               items: [
-                { text: 'Slots', link: '/protocol/protocol/validators/slots' },
-                { text: 'Staking Contract', link: '/protocol/protocol/validators/staking-contract' },
-                { text: 'Validator Keys', link: '/protocol/protocol/validators/validator-keys' },
-                { text: 'Validators', link: '/protocol/protocol/validators/validators' },
-                { text: 'Skip Blocks', link: '/protocol/protocol/validators/skip-blocks' },
-                { text: 'Stakers', link: '/protocol/protocol/validators/stakers' },
-                { text: 'Verifiable Random Functions', link: '/protocol/protocol/verifiable-random-functions' },
+                { text: 'Block Live Sync', link: '/protocol/node-sync/live-sync/block-live-sync' },
+                { text: 'State Live Sync', link: '/protocol/node-sync/live-sync/state-live-sync' },
               ],
             },
-            {
-              text: 'Network Sync',
-              icon: 'i-tabler:network',
-              items: [
-                { text: 'Sync and Network Consensus', link: '/protocol/protocol/node-sync/' },
-                {
-                  text: 'Macro Sync Strategies',
-                  items: [
-                    { text: 'History Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/history-macro-sync' },
-                    { text: 'Light Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/light-macro-sync' },
-                    { text: 'Pico Macro Sync', link: '/protocol/protocol/node-sync/macro-sync/pico-macro-sync' },
-                  ],
-                },
-                {
-                  text: 'Live Sync Strategies',
-                  items: [
-                    { text: 'Block Live Sync', link: '/protocol/protocol/node-sync/live-sync/block-live-sync' },
-                    { text: 'State Live Sync', link: '/protocol/protocol/node-sync/live-sync/state-live-sync' },
-                  ],
-                },
-                { text: 'Architecture', link: '/protocol/protocol/node-sync/architecture' },
-                { text: 'Traits and Abstractions', link: '/protocol/protocol/node-sync/traits-and-abstractions' },
-                { text: 'Network Protocol', link: '/protocol/protocol/node-sync/network-protocol' },
-              ],
-            },
-            {
-              text: 'ZKP',
-              icon: 'i-tabler:lock',
-              items: [
-                { text: 'ZKP and Recursive SNARKs', link: '/protocol/protocol/ZKP-and-recursive-SNARKs' },
-                { text: 'Prover node', link: '/protocol/protocol/prover-node' },
-              ],
-            },
+            { text: 'Architecture', link: '/protocol/node-sync/architecture', icon: 'i-tabler:building' },
+            { text: 'Traits and Abstractions', link: '/protocol/node-sync/traits-and-abstractions', icon: 'i-tabler:code' },
+            { text: 'Network Protocol', link: '/protocol/node-sync/network-protocol', icon: 'i-tabler:protocol' },
+          ],
+        },
+        {
+          label: 'Zero-Knowledge Proofs',
+          items: [
+            { text: 'ZKP and Recursive SNARKs', link: '/protocol/zkp/ZKP-and-recursive-SNARKs', icon: 'i-tabler:lock' },
+            { text: 'Prover Node', link: '/protocol/zkp/prover-node', icon: 'i-tabler:server' },
           ],
         },
       ],

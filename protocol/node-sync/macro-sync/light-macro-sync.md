@@ -17,7 +17,7 @@ The `LightMacroSync` manages ZKP-verified macro block synchronization for each p
 
 The `LightMacroSync` follows a ZKP-secured request pattern:
 
-1. **RequestZKP** → Request and validate ZKPs from [prover nodes](../../prover-node.md)
+1. **RequestZKP** → Request and validate ZKPs from [prover nodes](/protocol/zkp/prover-node)
 2. **RequestMacroChain** → Request epoch IDs using known block locators
 3. **RequestBlock** → Retrieve specific macro blocks with verified hashes
 4. **RequestHistoryChunk** → Validate transaction history within the validity window (full nodes only)
@@ -130,7 +130,7 @@ The ZKP component provides cryptographic security with:
 - **Proof Generation**: Prover nodes generate proofs for their latest macro state
 - **Proof Verification**: Local verification before applying any state changes
 
-Learn more about ZKP and Nimiq’s use of recursive zk-SNARKs [here](../../ZKP-and-recursive-SNARKs.md).
+Learn more about ZKP and Nimiq’s use of recursive zk-SNARKs [here](/protocol/zkp/ZKP-and-recursive-SNARKs).
 
 ## Validity Window Synchronization
 

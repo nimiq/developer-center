@@ -16,7 +16,7 @@ Each validator has its own account. Once the node sends a transaction to create 
 | `reward_address` | `Address` | Address where block rewards are sent |
 | `signal_data` | `Option<Blake2bHash>` | Optional field for chain upgrades or other coordination among validators |
 | `total_stake` | `Coin` | Total stake assigned, including validator’s deposit and stakers’ delegated funds |
-| `deposit` | `Coin` | The validator's own deposit; can be decreased by fees from failed transactions (see [transactions](https://www.nimiq.com/developers/learn/protocol/transactions)) |
+| `deposit` | `Coin` | The validator's own deposit; can be decreased by fees from failed transactions (see [transactions](/protocol/transactions)) |
 | `num_stakers` | `u64` | Number of stakers delegating to this validator |
 | `inactive_from` | `Option<u32>` | Block height at which the validator becomes inactive |
 | `jailed_from` | `Option<u32>` | Block height at which the validator was jailed. Takes immediate effect to prevent fund removal |
@@ -36,7 +36,7 @@ Allows the validator to update details such as the signing key, voting key, rewa
 
 ### Deactivate
 
-This transaction moves the validator to an inactive state, where it no longer participates in block validation. Deactivation is scheduled to take effect at the next [election block](https://www.nimiq.com/developers/learn/protocol/block-format#macro-blocks), meaning that the validator continues to be active until the next scheduled election. Deactivation is a necessary step before a validator can be retired or deleted.
+This transaction moves the validator to an inactive state, where it no longer participates in block validation. Deactivation is scheduled to take effect at the next [election block](/protocol/consensus/block-format#macro-blocks), meaning that the validator continues to be active until the next scheduled election. Deactivation is a necessary step before a validator can be retired or deleted.
 
 Moreover, if a validator remains offline for an extended period, it is deactivated and loses any rewards for the time it remains inactive.
 
@@ -70,7 +70,7 @@ This transaction permanently removes a retired validator from the network and re
 
 ### Punishments
 
-If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the jailing period is served. For more detailed information on punishments, refer to [Nimiq's punishments documentation](https://www.nimiq.com/developers/learn/protocol/punishments).
+If a validator delays block production, the **penalty** is the burning of rewards for that specific block, reducing the validator's earnings. For more severe offenses, validators face **jailing**, which locks them out of participation for a defined period. During this lock-up period, validators cannot participate in block validation, though they may still be required to participate in voting until the end of the epoch. Validators can only return to active status once the jailing period is served. For more detailed information on punishments, refer to [Nimiq's punishments documentation](/protocol/consensus/punishments).
 
 ## States
 

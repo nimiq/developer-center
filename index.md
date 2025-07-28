@@ -164,7 +164,7 @@ popularResources:
     - title: Core & Protocol
       links:
         - text: Protocol Docs
-          href: ./protocol/protocol/block-format
+          href: ./protocol/
         - text: Core Implementation
           href: https://github.com/nimiq/core-rs-albatross
     - title: Community

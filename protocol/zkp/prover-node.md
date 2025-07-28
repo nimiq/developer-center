@@ -1,10 +1,10 @@
 # Prover node
 
-A prover node is a particular type of node that generates zero-knowledge proofs (zkp). A zero-knowledge proof is a method of proving a statement between two parties - a prover and a verifier. Read [this post](ZKP-and-recursive-SNARKs.md) for a detailed description of zero-knowledge proofs.
+A prover node is a particular type of node that generates zero-knowledge proofs (zkp). A zero-knowledge proof is a method of proving a statement between two parties - a prover and a verifier. Read [this post](/protocol/zkp/ZKP-and-recursive-SNARKs) for a detailed description of zero-knowledge proofs.
 
 The blockchain uses zero-knowledge proofs to:
 
-- Facilitate light nodes and full nodes to [sync](/protocol/protocol/node-sync/macro-sync/light-macro-sync.md) with the blockchain
+- Facilitate light nodes and full nodes to [sync](/protocol/node-sync/macro-sync/light-macro-sync) with the blockchain
 - Enable nodes to reconnect with the blockchain faster
 - Secure the network
 
@@ -76,7 +76,7 @@ pub struct RequestZKP {
 - The `block_number` expected is the last election block the node knows of.
 - If the `request_election_block` is `true`, the node expects to receive the complete election block; if set to `false`, the node expects to receive the most recent election block number and the proof.
 
-### Syncing to the blockchain
+### Syncing to the blockchain:
 
 1. node connects to the network
 2. node requests a zkp by providing the genesis block as `block_number`
@@ -84,7 +84,7 @@ pub struct RequestZKP {
 4. node stores the zkp
 5. node continues the syncing process
 
-### Resyncing to the blockchain
+### Resyncing to the blockchain:
 
 1. node reconnects to the network
 2. node requests a zkp by providing the `block_number` of the latest zkp in its database
@@ -94,4 +94,4 @@ pub struct RequestZKP {
 
 #### See also
 
-To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](/validators/prover-node-guide.md).
+To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](/validators/prover-node-guide).

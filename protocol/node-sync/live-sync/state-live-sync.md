@@ -24,7 +24,7 @@ The `StateLiveSync` follows a dual-request pattern combining block and state syn
 2. **RequestTrieDiff** → Request trie diffs for efficient state updates
 3. **RequestChunk** → Request state chunks to fill account tree gaps
 
-The complete message specifications are documented in the [Network Protocol](network-protocol) document.
+The complete message specifications are documented in the [Network Protocol](/protocol/node-sync/network-protocol) document.
 
 ## Partial Trie Construction
 

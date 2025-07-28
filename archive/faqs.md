@@ -58,7 +58,7 @@ No, the activation tool is specifically designed to migrate the PoW state and es
 
 #### Can I withdraw my NIM deposit after pre-registration?
 
-Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators [here](/protocol/protocol/validators/validators.md).
+Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators [here](/protocol/validators/validators).
 
 #### Can I switch the validator I have pre-staked my NIM to?
 

@@ -34,7 +34,7 @@ As these are more severe offenses that interfere with the blockchain, the conseq
 - It gets locked for 8 epochs. However, it is required to continue the block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
 - It loses its rewards for the jail period.
 
-The `active_validators` and `punished_slots` sets are updated at every block in the [staking contract](validators/staking-contract.md). However, if a validator shifts from active to inactive or jailed, it is required to produce blocks until the current batch concludes, as it remains included in the validator slot list for that batch. However, it is no longer considered to produce blocks for further batches starting at the next checkpoint block.
+The `active_validators` and `punished_slots` sets are updated at every block in the [staking contract](/protocol/validators/staking-contract). However, if a validator shifts from active to inactive or jailed, it is required to produce blocks until the current batch concludes, as it remains included in the validator slot list for that batch. However, it is no longer considered to produce blocks for further batches starting at the next checkpoint block.
 
 In the context of Tendermint votes, a validator that shifts to inactive or jailed mid-epoch must vote until the end of the epoch. This is because there are no mid-epoch elections to replace the slots of the inactive or jailed validator. Thus, it must participate in the entire epoch's voting process to maintain the necessary validator count for consensus.
 

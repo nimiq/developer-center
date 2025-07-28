@@ -1,6 +1,6 @@
 # ZKP and recursive SNARKs
 
-Nimiq supports several types of users and [syncing mechanisms](/protocol/protocol/node-sync/index.md). Light and full nodes can synchronize to the network by requesting a proof of the current state of the blockchain. The blockchain implements zero-knowledge proofs capable of proving most of the chain in a small proof.
+Nimiq supports several types of users and [syncing mechanisms](/protocol/node-sync/index). Light and full nodes can synchronize to the network by requesting a proof of the current state of the blockchain. The blockchain implements zero-knowledge proofs capable of proving most of the chain in a small proof.
 
 ## Zero-knowledge proofs
 
@@ -28,7 +28,7 @@ In Nimiq PoS chain, recursive SNARKs are employed to prove the current state of 
 
 ## Recursive SNARKs implementation
 
-To streamline the proof generation for connecting to the network, a specialized type of node is introduced - the [prover node](prover-node.md). Prover nodes are designed to efficiently generate the proofs required for establishing the validity of the blockchain's state without the need for the entire software download.
+To streamline the proof generation for connecting to the network, a specialized type of node is introduced - the [prover node](prover-node). Prover nodes are designed to efficiently generate the proofs required for establishing the validity of the blockchain's state without the need for the entire software download.
 
 ### Why use recursive SNARKs?
 

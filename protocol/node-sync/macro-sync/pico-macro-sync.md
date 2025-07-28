@@ -20,7 +20,7 @@ The `PicoMacroSync` follows a minimal request pattern optimized for light clien
 2. **RequestMacroChain** → Selectively download macro blocks using hash locators
 3. **RequestBlock** → Retrieve individual election/checkpoint blocks as needed
 
-The complete message specifications are documented in the [Network Protocol](network-protocol) document.
+The complete message specifications are documented in the [Network Protocol](/protocol/node-sync/network-protocol) document.
 
 ## Architecture Overview
 

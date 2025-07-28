@@ -24,6 +24,6 @@ The prove and extract functions allow a chain of seeds since generating a new ra
 
 Random seeds are used in three cases:
 
-- **Validator slot selection:** A new [validator slot list](validators/slots.md) is selected at the end of each epoch. The entropy extracted from the random seed is used to select this new list. The block's proposer takes the active validator set along with the entropy and creates the list.
+- **Validator slot selection:** A new [validator slot list](/protocol/validators/slots) is selected at the end of each epoch. The entropy extracted from the random seed is used to select this new list. The block's proposer takes the active validator set along with the entropy and creates the list.
 - **Slot owner selection:** A new slot owner list is created at every block. The block's producer extracts the entropy from the random seed to shuffle the validator slot list resulting in the view slot list for the block.
 - **Rewards distribution:** Elected validators are rewarded at the end of every batch. The rewards are distributed among the elected validators. In every batch, the validator slot list has 512 validator slots. Due to the potential inability to evenly divide the batch reward among 512 slots, entropy from the random seed is utilized to determine which elected validator receives the remainder.

@@ -11,7 +11,7 @@ Nimiq supports four types of accounts, each designed for different purposes:
 - **Vesting Contract**: Manages funds released gradually over time, often used to lock funds with a defined release schedule
 - **Staking Contract**: Enables validators to lock their NIM, participate in network consensus, and earn rewards
 
-Each account type processes transactions differently to meet its specific use case. For more details, refer to the [accounts](accounts.md) documentation.
+Each account type processes transactions differently to meet its specific use case. For more details, refer to the [accounts](/protocol/accounts) documentation.
 
 #### Transaction Prioritization and Mempool
 
@@ -20,7 +20,7 @@ Transactions are first placed in the mempool, waiting for validation. Nimiq has 
 - **Regular Mempool**: For basic, HTLC, and vesting transactions
 - **Control Mempool**: For staking transactions, which are prioritized
 
-Once selected by a validator, transactions are validated and included in a block if they meet the protocol’s requirements. For more details on how the mempool operates, refer to the [mempool](mempool.md) documentation.
+Once selected by a validator, transactions are validated and included in a block if they meet the protocol’s requirements. For more details on how the mempool operates, refer to the [mempool](/protocol/storage/mempool) documentation.
 
 ## Transaction Structure
 
@@ -28,7 +28,7 @@ Once selected by a validator, transactions are validated and included in a block
 | --- | --- | --- |
 | `sender` | `Address` | The sender’s address |
 | `sender_type` | `AccountType` | Specifies the [type](#types-of-accounts) of the sender account |
-| `sender_data` | `Vec<u8>` | Additional data specific to the sender account’s type, primarily used for extra info in transactions from the [staking contract](validators/staking-contract.md) |
+| `sender_data` | `Vec<u8>` | Additional data specific to the sender account’s type, primarily used for extra info in transactions from the [staking contract](/protocol/validators/staking-contract) |
 | `recipient` | `Address` | The recipient’s address |
 | `recipient_type` | `AccountType` | Specifies the type of the recipient account  |
 | `recipient_data` | `Vec<u8>` | Additional data specific to the recipient account. Used in transactions involving contracts such as staking, HTLCs, and vesting contracts. |
@@ -102,7 +102,7 @@ Consider a scenario where Alice has 100 NIM in her balance. She sends 3 transact
 
 ## Transaction Finality
 
-Finality is periodically reinforced through the Tendermint protocol, which ensures that blocks and the transactions within them cannot be reversed once they are finalized by a macro block. For more details on how finality is achieved through the block structure, please refer to the [block format](block-format.md) documentation.
+Finality is periodically reinforced through the Tendermint protocol, which ensures that blocks and the transactions within them cannot be reversed once they are finalized by a macro block. For more details on how finality is achieved through the block structure, please refer to the [block format](/protocol/consensus/block-format) documentation.
 
 ## Inherents
 

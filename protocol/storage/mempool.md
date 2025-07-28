@@ -2,7 +2,7 @@
 
 ## What is a mempool?
 
-A mempool is a waiting list that keeps [transactions](transactions.md) on hold until validators add them to the blockchain. Transactions, once filtered, are gathered in the mempool before being selected by validators for inclusion in the next block.
+A mempool is a waiting list that keeps [transactions](/protocol/transactions) on hold until validators add them to the blockchain. Transactions, once filtered, are gathered in the mempool before being selected by validators for inclusion in the next block.
 
 Transactions are broadcasted among the network, and each validator maintains its own mempool. Upon a validator adding a transaction to the blockchain, other validators must remove that transaction from their respective mempools.
 
@@ -12,8 +12,8 @@ Users are encouraged to offer higher fees to accelerate the addition of their tr
 
 The blockchain mempool is divided into two groups that hold different types of transactions:
 
-- Transactions from the [staking contract](validators/staking-contract.md) are added to a **control mempool**
-- Transactions from basic, HTLC, and vesting [accounts](accounts.md) are added to a **regular mempool**
+- Transactions from the [staking contract](/protocol/validators/staking-contract) are added to a **control mempool**
+- Transactions from basic, HTLC, and vesting [accounts](/protocol/accounts) are added to a **regular mempool**
 
 Control transactions have priority over regular transactions, so they are first added to the block, followed by regular transactions.
 

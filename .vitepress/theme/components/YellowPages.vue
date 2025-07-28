@@ -4,11 +4,11 @@ const sections = [
   {
     title: 'Protocol & Core',
     links: [
-      { title: 'Protocol Overview', href: '/protocol/protocol/overview' },
-      { title: 'Block Format', href: '/protocol/protocol/block-format' },
-      { title: 'Validators', href: '/protocol/protocol/validators/validators' },
-      { title: 'Staking Contract', href: '/protocol/protocol/validators/staking-contract' },
-      { title: 'ZKP & SNARKs', href: '/protocol/protocol/ZKP-and-recursive-SNARKs' },
+      { title: 'Protocol Overview', href: '/protocol/overview' },
+      { title: 'Block Format', href: '/protocol/consensus/block-format' },
+      { title: 'Validators', href: '/protocol/validators/validators' },
+      { title: 'Staking Contract', href: '/protocol/validators/staking-contract' },
+      { title: 'ZKP & SNARKs', href: '/protocol/zkp/ZKP-and-recursive-SNARKs' },
     ],
   },
   {

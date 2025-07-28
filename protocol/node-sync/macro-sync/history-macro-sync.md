@@ -20,7 +20,7 @@ The `HistoryMacroSync` follows a cluster-based parallel request pattern:
 2. **RequestBatchSet** → Download macro blocks with validation metadata and history proofs
 3. **RequestHistoryChunk** → Retrieve complete transaction history chunks in parallel
 
-The complete message specifications are documented in the [Network Protocol](network-protocol) document.
+The complete message specifications are documented in the [Network Protocol](/protocol/node-sync/network-protocol) document.
 
 ## Architecture Overview
 

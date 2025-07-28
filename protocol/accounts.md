@@ -52,4 +52,4 @@ The contract owner can interact with the contract whenever but can only withdraw
 
 ## Staking contract
 
-The staking contract is a specific type of contract designed to track and manage functions regarding validators, stakers, and staking activities. For a detailed explanation about the staking contract, follow this [link](validators/staking-contract.md).
+The staking contract is a specific type of contract designed to track and manage functions regarding validators, stakers, and staking activities. For a detailed explanation about the staking contract, follow this [link](/protocol/validators/staking-contract).

@@ -4,7 +4,7 @@ Welcome to the Nimiq Proof-of-Stake documentation. Introducing our new consensus
 
 ## Validators and Stakers
 
-[Validators](./validators/validators.md) play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at maximum f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. Slots determine block producers, with random selection ensuring fairness.
+[Validators](/protocol/validators/validators) play a crucial role in the Proof-of-Stake consensus mechanism as block producers. In our algorithm, we assume that out of 3f+1 validators, at most f are malicious. This assumption ensures a valid and accurate performance of the blockchain, even if up to f validators fail to respond or act maliciously. They signal their participation by allocating stake, increasing their chances of being elected. The stake amount influences the number of slots assigned to a validator. Slots determine block producers, with random selection ensuring fairness.
 
 Any node in Nimiq’s network can propose to be a validator by staking its coins as a deposit. The higher the stake a node has, the higher the chances of getting selected to produce blocks and be a part of the validator list. They get selected according to the validator selection rules. We have 512 slots per batch ready to produce blocks.
 
