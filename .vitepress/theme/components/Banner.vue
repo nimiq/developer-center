@@ -22,7 +22,7 @@ defineProps<{
 
       <div flex="~ wrap justify-between items-end" max-w-full w-full relative z-10>
         <div max-w-60ch>
-          <p v-if="label" text="12 white/80" nq-label>
+          <p v-if="label" nq-label text="12 white/80!">
             {{ label }}
           </p>
           <h3 text-white font-semibold f-text-2xl mt-4="!">

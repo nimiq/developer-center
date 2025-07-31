@@ -7,7 +7,9 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import topLevelAwait from 'vite-plugin-top-level-await'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import wasm from 'vite-plugin-wasm'
 import llmstxt from 'vitepress-plugin-llms'
 import { loadMethods } from './rpc/utils'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
@@ -24,7 +26,7 @@ export default defineConfig(async () => {
 
   return {
     optimizeDeps: {
-      exclude: ['vitepress'],
+      exclude: ['vitepress', '@nimiq/core'],
     },
     server: {
       hmr: { overlay: false },
@@ -57,6 +59,13 @@ export default defineConfig(async () => {
       target: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
     },
 
+    worker: {
+      plugins: () => [
+        wasm(),
+        topLevelAwait(),
+      ],
+    },
+
     plugins: [
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],
@@ -81,6 +90,8 @@ export default defineConfig(async () => {
       VueDevTools(),
 
       ViteImageOptimizer(),
+      wasm(),
+      topLevelAwait(),
 
       RpcDocsGeneratorPlugin(),
       llmstxt(

@@ -333,7 +333,7 @@ Now you're ready to build amazing blockchain applications with Vite and Nimiq!
 <div flex="~ gap-16 items-center" class="nq-raw" mt-16>
   <a href="/web-client/browser-vs-server" nq-arrow nq-pill-sm nq-pill-blue>Browser vs Server</a>
   <a href="/web-client/reference/" nq-arrow nq-pill-sm nq-pill-green>API Reference</a>
-  <a href="https://tutorial.nimiq.com" nq-arrow nq-pill-sm nq-pill-tertiary>Interactive Tutorial</a>
+  <a href="https://nimiq.guide" nq-arrow nq-pill-sm nq-pill-tertiary>Interactive Tutorial</a>
 </div>
 
 <!--@include: ./_contribute.md-->

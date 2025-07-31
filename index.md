@@ -77,7 +77,7 @@ quickStart:
   actions:
     - title: WebClient Tutorial
       description: Interactive, in‑browser walkthrough
-      href: https://tutorial.nimiq.com
+      href: https://nimiq.guide
       icon: i-local:nimiq-tutorial
     - title: RPC Playground
       description: Test JSON‑RPC calls live
@@ -107,7 +107,7 @@ popularResources:
         - text: Framework Integration
           href: ./web-client/integrations
         - text: Interactive Tutorial
-          href: https://tutorial.nimiq.com
+          href: https://nimiq.guide
         - text: Nimiq Utils
           href: ./nimiq-utils/
         - text: Web Client vs RPC

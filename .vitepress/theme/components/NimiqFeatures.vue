@@ -3,7 +3,7 @@ defineProps<{
   label: string
   title: string
   description: string
-  features: {
+  features?: {
     title: string
     description: string
     icon: string
@@ -18,7 +18,7 @@ defineProps<{
   <section>
     <NqHeadline :label :title :description :align mt-0 f-mb-lg :h1="false" />
 
-    <ul v-if="features.length > 0" grid="~ cols-2 md:cols-3 gap-64" class="nq-raw">
+    <ul v-if="features && features.length > 0" grid="~ cols-2 md:cols-3 gap-64" class="nq-raw">
       <li v-for="(feature, index) in features" :key="index" flex-1>
         <div class="nq-raw" group h-full relative>
           <div v-if="feature.icon" stack rounded-8 size-36 :class="feature.iconBgColor">

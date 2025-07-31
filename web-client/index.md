@@ -9,7 +9,7 @@ heroCards:
     title: Start Building Now
     description: Interactive tutorial that builds a complete wallet app in your browser. No setup, no downloads, just code.
     label: Try Now
-    href: https://tutorial.nimiq.com
+    href: https://nimiq.guide
     bgColor: gold
     iconClass: absolute bottom--48 right--32 text-256
     class: "md:grid-row-span-full [&_p]:max-w-none"
@@ -42,7 +42,7 @@ whyNimiq:
       description: No servers, APIs, or third-party dependencies
       icon: i-nimiq:duotone-network
       iconColor: text-blue
-    - title: Instant Sync
+    - title: Fast Sync
       description: Connect to the network in seconds, not hours
       icon: i-nimiq:duotone-speedmeter
       iconColor: text-green
@@ -63,12 +63,32 @@ whyNimiq:
       icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
       iconColor: text-red
 
-banner:
-  label: 'RPC vs. Web Client'
-  headline: Not sure if you need RPC or Web Client?
-  subline: "We've created a comprehensive guide to help you choose the right approach for your project."
-  linkHref: './web-client-vs-rpc'
-  linkLabel: 'Read Our Guide'
+browserServerBanner:
+  label: 'Browser vs Server'
+  headline: Building for browser or server environment?
+  subline: "Learn about the differences between browser and Node.js implementations and choose the right approach."
+  linkHref: './browser-vs-server'
+  linkLabel: 'Compare Browser and Server Development'
+
+alternativeOptions:
+  label: Alternative
+  title: Need More Power?
+  description: For advanced use cases, consider our RPC interface with full node capabilities
+  align: left
+  buttons:
+    - text: Explore RPC Documentation
+      href: ../rpc/
+      variant: primary
+    - text: Compare Web Client vs RPC
+      href: ./web-client-vs-rpc
+      variant: secondary
+
+directConnection:
+  align: left
+  label: How It Works
+  title: Connect Directly to the Blockchain
+  description: No servers, no APIs, no middlemen — just your browser connecting directly to the Nimiq network.
+  h1: false
 
 integrationsLabel: Get Started
 integrationsTitle: Choose Your Stack
@@ -106,7 +126,7 @@ popularResources:
       - text: Installation Guide
         href: ./installation
       - text: Interactive Tutorial
-        href: https://tutorial.nimiq.com
+        href: https://nimiq.guide
       - text: Web Client vs RPC
         href: ./web-client-vs-rpc
   - title: Framework Setup
@@ -181,8 +201,8 @@ popularResources:
 
 <script setup lang="ts">
 import Hero from '../.vitepress/theme/components/Hero.vue'
-import WebClientExplainer from '../.vitepress/theme/components/WebClientExplainer.vue'
 import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
+import AlternativeOptions from '../.vitepress/theme/components/AlternativeOptions.vue'
 import QuickStart from '../.vitepress/theme/components/QuickStart.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
 import PopularResources from '../.vitepress/theme/components/PopularResources.vue'
@@ -190,13 +210,15 @@ import PopularResources from '../.vitepress/theme/components/PopularResources.vu
 
 <Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left" />
 
+<section>
+
 <NqHeadline f-mt-5xl f-mb-sm title="Start with 4 lines of code" label="JavaScript" align="left" description="Get up and running in under a minute" />
 
-<div class="nq-raw" >
+<div class="nq-raw">
 
 :::code-group
 
-```js [web]
+```js [browser.js]
 import init, * as Nimiq from '@nimiq/core'
 
 await init()
@@ -207,7 +229,7 @@ const client = await Nimiq.Client.create(config.build())
 await client.waitForConsensusEstablished()
 ```
 
-```js [node]
+```js [NodeJS]
 import Nimiq from '@nimiq/core'
 
 const config = new Nimiq.ClientConfiguration()
@@ -220,11 +242,15 @@ await client.waitForConsensusEstablished()
 
 </div>
 
-<WebClientExplainer />
+</section>
 
-<Banner f-my-xl v-bind="$frontmatter.banner" />
+<ConsensusMapSection f-py-3xl />
+
+<Banner f-my-xl v-bind="$frontmatter.browserServerBanner" />
 
 <NimiqFeatures align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
+
+<AlternativeOptions v-bind="$frontmatter.alternativeOptions" />
 
 <QuickStart align="left" :title="$frontmatter.integrationsTitle" :description="$frontmatter.integrationsDescription" :label="$frontmatter.integrationsLabel" :actions="$frontmatter.integrationsActions" />
 
