@@ -103,11 +103,11 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2
       nimiq-css:
-        specifier: ^1.0.0-beta.61
-        version: 1.0.0-beta.61(postcss@8.5.6)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
+        specifier: ^1.0.0-beta.62
+        version: 1.0.0-beta.62(postcss@8.5.6)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       nimiq-vitepress-theme:
-        specifier: ^1.0.0-beta.61
-        version: 1.0.0-beta.61(typescript@5.8.3)(vitepress@2.0.0-alpha.7(@algolia/client-search@5.30.0)(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(search-insights@2.17.3)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))
+        specifier: ^1.0.0-beta.62
+        version: 1.0.0-beta.62(typescript@5.8.3)(vitepress@2.0.0-alpha.7(@algolia/client-search@5.30.0)(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(search-insights@2.17.3)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))
       ofetch:
         specifier: ^1.4.1
         version: 1.4.1
@@ -2945,18 +2945,18 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  nimiq-css@1.0.0-beta.61:
-    resolution: {integrity: sha512-pdNTaCITgotmSFkvgxpWByHf7AyzwOBZFHIPX9ijgn7u6HjGfM09Tw/ePBudwnaio/zQhyBkid4tg3W62YSSQg==}
+  nimiq-css@1.0.0-beta.62:
+    resolution: {integrity: sha512-SxM/LbblpCQOu0riPmdFYWt6DOgGh8Wg+5PtTohrgLANCCTwDemRqg8B1tbTTPgtyFy5trvEojp9aGVT0dWYVg==}
     engines: {node: '>=18'}
 
-  nimiq-icons@1.0.0-beta.61:
-    resolution: {integrity: sha512-GNuSVF3tibDNbU06mwSzhhdq7SjG9vGUyrM9E1l0xCRVDDEqtjm1B0sKRpU7cLC8jHG/dzN4aJTgaeQPlTuAeg==}
+  nimiq-icons@1.0.0-beta.62:
+    resolution: {integrity: sha512-t/JoMs3yEopcmfx1WnLo2e/D00llrSPmRKYybeNIfFxOWsSIHG1nOFtVONTfITlB9wmAZwg5vh7505p3nOL09A==}
 
   nimiq-rpc-client-ts@1.0.0-beta.28:
     resolution: {integrity: sha512-whZ0SOyJ1IDeLMWJDkOBPhwtnrClAt/EuNnsoPhCqswqcb7wlYV3Sap3S60Q06IE1JGqfHB+4a4N5HSLeYwkZQ==}
 
-  nimiq-vitepress-theme@1.0.0-beta.61:
-    resolution: {integrity: sha512-57pMNG2yil8GAlZEWJac2moB5eidfkfF+doKjqL0zb8QfSi/OtAKLHJxFu54jdx/5xvuMuW6SUMCd1+sf3TlTA==}
+  nimiq-vitepress-theme@1.0.0-beta.62:
+    resolution: {integrity: sha512-JPImXnwra27rPH/82QK9iozliL6zZ6rpQaqcLOpe1ZoUDrjv6oOZSQWkvJY9BGAwNSX8PrgCu0/bw243wosScw==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -7056,12 +7056,12 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  nimiq-css@1.0.0-beta.61(postcss@8.5.6)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3)):
+  nimiq-css@1.0.0-beta.62(postcss@8.5.6)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3)):
     dependencies:
       '@iconify/utils': 2.3.0
       '@unocss/preset-web-fonts': 66.3.2
       '@unocss/preset-wind4': 66.3.2
-      nimiq-icons: 1.0.0-beta.61
+      nimiq-icons: 1.0.0-beta.62
       ts-cssjson: 3.0.1
       unocss: 66.3.2(postcss@8.5.6)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       unocss-preset-light-dark: 1.0.0-beta.37
@@ -7072,7 +7072,7 @@ snapshots:
       - vite
       - vue
 
-  nimiq-icons@1.0.0-beta.61:
+  nimiq-icons@1.0.0-beta.62:
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7082,7 +7082,7 @@ snapshots:
     transitivePeerDependencies:
       - ws
 
-  nimiq-vitepress-theme@1.0.0-beta.61(typescript@5.8.3)(vitepress@2.0.0-alpha.7(@algolia/client-search@5.30.0)(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(search-insights@2.17.3)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)):
+  nimiq-vitepress-theme@1.0.0-beta.62(typescript@5.8.3)(vitepress@2.0.0-alpha.7(@algolia/client-search@5.30.0)(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(search-insights@2.17.3)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
       '@iconify-json/tabler': 1.2.19
       '@iconify-json/vscode-icons': 1.2.23
@@ -7090,7 +7090,7 @@ snapshots:
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
       mark.js: 8.11.1
       minisearch: 7.1.2
-      nimiq-icons: 1.0.0-beta.61
+      nimiq-icons: 1.0.0-beta.62
       reka-ui: 2.3.2(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
       vaul-vue: 0.4.1(reka-ui@2.3.2(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       vitepress: 2.0.0-alpha.7(@algolia/client-search@5.30.0)(@types/node@24.0.10)(jiti@2.4.2)(less@4.3.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(search-insights@2.17.3)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)
