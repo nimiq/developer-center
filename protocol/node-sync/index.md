@@ -42,6 +42,8 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 - Complete blockchain history from genesis
 - Deep chain queries, historical analysis, and serving data to other nodes
 - Can act as validators and provide historical data to the network
+- Serve data to other nodes, generate and verify ZKPs, validate transactions and produce blocks (if validator)
+- Can serve as prover nodes (ZKP generation) and validators
 - Rely on other history nodes for initial sync
 
 ### Full Nodes
@@ -116,8 +118,8 @@ When a node starts, it follows this coordination pattern:
 
 1. **Peer Discovery** through the network layer
 2. **Macro Sync Strategy Sync** based on node configuration
-3. **Consensus Detection** through peer agreement analysis
-4. **Live Sync Transition** to maintain real-time synchronization
+3. **Live Sync Transition** to maintain real-time synchronization
+4. **Consensus Detection** through peer agreement analysis
 
 The `Consensus` component orchestrates this process, while the `Syncer` manages strategy-specific implementations through pluggable trait interfaces.
 

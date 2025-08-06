@@ -129,7 +129,7 @@ The sync system frequently needs to communicate with multiple peers at once, suc
 
 **Peer Banning**: Peers that provide invalid data or misbehave are subject to banning or disconnection. This mechanism protects the node from malicious actors and helps maintain the network's integrity and security.
 
-**State Recovery**: Blockchain state corruption triggers automatic re-sync from clean state with peer validation.
+**State Recovery**: When errors occur pushing blocks or chunks, the system discards pending chunks and requests chunks again starting from the earliest missing key in the local accounts tree state.
 
 **`EitherSyncer`**: This abstraction enables seamless runtime fallback between sync strategies, such as automatically switching from Pico Macro Sync to Light Macro Sync when conflicts are detected, without disrupting the overall sync process.
 

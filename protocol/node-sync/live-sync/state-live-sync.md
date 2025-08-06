@@ -16,7 +16,7 @@ Every other node type doesn't use State Live Sync. Instead, they transition to *
 
 ## How It Works
 
-The `StateLiveSync` manages both block and state synchronization through a layered queue system. It processes incoming blocks while simultaneously requesting and applying state chunks to maintain complete blockchain state. The sync monitors account tree completeness and automatically triggers state synchronization when gaps are detected.
+The `StateLiveSync` manages both block and state synchronization through a layered queue system. It processes incoming blocks while simultaneously requesting and applying state chunks in order to eventually reach a complete blockchain state. The sync monitors account tree completeness and automatically triggers state synchronization when gaps are detected.
 
 The `StateLiveSync` follows a dual-request pattern combining block and state synchronization:
 
@@ -172,11 +172,11 @@ When the account tree is incomplete, the node initiates chunk-based reconstructi
 
 ### 4. Block & State Application
 
-Validate and apply both blocks and chunks atomically:
+Process blocks and chunks in the following order:
 
 - **Block Validation**: Standard block signature and intrinsic validation
-- **Chunk Application**: Apply state chunks via `commit_chunks()` to rebuild account trie
-- **Atomic Updates**: Ensure consistent state between blocks and chunks using `push_block_and_chunks()`
+- **Block Push**: Apply validated blocks to the blockchain
+- **Chunk Push**: Apply state chunks via `commit_chunks()` to rebuild account trie
 - **BLS Cache Updates**: Update validator key cache for performance optimization
 
 ### 5. State Completion Tracking & Diff Mode
@@ -201,18 +201,13 @@ Handle blockchain reorganizations gracefully:
 
 State Live Sync emits structured events for different synchronization scenarios:
 
-**Block Events:**
+**Block and State Events:**
 
 - `AcceptedAnnouncedBlock(hash)` - Real-time block accepted
 - `AcceptedBufferedBlock(hash, buffer_size)` - Buffered block applied
 - `ReceivedMissingBlocks(hashes)` - Missing blocks successfully received
 - `RejectedBlock(hash)` - Block validation failed
-
-**State Events:**
-
 - `AcceptedChunks(hash)` - State chunks applied for head block
-- `StateComplete` - Account trie reconstruction completed
-- `DiffApplied(hash)` - Tree diff successfully applied for incremental update
 
 **Peer Events:**
 

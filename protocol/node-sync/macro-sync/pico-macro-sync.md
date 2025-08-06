@@ -12,13 +12,17 @@ Pico Macro Sync is a lightweight sync mechanism designed for resource-constraine
 
 ## How It Works
 
-The `PicoMacroSync` manages macro block synchronization for each peer individually. It handles peer communication, requests block headers, tracks active synchronization peers, and detects conflicts that may require falling back to a more robust sync mechanism.
+The `PicoMacroSync` manages macro block synchronization for each peer individually using a two-step process optimized for speed and efficiency.
 
-The `PicoMacroSync` follows a minimal request pattern optimized for light clients:
+The `PicoMacroSync` follows a minimal request pattern:
 
-1. **RequestHead** → Ask peer's current head state and verifies `macro_hash`and `election_hash`
-2. **RequestMacroChain** → Selectively download macro blocks using hash locators
-3. **RequestBlock** → Retrieve individual election/checkpoint blocks as needed
+1. **RequestHead** → Request the peer's head which returns the peer's election hash and the peer's latest macro block hash
+2. **RequestBlock** → Use those hashes to request the respective blocks and apply them to the blockchain
+3. **Then either:**
+
+    3.1 **First-time sync (at genesis block):** The blocks are simply applied to the blockchain, or
+
+    3.2 **Subsequent peer syncs:** The node compares the peer's head hashes to what it already has. If they are equal, the peer is marked as `Good`. If the hashes are different, there's a conflict and the node falls back to the regular macro sync mechanism.
 
 The complete message specifications are documented in the [Network Protocol](/protocol/node-sync/network-protocol) document.
 
@@ -113,6 +117,7 @@ Fallback to `LightMacroSync` is triggered when:
 - Block validation fails during push operations
 - Peer provides blocks from wrong epoch
 - Network errors or malicious peer behavior detected
+- Peer state differs from current local state
 
 The `EitherSyncer` enum allows transitions between sync mechanisms:
 

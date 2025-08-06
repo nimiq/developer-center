@@ -17,7 +17,7 @@ The `LightMacroSync` manages ZKP-verified macro block synchronization for each p
 
 The `LightMacroSync` follows a ZKP-secured request pattern:
 
-1. **RequestZKP** → Request and validate ZKPs from [prover nodes](/protocol/zkp/prover-node)
+1. **RequestZKP** → Request and validate ZKPs from any node (any node type has the last ZKP proof it has seen)
 2. **RequestMacroChain** → Request epoch IDs using known block locators
 3. **RequestBlock** → Retrieve specific macro blocks with verified hashes
 4. **RequestHistoryChunk** → Validate transaction history within the validity window (full nodes only)
@@ -127,7 +127,7 @@ For full nodes, the Light Macro Sync includes an additional step to synchronize 
 
 The ZKP component provides cryptographic security with:
 
-- **Proof Generation**: Prover nodes generate proofs for their latest macro state
+- **Proof Generation**: Prover nodes generate proofs for their latest election block
 - **Proof Verification**: Local verification before applying any state changes
 
 Learn more about ZKP and Nimiq’s use of recursive zk-SNARKs [here](/protocol/zkp/ZKP-and-recursive-SNARKs).
@@ -164,7 +164,7 @@ Light Macro Sync emits structured events for different synchronization scenarios
 
 **Sync Events:**
 
-- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized with ZKP verification complete
+- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized with ZKP verification complete and reached the most recent macro block
 - `MacroSyncReturn::Outdated(peer_id)` - Peer provided outdated blocks or failed validation
 - `MacroSyncReturn::Incompatible(peer_id)` - Peer doesn't provide required services for synchronization; _Example: A light node cannot serve a full node because it does not store the vallidity window, making it incompatible for full nodes sync requests._
 

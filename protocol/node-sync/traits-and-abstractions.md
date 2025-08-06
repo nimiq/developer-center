@@ -51,7 +51,7 @@ Defines how the system processes, buffers, and applies incoming blocks to the bl
 **`ConsensusProxy`**
 
 - Thread-safe, cloneable interface to consensus functionality
-- Provides transaction sending, state queries, block resolution
+- Provides transaction sending, state querying, and block resolution capabilities
 
 **`Syncer`**
 
@@ -113,7 +113,7 @@ Same live sync coordination logic works with different processing strategies: `L
 
 ## TL;DR
 
-1. **`MacroSync`** → Node-specific strategies to reach current network state
+1. **`MacroSync`** → Node-specific strategies to reach the latest macro block
 
 2. **`LiveSync`** → Real-time synchronization phase: coordination with specialized queues (`LiveSyncQueue`) for different data requirements
 

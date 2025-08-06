@@ -77,7 +77,6 @@ Each incoming block is classified by the queue as:
 - **Head** – Parent known, block processed immediately.
 - **Buffered** – Block ahead of current state, stored temporarily.
 - **Missing** – Block cannot be processed due to gaps; predecessor requested.
-- **Peer Desync** – Peer is too far ahead or behind; peer is disconnected.
 
 ### **3. Missing Block Resolution**
 
@@ -86,7 +85,7 @@ When the system detects chain gaps:
 - Generate block locators from current head to last macro block
 - Send `RequestMissingBlocks` with target hash and locators
 - Track pending requests to avoid duplicates
-- Once the chain is complete, the node processes all buffered blocks in order.
+- Once the gaps are filled, the node processes all buffered blocks in order.
 
 ### **4. Blockchain Integration**
 
