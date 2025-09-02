@@ -17,7 +17,6 @@ export const themeConfig = {
           label: 'Overview & Fundamentals',
           items: [
             { text: 'Home', link: '/protocol/', icon: 'i-tabler:home' },
-            { text: 'Overview', link: '/protocol/overview', icon: 'i-tabler:layout-grid' },
             { text: 'Glossary', link: '/protocol/glossary', icon: 'i-tabler:book-2' },
             { text: 'Accounts', link: '/protocol/accounts', icon: 'i-tabler:user' },
             { text: 'Transactions', link: '/protocol/transactions', icon: 'i-tabler:receipt' },
