@@ -5,15 +5,15 @@ If you're unsure which client to use for interacting with the Nimiq blockchain, 
 ## TL;DR
 The Nimiq Web Client establishes direct connections with other peers in the network, making it a part of the blockchain network. In contrast, the RPC follows a client-server model, where clients connect to a single server that interacts with multiple peers on the network. The Web Client operates in JavaScript environments, such as web browsers and Node.js, while the RPC can be used from any programming language and environment through HTTP calls.
 
-<img class="object-contain max-h-[max(60vh,180px)]" src="/assets/images/protocol/network.png" alt="web client vs rpc" />
+<img class="object-contain max-h-[max(60vh,180px)]" src="/assets/images/protocol/network.png" alt="Web Client vs RPC" />
 
 ## Nimiq Web Client
 
-The [Nimiq Web Client](/web-client) is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem. It can run in environments including web browsers as well as server-side environments like Node.js. This client is compiled from Rust to WebAssembly using `wasm-pack` and it offers a lightweight solution for users who want to interact with the Nimiq blockchain.
+The [Nimiq Web Client](/web-client) is a JavaScript library that enables direct participation in the Nimiq PoS ecosystem. It can run in environments including web browsers as well as server-side environments like Node.js. This client is compiled from Rust to WebAssembly using `wasm-pack` and offers a lightweight solution for users who want to interact with the Nimiq blockchain.
 
-The Web Client provides a user-friendly interface for building consensus with other nodes, creating wallets, sending transactions, and interacting with the blockchain with simple operations. It simplifies user interaction and offers easy integration.
+The Web Client provides a user-friendly interface for building consensus with other nodes, creating wallets, sending transactions, and interacting with the blockchain through simple operations. It simplifies user interaction and offers easy integration.
 
-Users can access the Web Client on mobile devices, such as smartphones and tablets, providing flexibility and convenience for managing their Nimiq wallets and transactions on the go. The Web Client is designed to be compatible with major web browsers, including Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari ensuring a consistent user experience across different platforms.
+Users can access the Web Client on mobile devices, such as smartphones and tablets, providing flexibility and convenience for managing their Nimiq wallets and transactions on the go. The Web Client is designed to be compatible with major web browsers, including Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari, ensuring a consistent user experience across different platforms.
 
 ## Nimiq RPC
 
@@ -28,8 +28,8 @@ RPC supports interaction with nodes and allows users to call its endpoints using
 | Aspect | Web Client | RPC Client |
 | --- | --- | --- |
 | **Use Cases** | Nimiq Wallet, Nimiq Pay, browser dApps | TrustWallet, Block Explorer, server applications |
-| **Accessibility** | Requires familiarity with JavaScript and similar frameworks like NodeJS; can be run in a browser | Requires adherence to the JSON-RPC specification |
-| **Functionality** | Offers lightweight access to blockchain operations, and functions as a light node within the network | Offers full node control, providing a wider range of options, particularly for managing full and history nodes |
+| **Accessibility** | Requires familiarity with JavaScript and similar frameworks like Node.js; can be run in a browser | Requires adherence to the JSON-RPC specification |
+| **Functionality** | Offers lightweight access to blockchain operations and functions as a light node within the network | Offers full node control, providing a wider range of options, particularly for managing full and history nodes |
 | **User Base** | For developers capable of managing consensus within a JavaScript environment | For developers seeking to retrieve data efficiently within a stable client and manage their node |
 | **Infrastructure** | No server infrastructure required | Requires running a Nimiq node |
 | **Performance** | Peer-to-peer, direct blockchain access | Centralized through your node |
@@ -65,7 +65,7 @@ For users seeking a straightforward and user-friendly way to interact with the b
 
 ### RPC Capabilities
 
-For developers, tech-savvies, and validators looking for more advanced control over blockchain operations, the Nimiq RPC provides extensive capabilities for accessing their nodes. Through established methods and endpoints, users can perform a wide range of operations, including:
+For developers, tech-savvy users, and validators looking for more advanced control over blockchain operations, the Nimiq RPC provides extensive capabilities for accessing their nodes. Through established methods and endpoints, users can perform a wide range of operations, including:
 
 - Lock and unlock accounts
 - Verify transactions
@@ -86,4 +86,4 @@ Now that you know the differences, why not start building?
 
 ## Learn More
 
-Curious about how the Nimiq blockchain works? Dive into the [Nimiq Albatross protocol documentation](/protocol/) to learn more about the consensus algorithm, block structure, network protocol and more.
+Curious about how the Nimiq blockchain works? Dive into the [Nimiq Albatross protocol documentation](/protocol/index) to learn more about the consensus algorithm, block structure, network protocol, and more.

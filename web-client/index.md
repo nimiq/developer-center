@@ -77,7 +77,7 @@ alternativeOptions:
   align: left
   buttons:
     - text: Explore RPC Documentation
-      href: ../rpc/
+      href: ../rpc-client/
       variant: primary
     - text: Compare Web Client vs RPC
       href: ./web-client-vs-rpc
@@ -229,7 +229,7 @@ const client = await Nimiq.Client.create(config.build())
 await client.waitForConsensusEstablished()
 ```
 
-```js [NodeJS]
+```js [Node.js]
 import Nimiq from '@nimiq/core'
 
 const config = new Nimiq.ClientConfiguration()
