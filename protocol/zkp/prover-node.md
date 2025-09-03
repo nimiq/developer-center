@@ -1,4 +1,4 @@
-# Prover node
+# Prover Node
 
 A prover node is a particular type of node that generates zero-knowledge proofs (zkp). A zero-knowledge proof is a method of proving a statement between two parties - a prover and a verifier. Read [this post](/protocol/zkp/ZKP-and-recursive-SNARKs) for a detailed description of zero-knowledge proofs.
 
@@ -12,7 +12,7 @@ Zero-knowledge proofs prove the chain’s integrity from the genesis block to th
 
 From the verifier side, receiving and verifying a zero-knowledge proof is a fast process, but generating such proof takes significant computational power and space from the prover node side. Generating these proofs takes time but verifying them is a quick process.
 
-## Prover component
+## Prover Component
 
 Each node in the network has a particular component within its configuration - the [zkp component](https://github.com/nimiq/core-rs-albatross/blob/ac50167e912b8e36223675495eed1ecd9e226b1c/zkp-component/src/zkp_component.rs). The component allows nodes to perform multiple tasks such as proof storage, proof of network communication, thus requests and gossip, and optionally proof generation.
 
@@ -26,17 +26,17 @@ The zkp component also holds a database that allows nodes to store zero-knowledg
 
 If a synced node loses connection, it can reconnect by providing the block number of the last zero-knowledge proof stored in its database. But if it doesn't have its database active and loses connection when reconnecting, it will have to resync from the start of the chain, thus from the genesis block, as it can't fetch old proofs.
 
-## Implementation of a zero-knowledge proof
+## Implementation of a Zero-knowledge Proof
 
 Zero-knowledge proofs are generated based on three conditions - correctness, soundness, and zero-knowledge. Therefore, by respecting these conditions, the proof attests to the validity of the block production from the genesis block to the respective election block.
 
 There is a possible delay in the zero-knowledge proof generation, where a new election block comes in while the prover node is still generating the proof for the previous election block. Considering this delay, prover nodes provide the latest proof available.
 
-When nodes first sync to the chain, they start at block 0 or genesis block, which is an election block. The genesis block comes with a null proof as it doesn’t contain any element to enable zero-knowledge proof generation. Prover nodes generate these proofs at every election block after the PoS genesis block.
+When nodes first sync to the chain, they start at block 0 or genesis block, which is an election block. The genesis block comes with a null proof as it doesn't contain any element to enable zero-knowledge proof generation. Prover nodes generate these proofs at every election block after the genesis block.
 
-## Generating a zero-knowledge proof
+## Generating a Zero-knowledge Proof
 
-The process of generating such proofs is resource-intensive and time-consuming, as it is, for instance, for a history node or a validator node. The prover node generates the proof, stores it in its memory, and propagates it among the network. Note that a zkp can only be generated if it has the feature`is_prover_node: true`.
+The process of generating such proofs is resource-intensive and time-consuming, as it is, for instance, for a history node or a validator node. The prover node generates the proof, stores it in its memory, and propagates it among the network. Note that a zkp can only be generated if it has the feature `is_prover_node: true`.
 
 The proof consists of the last election block number and the proof itself, as follows:
 
@@ -54,9 +54,9 @@ In case of a first connection with the network, the node provides the `block_num
 
 In the case of a node that was synced and had a zero-knowledge proof for election block 43200 in its database, the resync method would differ. If it gets disconnected by chance, when reconnecting again, this node can try to resync with the chain by requesting a zkp more recent than block 43200. However, if this same node hadn't activated the database feature, it would be unable to resync from the same point and have to sync from the genesis block.
 
-Mind that both cases depend on the type of node syncing, as sync with a zero-knowledge proof only applies to light nodes and full nodes.
+Note that both cases depend on the type of node syncing, as sync with a zero-knowledge proof only applies to light nodes and full nodes.
 
-## Requesting a zero-knowledge proof
+## Requesting a Zero-knowledge Proof
 
 The requesting node, rather than downloading and verifying all election macro blocks since the genesis block, can verify the chain's validity with a zero-knowledge proof upon request. Once a node receives a proof, it first verifies it and then stores it using the zkp component and enabling the database feature.
 
@@ -76,7 +76,7 @@ pub struct RequestZKP {
 - The `block_number` expected is the last election block the node knows of.
 - If the `request_election_block` is `true`, the node expects to receive the complete election block; if set to `false`, the node expects to receive the most recent election block number and the proof.
 
-### Syncing to the blockchain:
+### Syncing to the Blockchain
 
 1. node connects to the network
 2. node requests a zkp by providing the genesis block as `block_number`
@@ -84,7 +84,7 @@ pub struct RequestZKP {
 4. node stores the zkp
 5. node continues the syncing process
 
-### Resyncing to the blockchain:
+### Resyncing to the Blockchain
 
 1. node reconnects to the network
 2. node requests a zkp by providing the `block_number` of the latest zkp in its database
@@ -92,6 +92,6 @@ pub struct RequestZKP {
 4. node stores the zkp
 5. node continues the syncing process
 
-#### See also
+#### See Also
 
 To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](/validators/prover-node-guide).

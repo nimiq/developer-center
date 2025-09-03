@@ -63,7 +63,7 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 
 **Proxy Architecture**: Both components use proxy patterns (`ConsensusProxy`, `SyncerProxy`) to provide thread-safe async interfaces while maintaining clear separation between coordination logic and external access.
 
-**`RemoteDataStore` and Event Dispatcher**: Supporting components as `RemoteDataStore` and `RemoteEventDispatcher` provide remote access to account, validator, and staker data, and enable address-based event subscriptions.
+**`RemoteDataStore` and Event Dispatcher**: Supporting components such as `RemoteDataStore` and `RemoteEventDispatcher` provide remote access to account, validator, and staker data, and enable address-based event subscriptions.
 
 ### Strategy Implementation Layer
 
@@ -81,7 +81,7 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 
 - **Good**: Successfully synchronized to peer's macro state
 - **Outdated**: Peer is behind local chain or provided outdated information
-- **Incompatible**: Peer doesn't provide required services for synchronization; _Example: full node cannot serve a syncing history node_
+- **Incompatible**: Peer does not provide required services for synchronization; _Example: full node cannot serve a syncing history node_
 - **Conflicting**: Peer provided conflicting blockchain data (triggers fallback in Pico Sync)
 
 **Live Sync Classification**:
@@ -121,7 +121,7 @@ The sync system frequently needs to communicate with multiple peers at once, suc
 
 **ZKP Security**: Full and light nodes achieve high security through zero-knowledge proof verification.
 
-**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to cryptographic verification when conflicts detected.
+**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to cryptographic verification when conflicts are detected.
 
 ## Error Handling
 

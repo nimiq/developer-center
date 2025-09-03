@@ -4,7 +4,7 @@ Validators are the block producers of PoS blockchains. They are responsible for 
 
 However, any attempt to undermine the consensus, such as through misbehavior or malicious actions, results in punishments, including burning their rewards and/or jailing, effectively removing them from network participation for a defined period.
 
-To become a validator in the Nimiq blockchain, a node must have a Nimiq wallet and create a validator node. A minimum deposit of 100 000 NIM is required to ensure the validator remains active, prevent block production delays, and discourage malicious behavior. This deposit also discourages the creation of validator accounts that could be abandoned and take up unnecessary network resources.
+To become a validator in the Nimiq blockchain, a node must have a Nimiq wallet and create a validator node. A minimum deposit of 100'000 NIM is required to ensure the validator remains active, prevent block production delays, and discourage malicious behavior. This deposit also discourages the creation of validator accounts that could be abandoned and take up unnecessary network resources.
 
 Each validator has its own account. Once the node sends a transaction to create an account in the staking contract as a validator, the following data is associated with the validator:
 

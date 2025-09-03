@@ -1,4 +1,4 @@
-# Skip blocks
+# Skip Blocks
 
 Skip blocks are a special type of [micro block](/protocol/consensus/block-format#micro-blocks) in the consensus protocol. When a validator fails to produce a block within the expected timeframe, the remaining elected validators can collectively agree to add a skip block instead of the missing micro block. This prevents delays and ensures the blockchain progresses smoothly. Once a supermajority of elected validators agrees to add the skip block, the chain resumes its regular progression.
 
@@ -8,11 +8,11 @@ Skip blocks are canonical, meaning their structure is strictly determined by the
 
 ### Skip Block and Micro Block Differences
 
-Skip blocks are a special type of micro block, but because they don’t hold transactions, there are some key differences. Below are the main differences between a skip block and a regular micro block:
+Skip blocks are a special type of micro block, but because they do not hold transactions, there are some key differences. Below are the main differences between a skip block and a regular micro block:
 
 | **Feature** | **Skip Block** | **Micro Block** |
 | --- | --- | --- |
-| **Body** | Empty – skip blocks have no transactions or equivocation proof data | Contains transaction data and possibly equivocation proofs |
+| **Body** | Empty - skip blocks have no transactions or equivocation proof data | Contains transaction data and possibly equivocation proofs |
 | **Body Root** | The `body_root` field in the block header is the hash of the empty body | The `body_root` is the hash of the body, which includes the transactions and equivocation proofs |
 | **Timestamp** | Derived from the previous block’s timestamp plus a fixed duration (4 seconds) | Generated based on the block’s production time by the assigned producer |
 | **Extra Data** | Must be empty to ensure the skip block is canonical | Can include additional data as required by the transactions or block producer |
@@ -34,9 +34,9 @@ A skip block is an agreement among validators to confirm they did not see a micr
 
 **There are only two outcomes for a delayed micro block:**
 
-- Receive 2*f*+1 signatures to a skip block, add it to the chain, and resume the block production
-- Wait to receive a micro block; if a validator doesn’t receive a skip block, it means that at least 2*f*+1 validators saw the expected micro block, and the remainder should receive it shortly
+- Receive 2*f*+1 signatures to a skip block, add it to the chain, and resume block production
+- Wait to receive a micro block; if a validator does not receive a skip block, it means that at least 2*f*+1 validators saw the expected micro block, and the remainder should receive it shortly
 
 ### Validator Penalty for Misbehavior
 
-A delay in the block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also results in the deactivation of the validator slot, although it can reactivate itself after one block. For more information on this misbehavior, see the [punishments document](/protocol/consensus/punishments#block-production-delay).
+A delay in block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also results in the deactivation of the validator slot, although it can reactivate itself after one block. For more information on this misbehavior, see the [punishments](/protocol/consensus/punishments#block-production-delay) document.

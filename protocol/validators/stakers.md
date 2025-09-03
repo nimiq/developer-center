@@ -6,7 +6,7 @@ A staker delegates its NIM to a validator, which validates blocks on its behalf.
 
 <div>
 
-### Stake states
+### Stake States
 
 **Active**: Funds actively participating in staking
 
@@ -36,7 +36,7 @@ A staker delegates its NIM to a validator, which validates blocks on its behalf.
 
 </div>
 
-### State transitions
+### State Transitions
 
 | From State | To State | Conditions/Notes |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ Transactions to activate, inactivate, and update stakes only take effect at the 
 
 ### Invariants
 
-There is a set of invariants or rules that ensure the transactions mentioned above don't fail. The following table outlines these key invariants and the transactions they affect:
+There is a set of invariants or rules that ensure the transactions mentioned above do not fail. The following table outlines these key invariants and the transactions they affect:
 
 | Invariant | Description | Affected Transactions |
 | --- | --- | --- |
@@ -100,11 +100,11 @@ There is a set of invariants or rules that ensure the transactions mentioned abo
 | Inactive balance and block height association | An associated block height is required for any inactive balance | Set Active Stake, Update Staker, Retire Stake |
 | Validator lock periods | Inactive funds are subject to lock periods based on validator status. If the validator is jailed, the longest period between the reporting window and the jail period applies | Set Active Stake, Update Staker, Retire Stake |
 
-### Edge cases
+### Edge Cases
 
 **Resetting the reporting window**: When a staker updates their inactive stake, the reporting window counter resets. For example, if there were 5 blocks left, it would reset at the next election block plus one epoch. This ensures that any potential misconduct by the validator during the initial period is still accounted for, maintaining the integrity of the staking process.
 
-**Immediate inactivation and** **retirement without a validator**: If a staker does not have a validator associated with them and wants to inactivate and retire their stake, they can do so immediately. Without an associated validator, there is no lock on their funds.
+**Immediate inactivation and retirement without a validator**: If a staker does not have a validator associated with them and wants to inactivate and retire their stake, they can do so immediately. Without an associated validator, there is no lock on their funds.
 
 **Removing stake requirements**: A staker can only remove their stake by completely withdrawing all the funds in the retired balance. The staker must first move all desired stake from active to inactive, then retire it before they can remove it. Partial removal from the retired balance is not allowed. However, a staker can retire a specific amount and leave a balance greater than the minimum stake in the non-retired states.
 

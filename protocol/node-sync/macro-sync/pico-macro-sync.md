@@ -68,7 +68,7 @@ pub struct PicoMacroSync<TNetwork: Network> {
 
 ### 1. Head Request
 
-The node sends a RequestHead message to the peer to obtain its current macro and election block hashes. Then, it extract the macro and election block hashes to determine the peer’s macro state and guide the next request.
+The node sends a RequestHead message to the peer to obtain its current macro and election block hashes. Then, it extracts the macro and election block hashes to determine the peer's macro state and guide the next request.
 
 ### 2. State Comparison
 
@@ -89,7 +89,7 @@ Request only the specific blocks needed:
 Apply blocks with simple validation rules:
 
 - **Election block**: Only accepted if local blockchain is at genesis
-- **Macro block**: Only accepted if it's the immediate next epoch
+- **Macro block**: Only accepted if it is the immediate next epoch
 - **Any other case**: Mark peer as `Conflicting`, fall back to Light Macro Sync
 
 ### 5. Verify Completion
@@ -136,7 +136,7 @@ Pico Macro Sync emits structured events for different synchronization scenarios:
 
 - `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized with optimistic validation
 - `MacroSyncReturn::Outdated(peer_id)` - Peer provided outdated blocks or failed basic validation
-- `MacroSyncReturn::Incompatible(peer_id)` - Peer doesn't provide required services for synchronization; _Example: A pico node cannot serve another pico node because it does not provide fully verifiable or authenticated data, making it incompatible for pico sync requests._
+- `MacroSyncReturn::Incompatible(peer_id)` - Peer does not provide required services for synchronization; _Example: A pico node cannot serve another pico node because it does not provide fully verifiable or authenticated data, making it incompatible for pico sync requests_
 - `MacroSyncReturn::Conflicting(peer_id)` - Peer provided conflicting blocks, triggering fallback to Light Macro Sync
 
 **Fallback Events:**

@@ -22,9 +22,9 @@ The `BlockLiveSync` manages real-time blockchain synchronization by processin
 
 The `BlockLiveSync` follows a reactive request pattern:
 
-- **Block Announcements** → Process incoming blocks via gossipsub.
-- **RequestMissingBlocks** → Request missing blocks when gaps are detected (see Network Messages).
-- **Block Buffering** → Buffer out-of-order blocks until predecessors arrive.
+- **Block Announcements** → Process incoming blocks via gossipsub
+- **RequestMissingBlocks** → Request missing blocks when gaps are detected (see Network Messages)
+- **Block Buffering** → Buffer out-of-order blocks until predecessors arrive
 
 ## **Architecture Overview**
 
@@ -74,18 +74,18 @@ Each block is classified with its source for proper validation and peer manage
 
 Each incoming block is classified by the queue as:
 
-- **Head** – Parent known, block processed immediately.
-- **Buffered** – Block ahead of current state, stored temporarily.
-- **Missing** – Block cannot be processed due to gaps; predecessor requested.
+- **Head** – Parent known, block processed immediately
+- **Buffered** – Block ahead of current state, stored temporarily
+- **Missing** – Block cannot be processed due to gaps; predecessor requested
 
 ### **3. Missing Block Resolution**
 
 When the system detects chain gaps:
 
-- Generate block locators from current head to last macro block
-- Send `RequestMissingBlocks` with target hash and locators
+- Generate block locators from current head to last macro block
+- Send `RequestMissingBlocks` with target hash and locators
 - Track pending requests to avoid duplicates
-- Once the gaps are filled, the node processes all buffered blocks in order.
+- Once the gaps are filled, the node processes all buffered blocks in order
 
 ### **4. Blockchain Integration**
 
@@ -114,8 +114,8 @@ pub struct QueueConfig {
 }
 ```
 
-- **History Nodes** → Download full transaction data for archival purposes.
-- **Light/Pico Nodes** → Download headers only for efficient operation.
+- **History Nodes** → Download full transaction data for archival purposes
+- **Light/Pico Nodes** → Download headers only for efficient operation
 
 ## Event Processing
 

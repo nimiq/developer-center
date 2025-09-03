@@ -1,8 +1,8 @@
 # Transactions
 
-Transactions modify the state of the Nimiq blockchain according to protocol rules and enable transfers of value and contract interactions. These transactions are stored in the micro block's body. This document provides a technical overview of transaction structure, common transaction issues, transaction finality, and system operations known as inherents in the Nimiq blockchain.
+Transactions modify the state of the Nimiq blockchain according to protocol rules and enable value transfers and contract interactions. These transactions are stored in the micro block's body. This document provides a technical overview of transaction structure, common transaction issues, transaction finality, and system operations known as inherents in the Nimiq blockchain.
 
-#### Types of Accounts
+## Types of Accounts
 
 Nimiq supports four types of accounts, each designed for different purposes:
 
@@ -13,7 +13,7 @@ Nimiq supports four types of accounts, each designed for different purposes:
 
 Each account type processes transactions differently to meet its specific use case. For more details, refer to the [accounts](/protocol/accounts) documentation.
 
-#### Transaction Prioritization and Mempool
+## Transaction Prioritization and Mempool
 
 Transactions are first placed in the mempool, waiting for validation. Nimiq has two mempools:
 
@@ -41,8 +41,8 @@ Once selected by a validator, transactions are validated and included in a block
 
 **Additional Considerations**
 
-- **Variations in Transaction Structure**: Different account types (basic, HTLC, vesting, staking) may have variations in their transaction structure. These variations ensure that each account type processes transactions according to its purpose and function within the protocol
-- **Incoming and Outgoing Transactions**: The network distinguishes between incoming and outgoing transactions. **Incoming transactions** are related to operations within an account such as adding stake or creating an account, while **outgoing transactions** involve external account operations that affect the network state, such as deleting a validator or removing stake
+- **Variations in Transaction Structure**: Different account types (basic, HTLC, vesting, staking) may have variations in their transaction structure. These variations ensure that each account type processes transactions according to its specific purpose and function within the protocol
+- **Incoming and Outgoing Transactions**: The network distinguishes between incoming and outgoing transactions. **Incoming transactions** are related to operations within an account, such as adding stake or creating an account. **Outgoing transactions** involve external account operations that affect the network state, such as deleting a validator or removing stake
 - **Zero-Value Transactions**: Staking transactions can have a zero `value` field for contract interaction without fund transfer
 - **Serialization and Deserialization**: Transactions are **serialized** to reduce size for transmission and **deserialized** by nodes for validation and processing across the network
 
@@ -58,7 +58,7 @@ Transactions go through multiple stages of verification before being added to a 
 
 ### Transaction Builder Errors
 
-Deals with missing or invalid fields when creating transaction. If any of the following errors occur, the transaction will not even be sent:
+Deals with missing or invalid fields when creating transactions. If any of the following errors occur, the transaction will not even be sent:
 
 - **No Sender**: The sender address is missing from the transaction
 - **No Recipient**: The recipient address is missing. A valid recipient must be provided
@@ -70,7 +70,7 @@ Deals with missing or invalid fields when creating transaction. If any of the fo
 
 ### Transaction Error
 
-Deals with transaction execution issues once it is submitted to the network:
+Deals with transaction execution issues when it is submitted to the network:
 
 - **Foreign Network**: The transaction is intended for a network other than the one it was submitted to (a transaction for the Testnet being submitted to the Mainnet)
 - **Zero Value**: The transaction’s value is set to zero when it’s not allowed. Transactions that transfer funds must have a non-zero value unless they are specific contract interactions that permit zero-value transactions
@@ -83,14 +83,14 @@ Deals with transaction execution issues once it is submitted to the network:
 - **Invalid Data**: The transaction contains invalid data, which could refer to incorrect parameters or malformed data fields
 - **Invalid Serialization**: There is an issue with the serialization of the transaction, typically occurring during the encoding or decoding process
 
-### Failed transactions
+### Failed Transactions
 
 The final verification of a transaction occurs before it enters the mempool. Even if it passes earlier stages, it can fail if the sender lacks sufficient funds. Validators ensure the sender can cover the transaction fees before adding it to the mempool. If the sender does not even have enough for the fees, the transaction is deemed invalid and not processed.
 
 Including a transaction in a block may succeed or fail:
 
-- **Successful**: the sender has enough funds to cover both the transaction value and fees, and the user’s balance is updated
-- **Failed**: the sender has insufficient funds to pay out the transaction value but transaction fees can be deducted
+- **Successful**: The sender has enough funds to cover both the transaction value and fees, and the user's balance is updated
+- **Failed**: The sender has insufficient funds to pay out the transaction value but transaction fees can be deducted
 
 **Example Scenario**
 

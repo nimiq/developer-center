@@ -123,7 +123,7 @@ Uses `include_body: false` for quick verification, `include_body: true` for full
 **Error handling**:
 
 - `TargetHashNotFound` (block unknown to peer)
-- `ResponseHashMismatch` (response doesn't match requested hash)
+- `ResponseHashMismatch` (response does not match requested hash)
 
 ### RequestMissingBlocks
 
@@ -246,14 +246,14 @@ pub struct ResponseTransactionsProof {
 
 **Error handling**:
 
-- `NoTransactionsProvided` (empty hash list)
-- `TooManyTransactionsProvided` (reduce hash list size)
-- `RequestedTxnProofFromFuture` (block doesn't exist yet)
-- `RequestedTxnProofFromFinalizedEpoch` (use election block instead)
-- `RequestedTxnProofFromFinalizedBatch` (use checkpoint block instead)
-- `BlockNotFound` (specified block unknown)
-- `CouldntProveInclusion` (proof generation failed)
-- `TransactionNotFound` (transaction not in block)
+- `NoTransactionsProvided` (empty hash list)
+- `TooManyTransactionsProvided` (reduce hash list size)
+- `RequestedTxnProofFromFuture` (block does not exist yet)
+- `RequestedTxnProofFromFinalizedEpoch` (use election block instead)
+- `RequestedTxnProofFromFinalizedBatch` (use checkpoint block instead)
+- `BlockNotFound` (specified block unknown)
+- `CouldntProveInclusion` (proof generation failed)
+- `TransactionNotFound` (transaction not in block)
 
 ### RequestTransactionReceiptsByAddress
 
@@ -272,7 +272,7 @@ pub struct ResponseTransactionReceiptsByAddress {
 }
 ```
 
-Uses `max` to limit response size. Use `start_at` with a transaction hash to retrieve transactions that occurred before that hash. If the `start_at` hash is not found or doesn't belong to the address, returns an empty list. Results are ordered newest to oldest.
+Uses `max` to limit response size. Use `start_at` with a transaction hash to retrieve transactions that occurred before that hash. If the `start_at` hash is not found or does not belong to the address, returns an empty list. Results are ordered newest to oldest.
 
 **Error handling**: No specific errors (always returns response, potentially empty)
 
@@ -299,7 +299,7 @@ Requests proofs for multiple addresses simultaneously to batch verification. Use
 **Error handling**:
 
 - `TooManyKeys` (reduce number of addresses requested)
-- `IncompleteTrie` (peer doesn't have complete trie state)
+- `IncompleteTrie` (peer does not have complete trie state)
 
 ### RequestBlocksProof
 

@@ -69,10 +69,10 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 
 ### Service Nodes
 
-**[Prover Nodes](/learn/protocol/prover-node.md)**:
-Generate [zero-knowledge proofs](/learn/protocol/ZKP-and-recursive-SNARKs.md) for light and full node sync. Require significant computational resources.
+**[Prover Nodes](/protocol/zkp/prover-node)**:
+Generate [zero-knowledge proofs](/protocol/zkp/ZKP-and-recursive-SNARKs) for light and full node sync. Require significant computational resources.
 
-**[Validator Nodes](/learn/protocol/validators/validators.md)**:
+**[Validator Nodes](/protocol/validators/validators)**:
 Produce blocks and participate in consensus. Any node with a minimum of 100'000 NIM deposit that runs a full or history client can become a validator.
 
 ## Architecture Components

@@ -44,31 +44,31 @@ pub struct HistoryMacroSync<TNetwork: Network> {
 
 ### 1. Macro Chain Discovery
 
-- The node sends `RequestMacroChain` to peers to discover epoch IDs and identify checkpoint blocks.
-- Block locators help find the highest common block between the node and its peers.
+- The node sends `RequestMacroChain` to peers to discover epoch IDs and identify checkpoint blocks
+- Block locators help find the highest common block between the node and its peers
 
 ### 2. Parallel Batch Set Downloads per Cluster
 
-- The node creates one or more `SyncCluster`s instances responsible for specific epoch ranges.
-- It sends `RequestBatchSet` messages to retrieve macro blocks along with metadata.
-- Macro blocks are stored but not yet applied until their history is complete.
+- The node creates one or more `SyncCluster`s instances responsible for specific epoch ranges
+- It sends `RequestBatchSet` messages to retrieve macro blocks along with metadata
+- Macro blocks are stored but not yet applied until their history is complete
 
 ### 3. History Chunks Downloads
 
-- The node sends `RequestHistoryChunk` messages to download transaction history in manageable chunks.
-- Each `SyncCluster` manages its own queue, allowing multiple history chunks to be retrieved in parallel.
-- History chunks are verified using Merkle proofs against the macro block's history root.
+- The node sends `RequestHistoryChunk` messages to download transaction history in manageable chunks
+- Each `SyncCluster` manages its own queue, allowing multiple history chunks to be retrieved in parallel
+- History chunks are verified using Merkle proofs against the macro block's history root
 
 ### 4. Block Application
 
-- Once all required history is downloaded and verified, the node applies macro blocks using `push_history_sync()`.
-- This process updates the blockchain state without replaying every transaction.
+- Once all required history is downloaded and verified, the node applies macro blocks using `push_history_sync()`
+- This process updates the blockchain state without replaying every transaction
 
 ### 5. Sync Completion
 
-- If the peer has no new epochs → Emit as `Good`.
-- If missing epochs are found → Continue processing.
-- If validation fails → Emit as `Outdated` or `Incompatible`.
+- If the peer has no new epochs → Emit as `Good`
+- If missing epochs are found → Continue processing
+- If validation fails → Emit as `Outdated` or `Incompatible`
 
 This cycle continues until all clusters complete and peers are fully synchronized.
 
@@ -76,9 +76,9 @@ This cycle continues until all clusters complete and peers are fully synchronize
 
 History Macro Sync uses multiple levels of parallelism to improve performance:
 
-- **Cluster-Level**: Multiple clusters process different epoch ranges simultaneously.
-- **Request-Level**: Batch set and history chunk requests proceed independently.
-- **Chunk-Level**: Multiple history chunks are downloaded in parallel per cluster.
+- **Cluster-Level**: Multiple clusters process different epoch ranges simultaneously
+- **Request-Level**: Batch set and history chunk requests proceed independently
+- **Chunk-Level**: Multiple history chunks are downloaded in parallel per cluster
 
 ### Cluster Architecture
 
@@ -121,9 +121,9 @@ History Macro Sync emits structured events for different peer synchronization sc
 
 **Sync Events:**
 
-- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized, no new epochs available.
-- `MacroSyncReturn::Outdated(peer_id)` - Peer validation failed or provided outdated information.
-- `MacroSyncReturn::Incompatible(peer_id)` - Peer doesn't provide required services for synchronization; _Example: A full node cannot serve a history node because it does not store the full transaction history from genesis, making it incompatible for history sync requests._
+- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized, no new epochs available
+- `MacroSyncReturn::Outdated(peer_id)` - Peer validation failed or provided outdated information
+- `MacroSyncReturn::Incompatible(peer_id)` - Peer does not provide required services for synchronization; _Example: A full node cannot serve a history node because it does not store the full transaction history from genesis, making it incompatible for history sync requests_
 
 **Progress Events:**
 

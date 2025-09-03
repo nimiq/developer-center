@@ -2,13 +2,13 @@
 
 Validators are responsible for ensuring the security and stability of a blockchain network. They are rewarded for participating and punished if they fail to contribute according to the consensus. Misbehaving always results in either losing the rewards or going to jail, where the validator gets locked up for a period and loses the rewards. The types of punishment are divided based on the severity of the misbehavior.
 
-Our blockchain deals with misbehavior based on the nature of the offense:
+The blockchain deals with misbehavior based on the nature of the offense:
 
 - A delay in block production constitutes a minor offense. In such cases, the associated slot is deactivated, and the rewards are burned.
 - For more severe offenses like forking, double voting, or double proposals, the validator is jailed. All validator slots are deactivated for a set period, and rewards for these slots are burned.
 
 > [!NOTE]
-> Burned rewards are sent to the burned address: `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`. Note that no one _can_ or _will_ use the funds sent to this address.
+> Burned rewards are sent to the burned address: `NQ07 0000 0000 0000 0000 0000 0000 0000 0000`. Note that no one can or will use the funds sent to this address.
 
 ## Block production delay
 
@@ -31,7 +31,7 @@ Any rational validator that witnesses one of these behaviors can report it by in
 As these are more severe offenses that interfere with the blockchain, the consequences are also more severe. When a validator is jailed:
 
 - It is immediately removed from the `active_validators` set, and all its slots are marked as punished in the `punished_slots` set in the staking contract.
-- It gets locked for 8 epochs. However, it is required to continue the block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
+- It gets locked for 8 epochs. However, it is required to continue block production until the end of the current batch and vote for Tendermint blocks until the end of the epoch; from thereafter, it is not considered for block production until the locking period ends. The withdrawal lock takes effect immediately upon getting jailed.
 - It loses its rewards for the jail period.
 
 The `active_validators` and `punished_slots` sets are updated at every block in the [staking contract](/protocol/validators/staking-contract). However, if a validator shifts from active to inactive or jailed, it is required to produce blocks until the current batch concludes, as it remains included in the validator slot list for that batch. However, it is no longer considered to produce blocks for further batches starting at the next checkpoint block.

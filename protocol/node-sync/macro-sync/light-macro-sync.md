@@ -166,7 +166,7 @@ Light Macro Sync emits structured events for different synchronization scenarios
 
 - `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized with ZKP verification complete and reached the most recent macro block
 - `MacroSyncReturn::Outdated(peer_id)` - Peer provided outdated blocks or failed validation
-- `MacroSyncReturn::Incompatible(peer_id)` - Peer doesn't provide required services for synchronization; _Example: A light node cannot serve a full node because it does not store the vallidity window, making it incompatible for full nodes sync requests._
+- `MacroSyncReturn::Incompatible(peer_id)` - Peer does not provide required services for synchronization; _Example: A light node cannot serve a full node because it does not store the validity window, making it incompatible for full nodes sync requests_
 
 **ZKP Events:**
 

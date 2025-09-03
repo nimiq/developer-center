@@ -31,7 +31,7 @@ Once caught up with the macro state, all node types need to stay current, but wi
 
 ### `LiveSyncQueue`
 
-Defines how the system processes, buffers, and applies incoming blocks to the blockchain for different node requirements. The same block coordination logic works for all node types, but each node type needs to process and apply the data differently. The `LiveSyncQueue` trait allows the same `LiveSyncer` coordinator to work with different processing strategies. The queue component plugs into `LiveSyncer` to define processing behavior. Determines what data gets requested and how it's applied.
+Defines how the system processes, buffers, and applies incoming blocks to the blockchain for different node requirements. The same block coordination logic works for all node types, but each node type needs to process and apply the data differently. The `LiveSyncQueue` trait allows the same `LiveSyncer` coordinator to work with different processing strategies. The queue component plugs into `LiveSyncer` to define processing behavior. Determines what data gets requested and how it is applied.
 
 **Key Implementations**:
 

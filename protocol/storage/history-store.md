@@ -1,6 +1,6 @@
 # History Store
 
-The History Store is a component of the blockchain that is responsible for recording and maintaining all transactions that have occurred on the blockchain. This system ensures the integrity and traceability of transactions, serving as both a record-keeping and indexing tool. It allows easy retrieval of transactions, such as locating all transactions associated with a specific address
+The History Store is a component of the blockchain that is responsible for recording and maintaining all transactions that have occurred on the blockchain. This system ensures the integrity and traceability of transactions, serving as both a record-keeping and indexing tool. It allows easy retrieval of transactions, such as locating all transactions associated with a specific address.
 
 ### Transaction Lifecycle
 
@@ -11,7 +11,7 @@ The History Store is a component of the blockchain that is responsible for recor
 
 ### History Store
 
-The History Store is responsible for keeping track of all transactions that have occurred on the blockchain. It ensures that these transactions are stored to allow for efficient proof and retrieval. The History Store includes:
+The History Store is responsible for keeping track of all transactions that have occurred on the blockchain. It ensures that these transactions are stored to enable efficient proof and retrieval. The History Store includes:
 
 1. **History trees (MMRs):** These trees store the hashes of transactions for each epoch in an MMR structure. They provide a way to prove that a transaction has been included in the blockchain.
 2. **Historic transactions:** These are detailed records of transactions, indexed by their epoch number and leaf index. They include additional data, such as block numbers and timestamps, that enable efficient retrieval.
@@ -25,7 +25,7 @@ The History Store is connected to each new block through the history tree root, 
 
 ### Validity Store and Validity Window
 
-The validity store is a subcomponent of the history store used by both full and history nodes to track transactions within the validity window. The validity window is a range of blocks within which a transaction must be included to be considered valid. This mechanism prevents duplicate transactions by ensuring that any given transaction can only be included once within the validity window.
+The validity store is a subcomponent of the History Store used by both full and history nodes to track transactions within the validity window. The validity window is a range of blocks within which a transaction must be included to be considered valid. This mechanism prevents duplicate transactions by ensuring that any given transaction can only be included once within the validity window.
 
 ### History Store Index
 
