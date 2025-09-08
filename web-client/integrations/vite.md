@@ -54,47 +54,6 @@ export default defineConfig({
 })
 ```
 
-### Advanced Configuration
-
-For production builds and advanced features:
-
-```javascript
-import { defineConfig } from 'vite'
-import topLevelAwait from 'vite-plugin-top-level-await'
-import wasm from 'vite-plugin-wasm'
-
-export default defineConfig({
-  plugins: [
-    wasm(),
-    topLevelAwait(),
-  ],
-  worker: {
-    plugins: () => [
-      wasm(),
-      topLevelAwait(),
-    ]
-  },
-  optimizeDeps: {
-    exclude: ['@nimiq/core'],
-  },
-  build: {
-    target: 'esnext', // Required for top-level await
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          nimiq: ['@nimiq/core']
-        }
-      }
-    }
-  },
-  server: {
-    fs: {
-      allow: ['..'] // Allow serving files from parent directories
-    }
-  }
-})
-```
-
 ## Usage Examples
 
 ### Basic Client Setup
@@ -220,7 +179,7 @@ await app.initialize()
 
 ### Vue 3 + Vite
 
-```javascript
+```javascript [JavaScript]
 import vue from '@vitejs/plugin-vue'
 // vite.config.js
 import { defineConfig } from 'vite'
