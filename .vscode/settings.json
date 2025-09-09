@@ -6,6 +6,10 @@
   "eslint.experimental.useFlatConfig": true,
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
+  "vue.server.includeLanguages": [
+    "vue",
+    "markdown"
+  ],
   "editor.formatOnSave": false,
   // Auto fix
   "editor.codeActionsOnSave": {
