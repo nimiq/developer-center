@@ -19,7 +19,10 @@ export function useCodeSnippet(method: MaybeRef<RpcPlaygroundMethod>) {
   function toHtml(codeSnippet: string, lang: string) {
     const html = ref('')
     // `v-html` does not work with promises
-    codeToHtml(codeSnippet, { theme: theme.value, lang }).then(c => html.value = c)
+    codeToHtml(codeSnippet, { theme: theme.value, lang }).then(c => html.value = c).catch((e) => {
+      console.warn('Failed to highlight code:', e)
+      html.value = `<pre><code>${codeSnippet}</code></pre>`
+    })
     return html
   }
 

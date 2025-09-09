@@ -50,9 +50,14 @@ export default defineConfig(async () => {
       },
     },
 
+    ssr: {
+      noExternal: ['shiki'],
+    },
+
     define: {
       __NIMIQ_OPENRPC_INFO__: JSON.stringify(openRpcDocInfo),
       __NIMIQ_OPENRPC_METHODS__: JSON.stringify(methods),
+      global: 'globalThis',
     },
 
     build: {

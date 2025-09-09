@@ -85,6 +85,9 @@
     "vitepress-plugin-llms": "^1.7.4"
   },
   "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@latest"
+    },
     "onlyBuiltDependencies": [
       "@swc/core",
       "bufferutil",
