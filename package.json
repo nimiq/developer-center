@@ -59,6 +59,7 @@
     "nimiq-css": "^1.0.0-beta.72",
     "nimiq-vitepress-theme": "^1.0.0-beta.72",
     "ofetch": "^1.4.1",
+    "oxc-minify": "^0.87.0",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
     "postcss": "^8.5.6",
