@@ -27,7 +27,9 @@ defineProps<Props>()
   <section relative>
     <NqHeadline :title :description :align z-100 />
     <div max-w-none="!" op-30 w-screen bottom-32 absolute>
-      <HexagonsBackground />
+      <ClientOnly>
+        <HexagonsBackground />
+      </ClientOnly>
     </div>
 
     <div grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>

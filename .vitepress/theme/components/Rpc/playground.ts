@@ -62,7 +62,7 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     }
     try {
       playground.value.state = 'loading'
-      const url = new URL(playgroundConfig.value.nodeUrl, window.location.origin)
+      const url = new URL(playgroundConfig.value.nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
       const options: HttpOptions = { url, auth }
       const parsedParams = Object.values(params).map((p, i) => {
