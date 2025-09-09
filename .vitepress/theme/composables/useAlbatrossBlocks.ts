@@ -44,7 +44,7 @@ function _useAlbatrossBlocks() {
 
   // Create state with ref to share between components
 
-  const url = `https://api.nimiq.dev/api/albatross/liveview/blocks`
+  const url = `https://nimiq-website.je-cf9.workers.dev/albatross-blocks`
   const { status, data } = useWebSocket(url, {
     onError() {
       console.error('[Albatross Liveview] Error connecting to Albatross Blocks WebSocket')
