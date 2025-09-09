@@ -1,4 +1,3 @@
-<br />
 <p align="center">
   <a href="https://github.com/nimiq/nimiq-developer-center">
     <img src="public/nimiq-dev-center-banner.png" alt="Nimiq Developer Center Logo" width="400" />
