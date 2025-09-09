@@ -42,8 +42,8 @@ importers:
         specifier: ^1.7.1
         version: 1.7.1(@vueuse/core@13.9.0(vue@3.5.21(typescript@5.9.2)))(vue@3.5.21(typescript@5.9.2))
       nimiq-rpc-client-ts:
-        specifier: 1.0.0-beta.28
-        version: 1.0.0-beta.28(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+        specifier: 1.0.0-beta.34
+        version: 1.0.0-beta.34(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       reka-ui:
         specifier: ^2.5.0
         version: 2.5.0(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2))
@@ -871,6 +871,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
 
+  '@libsql/isomorphic-ws@0.1.5':
+    resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
+
   '@napi-rs/wasm-runtime@1.0.3':
     resolution: {integrity: sha512-rZxtMsLwjdXkMUGC3WwsPwLNVqVqnTJT6MNIB6e+5fhMcSCPP0AOsNWuMQ5mdCq6HNjs/ZeWAEchpqeprqBD2Q==}
 
@@ -1392,6 +1395,9 @@ packages:
 
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
+
+  '@types/ws@8.18.1':
+    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   '@typescript-eslint/eslint-plugin@8.43.0':
     resolution: {integrity: sha512-8tg+gt7ENL7KewsKMKDHXR1vm8tt9eMxjJBYINf6swonlWgkYn5NwyIgXpbbDxTNU5DgpDFfj95prcTq2clIQQ==}
@@ -2701,11 +2707,6 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic-ws@5.0.0:
-    resolution: {integrity: sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==}
-    peerDependencies:
-      ws: '*'
-
   jiti@2.5.1:
     resolution: {integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==}
     hasBin: true
@@ -3183,8 +3184,8 @@ packages:
   nimiq-icons@1.0.0-beta.72:
     resolution: {integrity: sha512-ClVyCRRpbDMizdZxwLEHLoGPHiEFg45nBq1WwHvtT8NckLi85IiUYx+u81ENu18A5XEGyTMUpcww8aQ3cErW5Q==}
 
-  nimiq-rpc-client-ts@1.0.0-beta.28:
-    resolution: {integrity: sha512-whZ0SOyJ1IDeLMWJDkOBPhwtnrClAt/EuNnsoPhCqswqcb7wlYV3Sap3S60Q06IE1JGqfHB+4a4N5HSLeYwkZQ==}
+  nimiq-rpc-client-ts@1.0.0-beta.34:
+    resolution: {integrity: sha512-5Chc3tBpK8I4I8gyc86q8kYfPhmMmE+6rslwSXp8t4yYKlnORqxRuhpPOYzLxg+wyj4vc7xzwp4+e6G/F+M68g==}
 
   nimiq-vitepress-theme@1.0.0-beta.72:
     resolution: {integrity: sha512-lXI2ps3xIolNUXuzRFpZlfrHoqhgZpobJi8Zw2/r/uO9+e3BoF3rTCm3sVHXtpY+hm8IWSvVtmzpygVq7R67Bw==}
@@ -4903,6 +4904,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@libsql/isomorphic-ws@0.1.5(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@types/ws': 8.18.1
+      ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@napi-rs/wasm-runtime@1.0.3':
     dependencies:
       '@emnapi/core': 1.5.0
@@ -5298,6 +5307,10 @@ snapshots:
   '@types/web-bluetooth@0.0.20': {}
 
   '@types/web-bluetooth@0.0.21': {}
+
+  '@types/ws@8.18.1':
+    dependencies:
+      '@types/node': 24.3.1
 
   '@typescript-eslint/eslint-plugin@8.43.0(@typescript-eslint/parser@8.43.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)':
     dependencies:
@@ -6789,10 +6802,6 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-ws@5.0.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
-    dependencies:
-      ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-
   jiti@2.5.1: {}
 
   js-tokens@4.0.0: {}
@@ -7461,11 +7470,12 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  nimiq-rpc-client-ts@1.0.0-beta.28(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
+  nimiq-rpc-client-ts@1.0.0-beta.34(bufferutil@4.0.9)(utf-8-validate@5.0.10):
     dependencies:
-      isomorphic-ws: 5.0.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+      '@libsql/isomorphic-ws': 0.1.5(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
-      - ws
+      - bufferutil
+      - utf-8-validate
 
   nimiq-vitepress-theme@1.0.0-beta.72(typescript@5.9.2)(vitepress@2.0.0-alpha.12(@types/node@24.3.1)(change-case@5.4.4)(esbuild@0.25.9)(jiti@2.5.1)(less@4.4.1)(markdown-it-mathjax3@4.3.2)(oxc-minify@0.87.0)(postcss@8.5.6)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1)):
     dependencies:
