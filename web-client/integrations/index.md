@@ -59,7 +59,7 @@ The Nimiq Web Client is designed to work seamlessly with modern JavaScript devel
   <a href="./NextJS" nq-card p-24 no-underline hover:shadow-lg transition-shadow>
     <div flex="~ items-center gap-16" mb-16>
       <div i-logos:nextjs-icon text-32></div>
-      <h3 text="f-lg" font-bold mb-0">Next.js Integration</h3>
+      <h3 text="f-lg" font-bold mb-0>Next.js Integration</h3>
     </div>
     <p text="f-base neutral-700 dark:neutral-300" mb-16>
       Full-stack React applications with SSR, API routes, and optimized blockchain integration. Perfect for production apps.
@@ -79,7 +79,7 @@ The Nimiq Web Client is designed to work seamlessly with modern JavaScript devel
   <a href="./nuxt" nq-card p-24 no-underline hover:shadow-lg transition-shadow>
     <div flex="~ items-center gap-16" mb-16>
       <div i-logos:nuxt-icon text-32></div>
-      <h3 text="f-lg" font-bold mb-0">Nuxt Integration</h3>
+      <h3 text="f-lg" font-bold mb-0>Nuxt Integration</h3>
     </div>
     <p text="f-base neutral-700 dark:neutral-300" mb-16>
       Vue.js framework with server-side rendering, static generation, and auto-imports. Build full-stack blockchain apps.
@@ -99,7 +99,7 @@ The Nimiq Web Client is designed to work seamlessly with modern JavaScript devel
   <a href="./ESM" nq-card p-24 no-underline hover:shadow-lg transition-shadow>
     <div flex="~ items-center gap-16" mb-16>
       <div i-logos:javascript text-32></div>
-      <h3 text="f-lg" font-bold mb-0">ES Modules (ESM)</h3>
+      <h3 text="f-lg" font-bold mb-0>ES Modules (ESM)</h3>
     </div>
     <p text="f-base neutral-700 dark:neutral-300" mb-16>
       Modern JavaScript modules with tree-shaking and optimal bundle sizes. Native browser support.
@@ -114,7 +114,7 @@ The Nimiq Web Client is designed to work seamlessly with modern JavaScript devel
   <a href="./CommonJS" nq-card p-24 no-underline hover:shadow-lg transition-shadow>
     <div flex="~ items-center gap-16" mb-16>
       <div i-logos:nodejs-icon text-32></div>
-      <h3 text="f-lg" font-bold mb-0">CommonJS (Node.js)</h3>
+      <h3 text="f-lg" font-bold mb-0>CommonJS (Node.js)</h3>
     </div>
     <p text="f-base neutral-700 dark:neutral-300" mb-16>
       Traditional Node.js module system for server-side blockchain applications and APIs.
