@@ -88,9 +88,6 @@
     "vue-tsc": "^3.0.6"
   },
   "pnpm": {
-    "overrides": {
-      "vite": "npm:rolldown-vite@latest"
-    },
     "onlyBuiltDependencies": [
       "@swc/core",
       "bufferutil",
