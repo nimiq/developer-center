@@ -47,12 +47,3 @@ div:has(+ article) {
   border: 0;
   outline: none;
 }
-
-article + nav {
-  margin: 0 auto;
-
-  a div {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-}
