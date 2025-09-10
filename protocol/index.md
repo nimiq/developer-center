@@ -21,6 +21,42 @@ links:
   - title: Stakers
     description: Learn about delegation and staking participation
     href: '../protocol/validators/stakers'
+
+nimiqFeatures:
+  customClasses: "md:grid-cols-2! my-32 p-16 [&_li_h2]:text-f-lg"
+  features:
+    - title: High Throughput
+      description: Achieve 1000+ TPS with lightning-fast 1-second block separation for optimal performance
+      icon: i-nimiq:duotone-speedmeter
+      iconBgColor: bg-gradient-green
+    - title: Energy Efficient
+      description: Reduced power consumption compared to traditional Proof-of-Work blockchain systems
+      icon: i-nimiq:duotone-network
+      iconBgColor: bg-gradient-blue
+    - title: Secure
+      description: Robust Byzantine fault tolerance with proven 3f+1 assumption for maximum security
+      icon: i-nimiq:verified
+      iconBgColor: bg-purple
+    - title: Scalable
+      description: Dynamic validator set with periodic rotation maintains active validator participation
+      icon: i-nimiq:duotone-incognito
+      iconBgColor: bg-gradient-orange
+
+securityFeatures:
+  customClasses: "md:grid-cols-3! my-32"
+  features:
+    - title: Liveness
+      description: Network continues operating even with f faulty validators
+      icon: i-nimiq:duotone-network
+      iconBgColor: bg-green
+    - title: Safety
+      description: Consensus cannot be reached on conflicting blocks
+      icon: i-nimiq:verified
+      iconBgColor: bg-blue
+    - title: Finality
+      description: Once consensus is reached, it cannot be reversed
+      icon: i-tabler:lock
+      iconBgColor: bg-purple
 ---
 
 # Nimiq Proof-of-Stake
@@ -33,36 +69,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
 
 Albatross is Nimiq's innovative Proof-of-Stake consensus algorithm designed for speed, security, and efficiency. Unlike traditional PoS systems, Albatross combines the best of Byzantine Fault Tolerance (BFT) protocols with probabilistic finality, achieving thousands of transactions per second while maintaining robust security guarantees.
 
-<div grid="~ cols-1 md:cols-2 gap-16" f-my-xl>
-  <div p-16 f-rounded-lg border-l-4 border-green bg="green/5">
-    <div flex="~ items-center gap-8" mb-8>
-      <div i-nimiq:duotone-speedmeter text-24 text-green />
-      <h4 font-bold text-green>High Throughput</h4>
-    </div>
-    <p>1000+ TPS with 1-second block separation</p>
-  </div>
-  <div p-16 f-rounded-lg border-l-4 border-blue bg="blue/5">
-    <div flex="~ items-center gap-8" mb-8>
-      <div i-nimiq:duotone-network text-24 text-blue />
-      <h4 font-bold text-blue>Energy Efficient</h4>
-    </div>
-    <p>Minimal power consumption vs Proof-of-Work</p>
-  </div>
-  <div p-16 f-rounded-lg border-l-4 border-purple bg="purple/5">
-    <div flex="~ items-center gap-8" mb-8>
-      <div i-nimiq:verified text-24 text-purple />
-      <h4 font-bold text-purple>Secure</h4>
-    </div>
-    <p>Byzantine fault tolerance with 3f+1 assumption</p>
-  </div>
-  <div p-16 f-rounded-lg border-l-4 border-orange bg="orange/5">
-    <div flex="~ items-center gap-8" mb-8>
-      <div i-nimiq:duotone-incognito text-24 text-orange />
-      <h4 font-bold text-orange>Scalable</h4>
-    </div>
-    <p>Dynamic validator set with automatic rotation</p>
-  </div>
-</div>
+<NimiqFeatures bg-neutral-0 v-bind="$frontmatter.nimiqFeatures" />
 
 ## Validators and Stakers
 
@@ -112,20 +119,7 @@ Validators earn rewards for contributions and face [punishments](/protocol/conse
 
 ## Network Security
 
-<div grid="~ cols-1 md:cols-3 gap-16" f-my-xl>
-  <div p-16 f-rounded-lg border-l-4 border-green bg="green/5">
-    <h4 font-bold text-green>Liveness</h4>
-    <p>Network continues operating even with f faulty validators</p>
-  </div>
-  <div p-16 f-rounded-lg border-l-4 border-blue bg="blue/5">
-    <h4 font-bold text-blue>Safety</h4>
-    <p>Consensus cannot be reached on conflicting blocks</p>
-  </div>
-  <div p-16 f-rounded-lg border-l-4 border-purple bg="purple/5">
-    <h4 font-bold text-purple>Finality</h4>
-    <p>Once consensus is reached, it cannot be reversed</p>
-  </div>
-</div>
+<NimiqFeatures v-bind="$frontmatter.securityFeatures" />
 
 ## Getting Started
 

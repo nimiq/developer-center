@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
-  label: string
-  title: string
+  label?: string
+  title?: string
   description: string
   features?: {
     title: string
@@ -9,17 +9,19 @@ defineProps<{
     icon: string
     iconBgColor: string
     iconColor?: string
+    customClasses?: string
   }[]
   align?: 'center' | 'left'
+  customClasses?: string
 }>()
 </script>
 
 <template>
   <section>
-    <NqHeadline :label :title :description :align mt-0 f-mb-lg :h1="false" />
+    <NqHeadline v-if="title || label" :label :title :description :align mt-0 f-mb-lg :h1="false" />
 
-    <ul v-if="features && features.length > 0" grid="~ cols-2 md:cols-3 gap-64" class="nq-raw">
-      <li v-for="(feature, index) in features" :key="index" flex-1>
+    <ul v-if="features && features.length > 0" :class="customClasses" grid="~ cols-2 md:cols-3 gap-64" class="nq-raw">
+      <li v-for="(feature, index) in features" :key="index" flex-1 :class="feature.customClasses">
         <div class="nq-raw" group h-full relative>
           <div v-if="feature.icon" stack rounded-8 size-36 :class="feature.iconBgColor">
             <div :class="[feature.icon, feature.iconColor || 'text-white'] " size-20 />
