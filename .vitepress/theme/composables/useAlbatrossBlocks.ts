@@ -31,8 +31,8 @@ function _useAlbatrossBlocks() {
   // Replace useState with reactive ref - in Vue we don't have built-in shared state like Nuxt
   const blocks = ref<LiveviewBlock[]>([])
 
-  // Replace import.meta.server check with a simpler server-side detection
-  if (typeof window === 'undefined') {
+  // VitePress server-side detection - window is not available during build
+  if (import.meta.env?.SSR) {
     return {
       status: ref('CLOSED'),
       blocks,
@@ -109,8 +109,16 @@ function _useAlbatrossBlocks() {
   })
 
   // Computed properties
+  const latestBlock = computed(() => {
+    // Find the last microblock without filtering the entire array
+    for (let i = blocks.value.length - 1; i >= 0; i--) {
+      if (blocks.value[i]?.kind === LiveviewBlockType.MicroBlock) {
+        return blocks.value[i] as LiveviewMicroBlock
+      }
+    }
+    return undefined
+  })
   const microblocks = computed(() => blocks.value.filter(block => block.kind === LiveviewBlockType.MicroBlock) as LiveviewMicroBlock[])
-  const latestBlock = computed(() => microblocks.value.at(-1))
   const batchNumber = computed(() => latestBlock.value?.batch || -1)
   const blockNumber = computed(() => latestBlock.value?.number || -1)
 
