@@ -8,6 +8,10 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        task: [lint, typecheck, build]
+      fail-fast: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,11 +26,8 @@ jobs:
           cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        if: matrix.task == 'build'
       - name: Install dependencies
         run: pnpm install
-      - name: Lint
-        run: pnpm lint
-      - name: Typecheck
-        run: pnpm typecheck
-      - name: Build
-        run: pnpm build
+      - name: Run ${{ matrix.task }}
+        run: pnpm ${{ matrix.task }}
