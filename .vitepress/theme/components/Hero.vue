@@ -26,7 +26,7 @@ defineProps<Props>()
 <template>
   <section relative>
     <NqHeadline :title :description :align z-100 />
-    <div max-w-none="!" op-30 w-screen bottom-32 absolute>
+    <div max-w-none="!" translate-x="[calc(-1*var(--px))]" class="nq-raw" op-30 w-screen bottom-32 absolute>
       <ClientOnly>
         <HexagonsBackground />
       </ClientOnly>
@@ -34,8 +34,8 @@ defineProps<Props>()
 
     <div grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>
       <NqCard
-        v-for="card in cards" :key="card.title" v-bind="card"
-        :icon-class="!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 right--12 bottom--24'"
+        v-for="card in cards" :key="card.title" v-bind="card" :class="{ '[&_p]:z-10': card.bgColor }"
+        :icon-class="!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 op-60 md:op-100 right--12 bottom--24'"
         :style="card.hoverColor ? `--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)` : undefined"
         :hover="card.hoverColor ? '[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white' : ''"
       />
