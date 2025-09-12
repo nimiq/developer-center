@@ -9,40 +9,37 @@ hero:
   cards:
     - icon: i-carbon:ibm-cloud-vpc-client-vpn
       title: Web Client
-      description: Build web and mobile-web apps that interact with Nimiq directly in the browser. Completely decentralized, no server required
+      description: Build web and mobile apps that interact with Nimiq directly in the browser. Fully decentralized — no server required
       label: Build in Browser
       href: ./web-client/
       bgColor: blue
       iconClass: absolute bottom--48 right--32 text-256
       class: "md:grid-row-span-full [&_p]:max-w-none"
     - icon: i-local:nimiq-rpc
-      iconClass: text-neutral-800 absolute top-16 right-16 text-32
       title: RPC Client
       description: Build full-stack applications with Nimiq
       href: ./rpc-client/
       hoverColor: gold
     - icon: i-local:nimiq-validators
-      iconClass: text-neutral-800 absolute top-16 right-16 text-32
       title: Validators
-      description: Secure the nework and earn rewards
+      description: Secure the network and earn rewards
       href: ./validators/
       hoverColor: green
     - icon: i-local:nimiq-albatross
-      iconClass: text-neutral-800 absolute top-16 right-16 text-32
       title: Albatross
       description: Learn about the protocol
       href: ./protocol/
-      hoverColor: "red"
+      hoverColor: orange
 
 albatrossLiveview:
   label: Live Demo
   title: See the chain move
-  description: Instant, feeless & green payments visualised in real time.
+  description: Instant, feeless & green payments visualized in real time.
 
 nimiqFeatures:
   label: Why Nimiq
   title: Browser-first blockchain
-  description: No middlemen. No servers. No barriers. No fees. Connect directly to from any browser.
+  description: No middlemen. No servers. No barriers. No fees. Connect directly from any browser.
   features:
     - title: Browser‑First
       description: Build entirely in‑browser with no servers
@@ -53,7 +50,7 @@ nimiqFeatures:
       icon: i-nimiq:cash
       iconBgColor: bg-gradient-green
     - title: Instant Finality
-      description: 1 second block confirmation
+      description: 1‑second confirmations
       icon: i-nimiq:bolt
       iconClass: text-orange
       iconBgColor: bg-gradient-orange
@@ -62,7 +59,7 @@ nimiqFeatures:
       icon: i-nimiq:leaf-2
       iconBgColor: bg-gradient-gold
     - title: Community‑Driven
-      description: 100% open‑source & active devs
+      description: 100% open‑source and active devs
       icon: i-tabler:users
       iconBgColor: bg-purple
     - title: Dev‑Friendly
@@ -75,19 +72,18 @@ quickStart:
   title: Jump right in — no install
   description: Start experimenting with Nimiq right away.
   actions:
-    - title: WebClient Tutorial
+    - title: Web Client Tutorial
       description: Interactive, in‑browser walkthrough
       href: https://nimiq.guide
       icon: i-local:nimiq-tutorial
     - title: RPC Playground
       description: Test JSON‑RPC calls live
-      href: ./rpc-client/
+      href: ./rpc-client/playground
       icon: i-local:nimiq-rpc
     - title: Nimiq MCP
       description: Build with AI
       href: https://github.com/onmax/nimiq-mcp
       icon: i-local:nimiq-mcp
-      iconClass: op-100
 
 nimiqAppsSection:
   label: Community Projects
@@ -131,9 +127,9 @@ popularResources:
         - text: Client Libraries
           href: ./rpc-client/clients
         - text: Account Queries
-          href: ./rpc-client/getAccount
+          href: ./rpc-client/methods/get-accounts
         - text: Send Transactions
-          href: ./rpc-client/sendRawTransaction
+          href: ./rpc-client/methods/send-raw-transaction
     - title: Migration
       links:
         - text: Migration Overview
@@ -146,7 +142,7 @@ popularResources:
           href: ./migration/migration-technical-details
     - title: Node Operators
       links:
-        - text: Node Setup Guide
+        - text: Prover Node Guide
           href: ./validators/prover-node-guide
     - title: Validator Operators
       links:
