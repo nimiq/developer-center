@@ -241,8 +241,8 @@ export const themeConfig = {
           items: [
             { text: 'Overview', link: '/validators/', icon: 'i-tabler:layout-grid' },
             { text: 'Becoming a Validator', link: '/validators/becoming-a-validator', icon: 'i-tabler:user-check' },
-            { text: 'Prover Node Setup Guide', link: '/validators/prover-node-guide', icon: 'i-tabler:book' },
-            { text: 'Staking Handbook', link: '/validators/staking-handbook', icon: 'i-tabler:handbook' },
+            { text: 'Prover Node Setup Guide', link: '/validators/prover-node-guide', icon: 'i-tabler:server' },
+            { text: 'Staking Handbook', link: '/validators/staking-handbook', icon: 'i-tabler:book' },
             { text: 'Validator Trustscore', link: '/validators/validator-trustscore', icon: 'i-tabler:shield-star' },
             { text: 'FAQs for Stakers and Pools', link: '/validators/staking-faq', icon: 'i-tabler:help' },
             { text: 'Add Your Pool to the Wallet', link: 'https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators', icon: 'i-tabler:wallet' },

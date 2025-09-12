@@ -35,7 +35,7 @@ If the `curl` command is not already installed on your machine, try installing i
 
 ### Generating your validator address and keys
 
-For running a validator you need the following items wich we are generating now:
+For running a validator you need the following items which we are generating now:
 - A validator address: Nimiq address
 - A voting keypair: BLS keypair
 - A signing keypair: Schnorr keypair

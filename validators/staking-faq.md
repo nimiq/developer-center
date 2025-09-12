@@ -104,7 +104,7 @@ There is a system of rewards and punishments for validators. Validators are rewa
 
 ### Can I lose my funds when staking?
 
-You cannot lose your skated funds in Nimiq under normal circumstances, as they remain under your ownership. However, if your validator misbehaves or performs poorly, it may lose rewards or be jailed temporarily, impacting your earnings but not your staked funds.
+You cannot lose your staked funds in Nimiq under normal circumstances, as they remain under your ownership. However, if your validator misbehaves or performs poorly, it may lose rewards or be jailed temporarily, impacting your earnings but not your staked funds.
 
 ## Miscellaneous
 
