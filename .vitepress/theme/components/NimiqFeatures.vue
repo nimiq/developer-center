@@ -12,7 +12,6 @@ defineProps<{
     customClasses?: string
   }[]
   align?: 'center' | 'left'
-  customClasses?: string
 }>()
 </script>
 
@@ -20,13 +19,27 @@ defineProps<{
   <section>
     <NqHeadline v-if="title || label" :label :title :description :align mt-0 f-mb-lg :h1="false" />
 
-    <ul v-if="features && features.length > 0" :class="customClasses" grid="~ cols-2 md:cols-3 gap-64" class="nq-raw">
+    <ul
+      v-if="features && features.length > 0"
+      :class="[
+        features.length === 4 ? 'grid-cols-2 my-32 p-16 [&_li_h2]:text-f-lg' : 'grid-cols-2 md:cols-3 gap-64',
+      ]"
+      grid
+      class="nq-raw"
+    >
       <li v-for="(feature, index) in features" :key="index" flex-1 :class="feature.customClasses">
         <div class="nq-raw" group h-full relative>
           <div v-if="feature.icon" stack rounded-8 size-36 :class="feature.iconBgColor">
             <div :class="[feature.icon, feature.iconColor || 'text-white'] " size-20 />
           </div>
-          <h2 v-if="feature.title" font-semibold f-mt-2xs text="f-xl neutral" v-html="feature.title" />
+          <h2
+            v-if="feature.title"
+            font-semibold
+            f-mt-2xs
+            :class="features.length === 4 ? 'text-f-lg' : 'text-f-xl'"
+            text="neutral"
+            v-html="feature.title"
+          />
           <p v-if="feature.description" text="f-sm neutral-800" v-html="feature.description" />
         </div>
       </li>

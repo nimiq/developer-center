@@ -43,20 +43,18 @@ nimiqFeatures:
       iconBgColor: bg-gradient-orange
 
 securityFeatures:
-  customClasses: "md:grid-cols-3! my-32"
-  features:
-    - title: Liveness
-      description: Network continues operating even with f faulty validators
-      icon: i-nimiq:duotone-network
-      iconBgColor: bg-green
-    - title: Safety
-      description: Consensus cannot be reached on conflicting blocks
-      icon: i-nimiq:verified
-      iconBgColor: bg-blue
-    - title: Finality
-      description: Once consensus is reached, it cannot be reversed
-      icon: i-tabler:lock
-      iconBgColor: bg-purple
+  - title: Liveness
+    description: Network continues operating even with f faulty validators
+    icon: i-nimiq:duotone-network
+    iconBgColor: bg-green
+  - title: Safety
+    description: Consensus cannot be reached on conflicting blocks
+    icon: i-nimiq:verified
+    iconBgColor: bg-blue
+  - title: Finality
+    description: Once consensus is reached, it cannot be reversed
+    icon: i-tabler:lock
+    iconBgColor: bg-purple
 ---
 
 # Nimiq Proof-of-Stake
@@ -119,7 +117,7 @@ Validators earn rewards for contributions and face [punishments](/protocol/conse
 
 ## Network Security
 
-<NimiqFeatures v-bind="$frontmatter.securityFeatures" />
+<NimiqFeatures :features="$frontmatter.securityFeatures" />
 
 ## Getting Started
 
