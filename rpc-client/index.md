@@ -1,13 +1,13 @@
 ---
 secondarySidebar: false
 footer: false
-quickstarts:
-  - label: Try the Playground
+hoverableGrid:
+  - title: Try the Playground
     href: ./playground
-  - label: Browse RPC Methods
+  - title: Browse RPC Methods
     href: ./methods/
-  - label: Client Libraries
-    href: ./clients
+  - title: Client Libraries
+    href: ./clients/
 
 rpcFeatures:
   - title: Full Node Access
@@ -22,6 +22,13 @@ rpcFeatures:
     description: Fully typed client libraries for TypeScript and other languages
   - title: AI-Powered Development
     description: Use our MCP server to let AI assistants interact with the RPC API
+needHelpItems:
+    - title: Telegram Community
+      href: https://t.me/nimiq
+      icon: i-nimiq:logos-telegram-mono
+    - title: Nimiq GitHub
+      href: https://github.com/nimiq
+      icon: i-nimiq:logos-github-mono
 ---
 
 # Nimiq RPC Client
@@ -31,6 +38,12 @@ Connect your backend services to the Nimiq blockchain {.nq-subline .mt-0}
 The Nimiq RPC API provides full access to blockchain data and operations through standard JSON-RPC and RESTful endpoints. Perfect for backend applications, data analytics, exchange integrations, and any service that needs reliable blockchain connectivity. {.mt-32}
 
 ## Quick Start
+
+<script setup lang="ts">
+import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
+</script>
+
+<HoverableGrid bg-neutral-100 :actions="$frontmatter.hoverableGrid" class="mt-36" />
 
 <div flex="~ gap-x-16 gap-y-16 wrap" mt-36 class="nq-raw">
   <a v-for="q in $frontmatter.quickstarts" :key="q.label" :href="q.href" nq-pill-blue nq-arrow>{{ q.label }}</a>
@@ -132,6 +145,8 @@ const response = await fetch('https://rpc.nimiqwatch.com', {
 ### Need Help?
 
 Join our developer community for API support, integration help, and technical discussions.
+
+<NqGrid f-my-sm :cards="$frontmatter.needHelpItems" large-cards />
 
 <div class="nq-raw" grid="~ cols-1 md:cols-3 gap-16" mt-12>
   <a href="https://t.me/nimiq" target="_blank" rel="noopener noreferrer" class="nq-hoverable bg-neutral-100 dark:bg-neutral-900 flex items-center gap-12 p-16 rounded-8">

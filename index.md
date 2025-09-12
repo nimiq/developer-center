@@ -67,7 +67,7 @@ nimiqFeatures:
       icon: i-nimiq:code
       iconBgColor: bg-gradient-red
 
-quickStart:
+hoverableGrid:
   label: Quick Start
   title: Jump right in — no install
   description: Start experimenting with Nimiq right away.
@@ -180,7 +180,7 @@ popularResources:
 import './node_modules/nimiq-css/dist/css/static-content.css'
 import Hero from './.vitepress/theme/components/Hero.vue'
 import AlbatrossBlockchain from './.vitepress/theme/components/AlbatrossLiveview/index.vue'
-import QuickStart from './.vitepress/theme/components/QuickStart.vue'
+import HoverableGrid from './.vitepress/theme/components/HoverableGrid.vue'
 import NimiqFeatures from './.vitepress/theme/components/NimiqFeatures.vue'
 import NimiqAppsSection from './.vitepress/theme/components/NimiqAppsSection.vue'
 import PopularResources from './.vitepress/theme/components/PopularResources.vue'
@@ -188,7 +188,7 @@ import PopularResources from './.vitepress/theme/components/PopularResources.vue
 
 <Hero bg-neutral-0 v-bind="$frontmatter.hero" />
 
-<QuickStart bg-neutral-100 v-bind="$frontmatter.quickStart" />
+<HoverableGrid bg-neutral-100 v-bind="$frontmatter.hoverableGrid" />
 
 <NimiqFeatures bg-neutral-0 v-bind="$frontmatter.nimiqFeatures" />
 

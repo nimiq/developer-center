@@ -7,9 +7,9 @@ interface QuickStartAction {
 }
 
 defineProps<{
-  label: string
-  title: string
-  description: string
+  label?: string
+  title?: string
+  description?: string
   actions: QuickStartAction[]
   align?: 'center' | 'left'
 }>()
@@ -17,7 +17,7 @@ defineProps<{
 
 <template>
   <section class="quick-start">
-    <NqHeadline :label :title :description :align :h1="false" />
+    <NqHeadline v-if="label || title || description" :label :title :description :align :h1="false" />
     <NqGrid :cards="actions" large-cards my-0 />
   </section>
 </template>

@@ -203,7 +203,7 @@ popularResources:
 import Hero from '../.vitepress/theme/components/Hero.vue'
 import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
 import AlternativeOptions from '../.vitepress/theme/components/AlternativeOptions.vue'
-import QuickStart from '../.vitepress/theme/components/QuickStart.vue'
+import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
 import PopularResources from '../.vitepress/theme/components/PopularResources.vue'
 </script>
@@ -252,6 +252,6 @@ await client.waitForConsensusEstablished()
 
 <AlternativeOptions v-bind="$frontmatter.alternativeOptions" />
 
-<QuickStart align="left" :title="$frontmatter.integrationsTitle" :description="$frontmatter.integrationsDescription" :label="$frontmatter.integrationsLabel" :actions="$frontmatter.integrationsActions" />
+<HoverableGrid align="left" :title="$frontmatter.integrationsTitle" :description="$frontmatter.integrationsDescription" :label="$frontmatter.integrationsLabel" :actions="$frontmatter.integrationsActions" />
 
 <PopularResources f-py-4xl align="left" :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
