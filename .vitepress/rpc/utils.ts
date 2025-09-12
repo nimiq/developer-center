@@ -42,9 +42,9 @@ const rpcAccordionIcons: Record<typeof tagOrder[number], string> = {
   blockchain: 'i-nimiq:nodes',
   consensus: 'i-tabler:network',
   wallet: 'i-tabler:wallet',
-  policy: 'i-tabler:road',
-  mempool: 'i-tabler:arrow-merge-alt-left',
-  network: 'i-tabler:cloud-network',
+  policy: 'i-nimiq:verified',
+  mempool: 'i-nimiq:cubes',
+  network: 'i-nimiq:duotone-network',
   zkp_component: 'i-tabler:lock',
 }
 

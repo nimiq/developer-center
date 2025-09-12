@@ -2,7 +2,7 @@ import type { OpenrpcDocument } from '@open-rpc/meta-schema'
 import openRpcDocument from './rpc/openrpc-document.json'
 import { loadMethods } from './rpc/utils'
 
-// @unocss-include
+// @unocss-include i-nimiq:verified i-nimiq:cubes i-nimiq:duotone-network
 
 export const themeConfig = {
   modules: [

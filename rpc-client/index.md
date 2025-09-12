@@ -11,22 +11,16 @@ quickstarts:
 
 rpcFeatures:
   - title: Full Node Access
-    icon: i-tabler:server
     description: Direct access to all Nimiq blockchain data and operations
   - title: RESTful & JSON-RPC
-    icon: i-tabler:api
     description: Standard protocols for easy integration with any tech stack
   - title: Real-Time Updates
-    icon: i-tabler:refresh
     description: WebSocket subscriptions for live blockchain events
   - title: Comprehensive Methods
-    icon: i-tabler:list
     description: 20+ RPC methods covering all blockchain operations
   - title: Type-Safe Clients
-    icon: i-tabler:shield-check
     description: Fully typed client libraries for TypeScript and other languages
   - title: AI-Powered Development
-    icon: i-tabler:robot
     description: Use our MCP server to let AI assistants interact with the RPC API
 ---
 
@@ -38,9 +32,10 @@ The Nimiq RPC API provides full access to blockchain data and operations through
 
 ## Quick Start
 
-<div flex="~ gap-x-16 gap-y-12 wrap" mt-36 class="nq-raw">
+<div flex="~ gap-x-16 gap-y-16 wrap" mt-36 class="nq-raw">
   <a v-for="q in $frontmatter.quickstarts" :key="q.label" :href="q.href" nq-pill-blue nq-arrow>{{ q.label }}</a>
-  <a href="https://github.com/onmax/nimiq-mcp" nq-pill-tertiary target="_blank">AI MCP Server</a>
+  <a href="https://github.com/onmax/nimiq-mcp" nq-pill-tertiary nq-arrow target="_blank" rel="noopener noreferrer">AI MCP Server</a>
+
 </div>
 
 ## Why Use the RPC API?
@@ -80,6 +75,12 @@ The [Nimiq Model Context Protocol (MCP) Server](https://github.com/onmax/nimiq-m
   }
 }
 ```
+
+## RPC Specification
+
+You can download the full OpenRPC document directly from our releases:
+
+- [OpenRPC JSON (v1.1.1)](https://github.com/nimiq/core-rs-albatross/releases/download/v1.1.1/openrpc-document.json)
 
 ## RPC Methods Overview
 
@@ -128,21 +129,22 @@ const response = await fetch('https://rpc.nimiqwatch.com', {
 3. **Use Client Libraries**: Get started with [typed client libraries](./clients)
 4. **Enable AI**: Set up the [MCP server](https://github.com/onmax/nimiq-mcp) for AI-assisted development
 
-<div mt-48 p-24 bg="neutral-100 dark:neutral-900" f-rounded-lg>
-  <h3 text="f-lg" font-bold mb-12>Need Help?</h3>
-  <p text="f-base neutral-700 dark:neutral-300" mb-16>
-    Join our developer community for API support, integration help, and technical discussions.
-  </p>
-  <div flex="~ gap-12 wrap">
-    <a href="https://t.me/nimiq" nq-pill-tertiary target="_blank">Telegram Community</a>
-    <a href="https://github.com/onmax/nimiq-mcp" nq-pill-tertiary target="_blank">MCP Server GitHub</a>
-    <a href="https://github.com/nimiq" nq-pill-tertiary target="_blank">Nimiq GitHub</a>
-  </div>
+### Need Help?
+
+Join our developer community for API support, integration help, and technical discussions.
+
+<div class="nq-raw" grid="~ cols-1 md:cols-3 gap-16" mt-12>
+  <a href="https://t.me/nimiq" target="_blank" rel="noopener noreferrer" class="nq-hoverable bg-neutral-100 dark:bg-neutral-900 flex items-center gap-12 p-16 rounded-8">
+    <span class="i-tabler:brand-telegram text-neutral-800 size-20"></span>
+    <span class="font-semibold text-neutral">Telegram Community</span>
+  </a>
+  <a href="https://github.com/onmax/nimiq-mcp" target="_blank" rel="noopener noreferrer" class="nq-hoverable bg-neutral-100 dark:bg-neutral-900 flex items-center gap-12 p-16 rounded-8">
+    <span class="i-local:nimiq-mcp text-neutral-800 size-20"></span>
+    <span class="font-semibold text-neutral">MCP Server GitHub</span>
+  </a>
+  <a href="https://github.com/nimiq" target="_blank" rel="noopener noreferrer" class="nq-hoverable bg-neutral-100 dark:bg-neutral-900 flex items-center gap-12 p-16 rounded-8">
+    <span class="i-tabler:brand-github text-neutral-800 size-20"></span>
+    <span class="font-semibold text-neutral">Nimiq GitHub</span>
+  </a>
+
 </div>
-
-<details>
-<summary>Full RPC Specification</summary>
-
-<<< ../.vitepress/rpc/openrpc-document.json
-
-</details>

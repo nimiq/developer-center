@@ -29,21 +29,9 @@ The [Nimiq Model Context Protocol (MCP) Server](https://github.com/onmax/nimiq-m
 ## Programming Language Clients
 
 ### TypeScript/JavaScript
-- **nimiq-rpc-client-ts**: Fully typed RPC client for TypeScript and JavaScript
+- **[nimiq-rpc-client-ts](https://github.com/onmax/albatross-rpc-client-ts)**: Fully typed RPC client for TypeScript and JavaScript
 - **Browser Compatible**: Works in both Node.js and browser environments
 - **WebSocket Support**: Real-time blockchain event subscriptions
-
-### Python
-- **Coming Soon**: Python RPC client with full type hints
-- **Features**: Async/await support, Pydantic models, comprehensive error handling
-
-### Rust
-- **Coming Soon**: High-performance Rust client
-- **Features**: Zero-copy serialization, async runtime support
-
-### Go
-- **Coming Soon**: Go client with goroutine support
-- **Features**: Context-aware operations, structured logging
 
 ## Community Clients
 
