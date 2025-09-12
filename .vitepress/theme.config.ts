@@ -278,7 +278,7 @@ export const themeConfig = {
     { icon: 'i-tabler:brand-discord', link: 'https://discord.gg/cMHemg8' },
     { icon: 'i-tabler:brand-telegram', link: 'https://t.me/joinchat/AAAAAEJW-ozFwo7Er9jpHw' },
     { icon: 'i-tabler:news', link: 'https://nimiq.com/blog/' },
-    { icon: 'i-tabler:brand-youtube', link: 'https://www.youtube.com/playlist?list=PLuhSf5DE3FFQFSM-Hhb4gXrbcIo3ohVE9' },
+    { icon: 'i-tabler:versions', link: 'https://nimiq-changelog.je-cf9.workers.dev/' },
   ],
   showLastUpdated: false,
   showEditContent: false,
