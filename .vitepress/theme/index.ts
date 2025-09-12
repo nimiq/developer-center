@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import FeedbackWidget from './components/FeedbackWidget.vue'
 import 'virtual:uno.css'
 import './main.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code.css'
 
 // TODO zoom image
 
