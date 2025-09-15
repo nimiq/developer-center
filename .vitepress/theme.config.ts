@@ -150,7 +150,7 @@ export const themeConfig = {
       subpath: 'nimiq-utils',
       icon: 'i-local:nimiq-utils',
       defaultPageLink: '/nimiq-utils/',
-      description: 'Utility library',
+      description: 'Essential developer utilities',
       sidebar: [
         {
           label: 'Getting Started',

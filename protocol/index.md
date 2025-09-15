@@ -23,7 +23,6 @@ links:
     href: '../protocol/validators/stakers'
 
 nimiqFeatures:
-  customClasses: "md:grid-cols-2! my-32 p-16 [&_li_h2]:text-f-lg"
   features:
     - title: High Throughput
       description: Achieve 1000+ TPS with lightning-fast 1-second block separation for optimal performance
@@ -96,6 +95,7 @@ After a set number of micro blocks, a [macro block](/protocol/consensus/block-fo
 ### Tendermint Integration
 
 Albatross uses Tendermint for macro block consensus, ensuring Byzantine fault tolerance. The process involves:
+
 1. **Proposal Phase**: A leader validator proposes a macro block
 2. **Pre-vote Phase**: Validators vote on the proposal
 3. **Pre-commit Phase**: Validators commit to the final decision
@@ -110,6 +110,7 @@ When a validator fails to produce a micro block on time, any validator can produ
 Validators earn rewards for contributions and face [punishments](/protocol/consensus/punishments) for consensus violations, with severity varying by offense type. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a [jail](/protocol/consensus/punishments#jail) state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
 
 ### Punishment Types
+
 | Offense Type | Consequence | Duration | Validator Status |
 |----------------|-------------|----------|------------------|
 | **Block Delay** | Slot deactivation + reward burning | Temporary | Slot suspended |

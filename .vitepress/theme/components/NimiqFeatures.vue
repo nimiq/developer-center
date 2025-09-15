@@ -22,7 +22,7 @@ defineProps<{
     <ul
       v-if="features && features.length > 0"
       :class="[
-        features.length === 4 ? 'grid-cols-2 my-32 p-16 [&_li_h2]:text-f-lg' : 'grid-cols-2 md:cols-3 gap-64',
+        features.length === 4 ? 'grid-cols-2 py-16 gap-64 [&_li_h2]:text-f-lg' : 'grid-cols-2 md:cols-3 gap-64',
       ]"
       grid
       class="nq-raw"
