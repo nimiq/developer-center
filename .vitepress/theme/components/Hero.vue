@@ -24,9 +24,9 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section relative>
+  <section relative of-hidden>
     <NqHeadline :title :description :align z-100 />
-    <div max-w-none="!" translate-x="[calc(-1*var(--px))]" class="nq-raw" op-30 w-screen bottom-32 absolute>
+    <div max-w-none="!" class="nq-raw" op-30 w-screen bottom-32 absolute of-hidden>
       <ClientOnly>
         <HexagonsBackground />
       </ClientOnly>

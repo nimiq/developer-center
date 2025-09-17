@@ -7,6 +7,59 @@ import { loadMethods } from './rpc/utils'
 export const themeConfig = {
   modules: [
     {
+      text: 'Web Client',
+      subpath: 'web-client',
+      icon: 'i-local:nimiq-web-client',
+      defaultPageLink: '/web-client/',
+      description: 'Build in the browser',
+      sidebar: [
+        {
+          label: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/web-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
+            { text: 'Browser vs Server-Side', link: '/web-client/browser-vs-server', icon: 'i-tabler:device-desktop' },
+            { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
+            { text: 'Nimiq Tutorial', link: 'https://nimiq.github.io/core-js/tutorial/', icon: 'i-tabler:school' },
+          ],
+        },
+        {
+          label: 'Integrations',
+          items: [
+            { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs gray group-hocus:filter-none' },
+            { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon gray group-hocus:filter-none' },
+            { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon gray group-hocus:filter-none' },
+            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack gray group-hocus:filter-none' },
+          ],
+        },
+        {
+          label: 'API Reference',
+          items: [
+            { text: 'Classes', link: '/web-client/reference/classes', icon: 'i-tabler:building-factory' },
+            { text: 'Enumerations', link: '/web-client/reference/enumerations', icon: 'i-tabler:list' },
+            { text: 'Functions', link: '/web-client/reference/functions', icon: 'i-tabler:function' },
+            { text: 'Globals', link: '/web-client/reference/globals', icon: 'i-tabler:world' },
+            { text: 'Interfaces', link: '/web-client/reference/interfaces', icon: 'i-tabler:components' },
+            { text: 'Type Aliases', link: '/web-client/reference/type-aliases', icon: 'i-tabler:variable' },
+          ],
+        },
+        {
+          label: 'UI Components',
+          items: [
+            { text: 'Nimiq CSS', link: 'https://onmax.github.io/nimiq-ui/nimiq-css/getting-started', icon: 'i-tabler:palette' },
+            { text: 'Nimiq Icons', link: 'https://onmax.github.io/nimiq-ui/nimiq-icons/explorer', icon: 'i-nimiq:asterisk' },
+            { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
+          ],
+        },
+        {
+          label: 'Utilities',
+          items: [
+            { text: 'Nimiq Utils', link: '/nimiq-utils/', icon: 'i-tabler:tools' },
+          ],
+        },
+      ],
+    },
+    {
       text: 'Protocol',
       subpath: 'protocol',
       icon: 'i-local:nimiq-albatross',
@@ -93,55 +146,22 @@ export const themeConfig = {
       ],
     },
     {
-      text: 'Web Client',
-      subpath: 'web-client',
-      icon: 'i-local:nimiq-web-client',
-      defaultPageLink: '/web-client/',
-      description: 'Build in the browser',
+      text: 'RPC Client',
+      subpath: 'rpc-client',
+      icon: 'i-local:nimiq-rpc',
+      defaultPageLink: '/rpc-client/',
+      description: 'JSON-RPC client',
       sidebar: [
         {
-          label: 'Getting Started',
+          label: 'Overview',
           items: [
-            { text: 'Overview', link: '/web-client/', icon: 'i-tabler:layout-grid' },
-            { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
-            { text: 'Browser vs Server-Side', link: '/web-client/browser-vs-server', icon: 'i-tabler:device-desktop' },
-            { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
-            { text: 'Nimiq Tutorial', link: 'https://nimiq.github.io/core-js/tutorial/', icon: 'i-tabler:school' },
+            { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Clients', link: '/rpc-client/clients', icon: 'i-tabler:plug' },
           ],
         },
         {
-          label: 'Integrations',
-          items: [
-            { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs gray group-hocus:filter-none' },
-            { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon gray group-hocus:filter-none' },
-            { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon gray group-hocus:filter-none' },
-            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack gray group-hocus:filter-none' },
-          ],
-        },
-        {
-          label: 'API Reference',
-          items: [
-            { text: 'Classes', link: '/web-client/reference/classes', icon: 'i-tabler:building-factory' },
-            { text: 'Enumerations', link: '/web-client/reference/enumerations', icon: 'i-tabler:list' },
-            { text: 'Functions', link: '/web-client/reference/functions', icon: 'i-tabler:function' },
-            { text: 'Globals', link: '/web-client/reference/globals', icon: 'i-tabler:world' },
-            { text: 'Interfaces', link: '/web-client/reference/interfaces', icon: 'i-tabler:components' },
-            { text: 'Type Aliases', link: '/web-client/reference/type-aliases', icon: 'i-tabler:variable' },
-          ],
-        },
-        {
-          label: 'UI Components',
-          items: [
-            { text: 'Nimiq CSS', link: 'https://onmax.github.io/nimiq-ui/nimiq-css/getting-started', icon: 'i-tabler:palette' },
-            { text: 'Nimiq Icons', link: 'https://onmax.github.io/nimiq-ui/nimiq-icons/explorer', icon: 'i-nimiq:asterisk' },
-            { text: 'Identicons ESM', link: 'https://github.com/onmax/nimiq-identicons', icon: 'i-tabler:user-circle' },
-          ],
-        },
-        {
-          label: 'Utilities',
-          items: [
-            { text: 'Nimiq Utils', link: '/nimiq-utils/', icon: 'i-tabler:tools' },
-          ],
+          label: 'Methods',
+          items: [...(await loadMethods(openRpcDocument as OpenrpcDocument))],
         },
       ],
     },
@@ -206,26 +226,6 @@ export const themeConfig = {
             { text: 'GitHub Repository', link: 'https://github.com/nimiq/nimiq-utils', icon: 'i-tabler:brand-github' },
             { text: 'Report Issues', link: 'https://github.com/nimiq/nimiq-utils/issues', icon: 'i-tabler:bug' },
           ],
-        },
-      ],
-    },
-    {
-      text: 'RPC Client',
-      subpath: 'rpc-client',
-      icon: 'i-local:nimiq-rpc',
-      defaultPageLink: '/rpc-client/',
-      description: 'JSON-RPC client',
-      sidebar: [
-        {
-          label: 'Overview',
-          items: [
-            { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
-            { text: 'Clients', link: '/rpc-client/clients', icon: 'i-tabler:plug' },
-          ],
-        },
-        {
-          label: 'Methods',
-          items: [...(await loadMethods(openRpcDocument as OpenrpcDocument))],
         },
       ],
     },
