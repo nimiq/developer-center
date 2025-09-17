@@ -9,4 +9,4 @@ showSecondarySidebar: true
 import RpcMethod from '../../.vitepress/theme/components/Rpc/RpcMethod.vue'
 </script>
 
-<RpcMethod v-bind="$params" />
+<RpcMethod v-if="$params" v-bind="$params" />

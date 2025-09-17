@@ -6,7 +6,7 @@ import { usePlaygroundRpc } from './playground'
 
 const props = defineProps<NimiqRpcMethod>()
 
-const { callRpc, widget, history, groupedHistory, clearHistory, playgroundConfig, defaultNodeUrl } = usePlaygroundRpc(props)
+const { callRpc, widget, history, clearHistory, playgroundConfig, defaultNodeUrl } = usePlaygroundRpc(props)
 
 const formatterTime = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 const formatterWithDate = new Intl.DateTimeFormat('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
@@ -66,6 +66,25 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
       </form>
     </div>
 
+    <!-- Info icon for default server limitations -->
+    <div flex="~ items-center gap-8" f-mt-xs>
+      <Popover.Root>
+        <Popover.Trigger>
+          <div text-16 text-neutral-600 cursor-pointer i-nimiq:info />
+        </Popover.Trigger>
+        <Popover.Portal>
+          <Popover.Content :collision-padding="12" side="top" :side-offset="4" will-change="transform,opacity" reka-open="animate-in slide-in-b fade-in" reka-close="animate-out slide-out-t fade-out" outline="~ 1.5 offset--1.5 neutral-200" rounded-8 bg-neutral-0 max-w-320 w-max shadow relative f-p-xs>
+            <p text-neutral-800 m-0 f-text-xs>
+              The default RPC server may not support all methods. If you encounter errors, consider connecting to your own Nimiq node for full method availability.
+            </p>
+            <Popover.Close bg="neutral-200 hocus:neutral-300" outline="~ 1.5 offset--1.5 neutral/20" stack rounded-full transition right-8 top-8 absolute size-16="!">
+              <div text-6 i-nimiq:cross />
+            </Popover.Close>
+          </Popover.Content>
+        </Popover.Portal>
+      </Popover.Root>
+    </div>
+
     <div class="nq-raw widget-container" f-mt-sm>
       <header flex="~ items-center gap-8">
         <div text-10 op-70 i-nimiq:watch-1-50 />
@@ -81,34 +100,27 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
           Run the request to see the history...
         </p>
         <div v-else>
-          <ol>
-            <li v-for="({ items, label }) in groupedHistory.filter(item => item.items.length > 0)" :key="label">
-              <h4 mb-4 nq-label>
-                {{ label }}
-              </h4>
-              <Accordion.Root type="multiple" :collapsible="true">
-                <Accordion.Item v-for="([isOk, error, data, { request: { timestamp, body } }], index) in items" :key="index" :value="`${timestamp}`">
-                  <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" flex="~ items-center gap-8" p-4 px-8 w-full rounded="4 data-open:b-0">
-                    <div text-6 op-80 shrink-0 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
-                    <code font-semibold text-ellipsis of-hidden f-text-2xs>
-                      {{ body.method }}
-                    </code>
-                    <div ml-auto flex="~ items-center gap-8" shrink-0>
-                      <div v-if="!isOk" stack p-3 rounded-2 bg-red-400 outline="1.5 ~ neutral-0/10" :title="error">
-                        <div v-if="error" text-12 text-red op-80 i-nimiq:alert />
-                      </div>
-                      <span text="9 neutral-700" font-semibold>
-                        {{ formatTimestamp(timestamp, label === 'Older') }}
-                      </span>
-                    </div>
-                  </Accordion.Trigger>
-                  <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" :value="timestamp" outline="1.5 neutral-200 ~ offset--1.5" rounded-b-4 bg-neutral-50 of-hidden f-mb-2xs>
-                    <pre py-4 rounded-8 bg-neutral-50 of-x-auto f-text-2xs f-px-2xs>{{ isOk ? data : error }}</pre>
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion.Root>
-            </li>
-          </ol>
+          <Accordion.Root type="multiple" :collapsible="true">
+            <Accordion.Item v-for="([isOk, error, data, { request: { timestamp, body } }], index) in history" :key="index" :value="`${timestamp}`">
+              <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" flex="~ items-center gap-8" p-4 px-8 w-full rounded="4 data-open:b-0">
+                <div text-6 op-80 shrink-0 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
+                <code font-semibold text-ellipsis of-hidden f-text-2xs>
+                  {{ body.method }}
+                </code>
+                <div ml-auto flex="~ items-center gap-8" shrink-0>
+                  <div v-if="!isOk" stack p-3 rounded-2 bg-red-400 outline="1.5 ~ neutral-0/10" :title="error">
+                    <div v-if="error" text-12 text-red op-80 i-nimiq:alert />
+                  </div>
+                  <span text="9 neutral-700" font-semibold>
+                    {{ formatTimestamp(timestamp, true) }}
+                  </span>
+                </div>
+              </Accordion.Trigger>
+              <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" :value="timestamp" outline="1.5 neutral-200 ~ offset--1.5" rounded-b-4 bg-neutral-50 of-hidden f-mb-2xs>
+                <pre py-4 rounded-8 bg-neutral-50 of-x-auto f-text-2xs f-px-2xs>{{ isOk ? data : error }}</pre>
+              </Accordion.Content>
+            </Accordion.Item>
+          </Accordion.Root>
         </div>
       </div>
     </div>

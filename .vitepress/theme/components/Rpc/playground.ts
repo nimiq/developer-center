@@ -82,32 +82,11 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     }
   }
 
-  const groupedHistory = computed(() => {
-    const today: HttpRpcResult<any>[] = []
-    const yesterday: HttpRpcResult<any>[] = []
-    const older: HttpRpcResult<any>[] = []
-
-    const now = new Date()
-    for (const item of history.value) {
-      const date = new Date(item[3].request.timestamp)
-      const diff = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
-
-      if (diff === 0)
-        today.push(item)
-      else if (diff === 1)
-        yesterday.push(item)
-      else
-        older.push(item)
-    }
-    return [{ label: 'Today', items: today }, { label: 'Yesterday', items: yesterday }, { label: 'Older', items: older }]
-  })
-
   return {
     defaultNodeUrl,
     widget: playground,
     callRpc,
     history,
-    groupedHistory,
     clearHistory,
     playgroundConfig,
   }

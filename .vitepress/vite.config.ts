@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { consola } from 'consola'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import { resolve } from 'pathe'
+import { readPackageJSON } from 'pkg-types'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -23,6 +24,10 @@ export default defineConfig(async () => {
   const openRpcDoc = JSON.parse(readFileSync(openRpcDocPath, 'utf-8'))
   const openRpcDocInfo = openRpcDoc.info
   const methods = await loadMethods(openRpcDoc)
+
+  // Get the nimiq-rpc-client-ts version from package.json
+  const { dependencies } = await readPackageJSON()
+  const nimiqRpcVersion = dependencies?.['nimiq-rpc-client-ts'] || 'unknown'
 
   return {
     optimizeDeps: {
@@ -57,6 +62,7 @@ export default defineConfig(async () => {
     define: {
       __NIMIQ_OPENRPC_INFO__: JSON.stringify(openRpcDocInfo),
       __NIMIQ_OPENRPC_METHODS__: JSON.stringify(methods),
+      __NIMIQ_RPC_VERSION__: JSON.stringify(nimiqRpcVersion),
       global: 'globalThis',
     },
 

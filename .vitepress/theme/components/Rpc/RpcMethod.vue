@@ -21,7 +21,7 @@ const { tabs, currentTab } = useCodeSnippet(widget)
       {{ props.description }}
     </p>
 
-    <div grid="~ cols-[32ch_1fr] gap-32" :class="{ 'f-mt-lg': !props.description }">
+    <div :class="{ 'f-mt-lg': !props.description }">
       <div mx-0>
         <h2 nq-label mt-0="!">
           Params
@@ -48,11 +48,10 @@ const { tabs, currentTab } = useCodeSnippet(widget)
           </li>
         </ul>
       </div>
-      <!-- .25em .65em .25em .75em -->
 
-      <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" rounded-8 h-max max-w-none min-w-0 w-full>
+      <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" rounded-8 h-max max-w-none min-w-0 w-full f-mt-lg>
         <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" py-8 bg-neutral-50 h-44 border="b-1.5 solid neutral/8">
-          <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" font-bold mx-0 ml--8 px-0.65em py-4 rounded-6>
+          <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" font-bold mx-0 ml-2 px-0.65em py-4 rounded-6>
             <div :class="icon" grayscale="reka-active:0 100" transition-filter />
             <span reka-active:text-blue>
               {{ label }}
@@ -67,7 +66,7 @@ const { tabs, currentTab } = useCodeSnippet(widget)
 
     <ClientOnly>
       <Teleport defer to="#widget">
-        <RpcPlayground v-bind="props" />
+        <RpcPlayground v-if="props" v-bind="props" />
       </Teleport>
     </ClientOnly>
   </div>

@@ -1,45 +1,13 @@
-# Nimiq RPC Clients
+# Client Integrations
 
-Connect to the Nimiq blockchain using your preferred programming language or AI assistant.
+The Nimiq RPC API provides multiple integration options for connecting to the blockchain. Choose the approach that best fits your development needs.
 
-## AI Assistant Integration
+Use the **Integrations** section in the sidebar to explore each client option, or jump directly to:
 
-### Nimiq MCP Server
-**For AI assistants like Claude, ChatGPT, and others**
+- **[Raw Requests](./integrations/raw)** - curl, wget, and direct HTTP calls
+- **[JavaScript Native](./integrations/javascript)** - Pure JavaScript with fetch API
+- **[TypeScript Client](./integrations/typescript)** - Fully typed production client
+- **[ARPL CLI Tool](./integrations/arpl)** - Command-line interface for node management
+- **[MCP Server (AI)](./integrations/mcp)** - AI assistant integration
 
-The [Nimiq Model Context Protocol (MCP) Server](https://github.com/onmax/nimiq-mcp) enables AI assistants to interact directly with the Nimiq blockchain through a standardized protocol.
-
-- **Installation**: `npx nimiq-mcp`
-- **Features**: 20+ blockchain tools for accounts, transactions, validators, and documentation
-- **Use Cases**: AI-assisted development, automated analysis, smart contract interactions
-- **Documentation**: [GitHub Repository](https://github.com/onmax/nimiq-mcp)
-
-#### Quick Setup for Claude Desktop
-```json
-{
-  "mcpServers": {
-    "nimiq": {
-      "command": "npx",
-      "args": ["nimiq-mcp"]
-    }
-  }
-}
-```
-
-## Programming Language Clients
-
-### TypeScript/JavaScript
-- **[nimiq-rpc-client-ts](https://github.com/onmax/albatross-rpc-client-ts)**: Fully typed RPC client for TypeScript and JavaScript
-- **Browser Compatible**: Works in both Node.js and browser environments
-- **WebSocket Support**: Real-time blockchain event subscriptions
-
-## Community Clients
-
-Missing your favorite language? We welcome community contributions for additional client libraries. Check our [development guidelines](https://github.com/nimiq) for creating new clients.
-
-## Need Help?
-
-- **Documentation**: [RPC API Reference](./methods/)
-- **Community**: [Telegram Developer Chat](https://t.me/nimiq)
-- **GitHub**: [Nimiq Organization](https://github.com/nimiq)
-- **Issues**: Report bugs or request features on [GitHub Issues](https://github.com/nimiq/core-rs-albatross/issues)
+For complete method documentation: **[Browse all RPC methods →](./methods/)**

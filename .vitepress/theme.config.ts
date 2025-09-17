@@ -156,12 +156,22 @@ export const themeConfig = {
           label: 'Overview',
           items: [
             { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
-            { text: 'Clients', link: '/rpc-client/clients', icon: 'i-tabler:plug' },
+            { text: 'Integrations', icon: 'i-tabler:chart-funnel', items: [
+              { text: 'Raw Requests', link: '/rpc-client/integrations/raw', icon: 'i-tabler:terminal-2' },
+              { text: 'JavaScript Native', link: '/rpc-client/integrations/javascript', icon: 'i-logos:javascript' },
+              { text: 'TypeScript Client', link: '/rpc-client/integrations/typescript', icon: 'i-logos:typescript-icon' },
+              { text: 'ARPL CLI Tool', link: '/rpc-client/integrations/arpl', icon: 'i-tabler:terminal' },
+              { text: 'MCP Server (AI)', link: '/rpc-client/integrations/mcp', icon: 'i-tabler:robot' },
+
+            ] },
           ],
         },
         {
           label: 'Methods',
-          items: [...(await loadMethods(openRpcDocument as OpenrpcDocument))],
+          items: [
+            { text: 'All', link: '/rpc-client/methods/', icon: 'i-tabler:grid-dots' },
+            ...(await loadMethods(openRpcDocument as OpenrpcDocument)),
+          ],
         },
       ],
     },
