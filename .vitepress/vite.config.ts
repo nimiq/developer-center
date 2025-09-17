@@ -126,7 +126,7 @@ export default defineConfig(async () => {
       ),
 
       NimiqVitepressVitePlugin({
-        gitChangelog: { repoURL: 'https://github.com/nimiq/developer-center' },
+        repoURL: 'https://github.com/nimiq/developer-center',
       }),
     ],
   }

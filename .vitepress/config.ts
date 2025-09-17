@@ -7,12 +7,12 @@ import { themeConfig } from './theme.config.js'
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
-  const basesUrl = {
+  const basesUrl: Record<string, string> = {
     production: '/developers',
     development: '/developer-center',
     staging: '/',
   }
-  const base = basesUrl[env.DEPLOYMENT_MODE!]
+  const base = basesUrl[env.DEPLOYMENT_MODE!] || ''
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
   return defineNimiqVitepressConfig({
