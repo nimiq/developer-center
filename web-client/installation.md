@@ -28,7 +28,7 @@ integrations:
 
 # Installation
 
-Multiple integrations so you can use Nimiq anywhere.{.nq-subline}
+Multiple integrations so you can use Nimiq anywhere.
 
 <ul grid="~ cols-1 md:cols-3 md:rows-[1fr_auto] gap-y-12 gap:32 md:gap-32" class="nq-raw" f-my-xl>
   <li v-for="({title, icon, href}) in $frontmatter.integrations" :key="title">

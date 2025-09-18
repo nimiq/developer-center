@@ -1,6 +1,6 @@
 # Nimiq Web Client Framework Integrations
 
-Complete integration guides for popular JavaScript frameworks and build tools. Learn how to integrate Nimiq blockchain into your Vite, Next.js, Nuxt, and Webpack projects. {.nq-subline}
+Complete integration guides for popular JavaScript frameworks and build tools. Learn how to integrate Nimiq blockchain into your Vite, Next.js, Nuxt, and Webpack projects.
 
 ## Overview
 

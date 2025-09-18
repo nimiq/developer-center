@@ -1,8 +1,11 @@
-# JavaScript Native
+# Nimiq RPC with JavaScript
 
-Pure JavaScript using fetch API and WebSocket - works in browsers and Node.js. {.nq-subline}
+Pure JavaScript using fetch API and WebSocket - runtime agnostic.
 
 Use standard JavaScript APIs for RPC calls without additional dependencies.
+
+> [!NOTE] Using Open RPC Servers
+> The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](../open-servers).
 
 ---
 
@@ -26,27 +29,6 @@ console.log('Balance:', result.balance)
 
 ---
 
-## Complex Request (Batch)
-
-```javascript
-const batchRequest = [
-  { jsonrpc: '2.0', method: 'getBlockNumber', id: 1 },
-  { jsonrpc: '2.0', method: 'getActiveValidators', id: 2 },
-  { jsonrpc: '2.0', method: 'getAccount', params: ['NQ07_...'], id: 3 }
-]
-
-const response = await fetch('https://rpc.nimiqwatch.com', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(batchRequest)
-})
-
-const results = await response.json()
-console.log('Block:', results[0].result, 'Validators:', results[1].result.length)
-```
-
----
-
 ## WebSocket Subscription
 
 ```javascript
@@ -66,12 +48,3 @@ ws.onmessage = (event) => {
   console.log('New transaction:', data.params)
 }
 ```
-
----
-
-## Need More Examples?
-
-For comprehensive documentation and all available methods:
-
-- **[Browse all RPC methods →](../methods/)**
-- **[Try the interactive playground →](../playground)**

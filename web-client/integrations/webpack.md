@@ -1,6 +1,6 @@
 # Nimiq Web Client Webpack Integration
 
-Complete guide to integrate Nimiq Web Client with Webpack. Build production-ready blockchain applications with Webpack bundler and Nimiq. {.nq-subline}
+Complete guide to integrate Nimiq Web Client with Webpack. Build production-ready blockchain applications with Webpack bundler and Nimiq.
 
 ## Overview
 

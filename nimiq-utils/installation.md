@@ -1,6 +1,6 @@
 # Installation
 
-Learn how to install and set up Nimiq Utils in your project with different package managers and bundlers. {.nq-subline}
+Learn how to install and set up Nimiq Utils in your project with different package managers and bundlers.
 
 ## Package Manager Installation
 

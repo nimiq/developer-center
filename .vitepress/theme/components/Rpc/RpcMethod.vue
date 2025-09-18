@@ -13,7 +13,7 @@ const { tabs, currentTab } = useCodeSnippet(widget)
 </script>
 
 <template>
-  <div>
+  <div nq-prose>
     <h1 font-semibold f-text-2xl f-mb-2xs>
       <code>{{ props.name }}</code> method
     </h1>
@@ -23,31 +23,57 @@ const { tabs, currentTab } = useCodeSnippet(widget)
 
     <div :class="{ 'f-mt-lg': !props.description }">
       <div mx-0>
-        <h2 nq-label mt-0="!">
+        <h2>
           Params
         </h2>
 
         <p v-if="props.input.length === 0" font-italic>
           This method does not require any parameters.
         </p>
-        <ul v-else>
-          <li v-for="({ required, key, type }) in props.input" :key my-4 ml-0 before:hidden>
-            <code font-semibold bg-transparent text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
-          </li>
-        </ul>
+        <table v-else class="params-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="({ required, key, type }) in props.input" :key="key">
+              <td><code>{{ key }}</code></td>
+              <td>{{ type }}</td>
+              <td>{{ required ? 'Yes' : 'No' }}</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h2 nq-label f-mt-lg="!">
+        <h2 f-text-lg f-mt-lg="!">
           Result
         </h2>
         <p v-if="props.output.length === 0" font-italic>
           This method does not return any result.
         </p>
-        <ul v-else>
-          <li v-for="({ required, key, type }) in props.output" :key my-4 ml-0 before:hidden>
-            <code font-semibold bg-transparent text="f-xs neutral-900">{{ key }}</code> <span op-80 f-text-2xs>{{ type }}{{ required ? '*' : ' or null' }}</span>
-          </li>
-        </ul>
+        <table v-else class="params-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="({ required, key, type }) in props.output" :key="key">
+              <td><code>{{ key }}</code></td>
+              <td>{{ type }}</td>
+              <td>{{ required ? 'Yes' : 'No' }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <h2 f-text-lg f-mt-lg="!">
+        Code Examples
+      </h2>
 
       <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" rounded-8 h-max max-w-none min-w-0 w-full f-mt-lg>
         <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" py-8 bg-neutral-50 h-44 border="b-1.5 solid neutral/8">
@@ -94,7 +120,6 @@ const { tabs, currentTab } = useCodeSnippet(widget)
 }
 
 h2 {
-  --uno: 'text-12 !f-mb-2xs !font-bold text-neutral';
   + p {
     --uno: 'f-text-xs';
   }
@@ -105,19 +130,6 @@ h2 {
   :deep(pre.shiki) {
     --uno: 'outline-0 my-0'
 
-  }
-}
-
-ul {
-  --uno: 'mt-0';
-  li {
-    --uno: 'my-4 ml-0 before:hidden';
-    > code {
-      --uno: 'bg-transparent font-semibold f-text-xs text-neutral-900';
-    }
-    > span {
-      --uno: 'op-80 f-text-2xs';
-    }
   }
 }
 </style>

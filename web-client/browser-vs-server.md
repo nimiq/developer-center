@@ -1,6 +1,6 @@
 # Using the Nimiq Web Client Across JavaScript Runtimes
 
-Learn how to integrate the Nimiq Albatross light client in any JavaScript environment – from browsers to servers to edge runtimes.{.nq-subline}
+Learn how to integrate the Nimiq Albatross light client in any JavaScript environment – from browsers to servers to edge runtimes.
 
 ## Overview
 

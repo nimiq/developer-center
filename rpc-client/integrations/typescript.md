@@ -1,34 +1,34 @@
-# TypeScript Client
+# Nimiq RPC With TypeScript Client
 
-Fully typed client with IntelliSense, error handling, and production features. {.nq-subline}
+Fully typed client with IntelliSense, error handling, and production features.
 
-Production-ready TypeScript client with full type safety and comprehensive error handling.
+## Installation {.mt-16}
 
----
+::: code-group
 
-## Installation & Usage
-
-```bash
-npm install nimiq-rpc-client-ts
+```bash [npm]
+npm install nimiq-albatross-rpc-client
 ```
 
-For complete documentation, installation instructions, and usage examples, visit the official repository:
+```bash [yarn]
+yarn add nimiq-albatross-rpc-client
+```
 
-<a href="https://github.com/onmax/albatross-rpc-client-ts" nq-arrow nq-pill-blue target="_blank">
-  View TypeScript Client Documentation
+```bash [pnpm]
+pnpm add nimiq-albatross-rpc-client
+```
+
+```bash [bun]
+bun add nimiq-albatross-rpc-client
+```
+
+:::
+
+## Documentation & Usage
+
+For complete documentation, installation instructions, and all available methods, visit the official repository:
+
+<a href="https://github.com/onmax/albatross-rpc-client-ts" nq-arrow f-mt-sm nq-pill-blue target="_blank" mx-0>
+  <div i-nimiq:logos-github-mono mr-4 />
+  View TypeScript Client Repository
 </a>
-
-The repository includes:
-- Complete API documentation
-- Installation guide
-- Usage examples for HTTP and WebSocket
-- Configuration options
-- Migration guides
-
----
-
-## Quick Links
-
-- **[Browse all RPC methods →](../methods/)**
-- **[TypeScript Client Repository →](https://github.com/onmax/albatross-rpc-client-ts)**
-- **[Try the interactive playground →](../playground)**

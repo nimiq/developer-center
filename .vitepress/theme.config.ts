@@ -156,6 +156,7 @@ export const themeConfig = {
           label: 'Overview',
           items: [
             { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Open RPC Servers', link: '/rpc-client/open-servers', icon: 'i-tabler:server' },
             { text: 'Integrations', icon: 'i-tabler:chart-funnel', items: [
               { text: 'Raw Requests', link: '/rpc-client/integrations/raw', icon: 'i-tabler:terminal-2' },
               { text: 'JavaScript Native', link: '/rpc-client/integrations/javascript', icon: 'i-logos:javascript' },

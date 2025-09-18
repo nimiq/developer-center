@@ -1,6 +1,6 @@
 # Nimiq Utils
 
-A comprehensive JavaScript utility library that complements the Nimiq Web Client with helper functions for addresses, validation, formatting, and more. {.nq-subline}
+A comprehensive JavaScript utility library that complements the Nimiq Web Client with helper functions for addresses, validation, formatting, and more.
 
 > **📖 Comprehensive Documentation Available**
 >

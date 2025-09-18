@@ -1,6 +1,6 @@
 # Nimiq Web Client Nuxt Integration
 
-Complete guide to integrate Nimiq Web Client with Nuxt 3. Build server-side rendered blockchain applications with Nuxt and Nimiq. {.nq-subline}
+Complete guide to integrate Nimiq Web Client with Nuxt 3. Build server-side rendered blockchain applications with Nuxt and Nimiq.
 
 ## Overview
 

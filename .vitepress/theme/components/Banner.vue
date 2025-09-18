@@ -9,8 +9,9 @@ defineProps<{
 </script>
 
 <template>
-  <section relative z-10 class="nq-raw">
+  <section relative z-10 style="--pt: 0; --pb:0; --px: 0">
     <div
+      class="nq-raw"
       outline="solid 1.5 offset--1.5 white/20"
       mx-auto bg-gradient-green w-full shadow relative of-hidden f-p-lg f-rounded-md
     >

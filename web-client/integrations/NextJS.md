@@ -1,6 +1,6 @@
 # Nimiq Web Client Next.js Integration
 
-Complete guide to integrate Nimiq Web Client with Next.js. Build modern React blockchain applications with Next.js and Nimiq. {.nq-subline}
+Complete guide to integrate Nimiq Web Client with Next.js. Build modern React blockchain applications with Next.js and Nimiq.
 
 ## Overview
 

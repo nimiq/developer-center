@@ -1,69 +1,33 @@
 # MCP Server (AI Integration)
 
-Enable AI assistants like Claude to interact with the blockchain through natural language. {.nq-subline}
+Enable AI assistants like Claude or Cursor to interact with the blockchain through natural language.
 
 The Nimiq Model Context Protocol server provides AI assistants with direct blockchain access.
 
----
+## Documentation & Usage
 
-## Basic Setup
+For complete documentation, installation instructions, and all available methods, visit the official repository:
 
-```bash
-npm install -g nimiq-mcp
-
-# Add to Claude Desktop config (~/.config/Claude/claude_desktop_config.json):
-{
-  "mcpServers": {
-    "nimiq": {
-      "command": "npx",
-      "args": ["nimiq-mcp"]
-    }
-  }
-}
-```
-
----
+<a href="https://github.com/onmax/nimiq-mcp" nq-arrow f-mt-sm nq-pill-blue target="_blank" mx-0>
+  <div i-nimiq:logos-github-mono mr-4 />
+  View Nimiq MCP Repository
+</a>
 
 ## Natural Language Queries
 
-Ask Claude directly:
+Ask your AI agent directly:
 
-> **"What's the balance of address NQ07_...?"**
+- "What's the balance of address NQ07_...?"
 
-> **"Show me the top 5 validators by stake"**
+- "Show me the top 5 validators by stake"
 
-> **"Analyze transaction patterns for the last 100 blocks"**
+- "Analyze transaction patterns for the last 100 blocks"
 
 Claude will automatically use tools like:
+
 - `get_account_balance`
 - `get_validators`
 - `search_transactions`
 - `analyze_address`
 
----
-
-## AI-Powered Analysis
-
-Advanced requests:
-
-> **"Compare validator performance over the last month"**
-
-> **"Find accounts with unusual transaction patterns"**
-
-> **"Generate a network health report"**
-
-Claude combines multiple tools and provides insights:
-- Pattern recognition in blockchain data
-- Performance analysis and recommendations
-- Automated report generation
-- Real-time monitoring suggestions
-
----
-
-## Need More Examples?
-
-For comprehensive documentation and all available methods:
-
-- **[Browse all RPC methods →](../methods/)**
-- **[MCP Repository →](https://github.com/onmax/nimiq-mcp)**
-- **[Claude Desktop Setup Guide →](https://docs.anthropic.com/claude/docs/claude-desktop)**
+Finally, it can summarize the results in plain language for you.

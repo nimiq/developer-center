@@ -60,7 +60,7 @@ This rule defines **mandatory copywriting conventions** that apply to *every* do
 > **For technical implementation**: See [Nimiq VitePress theme](mdc:.cursor/rules/nimiq-vitepress-theme.mdc)
 
 When writing content that uses theme components:
-- Use `.nq-subline` class for subtitles: `{.nq-subline}`
+- Use `.nq-subline` class for subtitles: ``
 - Reference icons properly: see [icon usage](mdc:.cursor/rules/icons-usage.mdc)
 - Follow [fluid spacing](mdc:.cursor/rules/fluid-spacing.mdc) patterns in examples
 

@@ -57,6 +57,7 @@ export interface NimiqRpcMethod {
   tags?: { name: string }[]
   input: MethodIO[]
   output: MethodIO[]
+  popular?: boolean
 }
 
 export interface MethodIO {
@@ -70,6 +71,19 @@ export type NimiqRpcMethods = NimiqVitepressSidebar['items'][number] & {
   methods: NimiqRpcMethod[]
 }
 
+export const POPULAR_METHODS = [
+  'getAccountByAddress',
+  'getLatestBlock',
+  'getBlockNumber',
+  'getTransactionByHash',
+  'sendBasicTransaction',
+  'createBasicTransaction',
+  'getValidators',
+  'mempool',
+  'subscribeForHeadBlock',
+  'getAddress',
+]
+
 export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRpcMethods[]> {
   const methods = await deferredMethods(openRpcJson)
 
@@ -80,6 +94,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
     input: parseInput(method.params),
     output: parseOutput(method.result),
     link: `/rpc-client/methods/${slugify(method.name)}`,
+    popular: POPULAR_METHODS.includes(method.name),
   })) as NimiqRpcMethod[]
 
   const result: NimiqRpcMethods[] = []
@@ -92,6 +107,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
       items: methodsByTag.map(method => ({
         text: `\`${method.name}\``,
         link: `/rpc-client/methods/${slugify(method.name)}`,
+        popular: method.popular,
       })),
 
     })

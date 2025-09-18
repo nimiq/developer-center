@@ -1,6 +1,6 @@
 # Nimiq Web Client Vite Integration
 
-How to integrate Nimiq Web Client with Vite for modern web development. Complete setup guide for building blockchain applications with Vite and Nimiq. {.nq-subline}
+How to integrate Nimiq Web Client with Vite for modern web development. Complete setup guide for building blockchain applications with Vite and Nimiq.
 
 ## Overview
 

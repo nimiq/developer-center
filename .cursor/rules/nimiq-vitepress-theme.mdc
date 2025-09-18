@@ -54,7 +54,7 @@ interface Card {
 The theme includes Nimiq-specific CSS utilities via `presetNimiq()`. For complete UnoCSS usage patterns, see [UnoCSS conventions](mdc:.cursor/rules/unocss-usage.mdc).
 
 ### Typography & Content Classes
-- `.nq-subline` - Styled subtitle text (markdown: `{.nq-subline}`)
+- `.nq-subline` - Styled subtitle text (markdown: ``)
 - `.nq-prose` - Typography styles for content
 - `.nq-label` - Label styling for headings
 - `.nq-raw` - Escape VitePress styling
@@ -140,7 +140,7 @@ cards:
 ---
 
 # Page Title
-Subtitle with styling {.nq-subline}
+Subtitle with styling 
 
 <NqGrid f-my-xl :cards="$frontmatter.cards" />
 ```

@@ -16,8 +16,8 @@ defineProps<{
 </script>
 
 <template>
-  <section class="quick-start">
-    <NqHeadline v-if="label || title || description" :label :title :description :align :h1="false" />
+  <section class="quick-start nq-raw">
+    <NqHeadline v-if="label || title || description" :label :title :description :align :h1="false" mt-0 />
     <NqGrid :cards="actions" large-cards my-0 />
   </section>
 </template>

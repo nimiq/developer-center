@@ -58,7 +58,7 @@ securityFeatures:
 
 # Nimiq Proof-of-Stake
 
-Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our consensus protocol, Albatross, and provides a comprehensive overview of our protocol's unique features.{.nq-subline}
+Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our consensus protocol, Albatross, and provides a comprehensive overview of our protocol's unique features.
 
 <NqGrid f-my-xl :cards="$frontmatter.links"  />
 

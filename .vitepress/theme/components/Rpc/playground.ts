@@ -73,7 +73,21 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
         return p.trim()
       })
       const res = await rpcCall(method, parsedParams, options)
-      playground.value.state = 'success'
+
+      // Check if we need to enhance the error result for better UX
+      const isDefaultServer = playgroundConfig.value.nodeUrl === defaultNodeUrl
+      if (!res[0] && isDefaultServer) {
+        // This is an error result from the default server - enhance the metadata
+        const [_isOk, _error, _data, metadata] = res
+        const enhancedMetadata = {
+          ...metadata,
+          isDefaultServer,
+          serverUrl: playgroundConfig.value.nodeUrl,
+        }
+        res[3] = enhancedMetadata
+      }
+
+      playground.value.state = res[0] ? 'success' : 'error'
       history.value = [res, ...history.value]
     }
     catch (error) {

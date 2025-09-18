@@ -14,6 +14,32 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
   const date = new Date(timestamp)
   return showDate ? formatterWithDate.format(date) : formatterTime.format(date)
 }
+
+function getErrorStatusCode(error: any): string | null {
+  if (typeof error === 'string') {
+    // Try to extract HTTP status codes from common error message patterns
+    const patterns = [
+      /status:\s*(\d{3})/i, // "status: 400"
+      /HTTP\s+(\d{3})/i, // "HTTP 400"
+      /(\d{3})\s+\w+/, // "400 Bad Request"
+      /Error\s+(\d{3})/i, // "Error 400"
+      /^(\d{3})\b/, // Starts with status code
+    ]
+
+    for (const pattern of patterns) {
+      const match = error.match(pattern)
+      if (match) {
+        return match[1]
+      }
+    }
+  }
+
+  if (error && typeof error === 'object' && error.status) {
+    return String(error.status)
+  }
+
+  return null
+}
 </script>
 
 <template>
@@ -26,8 +52,8 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
         <p v-if="props.input.length === 0" font-italic>
           It does not require any parameters.
         </p>
-        <fieldset v-else>
-          <Input v-for="field in props.input" v-bind="field" :key="field.key" v-model="widget.userParams[field.key]" />
+        <fieldset v-else flex="~ col gap-sm">
+          <Input v-for="field in props.input" v-bind="field" :key="field.key" v-model="widget.userParams[field.key]" :label="field.key" />
         </fieldset>
         <div flex="~ items-center justify-end gap-6" f-mt-xs>
           <Popover.Root>
@@ -35,8 +61,8 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
               <div i-tabler:settings />
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Content :collision-padding="12" side="bottom" :side-offset="1.5" will-change="transform,opacity" reka-open="animate-in slide-in-t fade-in" reka-close="animate-out slide-in-b fade-out" outline="~ 1.5 offset--1.5 neutral-200" rounded-8 bg-neutral-0 max-w-320 w-max shadow relative f-p-xs>
-                <h3 text-neutral>
+              <Popover.Content :collision-padding="12" side="bottom" :side-offset="1.5" will-change="transform,opacity" reka-open="animate-in slide-in-t fade-in" reka-close="animate-out slide-in-b fade-out" outline="~ 1.5 offset--1.5 neutral-200" rounded-8 bg-neutral-0 max-w-320 min-w-328 w-max shadow relative f-p-xs>
+                <h3 text-neutral mt-0 f-text-sm="!">
                   RPC Config
                 </h3>
 
@@ -66,25 +92,6 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
       </form>
     </div>
 
-    <!-- Info icon for default server limitations -->
-    <div flex="~ items-center gap-8" f-mt-xs>
-      <Popover.Root>
-        <Popover.Trigger>
-          <div text-16 text-neutral-600 cursor-pointer i-nimiq:info />
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content :collision-padding="12" side="top" :side-offset="4" will-change="transform,opacity" reka-open="animate-in slide-in-b fade-in" reka-close="animate-out slide-out-t fade-out" outline="~ 1.5 offset--1.5 neutral-200" rounded-8 bg-neutral-0 max-w-320 w-max shadow relative f-p-xs>
-            <p text-neutral-800 m-0 f-text-xs>
-              The default RPC server may not support all methods. If you encounter errors, consider connecting to your own Nimiq node for full method availability.
-            </p>
-            <Popover.Close bg="neutral-200 hocus:neutral-300" outline="~ 1.5 offset--1.5 neutral/20" stack rounded-full transition right-8 top-8 absolute size-16="!">
-              <div text-6 i-nimiq:cross />
-            </Popover.Close>
-          </Popover.Content>
-        </Popover.Portal>
-      </Popover.Root>
-    </div>
-
     <div class="nq-raw widget-container" f-mt-sm>
       <header flex="~ items-center gap-8">
         <div text-10 op-70 i-nimiq:watch-1-50 />
@@ -101,23 +108,48 @@ function formatTimestamp(timestamp: number, showDate: boolean = false) {
         </p>
         <div v-else>
           <Accordion.Root type="multiple" :collapsible="true">
-            <Accordion.Item v-for="([isOk, error, data, { request: { timestamp, body } }], index) in history" :key="index" :value="`${timestamp}`">
+            <Accordion.Item v-for="([isOk, error, data, metadata], index) in history" :key="index" :value="`${metadata.request.timestamp}`">
               <Accordion.Trigger bg="transparent hocus:neutral-200 reka-open:neutral-200" flex="~ items-center gap-8" p-4 px-8 w-full rounded="4 data-open:b-0">
                 <div text-6 op-80 shrink-0 transition-transform i-nimiq:chevron-right reka-open:rotate-90 />
                 <code font-semibold text-ellipsis of-hidden f-text-2xs>
-                  {{ body.method }}
+                  {{ metadata.request.body.method }}
                 </code>
                 <div ml-auto flex="~ items-center gap-8" shrink-0>
-                  <div v-if="!isOk" stack p-3 rounded-2 bg-red-400 outline="1.5 ~ neutral-0/10" :title="error">
+                  <div v-if="!isOk" flex="~ items-center gap-6" px-8 py-3 rounded-2 bg-red-400 outline="1.5 ~ neutral-0/10" :title="error">
                     <div v-if="error" text-12 text-red op-80 i-nimiq:alert />
+                    <span v-if="getErrorStatusCode(error)" text="red f-2xs" font-bold>
+                      {{ getErrorStatusCode(error) }}
+                    </span>
                   </div>
                   <span text="9 neutral-700" font-semibold>
-                    {{ formatTimestamp(timestamp, true) }}
+                    {{ formatTimestamp(metadata.request.timestamp, true) }}
                   </span>
                 </div>
               </Accordion.Trigger>
               <Accordion.Content un-animate-accordion="reka-open:down reka-closed:up" :value="timestamp" outline="1.5 neutral-200 ~ offset--1.5" rounded-b-4 bg-neutral-50 of-hidden f-mb-2xs>
                 <pre py-4 rounded-8 bg-neutral-50 of-x-auto f-text-2xs f-px-2xs>{{ isOk ? data : error }}</pre>
+
+                <!-- Debug info - always visible for errors -->
+                <div v-if="!isOk" p-8>
+                  <h4 text="neutral-700 9" font-semibold mb-4 nq-label>
+                    Debug Information
+                  </h4>
+                  <pre text="neutral-800 f-2xs" outline="1.5 offset--1.5 ~ neutral-0/6" font-mono px-8 py-4 rounded-4 bg-neutral-200 whitespace-pre-wrap>{{ JSON.stringify({
+                    isOk,
+                    errorType: typeof error,
+                    errorString: String(error),
+                    extractedStatusCode: getErrorStatusCode(error),
+                    metadataKeys: Object.keys(metadata || {}),
+                  }, null, 2) }}</pre>
+                </div>
+
+                <!-- Show alert for errors from default server (TESTING - shows for all errors temporarily) -->
+                <div v-if="!isOk" flex="~ items-start gap-8" p-8 rounded-b-4>
+                  <div text-12 text-orange mt-2 op-80 shrink-0 i-nimiq:info />
+                  <p text="orange-1100 f-2xs" m-0 lh="[1.4]">
+                    The default RPC server may not support all methods. If you encounter errors, consider connecting to your own Nimiq node for full method availability. <a href="../open-servers" underline>Learn more about open servers</a>.
+                  </p>
+                </div>
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root>

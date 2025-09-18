@@ -26,8 +26,10 @@ export default defineConfig(async () => {
   const methods = await loadMethods(openRpcDoc)
 
   // Get the nimiq-rpc-client-ts version from package.json
-  const { dependencies } = await readPackageJSON()
-  const nimiqRpcVersion = dependencies?.['nimiq-rpc-client-ts'] || 'unknown'
+  const { devDependencies } = await readPackageJSON()
+  const nimiqRpcVersion = devDependencies?.['@nimiq/core']
+    // Nimiq Web Client !== GitHub release
+    .replace('^2', 'v1') || 'unknown'
 
   return {
     optimizeDeps: {

@@ -1,6 +1,6 @@
 # Why Choose Nimiq Utils?
 
-Discover why Nimiq Utils is the go-to choice for building robust, efficient, and maintainable blockchain applications. {.nq-subline}
+Discover why Nimiq Utils is the go-to choice for building robust, efficient, and maintainable blockchain applications.
 
 ## Built for Real-World Applications
 

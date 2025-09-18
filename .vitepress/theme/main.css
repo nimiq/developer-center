@@ -47,7 +47,7 @@ div:has(+ article) {
 @media (min-width: 1224px) {
   /* When widget is shown, use a wider secondary sidebar */
   [data-layout="docs"]:has(#widget:not(:empty)) {
-    --nq-widget-sidebar-width: 480px;
+    --nq-widget-sidebar-width: calc((100vw - var(--nq-sidebar-width)) / 2);
   }
 
   /* Apply wider width to the secondary sidebar container when widget is present */

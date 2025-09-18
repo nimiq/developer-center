@@ -20,7 +20,7 @@ links:
 
 # Nimiq Migration to Proof-of-Stake
 
-We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved. {.nq-subline}
+We are transitioning from a Proof-of-Work blockchain to a Proof-of-Stake blockchain. Learn more about the migration process and how you can get involved.
 
 <NqGrid f-my-xl :cards="$frontmatter.links" />
 

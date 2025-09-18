@@ -1,20 +1,15 @@
-# Raw HTTP/WebSocket Requests
+# Nimiq RPC Raw HTTP/WebSocket Requests
 
-Direct calls using curl, wget, or any HTTP client - no dependencies required. {.nq-subline}
+Direct calls using curl, wget, or any HTTP client - no dependencies required.
 
 Perfect for quick testing, shell scripts, or integrating with any programming language that supports HTTP requests.
 
----
+For better UX, we recommend you to use [ARPL](./arpl.md), a tool to interact with Nimiq RPC servers from the command line.
 
-## Basic Request
+> [!NOTE] Using Open RPC Servers
+> The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](../open-servers).
 
-```bash
-curl https://rpc.nimiqwatch.com/account/NQ07_0000_0000_0000_0000_0000_0000_0000_0000
-```
-
----
-
-## Complex Request (JSON-RPC)
+## Request
 
 ```bash
 curl -X POST https://rpc.nimiqwatch.com \
@@ -36,12 +31,3 @@ curl -X POST https://rpc.nimiqwatch.com \
 echo '{"jsonrpc":"2.0","method":"subscribeForHeadBlockHash","params":[],"id":1}' | \
   websocat wss://rpc.nimiqwatch.com/ws
 ```
-
----
-
-## Need More Examples?
-
-For comprehensive documentation and all available methods:
-
-- **[Browse all RPC methods →](../methods/)**
-- **[Try the interactive playground →](../playground)**

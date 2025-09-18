@@ -1,34 +1,20 @@
-# ARPL CLI Tool
+# Nimiq RPC with ARPL CLI Tool
 
-Command-line interface for node management, accounts, staking, and validators. {.nq-subline}
+Command-line interface for node management, accounts, staking, and validators.
 
 Albatross Remote (ARPL) provides comprehensive Nimiq node management through an intuitive CLI.
 
----
-
-## Installation & Usage
+## Installation {.mt-16}
 
 ```bash
 npm install -g @sisou/albatross-remote
 ```
 
-For complete documentation, installation instructions, and all available commands, visit the official repository:
+## Documentation & Usage
 
-<a href="https://github.com/sisou/arpl" nq-arrow nq-pill-blue target="_blank">
-  View ARPL Documentation
+For complete documentation, installation instructions, and all available methods, visit the official repository:
+
+<a href="https://github.com/sisou/arpl" nq-arrow f-mt-sm nq-pill-blue target="_blank" mx-0>
+  <div i-nimiq:logos-github-mono mr-4 />
+  View ARPL Repository
 </a>
-
-The repository includes:
-- Complete command reference
-- Installation guide
-- Account, transaction, and validator management
-- Staking operations
-- Connection options
-
----
-
-## Quick Links
-
-- **[Browse all RPC methods →](../methods/)**
-- **[ARPL Repository →](https://github.com/sisou/arpl)**
-- **[Try the interactive playground →](../playground)**
