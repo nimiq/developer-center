@@ -187,22 +187,32 @@ export const themeConfig = {
       sidebar: nimiqUtilsSidebar,
     },
     {
-      text: 'Validators',
-      subpath: 'validators',
+      text: 'Nodes',
+      subpath: 'nodes',
       icon: 'i-local:nimiq-validators',
-      defaultPageLink: '/validators/',
-      description: 'Staking and pools',
+      defaultPageLink: '/nodes/',
+      description: 'Nimiq Nodes',
       sidebar: [
+        {
+          items: [
+            { text: 'Overview', link: '/nodes/', icon: 'i-tabler:layout-grid' },
+          ],
+        },
         {
           label: 'Validators',
           items: [
-            { text: 'Overview', link: '/validators/', icon: 'i-tabler:layout-grid' },
-            { text: 'Becoming a Validator', link: '/validators/becoming-a-validator', icon: 'i-tabler:user-check' },
-            { text: 'Prover Node Setup Guide', link: '/validators/prover-node-guide', icon: 'i-tabler:server' },
-            { text: 'Staking Handbook', link: '/validators/staking-handbook', icon: 'i-tabler:book' },
-            { text: 'Validator Trustscore', link: '/validators/validator-trustscore', icon: 'i-tabler:shield-star' },
-            { text: 'FAQs for Stakers and Pools', link: '/validators/staking-faq', icon: 'i-tabler:help' },
-            { text: 'Add Your Pool to the Wallet', link: 'https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators', icon: 'i-tabler:wallet' },
+            { text: 'Becoming a Validator', link: '/nodes/validators/becoming-a-validator', icon: 'i-tabler:user-check' },
+            { text: 'Staking Handbook', link: '/nodes/validators/staking-handbook', icon: 'i-tabler:book' },
+            { text: 'Validator Trustscore', link: '/nodes/validators/validator-trustscore', icon: 'i-tabler:shield-star' },
+            { text: 'FAQs for Stakers and Pools', link: '/nodes/validators/staking-faq', icon: 'i-tabler:help' },
+            { text: 'Add Your Pool to the Wallet', link: 'https://github.com/nimiq/validators-api#add-your-validator-information', icon: 'i-tabler:wallet' },
+          ],
+        },
+        {
+          label: 'Nodes',
+          items: [
+            { text: 'Node Setup', link: 'https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration', icon: 'i-tabler:lock' },
+            { text: 'Prover Node Setup Guide', link: '/nodes/prover-node-guide', icon: 'i-tabler:server' },
           ],
         },
       ],

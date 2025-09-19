@@ -23,7 +23,7 @@ hero:
     - icon: i-local:nimiq-validators
       title: Validators
       description: Secure the network and earn rewards
-      href: ./validators/
+      href: ./nodes/validators/becoming-a-validator
       hoverColor: green
     - icon: i-local:nimiq-albatross
       title: Albatross
@@ -79,6 +79,7 @@ hoverableGrid:
     - title: RPC Quick Start
       description: Explore docs and run JSON-RPC from your environment
       href: ./rpc-client/
+      icon: i-local:nimiq-rpc
     - title: Nimiq MCP
       description: Build with AI
       href: https://github.com/onmax/nimiq-mcp
@@ -119,12 +120,12 @@ popularResources:
           href: https://github.com/onmax/nimiq-identicons
     - title: Backend & API
       links:
-        - text: RPC Playground
-          href: ./rpc-client/playground
         - text: RPC Methods
           href: ./rpc-client/methods/
-        - text: Client Libraries
-          href: ./rpc-client/clients
+        - text: TypeScript
+          href: ./rpc-client/integrations/typescript
+        - text: ARPL CLI Tool
+          href: https://github.com/sisou/arpl
         - text: Account Queries
           href: ./rpc-client/methods/get-accounts
         - text: Send Transactions
@@ -142,23 +143,23 @@ popularResources:
     - title: Node Operators
       links:
         - text: Prover Node Guide
-          href: ./validators/prover-node-guide
+          href: ./nodes/prover-node-guide
     - title: Validator Operators
       links:
         - text: Becoming a Validator
-          href: ./validators/becoming-a-validator
+          href: ./nodes/validators/becoming-a-validator
         - text: Staking Handbook
-          href: ./validators/staking-handbook
+          href: ./nodes/validators/staking-handbook
         - text: Trustscore System
-          href: ./validators/validator-trustscore
+          href: ./nodes/validators/validator-trustscore
         - text: Staking FAQ
-          href: ./validators/staking-faq
+          href: ./nodes/validators/staking-faq
         - text: Validators API
-          href: https://github.com/nimiq/validators-api
+          href: https://github.com/nimiq/validators-api#add-your-validator-information
         - text: Validator RPC Docs
-          href: ./validators/rpc-docs/
+          href: ./rpc-client
         - text: ARPL CLI Tool
-          href: https://github.com/sisou/arpl
+          href: https://github.com/sisou/arpl?tab=readme-ov-file#sisoualbatross-remote-arpl
     - title: Core & Protocol
       links:
         - text: Protocol Docs

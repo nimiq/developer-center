@@ -67,23 +67,25 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
   label="Community"
   headline="Share Your Node with the Community"
   subline="Set up your own Nimiq node and consider making it available as an open RPC server to help other developers in the ecosystem."
-  linkHref="/validators/becoming-a-validator"
+  linkHref="../nodes/validators/becoming-a-validator"
   linkLabel="Setup Guide"
 />
 
 ## General considerations for open servers
 
 ### Production usage
+
 - Not suitable for production applications.
 - No uptime guarantees or service level agreements.
 - May experience throttling during peak usage.
 - Method availability may change without notice.
 
 ### Data privacy
+
 - All requests _may_ be logged for monitoring purposes.
 - Do not send sensitive information through open servers.
 - Consider IP addresses and request data as potentially visible to operators.
 
 ---
 
-*Open servers are community-provided resources. Always verify data independently for critical applications.*
+_Open servers are community-provided resources. Always verify data independently for critical applications._

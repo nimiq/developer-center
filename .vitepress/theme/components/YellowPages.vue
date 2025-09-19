@@ -34,11 +34,11 @@ const sections = [
   {
     title: 'Validators & Staking',
     links: [
-      { title: 'Become Validator', href: '/validators/becoming-a-validator' },
-      { title: 'Prover Node Setup', href: '/validators/prover-node-guide' },
-      { title: 'Staking Handbook', href: '/validators/staking-handbook' },
-      { title: 'Validator Trustscore', href: '/validators/validator-trustscore' },
-      { title: 'Staking FAQ', href: '/validators/staking-faq' },
+      { title: 'Become Validator', href: '/nodes/validators/becoming-a-validator' },
+      { title: 'Prover Node Setup', href: '/nodes/prover-node-guide' },
+      { title: 'Staking Handbook', href: '/nodes/validators/staking-handbook' },
+      { title: 'Validator Trustscore', href: '/nodes/validators/validator-trustscore' },
+      { title: 'Staking FAQ', href: '/nodes/validators/staking-faq' },
     ],
   },
 ]

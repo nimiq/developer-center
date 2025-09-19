@@ -3,6 +3,7 @@
 If you're unsure which client to use for interacting with the Nimiq blockchain, this page offers a comparison between the Nimiq Web Client and the RPC Client so you can choose the tool that best fits your needs and expertise.
 
 ## TL;DR
+
 The Nimiq Web Client establishes direct connections with other peers in the network, making it a part of the blockchain network. In contrast, the RPC follows a client-server model, where clients connect to a single server that interacts with multiple peers on the network. The Web Client operates in JavaScript environments, such as web browsers and Node.js, while the RPC can be used from any programming language and environment through HTTP calls.
 
 <img class="object-contain max-h-[max(60vh,180px)]" src="/assets/images/protocol/network.png" alt="Web Client vs RPC" />
@@ -37,14 +38,16 @@ RPC supports interaction with nodes and allows users to call its endpoints using
 
 ## When to Use Each
 
-### Choose Web Client When:
+### Choose Web Client When
+
 - Building browser-based applications
 - Creating decentralized applications (dApps)
 - Want to minimize infrastructure requirements
 - Need mobile-friendly solutions
 - Building with JavaScript/TypeScript
 
-### Choose RPC Client When:
+### Choose RPC Client When
+
 - Building server-side applications
 - Need advanced node management
 - Working with languages other than JavaScript
@@ -81,7 +84,7 @@ Now that you know the differences, why not start building?
 <NqGrid :cards="[
   { icon: 'i-local:nimiq-web-client', title: 'Web Client', href: '/web-client' },
   { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '/rpc-client' },
-  { icon: 'i-local:nimiq-validors', title: 'Validators', href: '/validators' },
+  { icon: 'i-local:nimiq-validators', title: 'Validators', href: '../nodes/validators/becoming-a-validator' },
 ]" />
 
 ## Learn More

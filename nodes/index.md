@@ -5,43 +5,28 @@ links:
     label: Connect
     icon: i-nimiq:verified
     description: Collect stake, validate blocks and earn.
-    href: becoming-a-validator
+    href: ./validators/becoming-a-validator
   - label: RPC
     title: Connect via RPC
     bgColor: blue
     icon: i-tabler:plug
-    href: /rpc-client/
+    href: ../rpc-client/
 docs:
   - title: Becoming a Validator
-    href: /validators/becoming-a-validator
+    href: ./validators/becoming-a-validator
     icon: i-tabler:user-check
     iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
     description: 'Requirements and step‑by‑step guide to run a validator node.'
   - title: Prover Node Setup
-    href: /validators/prover-node-guide
+    href: ./prover-node-guide
     icon: i-tabler:server
     iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
     description: 'How to run a prover node used by the network’s ZKP system.'
-  - title: Staking Handbook
-    href: /validators/staking-handbook
-    icon: i-tabler:book
-    iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
-    description: 'Concepts, operations, and best practices for staking in Nimiq.'
-  - title: Validator Trustscore
-    href: /validators/validator-trustscore
+  - title: Node Setup
+    href: https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration
     icon: i-tabler:shield-star
     iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
-    description: 'How trustscore works and what affects validator reputation.'
-  - title: Staking FAQs
-    href: /validators/staking-faq
-    icon: i-tabler:help
-    iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
-    description: 'Answers to common questions from stakers and pool operators.'
-  - title: Add Your Pool to the Wallet
-    href: https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators
-    icon: i-tabler:wallet
-    iconClass: 'absolute top-12 right-12 size-24 text-neutral-700 dark:text-neutral-300'
-    description: 'Instructions to list your pool in the Nimiq Wallet.'
+    description: 'Concepts, operations, and best practices for staking in Nimiq.'
 prose: false
 prev: false
 next: false
