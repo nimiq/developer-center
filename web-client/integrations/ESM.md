@@ -1,13 +1,15 @@
-# Install with ESM
+# Nimiq Web Client ESM Integration
 
-The Nimiq Web Client ships with support for ESM.
+Integrate Nimiq Web Client using native ES modules for modern browsers.
 
----
+## Installation
 
 <!--@include: ./_installation.md-->
 
-And now you are ready to go!
+## Configuration
+
+No additional configuration needed! ESM works out of the box in modern browsers and bundlers that support ES modules.
+
+## Usage Example
 
 <!--@include: ../_demo.web.md-->
-
-<!--@include: ./_contribute.md-->

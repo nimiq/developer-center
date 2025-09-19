@@ -20,7 +20,6 @@ export const themeConfig = {
           label: 'Getting Started',
           items: [
             { text: 'Overview', link: '/web-client/', icon: 'i-tabler:layout-grid' },
-            { text: 'Installation', link: '/web-client/installation', icon: 'i-tabler:download' },
             { text: 'Browser vs Server-Side', link: '/web-client/browser-vs-server', icon: 'i-tabler:device-desktop' },
             { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
             { text: 'Nimiq Tutorial', link: 'https://nimiq.github.io/core-js/tutorial/', icon: 'i-tabler:school' },
@@ -32,7 +31,7 @@ export const themeConfig = {
             { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs gray group-hocus:filter-none' },
             { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon gray group-hocus:filter-none' },
             { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon gray group-hocus:filter-none' },
-            { text: 'Webpack', link: '/web-client/integrations/webpack', icon: 'i-logos:webpack gray group-hocus:filter-none' },
+            { text: 'ESM', link: '/web-client/integrations/ESM', icon: 'i-logos:javascript gray group-hocus:filter-none' },
           ],
         },
         {

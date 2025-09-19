@@ -4,9 +4,8 @@ import type { CSSProperties, Ref } from 'vue'
 import type { Peer } from '../types/nimiq'
 import type { WorldMapHexagon } from '../utils/consensus-map/drawHexagonsWorldMapCanvas'
 import init, * as Nimiq from '@nimiq/core/web'
-import { until, useDevicePixelRatio, useEventListener, useIntervalFn } from '@vueuse/core'
-import { motion, useMotionValue, useSpring } from 'motion-v'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { until, useDevicePixelRatio, useEventListener } from '@vueuse/core'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import { useGeoIp } from '../composables/useGeoIp'
 import { ConsensusState } from '../types/nimiq'
 import { drawHexagonsWorldMap, HEXAGONS_WORLD_MAP_ASPECT_RATIO, HEXAGONS_WORLD_MAP_HEIGHT_PIXELS, HEXAGONS_WORLD_MAP_SCALE, HEXAGONS_WORLD_MAP_WIDTH_PIXELS, WORLD_MAP_CANVAS_PADDING } from '../utils/consensus-map/drawHexagonsWorldMapCanvas'
@@ -173,68 +172,7 @@ useEventListener(window, 'resize', () => {
 
 const showTooltip = computed(() => userPeer.value && tooltipPosition.value)
 
-const didYouKnowThatFacts = [
-  'Nimiq is a browser-first blockchain',
-  'Nimiq 2.0 uses Proof-of-Stake consensus',
-  'You are connecting directly to the blockchain',
-  'Nimiq supports atomic swaps with Bitcoin, USDC and USDT',
-  'Nimiq was founded in 2018',
-  'You can use NIM in over 29K locations',
-  'Nimiq is a non-profit foundation',
-  'You can find us on Twitter or Telegram',
-  'Nimiq is a decentralized payment protocol',
-]
-const currentFact = ref('')
-
-const textMeasureRef = ref<HTMLElement>()
-const measuredWidth = useMotionValue(320) // Smaller initial width
-const containerWidth = useSpring(measuredWidth, {
-  stiffness: 400,
-  damping: 30,
-})
-
-async function measureFactWidth(text: string) {
-  await nextTick()
-  if (textMeasureRef.value) {
-    textMeasureRef.value.textContent = text
-    const rect = textMeasureRef.value.getBoundingClientRect()
-    const newWidth = Math.max(rect.width + 48, 300) // Padding + prevent collapse
-    measuredWidth.set(newWidth)
-  }
-}
-
-const { pause: pauseFactsLoop, resume: resumeFactsLoop } = useIntervalFn(() => {
-  const newFact = didYouKnowThatFacts[Math.floor(Math.random() * didYouKnowThatFacts.length)]!
-  currentFact.value = newFact
-  measureFactWidth(newFact)
-}, 6000, { immediate: false })
-
-watch(consensus, () => {
-  if (consensus.value === 'connecting') {
-    resumeFactsLoop()
-  }
-  else {
-    pauseFactsLoop()
-    // Container must resize for longer connected message
-    if (consensus.value === 'established') {
-      const connectedText = `Your browser is now directly connected to ${peers.value.length} peers on the network.`
-      measureFactWidth(connectedText)
-    }
-  }
-}, { immediate: true })
-
-// Peer count changes message length
-watch(peers, () => {
-  if (consensus.value === 'established') {
-    const connectedText = `Your browser is now directly connected to ${peers.value.length} peers on the network.`
-    measureFactWidth(connectedText)
-  }
-}, { deep: true })
-
 async function connect() {
-  const newFact = didYouKnowThatFacts[Math.floor(Math.random() * didYouKnowThatFacts.length)]!
-  currentFact.value = newFact
-  measureFactWidth(newFact)
   await launchNetwork()
 }
 </script>
@@ -276,32 +214,5 @@ async function connect() {
         </div>
       </div>
     </div>
-
-    <motion.div
-      v-if="consensus !== 'idle'" :style="{ width: containerWidth,
-                                            maxWidth: 'min(420px, calc(100vw - 64px))' }" bottom="0 xl:32" font-semibold mx-auto p-24 rounded-6 bg-white bg-op-6 h-auto transition-height left="50%" transform="translateX(-50%)" absolute z-2 backdrop-blur-24 animate="fade-in-up both delay-1250ms"
-    >
-      <!-- Measures text to animate container width -->
-      <span ref="textMeasureRef" text="f-lg" p-24 invisible pointer-events-none whitespace-nowrap left-0 top-0 absolute>
-        {{ consensus === 'connecting' ? currentFact : `Your browser is now directly connected to ${peers.length} peers on the network.` }}
-      </span>
-
-      <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y--1lh" enter-to-class="translate-y-0" leave-active-class="transition duration-200 ease-out" leave-from-class="translate-y-0" leave-to-class="translate-y--1lh">
-        <p v-if="consensus === 'connecting'" text="neutral-800 11 center" w="[calc(100%-48px)]" top--1.4lh absolute nq-label>
-          Did you know that
-        </p>
-      </transition>
-      <transition
-        mode="out-in" enter-active-class="transition duration-200 ease-out origin-center-bottom" enter-from-class="transform translate-y-1lh op-0 blur-4 scale-95" enter-to-class="translate-y-0 op-100 blur-0 scale-100"
-        leave-active-class="transition duration-200 ease-out origin-center-top" leave-from-class="transform translate-y-0 op-100 scale-100" leave-to-class="translate-y--1lh op-0 scale-95"
-      >
-        <p v-if="consensus === 'connecting'" :key="currentFact" text="white/60 center f-lg" h-2lh>
-          {{ currentFact }}
-        </p>
-        <p v-else key="connected" text="white/60 center f-lg" h-2lh>
-          Your browser is now directly connected to {{ peers.length }} peers on the network.
-        </p>
-      </transition>
-    </motion.div>
   </div>
 </template>

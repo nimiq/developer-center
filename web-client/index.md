@@ -40,27 +40,27 @@ whyNimiq:
     - title: Zero Infrastructure
       description: No servers, APIs, or third-party dependencies
       icon: i-nimiq:duotone-network
-      iconColor: text-blue
+      iconBgColor: bg-gradient-blue
     - title: Fast Sync
       description: Connect to the network in seconds, not hours
       icon: i-nimiq:duotone-speedmeter
-      iconColor: text-green
+      iconBgColor: bg-gradient-green
     - title: Mobile Ready
       description: Works on phones, tablets, and desktops
       icon: i-nimiq:duotone-incognito
-      iconColor: text-orange
+      iconBgColor: bg-gradient-orange
     - title: WebAssembly Powered
       description: Rust performance compiled to WASM
       icon: i-nimiq:verified
-      iconColor: text-gold
+      iconBgColor: bg-gradient-gold
     - title: Developer Friendly
       description: Modern JavaScript APIs you already know
       icon: 'scale-80 i-nimiq:widget origin-left'
-      iconColor: text-purple
+      iconBgColor: bg-gradient-purple
     - title: Always Online
       description: Your users' data stays with them
       icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
-      iconColor: text-red
+      iconBgColor: bg-gradient-red
 
 browserServerBanner:
   label: 'Browser vs Server'
@@ -108,94 +108,12 @@ integrationsActions:
     href: ./integrations/nuxt
     icon: i-logos:nuxt-icon
     iconClass: gray group-hocus:filter-none
-  - title: Webpack
-    description: Traditional bundling with full control
-    href: ./integrations/webpack
-    icon: i-logos:webpack
+  - title: ESM
+    description: Native ES modules for modern browsers
+    href: ./integrations/ESM
+    icon: i-logos:javascript
     iconClass: gray group-hocus:filter-none
 
-popularResourcesLabel: Popular Resources
-popularResourcesTitle: Everything You Need to Build
-popularResourcesDescription: From getting started to advanced features, find the resources that match your experience level.
-popularResources:
-  - title: First Steps
-    links:
-      - text: What is Nimiq?
-        href: ./getting-started
-      - text: Installation Guide
-        href: ./installation
-      - text: Interactive Tutorial
-        href: https://nimiq.guide
-      - text: Web Client vs RPC
-        href: ./web-client-vs-rpc
-  - title: Framework Setup
-    links:
-      - text: Vite Integration
-        href: ./integrations/vite
-      - text: Next.js Integration
-        href: ./integrations/NextJS
-      - text: Nuxt Integration
-        href: ./integrations/nuxt
-      - text: Webpack Integration
-        href: ./integrations/webpack
-      - text: All Integrations
-        href: ./integrations/
-  - title: UI & Components
-    links:
-      - text: Nimiq UI Library
-        href: https://onmax.github.io/nimiq-ui/
-        target: _blank
-      - text: Nimiq Icons
-        href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
-        target: _blank
-      - text: Nimiq CSS
-        href: https://onmax.github.io/nimiq-ui/nimiq-css/getting-started
-        target: _blank
-      - text: Identicons Library
-        href: https://github.com/onmax/nimiq-identicons
-        target: _blank
-  - title: API Reference
-    links:
-      - text: Complete API Docs
-        href: ./reference/
-      - text: Client Classes
-        href: ./reference/classes/
-      - text: Core Interfaces
-        href: ./reference/interfaces/
-      - text: Global Functions
-        href: ./reference/globals
-      - text: Utility Functions
-        href: ../nimiq-utils/
-  - title: Advanced
-    links:
-      - text: Network Configuration
-        href: ./reference/classes/Client
-      - text: Transaction Handling
-        href: ./reference/interfaces/
-      - text: Account Management
-        href: ./reference/globals
-      - text: Custom Integrations
-        href: ./integrations/
-      - text: Nimiq MCP
-        href: https://github.com/onmax/nimiq-mcp
-        target: _blank
-  - title: Community
-    links:
-      - text: Nimiq Awesome
-        href: https://github.com/onmax/nimiq-awesome
-        target: _blank
-      - text: GitHub Repository
-        href: https://github.com/nimiq/core-rs-albatross
-        target: _blank
-      - text: Community Forum
-        href: https://forum.nimiq.community/
-        target: _blank
-      - text: Telegram Chat
-        href: https://t.me/nimiq
-        target: _blank
-      - text: Discord Server
-        href: https://discord.gg/cMHemg8
-        target: _blank
 ---
 
 <script setup lang="ts">
@@ -204,7 +122,6 @@ import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
 import AlternativeOptions from '../.vitepress/theme/components/AlternativeOptions.vue'
 import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
-import PopularResources from '../.vitepress/theme/components/PopularResources.vue'
 </script>
 
 <Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left" />
@@ -247,10 +164,8 @@ await client.waitForConsensusEstablished()
 
 <Banner f-my-xl v-bind="$frontmatter.browserServerBanner" />
 
-<NimiqFeatures align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
+<NimiqFeatures bg-neutral-0 align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
 
 <AlternativeOptions v-bind="$frontmatter.alternativeOptions" />
 
 <HoverableGrid align="left" :title="$frontmatter.integrationsTitle" :description="$frontmatter.integrationsDescription" :label="$frontmatter.integrationsLabel" :actions="$frontmatter.integrationsActions" />
-
-<PopularResources f-py-4xl align="left" :label="$frontmatter.popularResourcesLabel" :title="$frontmatter.popularResourcesTitle" :description="$frontmatter.popularResourcesDescription" :resources="$frontmatter.popularResources" />
