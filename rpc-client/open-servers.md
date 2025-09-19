@@ -8,18 +8,59 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
 
 ### Mainnet
 
-| Server | HTTP Endpoint | Maintainer | Status & Limits |
-|---|---|---|---|
-| **NimiqWatch** | `https://rpc.nimiqwatch.com` | [@sisou](https://github.com/sisou) | [More details](https://rpc.nimiqwatch.com/){.nq-arrow} |
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>HTTP Endpoint</th>
+        <th>Maintainer</th>
+        <th>Status & Limits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="server in data.mainnet" :key="server.endpoint">
+        <td><strong>{{ server.name }}</strong></td>
+        <td><code>{{ server.endpoint }}</code></td>
+        <td>{{ server.maintainer }}</td>
+        <td>
+          <a v-if="server.statusLink" :href="server.statusLink" class="nq-arrow">More details</a>
+          <span v-else>-</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### Testnet
 
-| Server | HTTP Endpoint | Maintainer | Status & Limits |
-|---|---|---|---|
-| **NimiqWatch** | `https://rpc.testnet.nimiqwatch.com/` | [@sisou](https://github.com/sisou) | [More details](https://rpc.testnet.nimiqwatch.com/){.nq-arrow} |
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>HTTP Endpoint</th>
+        <th>Maintainer</th>
+        <th>Status & Limits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="server in data.testnet" :key="server.endpoint">
+        <td><strong>{{ server.name }}</strong></td>
+        <td><code>{{ server.endpoint }}</code></td>
+        <td>{{ server.maintainer }}</td>
+        <td>
+          <a v-if="server.statusLink" :href="server.statusLink" class="nq-arrow">More details</a>
+          <span v-else>-</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <script setup lang="ts">
   import Banner from '../.vitepress/theme/components/Banner.vue'
+  import { data } from '../.vitepress/data/rpc-servers.data'
 </script>
 
 <Banner
