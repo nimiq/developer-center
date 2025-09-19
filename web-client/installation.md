@@ -17,7 +17,7 @@ integrations:
   - title: Nuxt
     icon: i-logos:nuxt-icon
     href: ./integrations/nuxt
-  - title: NextJS
+  - title: Next.js
     icon: i-logos:nextjs-icon
     href: ./integrations/NextJS
   - title: CommonJS

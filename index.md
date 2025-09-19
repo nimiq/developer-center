@@ -76,10 +76,9 @@ hoverableGrid:
       description: Interactive, in‑browser walkthrough
       href: https://nimiq.guide
       icon: i-local:nimiq-tutorial
-    - title: RPC Playground
-      description: Test JSON‑RPC calls live
-      href: ./rpc-client/playground
-      icon: i-local:nimiq-rpc
+    - title: RPC Quick Start
+      description: Explore docs and run JSON-RPC from your environment
+      href: ./rpc-client/
     - title: Nimiq MCP
       description: Build with AI
       href: https://github.com/onmax/nimiq-mcp
@@ -156,7 +155,10 @@ popularResources:
           href: ./validators/staking-faq
         - text: Validators API
           href: https://github.com/nimiq/validators-api
-          # TODO: TS library. ARPL
+        - text: Validator RPC Docs
+          href: ./validators/rpc-docs/
+        - text: ARPL CLI Tool
+          href: https://github.com/sisou/arpl
     - title: Core & Protocol
       links:
         - text: Protocol Docs

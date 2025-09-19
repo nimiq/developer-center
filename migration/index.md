@@ -1,6 +1,7 @@
-# Migration Guide
+# Legacy Migration Guide (PoW → PoS)
 
-This section contains migration guides and resources for upgrading from Nimiq 1.0 to 2.0 (Albatross).
+> [!IMPORTANT]
+> This content documents the completed transition from PoW to PoS and is retained for historical reference.
 
 ## Migration Resources
 
@@ -8,7 +9,3 @@ This section contains migration guides and resources for upgrading from Nimiq 1.
 - [JSON-RPC Migration](migration-json-rpc) - JSON-RPC API changes and migration guide
 - [Web Developers Migration](migration-web-developers) - Guide for web developers
 - [Technical Details](migration-technical-details) - Technical migration details and breaking changes
-
-::: warning
-This section is primarily for reference during the migration period. Most developers should start with the current documentation in the Protocol, Web Client, and RPC Client sections.
-:::

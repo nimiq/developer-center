@@ -11,7 +11,7 @@ The Merkle Radix Tree is a data structure used in our blockchain system to store
 
 Merkle Radix Trees are significantly different from standard Merkle Trees. Leaf nodes with similar prefixes are paired up, while leaf nodes with unique prefixes are called “only child” nodes. Parent nodes in the tree can have multiple children or just one child. When a parent node has only one child, it merges with that child node, optimizing space within the tree. Likewise, as parent nodes can have an only child node, parent nodes can also have up to 16 children. Below is a simplified illustration of a Merkle Radix Tree.
 
-![Alt Text](/assets/images/protocol/merkle.png)
+![Diagram of a Merkle Radix Tree showing merged branches](/assets/images/protocol/merkle.png)
 
 When constructing the tree, nodes with similar prefixes are paired to form parent nodes, optimizing space by reducing the number of intermediate nodes. If a node does not have a sibling with a similar prefix, it becomes an "only child" node and is merged with its parent node, further optimizing space within the tree.
 
@@ -24,7 +24,7 @@ Transactions are hashed and stored as leaf nodes. As transactions are appended t
 
 MMRs are designed to efficiently append new transactions without restructuring the entire tree. When a new transaction occurs, its hash is appended to the MMR as a new leaf node, always added to the tree's rightmost part. As MMRs include a set of trees within, each tree hash root is called a “peak”. To calculate the final root of the tree, the peaks are hashed from the right, combining their hash values to construct the root hash. These peaks, representing the root hash values of individual trees within the MMR, also serve as reference points for subsets of transaction data. Note that due to the nature of the MMR, it is possible to have a sub-tree consisting of just one node. Below is a simplified illustration of an MMR with 3 sub-trees.
 
-![Alt Text](/assets/images/protocol/mmr.png)
+![Diagram of a Merkle Mountain Range with three peaks](/assets/images/protocol/mmr.png)
 
 Unlike Merkle Radix Trees where accounts and balances undergo constant updates, MMRs do not require direct data updates. In case a block is reverted, transactions are deleted from the transaction history, and new transactions are appended as new blocks come in.
 

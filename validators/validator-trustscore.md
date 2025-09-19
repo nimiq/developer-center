@@ -153,7 +153,7 @@ $$
 
 Where:
 - $c_j$: The number of blocks produced by the validator in batch $j$ of epoch $i$.
-- $N$: The total number of batches in the epoch (retrievable from the [policy](htts://github.com/nimiq/core-rs-albatross/blob/albatross/primitives/src/policy.rs)).
+- $N$: The total number of batches in the epoch (retrievable from the [policy](https://github.com/nimiq/core-rs-albatross/blob/albatross/primitives/src/policy.rs)).
 The number of blocks a validator produced can be retrieved from the blockchain via the rewarded inherent of each batch.
 
 ##### **Calculating $H_i$**

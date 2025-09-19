@@ -24,7 +24,7 @@ Staking enhances the security and decentralization of the Nimiq network. Validat
 
 You can choose not to stake and not earn any rewards. By not staking, you miss the opportunity to help maintain the network secure and decentralized.
 
-How long does it take to have my funds available after I un-stake?
+### How long does it take to have my funds available after I un-stake?
 
 Once you un-stake your funds, it usually takes between 12 hours to 4 days for them to become available. The exact time frame depends on your validator's status. In rare cases, validators can be "jailed" for up to 4 days, which may delay access to your funds.
 
@@ -70,7 +70,7 @@ Yes, you can change the Staking Pool or Validator to which you've staked your NI
 
 You can only stake with one validator per wallet address. To stake with multiple validators, you’ll need to create additional wallet addresses. Simply create a new wallet, transfer funds to it, and stake with your chosen validator under that new wallet address.
 
-What happens if the validator I’m staking with goes offline?
+### What happens if the validator I’m staking with goes offline?
 
 If the validator you're staking with goes offline, it will be deactivated and will not receive rewards during its inactivity. As a staker, this means you won't earn rewards from that validator while it's offline. However, you retain full control over your NIM and can choose to unstake and delegate to a different validator at any time. Keep in mind that unstaking involves a lock-up period before your funds become available for redelegation.
 
@@ -100,7 +100,7 @@ Currently, exchanges that support NIM do not offer direct staking functionality.
 
 ### How does the Nimiq Proof of Stake protocol ensure that all validators follow the rules?
 
-There is a system of rewards and punishments for validators. Validators are rewarded for validating transactions and producing blocks according to the consensus protocol, incentivizing good behavior. If a validator fails to follow the rules, they may face a punishment such as losing rewards or being temporarily “jailed” for up to 4 days, during which they cannot participate or earn rewards. This combination of rewards and punishments motivates validators to follow the rules. If you would like to learn more about validators, rewards, and punishments, you can refer to the [protocol documentation](https://www.nimiq.com/developers/learn/).
+There is a system of rewards and punishments for validators. Validators are rewarded for validating transactions and producing blocks according to the consensus protocol, incentivizing good behavior. If a validator fails to follow the rules, they may face a punishment such as losing rewards or being temporarily “jailed” for up to 4 days, during which they cannot participate or earn rewards. This combination of rewards and punishments motivates validators to follow the rules. If you would like to learn more about validators, rewards, and punishments, you can refer to the [protocol documentation](/protocol/).
 
 ### Can I lose my funds when staking?
 
