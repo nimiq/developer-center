@@ -1,26 +1,26 @@
-# Installation
+# Install Nimiq Utils
 
-Learn how to install and set up Nimiq Utils in your project with different package managers and bundlers.
+A comprehensive JavaScript/TypeScript utility library for the Nimiq blockchain ecosystem.
 
-## Package Manager Installation
+::: code-group
 
-### pnpm (Recommended)
-
-```bash
+```bash [pnpm]
 pnpm add @nimiq/utils
 ```
 
-### npm
-
-```bash
+```bash [npm]
 npm install @nimiq/utils
 ```
 
-### yarn
-
-```bash
+```bash [yarn]
 yarn add @nimiq/utils
 ```
+
+```bash [bun]
+bun add @nimiq/utils
+```
+
+:::
 
 ## Basic Usage
 
@@ -29,7 +29,7 @@ Nimiq Utils is designed with tree-shaking in mind. Import only the modules you n
 ```typescript
 import { AddressBook } from '@nimiq/utils/address-book'
 import { FormattableNumber } from '@nimiq/utils/formattable-number'
-// Import specific modules
+import { calculateStakingRewards } from '@nimiq/utils/rewards-calculator'
 import { ValidationUtils } from '@nimiq/utils/validation-utils'
 
 // Use the utilities
@@ -38,7 +38,14 @@ const isValid = ValidationUtils.isValidAddress(address)
 const label = AddressBook.getLabel(address)
 const amount = new FormattableNumber('1234.56').toString({ maxDecimals: 2 })
 
-console.log({ isValid, label, amount })
+// Calculate staking rewards
+const rewards = calculateStakingRewards({
+  stakedSupplyRatio: 0.5,
+  amount: 100000,
+  days: 365
+})
+
+console.log({ isValid, label, amount, rewards })
 ```
 
 ## TypeScript Support
@@ -46,10 +53,10 @@ console.log({ isValid, label, amount })
 Nimiq Utils is written in TypeScript and includes full type definitions out of the box. No additional `@types` packages needed.
 
 ```typescript
-import type { StakingParams, StakingResult } from '@nimiq/utils/rewards-calculator'
+import type { CalculateStakingRewardsParams, CalculateStakingRewardsResult } from '@nimiq/utils/rewards-calculator'
 import { calculateStakingRewards } from '@nimiq/utils/rewards-calculator'
 
-const params: StakingParams = {
+const params: CalculateStakingRewardsParams = {
   stakedSupplyRatio: 0.5,
   amount: 100000,
   days: 365,
@@ -58,16 +65,16 @@ const params: StakingParams = {
   fee: 0.02
 }
 
-const result: StakingResult = calculateStakingRewards(params)
+const result: CalculateStakingRewardsResult = calculateStakingRewards(params)
 ```
 
 ## Framework Integration
 
-### Vue.js / Nuxt
+::: code-group
 
-```typescript
-import { FormattableNumber } from '@nimiq/utils/formattable-number'
+```typescript [Vue.js / Nuxt]
 // composables/useNimiqUtils.ts
+import { FormattableNumber } from '@nimiq/utils/formattable-number'
 import { ValidationUtils } from '@nimiq/utils/validation-utils'
 
 export function useNimiqUtils() {
@@ -89,12 +96,10 @@ export function useNimiqUtils() {
 }
 ```
 
-### React / Next.js
-
-```typescript
+```typescript [React / Next.js]
+// hooks/useNimiqUtils.ts
 import { FormattableNumber } from '@nimiq/utils/formattable-number'
 import { ValidationUtils } from '@nimiq/utils/validation-utils'
-// hooks/useNimiqUtils.ts
 import { useCallback } from 'react'
 
 export function useNimiqUtils() {
@@ -116,9 +121,7 @@ export function useNimiqUtils() {
 }
 ```
 
-### Vanilla JavaScript
-
-```html
+```html [Vanilla JavaScript]
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,74 +144,25 @@ export function useNimiqUtils() {
 </html>
 ```
 
-## Bundle Size Optimization
-
-Nimiq Utils is designed for optimal tree-shaking. Only import what you use:
-
-```typescript
-// ❌ Avoid - Imports entire library
-import * as NimiqUtils from '@nimiq/utils'
-import { FormattableNumber } from '@nimiq/utils/formattable-number'
-
-// ✅ Good - Only imports specific modules
-import { ValidationUtils } from '@nimiq/utils/validation-utils'
-```
-
-## Environment Requirements
-
-- **Node.js**: 16.0 or higher
-- **Browser**: Modern browsers with ES2020 support
-- **TypeScript**: 4.5 or higher (optional)
-
-## CDN Usage
-
-For quick prototyping or legacy environments:
-
-```html
+```html [CDN Usage]
 <script type="module">
   import { ValidationUtils } from 'https://cdn.skypack.dev/@nimiq/utils/validation-utils'
   // Use ValidationUtils...
 </script>
 ```
 
-## Troubleshooting
+:::
 
-### Module Resolution Issues
+## Bundle Size Optimization
 
-If you encounter module resolution issues, ensure your bundler supports ES modules:
+Nimiq Utils is designed for optimal tree-shaking. Only import what you need:
 
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  }
-}
+```typescript
+// ❌ Avoid - Imports entire library
+import * as NimiqUtils from '@nimiq/utils'
+
+// ✅ Good - Import from specific modules for best tree-shaking
+import { FormattableNumber } from '@nimiq/utils/formattable-number'
+import { calculateStakingRewards } from '@nimiq/utils/rewards-calculator'
+import { ValidationUtils } from '@nimiq/utils/validation-utils'
 ```
-
-### Vite Configuration
-
-For Vite projects, no additional configuration is needed. Nimiq Utils works out of the box.
-
-### Webpack Configuration
-
-For older Webpack versions, you might need to ensure ES module support:
-
-```javascript
-// webpack.config.js
-module.exports = {
-  resolve: {
-    extensionAlias: {
-      '.js': ['.ts', '.js']
-    }
-  }
-}
-```
-
-## Next Steps
-
-- **[📖 Why Nimiq Utils?](./why)** - Learn about the benefits
-- **[🚀 Browse Modules](./index#available-modules)** - Explore all available utilities
-- **[💡 Examples](https://github.com/nimiq/nimiq-utils/tree/master/examples)** - See real-world usage examples
