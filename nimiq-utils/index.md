@@ -1,139 +1,133 @@
 ---
-nimiqFeatures:
-  label: "Essential Toolkit"
-  title: "Production-Ready Utilities"
-  description: "Battle-tested components used across the Nimiq ecosystem, from the official wallet to third-party integrations."
-  align: "left"
-  showBorders: false
+layout: overview
+
+hero:
+  title: Nimiq Utils
+  description: Production-ready JavaScript utilities for blockchain development. Battle-tested, type-safe, and tree-shakable.
+
+nimiqUtilsFeatures:
+  label: Why Nimiq Utils
+  title: Built for real-world applications
+  description: Every utility has been battle-tested in production scenarios, from the official Nimiq Wallet to third-party integrations.
   features:
-    - title: 'Production Ready'
-      description: 'We use it in many production apps'
-      icon: 'i-nimiq:verified-filled'
-      iconColor: 'text-green'
-    - title: 'Server-Side Rendering'
-      description: 'Full SSR compatibility for Next.js, Nuxt, and other frameworks'
-      icon: 'i-nimiq:duotone-speedmeter'
-      iconColor: 'text-blue'
-    - title: 'Tree-Shakable'
-      description: 'Import only what you need for optimal bundle sizes'
-      icon: 'i-nimiq:cubes'
-      iconColor: 'text-orange'
-    - title: 'TypeScript Native'
-      description: 'Built with TypeScript for superior developer experience'
-      icon: 'i-tabler:code'
-      iconColor: 'text-purple'
-    - title: 'Zero Dependencies'
-      description: 'Lightweight with minimal external dependencies'
-      icon: 'i-nimiq:leaf-3-filled'
-      iconColor: 'text-red'
-    - title: 'Comprehensive Testing'
-      description: 'Extensive test suite with RPC snapshot testing'
-      icon: 'i-nimiq:check'
-      iconColor: 'text-gold'
+    - title: Performance First
+      description: Optimized algorithms and minimal overhead
+      icon: i-tabler:bolt
+      iconBgColor: bg-gradient-orange
+    - title: Framework Agnostic
+      description: Works with any JS framework & SSR safe
+      icon: i-tabler:components
+      iconBgColor: bg-purple
+    - title: Flexible & Great DX
+      description: Intuitive APIs designed for developer productivity
+      icon: i-tabler:adjustments
+      iconBgColor: bg-gradient-gold
+    - title: Well‑Documented
+      description: Comprehensive docs with examples & real‑world use cases
+      icon: i-tabler:book
+      iconBgColor: bg-gradient-blue
+    - title: Production Used
+      description: Powers Nimiq Wallet & other official ecosystem apps
+      icon: i-tabler:wallet
+      iconBgColor: bg-gradient-green
+    - title: Open Source
+      description: 100% open source with community contributions welcome
+      icon: i-tabler:heart
+      iconBgColor: bg-gradient-red
+
 ---
 
 <script setup lang="ts">
-  import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
-  </script>
+import Hero from '../.vitepress/theme/components/Hero.vue'
+import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
+import CategoryGrid from '../.vitepress/theme/components/CategoryGrid.vue'
+import { data } from '../.vitepress/data/nimiq-utils.data'
+const { modules: nimiqUtilsModules } = data
 
-# Nimiq Utils
+// Exclude getting started and resources from the grid
+const moduleGroups = nimiqUtilsModules.filter(group =>
+  !['Getting Started', 'Resources'].includes(group.text)
+)
+</script>
 
-A comprehensive JavaScript utility library that complements the Nimiq Web Client with helper functions for addresses, validation, formatting, and more.
+<Hero bg-neutral-0 v-bind="$frontmatter.hero" />
 
-<NimiqFeatures v-bind="$frontmatter.nimiqFeatures" />
+<NimiqFeatures bg-neutral-0 v-bind="$frontmatter.nimiqUtilsFeatures" />
 
-## Quick Start
+<section bg-neutral-0>
 
-```bash
-pnpm add @nimiq/utils
+<NqHeadline title="Quick Examples" description="See Nimiq Utils in action with real-world code snippets" f-mb-sm />
+
+::: code-group
+
+```ts [address-validation.ts]
+import { ValidationUtils } from '@nimiq/utils'
+
+// Validate Nimiq address format
+ValidationUtils.isValidAddress('NQ48 8CKH BA24...')
+// → true
+
+// Check if it's a user-friendly address
+ValidationUtils.isUserFriendlyAddress('NQ48 8CKH BA24...')
+// → true
 ```
 
-```typescript
-import { AddressBook } from '@nimiq/utils/address-book'
-import { FormattableNumber } from '@nimiq/utils/formattable-number'
-import { ValidationUtils } from '@nimiq/utils/validation-utils'
+```ts [address-conversion.ts]
+import { AddressBook } from '@nimiq/utils'
 
-// Validate and get info about an address
-const address = 'NQ48 8CKH BA24 2VR3 N249 N8MN J5XX 74DB 5XJ8'
-const isValid = ValidationUtils.isValidAddress(address)
-const label = AddressBook.getLabel(address)
+// Convert between address formats
+const userFriendly = 'NQ48 8CKH BA24 Y7R5 GXM9 PQ8R HHGJ'
+const hex = AddressBook.toHex(userFriendly)
+// → '84c8e...'
 
-// Format a number
-const amount = new FormattableNumber('12345.6789')
-const formatted = amount.toString({
-  maxDecimals: 2,
-  useGrouping: true,
-  groupSeparator: ','
-})
-
-console.log(`Address: ${address}`)
-console.log(`Is Valid: ${isValid}`)
-console.log(`Label: ${label}`)
-console.log(`Formatted Amount: ${formatted}`)
+// Convert back to user-friendly
+const address = AddressBook.fromHex(hex)
+// → 'NQ48 8CKH BA24 Y7R5 GXM9 PQ8R HHGJ'
 ```
 
-## Available Modules
+```ts [currency-formatting.ts]
+import { FormattableNumber } from '@nimiq/utils'
 
-### Core Utilities
+// Format NIM amounts
+const amount = new FormattableNumber(1.5, 5)
+amount.toString() // → "1.50000"
+amount.toCurrency('NIM') // → "1.50 NIM"
 
-Core functionality for address management and validation.
+// Auto-format with locale
+amount.toLocaleString() // → "1.50000"
+```
 
-- **[AddressBook](./address-book)** - Mapping of addresses to their corresponding labels
-- **[ValidationUtils](./validation-utils)** - Validate, normalize, and check Nimiq addresses and hashes
+```ts [fiat-rates.ts]
+import { getExchangeRates } from '@nimiq/utils'
 
-### Blockchain Utilities
+// Get current exchange rates
+const rates = await getExchangeRates(['nim'], ['usd', 'eur'])
+// → { nim: { usd: 0.012, eur: 0.011 } }
 
-Utilities for blockchain-specific calculations and operations.
+// Calculate fiat value
+const nimValue = 100
+const usdValue = nimValue * rates.nim.usd
+```
 
-- **[Albatross Policy](./albatross-policy)** - Blockchain configuration constants and utility functions
-- **[Supply Calculator](./supply-calculator)** - Calculate total Proof-of-Stake supply at specific times
-- **[Staking Rewards Calculator](./staking-rewards-calculator)** - Calculate potential wealth accumulation through staking
+```ts [supply-calculator.ts]
+import { posSupplyAt } from '@nimiq/utils'
 
-### Formatting & Display
+// Get total supply at specific time
+const supply = posSupplyAt(Date.now())
+// → 3000000000 (in smallest unit)
 
-Tools for formatting numbers and currency information.
+// Get supply at block height
+const supplyAtBlock = posSupplyAt(1000000)
+```
 
-- **[FormattableNumber](./formattable-number)** - Format and convert numbers without precision loss
-- **[CurrencyInfo](./currency-info)** - Comprehensive currency information handling
+:::
 
-### Payment & Links
+</section>
 
-Utilities for payment links and request encoding.
+<section bg-neutral-0>
 
-- **[Request Link Encoding](./request-link-encoding)** - Create and parse request links for multiple cryptocurrencies
+<NqHeadline title="All Modules" description="Browse all available utility modules by category" f-mb-sm />
 
-### Data & API Utilities
+<CategoryGrid :groups="moduleGroups" />
 
-Tools for API interactions and data management.
-
-- **[Fiat API](./fiat-api)** - Unified interface for accessing fiat rates from various APIs
-- **[RateLimitScheduler](./rate-limit-scheduler)** - Control and limit task execution based on rate limits
-
-### Browser & Environment
-
-Browser-specific utilities and environment detection.
-
-- **[BrowserDetection](./browser-detection)** - Detect browser details and capabilities
-- **[Clipboard](./clipboard)** - Copy text to clipboard with mobile compatibility
-- **[Cookie Utilities](./cookie-utilities)** - Manage cookies with utility functions
-
-### Advanced Utilities
-
-Advanced tools for specific use cases.
-
-- **[Utf8Tools](./utf8-tools)** - Handle UTF-8 string and byte array conversions
-- **[Tweenable](./tweenable)** - Handle tween animations with customizable easing functions
-
-## Resources
-
-- **[📦 Installation Guide](./installation)** - Set up Nimiq Utils in your project
-- **[💡 Why Nimiq Utils?](./why)** - Learn about the benefits and advantages
-- **[📚 GitHub Repository](https://github.com/nimiq/nimiq-utils)** - Source code, examples, and contributing
-- **[🐛 Report Issues](https://github.com/nimiq/nimiq-utils/issues)** - Bug reports and feature requests
-- **[📖 API Reference](https://github.com/nimiq/nimiq-utils/tree/master/docs)** - Detailed API documentation
-
-## Next Steps
-
-- **[🚀 Web Client Getting Started](/web-client/getting-started)** - Build with the Nimiq Web Client
-- **[🔧 Framework Integrations](/web-client/integrations/)** - Vue, React, Next.js, and more
-- **[🎨 UI Components](https://onmax.github.io/nimiq-ui/)** - Ready-to-use interface elements
+</section>

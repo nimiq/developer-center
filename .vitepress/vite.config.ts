@@ -12,7 +12,6 @@ import topLevelAwait from 'vite-plugin-top-level-await'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
 import llmstxt from 'vitepress-plugin-llms'
-import { loadMethods } from './rpc/utils'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
 import { generateWebClientDocs } from './scripts/web-client'
 
@@ -23,7 +22,6 @@ export default defineConfig(async () => {
   const openRpcDocPath = resolve(__dirname, 'rpc/openrpc-document.json')
   const openRpcDoc = JSON.parse(readFileSync(openRpcDocPath, 'utf-8'))
   const openRpcDocInfo = openRpcDoc.info
-  const methods = await loadMethods(openRpcDoc)
 
   // Get the nimiq-rpc-client-ts version from package.json
   const { devDependencies } = await readPackageJSON()
@@ -63,7 +61,6 @@ export default defineConfig(async () => {
 
     define: {
       __NIMIQ_OPENRPC_INFO__: JSON.stringify(openRpcDocInfo),
-      __NIMIQ_OPENRPC_METHODS__: JSON.stringify(methods),
       __NIMIQ_RPC_VERSION__: JSON.stringify(nimiqRpcVersion),
       global: 'globalThis',
     },

@@ -1,8 +1,7 @@
 ---
 title: Nimiq Web Client
 description: The JavaScript library that lets you build blockchain applications directly in the browser — zero servers, zero complexity.
-secondarySidebar: false
-wide: true
+layout: overview
 
 heroCards:
   - icon: i-tabler:school

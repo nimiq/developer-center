@@ -12,6 +12,7 @@ export default defineConfig({
       '.vitepress/theme/components/**/*.vue',
       '.vitepress/theme.config.ts',
       '.vitepress/rpc/utils.ts',
+      '.vitepress/data/nimiq-utils.data.ts',
     ],
   },
 

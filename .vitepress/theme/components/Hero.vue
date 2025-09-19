@@ -16,7 +16,7 @@ interface Card {
 interface Props {
   title: string
   description: string
-  cards: Card[]
+  cards?: Card[]
   align?: 'center' | 'left'
 }
 
@@ -24,15 +24,15 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section relative of-hidden>
-    <NqHeadline :title :description :align z-100 />
-    <div max-w-none="!" class="nq-raw" op-30 w-screen bottom-32 absolute of-hidden>
+  <section relative of-x-clip>
+    <NqHeadline :title :description :align mt-0 h1 z-100 />
+    <div max-w-none="!" class="nq-raw" op-30 w-screen :class="cards ? 'bottom-32' : 'bottom--32'" absolute of-hidden>
       <ClientOnly>
-        <HexagonsBackground />
+        <HexagonsBackground :class="!cards ? 'op-50' : ''" />
       </ClientOnly>
     </div>
 
-    <div grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>
+    <div v-if="cards" grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>
       <NqCard
         v-for="card in cards" :key="card.title" v-bind="card" :class="{ '[&_p]:z-10': card.bgColor }"
         :icon-class="!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 op-60 md:op-100 right--12 bottom--24'"

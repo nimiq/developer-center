@@ -40,7 +40,7 @@ defineProps<{
             text="neutral"
             v-html="feature.title"
           />
-          <p v-if="feature.description" text="f-sm neutral-800" v-html="feature.description" />
+          <p v-if="feature.description" text="f-sm neutral-800 pretty" v-html="feature.description" />
         </div>
       </li>
     </ul>

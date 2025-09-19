@@ -1,5 +1,5 @@
 ---
-secondarySidebar: false
+layout: overview
 
 hoverableGrid:
   label: Quick Start
