@@ -94,4 +94,6 @@ pub struct RequestZKP {
 
 #### See Also
 
-To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](/validators/prover-node-guide).
+<!-- TODO: Fix links -->
+
+To complete the prover node setup, you'll need the proving keys. For detailed instructions on how to download and configure the proving keys, please refer to the [prover node setup guide](../../nodes/prover-node-guide).
