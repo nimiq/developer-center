@@ -200,9 +200,6 @@ Each framework may need specific configuration:
 ### "Nimiq Nuxt Configuration"
 ✅ **[Nuxt setup guide](./nuxt)** with SSR, composables, and server routes
 
-### "Nimiq Webpack WebAssembly"
-✅ **[Webpack configuration guide](./webpack)** for WASM support and optimization
-
 ### "Nimiq React Integration"
 ✅ **[Next.js guide](./NextJS)** includes React hooks and components
 
