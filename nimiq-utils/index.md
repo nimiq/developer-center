@@ -50,11 +50,11 @@ const moduleGroups = nimiqUtilsModules.filter(group =>
 )
 </script>
 
-<Hero bg-neutral-0 v-bind="$frontmatter.hero" />
+<Hero v-bind="$frontmatter.hero" />
 
-<NimiqFeatures bg-neutral-0 v-bind="$frontmatter.nimiqUtilsFeatures" />
+<NimiqFeatures v-bind="$frontmatter.nimiqUtilsFeatures" />
 
-<section bg-neutral-0>
+<section>
 
 <NqHeadline title="Quick Examples" description="See Nimiq Utils in action with real-world code snippets" f-mb-sm />
 
@@ -124,7 +124,7 @@ const supplyAtBlock = posSupplyAt(1000000)
 
 </section>
 
-<section bg-neutral-0>
+<section>
 
 <NqHeadline title="All Modules" description="Browse all available utility modules by category" f-mb-sm />
 

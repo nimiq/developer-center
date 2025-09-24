@@ -1,6 +1,9 @@
 ---
 layout: overview
 
+hero:
+  title: Nimiq RPC Client
+  description: Connect your backend services to the Nimiq blockchain with full access to blockchain data and operations through standard JSON-RPC and RESTful endpoints.
 hoverableGrid:
   label: Quick Start
   title: Jump right in
@@ -54,52 +57,39 @@ mcpBanner:
   subline: Enable AI assistants like Claude to interact directly with the Nimiq blockchain through our Model Context Protocol server.
   linkHref: https://github.com/onmax/nimiq-mcp
   linkLabel: Get Started
-
-needHelp:
-  - title: Telegram Community
-    href: https://t.me/nimiq
-    icon: i-nimiq:logos-telegram-mono
-    description: Get API support and technical discussions
-  - title: Nimiq GitHub
-    href: https://github.com/nimiq
-    icon: i-nimiq:logos-github-mono
-    description: Source code and issue tracking
 ---
 
 <script setup lang="ts">
 import '../node_modules/nimiq-css/dist/css/static-content.css'
 import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
 import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
+import Hero from './../.vitepress/theme/components/Hero.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
 
 const rpcVersion = __NIMIQ_RPC_VERSION__
 
 const openRpcDocumentUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${rpcVersion}/openrpc-document.json`
 const githubRelease =`https://github.com/nimiq/core-rs-albatross/releases/tag/${rpcVersion}`
+
+const items = [
+  { label: __NIMIQ_RPC_VERSION__, href: githubRelease },
+  { label: 'Download OpenRPC JSON', href: openRpcDocumentUrl, icon: 'i-nimiq:arrow-to-bottom' },
+]
 </script>
 
-# Nimiq RPC Client
+<Hero v-bind="$frontmatter.hero">
 
-Connect your backend services to the Nimiq blockchain with full access to blockchain data and operations through standard JSON-RPC and RESTful endpoints.
+<NqLinks :items />
 
-<div flex="~ gap-8" class="nq-raw">
-
-<a :href="githubRelease" nq-arrow  f-text-xs mx-0 font-semibold font-code z-100 target="_blank" rel="noopener noreferrer" nq-pill-secondary title="View Release on GitHub">
-  <div i-nimiq:logos-github-mono mr-4 />
-{{ rpcVersion }}
-</a>
-<a :href="openRpcDocumentUrl" nq-pill-secondary mx-0 download f-text-xs font-semibold font-code z-100 title="Download OpenRPC JSON">
-  <div i-nimiq:arrow-to-bottom mr-4 />
-  Download OpenRPC JSON
-</a>
-
-</div>
+</Hero>
 
 <HoverableGrid v-bind="$frontmatter.hoverableGrid" f-pt-md />
 
 <NimiqFeatures v-bind="$frontmatter.rpcFeatures" />
 
-<Banner  v-bind="$frontmatter.mcpBanner" />
+<section style="--pt: 64px;">
+<Banner v-bind="$frontmatter.mcpBanner" style="--pt: 64px; --pl: var(--px);" />
+</section>
 
 <section>
 
@@ -112,7 +102,7 @@ Connect your backend services to the Nimiq blockchain with full access to blockc
 />
 
 | Category | Methods | Description |
-|---|---|---|
+|:---|:---|:---|
 | **Blockchain** | `getBlockByNumber`, `getBlockByHash`, `getLatestBlock` | Access block data and chain state |
 | **Accounts** | `getAccountByAddress`, `getBalance` | Query account information and balances |
 | **Transactions** | `getTransactionByHash`, `getTransactionsByAddress`, `sendRawTransaction` | Handle transaction operations |
@@ -122,16 +112,3 @@ Connect your backend services to the Nimiq blockchain with full access to blockc
 [View All RPC Methods](./methods/){.nq-arrow .nq-pill-blue}
 
 </section>
-
-<NqGrid f-my-xl :cards="$frontmatter.needHelp" />
-
-<style>
-  :is(section) {
-    --px: 0 !important;
-
-    > * {
-      width: 100%;
-      --nq-max-width: none;
-    }
-  }
-</style>

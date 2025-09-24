@@ -13,9 +13,8 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
     <thead>
       <tr>
         <th>Server</th>
-        <th>HTTP Endpoint</th>
+        <th>URL</th>
         <th>Maintainer</th>
-        <th>Status & Limits</th>
       </tr>
     </thead>
     <tbody>
@@ -23,10 +22,6 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
         <td><strong>{{ server.name }}</strong></td>
         <td><code>{{ server.endpoint }}</code></td>
         <td>{{ server.maintainer }}</td>
-        <td>
-          <a v-if="server.statusLink" :href="server.statusLink" class="nq-arrow">More details</a>
-          <span v-else>-</span>
-        </td>
       </tr>
     </tbody>
   </table>
@@ -39,9 +34,8 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
     <thead>
       <tr>
         <th>Server</th>
-        <th>HTTP Endpoint</th>
+        <th>URL</th>
         <th>Maintainer</th>
-        <th>Status & Limits</th>
       </tr>
     </thead>
     <tbody>
@@ -49,10 +43,6 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
         <td><strong>{{ server.name }}</strong></td>
         <td><code>{{ server.endpoint }}</code></td>
         <td>{{ server.maintainer }}</td>
-        <td>
-          <a v-if="server.statusLink" :href="server.statusLink" class="nq-arrow">More details</a>
-          <span v-else>-</span>
-        </td>
       </tr>
     </tbody>
   </table>

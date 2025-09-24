@@ -104,7 +104,7 @@ type ModuleContentMap = Record<string, ModuleContent>
 // Module content data
 const moduleContent: ModuleContentMap = {
   'address-book': {
-    title: 'AddressBook',
+    title: 'Address Book',
     description: 'Provides mapping of addresses to their corresponding labels for mainnet pools, services, and exchanges.',
     usageExamples: [
       {
@@ -188,7 +188,7 @@ console.log(\`Block \${blockNumber} is in epoch \${currentEpoch}, batch \${batch
     ],
   },
   'browser-detection': {
-    title: 'BrowserDetection',
+    title: 'Browser Detection',
     description: 'Utility for detecting browser details including type, version, private mode, and device information.',
     usageExamples: [
       {
@@ -341,7 +341,7 @@ console.log(theme) // 'dark'
     ],
   },
   'currency-info': {
-    title: 'CurrencyInfo',
+    title: 'Currency Info',
     description: 'Provides currency information including code, symbol, name, and decimal precision.',
     usageExamples: [
       {
@@ -453,7 +453,7 @@ console.log(historic) // Array of daily rates
     ],
   },
   'formattable-number': {
-    title: 'FormattableNumber',
+    title: 'Formattable Number',
     description: 'Formats and converts numbers without precision loss with customizable formatting options.',
     usageExamples: [
       {
@@ -535,7 +535,7 @@ console.log(price.toString()) // '123.46'
     ],
   },
   'rate-limit-scheduler': {
-    title: 'RateLimitScheduler',
+    title: 'Rate Limit Scheduler',
     description: 'Controls and limits task execution based on defined rate limits and parallel task limits.',
     usageExamples: [
       {
@@ -718,7 +718,7 @@ tween.start()
     ],
   },
   'utf8-tools': {
-    title: 'Utf8Tools',
+    title: 'Utf8 Tools',
     description: 'Utility class for UTF-8 string and byte array conversions, validation, and truncation.',
     usageExamples: [
       {
@@ -752,7 +752,7 @@ console.log(string) // 'Hello, 世界!'
     ],
   },
   'validation-utils': {
-    title: 'ValidationUtils',
+    title: 'Validation Utils',
     description: 'Utility class for validating, normalizing, and checking Nimiq addresses and hashes.',
     usageExamples: [
       {

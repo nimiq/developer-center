@@ -9,36 +9,33 @@ defineProps<{
 </script>
 
 <template>
-  <section relative z-10 style="--pt: 0; --pb:0; --px: 0">
-    <div
-      class="nq-raw"
-      outline="solid 1.5 offset--1.5 white/20"
-      mx-auto bg-gradient-green w-full shadow relative of-hidden f-p-lg f-rounded-md
-    >
-      <div f-size="200/400" pointer-events-none absolute bottom="-10 lg:-0.2775em" right="-0.2em lg:-0.25em">
-        <div text-transparent i-nimiq:logos-nimiq-mono>
-          <div size-full bg-linear="to-bl from-transparent via-transparent to-neutral/20" />
-        </div>
-      </div>
-
-      <div flex="~ wrap justify-between items-end" max-w-full w-full relative z-10>
-        <div max-w-60ch>
-          <p v-if="label" nq-label text="12 white/80!">
-            {{ label }}
-          </p>
-          <h3 text-white font-semibold f-text-2xl mt-4="!">
-            {{ headline }}
-          </h3>
-          <p v-if="subline" text="white/80" mt-8>
-            {{ subline }}
-          </p>
-        </div>
-        <a v-if="linkHref && linkLabel" :href="linkHref" un-text-blue nq-arrow nq-pill-lg nq-pill-tertiary>
-          {{ linkLabel }}
-        </a>
+  <div
+    class="nq-raw" outline="solid 1.5 offset--1.5 white/20" mx-auto bg-gradient-green w-full shadow relative
+    of-hidden f-p-lg f-rounded-md
+  >
+    <div f-size="200/400" pointer-events-none absolute bottom="-10 lg:-0.2775em" right="-0.2em lg:-0.25em">
+      <div text-transparent i-nimiq:logos-nimiq-mono>
+        <div size-full bg-linear="to-bl from-transparent via-transparent to-neutral/20" />
       </div>
     </div>
-  </section>
+
+    <div flex="~ wrap justify-between items-end" max-w-full w-full relative z-10>
+      <div max-w-60ch>
+        <p v-if="label" nq-label text="12 white/80!">
+          {{ label }}
+        </p>
+        <h3 text-white font-semibold f-text-2xl mt-4="!">
+          {{ headline }}
+        </h3>
+        <p v-if="subline" text="white/80" mt-8>
+          {{ subline }}
+        </p>
+      </div>
+      <a v-if="linkHref && linkLabel" :href="linkHref" un-text-blue nq-arrow nq-pill-lg nq-pill-tertiary>
+        {{ linkLabel }}
+      </a>
+    </div>
+  </div>
 </template>
 
 <style scoped>

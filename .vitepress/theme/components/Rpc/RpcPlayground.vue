@@ -52,7 +52,7 @@ function getErrorStatusCode(error: any): string | null {
         <p v-if="props.input.length === 0" font-italic>
           It does not require any parameters.
         </p>
-        <fieldset v-else flex="~ col gap-sm">
+        <fieldset v-else flex="~ col gap-16">
           <Input v-for="field in props.input" v-bind="field" :key="field.key" v-model="widget.userParams[field.key]" :label="field.key" />
         </fieldset>
         <div flex="~ items-center justify-end gap-6" f-mt-xs>

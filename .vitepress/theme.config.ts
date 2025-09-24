@@ -159,14 +159,16 @@ export const themeConfig = {
           items: [
             { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
             { text: 'Open RPC Servers', link: '/rpc-client/open-servers', icon: 'i-tabler:server' },
-            { text: 'Integrations', icon: 'i-tabler:chart-funnel', items: [
-              { text: 'Raw Requests', link: '/rpc-client/integrations/raw', icon: 'i-tabler:terminal-2' },
-              { text: 'ARPL CLI Tool', link: '/rpc-client/integrations/arpl', icon: 'i-tabler:terminal' },
-              { text: 'TypeScript Client', link: '/rpc-client/integrations/typescript', icon: 'i-logos:typescript-icon' },
-              { text: 'JavaScript Native', link: '/rpc-client/integrations/javascript', icon: 'i-logos:javascript' },
-              { text: 'MCP Server (AI)', link: '/rpc-client/integrations/mcp', icon: 'i-tabler:robot' },
-
-            ] },
+          ],
+        },
+        {
+          label: 'Integrations',
+          items: [
+            { text: 'Raw Requests', link: '/rpc-client/integrations/raw', icon: 'i-tabler:terminal-2' },
+            { text: 'ARPL CLI Tool', link: '/rpc-client/integrations/arpl', icon: 'i-tabler:terminal' },
+            { text: 'TypeScript Client', link: '/rpc-client/integrations/typescript', icon: 'i-logos:typescript-icon' },
+            { text: 'JavaScript Native', link: '/rpc-client/integrations/javascript', icon: 'i-logos:javascript' },
+            { text: 'MCP Server (AI)', link: '/rpc-client/integrations/mcp', icon: 'i-local:mcp' },
           ],
         },
         {
