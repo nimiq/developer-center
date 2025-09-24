@@ -15,6 +15,8 @@ export default async () => {
   const base = basesUrl[env.DEPLOYMENT_MODE!] || ''
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
+  const faviconUrl = new URL('favicons', base).href
+
   return defineNimiqVitepressConfig({
     base,
     title,
@@ -35,12 +37,12 @@ export default async () => {
 
     head: [
       ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}/favicons/apple-touch-icon.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}/favicons/favicon-32x32.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${base}/favicons/favicon-16x16.png` }],
-      // ['link', { rel: 'manifest', href: `${base}favicons/site.webmanifest` }],
-      ['link', { rel: 'mask-icon', href: `${base}/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: `${base}/favicons/favicon.ico` }],
+      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${faviconUrl}/apple-touch-icon.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${faviconUrl}/favicon-32x32.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${faviconUrl}/favicon-16x16.png` }],
+      // ['link', { rel: 'manifest', href: `${faviconUrl}/site.webmanifest` }],
+      ['link', { rel: 'mask-icon', href: `${faviconUrl}/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+      ['link', { rel: 'shortcut icon', href: `${faviconUrl}/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
 
