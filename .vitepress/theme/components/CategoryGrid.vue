@@ -18,9 +18,9 @@ defineProps<{
 </script>
 
 <template>
-  <div v-for="({ text, items }) in groups" :key="text" flex="~ col gap-16" nq-raw f-mt-md>
+  <div v-for="({ text: textGroup, items }) in groups" :key="textGroup" flex="~ col gap-16" nq-raw f-mt-md>
     <h2 f-text-2xs="!" mx-0 nq-label mb-0="!">
-      {{ text }}
+      {{ textGroup }}
     </h2>
 
     <div grid="~ cols-1 lg:cols-2 xl:cols-4 gap-16" mx-0>

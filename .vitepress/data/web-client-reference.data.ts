@@ -24,7 +24,7 @@ const categoryIcons: Record<string, string> = {
   'classes': 'i-tabler:container',
   'enumerations': 'i-tabler:list-numbers',
   'functions': 'i-tabler:function',
-  'interfaces': 'i-tabler:layout-2',
+  'interfaces': 'i-tabler:layout',
   'type-aliases': 'i-tabler:tags',
   '@nimiq': 'i-tabler:layout-board-split',
 }
