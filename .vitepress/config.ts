@@ -15,7 +15,7 @@ export default async () => {
   const base = basesUrl[env.DEPLOYMENT_MODE!] || ''
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
-  const faviconUrl = `${base}/favicons`
+  const faviconUrl = `${base}${base.endsWith('/') ? '' : '/'}favicons`
 
   return defineNimiqVitepressConfig({
     base,
