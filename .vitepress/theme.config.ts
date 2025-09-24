@@ -1,9 +1,11 @@
 import type { OpenrpcDocument } from '@open-rpc/meta-schema'
 import { data } from './data/nimiq-utils.data'
+import { data as webClientReferenceData } from './data/web-client-reference.data'
 import openRpcDocument from './rpc/openrpc-document.json'
 import { loadMethods } from './rpc/utils'
 
 const { sidebar: nimiqUtilsSidebar } = data
+const { apiReferenceSection } = webClientReferenceData
 
 // @unocss-include i-nimiq:verified i-nimiq:cubes i-nimiq:duotone-network
 
@@ -34,17 +36,7 @@ export const themeConfig = {
             { text: 'ESM', link: '/web-client/integrations/ESM', icon: 'i-logos:javascript gray group-hocus:filter-none' },
           ],
         },
-        {
-          label: 'API Reference',
-          items: [
-            { text: 'Classes', link: '/web-client/reference/classes', icon: 'i-tabler:building-factory' },
-            { text: 'Enumerations', link: '/web-client/reference/enumerations', icon: 'i-tabler:list' },
-            { text: 'Functions', link: '/web-client/reference/functions', icon: 'i-tabler:function' },
-            { text: 'Globals', link: '/web-client/reference/globals', icon: 'i-tabler:world' },
-            { text: 'Interfaces', link: '/web-client/reference/interfaces', icon: 'i-tabler:components' },
-            { text: 'Type Aliases', link: '/web-client/reference/type-aliases', icon: 'i-tabler:variable' },
-          ],
-        },
+        apiReferenceSection,
         {
           label: 'UI Components',
           items: [

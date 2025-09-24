@@ -1,8 +1,12 @@
 import { execSync } from 'node:child_process'
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { consola } from 'consola'
 import { readPackageJSON } from 'pkg-types'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 export async function generateWebClientDocs() {
   consola.info('Generating Web-Client docs...')

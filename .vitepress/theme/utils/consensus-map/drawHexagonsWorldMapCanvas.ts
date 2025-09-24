@@ -36,10 +36,10 @@ function paintUserHexagon(dc: CanvasRenderingContext2D, self: WorldMapHexagon) {
 }
 
 function paintPeerHexagon(dc: CanvasRenderingContext2D, _self: WorldMapHexagon) {
-  dc.fillStyle = 'rgba(255,255,255,0.3)'
+  dc.fillStyle = 'rgb(31, 35, 72)'
 }
 function paintNormalHexagon(dc: CanvasRenderingContext2D, _self: WorldMapHexagon) {
-  dc.fillStyle = 'rgba(255,255,255,0.1)'
+  dc.fillStyle = 'rgb(228, 228, 233)'
 }
 
 export class WorldMapHexagon {
@@ -194,7 +194,7 @@ class WorldMapArc {
 
     dc.save()
     dc.globalAlpha = progress * 0.8
-    dc.strokeStyle = 'rgba(255, 255, 255, 0.6)'
+    dc.strokeStyle = 'rgb(31, 35, 72)'
     dc.lineWidth = lineWidth
     dc.lineCap = 'round'
     dc.beginPath()

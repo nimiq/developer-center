@@ -16,26 +16,6 @@ The Nimiq Albatross light client is distributed as `@nimiq/core` on npm and come
 
 ---
 
-## Installation
-
-Get started by installing the Nimiq core package:
-
-:::code-group
-
-```bash [pnpm]
-pnpm add @nimiq/core
-```
-
-```bash [npm]
-npm install @nimiq/core
-```
-
-```bash [yarn]
-yarn add @nimiq/core
-```
-
-:::
-
 The package includes the WebAssembly binary and TypeScript declarations – no additional build steps required.
 
 ## Browser Environments
@@ -60,7 +40,8 @@ For direct browser usage without a bundler, use the `/web` export:
 </script>
 ```
 
-**Important:** The `await init()` call is mandatory with the web build. This downloads and compiles the WebAssembly module asynchronously.
+> [!NOTE]
+> The `await init()` call is mandatory with the web build.
 
 ### Hosting the WebAssembly File
 
@@ -83,59 +64,41 @@ Modern browsers cache WebAssembly binaries, so this only adds one network reques
 These bundlers handle WebAssembly automatically:
 
 ```js
-// Vite example (supports top-level await by default)
-import * as ViteNimiq from '@nimiq/core'
+import * as Nimiq from '@nimiq/core'
 
-const config = new ViteNimiq.ClientConfiguration().build()
-const client = await ViteNimiq.Client.create(config)
-```
-
-### Webpack Configuration
-
-Webpack requires enabling WebAssembly support:
-
-```js
-// webpack.config.js
-module.exports = {
-  experiments: {
-    asyncWebAssembly: true // Enable async WebAssembly
-  }
-}
-```
-
-Then in your application:
-
-```js
-// Use dynamic import for async loading
-const NimiqCore = await import('@nimiq/core')
-
-const client = await NimiqCore.Client.create(
-  new NimiqCore.ClientConfiguration().build()
-)
+const config = new Nimiq.ClientConfiguration().build()
+const client = await Nimiq.Client.create(config)
 ```
 
 ## Server Environments
 
-### Node.js (v16+)
+### Node.js (v24+)
 
 Node.js uses the synchronous build – no initialization needed:
 
 ```js
-// CommonJS
-// ES Modules
-import * as NodeNimiqESM from '@nimiq/core'
+import * as Nimiq from '@nimiq/core'
 
-const NodeNimiqCJS = require('@nimiq/core')
-
-// Ready to use immediately
-const client = await NodeNimiqESM.Client.create(
-  new NodeNimiqESM.ClientConfiguration().build()
-)
+const config = new Nimiq.ClientConfiguration().build()
+const client = await Nimiq.Client.create(config)
 ```
 
-**Why no `init()`?** The Node.js build reads the WebAssembly file directly from disk synchronously.
+> [!NOTE] Why no `init()`?
+> The Node.js build reads the WebAssembly file directly from disk synchronously.
 
-### Bun Runtime
+<script setup lang="ts">
+import Banner from '../.vitepress/theme/components/Banner.vue'
+</script>
+
+<Banner
+  label="Another runtime?"
+  headline="Need help with a different environment?"
+  subline="We're here to help you integrate Nimiq with any JavaScript runtime or deployment platform."
+  linkHref="https://github.com/nimiq/developer-center/issues"
+  linkLabel="Open an issue"
+/>
+
+<!-- ### Bun Runtime
 
 Bun supports both approaches:
 
@@ -207,58 +170,10 @@ The package includes complete TypeScript definitions. For advanced usage with th
 }
 ```
 
-This enables proper typing for the `init()` function and WebAssembly loader utilities.
-
-## Troubleshooting
-
-### Common Issues and Solutions
-
-| Problem | Solution |
-|---------|----------|
-| **`TypeError: WebAssembly.instantiate(): buffer source must be of type ArrayBuffer`** | Pass correct type to `init()`: `ArrayBuffer`, `Response`, or `WebAssembly.Module` |
-| **404 error on `nimiq_core_bg.wasm`** | Ensure WebAssembly file is accessible at the same URL as your JS bundle, or specify absolute path in `init()` |
-| **Client hangs at `waitForConsensusEstablished()`** | Verify correct network (`mainalbatross` or `testalbatross`) and seed node connectivity |
-| **"Cannot use import statement outside a module" in Node.js** | Use `.mjs` extension or add `"type": "module"` to `package.json` |
-
-### Network Connectivity
-
-The client needs to connect to Nimiq seed nodes. If you're behind a corporate firewall or restrictive network:
-
-1. Check that WebSocket connections are allowed
-2. Verify the correct network configuration
-3. Consider using custom seed nodes if needed
-
-### Performance Tips
-
-- **Browsers**: WebAssembly is cached after first load
-- **Bundlers**: Consider code splitting for large applications
-- **Edge**: Pre-compile WebAssembly when possible (like Cloudflare Workers)
-
-## Quick Start Guide
-
-Choose your path based on your environment:
-
-### I'm building a web app with a bundler
-→ Use `import * as Nimiq from '@nimiq/core'`
-
-### I'm writing vanilla JavaScript for browsers
-→ Use `import init, * as Nimiq from '@nimiq/core/web'` + `await init()`
-
-### I'm building a Node.js application
-→ Use `import * as Nimiq from '@nimiq/core'` (no init needed)
-
-### I'm deploying to Cloudflare Workers
-→ Use the web build with pre-compiled modules
+This enables proper typing for the `init()` function and WebAssembly loader utilities. -->
 
 ## Additional Resources
 
 - [Nimiq Core Package on npm](https://www.npmjs.com/package/@nimiq/core)
 - [WebAssembly Build Targets Documentation](https://rustwasm.github.io/wasm-pack/book/commands/build.html#target)
-- [Nimiq Webpack Integration Guide](https://nimiq.com/developers/build-with-nimiq/web-client/webpack)
 - [Node.js WebAssembly Documentation](https://nodejs.org/api/wasi.html)
-
-**Ready to build with Nimiq?** 🚀
-
-You now have everything you need to integrate the Nimiq light client into any JavaScript environment. Each build target is optimized for its specific runtime, ensuring the best performance and developer experience.
-
-Need help? Join us in the [#nimiq-coders-dojo](https://t.me/nimiq_coders_dojo) Telegram channel or open an issue on GitHub.

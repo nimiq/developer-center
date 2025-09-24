@@ -10,8 +10,8 @@ defineProps<{
 
 <template>
   <div
-    class="nq-raw" outline="solid 1.5 offset--1.5 white/20" mx-auto bg-gradient-green w-full shadow relative
-    of-hidden f-p-lg f-rounded-md
+    class="nq-raw" outline="solid 1.5 offset--1.5 white/20"
+    mx-auto my-0 bg-gradient-green w-full shadow relative of-hidden f-p-lg f-rounded-md
   >
     <div f-size="200/400" pointer-events-none absolute bottom="-10 lg:-0.2775em" right="-0.2em lg:-0.25em">
       <div text-transparent i-nimiq:logos-nimiq-mono>

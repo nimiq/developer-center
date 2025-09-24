@@ -2,6 +2,11 @@
 
 ::: code-group
 
+```bash [pnpm]
+pnpm add @nimiq/core
+pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
 ```bash [npm]
 npm install @nimiq/core
 npm install -D vite-plugin-top-level-await vite-plugin-wasm
@@ -10,11 +15,6 @@ npm install -D vite-plugin-top-level-await vite-plugin-wasm
 ```bash [yarn]
 yarn add @nimiq/core
 yarn add -D vite-plugin-top-level-await vite-plugin-wasm
-```
-
-```bash [pnpm]
-pnpm add @nimiq/core
-pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [bun]

@@ -178,11 +178,11 @@ async function connect() {
 </script>
 
 <template>
-  <div ref="containerRef" rounded-8 cursor-pointer relative of-hidden :style="`aspect-ratio: ${HEXAGONS_WORLD_MAP_ASPECT_RATIO}`">
+  <div ref="containerRef" rounded-8 cursor-pointer relative of-hidden :style="`aspect-ratio: ${HEXAGONS_WORLD_MAP_ASPECT_RATIO}`" outline="1.5px offset--1.5px ~ white/10">
     <div size-full absolute>
       <canvas ref="canvas" h-full w-full />
       <div v-if="showTooltip" left-0 top-0 absolute z-1 :style="tooltipPosition" animate="delay-500 fade-in both">
-        <div left="[calc(-50%+2px)]" flex="~ col items-center" class="dark" mt-16 scheme-dark relative>
+        <div left="[calc(-50%+2px)]" flex="~ col items-center" mt-16 relative>
           <div
             :class="{ 'text-blue': consensus === 'idle',
                       'text-orange': consensus === 'connecting',

@@ -15,7 +15,7 @@
     "build": "DEPLOYMENT_MODE=production vitepress build",
     "build:staging": "DEPLOYMENT_MODE=staging vitepress build",
     "preview": "vitepress preview",
-    "postinstall": "tsx ./.vitepress/scripts/rpc",
+    "postinstall": "tsx -e \"import { fetchOpenRpcDocument } from './.vitepress/rpc/fetch.ts'; (async () => await fetchOpenRpcDocument())()\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",

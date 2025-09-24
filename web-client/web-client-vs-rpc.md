@@ -82,9 +82,9 @@ For developers, tech-savvy users, and validators looking for more advanced contr
 Now that you know the differences, why not start building?
 
 <NqGrid :cards="[
-  { icon: 'i-local:nimiq-web-client', title: 'Web Client', href: '/web-client' },
-  { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '/rpc-client' },
-  { icon: 'i-local:nimiq-validators', title: 'Validators', href: '../nodes/validators/becoming-a-validator' },
+  { icon: 'i-local:nimiq-web-client', title: 'Web Client', href: '../web-client', layout: 'row' },
+  { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '../rpc-client', layout: 'row' },
+  { icon: 'i-local:nimiq-validators', title: 'Validators', href: '../nodes/validators/becoming-a-validator', layout: 'row' },
 ]" />
 
 ## Learn More

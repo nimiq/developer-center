@@ -55,11 +55,11 @@ whyNimiq:
       iconBgColor: bg-gradient-gold
     - title: Developer Friendly
       description: Modern JavaScript APIs you already know
-      icon: 'scale-80 i-nimiq:widget origin-left'
-      iconBgColor: bg-gradient-purple
+      icon: 'scale-80 i-nimiq:widget'
+      iconBgColor: bg-purple
     - title: Always Online
       description: Your users' data stays with them
-      icon: 'scale-80 i-nimiq:watch-1-50 origin-left'
+      icon: 'scale-80 i-nimiq:watch-1-50'
       iconBgColor: bg-gradient-red
 
 browserServerBanner:
@@ -132,6 +132,26 @@ import Banner from '../.vitepress/theme/components/Banner.vue'
 
 <div class="nq-raw">
 
+::: code-group
+
+```bash [pnpm]
+pnpm add @nimiq/core
+```
+
+```bash [npm]
+npm install @nimiq/core
+```
+
+```bash [yarn]
+yarn add @nimiq/core
+```
+
+```bash [bun]
+bun add @nimiq/core
+```
+
+:::
+
 :::code-group
 
 ```js [browser.js]
@@ -162,9 +182,13 @@ await client.waitForConsensusEstablished()
 
 <ConsensusMapSection f-py-3xl />
 
+<NimiqFeatures bg-neutral-0 align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
+
+<section style="--pt: 0px;">
+
 <Banner f-my-xl v-bind="$frontmatter.browserServerBanner" />
 
-<NimiqFeatures bg-neutral-0 align="left" f-pb-3xl f-pt-2xl v-bind="$frontmatter.whyNimiq" :show-borders="false" />
+</section>
 
 <AlternativeOptions v-bind="$frontmatter.alternativeOptions" />
 

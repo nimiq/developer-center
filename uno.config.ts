@@ -13,6 +13,7 @@ export default defineConfig({
       '.vitepress/theme.config.ts',
       '.vitepress/rpc/utils.ts',
       '.vitepress/data/nimiq-utils.data.ts',
+      '.vitepress/data/web-client-reference.data.ts',
     ],
   },
 

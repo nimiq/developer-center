@@ -11,7 +11,7 @@ import RibbonContainer from './RibbonContainer.vue'
       description="See your browser connect directly to the Nimiq blockchain network in real-time"
     />
     <RibbonContainer :style="`aspect-ratio: ${HEXAGONS_WORLD_MAP_ASPECT_RATIO}`">
-      <ConsensusMap connect-label="Connect" this-is-you="This is you" connecting="Connecting..." bg-darkerblue scheme-dark size-full />
+      <ConsensusMap connect-label="Connect" this-is-you="This is you" connecting="Connecting..." size-full />
     </RibbonContainer>
   </section>
 </template>
