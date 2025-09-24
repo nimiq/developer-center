@@ -243,5 +243,5 @@ export const themeConfig = {
   ],
   showLastUpdated: false,
   showEditContent: false,
-
+  search: { provider: 'local' },
 }

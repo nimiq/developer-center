@@ -164,7 +164,7 @@ watchEffect(() => {
         <Dialog.Overlay bg-darkblue op-60 inset-0 fixed z-200 />
       </Transition>
       <Transition name="modal">
-        <Dialog.Content xl="top-1/2 left-1/2 translate--1/2" rounded="t-8 xl:8" data-modal outline-none h-max max-h-85dvh w-full shadow-lg transform bottom-0 fixed z-200 of-y-auto xl:max-w-500 @open-auto-focus.prevent>
+        <Dialog.Content xl="top-1/2 left-1/2 translate--1/2" rounded="t-8 xl:8" data-modal outline-none h-max max-h-85dvh w-full shadow-lg transform bottom-0 fixed z-200 of-hidden xl:max-w-500 @open-auto-focus.prevent>
           <div py-32 bg-neutral-0 relative ring="1.5 neutral/3" class="modal-container">
             <Dialog.Title text="24 center neutral lh-24" as="h2" lh-none font-bold mb-12 px-24 sr-only xl:px-40>
               Send feedback
@@ -183,7 +183,7 @@ watchEffect(() => {
               <div i-nimiq:arrow-left />
             </button>
 
-            <div mt-12 px-24 xl:px-40>
+            <div mt-12 f-px-md>
               <div id="feedback-widget" />
             </div>
 
