@@ -2,6 +2,15 @@
 
 Integrate Nimiq Web Client with Next.js for production-ready React blockchain applications.
 
+## Quick Start with Template
+
+Get started instantly with our pre-configured Next.js starter:
+
+```bash
+npx degit onmax/nimiq-starter/starters/next-js my-nimiq-app
+cd my-nimiq-app && pnpm install && pnpm dev
+```
+
 ## Installation
 
 ### Quick Start
@@ -18,38 +27,60 @@ Next.js supports WebAssembly out of the box, but you need to configure it for op
 
 ```javascript
 // next.config.js
+import path from 'node:path'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable WebAssembly
   webpack: (config, { isServer }) => {
     // Enable WebAssembly
     config.experiments = {
       ...config.experiments,
       asyncWebAssembly: true,
+      topLevelAwait: true,
     }
 
-    // Handle .wasm files
+    // Configure module rules for WebAssembly
     config.module.rules.push({
       test: /\.wasm$/,
       type: 'webassembly/async',
     })
 
-    // Optimize for client-side
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
+    // Enhanced module resolution for @nimiq/core
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        '@nimiq/core': path.resolve('./node_modules/@nimiq/core/bundler/index.js'),
+      },
+      fallback: {
+        ...config.resolve?.fallback,
+        path: false,
         fs: false,
-        net: false,
-        tls: false,
+      },
+      // Add .js extension for ESM imports
+      extensions: [...(config.resolve?.extensions || []), '.js', '.mjs'],
+    }
+
+    // Exclude @nimiq/core from optimization
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization?.splitChunks,
+          cacheGroups: {
+            ...(config.optimization?.splitChunks)?.cacheGroups,
+            nimiq: {
+              test: /@nimiq/,
+              name: 'nimiq',
+              chunks: 'all',
+              priority: 10,
+            },
+          },
+        },
       }
     }
 
     return config
-  },
-  // Enable experimental features
-  experimental: {
-    // Enable WebAssembly
-    esmExternals: true,
   },
 }
 
