@@ -128,7 +128,7 @@ export const themeConfig = {
             },
             { text: 'Architecture', link: '/protocol/node-sync/architecture', icon: 'i-tabler:building' },
             { text: 'Traits and Abstractions', link: '/protocol/node-sync/traits-and-abstractions', icon: 'i-tabler:code' },
-            { text: 'Network Protocol', link: '/protocol/node-sync/network-protocol', icon: 'i-tabler:protocol' },
+            { text: 'Network Protocol', link: '/protocol/node-sync/network-protocol', icon: 'i-nimiq:globe' },
           ],
         },
         {
@@ -184,7 +184,7 @@ export const themeConfig = {
     {
       text: 'Nodes',
       subpath: 'nodes',
-      icon: 'i-local:nimiq-validators',
+      icon: 'i-local:nimiq-dev',
       defaultPageLink: '/nodes/',
       description: 'Nimiq Nodes',
       sidebar: [
