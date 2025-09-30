@@ -14,8 +14,14 @@ export default defineConfig({
       '.vitepress/rpc/utils.ts',
       '.vitepress/data/nimiq-utils.data.ts',
       '.vitepress/data/web-client-reference.data.ts',
+      'node_modules/nimiq-vitepress-theme/dist/**/*.mjs',
     ],
   },
+
+  safelist: [
+    'i-local:openai',
+    'i-local:claude',
+  ],
 
   presets: [
     presetOnmax(),

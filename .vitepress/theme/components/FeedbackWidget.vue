@@ -13,6 +13,13 @@ const hasError = ref(false)
 // Widget state tracking
 const isInFormView = ref(false)
 
+// Expose open method globally
+if (typeof window !== 'undefined') {
+  (window as any).__nimiqFeedbackWidget = {
+    open: () => { open.value = true },
+  }
+}
+
 // Load external script using VueUse
 const { load: loadScript } = useScriptTag(
   'https://nimiq-feedback.je-cf9.workers.dev/widget.js',
@@ -59,6 +66,9 @@ async function mountWidget() {
           app: 'developer-center',
           feedbackEndpoint: 'https://nimiq-feedback.je-cf9.workers.dev/api/feedback',
         })
+
+        // Expose widget instance globally for outline actions
+        ;(window as any).__nimiqFeedbackWidget = widgetInstance.value
 
         // Set up event listeners to track widget state
         if (widgetInstance.value.communication) {
@@ -149,16 +159,6 @@ watchEffect(() => {
 
 <template>
   <Dialog.Root v-model:open="open">
-    <!-- Trigger Button -->
-    <Dialog.Trigger as-child>
-      <button
-        class="text-white rounded-full bg-darkerblue flex size-48 shadow-lg transition-all duration-200 items-center bottom-24 right-24 justify-center fixed z-50 hover:scale-105"
-        aria-label="Send feedback" outline="white/15 offset--1.5 1.5"
-      >
-        <div class="text-20 i-nimiq:thumb-up-thumb-down" />
-      </button>
-    </Dialog.Trigger>
-
     <Dialog.Portal>
       <Transition name="backdrop">
         <Dialog.Overlay bg-darkblue op-60 inset-0 fixed z-200 />

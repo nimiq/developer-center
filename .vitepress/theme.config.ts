@@ -7,7 +7,7 @@ import { loadMethods } from './rpc/utils'
 const { sidebar: nimiqUtilsSidebar } = data
 const { apiReferenceSection } = webClientReferenceData
 
-// @unocss-include i-nimiq:verified i-nimiq:cubes i-nimiq:duotone-network
+// @unocss-include i-nimiq:verified i-nimiq:cubes i-nimiq:duotone-network i-nimiq:exclamation i-nimiq:leaf-2-filled i-nimiq:star
 
 export const themeConfig = {
   modules: [
@@ -245,4 +245,57 @@ export const themeConfig = {
   showLastUpdated: false,
   showEditContent: false,
   search: { provider: 'local' },
+  outlineActions: [
+    {
+      icon: 'i-nimiq:exclamation',
+      label: 'Report a bug',
+      onClick: () => {
+        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
+        if (feedbackButton) {
+          feedbackButton.click()
+          // Wait for modal to open, then show the bug form
+          setTimeout(() => {
+            const widget = (window as any).__nimiqFeedbackWidget
+            if (widget && typeof widget.showForm === 'function') {
+              widget.showForm('bug')
+            }
+          }, 100)
+        }
+      },
+    },
+    {
+      icon: 'i-nimiq:leaf-2-filled',
+      label: 'Share an idea',
+      onClick: () => {
+        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
+        if (feedbackButton) {
+          feedbackButton.click()
+          // Wait for modal to open, then show the idea form
+          setTimeout(() => {
+            const widget = (window as any).__nimiqFeedbackWidget
+            if (widget && typeof widget.showForm === 'function') {
+              widget.showForm('idea')
+            }
+          }, 100)
+        }
+      },
+    },
+    {
+      icon: 'i-nimiq:star',
+      label: 'Send feedback',
+      onClick: () => {
+        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
+        if (feedbackButton) {
+          feedbackButton.click()
+          // Wait for modal to open, then show the feedback form
+          setTimeout(() => {
+            const widget = (window as any).__nimiqFeedbackWidget
+            if (widget && typeof widget.showForm === 'function') {
+              widget.showForm('feedback')
+            }
+          }, 100)
+        }
+      },
+    },
+  ],
 }

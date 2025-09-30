@@ -94,3 +94,13 @@ div:has(+ article) {
 .widget-container:has(+ .rpc-warning-banner) {
   border-radius: 8px 8px 0 0 !important;
 }
+
+/* Outline Actions Icon Styling */
+
+/* Reduce icon opacity and size for feedback/bug/idea icons */
+[data-layout="docs"] .i-nimiq\:exclamation,
+[data-layout="docs"] .i-nimiq\:leaf-2-filled,
+[data-layout="docs"] .i-nimiq\:star {
+  opacity: 0.8 !important;
+  font-size: 12px !important;
+}
