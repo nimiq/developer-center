@@ -4,7 +4,25 @@ Integrate Nimiq Web Client using native ES modules for modern browsers.
 
 ## Installation
 
-<!--@include: ./_installation.md-->
+::: code-group
+
+```bash [pnpm]
+pnpm add @nimiq/core
+```
+
+```bash [npm]
+npm install @nimiq/core
+```
+
+```bash [yarn]
+yarn add @nimiq/core
+```
+
+```bash [bun]
+bun add @nimiq/core
+```
+
+:::
 
 ## Configuration
 

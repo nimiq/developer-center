@@ -7,12 +7,12 @@ Integrate Nimiq Web Client with Vite for fast blockchain development with minima
 Get started instantly with our pre-configured starter templates:
 
 ::: code-group
-```bash [Vue 3 + TypeScript]
+```bash [Vue]
 npx degit onmax/nimiq-starter/starters/vue-ts my-nimiq-app
 cd my-nimiq-app && pnpm install && pnpm dev
 ```
 
-```bash [React + TypeScript]
+```bash [React]
 npx degit onmax/nimiq-starter/starters/react-ts my-nimiq-app
 cd my-nimiq-app && pnpm install && pnpm dev
 ```
@@ -24,7 +24,29 @@ cd my-nimiq-app && pnpm install && pnpm dev
 
 Install the Nimiq Web Client and required Vite plugins:
 
-<!--@include: ./_installation-vite.md-->
+::: code-group
+
+```bash [pnpm]
+pnpm add @nimiq/core
+pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [npm]
+npm install @nimiq/core
+npm install -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [yarn]
+yarn add @nimiq/core
+yarn add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [bun]
+bun add @nimiq/core
+bun add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+:::
 
 ## Configuration
 
@@ -34,28 +56,13 @@ Update your `vite.config.js` or `vite.config.ts`:
 
 ```javascript
 import { defineConfig } from 'vite'
-import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
 import wasm from 'vite-plugin-wasm' // [!code ++]
 
 export default defineConfig({
-  plugins: [
-    wasm(), // [!code ++]
-    topLevelAwait({ // [!code ++]
-      // The module that contains the top-level await // [!code ++]
-      promiseExportName: '__tla', // [!code ++]
-      // The function to generate the promise export name // [!code ++]
-      promiseImportName: i => `__tla_${i}`, // [!code ++]
-    }), // [!code ++]
-  ],
+  plugins: [wasm()], // [!code ++]
   worker: { // [!code ++]
-    format: 'es', // [!code ++]
-    plugins: () => [ // [!code ++]
-      wasm(), // [!code ++]
-      topLevelAwait({ // [!code ++]
-        promiseExportName: '__tla', // [!code ++]
-        promiseImportName: i => `__tla_${i}`, // [!code ++]
-      }), // [!code ++]
-    ] // [!code ++]
+    format: 'esnext', // [!code ++]
+    plugins: () => [wasm()], // [!code ++]
   }, // [!code ++]
 
   optimizeDeps: { // [!code ++]
@@ -67,7 +74,7 @@ export default defineConfig({
     target: 'esnext', // [!code ++]
     rollupOptions: { // [!code ++]
       output: { // [!code ++]
-        format: 'es', // [!code ++]
+        format: 'esnext', // [!code ++]
       }, // [!code ++]
     }, // [!code ++]
   }, // [!code ++]
@@ -76,4 +83,4 @@ export default defineConfig({
 
 ## Usage Example
 
-<!--@include: ../_demo.bundler.md-->
+<!--@include: ../_demo.web.md-->

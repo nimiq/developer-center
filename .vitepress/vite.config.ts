@@ -8,7 +8,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
-import topLevelAwait from 'vite-plugin-top-level-await'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
 import llmstxt from 'vitepress-plugin-llms'
@@ -66,13 +65,12 @@ export default defineConfig(async () => {
     },
 
     build: {
-      target: ['es2020', 'edge108', 'firefox114', 'chrome108', 'safari14'],
+      target: ['esnext'],
     },
 
     worker: {
       plugins: () => [
         wasm(),
-        topLevelAwait(),
       ],
     },
 
@@ -101,7 +99,6 @@ export default defineConfig(async () => {
 
       ViteImageOptimizer(),
       wasm(),
-      topLevelAwait(),
 
       RpcDocsGeneratorPlugin(),
       llmstxt(

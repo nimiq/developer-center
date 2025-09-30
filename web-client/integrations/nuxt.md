@@ -8,7 +8,29 @@ Integrate Nimiq Web Client with Nuxt 3 for full-stack blockchain applications.
 
 Install the Nimiq Web Client and required Vite plugins:
 
-<!--@include: ./_installation-vite.md-->
+::: code-group
+
+```bash [pnpm]
+pnpm add @nimiq/core
+pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [npm]
+npm install @nimiq/core
+npm install -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [yarn]
+yarn add @nimiq/core
+yarn add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+```bash [bun]
+bun add @nimiq/core
+bun add -D vite-plugin-top-level-await vite-plugin-wasm
+```
+
+:::
 
 ## Configuration
 
@@ -17,22 +39,13 @@ Install the Nimiq Web Client and required Vite plugins:
 Update your `nuxt.config.ts`:
 
 ```typescript
-import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
 import wasm from 'vite-plugin-wasm' // [!code ++]
 
 export default defineNuxtConfig({
   vite: { // [!code ++]
-    plugins: [ // [!code ++]
-      wasm(), // [!code ++]
-      topLevelAwait(), // [!code ++]
-    ], // [!code ++]
-    worker: { // [!code ++]
-      plugins: () => [ // [!code ++]
-        wasm(), // [!code ++]
-        topLevelAwait(), // [!code ++]
-      ] // [!code ++]
-    }, // [!code ++]
-
+    build: { target: 'esnext' }, // [!code ++]
+    plugins: [wasm()], // [!code ++]
+    worker: { plugins: () => [wasm()] }, // [!code ++]
     optimizeDeps: { // [!code ++]
       exclude: ['@nimiq/core'], // [!code ++]
     }, // [!code ++]
@@ -40,7 +53,6 @@ export default defineNuxtConfig({
 
   // Only if you are using SSR or @nimiq/core in the server,
   // otherwise use `ssr: false` or `<ClientOnly />`
-  // Check https://github.com/unjs/nitro/issues/1952 for more info
   nitro: { // [!code ++]
     experimental: { // [!code ++]
       wasm: true // [!code ++]
