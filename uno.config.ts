@@ -29,6 +29,7 @@ export default defineConfig({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
+      fonts: false,
     }),
     presetIcons({
       collections: {
