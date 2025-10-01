@@ -1,7 +1,7 @@
 import { createExternalPackageIconLoader } from '@iconify/utils/lib/loader/external-pkg'
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import { presetNimiq } from 'nimiq-css/unocss'
-import { defineConfig, presetIcons } from 'unocss'
+import { defineConfig, presetIcons, presetWebFonts } from 'unocss'
 import { presetOnmax } from 'unocss-preset-onmax'
 
 export default defineConfig({
@@ -29,6 +29,18 @@ export default defineConfig({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
+      fonts: false, // Disable fonts in preset, we configure them separately with longer timeout
+    }),
+    presetWebFonts({
+      provider: 'google',
+      fonts: {
+        sans: 'Mulish:400,600,700',
+        mono: 'Fira Code:400',
+      },
+      timeouts: {
+        warning: 5000, // 5 seconds before warning
+        failure: 30000, // 30 seconds before failing
+      },
     }),
     presetIcons({
       collections: {
