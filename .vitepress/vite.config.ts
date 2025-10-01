@@ -101,41 +101,9 @@ export default defineConfig(async () => {
       wasm(),
 
       RpcDocsGeneratorPlugin(),
-      // TODO: Re-enable llmstxt plugin after fixing dynamic route handling
-      // llmstxt(
-      //   {
-      //     ignoreFiles: [
-      //       'archive/**',
-      //       '**/migration*',
-      //       '**/nimiq-styles/**',
-      //       '**/*nimiq-style*',
-      //       'nimiq-pow/**',
-      //       '**/*.json',
-      //       '**/*.js',
-      //       '**/*.ts',
-      //       '**/_*',
-      //       'README.md',
-      //       'LICENSE.md',
-      //       '.*',
-      //       // Exclude RPC client methods directory to avoid dynamic file issues
-      //       'rpc-client/methods/**',
-      //       '!rpc-client/methods/index.md',
-      //       '!rpc-client/methods/[method].md',
-      //       // Exclude nimiq-utils module pages (they don't exist yet, data is in nimiq-utils.data.ts)
-      //       'nimiq-utils/*',
-      //       '!nimiq-utils/index.md',
-      //       '!nimiq-utils/installation.md',
-      //       '!nimiq-utils/[module].md',
-      //     ],
-      //     experimental: {
-      //       depth: 2,
-      //     },
-      //   },
-      // ),
 
       NimiqVitepressVitePlugin({
         repoURL: 'https://github.com/nimiq/developer-center',
-        llms: false, // Temporarily disabled due to dynamic route issues
       }),
     ],
   }
