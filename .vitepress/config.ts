@@ -1,3 +1,5 @@
+import { copyFileSync, mkdirSync, readdirSync } from 'node:fs'
+import { join, relative } from 'node:path'
 import { env } from 'node:process'
 import consola from 'consola'
 import { defineNimiqVitepressConfig } from 'nimiq-vitepress-theme'
@@ -33,6 +35,35 @@ export default async () => {
 
     markdown: {
       math: true, // Allow latex math
+    },
+
+    buildEnd(siteConfig) {
+      const srcDir = siteConfig.srcDir
+      const outDir = siteConfig.outDir
+
+      function copyMarkdownFiles(dir: string) {
+        const entries = readdirSync(dir, { withFileTypes: true })
+
+        for (const entry of entries) {
+          const fullPath = join(dir, entry.name)
+
+          if (entry.isDirectory()) {
+            copyMarkdownFiles(fullPath)
+          }
+          else if (entry.isFile() && entry.name.endsWith('.md')) {
+            const relativePath = relative(srcDir, fullPath)
+            const destPath = join(outDir, relativePath)
+            const destDir = join(destPath, '..')
+
+            mkdirSync(destDir, { recursive: true })
+            copyFileSync(fullPath, destPath)
+          }
+        }
+      }
+
+      consola.info('Copying markdown files to build output...')
+      copyMarkdownFiles(srcDir)
+      consola.success('Markdown files copied successfully')
     },
 
     head: [
