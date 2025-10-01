@@ -120,6 +120,11 @@ export default defineConfig(async () => {
             'rpc-client/methods/**',
             '!rpc-client/methods/index.md',
             '!rpc-client/methods/[method].md',
+            // Exclude nimiq-utils module pages (they don't exist yet, data is in nimiq-utils.data.ts)
+            'nimiq-utils/*',
+            '!nimiq-utils/index.md',
+            '!nimiq-utils/installation.md',
+            '!nimiq-utils/[module].md',
           ],
           experimental: {
             depth: 2,
