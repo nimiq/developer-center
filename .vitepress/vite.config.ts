@@ -10,7 +10,7 @@ import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
-import llmstxt from 'vitepress-plugin-llms'
+// import llmstxt from 'vitepress-plugin-llms'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
 import { generateWebClientDocs } from './scripts/web-client'
 
@@ -101,36 +101,37 @@ export default defineConfig(async () => {
       wasm(),
 
       RpcDocsGeneratorPlugin(),
-      llmstxt(
-        {
-          ignoreFiles: [
-            'archive/**',
-            '**/migration*',
-            '**/nimiq-styles/**',
-            '**/*nimiq-style*',
-            'nimiq-pow/**',
-            '**/*.json',
-            '**/*.js',
-            '**/*.ts',
-            '**/_*',
-            'README.md',
-            'LICENSE.md',
-            '.*',
-            // Exclude RPC client methods directory to avoid dynamic file issues
-            'rpc-client/methods/**',
-            '!rpc-client/methods/index.md',
-            '!rpc-client/methods/[method].md',
-            // Exclude nimiq-utils module pages (they don't exist yet, data is in nimiq-utils.data.ts)
-            'nimiq-utils/*',
-            '!nimiq-utils/index.md',
-            '!nimiq-utils/installation.md',
-            '!nimiq-utils/[module].md',
-          ],
-          experimental: {
-            depth: 2,
-          },
-        },
-      ),
+      // TODO: Re-enable llmstxt plugin after fixing dynamic route handling
+      // llmstxt(
+      //   {
+      //     ignoreFiles: [
+      //       'archive/**',
+      //       '**/migration*',
+      //       '**/nimiq-styles/**',
+      //       '**/*nimiq-style*',
+      //       'nimiq-pow/**',
+      //       '**/*.json',
+      //       '**/*.js',
+      //       '**/*.ts',
+      //       '**/_*',
+      //       'README.md',
+      //       'LICENSE.md',
+      //       '.*',
+      //       // Exclude RPC client methods directory to avoid dynamic file issues
+      //       'rpc-client/methods/**',
+      //       '!rpc-client/methods/index.md',
+      //       '!rpc-client/methods/[method].md',
+      //       // Exclude nimiq-utils module pages (they don't exist yet, data is in nimiq-utils.data.ts)
+      //       'nimiq-utils/*',
+      //       '!nimiq-utils/index.md',
+      //       '!nimiq-utils/installation.md',
+      //       '!nimiq-utils/[module].md',
+      //     ],
+      //     experimental: {
+      //       depth: 2,
+      //     },
+      //   },
+      // ),
 
       NimiqVitepressVitePlugin({
         repoURL: 'https://github.com/nimiq/developer-center',
