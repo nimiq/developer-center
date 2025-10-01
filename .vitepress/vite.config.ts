@@ -135,6 +135,7 @@ export default defineConfig(async () => {
 
       NimiqVitepressVitePlugin({
         repoURL: 'https://github.com/nimiq/developer-center',
+        llms: false, // Temporarily disabled due to dynamic route issues
       }),
     ],
   }
