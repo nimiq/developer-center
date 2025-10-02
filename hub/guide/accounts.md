@@ -607,7 +607,7 @@ if (account.type === HubApi.AccountType.LEDGER) {
 
 A typical account lifecycle in your app:
 
-```
+```[lh-1]
                       ┌─────────────────┐
                       │ Account Created │◄──── onboard ──── New User
                       └────────┬────────┘

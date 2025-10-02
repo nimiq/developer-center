@@ -179,7 +179,7 @@ hubApi.on(
 
 Understanding the request lifecycle helps you handle loading states and errors properly:
 
-```
+```[lh-1]
 Your App          Hub              Keyguard         Blockchain
    │               │                   │                 │
    │──Request──────►                   │                 │
@@ -216,7 +216,7 @@ Your App          Hub              Keyguard         Blockchain
 
 ### Trust Boundaries
 
-```
+```[lh-1]
 ┌──────────────┐        ┌──────────────┐        ┌──────────────┐
 │   Your App   │───────►│     Hub      │───────►│   Keyguard   │
 │  (Untrusted) │        │(Semi-Trusted)│        │(Fully Trusted)│
