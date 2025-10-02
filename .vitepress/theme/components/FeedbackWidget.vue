@@ -1,37 +1,68 @@
 <script setup lang="ts">
 import { useEventListener, useMounted, useScriptTag } from '@vueuse/core'
 import { Dialog } from 'reka-ui/namespaced'
-import { nextTick, ref, watchEffect } from 'vue'
+import { computed, nextTick, ref, watch, watchEffect } from 'vue'
+
+type FeedbackFormType = 'bug' | 'feedback'
+
+interface WidgetInstance {
+  showForm?: (form: FeedbackFormType) => void
+  closeWidget?: () => void
+}
+
+interface FeedbackWidgetApi extends WidgetInstance {
+  open: (form?: FeedbackFormType) => void
+}
+
+type WindowWithFeedback = Window & typeof globalThis & {
+  mountFeedbackWidget?: (selector: string, props?: Record<string, unknown>) => WidgetInstance
+  __nimiqFeedbackWidget?: FeedbackWidgetApi
+}
 
 const open = ref(false)
 const isMounted = useMounted()
-
-// Script loading states
+const pendingForm = ref<FeedbackFormType>('feedback')
 const isLoading = ref(false)
 const hasError = ref(false)
+const widgetInstance = ref<WidgetInstance | null>(null)
+const isDevEnvironment = import.meta.env?.DEV ?? false
 
-// Widget state tracking
-const isInFormView = ref(false)
+const windowWithFeedback = typeof window !== 'undefined' ? window as WindowWithFeedback : undefined
+const globalWidget: FeedbackWidgetApi | null = windowWithFeedback
+  ? (windowWithFeedback.__nimiqFeedbackWidget ?? (windowWithFeedback.__nimiqFeedbackWidget = { open: () => {} }))
+  : null
 
-// Expose open method globally
-if (typeof window !== 'undefined') {
-  (window as any).__nimiqFeedbackWidget = {
-    open: () => { open.value = true },
+function openModal(form: FeedbackFormType = 'feedback') {
+  pendingForm.value = form
+  hasError.value = false
+
+  if (!open.value)
+    open.value = true
+
+  widgetInstance.value?.showForm?.(form)
+}
+
+if (globalWidget) {
+  globalWidget.open = openModal
+  globalWidget.showForm = (form?: FeedbackFormType) => openModal(form)
+  globalWidget.closeWidget = () => {
+    open.value = false
+    widgetInstance.value?.closeWidget?.()
   }
 }
 
-// Load external script using VueUse
 const { load: loadScript } = useScriptTag(
   'https://nimiq-feedback.je-cf9.workers.dev/widget.js',
   () => {
-    // Script loaded successfully
     console.warn('Feedback widget script loaded')
   },
-  { manual: true }, // Don't load immediately
+  { manual: true },
 )
 
-// CSS loading function (keep manual for now since useScriptTag is for JS only)
 async function loadCSS() {
+  if (typeof document === 'undefined')
+    return
+
   if (document.querySelector('link[href*="nimiq-feedback"]'))
     return
 
@@ -40,121 +71,98 @@ async function loadCSS() {
   link.href = 'https://nimiq-feedback.je-cf9.workers.dev/widget.css'
   document.head.appendChild(link)
 
-  // Wait for CSS to load with timeout
-  return new Promise<void>((resolve) => {
+  await new Promise<void>((resolve) => {
     link.onload = () => resolve()
-    link.onerror = () => resolve() // Continue even if CSS fails
-    setTimeout(resolve, 2000) // Fallback timeout
+    link.onerror = () => resolve()
+    setTimeout(resolve, 2000)
   })
 }
 
-// Widget instance reference
-const widgetInstance = ref<any>(null)
-
-// Widget mounting logic
 async function mountWidget() {
   await nextTick()
 
-  let attempts = 0
-  const maxAttempts = 10
+  if (!windowWithFeedback)
+    throw new Error('Feedback widget unavailable')
 
-  while (attempts < maxAttempts) {
-    if (typeof (window as any).mountFeedbackWidget === 'function') {
-      const container = document.getElementById('feedback-widget')
-      if (container) {
-        widgetInstance.value = (window as any).mountFeedbackWidget('#feedback-widget', {
-          app: 'developer-center',
-          feedbackEndpoint: 'https://nimiq-feedback.je-cf9.workers.dev/api/feedback',
-        })
+  const mount = windowWithFeedback.mountFeedbackWidget
+  if (typeof mount !== 'function')
+    throw new Error('mountFeedbackWidget is not defined')
 
-        // Expose widget instance globally for outline actions
-        ;(window as any).__nimiqFeedbackWidget = widgetInstance.value
+  const container = document.getElementById('feedback-widget')
+  if (!container)
+    throw new Error('Feedback widget container not found')
 
-        // Set up event listeners to track widget state
-        if (widgetInstance.value.communication) {
-          // When a form is selected, we're in form view
-          widgetInstance.value.communication.on('form-selected', () => {
-            isInFormView.value = true
-          })
+  const instance = mount('#feedback-widget', {
+    app: 'developer-center',
+    feedbackEndpoint: 'https://nimiq-feedback.je-cf9.workers.dev/api/feedback',
+    initialForm: pendingForm.value,
+    dev: isDevEnvironment,
+  })
 
-          // When going back, we're back in grid view
-          widgetInstance.value.communication.on('go-back', () => {
-            isInFormView.value = false
-          })
-        }
+  widgetInstance.value = instance
 
-        return
-      }
+  if (globalWidget) {
+    globalWidget.showForm = (form?: FeedbackFormType) => openModal(form)
+    globalWidget.closeWidget = () => {
+      open.value = false
+      instance.closeWidget?.()
     }
-
-    attempts++
-    await new Promise(resolve => setTimeout(resolve, 500))
   }
 
-  throw new Error('Widget mounting failed after multiple attempts')
+  instance.showForm?.(pendingForm.value)
 }
 
-// Go back in widget
-function goBack() {
-  if (widgetInstance.value && typeof widgetInstance.value.goBack === 'function') {
-    widgetInstance.value.goBack()
-  }
-}
-
-// Flag to track if widget has been loaded
-const widgetLoaded = ref(false)
-
-// Load widget function (non-reactive)
-async function loadWidget() {
-  if (isLoading.value || widgetLoaded.value)
+async function ensureWidget() {
+  if (widgetInstance.value || isLoading.value)
     return
 
   isLoading.value = true
   hasError.value = false
 
   try {
-    // Load CSS and JS in parallel
     await Promise.all([
       loadCSS(),
       loadScript(),
     ])
-
-    // Mount the widget after both resources are loaded
     await mountWidget()
-    widgetLoaded.value = true
   }
   catch (error) {
     console.error('Failed to load feedback widget:', error)
     hasError.value = true
+    widgetInstance.value = null
   }
   finally {
     isLoading.value = false
   }
 }
 
-// Watch for dialog opening (only triggers on open change)
 watchEffect(() => {
-  if (open.value && isMounted.value) {
-    loadWidget()
-  }
+  if (open.value && isMounted.value)
+    ensureWidget()
 })
 
-// Listen for escape key to close modal
-useEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && open.value) {
-    open.value = false
-  }
-})
-
-// Reset states when dialog closes
-watchEffect(() => {
-  if (!open.value) {
+watch(open, (isOpen) => {
+  if (!isOpen) {
+    pendingForm.value = 'feedback'
+    widgetInstance.value?.closeWidget?.()
+    widgetInstance.value = null
     isLoading.value = false
     hasError.value = false
-    isInFormView.value = false // Reset form view state when dialog closes
-    // Don't reset widgetLoaded - keep it loaded for subsequent opens
+  }
+  else {
+    widgetInstance.value?.showForm?.(pendingForm.value)
   }
 })
+
+useEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && open.value)
+    open.value = false
+})
+
+const showErrorState = computed(() => open.value && hasError.value)
+const showLoadingState = computed(() => open.value && !hasError.value && (!widgetInstance.value || isLoading.value))
+const widgetAriaHidden = computed(() => showLoadingState.value || showErrorState.value)
+const containerStyle = computed(() => ({ minHeight: '340px' }))
 </script>
 
 <template>
@@ -165,7 +173,7 @@ watchEffect(() => {
       </Transition>
       <Transition name="modal">
         <Dialog.Content xl="top-1/2 left-1/2 translate--1/2" rounded="t-8 xl:8" data-modal outline-none h-max max-h-85dvh w-full shadow-lg transform bottom-0 fixed z-200 of-hidden xl:max-w-500 @open-auto-focus.prevent>
-          <div py-32 bg-neutral-0 relative ring="1.5 neutral/3" class="modal-container">
+          <div py-32 bg-neutral-0 max-h-85dvh relative of-y-auto ring="1.5 neutral/3" class="modal-container">
             <Dialog.Title text="24 center neutral lh-24" as="h2" lh-none font-bold mb-12 px-24 sr-only xl:px-40>
               Send feedback
             </Dialog.Title>
@@ -173,28 +181,34 @@ watchEffect(() => {
               We're always looking for ways to improve the Developer Center. Please share your thoughts with us.
             </Dialog.Description>
 
-            <!-- Back arrow button - only show when in form view -->
-            <button
-              v-if="isInFormView"
-              aria-label="Go back"
-              flex="~ items-center justify-center"
-              rounded-full size-32 left-16 top-16 absolute text="neutral-600 20" hover:bg="neutral/10" transition="colors duration-200" @click="goBack"
-            >
-              <div i-nimiq:arrow-left />
-            </button>
-
             <div mt-12 f-px-md>
-              <div id="feedback-widget" />
+              <div class="w-full relative" :style="containerStyle">
+                <div
+                  v-if="showErrorState"
+                  class="text-neutral-800 px-24 text-center bg-neutral-0 flex flex-col gap-12 items-center inset-0 justify-center absolute"
+                >
+                  <p font-medium>
+                    We couldn't load the feedback form. Please try again later.
+                  </p>
+                </div>
+                <div
+                  v-else-if="showLoadingState"
+                  class="text-neutral-600 px-24 text-center bg-neutral-0 flex flex-col gap-12 items-center inset-0 justify-center absolute"
+                >
+                  <div i-nimiq:spinner text="neutral-600 6xl" aria-hidden="true" />
+                  <p>
+                    Loading feedback widget…
+                  </p>
+                </div>
+                <div id="feedback-widget" aria-live="polite" :aria-hidden="widgetAriaHidden" h-full />
+              </div>
             </div>
 
-            <!-- Close button with icon -->
-            <Dialog.Close as-child>
-              <button
-                aria-label="Close"
-                flex="~ items-center justify-center" rounded-full size-32 right-16 top-16 absolute text="neutral-600 20" hover:bg="neutral/10" transition="colors duration-200"
-              >
-                <div i-nimiq:cross />
-              </button>
+            <Dialog.Close
+              aria-label="Close"
+              flex="~ items-center justify-center" bg="neutral-200 hocus:neutral-300" rounded-full size-24 transition-colors right-16 top-16 absolute
+            >
+              <div text-neutral-700 size-10 i-nimiq:cross />
             </Dialog.Close>
           </div>
         </Dialog.Content>

@@ -251,34 +251,18 @@ export const themeConfig = {
       icon: 'i-nimiq:exclamation',
       label: 'Report a bug',
       onClick: () => {
-        const feedbackButton = document.querySelector('[aria-label="Report a bug"]') as HTMLButtonElement
-        if (!feedbackButton)
-          return
-        feedbackButton.click()
-        // Wait for modal to open, then show the bug form
-        setTimeout(() => {
-          const widget = (window as any).__nimiqFeedbackWidget
-          if (widget && typeof widget.showForm === 'function') {
-            widget.showForm('bug')
-          }
-        }, 100)
+        const widget = (window as any).__nimiqFeedbackWidget
+        if (widget && typeof widget.open === 'function')
+          widget.open('bug')
       },
     },
     {
       icon: 'i-nimiq:thumb-up-thumb-down',
       label: 'Send feedback',
       onClick: () => {
-        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
-        if (!feedbackButton)
-          return
-        feedbackButton.click()
-        // Wait for modal to open, then show the feedback form
-        setTimeout(() => {
-          const widget = (window as any).__nimiqFeedbackWidget
-          if (widget && typeof widget.showForm === 'function') {
-            widget.showForm('feedback')
-          }
-        }, 100)
+        const widget = (window as any).__nimiqFeedbackWidget
+        if (widget && typeof widget.open === 'function')
+          widget.open('feedback')
       },
     },
   ],
