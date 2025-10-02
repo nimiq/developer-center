@@ -151,6 +151,7 @@ export const themeConfig = {
           label: 'Overview',
           items: [
             { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
             { text: 'Open RPC Servers', link: '/rpc-client/open-servers', icon: 'i-tabler:server' },
           ],
         },
@@ -250,51 +251,34 @@ export const themeConfig = {
       icon: 'i-nimiq:exclamation',
       label: 'Report a bug',
       onClick: () => {
-        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
-        if (feedbackButton) {
-          feedbackButton.click()
-          // Wait for modal to open, then show the bug form
-          setTimeout(() => {
-            const widget = (window as any).__nimiqFeedbackWidget
-            if (widget && typeof widget.showForm === 'function') {
-              widget.showForm('bug')
-            }
-          }, 100)
-        }
+        const feedbackButton = document.querySelector('[aria-label="Report a bug"]') as HTMLButtonElement
+        if (!feedbackButton)
+          return
+        feedbackButton.click()
+        // Wait for modal to open, then show the bug form
+        setTimeout(() => {
+          const widget = (window as any).__nimiqFeedbackWidget
+          if (widget && typeof widget.showForm === 'function') {
+            widget.showForm('bug')
+          }
+        }, 100)
       },
     },
     {
-      icon: 'i-nimiq:leaf-2-filled',
-      label: 'Share an idea',
-      onClick: () => {
-        const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
-        if (feedbackButton) {
-          feedbackButton.click()
-          // Wait for modal to open, then show the idea form
-          setTimeout(() => {
-            const widget = (window as any).__nimiqFeedbackWidget
-            if (widget && typeof widget.showForm === 'function') {
-              widget.showForm('idea')
-            }
-          }, 100)
-        }
-      },
-    },
-    {
-      icon: 'i-nimiq:star',
+      icon: 'i-nimiq:thumb-up-thumb-down',
       label: 'Send feedback',
       onClick: () => {
         const feedbackButton = document.querySelector('[aria-label="Send feedback"]') as HTMLButtonElement
-        if (feedbackButton) {
-          feedbackButton.click()
-          // Wait for modal to open, then show the feedback form
-          setTimeout(() => {
-            const widget = (window as any).__nimiqFeedbackWidget
-            if (widget && typeof widget.showForm === 'function') {
-              widget.showForm('feedback')
-            }
-          }, 100)
-        }
+        if (!feedbackButton)
+          return
+        feedbackButton.click()
+        // Wait for modal to open, then show the feedback form
+        setTimeout(() => {
+          const widget = (window as any).__nimiqFeedbackWidget
+          if (widget && typeof widget.showForm === 'function') {
+            widget.showForm('feedback')
+          }
+        }, 100)
       },
     },
   ],
