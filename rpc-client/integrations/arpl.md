@@ -4,12 +4,6 @@ Command-line interface for node management, accounts, staking, and validators.
 
 Albatross Remote (ARPL) provides comprehensive Nimiq node management through an intuitive CLI.
 
-## Installation {.mt-16}
-
-```bash
-npm install -g @sisou/albatross-remote
-```
-
 ## Documentation & Usage
 
 For complete documentation, installation instructions, and all available methods, visit the official repository:
