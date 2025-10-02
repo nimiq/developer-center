@@ -15,11 +15,11 @@
     "build": "DEPLOYMENT_MODE=production vitepress build",
     "build:staging": "DEPLOYMENT_MODE=staging vitepress build",
     "preview": "vitepress preview",
-    "postinstall": "tsx -e \"import { fetchOpenRpcDocument } from './.vitepress/rpc/fetch.ts'; (async () => await fetchOpenRpcDocument())()\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --exclude index.md",
+    "build:rpc-client": "tsx -e \"import { buildRpcClientDocs } from './.vitepress/rpc/build.ts'; (async () => await buildRpcClientDocs())()\"",
     "update": "npx taze latest --update -w"
   },
   "dependencies": {
@@ -56,8 +56,8 @@
     "eslint": "^9.35.0",
     "lint-staged": "^16.1.6",
     "markdown-it-mathjax3": "^4.3.2",
-    "nimiq-css": "^1.0.0-beta.113",
-    "nimiq-vitepress-theme": "^1.0.0-beta.113",
+    "nimiq-css": "^1.0.0-beta.116",
+    "nimiq-vitepress-theme": "^1.0.0-beta.116",
     "ofetch": "^1.4.1",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
