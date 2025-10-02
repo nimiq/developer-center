@@ -193,11 +193,11 @@ const containerStyle = computed(() => ({ minHeight: '340px' }))
                 </div>
                 <div
                   v-else-if="showLoadingState"
-                  class="text-neutral-600 px-24 text-center bg-neutral-0 flex flex-col gap-12 items-center inset-0 justify-center absolute"
+                  class="text-neutral-800 px-24 text-center bg-neutral-0 flex flex-col gap-16 items-center inset-0 justify-center absolute"
                 >
-                  <div i-nimiq:spinner text="neutral-600 6xl" aria-hidden="true" />
-                  <p>
-                    Loading feedback widget…
+                  <div i-nimiq:check text="green 6xl" aria-hidden="true" />
+                  <p font-semibold>
+                    Ready to share your feedback
                   </p>
                 </div>
                 <div id="feedback-widget" aria-live="polite" :aria-hidden="widgetAriaHidden" h-full />
