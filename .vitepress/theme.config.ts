@@ -183,6 +183,39 @@ export const themeConfig = {
       sidebar: nimiqUtilsSidebar,
     },
     {
+      text: 'Hub',
+      subpath: 'hub',
+      icon: 'i-local:nimiq-wallet-hub',
+      defaultPageLink: '/hub/',
+      description: 'Wallet integration API',
+      sidebar: [
+        {
+          label: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/hub/', icon: 'i-tabler:home' },
+            { text: 'Getting Started', link: '/hub/getting-started', icon: 'i-tabler:rocket' },
+          ],
+        },
+        {
+          label: 'Guide',
+          items: [
+            { text: 'Concepts', link: '/hub/guide/concepts', icon: 'i-tabler:book' },
+            { text: 'Integration', link: '/hub/guide/integration', icon: 'i-tabler:code' },
+            { text: 'Transactions', link: '/hub/guide/transactions', icon: 'i-tabler:receipt' },
+            { text: 'Accounts', link: '/hub/guide/accounts', icon: 'i-tabler:user' },
+            { text: 'Advanced Features', link: '/hub/guide/advanced', icon: 'i-tabler:star' },
+          ],
+        },
+        {
+          label: 'Resources',
+          items: [
+            { text: 'Examples', link: '/hub/examples', icon: 'i-tabler:code-dots' },
+            { text: 'API Reference', link: '/hub/api-reference', icon: 'i-tabler:api' },
+          ],
+        },
+      ],
+    },
+    {
       text: 'Nodes',
       subpath: 'nodes',
       icon: 'i-local:nimiq-dev',

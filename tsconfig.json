@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "types": [
       "node",
-      "vite/client"
+      "vite/client",
+      "vitepress/client"
     ],
     "strict": true,
     "strictNullChecks": true,

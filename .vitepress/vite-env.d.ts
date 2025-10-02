@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="vitepress/client" />
 
 import type { OpenrpcDocument } from '@open-rpc/meta-schema'
 import type { NimiqRpcMethods } from './rpc/utils'
