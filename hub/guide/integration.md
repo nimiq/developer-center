@@ -114,4 +114,4 @@ package includes TypeScript definitions—leverage them to catch integration mis
 - [Quick Start](../getting-started)
 - [Transactions Guide](./transactions)
 - [Cashlinks & Advanced Features](./advanced)
-- [Practical Examples](../examples)
+- [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)

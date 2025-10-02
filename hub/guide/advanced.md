@@ -124,4 +124,4 @@ Understanding these differences helps when you build dashboards or display balan
 
 - Review the [API Reference](/hub/api-reference) for a method-by-method overview.
 - Follow the [Integration Guide](/hub/guide/integration) for workflow best practices.
-- Explore the [Practical Examples](/hub/examples) to see cashlinks and redirect flows in action.
+- Check out the [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts) for working examples.
