@@ -9,6 +9,15 @@ Get started with the Nimiq Hub API in three easy steps: install the client, init
 
 ## Quick Start
 
+::: tip Starter Template
+For a ready-to-use project, check out our [Hub API TypeScript Starter](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts) with complete examples and tests.
+
+```bash
+npx degit onmax/nimiq-starter/starters/hub-api-ts my-nimiq-app
+cd my-nimiq-app && pnpm install && pnpm dev
+```
+:::
+
 Here's a complete example to request an address from the user:
 
 ```html
