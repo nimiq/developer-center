@@ -108,9 +108,18 @@ import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
 import AlternativeOptions from '../.vitepress/theme/components/AlternativeOptions.vue'
 import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
+
+const items = [
+  { label: 'View on GitHub', href: 'https://github.com/nimiq/hub', icon: 'i-nimiq:logos-github' },
+  { label: 'NPM Package', href: 'https://www.npmjs.com/package/@nimiq/hub-api', icon: 'i-nimiq:logos-npm' },
+]
 </script>
 
-<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left" />
+<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left">
+
+<NqLinks :items />
+
+</Hero>
 
 <section>
 
