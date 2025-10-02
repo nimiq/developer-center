@@ -13,16 +13,20 @@ The `checkout()` method is the easiest way to request a payment from a user. It 
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [checkout-payment.ts]
 const result = await hubApi.checkout({
   appName: 'My Shop',
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
-  value: 1000000, // 0.01 NIM (in Luna: 1 NIM = 100,000 Luna)
+  value: 1_000, // 0.01 NIM (in Luna: 1 NIM = 100,000 Luna)
 })
 
 console.log('Transaction hash:', result.hash)
 console.log('Transaction sent!')
 ```
+
+:::
 
 ### Request Options
 
@@ -71,7 +75,9 @@ interface SignedTransaction {
 
 ### Example: E-commerce Checkout
 
-```ts
+::: code-group
+
+```ts [process-checkout.ts]
 async function processCheckout(orderId: string, totalNim: number) {
   try {
     const result = await hubApi.checkout({
@@ -100,9 +106,13 @@ async function processCheckout(orderId: string, totalNim: number) {
 }
 ```
 
+:::
+
 ### Setting Fees
 
-```ts
+::: code-group
+
+```ts [checkout-with-fee.ts]
 // Standard transaction (no fee required on Nimiq)
 await hubApi.checkout({
   appName: 'My App',
@@ -120,6 +130,8 @@ await hubApi.checkout({
 })
 ```
 
+:::
+
 ## signTransaction()
 
 Unlike `checkout()`, the `signTransaction()` method signs a transaction but does **not** broadcast it. Use this when you want to submit the transaction yourself or sign offline.
@@ -133,7 +145,9 @@ Unlike `checkout()`, the `signTransaction()` method signs a transaction but does
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [sign-transaction.ts]
 const currentHeight = await getCurrentBlockHeight() // Get from RPC or Web Client
 
 const result = await hubApi.signTransaction({
@@ -147,6 +161,8 @@ const result = await hubApi.signTransaction({
 // Now broadcast it yourself
 await client.sendRawTransaction(result.serializedTx)
 ```
+
+:::
 
 ### Request Options
 
@@ -167,13 +183,14 @@ interface SignTransactionRequest {
 }
 ```
 
-::: warning Validity Window
-Transactions are only valid for **120 blocks** after `validityStartHeight`. A transaction with a future `validityStartHeight` will be rejected until that height is reached. Plan accordingly!
-:::
+> [!WARNING] Validity Window
+> Transactions are only valid for **120 blocks** after `validityStartHeight`. A transaction with a future `validityStartHeight` will be rejected until that height is reached. Plan accordingly!
 
 ### Example: Offline Signing
 
-```ts
+::: code-group
+
+```ts [offline-signing.ts]
 import { Client } from '@nimiq/core'
 
 // 1. Prepare transaction details offline
@@ -198,114 +215,50 @@ await client.waitForConsensus()
 await client.sendRawTransaction(signedTx.serializedTx)
 ```
 
+:::
+
+> **Note:** This example uses the [Nimiq Web Client](/web-client/) (`@nimiq/core`) to broadcast the signed transaction.
+
 ## signStaking()
 
-The `signStaking()` method handles complex staking operations (create validator, stake, unstake, update validator) and returns multiple signed transactions if needed.
-
-### Basic Usage
+`signStaking()` is a low-level helper: you prepare one or more staking transactions, the Hub has the user approve them,
+and the Keyguard returns signed transactions. The method does **not** build transactions for you — use
+[`@nimiq/core`](/web-client/)'s staking helpers or the [RPC client](/rpc-client/) to assemble the unsigned transactions first.
 
 ```ts
-const result = await hubApi.signStaking({
-  appName: 'My Staking App',
-  sender: 'NQ07 USER ADDR ESS0 0000 0000 0000 0000 0000',
-  validatorAddress: 'NQ07 VALD ADDR ESS0 0000 0000 0000 0000 0000',
-  value: 100000000, // 1,000 NIM minimum stake
-  operation: 'stake', // 'stake' | 'unstake' | 'create_validator' | 'update_validator'
-  validityStartHeight: currentHeight,
+interface SignStakingRequest extends BasicRequest {
+  senderLabel?: string
+  recipientLabel?: string
+  transaction: Uint8Array | Uint8Array[]
+}
+```
+
+Workflow:
+1. Build the desired staking transaction(s) with [`@nimiq/core`](/web-client/) (for example by creating an
+   `Nimiq.ExtendedTransaction`).
+2. Serialize each transaction to a `Uint8Array` via `.serialize()`.
+3. Pass the bytes to `hubApi.signStaking({ appName, transaction })`.
+4. Submit every signed transaction returned by the Hub to the network using your [JSON-RPC client](/rpc-client/).
+
+::: code-group
+
+```ts [sign-staking.ts]
+const unsignedTx = buildStakeTransaction(...) // returns Uint8Array
+
+const signed = await hubApi.signStaking({
+  appName: 'Validator Console',
+  transaction: unsignedTx,
 })
 
-// Result is an array of signed transactions
-for (const tx of result) {
+for (const tx of signed) {
   await client.sendRawTransaction(tx.serializedTx)
 }
 ```
 
-### Request Options
+:::
 
-```ts
-interface SignStakingRequest {
-  appName: string
-  sender: string
-  validatorAddress: string
-  value: number // Luna
-  operation: 'stake' | 'unstake' | 'create_validator' | 'update_validator'
-  validityStartHeight: number
-
-  // For validator creation/update
-  signingKey?: string // Validator signing key
-  votingKey?: string // Validator voting key
-  rewardAddress?: string // Address to receive rewards
-  fee?: number
-  extraData?: string | Uint8Array
-}
-```
-
-### Response
-
-```ts
-// Returns an array of SignedTransaction objects
-SignedTransaction[]
-```
-
-### Example: Staking to a Validator
-
-```ts
-async function stakeToValidator(
-  userAddress: string,
-  validatorAddress: string,
-  amountNim: number,
-) {
-  const currentHeight = await client.blockNumber()
-
-  const transactions = await hubApi.signStaking({
-    appName: 'My Staking App',
-    sender: userAddress,
-    validatorAddress,
-    value: amountNim * 100000, // Convert to Luna
-    operation: 'stake',
-    validityStartHeight: currentHeight,
-  })
-
-  // Submit all transactions
-  for (const tx of transactions) {
-    const hash = await client.sendRawTransaction(tx.serializedTx)
-    console.log('Staking transaction sent:', hash)
-  }
-
-  showSuccess(`Staked ${amountNim} NIM to validator`)
-}
-```
-
-### Example: Creating a Validator
-
-```ts
-async function createValidator(
-  userAddress: string,
-  rewardAddress: string,
-  signingKey: string,
-  votingKey: string,
-) {
-  const currentHeight = await client.blockNumber()
-
-  const transactions = await hubApi.signStaking({
-    appName: 'Validator Manager',
-    sender: userAddress,
-    validatorAddress: userAddress, // Same as sender for creation
-    value: 100000000, // Minimum stake amount
-    operation: 'create_validator',
-    validityStartHeight: currentHeight,
-    signingKey,
-    votingKey,
-    rewardAddress,
-  })
-
-  for (const tx of transactions) {
-    await client.sendRawTransaction(tx.serializedTx)
-  }
-
-  showSuccess('Validator created successfully!')
-}
-```
+Because staking operations can require multiple chained transactions, the Hub always returns an array. Many cases (like
+simple stake/unstake) contain a single item.
 
 ## signMessage()
 
@@ -313,7 +266,9 @@ Sign arbitrary messages for authentication or proof-of-ownership. Perfect for lo
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [sign-message.ts]
 const result = await hubApi.signMessage({
   appName: 'My App',
   message: 'Sign in to My App',
@@ -323,6 +278,8 @@ console.log('Signed by:', result.signer)
 console.log('Signature:', result.signature)
 console.log('Public key:', result.signerPublicKey)
 ```
+
+:::
 
 ### Request Options
 
@@ -357,11 +314,11 @@ The prefix `\x16Nimiq Signed Message:\n` (23 bytes) and message length ensure th
 
 ### Verifying Signatures
 
-To verify a signed message:
+To verify a signed message using the [Nimiq Web Client](/web-client/):
 
 ::: code-group
 
-```ts [Nimiq Web Client]
+```ts [verify-with-web-client.ts]
 import { BufferUtils, Hash, PublicKey, Signature } from '@nimiq/core'
 
 function verifySignedMessage(
@@ -406,7 +363,9 @@ function verifySignedMessage(
 
 ### Example: Authentication Flow
 
-```ts
+::: code-group
+
+```ts [sign-in-authentication.ts]
 // 1. User clicks "Sign In"
 async function signIn() {
   try {
@@ -456,13 +415,17 @@ app.post('/api/auth/verify', (req, res) => {
 })
 ```
 
+:::
+
 ## chooseAddress()
 
 Let users select one of their addresses to provide to your app. **Not for authentication** (use `signMessage()` instead).
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [choose-address.ts]
 const result = await hubApi.chooseAddress({
   appName: 'My App',
 })
@@ -470,6 +433,8 @@ const result = await hubApi.chooseAddress({
 console.log('Address:', result.address)
 console.log('Label:', result.label)
 ```
+
+:::
 
 ### Request Options
 
@@ -488,13 +453,14 @@ interface ChooseAddressResult {
 }
 ```
 
-::: warning Not for Authentication
-`chooseAddress()` does **not** prove the user owns the address. Anyone can provide any address. For authentication, use `signMessage()` instead.
-:::
+> [!WARNING] Not for Authentication
+> `chooseAddress()` does **not** prove the user owns the address. Anyone can provide any address. For authentication, use `signMessage()` instead.
 
 ### Example: Receiving Address
 
-```ts
+::: code-group
+
+```ts [get-receiving-address.ts]
 async function getReceivingAddress() {
   try {
     const result = await hubApi.chooseAddress({
@@ -512,6 +478,8 @@ async function getReceivingAddress() {
 }
 ```
 
+:::
+
 ## Method Comparison
 
 | Method | Broadcasts? | Requires Sender? | Requires Height? | Use Case |
@@ -526,7 +494,9 @@ async function getReceivingAddress() {
 
 All transaction values in the Hub API are specified in **Luna** (the smallest unit):
 
-```ts
+::: code-group
+
+```ts [convert-currency.ts]
 // Conversion helper
 function nimToLuna(nim: number): number {
   return Math.round(nim * 100000)
@@ -544,9 +514,11 @@ await hubApi.checkout({
 })
 ```
 
+:::
+
 ## Next Steps
 
 - Learn about [Account Management](/hub/guide/accounts)
 - Explore [Advanced Features](/hub/guide/advanced) (Cashlinks, Swaps, Multi-chain)
-- See [Practical Examples](/hub/examples)
+- See [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)
 - Check the complete [API Reference](/hub/api-reference)

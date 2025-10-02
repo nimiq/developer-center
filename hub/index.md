@@ -1,36 +1,36 @@
 ---
-title: Nimiq Hub
-description: The secure wallet integration API that lets your users sign transactions, manage accounts, and interact with the blockchain — without you ever touching their private keys.
 layout: overview
-
-heroCards:
-  - icon: i-tabler:rocket
-    title: Get Started in Minutes
-    description: Add wallet functionality with just a few lines of code. No complex setup, no key management.
-    label: Quick Start
-    href: ./getting-started
-    bgColor: gold
-    iconClass: absolute bottom--48 right--32 text-256
-    class: "md:grid-row-span-full [&_p]:max-w-none"
-    hoverColor: gold
-  - icon: i-tabler:receipt
-    iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Payment Integration
-    description: Accept NIM payments with checkout()
-    href: ./guide/transactions
-    hoverColor: blue
-  - icon: i-tabler:shield-check
-    iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: User Authentication
-    description: Sign-in with message signatures
-    href: ./guide/transactions#signmessage
-    hoverColor: green
-  - icon: i-tabler:code-dots
-    iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Code Examples
-    description: Real-world integration patterns
-    href: ./examples
-    hoverColor: orange
+hero:
+  title: Nimiq Hub
+  description: The secure wallet integration API that lets your users sign transactions, manage accounts, and interact with the blockchain — without you ever touching their private keys.
+  cards:
+    - icon: i-tabler:rocket
+      title: Get Started in Minutes
+      description: Add wallet functionality with just a few lines of code. No complex setup, no key management.
+      label: Quick Start
+      href: ./getting-started
+      bgColor: gold
+      iconClass: absolute bottom--48 right--32 text-256
+      class: "md:grid-row-span-full [&_p]:max-w-none"
+      hoverColor: gold
+    - icon: i-tabler:receipt
+      iconClass: text-neutral-800 absolute top-16 right-16 text-32
+      title: Payment Integration
+      description: Accept NIM payments with checkout()
+      href: ./guide/transactions
+      hoverColor: blue
+    - icon: i-tabler:shield-check
+      iconClass: text-neutral-800 absolute top-16 right-16 text-32
+      title: User Authentication
+      description: Sign-in with message signatures
+      href: ./guide/transactions#signmessage
+      hoverColor: green
+    - icon: i-tabler:code-dots
+      iconClass: text-neutral-800 absolute top-16 right-16 text-32
+      title: Starter Template
+      description: Ready-to-use integration boilerplate
+      href: https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts
+      hoverColor: orange
 
 whyHub:
   label: Why Use Hub API
@@ -46,7 +46,7 @@ whyHub:
       icon: i-tabler:users
       iconBgColor: bg-gradient-green
     - title: Multi-Chain Ready
-      description: Support for Nimiq, Bitcoin, and Polygon
+      description: Support for Nimiq today; Bitcoin and Polygon flows require a privileged Hub origin
       icon: i-tabler:timeline
       iconBgColor: bg-gradient-orange
     - title: Simple Integration
@@ -75,9 +75,9 @@ quickStartGrid:
       description: Complete documentation for all Hub methods and types
       href: ./api-reference
       icon: i-tabler:book-2
-    - title: Live Examples
-      description: Interactive examples you can copy and paste
-      href: ./examples
+    - title: Starter Template
+      description: Ready-to-use integration boilerplate
+      href: https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts
       icon: i-tabler:code-dots
 
 conceptsBanner:
@@ -90,7 +90,7 @@ conceptsBanner:
 alternativeOptions:
   label: Alternative
   title: Need Lower-Level Control?
-  description: For advanced use cases requiring direct blockchain access, consider using the Web Client or RPC API
+  description: For advanced use cases requiring direct blockchain access, consider using the [Web Client](/web-client/) or [RPC API](/rpc-client/)
   align: left
   buttons:
     - text: Explore Web Client
@@ -110,12 +110,11 @@ import HoverableGrid from '../.vitepress/theme/components/HoverableGrid.vue'
 import Banner from '../.vitepress/theme/components/Banner.vue'
 
 const items = [
-  { label: 'View on GitHub', href: 'https://github.com/nimiq/hub', icon: 'i-nimiq:logos-github' },
-  { label: 'NPM Package', href: 'https://www.npmjs.com/package/@nimiq/hub-api', icon: 'i-nimiq:logos-npm' },
+  { label: 'View on GitHub', href: 'https://github.com/nimiq/hub', icon: 'i-nimiq:logos-github-mono' },
 ]
 </script>
 
-<Hero :title="$frontmatter.title" :description="$frontmatter.description" :cards="$frontmatter.heroCards" align="left">
+<Hero v-bind="$frontmatter.hero" align="left">
 
 <NqLinks :items />
 
@@ -123,15 +122,11 @@ const items = [
 
 <section>
 
-<NqHeadline f-mt-5xl f-mb-sm title="Get started with 3 lines" label="JavaScript" align="left" description="Request a payment and get the signed transaction" />
+<NqHeadline f-mt-5xl f-mb-sm title="Get started now" label="JavaScript" align="left" description="Request a payment and get the signed transaction" />
 
 <div class="nq-raw">
 
 ::: code-group
-
-```bash [CDN]
-<script src="https://cdn.jsdelivr.net/npm/@nimiq/hub-api@latest/dist/standalone/HubApi.standalone.umd.js"></script>
-```
 
 ```bash [pnpm]
 pnpm add @nimiq/hub-api
@@ -143,6 +138,10 @@ npm install @nimiq/hub-api
 
 ```bash [yarn]
 yarn add @nimiq/hub-api
+```
+
+```bash [CDN]
+<script src="https://cdn.jsdelivr.net/npm/@nimiq/hub-api@latest/dist/standalone/HubApi.standalone.umd.js"></script>
 ```
 
 :::
@@ -157,7 +156,7 @@ const hubApi = new HubApi('https://hub.nimiq.com')
 const result = await hubApi.checkout({
   appName: 'My Shop',
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
-  value: 1000000, // 0.01 NIM in Luna
+  value: 1_000, // 0.01 NIM in Luna
 })
 
 console.log('Payment complete:', result.hash)
@@ -206,112 +205,98 @@ console.log('Label:', result.label)
 
 <HoverableGrid align="left" v-bind="$frontmatter.quickStartGrid" f-pt-md />
 
-<section>
-
-<NqHeadline
-  label="Hub API Methods"
-  title="Everything you need"
-  description="From simple payments to multi-chain transactions, the Hub API has you covered."
-  :h1="false"
-  f-mb-sm
-/>
-
-| Category | Methods | Description |
-|:---|:---|:---|
-| **Transactions** | `checkout`, `signTransaction`, `signStaking` | Request payments and sign transactions |
-| **Authentication** | `signMessage`, `chooseAddress` | Authenticate users and select addresses |
-| **Cashlinks** | `createCashlink`, `manageCashlink` | Create shareable payment links |
-| **Multi-Chain** | `signBtcTransaction`, `signPolygonTransaction` | Bitcoin and Polygon support |
-| **Atomic Swaps** | `setupSwap`, `refundSwap` | Trustless cross-chain exchanges |
-
-[View All Methods](./api-reference){.nq-arrow .nq-pill-blue}
-
-</section>
-
 <AlternativeOptions v-bind="$frontmatter.alternativeOptions" />
-
-<section>
-
-<NqHeadline
-  label="Integration Guides"
-  title="Step-by-step guides"
-  description="Learn how to integrate the Hub API into your application."
-  align="left"
-  :h1="false"
-  f-mb-sm
-/>
-
-<NqGrid :cards="[
-  {
-    icon: 'i-tabler:shopping-cart',
-    title: 'E-commerce Checkout',
-    description: 'Accept NIM payments in your online store',
-    href: './examples#payment-button',
-  },
-  {
-    icon: 'i-tabler:login',
-    title: 'User Authentication',
-    description: 'Implement wallet-based login flows',
-    href: './examples#user-authentication',
-  },
-  {
-    icon: 'i-tabler:database',
-    title: 'Staking Interface',
-    description: 'Let users stake to validators',
-    href: './examples#staking-interface',
-  },
-  {
-    icon: 'i-tabler:gift',
-    title: 'Gift Cards & Cashlinks',
-    description: 'Create shareable payment links',
-    href: './examples#gift-cardcashlink-creator',
-  },
-]" />
-
-</section>
 
 <section style="--pt: 64px;">
 
 <NqHeadline
-  label="Key Features"
-  title="Built for developers"
-  description="Everything you need to build secure, user-friendly blockchain applications."
+  label="Hub Capabilities"
+  title="Flexible integration options"
+  description="Choose your integration style, access powerful methods, and support multiple chains"
   align="left"
   :h1="false"
   f-mb-sm
 />
 
-:::tip Security First
-The Hub uses a separate secure origin (Keyguard) to store and manage private keys. Your application **never** has access to user keys — all signing happens in the isolated Keyguard environment.
-:::
+> [!TIP] Security First
+> The Hub uses a separate secure origin (Keyguard) to store and manage private keys. Your application **never** has access to user keys — all signing happens in the isolated Keyguard environment.
 
-**Request Behaviors**
+<NqHeadline
+  label="Request Behaviors"
+  title="Choose your integration style"
+  description="Select how the Hub appears to your users"
+  align="left"
+  :h1="false"
+  f-mb-sm
+/>
 
-Choose how the Hub appears to your users:
-- **Popup** (default) - Opens in a centered popup window
-- **Redirect** - Full-page redirect for mobile-friendly flows
-- **IFrame** - Seamless integration for privileged origins
+Request behaviour {.nq-label .text-center}
 
-**Multi-Chain Support**
+<NqGrid :cards="[
+  {
+    icon: 'i-tabler:window',
+    title: 'Popup (Default)',
+    description: 'Opens in a centered popup window',
+    layout: 'row',
+  },
+  {
+    icon: 'i-tabler:arrow-back-up',
+    title: 'Redirect',
+    description: 'Full-page redirect for mobile-friendly flows',
+    layout: 'row',
+  },
+  {
+    icon: 'i-tabler:layout-grid',
+    title: 'IFrame',
+    description: 'Seamless integration for privileged origins',
+    layout: 'row',
+  },
+]" />
 
-Beyond Nimiq, the Hub supports:
-- **Bitcoin** - Sign Bitcoin transactions with `signBtcTransaction()`
-- **Polygon** - Sign EVM transactions with `signPolygonTransaction()`
-- **Atomic Swaps** - Trustless cross-chain trading
+Core Methods {.nq-label .text-center .f-mt-lg}
 
-**Type Safety**
+<NqGrid :cards="[
+  {
+    icon: 'i-tabler:coins',
+    title: 'Payments',
+    description: 'Accept NIM with <code>checkout()</code> and <code>signTransaction()</code>',
+    layout: 'row',
+  },
+  {
+    icon: 'i-tabler:signature',
+    title: 'Authentication',
+    description: 'Sign messages for secure user login with <code>signMessage()</code>',
+    layout: 'row',
+  },
+  {
+    icon: 'i-nimiq:gift',
+    title: 'Cashlinks',
+    description: 'Create shareable payment links with <code>createCashlink()</code>',
+    layout: 'row',
+  },
+]" />
 
-Full TypeScript definitions for all methods, requests, and responses:
+Multi-Chain Support {.nq-label .text-center .f-mt-lg}
 
-```ts
-interface CheckoutRequest {
-  appName: string
-  recipient: string
-  value: number
-  fee?: number
-  extraData?: string | Uint8Array
-  // ... and more
-}
-```
+<NqGrid :cards="[
+  {
+    icon: 'i-nimiq:logos-bitcoin-mono',
+    title: 'Bitcoin',
+    description: 'Sign Bitcoin transactions with <code>signBtcTransaction()</code>',
+    layout: 'row',
+  },
+  {
+    icon: 'i-tabler:hexagon-letter-p',
+    title: 'Polygon',
+    description: 'Sign EVM transactions with <code>signPolygonTransaction()</code>',
+    layout: 'row',
+  },
+  {
+    icon: 'i-nimiq:btc-nim-swap',
+    title: 'Atomic Swaps',
+    description: 'Trustless cross-chain trading with <code>setupSwap()</code>',
+    layout: 'row',
+  },
+]" />
 
 </section>

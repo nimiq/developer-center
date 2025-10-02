@@ -7,14 +7,13 @@ description: Onboard users, manage accounts, and handle addresses
 
 The Hub API provides comprehensive account management methods to onboard new users, handle authentication, and manage addresses. Most of these methods are **restricted to privileged origins** (Nimiq domains only) for security.
 
-::: warning Restricted Methods
-Account management methods like `onboard()`, `signup()`, `login()`, etc. are only accessible from **Nimiq domains** (`*.nimiq.com`) in the production Hub. Third-party apps should use:
-- `signMessage()` for authentication
-- `chooseAddress()` to get user addresses
-- `checkout()` / `signTransaction()` for payments
-
-If you're building a custom Hub instance, you can configure privileged origins in your Hub configuration.
-:::
+> [!WARNING] Restricted Methods
+> Account management methods like `onboard()`, `signup()`, `login()`, etc. are only accessible from **Nimiq domains** (`*.nimiq.com`) in the production Hub. Third-party apps should use:
+> - `signMessage()` for authentication
+> - `chooseAddress()` to get user addresses
+> - `checkout()` / `signTransaction()` for payments
+>
+> If you're building a custom Hub instance, you can configure privileged origins in your Hub configuration.
 
 ## onboard()
 
@@ -22,13 +21,17 @@ Guide new users through account creation with a friendly onboarding flow. This i
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [onboard-user.ts]
 const accounts = await hubApi.onboard({
   appName: 'My App',
 })
 
 console.log('Created accounts:', accounts)
 ```
+
+:::
 
 ### Request Options
 
@@ -57,7 +60,9 @@ interface Address {
 
 ### Example: First-Time User Flow
 
-```ts
+::: code-group
+
+```ts [welcome-new-user.ts]
 async function welcomeNewUser() {
   try {
     const accounts = await hubApi.onboard({
@@ -90,17 +95,23 @@ async function welcomeNewUser() {
 }
 ```
 
+:::
+
 ## signup()
 
 Create a new account. Similar to `onboard()` but with less guidance.
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [signup-user.ts]
 const accounts = await hubApi.signup({
   appName: 'My App',
 })
 ```
+
+:::
 
 ### Request Options
 
@@ -116,7 +127,9 @@ Returns an array of `Account` objects (same as `onboard()`).
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [create-new-account.ts]
 async function createNewAccount() {
   const accounts = await hubApi.signup({
     appName: 'Account Manager',
@@ -128,13 +141,17 @@ async function createNewAccount() {
 }
 ```
 
+:::
+
 ## login()
 
 Let users select an existing account to log in.
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [login-user.ts]
 const accounts = await hubApi.login({
   appName: 'My App',
 })
@@ -142,6 +159,8 @@ const accounts = await hubApi.login({
 const selectedAccount = accounts[0]
 console.log('Logged in as:', selectedAccount.label)
 ```
+
+:::
 
 ### Request Options
 
@@ -157,7 +176,9 @@ Returns an array of selected `Account` objects.
 
 ### Example: Login Flow
 
-```ts
+::: code-group
+
+```ts [handle-login.ts]
 async function handleLogin() {
   try {
     const accounts = await hubApi.login({
@@ -194,19 +215,25 @@ async function handleLogin() {
 }
 ```
 
+:::
+
 ## logout()
 
 Log out a user (clears session in Hub).
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [logout-user.ts]
 const result = await hubApi.logout({
   appName: 'My App',
 })
 
 console.log('Logged out successfully')
 ```
+
+:::
 
 ### Request Options
 
@@ -226,7 +253,9 @@ interface SimpleResult {
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [handle-logout.ts]
 async function handleLogout() {
   try {
     await hubApi.logout({
@@ -246,13 +275,17 @@ async function handleLogout() {
 }
 ```
 
+:::
+
 ## export()
 
 Allow users to export their account (backup words, keyfile, etc.).
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [export-account.ts]
 const result = await hubApi.export({
   appName: 'My App',
   accountId: 'account-id',
@@ -260,6 +293,8 @@ const result = await hubApi.export({
 
 console.log('Export complete')
 ```
+
+:::
 
 ### Request Options
 
@@ -278,13 +313,14 @@ interface ExportResult {
 }
 ```
 
-::: info Security Note
-The export operation is handled entirely within the secure Keyguard. Your application never receives the private keys or recovery words — users download them directly.
-:::
+> [!NOTE] Security Note
+> The export operation is handled entirely within the secure Keyguard. Your application never receives the private keys or recovery words — users download them directly.
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [export-account-backup.ts]
 async function exportAccountBackup(accountId: string) {
   try {
     await hubApi.export({
@@ -305,13 +341,17 @@ async function exportAccountBackup(accountId: string) {
 }
 ```
 
+:::
+
 ## rename()
 
 Change an account or address label.
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [rename-account.ts]
 const account = await hubApi.rename({
   appName: 'My App',
   accountId: 'account-id',
@@ -320,6 +360,8 @@ const account = await hubApi.rename({
 
 console.log('Renamed to:', account.label)
 ```
+
+:::
 
 ### Request Options
 
@@ -337,7 +379,9 @@ Returns the updated `Account` object.
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [rename-account-or-address.ts]
 async function renameAccount(accountId: string) {
   try {
     const account = await hubApi.rename({
@@ -373,13 +417,17 @@ async function renameAddress(accountId: string, address: string) {
 }
 ```
 
+:::
+
 ## addAddress()
 
 Add a new address to an existing account.
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [add-address.ts]
 const newAddress = await hubApi.addAddress({
   appName: 'My App',
 })
@@ -387,6 +435,8 @@ const newAddress = await hubApi.addAddress({
 console.log('New address:', newAddress.address)
 console.log('Label:', newAddress.label)
 ```
+
+:::
 
 ### Request Options
 
@@ -407,7 +457,9 @@ interface Address {
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [add-new-address.ts]
 async function addNewAddress() {
   try {
     const address = await hubApi.addAddress({
@@ -423,19 +475,25 @@ async function addNewAddress() {
 }
 ```
 
+:::
+
 ## changePassword()
 
 Let users change their Keyguard password.
 
 ### Basic Usage
 
-```ts
+::: code-group
+
+```ts [change-password.ts]
 const result = await hubApi.changePassword({
   appName: 'Security Settings',
 })
 
 console.log('Password changed successfully')
 ```
+
+:::
 
 ### Request Options
 
@@ -455,7 +513,9 @@ interface SimpleResult {
 
 ### Example
 
-```ts
+::: code-group
+
+```ts [update-password.ts]
 async function updatePassword() {
   try {
     await hubApi.changePassword({
@@ -475,6 +535,8 @@ async function updatePassword() {
 }
 ```
 
+:::
+
 ## IFrame-Only Methods
 
 The following methods are only available via IFrame behavior from privileged origins:
@@ -483,7 +545,9 @@ The following methods are only available via IFrame behavior from privileged ori
 
 Get a list of all user accounts.
 
-```ts
+::: code-group
+
+```ts [list-accounts.ts]
 const accounts = await hubApi.list()
 
 console.log('User has', accounts.length, 'accounts')
@@ -492,17 +556,23 @@ accounts.forEach((account) => {
 })
 ```
 
+:::
+
 **Only available from Nimiq domains via IFrame.**
 
 ### cashlinks()
 
 Get all cashlinks associated with the user.
 
-```ts
+::: code-group
+
+```ts [list-cashlinks.ts]
 const cashlinks = await hubApi.cashlinks()
 
 console.log('User has', cashlinks.length, 'cashlinks')
 ```
+
+:::
 
 **Only available from Nimiq domains via IFrame.**
 
@@ -520,7 +590,9 @@ enum AccountType {
 
 Check account type to provide appropriate features:
 
-```ts
+::: code-group
+
+```ts [check-account-type.ts]
 const account = accounts[0]
 
 if (account.type === HubApi.AccountType.LEDGER) {
@@ -529,22 +601,31 @@ if (account.type === HubApi.AccountType.LEDGER) {
 }
 ```
 
+:::
+
 ## Account Lifecycle
 
 A typical account lifecycle in your app:
 
-```mermaid
-graph TD
-    A[New User] -->|onboard| B[Account Created]
-    C[Returning User] -->|login| B
-    B --> D[Use App]
-    D -->|addAddress| E[More Addresses]
-    D -->|rename| F[Update Labels]
-    D -->|export| G[Backup Account]
-    D -->|logout| H[Session End]
-
-    style B fill:#32CD32
-    style D fill:#1E90FF
+```
+                      ┌─────────────────┐
+                      │ Account Created │◄──── onboard ──── New User
+                      └────────┬────────┘
+                               │◄──── login ──── Returning User
+                               │
+                               ▼
+                        ┌─────────────┐
+                        │   Use App   │
+                        └──────┬──────┘
+                               │
+            ┌──────────────────┼──────────────────┬──────────────┐
+            │                  │                  │              │
+            ▼                  ▼                  ▼              ▼
+    ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌────────────┐
+    │     More     │  │    Update    │  │    Backup    │  │  Session   │
+    │  Addresses   │  │    Labels    │  │   Account    │  │    End     │
+    └──────────────┘  └──────────────┘  └──────────────┘  └────────────┘
+     (addAddress)        (rename)          (export)          (logout)
 ```
 
 ## Best Practices
@@ -553,7 +634,9 @@ graph TD
 
 Don't force onboarding immediately. Let users explore first:
 
-```ts
+::: code-group
+
+```ts [get-or-create-account.ts]
 async function getOrCreateAccount() {
   try {
     // Try login first (for returning users)
@@ -575,11 +658,15 @@ async function getOrCreateAccount() {
 }
 ```
 
+:::
+
 ### 2. Store Account References, Not Keys
 
 Never try to store private keys. Store account IDs and addresses:
 
-```ts
+::: code-group
+
+```ts [store-account-references.ts]
 // ✅ Good: Store references
 const userSession = {
   accountId: account.accountId,
@@ -592,11 +679,15 @@ localStorage.setItem('session', JSON.stringify(userSession))
 // Private keys never leave the Keyguard!
 ```
 
+:::
+
 ### 3. Handle Multiple Addresses
 
 Users may have multiple addresses per account:
 
-```ts
+::: code-group
+
+```ts [display-account-addresses.ts]
 function displayAccountAddresses(account: Account) {
   return account.addresses.map(addr => ({
     address: addr.address,
@@ -605,11 +696,15 @@ function displayAccountAddresses(account: Account) {
 }
 ```
 
+:::
+
 ### 4. Provide Export Reminders
 
 Remind users to backup their accounts:
 
-```ts
+::: code-group
+
+```ts [export-reminder.ts]
 // On first login after account creation
 if (isNewAccount && !hasExportedBefore) {
   showNotification(
@@ -620,11 +715,15 @@ if (isNewAccount && !hasExportedBefore) {
 }
 ```
 
+:::
+
 ## Alternative: signMessage() for Authentication
 
 For third-party apps, use `signMessage()` instead of `login()`:
 
-```ts
+::: code-group
+
+```ts [authenticate-user.ts]
 // Third-party apps should use this approach
 async function authenticateUser() {
   // 1. Get user's address
@@ -647,8 +746,10 @@ async function authenticateUser() {
 }
 ```
 
+:::
+
 ## Next Steps
 
 - Explore [Advanced Features](/hub/guide/advanced) (Cashlinks, Swaps, Multi-chain)
-- See [Practical Examples](/hub/examples)
+- See [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)
 - Check the complete [API Reference](/hub/api-reference)

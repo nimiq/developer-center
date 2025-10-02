@@ -185,7 +185,7 @@ export const themeConfig = {
     {
       text: 'Hub',
       subpath: 'hub',
-      icon: 'i-local:nimiq-wallet-hub',
+      icon: 'i-local:nimiq-hub',
       defaultPageLink: '/hub/',
       description: 'Wallet integration API',
       sidebar: [
@@ -209,7 +209,7 @@ export const themeConfig = {
         {
           label: 'Resources',
           items: [
-            { text: 'Examples', link: '/hub/examples', icon: 'i-tabler:code-dots' },
+            { text: 'Starter Template', link: 'https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts', icon: 'i-tabler:code-dots' },
             { text: 'API Reference', link: '/hub/api-reference', icon: 'i-tabler:api' },
           ],
         },

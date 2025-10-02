@@ -3,59 +3,28 @@ title: Getting Started
 description: Get up and running with the Nimiq Hub API in minutes
 ---
 
+<script setup lang="ts">
+const items = [
+  { label: 'View source on GitHub', href: 'https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts', icon: 'i-nimiq:logos-github-mono' },
+]
+</script>
+
 # Getting Started
 
 Get started with the Nimiq Hub API in three easy steps: install the client, initialize it, and make your first request.
 
 ## Quick Start
 
-::: tip Starter Template
-For a ready-to-use project, check out our [Hub API TypeScript Starter](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts) with complete examples and tests.
+**Try the live demo:** [hub-api-ts.vercel.app](https://hub-api-ts.vercel.app/)
+
+Or clone the starter template:
 
 ```bash
 npx degit onmax/nimiq-starter/starters/hub-api-ts my-nimiq-app
 cd my-nimiq-app && pnpm install && pnpm dev
 ```
-:::
 
-Here's a complete example to request an address from the user:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Hub Quick Start</title>
-</head>
-<body>
-  <button id="choose-address">Choose Address</button>
-  <p>Selected address: <span id="output">-</span></p>
-
-  <!-- 1. Include the Hub API from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@nimiq/hub-api@latest/dist/standalone/HubApi.standalone.umd.js"></script>
-
-  <script>
-    // 2. Initialize for mainnet (use 'https://hub.nimiq-testnet.com' for testnet)
-    const hubApi = new HubApi('https://hub.nimiq.com')
-
-    // 3. Request an address from the user
-    document.getElementById('choose-address').addEventListener('click', async () => {
-      try {
-        const result = await hubApi.chooseAddress({
-          appName: 'My App',
-        })
-        document.getElementById('output').textContent = result.address
-      } catch (error) {
-        document.getElementById('output').textContent = `Error: ${error.message}`
-      }
-    })
-  </script>
-</body>
-</html>
-```
-
-::: tip Try it live
-Copy this code into an HTML file and open it in your browser. Clicking the button will open the Hub popup to select an address.
-:::
+<NqLinks :items />
 
 ## Installation
 
@@ -71,8 +40,8 @@ For production, pin to a specific version for stability:
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/npm/@nimiq/hub-api@v1.2.3/dist/standalone/HubApi.standalone.umd.js"
-  integrity="sha256-5X6zryCUAPOnfjLU8tEtJrLdcslA2UI27RsUWnLAxHs="
+  src="https://cdn.jsdelivr.net/npm/@nimiq/hub-api@v1.10.0/dist/standalone/HubApi.standalone.umd.js"
+  integrity="sha256-+SGul9asL86fbSc9VF/yjB+Ibe5K/Bn/AZAJ20jA4E0="
   crossorigin="anonymous">
 </script>
 ```
@@ -122,12 +91,7 @@ const hubApi = new HubApi('https://hub.nimiq-testnet.com')
 const hubApi = new HubApi('http://localhost:8080')
 ```
 
-::: info Automatic Endpoint Selection
-If you don't provide an endpoint, the Hub API will automatically select the appropriate endpoint based on your domain:
-- `*.nimiq.com` → `https://hub.nimiq.com`
-- `*.nimiq-testnet.com` → `https://hub.nimiq-testnet.com`
-- Everything else → `http://localhost:8080`
-:::
+**Automatic endpoint selection:** If you don't provide an endpoint, the Hub API automatically selects based on your domain (`*.nimiq.com` → mainnet, `*.nimiq-testnet.com` → testnet, others → localhost).
 
 ## Making Your First Request
 
@@ -141,7 +105,7 @@ document.getElementById('pay-button').addEventListener('click', async () => {
     const result = await hubApi.checkout({
       appName: 'My Shop',
       recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
-      value: 1000000, // 0.01 NIM (value in Luna, 1 NIM = 100,000 Luna)
+      value: 1_000, // 0.01 NIM (value in Luna, 1 NIM = 100,000 Luna)
     })
 
     console.log('Payment successful!')
@@ -158,47 +122,24 @@ document.getElementById('pay-button').addEventListener('click', async () => {
 })
 ```
 
-::: warning Important: User Action Context
-Hub API methods must be called **synchronously** within a user action (click, touch, etc.) to prevent browsers from blocking the popup. Don't call Hub methods after `await` or in `setTimeout`:
+**Important:** Call Hub methods **synchronously** within user actions (clicks, touches) to avoid popup blockers. Don't call Hub methods after `await` or inside `setTimeout`.
 
 ```ts
-// ✅ Good: Called directly in click handler
+// ✅ Good
 button.addEventListener('click', async () => {
   const result = await hubApi.checkout(options)
 })
 
-// ❌ Bad: Called after async operation
+// ❌ Bad - popup will be blocked
 button.addEventListener('click', async () => {
   await someAsyncFunction()
-  const result = await hubApi.checkout(options) // Popup will be blocked!
-})
-
-// ❌ Bad: Called in setTimeout
-button.addEventListener('click', () => {
-  setTimeout(() => {
-    hubApi.checkout(options) // Popup will be blocked!
-  }, 1000)
+  const result = await hubApi.checkout(options)
 })
 ```
-:::
 
-## Configuration Warning
+## COOP/COEP Headers
 
-::: danger Do NOT Set COOP/COEP Headers
-The Hub API requires cross-origin communication to function properly. **Do not set** `Cross-Origin-Embedder-Policy` or `Cross-Origin-Opener-Policy` headers in your development or production servers, as they will prevent Hub popups from communicating with your application.
-
-```ts
-// ❌ These headers will break Hub integration:
-{
-  headers: {
-    'Cross-Origin-Embedder-Policy': 'require-corp',  // DON'T USE
-    'Cross-Origin-Opener-Policy': 'same-origin',     // DON'T USE
-  }
-}
-```
-
-These headers are sometimes added for `SharedArrayBuffer` or WASM support, but they are incompatible with the Hub's popup-based architecture.
-:::
+Do not set `Cross-Origin-Embedder-Policy` or `Cross-Origin-Opener-Policy` headers — they break Hub popup communication.
 
 ## Network Selection
 
@@ -237,11 +178,11 @@ Now that you have the Hub API installed and initialized:
 
 - Learn about [Hub Architecture and Concepts](/hub/guide/concepts)
 - Explore [Integration Patterns](/hub/guide/integration)
-- See [Practical Examples](/hub/examples)
+- See [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)
 - Check the complete [API Reference](/hub/api-reference)
 
 ## Need Help?
 
 - Review [common integration issues](/hub/guide/integration#troubleshooting)
-- Check out [example applications](/hub/examples)
+- Check out [starter template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)
 - Ask questions in the [Nimiq Community Forum](https://forum.nimiq.community/)

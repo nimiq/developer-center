@@ -11,42 +11,63 @@ Understanding how the Hub works will help you integrate it effectively and choos
 
 The Nimiq Hub ecosystem consists of three main components:
 
-```mermaid
-graph TB
-    A[Your Application] -->|Hub API Requests| B[Hub]
-    B -->|Key Management| C[Keyguard]
-    C -->|Signatures| B
-    B -->|Results| A
-    A -->|Transactions| D[Nimiq Blockchain]
+```lh-1
+                  ┌──────────────────┐
+                  │ Your Application │
+                  └────────┬─────────┘
+                           │
+                  Hub API Requests
+                           │
+                           ▼
+                      ┌────────┐
+              ┌───────┤  Hub   │───────┐
+              │       └────────┘       │
+       Key Management              Results
+              │                        │
+              ▼                        │
+         ┌──────────┐                  │
+         │ Keyguard │                  │
+         └────┬─────┘                  │
+              └─── Signatures ─────────┘
 
-    style A fill:#1F2348
-    style B fill:#260133
-    style C fill:#5F1A6F
-    style D fill:#1F2348
+    ┌──────────────────┐
+    │ Your Application │──── Transactions ────► Nimiq Blockchain
+    └──────────────────┘
 ```
 
-### Your Application
-The frontend application that integrates the Hub API to request wallet operations. This could be a dApp, payment platform, or any web application.
+- **Your Application**: The frontend application that integrates the Hub API to request wallet operations. This could be a dApp, payment platform, or any web application.
 
-### Hub
-The user-facing interface that displays transaction details, manages accounts, and coordinates between your app and the Keyguard. The Hub validates requests and presents them to users in a friendly UI.
+- **Hub**: The user-facing interface that displays transaction details, manages accounts, and coordinates between your app and the Keyguard. The Hub validates requests and presents them to users in a friendly UI.
 
-### Keyguard
-The secure, isolated component that holds private keys and performs all cryptographic operations. It's designed with maximum security in mind and never exposes private keys to the Hub or your application.
+- **Keyguard**: The secure, isolated component that holds private keys and performs all cryptographic operations. It's designed with maximum security in mind and never exposes private keys to the Hub or your application.
 
-::: info Security by Design
-The Keyguard runs in a separate origin and iframe with strict security policies. Private keys are encrypted with user passwords and never leave the Keyguard environment. Even if the Hub or your app is compromised, private keys remain safe.
-:::
+> [!NOTE] Security by Design
+> The Keyguard runs in a separate origin and iframe with strict security policies. Private keys are encrypted with user passwords and never leave the Keyguard environment. Even if the Hub or your app is compromised, private keys remain safe.
+
 
 ## Request Behaviors
 
 The Hub API supports three different request behaviors to accommodate different application needs:
 
+| Feature | Popup (Default) | Redirect | IFrame (Restricted) |
+|---------|-------------------|-------------|------------------------|
+| **User stays on page** | ✅ Yes | ❌ No | ✅ Yes |
+| **Works on mobile** | ✅ Yes (new tab) | ✅ Yes | ✅ Yes |
+| **Requires HTTPS** | ❌ No | ⚠️ Yes (production) | ❌ No |
+| **Popup blocker risk** | ⚠️ Possible | ✅ Never | ✅ Never |
+| **State preservation** | ✅ Automatic | ⚠️ Manual | ✅ Automatic |
+| **Third-party access** | ✅ Yes | ✅ Yes | ❌ Nimiq domains only |
+| **Setup complexity** | 🟢 Low | 🟡 Medium | 🟢 Low |
+| **Best for** | Web apps, dApps | Mobile-first, PWAs | Official Nimiq apps |
+| **Recommended** | ⭐⭐⭐ | ⭐⭐ | ⭐ (restricted) |
+
 ### Popup (Default)
 
-The default and most common behavior. Requests open in a centered popup window.
+Requests open in a centered popup window. Users stay on your page while the Hub opens in a separate window.
 
-```ts
+::: code-group
+
+```ts [popup-behavior.ts]
 const hubApi = new HubApi('https://hub.nimiq.com')
 // Or explicitly use popup behavior
 const popupBehavior = new HubApi.PopupRequestBehavior()
@@ -55,55 +76,57 @@ const hubApi = new HubApi('https://hub.nimiq.com', popupBehavior)
 const result = await hubApi.checkout(options)
 ```
 
-**Advantages:**
-- Best user experience - users stay on your page
-- Works on both desktop and mobile (new tab on mobile)
-- Allows users to review and compare with your app simultaneously
+:::
 
-**Limitations:**
-- Can be blocked by popup blockers if not called in a user action
-- May have issues with some browser extensions
-
-**Best For:**
-- Most web applications and dApps
-- Payment checkouts
-- Transaction signing
+> [!TIP] When to use
+> Use Popup for most web applications and dApps. It provides the best user experience by keeping users on your page while they complete Hub interactions.
 
 ### Redirect
 
 Redirects the entire browser tab to the Hub, then back to your app when complete.
 
-```ts
+::: code-group
+
+```ts [redirect-behavior.ts]
 const redirectBehavior = new HubApi.RedirectRequestBehavior()
 const hubApi = new HubApi('https://hub.nimiq.com', redirectBehavior)
 
 const result = await hubApi.checkout(options) // Will redirect
 ```
 
-**Advantages:**
-- Never blocked by popup blockers
-- Works on all browsers and devices
-- Simpler navigation flow on mobile
-
-**Limitations:**
-- Leaves your application temporarily
-- Requires handling redirect callbacks
-- **Requires HTTPS** in production (except localhost)
-
-**Best For:**
-- Mobile-first applications
-- Single-page apps that can restore state
-- Progressive web apps (PWAs)
-
-::: warning HTTPS Required
-Top-level redirects only work over HTTPS (except on localhost for development). Make sure your production app uses HTTPS before implementing redirect flows.
 :::
+
+> [!TIP] When to use
+> Use Redirect for mobile-first applications, PWAs, or when you encounter popup blocker issues. Works great on mobile devices with simpler navigation.
+
+> [!WARNING] HTTPS Required
+> Top-level redirects only work over HTTPS (except on localhost for development). Make sure your production app uses HTTPS before implementing redirect flows.
+
+### IFrame (Restricted)
+
+Some methods can be called via iframe for privileged origins (Nimiq domains only).
+
+::: code-group
+
+```ts [iframe-behavior.ts]
+const iframeBehavior = new HubApi.IFrameRequestBehavior()
+
+// Only available for specific methods from trusted origins
+const accounts = await hubApi.list(iframeBehavior)
+```
+
+:::
+
+> [!NOTE] Restricted to Nimiq Domains
+> IFrame behavior is **only available from Nimiq domains** (e.g., `*.nimiq.com`) and limited to specific methods: `list()`, `cashlinks()`, `addBtcAddresses()`. Third-party applications should use **Popup** or **Redirect** behaviors.
 
 #### Handling Redirect Responses
 
 When using redirects, you need to listen for the Hub's return:
 
-```ts
+::: code-group
+
+```ts [setup-redirect-listeners.ts]
 // 1. Initialize Hub with redirect behavior
 const redirectBehavior = new HubApi.RedirectRequestBehavior('https://myapp.com/return')
 const hubApi = new HubApi('https://hub.nimiq.com', redirectBehavior)
@@ -111,12 +134,8 @@ const hubApi = new HubApi('https://hub.nimiq.com', redirectBehavior)
 // 2. Set up listeners for each request type
 hubApi.on(
   HubApi.RequestType.CHECKOUT,
-  (result) => {
-    console.log('Payment complete:', result)
-  },
-  (error) => {
-    console.error('Payment failed:', error)
-  }
+  (result) => console.log('Payment complete:', result),
+  (error) => console.error('Payment failed:', error),
 )
 
 // 3. Check for redirect response on page load
@@ -128,21 +147,22 @@ button.addEventListener('click', () => {
 })
 ```
 
+:::
+
 #### Preserving State Across Redirects
 
 You can pass state data that will be preserved across the redirect:
 
-```ts
+::: code-group
+
+```ts [preserve-redirect-state.ts]
 const storedData = {
   orderId: '12345',
   userId: 'user_abc',
   returnPath: '/checkout/complete',
 }
 
-const redirectBehavior = new HubApi.RedirectRequestBehavior(
-  'https://myapp.com/return',
-  storedData
-)
+const redirectBehavior = new HubApi.RedirectRequestBehavior('https://myapp.com/return', storedData)
 
 hubApi.on(
   HubApi.RequestType.CHECKOUT,
@@ -153,54 +173,36 @@ hubApi.on(
 )
 ```
 
-### IFrame (Restricted)
-
-Some methods can be called via iframe for privileged origins (Nimiq domains only).
-
-```ts
-const iframeBehavior = new HubApi.IFrameRequestBehavior()
-
-// Only available for specific methods from trusted origins
-const accounts = await hubApi.list(iframeBehavior)
-```
-
-**Advantages:**
-- Seamless integration without popups or redirects
-- Instant responses
-
-**Limitations:**
-- **Only available from Nimiq domains** (e.g., `*.nimiq.com`)
-- Limited to specific methods: `list()`, `cashlinks()`, `addBtcAddresses()`
-- Not available for third-party applications
-
-**Best For:**
-- Official Nimiq applications like the Wallet
-- Internal tools and services
-
-::: info For Third-Party Developers
-Unless you're building an official Nimiq app or running a custom Hub instance, you'll use **Popup** or **Redirect** behaviors. IFrame behavior is restricted to privileged origins for security reasons.
 :::
 
 ## Request Lifecycle
 
 Understanding the request lifecycle helps you handle loading states and errors properly:
 
-```mermaid
-sequenceDiagram
-    participant App as Your App
-    participant Hub as Hub
-    participant KG as Keyguard
-    participant Chain as Blockchain
-
-    App->>Hub: Request (e.g., checkout)
-    Note over Hub: Validate request
-    Hub->>KG: Display for approval
-    User->>KG: Review & approve
-    KG->>KG: Sign with private key
-    KG->>Hub: Return signature
-    Note over Hub: (Optional) Broadcast tx
-    Hub->>App: Return result
-    App->>Chain: (Optional) Verify/watch
+```
+Your App          Hub              Keyguard         Blockchain
+   │               │                   │                 │
+   │──Request──────►                   │                 │
+   │  (checkout)   │                   │                 │
+   │               │──Validate──       │                 │
+   │               │                   │                 │
+   │               │──Display for──────►                 │
+   │               │    approval       │                 │
+   │               │                   │──Review &       │
+   │               │                   │  Approve        │
+   │               │                   │                 │
+   │               │                   │──Sign with      │
+   │               │                   │  private key    │
+   │               │                   │                 │
+   │               │◄──Signature───────│                 │
+   │               │                   │                 │
+   │               │──(Optional)───────┼─────────────────►
+   │               │  Broadcast tx     │                 │
+   │               │                   │                 │
+   │◄──Result──────│                   │                 │
+   │               │                   │                 │
+   │──(Optional)───┼───────────────────┼─────────────────►
+   │  Verify/watch │                   │                 │
 ```
 
 1. **Request**: Your app calls a Hub API method in response to a user action
@@ -214,14 +216,11 @@ sequenceDiagram
 
 ### Trust Boundaries
 
-```mermaid
-graph LR
-    A[Your App<br/>Untrusted] --> B[Hub<br/>Semi-Trusted]
-    B --> C[Keyguard<br/>Fully Trusted]
-
-    style A fill:#FFA500
-    style B fill:#FFD700
-    style C fill:#32CD32
+```
+┌──────────────┐        ┌──────────────┐        ┌──────────────┐
+│   Your App   │───────►│     Hub      │───────►│   Keyguard   │
+│  (Untrusted) │        │(Semi-Trusted)│        │(Fully Trusted)│
+└──────────────┘        └──────────────┘        └──────────────┘
 ```
 
 - **Your App (Untrusted)**: Can request operations but never access private keys
@@ -241,38 +240,8 @@ graph LR
 - Impersonate the user
 - Extract seeds or recovery phrases
 
-::: tip Security Best Practice
-Always display transaction details to your users **before** calling Hub methods. While the Hub shows details again, informed users make better security decisions.
-:::
-
-## Request Behaviors Comparison
-
-| Feature | Popup | Redirect | IFrame |
-|---------|-------|----------|---------|
-| User stays on page | ✅ | ❌ | ✅ |
-| Works on mobile | ✅ | ✅ | ✅ |
-| Requires HTTPS | ❌ | ✅ | ❌ |
-| Popup blocker risk | ⚠️ | ❌ | ❌ |
-| State preservation | ✅ | Manual | ✅ |
-| Third-party access | ✅ | ✅ | ❌ |
-| Setup complexity | Low | Medium | Low |
-
-## Choosing a Request Behavior
-
-### Use Popup When:
-- Building a standard web application
-- User experience is a priority
-- You can ensure calls happen in user actions
-
-### Use Redirect When:
-- Building a mobile-first app
-- Simplicity is more important than staying on page
-- You encounter consistent popup blocker issues
-- Your app can restore state easily
-
-### Use IFrame When:
-- Building an official Nimiq application
-- You control the Hub instance and can configure privileged origins
+> [!TIP] Security Best Practice
+> Always display transaction details to your users **before** calling Hub methods. While the Hub shows details again, informed users make better security decisions.
 
 ## Common Patterns
 
@@ -280,7 +249,9 @@ Always display transaction details to your users **before** calling Hub methods.
 
 Start with popups and fallback to redirects if needed:
 
-```ts
+::: code-group
+
+```ts [progressive-enhancement.ts]
 let hubApi
 
 try {
@@ -299,11 +270,15 @@ catch (error) {
 }
 ```
 
+:::
+
 ### Mobile Detection
 
 Choose behavior based on device:
 
-```ts
+::: code-group
+
+```ts [mobile-detection.ts]
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
 const behavior = isMobile
@@ -313,8 +288,10 @@ const behavior = isMobile
 const hubApi = new HubApi('https://hub.nimiq.com', behavior)
 ```
 
+:::
+
 ## Next Steps
 
 - Learn [Integration Best Practices](/hub/guide/integration)
 - Explore [Transaction Methods](/hub/guide/transactions)
-- See [Practical Examples](/hub/examples)
+- See [Starter Template](https://github.com/onmax/nimiq-starter/tree/main/starters/hub-api-ts)

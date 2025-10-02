@@ -1,542 +1,112 @@
 ---
 title: Advanced Features
-description: Cashlinks, atomic swaps, and multi-chain support
+description: Cashlinks, privileged swap helpers, and multi-chain considerations
 ---
 
 # Advanced Features
 
-The Hub API provides advanced features beyond basic transactions: cashlinks for easy value transfer, atomic swaps for trustless cross-chain trading, and multi-chain support for Bitcoin and Polygon.
+Most third-party integrations focus on `checkout`, `signTransaction`, and `signMessage`. This page covers the extra
+functionality available through the Hub API and clarifies which features require privileged access.
 
 ## Cashlinks
 
-Cashlinks are shareable links that contain claimable value. Anyone with the link can claim the funds — perfect for gifts, promotions, or easy fund transfers without knowing the recipient's address.
+Cashlinks are shareable links that contain claimable value. Anyone with the link can redeem the funds via the Hub. The
+API exposes two public methods for working with cashlinks: `createCashlink()` and `manageCashlink()`.
 
-### Creating Cashlinks
+### Creating a Cashlink
 
-Use `createCashlink()` to create a new cashlink:
+::: code-group
 
-```ts
+```ts [create-cashlink.ts]
 const cashlink = await hubApi.createCashlink({
-  appName: 'My App',
-  value: 1000000, // 0.01 NIM in Luna
+  appName: 'Promo Campaign',
+  value: 50_000, // 0.5 NIM (value is optional, defaults to user input)
+  message: 'Thanks for trying our app!',
+  theme: HubApi.CashlinkTheme.GENERIC,
+  returnLink: true, // Show the result screen inside your app
+  skipSharing: true, // Skip Hub sharing UI when returnLink is true
 })
 
-console.log('Cashlink address:', cashlink.address)
-console.log('Share this link:', `https://wallet.nimiq.com/cashlink/${cashlink.address}`)
+console.log('Share this URL:', cashlink.link)
 ```
 
-### Request Options
+:::
 
-```ts
-interface CreateCashlinkRequest {
-  appName: string
-  value: number // Amount in Luna
-  message?: string // Message to recipient
-  theme?: CashlinkTheme // Visual theme
-  returnLink?: string // Return URL after claiming
-  skipSharing?: boolean // Skip the sharing screen
-}
+`CreateCashlinkRequest` extends `BasicRequest` and supports these options:
 
-enum CashlinkTheme {
-  UNSPECIFIED = 0,
-  STANDARD = 1,
-  CHRISTMAS = 2,
-  LUNAR_NEW_YEAR = 3,
-  EASTER = 4,
-  GENERIC = 5,
-  BIRTHDAY = 6,
+| Field | Type | Notes |
+| ----- | ---- | ----- |
+| `value` | `number` | Amount in Luna; omit to let the user enter an amount. |
+| `message` | `string` | Optional greeting shown to the recipient. Use `autoTruncateMessage` if you plan to send long text. |
+| `theme` | `HubApi.CashlinkTheme` | Controls the look of the Hub UI. |
+| `senderAddress` | `string` | Prefill the funding address when you know which account should pay. |
+| `senderBalance` | `number` | Optional balance hint for Hub optimisations. |
+| `fiatCurrency` | `string` | ISO 4217 code used for contextual pricing. |
+| `returnLink` | `boolean` | When `true`, the Hub redirects back to your app. Combine with `skipSharing` to bypass the share dialog. |
+| `skipSharing` | `boolean` | Only valid when `returnLink` is `true`. |
+| `autoTruncateMessage` | `boolean` | Automatically shortens long messages. |
+
+### Managing a Cashlink
+
+::: code-group
+
+```ts [manage-cashlink.ts]
+const cashlink = await hubApi.manageCashlink({
+  appName: 'Promo Campaign',
+  cashlinkAddress: 'NQ30 F0O ...',
+})
+
+if (cashlink.status === HubApi.CashlinkState.UNCLAIMED) {
+  console.log('Cashlink still unclaimed — you may cancel it inside the Hub UI.')
 }
 ```
 
-### Response
+:::
+
+### Result Format
 
 ```ts
 interface Cashlink {
-  address: string // Cashlink address (NQ...)
-  message?: string // Message to recipient
-  value: number // Amount in Luna
-  status: CashlinkState // Current state
-  theme: CashlinkTheme // Visual theme
-  link: string // Full cashlink URL
-}
-
-enum CashlinkState {
-  UNKNOWN = -1,
-  UNCHARGED = 0,
-  CHARGING = 1,
-  UNCLAIMED = 2,
-  CLAIMING = 3,
-  CLAIMED = 4,
+  address: string
+  message: string
+  value: number
+  status: HubApi.CashlinkState
+  theme: HubApi.CashlinkTheme
+  link?: string
 }
 ```
 
-### Example: Gift Cashlink
-
-```ts
-async function createGiftCashlink(amountNim: number, recipientName: string) {
-  try {
-    const cashlink = await hubApi.createCashlink({
-      appName: 'Gift App',
-      value: amountNim * 100000, // Convert NIM to Luna
-      message: `A gift for ${recipientName}!`,
-      theme: HubApi.CashlinkTheme.BIRTHDAY,
-      returnLink: 'https://myapp.com/gift-sent',
-    })
-
-    // Share the link
-    const shareUrl = `https://wallet.nimiq.com/cashlink/${cashlink.address}`
-
-    await navigator.share({
-      title: 'Nimiq Gift',
-      text: `You received ${amountNim} NIM!`,
-      url: shareUrl,
-    })
-
-    showSuccess('Gift cashlink created!')
-    return cashlink
-  }
-  catch (error) {
-    showError('Failed to create cashlink')
-  }
-}
-```
-
-### Managing Cashlinks
-
-Use `manageCashlink()` to view or cancel existing cashlinks:
-
-```ts
-const cashlink = await hubApi.manageCashlink({
-  appName: 'My App',
-  cashlinkAddress: 'NQ07 CASH LINK ADDR ESS0 0000 0000 0000 0000',
-})
-
-console.log('Cashlink status:', cashlink.status)
-```
-
-### Request Options
-
-```ts
-interface ManageCashlinkRequest {
-  appName: string
-  cashlinkAddress: string // Address of existing cashlink
-}
-```
-
-Users can view the cashlink status and cancel it if unclaimed (funds return to sender).
-
-### Example: Promotional Campaign
-
-```ts
-async function createPromoCashlinks(count: number, amountEach: number) {
-  const cashlinks = []
-
-  for (let i = 0; i < count; i++) {
-    const cashlink = await hubApi.createCashlink({
-      appName: 'Promo Campaign',
-      value: amountEach * 100000,
-      message: 'Welcome to Nimiq! Claim your reward.',
-      theme: HubApi.CashlinkTheme.GENERIC,
-      skipSharing: true, // We'll handle sharing ourselves
-    })
-
-    cashlinks.push({
-      code: `PROMO${i.toString().padStart(4, '0')}`,
-      link: `https://wallet.nimiq.com/cashlink/${cashlink.address}`,
-      address: cashlink.address,
-    })
-  }
-
-  // Store or distribute the cashlinks
-  await saveCashlinksToDatabase(cashlinks)
-  return cashlinks
-}
-```
-
-### Checking Cashlink Status
-
-Cashlinks progress through these states:
-
-1. **UNCHARGED** - Created but not funded yet
-2. **CHARGING** - Funding transaction pending
-3. **UNCLAIMED** - Funded and ready to claim
-4. **CLAIMING** - Being claimed (transaction pending)
-5. **CLAIMED** - Successfully claimed
-
-## Atomic Swaps
-
-Atomic swaps enable trustless, peer-to-peer exchanges between Nimiq and other chains (Bitcoin, Polygon) without intermediaries.
-
-### Setting Up a Swap
-
-Use `setupSwap()` to initiate a swap:
-
-```ts
-const swapData = await hubApi.setupSwap({
-  appName: 'Swap Platform',
-
-  // Assets being swapped
-  swapAsset: {
-    type: 'NIM',
-    amount: 100000000, // 1,000 NIM in Luna
-    sender: 'NQ07 MY A DDRE SS00 0000 0000 0000 0000 0000',
-  },
-
-  // Assets being received
-  receiveAsset: {
-    type: 'BTC',
-    amount: 5000000, // 0.05 BTC in Satoshi
-    recipient: 'bc1q...', // Your Bitcoin address
-  },
-
-  // Swap details
-  direction: 'NIM-BTC',
-})
-
-console.log('Swap contract:', swapData.swapId)
-```
-
-### Request Options
-
-```ts
-interface SetupSwapRequest {
-  appName: string
-
-  swapAsset: {
-    type: 'NIM' | 'BTC' | 'EUR'
-    amount: number
-    sender?: string
-  }
-
-  receiveAsset: {
-    type: 'NIM' | 'BTC' | 'EUR'
-    amount: number
-    recipient?: string
-  }
-
-  direction: 'NIM-BTC' | 'BTC-NIM' | 'NIM-EUR' | 'EUR-NIM'
-
-  // Optional: For custom swap protocols
-  nimiqAddresses?: {
-    redeem?: string
-    refund?: string
-  }
-  bitcoinAddresses?: {
-    redeem?: string
-    refund?: string
-  }
-}
-```
-
-### Response
-
-```ts
-interface SetupSwapResult {
-  swapId: string
-  nimiq?: {
-    transactionHash: string
-    htlc: {
-      address: string
-      timeoutTimestamp: number
-    }
-  }
-  bitcoin?: {
-    transactionHash: string
-    htlc: {
-      address: string
-      script: string
-      timeoutTimestamp: number
-    }
-  }
-}
-```
-
-### Refunding a Swap
-
-If a swap fails or times out, use `refundSwap()` to recover funds:
-
-```ts
-const refundTx = await hubApi.refundSwap({
-  appName: 'Swap Platform',
-  swapId: 'swap-id-here',
-})
-
-console.log('Refund transaction:', refundTx.hash)
-```
-
-### Request Options
-
-```ts
-interface RefundSwapRequest {
-  appName: string
-  swapId: string // ID from setupSwap result
-}
-```
-
-The refund transaction is signed but not broadcast — you handle submission.
-
-### Example: NIM-BTC Swap Flow
-
-```ts
-async function swapNimForBtc(nimAmount: number, btcAmount: number) {
-  try {
-    // 1. Setup the swap
-    const swapData = await hubApi.setupSwap({
-      appName: 'NIM-BTC Swap',
-      swapAsset: {
-        type: 'NIM',
-        amount: nimAmount * 100000,
-        sender: userNimAddress,
-      },
-      receiveAsset: {
-        type: 'BTC',
-        amount: btcAmount * 100000000, // Satoshis
-        recipient: userBtcAddress,
-      },
-      direction: 'NIM-BTC',
-    })
-
-    // 2. Share swap details with counterparty
-    await shareSwapData(swapData)
-
-    // 3. Monitor swap status
-    const completed = await waitForSwapCompletion(swapData.swapId)
-
-    if (completed) {
-      showSuccess('Swap completed successfully!')
-    }
-    else {
-      // 4. Refund if swap fails
-      const refundTx = await hubApi.refundSwap({
-        appName: 'NIM-BTC Swap',
-        swapId: swapData.swapId,
-      })
-
-      await broadcastTransaction(refundTx)
-      showMessage('Swap refunded')
-    }
-  }
-  catch (error) {
-    showError('Swap failed')
-  }
-}
-```
-
-::: info Swap Security
-Atomic swaps use Hash Time-Locked Contracts (HTLCs) to ensure both parties either complete the swap or get refunded. Neither party can cheat or lose funds.
-:::
-
-## Multi-Chain: Bitcoin Support
-
-The Hub can manage Bitcoin addresses and sign Bitcoin transactions.
-
-### Activating Bitcoin
-
-Before using Bitcoin features, users must activate Bitcoin support:
-
-```ts
-const account = await hubApi.activateBitcoin({
-  appName: 'Multi-Chain Wallet',
-})
-
-console.log('Bitcoin activated for account:', account.accountId)
-```
-
-### Signing Bitcoin Transactions
-
-Use `signBtcTransaction()` to sign Bitcoin transactions:
-
-```ts
-const signedBtcTx = await hubApi.signBtcTransaction({
-  appName: 'BTC Wallet',
-  inputs: [{
-    address: 'bc1q...your-btc-address',
-    transactionHash: 'abc123...', // Previous transaction
-    outputIndex: 0,
-    outputScript: '0014...', // Output script
-    value: 100000, // Satoshis
-  }],
-  output: {
-    address: 'bc1q...recipient-address',
-    value: 95000, // Satoshis (minus fee)
-  },
-  changeOutput: {
-    address: 'bc1q...your-change-address',
-    value: 4000, // Remaining satoshis
-  },
-})
-
-console.log('Signed BTC transaction:', signedBtcTx.serializedTx)
-
-// Broadcast to Bitcoin network
-await broadcastBitcoinTransaction(signedBtcTx.serializedTx)
-```
-
-### Request Options
-
-```ts
-interface SignBtcTransactionRequest {
-  appName: string
-
-  inputs: Array<{
-    address: string // Bitcoin address
-    transactionHash: string // Previous tx hash
-    outputIndex: number // Output index in previous tx
-    outputScript: string // Output script (hex)
-    value: number // Value in satoshis
-    witnessScript?: string
-    sequence?: number
-  }>
-
-  output: {
-    address: string // Recipient address
-    value: number // Amount in satoshis
-    label?: string
-  }
-
-  changeOutput?: {
-    address: string // Change address
-    value: number // Change amount in satoshis
-  }
-}
-```
-
-### Response
-
-```ts
-interface SignedBtcTransaction {
-  serializedTx: string // Hex-encoded signed transaction
-  hash: string // Transaction hash
-}
-```
-
-### Adding Bitcoin Addresses (IFrame Only)
-
-From privileged origins, add Bitcoin addresses to an account:
-
-```ts
-const result = await hubApi.addBtcAddresses({
-  accountId: 'account-id',
-  chain: 'bitcoin', // or 'testnet'
-  firstKeyId: 0,
-})
-
-console.log('Added addresses:', result.addresses)
-```
-
-## Multi-Chain: Polygon Support
-
-The Hub can also manage Polygon (MATIC) addresses and sign Polygon transactions.
-
-### Activating Polygon
-
-Similar to Bitcoin, activate Polygon support first:
-
-```ts
-const account = await hubApi.activatePolygon({
-  appName: 'Multi-Chain Wallet',
-})
-
-console.log('Polygon activated for account:', account.accountId)
-```
-
-### Signing Polygon Transactions
-
-Use `signPolygonTransaction()` to sign Ethereum-style transactions on Polygon:
-
-```ts
-const signedPolygonTx = await hubApi.signPolygonTransaction({
-  appName: 'Polygon Wallet',
-  recipientAddress: '0x742d35Cc6634C0532925a3b8...', // Ethereum-style address
-  value: '1000000000000000000', // Wei (1 MATIC)
-  gasLimit: '21000',
-  gasPrice: '30000000000', // 30 Gwei
-  nonce: 5,
-})
-
-console.log('Signed Polygon transaction:', signedPolygonTx.message)
-
-// Broadcast to Polygon network
-await web3.eth.sendSignedTransaction(signedPolygonTx.signature)
-```
-
-### Request Options
-
-```ts
-interface SignPolygonTransactionRequest {
-  appName: string
-  recipientAddress: string // Ethereum-style address (0x...)
-  value: string // Wei (string for large numbers)
-  gasLimit: string // Gas limit
-  gasPrice?: string // Gas price in Wei (legacy)
-  maxFeePerGas?: string // EIP-1559 max fee
-  maxPriorityFeePerGas?: string // EIP-1559 priority fee
-  nonce: number // Transaction nonce
-  data?: string // Contract call data (hex)
-}
-```
-
-### Response
-
-```ts
-interface SignedPolygonTransaction {
-  message: Uint8Array // Raw transaction
-  signature: Uint8Array // Transaction signature
-  signer: string // Signer address (0x...)
-}
-```
-
-### Example: Send MATIC
-
-```ts
-async function sendMatic(recipient: string, amount: number) {
-  // Get current nonce
-  const nonce = await web3.eth.getTransactionCount(userPolygonAddress)
-
-  // Get current gas price
-  const gasPrice = await web3.eth.getGasPrice()
-
-  const signedTx = await hubApi.signPolygonTransaction({
-    appName: 'MATIC Wallet',
-    recipientAddress: recipient,
-    value: web3.utils.toWei(amount.toString(), 'ether'),
-    gasLimit: '21000',
-    gasPrice: gasPrice.toString(),
-    nonce,
-  })
-
-  // Broadcast
-  const receipt = await web3.eth.sendSignedTransaction(
-    `0x${Buffer.from(signedTx.signature).toString('hex')}`
-  )
-
-  showSuccess(`Sent ${amount} MATIC!`)
-  return receipt.transactionHash
-}
-```
-
-## Best Practices
-
-### Cashlinks
-
-1. **Set expiration expectations** - Let users know cashlinks don't expire but can be cancelled
-2. **Monitor cashlink status** - Check if high-value cashlinks get claimed
-3. **Theme appropriately** - Match the theme to the occasion
-4. **Include messages** - Personal messages improve the user experience
-
-### Atomic Swaps
-
-1. **Verify exchange rates** - Ensure both parties agree on the rate before swapping
-2. **Set reasonable timeouts** - Give enough time for both parties to complete
-3. **Handle refunds gracefully** - Monitor swap status and refund if needed
-4. **Use trusted counterparties** - Or integrate with a swap service for matching
-
-### Multi-Chain
-
-1. **Check activation status** - Verify Bitcoin/Polygon is activated before requesting signatures
-2. **Validate addresses** - Ensure addresses match the correct chain format
-3. **Calculate fees carefully** - Different chains have different fee structures
-4. **Test on testnets first** - Use Bitcoin testnet and Polygon Mumbai for development
+`HubApi.CashlinkState` enumerates the lifecycle:
+
+| State | Description |
+|-------|-------------|
+| `UNKNOWN` | Cashlink status could not be determined. |
+| `UNCHARGED` | Awaiting funding. |
+| `CHARGING` | Funding transaction in flight. |
+| `UNCLAIMED` | Ready to be claimed. |
+| `CLAIMING` | Claim transaction in flight. |
+| `CLAIMED` | Funds redeemed. |
+
+### Tips
+
+- Pin cashlink values in Luna to avoid floating-point rounding issues.
+- Provide context (e.g. campaign or customer) using the `returnLink` state object when you call
+  `new HubApi.RedirectRequestBehavior(returnUrl, state)`.
+- Use `HubApi.CashlinkTheme.GENERIC` for brand-neutral cashlinks or pick seasonal themes when appropriate.
+
+## Atomic Swaps (privileged)
+
+`setupSwap()` and `refundSwap()` are exposed only to privileged origins (the official Nimiq wallet and self-hosted Hub
+instances that whitelist your domain). They orchestrate Hash Time-Locked Contracts for NIM, Bitcoin, Polygon, and fiat
+legs. If you maintain such an environment, consult `client/PublicRequestTypes.ts` in the Hub repository for the precise
+request structures. Public integrations on hub.nimiq.com should rely on external swap services instead.
+
+## Multi-Chain Helpers (privileged)
+
+The Bitcoin and Polygon helpers—`activateBitcoin`, `signBtcTransaction`, `addBtcAddresses`, `activatePolygon`, and
+`signPolygonTransaction`—also require a privileged origin. Their payloads depend on detailed chain metadata (UTXO
+information for Bitcoin, OpenGSN relay objects for Polygon). Unless you operate a custom Hub deployment, focus on the NIM
+methods documented in the other guides.
 
 ## Chain Comparison
 
@@ -544,12 +114,14 @@ async function sendMatic(recipient: string, amount: number) {
 |---------|-------|---------|---------|
 | Address Format | `NQ...` | `bc1...`, `1...`, `3...` | `0x...` |
 | Unit | Luna (1 NIM = 100k Luna) | Satoshi (1 BTC = 100M) | Wei (1 MATIC = 1e18) |
-| Confirmation Time | ~60 seconds | ~10-60 minutes | ~2 seconds |
+| Confirmation Time | ~1 second | ~10–60 minutes | ~2 seconds |
 | Transaction Fee | Very low/free | Variable (sat/vB) | Variable (Gwei) |
 | Smart Contracts | ✅ Yes | ❌ Limited | ✅ Yes (EVM) |
 
+Understanding these differences helps when you build dashboards or display balances from multiple chains.
+
 ## Next Steps
 
-- See [Practical Examples](/hub/examples) for complete implementations
-- Check the complete [API Reference](/hub/api-reference)
-- Explore the [Nimiq Wallet](https://wallet.nimiq.com) to see these features in action
+- Review the [API Reference](/hub/api-reference) for a method-by-method overview.
+- Follow the [Integration Guide](/hub/guide/integration) for workflow best practices.
+- Explore the [Practical Examples](/hub/examples) to see cashlinks and redirect flows in action.
