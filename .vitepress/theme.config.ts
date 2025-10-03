@@ -221,7 +221,7 @@ export const themeConfig = {
       subpath: 'nodes',
       icon: 'i-local:nimiq-dev',
       defaultPageLink: '/nodes/',
-      description: 'Operate nodes and validators',
+      description: 'Validate the network',
       sidebar: [
         {
           items: [
