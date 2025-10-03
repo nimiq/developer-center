@@ -33,7 +33,7 @@ export const themeConfig = {
             { text: 'Vite', link: '/web-client/integrations/vite', icon: 'i-logos:vitejs gray group-hocus:filter-none' },
             { text: 'Nuxt', link: '/web-client/integrations/nuxt', icon: 'i-logos:nuxt-icon gray group-hocus:filter-none' },
             { text: 'Next.js', link: '/web-client/integrations/NextJS', icon: 'i-logos:nextjs-icon gray group-hocus:filter-none' },
-            { text: 'Cloudflare Workers', link: '/web-client/integrations/cloudflare', icon: 'i-logos:cloudflare-icon gray group-hocus:filter-none' },
+            // { text: 'Cloudflare Workers', link: '/web-client/integrations/cloudflare', icon: 'i-logos:cloudflare-icon gray group-hocus:filter-none' },
             { text: 'ESM', link: '/web-client/integrations/ESM', icon: 'i-logos:javascript gray group-hocus:filter-none' },
           ],
         },

@@ -305,8 +305,8 @@ export function drawHexagonsWorldMap(canvas: Readonly<Ref<HTMLCanvasElement | un
     if (!context.value)
       return // resetCanvas can clear context
 
-    const stillAnimating = arcs.value.map(arc => arc.draw(context.value!, 1)).some(animating => animating)
     hexagons.value.forEach(hexagon => hexagon.draw(context.value!))
+    const stillAnimating = arcs.value.map(arc => arc.draw(context.value!, 1)).some(animating => animating)
     if (!stillAnimating) {
       // Prevent memory leaks from finished animations
       arcs.value = arcs.value.filter(arc => arc.state !== 'animation-out-finished')

@@ -5,9 +5,9 @@ layout: overview
 
 heroCards:
   - icon: i-tabler:school
-    title: Start Building Now
+    title: Start Learning Now
     description: Interactive tutorial that builds a complete wallet app in your browser. No setup, no downloads, just code.
-    label: Try Now
+    label: Try Now Online
     href: https://nimiq.guide
     bgColor: gold
     iconClass: absolute bottom--48 right--32 text-256
@@ -17,19 +17,19 @@ heroCards:
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Quick Install
     description: Add to your project in 30 seconds
-    href: ./installation
+    href: #start-with-4-lines-of-code
     hoverColor: blue
-  - icon: i-tabler:puzzle
+  - icon: i-logos:vitejs
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Framework Guides
-    description: Vite, Next.js, Nuxt, Webpack — we've got you covered
-    href: ./integrations/
+    title: Vite Integration
+    description: Lightning-fast development with hot reload
+    href: ./integrations/vite
     hoverColor: green
-  - icon: i-tabler:tools
-    iconClass: text-neutral-800 absolute top-16 right-16 text-32
-    title: Utilities Library
-    description: Production-ready helpers for addresses, validation, and more
-    href: ../nimiq-utils/
+  - icon: i-nimiq:duotone-three-hands-hexagon
+    iconClass: absolute top-16 right-16 text-32
+    title: Hub API
+    description: Integrate wallet features into your app
+    href: ../hub/
     hoverColor: orange
 
 whyNimiq:

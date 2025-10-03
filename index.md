@@ -15,6 +15,15 @@ hero:
       bgColor: blue
       iconClass: absolute bottom--48 right--32 text-256
       class: "md:grid-row-span-full [&_p]:max-w-none"
+    - icon: i-nimiq:duotone-three-hands-hexagon
+      title: Hub API
+      description: Integrate wallet features into your app. Sign transactions, manage accounts, and access the Nimiq ecosystem
+      label: Wallet Integration
+      href: ./hub/
+      bgColor: green
+      iconColor: "#065346"
+      iconClass: absolute bottom--48 right--32 text-256
+      class: "md:grid-row-span-full [&_p]:max-w-none"
     - icon: i-local:nimiq-rpc
       title: RPC
       description: Build full-stack applications with the JSON-RPC API
@@ -24,12 +33,12 @@ hero:
       title: Nodes & Validators
       description: Run a node, stake and contribute proofs
       href: ./nodes/
-      hoverColor: green
+      hoverColor: orange
     - icon: i-local:nimiq-albatross
       title: Albatross
       description: Learn about the protocol
       href: ./protocol/
-      hoverColor: orange
+      hoverColor: red
 
 albatrossLiveview:
   label: Live Demo
@@ -104,10 +113,14 @@ popularResources:
           href: ./web-client/integrations
         - text: Interactive Tutorial
           href: https://nimiq.guide
-        - text: Nimiq Utils
-          href: ./nimiq-utils/
         - text: Web Client vs RPC
           href: ./web-client/web-client-vs-rpc
+    - title: Developer Tools
+      links:
+        - text: Hub API
+          href: ./hub/
+        - text: Nimiq Utils
+          href: ./nimiq-utils/
     - title: UI & Design
       links:
         - text: UI Components
@@ -130,21 +143,7 @@ popularResources:
           href: ./rpc/methods/get-accounts
         - text: Send Transactions
           href: ./rpc/methods/send-raw-transaction
-    - title: Migration
-      links:
-        - text: Migration Overview
-          href: ./migration/
-        - text: For Integrators
-          href: ./migration/migration-integrators
-        - text: JSON-RPC Migration
-          href: ./migration/migration-json-rpc
-        - text: Technical Details
-          href: ./migration/migration-technical-details
-    - title: Node Operators
-      links:
-        - text: Prover Node Guide
-          href: ./nodes/prover-node-guide
-    - title: Validator Operators
+    - title: Validators & Nodes
       links:
         - text: Becoming a Validator
           href: ./nodes/validators/becoming-a-validator
@@ -156,8 +155,8 @@ popularResources:
           href: ./nodes/validators/staking-faq
         - text: Validators API
           href: https://github.com/nimiq/validators-api#add-your-validator-information
-        - text: Validator RPC Docs
-          href: ./rpc
+        - text: Prover Node Guide
+          href: ./nodes/prover-node-guide
         - text: ARPL CLI Tool
           href: https://github.com/sisou/arpl?tab=readme-ov-file#sisoualbatross-remote-arpl
     - title: Core & Protocol
@@ -176,6 +175,16 @@ popularResources:
           href: https://github.com/onmax/nimiq-awesome
         - text: AI MCP Server
           href: https://github.com/onmax/nimiq-mcp
+    - title: Migration
+      links:
+        - text: Migration Overview
+          href: ./migration/
+        - text: For Integrators
+          href: ./migration/migration-integrators
+        - text: JSON-RPC Migration
+          href: ./migration/migration-json-rpc
+        - text: Technical Details
+          href: ./migration/migration-technical-details
 
 ---
 

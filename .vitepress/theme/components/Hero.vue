@@ -36,13 +36,33 @@ const slots = useSlots()
     </div>
 
     <slot name="default">
-      <div v-if="cards" grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>
-        <NqCard
-          v-for="card in cards" :key="card.title" v-bind="card" :class="{ '[&_p]:z-10': card.bgColor }"
-          :icon-class="!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 op-60 md:op-100 right--12 bottom--24'"
-          :style="card.hoverColor ? `--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)` : undefined"
-          :hover="card.hoverColor ? '[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white' : ''"
-        />
+      <div v-if="cards">
+        <!-- Two-column layout: 2 colored cards on left, 3 regular on right -->
+        <div v-if="cards.filter(c => c.bgColor).length === 2 && cards.filter(c => !c.bgColor).length === 3" grid="~ cols-1 md:cols-2 gap-32" z-100 f-min-h-3xl>
+          <div flex="~ col gap-32">
+            <NqCard
+              v-for="card in cards.filter(c => c.bgColor)" :key="card.title" v-bind="card" class="[&_p]:z-10"
+              :icon-class="card.iconClass || 'absolute size-200 op-60 md:op-100 right--12 bottom--24'"
+            />
+          </div>
+          <div grid="~ rows-3 gap-32">
+            <NqCard
+              v-for="card in cards.filter(c => !c.bgColor)" :key="card.title" v-bind="card"
+              icon-class="absolute size-32 right-12 top-12 hocus:text-white/80"
+              :style="card.hoverColor ? `--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)` : undefined"
+              :hover="card.hoverColor ? '[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white' : ''"
+            />
+          </div>
+        </div>
+        <!-- Default layout: standard grid -->
+        <div v-else grid="~ cols-1 md:cols-2 md:rows-[auto_auto_auto] gap-32" z-100 f-min-h-3xl>
+          <NqCard
+            v-for="card in cards" :key="card.title" v-bind="card" :class="{ '[&_p]:z-10': card.bgColor }"
+            :icon-class="card.iconClass || (!card.bgColor ? 'absolute size-32 right-12 top-12 hocus:text-white/80' : 'absolute size-200 op-60 md:op-100 right--12 bottom--24')"
+            :style="card.hoverColor ? `--from:var(--colors-${card.hoverColor}-gradient-from); --to:var(--colors-${card.hoverColor}-gradient-to)` : undefined"
+            :hover="card.hoverColor ? '[--nq-gradient-from:var(--from)] [--nq-gradient-to:var(--to)] text-white' : ''"
+          />
+        </div>
       </div>
     </slot>
   </section>

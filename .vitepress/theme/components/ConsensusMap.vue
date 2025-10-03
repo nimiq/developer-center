@@ -178,7 +178,7 @@ async function connect() {
 </script>
 
 <template>
-  <div ref="containerRef" rounded-8 cursor-pointer relative of-hidden :style="`aspect-ratio: ${HEXAGONS_WORLD_MAP_ASPECT_RATIO}`" outline="1.5px offset--1.5px ~ white/10">
+  <div ref="containerRef" rounded-8 relative of-hidden :style="`aspect-ratio: ${HEXAGONS_WORLD_MAP_ASPECT_RATIO}`" outline="1.5px offset--1.5px ~ white/10">
     <div size-full absolute>
       <canvas ref="canvas" h-full w-full />
       <div v-if="showTooltip" left-0 top-0 absolute z-1 :style="tooltipPosition" animate="delay-500 fade-in both">
@@ -206,7 +206,7 @@ async function connect() {
             <div layout-id="connect-label" as="span">
               <div flex="~ items-center justify-between gap-8">
                 <span>
-                  Connected
+                  Connected to {{ peers.length }} {{ peers.length === 1 ? 'peer' : 'peers' }}
                 </span>
               </div>
             </div>
