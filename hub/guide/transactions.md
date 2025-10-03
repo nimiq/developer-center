@@ -223,7 +223,7 @@ await client.sendRawTransaction(signedTx.serializedTx)
 
 `signStaking()` is a low-level helper: you prepare one or more staking transactions, the Hub has the user approve them,
 and the Keyguard returns signed transactions. The method does **not** build transactions for you — use
-[`@nimiq/core`](/web-client/)'s staking helpers or the [RPC client](/rpc-client/) to assemble the unsigned transactions first.
+[`@nimiq/core`](/web-client/)'s staking helpers or the [RPC client](/rpc/) to assemble the unsigned transactions first.
 
 ```ts
 interface SignStakingRequest extends BasicRequest {
@@ -238,7 +238,7 @@ Workflow:
    `Nimiq.ExtendedTransaction`).
 2. Serialize each transaction to a `Uint8Array` via `.serialize()`.
 3. Pass the bytes to `hubApi.signStaking({ appName, transaction })`.
-4. Submit every signed transaction returned by the Hub to the network using your [JSON-RPC client](/rpc-client/).
+4. Submit every signed transaction returned by the Hub to the network using your [JSON-RPC client](/rpc/).
 
 ::: code-group
 

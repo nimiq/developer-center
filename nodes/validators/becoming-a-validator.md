@@ -10,7 +10,7 @@ This guide assumes the proof-of-stake network client (the node) has been compile
 An unofficial Docker image is available at [maestroi/nimiq-albatross](https://hub.docker.com/r/maestroi/nimiq-albatross) for those who prefer containerized deployment. This is a community-maintained image and not officially supported by the Nimiq team.
 :::
 
-This guide provides two methods for sending [JSON-RPC commands](../../rpc-client/methods/index.md) to your node:
+This guide provides two methods for sending [JSON-RPC commands](../../rpc/methods/index.md) to your node:
 
 1. [arpl](https://github.com/sisou/arpl), an RPC client specific to Nimiq's PoS node
 2. `curl`, a general-purpose network request tool

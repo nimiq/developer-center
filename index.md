@@ -16,14 +16,14 @@ hero:
       iconClass: absolute bottom--48 right--32 text-256
       class: "md:grid-row-span-full [&_p]:max-w-none"
     - icon: i-local:nimiq-rpc
-      title: RPC Client
-      description: Build full-stack applications with Nimiq
-      href: ./rpc-client/
+      title: RPC
+      description: Build full-stack applications with the JSON-RPC API
+      href: ./rpc/
       hoverColor: gold
     - icon: i-local:nimiq-validators
-      title: Validators
-      description: Secure the network and earn rewards
-      href: ./nodes/validators/becoming-a-validator
+      title: Nodes & Validators
+      description: Run a node, stake and contribute proofs
+      href: ./nodes/
       hoverColor: green
     - icon: i-local:nimiq-albatross
       title: Albatross
@@ -78,7 +78,7 @@ hoverableGrid:
       icon: i-local:nimiq-tutorial
     - title: RPC Quick Start
       description: Explore docs and run JSON-RPC from your environment
-      href: ./rpc-client/
+      href: ./rpc/
       icon: i-local:nimiq-rpc
     - title: Nimiq MCP
       description: Build with AI
@@ -121,15 +121,15 @@ popularResources:
     - title: Backend & API
       links:
         - text: RPC Methods
-          href: ./rpc-client/methods/
+          href: ./rpc/methods/
         - text: TypeScript
-          href: ./rpc-client/integrations/typescript
+          href: ./rpc/integrations/typescript
         - text: ARPL CLI Tool
           href: https://github.com/sisou/arpl
         - text: Account Queries
-          href: ./rpc-client/methods/get-accounts
+          href: ./rpc/methods/get-accounts
         - text: Send Transactions
-          href: ./rpc-client/methods/send-raw-transaction
+          href: ./rpc/methods/send-raw-transaction
     - title: Migration
       links:
         - text: Migration Overview
@@ -157,7 +157,7 @@ popularResources:
         - text: Validators API
           href: https://github.com/nimiq/validators-api#add-your-validator-information
         - text: Validator RPC Docs
-          href: ./rpc-client
+          href: ./rpc
         - text: ARPL CLI Tool
           href: https://github.com/sisou/arpl?tab=readme-ov-file#sisoualbatross-remote-arpl
     - title: Core & Protocol

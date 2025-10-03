@@ -76,7 +76,7 @@ alternativeOptions:
   align: left
   buttons:
     - text: Explore RPC Documentation
-      href: ../rpc-client/
+      href: ../rpc/
       variant: primary
     - text: Compare Web Client vs RPC
       href: ./web-client-vs-rpc

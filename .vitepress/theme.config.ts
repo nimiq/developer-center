@@ -141,34 +141,35 @@ export const themeConfig = {
       ],
     },
     {
-      text: 'RPC Client',
-      subpath: 'rpc-client',
+      text: 'RPC',
+      subpath: 'rpc',
       icon: 'i-local:nimiq-rpc',
-      defaultPageLink: '/rpc-client/',
+      defaultPageLink: '/rpc/',
       description: 'JSON-RPC client',
       sidebar: [
         {
           label: 'Overview',
           items: [
-            { text: 'Overview', link: '/rpc-client/', icon: 'i-tabler:layout-grid' },
+            { text: 'Overview', link: '/rpc/', icon: 'i-tabler:layout-grid' },
             { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
-            { text: 'Open RPC Servers', link: '/rpc-client/open-servers', icon: 'i-tabler:server' },
+            { text: 'Open RPC Servers', link: '/rpc/open-servers', icon: 'i-tabler:server' },
+            { text: 'RPC Node Setup', link: '/rpc/rpc-node-setup', icon: 'i-tabler:settings' },
           ],
         },
         {
           label: 'Integrations',
           items: [
-            { text: 'Raw Requests', link: '/rpc-client/integrations/raw', icon: 'i-tabler:terminal-2' },
-            { text: 'ARPL CLI Tool', link: '/rpc-client/integrations/arpl', icon: 'i-tabler:terminal' },
-            { text: 'TypeScript Client', link: '/rpc-client/integrations/typescript', icon: 'i-logos:typescript-icon' },
-            { text: 'JavaScript Native', link: '/rpc-client/integrations/javascript', icon: 'i-logos:javascript' },
-            { text: 'MCP Server (AI)', link: '/rpc-client/integrations/mcp', icon: 'i-local:mcp' },
+            { text: 'Raw Requests', link: '/rpc/integrations/raw', icon: 'i-tabler:terminal-2' },
+            { text: 'ARPL CLI Tool', link: '/rpc/integrations/arpl', icon: 'i-tabler:terminal' },
+            { text: 'TypeScript Client', link: '/rpc/integrations/typescript', icon: 'i-logos:typescript-icon' },
+            { text: 'JavaScript Native', link: '/rpc/integrations/javascript', icon: 'i-logos:javascript' },
+            { text: 'MCP Server (AI)', link: '/rpc/integrations/mcp', icon: 'i-local:mcp' },
           ],
         },
         {
           label: 'Methods',
           items: [
-            { text: 'All', link: '/rpc-client/methods/', icon: 'i-tabler:grid-dots' },
+            { text: 'All', link: '/rpc/methods/', icon: 'i-tabler:grid-dots' },
             ...(await loadMethods(openRpcDocument as OpenrpcDocument)),
           ],
         },
@@ -216,15 +217,22 @@ export const themeConfig = {
       ],
     },
     {
-      text: 'Nodes',
+      text: 'Nodes & Validators',
       subpath: 'nodes',
       icon: 'i-local:nimiq-dev',
       defaultPageLink: '/nodes/',
-      description: 'Nimiq Nodes',
+      description: 'Operate nodes and validators',
       sidebar: [
         {
           items: [
             { text: 'Overview', link: '/nodes/', icon: 'i-tabler:layout-grid' },
+          ],
+        },
+        {
+          label: 'Run a Node',
+          items: [
+            { text: 'Node Setup', link: 'https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration', icon: 'i-tabler:lock' },
+            { text: 'Prover Node Setup Guide', link: '/nodes/prover-node-guide', icon: 'i-tabler:server' },
           ],
         },
         {
@@ -235,13 +243,6 @@ export const themeConfig = {
             { text: 'Validator Trustscore', link: '/nodes/validators/validator-trustscore', icon: 'i-tabler:shield-star' },
             { text: 'FAQs for Stakers and Pools', link: '/nodes/validators/staking-faq', icon: 'i-tabler:help' },
             { text: 'Add Your Pool to the Wallet', link: 'https://github.com/nimiq/validators-api#add-your-validator-information', icon: 'i-tabler:wallet' },
-          ],
-        },
-        {
-          label: 'Nodes',
-          items: [
-            { text: 'Node Setup', link: 'https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration', icon: 'i-tabler:lock' },
-            { text: 'Prover Node Setup Guide', link: '/nodes/prover-node-guide', icon: 'i-tabler:server' },
           ],
         },
       ],

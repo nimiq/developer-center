@@ -131,5 +131,5 @@ Ready to dive deeper into the Nimiq protocol? Explore these key areas:
 
 ## Technical Resources
 
-- **[RPC](/rpc-client/index)**: Integrate with the blockchain
+- **[RPC](/rpc/index)**: Integrate with the blockchain
 - **[Web Client](/web-client/index)**: Build browser-based applications

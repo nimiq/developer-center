@@ -21,20 +21,20 @@ We have the following node types:
 
 ### JSON-RPC Interface
 
-The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. The full specification is available here: [PoS JSON-RPC Specification](/rpc-client/methods/).
+The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. The full specification is available here: [PoS JSON-RPC Specification](/rpc/methods/).
 
 ### Key JSON-RPC Methods
 
 The following methods are particularly useful when interacting with the network:
 
-1. [`getTransactionByHash`](/rpc-client/methods/get-transaction-by-hash): Retrieve transaction details using a transaction hash.
-2. [`getTransactionHashesByAddress`](/rpc-client/methods/get-transaction-hashes-by-address): Fetch transaction hashes associated with a given address.
-3. [`getBlockNumber`](/rpc-client/methods/get-block-number): Returns the current head block of the node.
-4. [`getBlockByNumber`](/rpc-client/methods/get-block-by-number): Returns the block at the specified height
-5. [`getRawTransactionInfo`](/rpc-client/methods/get-raw-transaction-info): Get raw transaction details by decoding a serialized transaction.
-6. [`isConsensusEstablished`](/rpc-client/methods/is-consensus-established): Returns a boolean specifying if the node has established consensus with the network.
-7. [`createBasicTransaction`](/rpc-client/methods/create-basic-transaction): Create a signed transaction and returns a hex-encoded representation without broadcasting it. All `create*Transaction` RPC methods also have an equivalent `send*Transaction` version in order to create and broadcast the transaction one-go.
-8. [`sendRawTransaction`](/rpc-client/methods/send-raw-transaction): Sends the given serialized and signed transaction to the network.
+1. [`getTransactionByHash`](/rpc/methods/get-transaction-by-hash): Retrieve transaction details using a transaction hash.
+2. [`getTransactionHashesByAddress`](/rpc/methods/get-transaction-hashes-by-address): Fetch transaction hashes associated with a given address.
+3. [`getBlockNumber`](/rpc/methods/get-block-number): Returns the current head block of the node.
+4. [`getBlockByNumber`](/rpc/methods/get-block-by-number): Returns the block at the specified height
+5. [`getRawTransactionInfo`](/rpc/methods/get-raw-transaction-info): Get raw transaction details by decoding a serialized transaction.
+6. [`isConsensusEstablished`](/rpc/methods/is-consensus-established): Returns a boolean specifying if the node has established consensus with the network.
+7. [`createBasicTransaction`](/rpc/methods/create-basic-transaction): Create a signed transaction and returns a hex-encoded representation without broadcasting it. All `create*Transaction` RPC methods also have an equivalent `send*Transaction` version in order to create and broadcast the transaction one-go.
+8. [`sendRawTransaction`](/rpc/methods/send-raw-transaction): Sends the given serialized and signed transaction to the network.
 
 ### PoW Account and Transaction history
 Nimiq has transitioned from a PoW system to a PoS system. For those needing access to historical transaction data before the PoS genesis block, a read-only database of the PoW chain is available and can be queried using the [JSON-RPC interface](#json-rpc-interface).

@@ -96,7 +96,7 @@ hubApi.checkRedirectResponse()
 - **Popup blocked:** ensure the call happens synchronously in the event handler; fall back to redirects if necessary.
 - **Hub not loading:** check network connectivity, CORS, and that no COOP/COEP headers are set.
 - **"Invalid request":** verify addresses, units (Luna), and required fields before sending the request.
-- **Stale validity heights:** fetch the latest block height from your [RPC endpoint](/rpc-client/) before calling `signTransaction`.
+- **Stale validity heights:** fetch the latest block height from your [RPC endpoint](/rpc/) before calling `signTransaction`.
 
 ## 7. Testing strategy
 

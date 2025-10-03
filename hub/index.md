@@ -90,14 +90,14 @@ conceptsBanner:
 alternativeOptions:
   label: Alternative
   title: Need Lower-Level Control?
-  description: For advanced use cases requiring direct blockchain access, consider using the [Web Client](/web-client/) or [RPC API](/rpc-client/)
+  description: For advanced use cases requiring direct blockchain access, consider using the [Web Client](/web-client/) or [RPC API](/rpc/)
   align: left
   buttons:
     - text: Explore Web Client
       href: ../web-client/
       variant: primary
     - text: Explore RPC Client
-      href: ../rpc-client/
+      href: ../rpc/
       variant: secondary
 ---
 

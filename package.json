@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "build:web-client": "typedoc --tsconfig tsconfig.web-client.json --githubPages false --plugin typedoc-plugin-markdown --exclude index.md",
-    "build:rpc-client": "tsx -e \"import { buildRpcClientDocs } from './.vitepress/rpc/build.ts'; (async () => await buildRpcClientDocs())()\"",
+    "build:rpc": "tsx -e \"import { buildRpcClientDocs } from './.vitepress/rpc/build.ts'; (async () => await buildRpcClientDocs())()\"",
     "update": "npx taze latest --update -w"
   },
   "dependencies": {

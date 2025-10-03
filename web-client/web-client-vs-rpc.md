@@ -18,7 +18,7 @@ Users can access the Web Client on mobile devices, such as smartphones and table
 
 ## Nimiq RPC
 
-[Nimiq RPC](/rpc-client/) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
+[Nimiq RPC](/rpc/) provides developers access to a node that is part of the Nimiq blockchain and establishes a connection between a client and a single server, which then interacts with multiple peers on the network.
 
 RPC offers more elaborate functionalities, such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings. It is particularly valuable for developers and nodes who require advanced control and automation of blockchain operations.
 
@@ -83,7 +83,7 @@ Now that you know the differences, why not start building?
 
 <NqGrid :cards="[
   { icon: 'i-local:nimiq-web-client', title: 'Web Client', href: '../web-client', layout: 'row' },
-  { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '../rpc-client', layout: 'row' },
+  { icon: 'i-local:nimiq-rpc', title: 'Nimiq RPC', href: '../rpc', layout: 'row' },
   { icon: 'i-local:nimiq-validators', title: 'Validators', href: '../nodes/validators/becoming-a-validator', layout: 'row' },
 ]" />
 
