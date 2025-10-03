@@ -50,11 +50,8 @@ password = "super-secret" # Replace with a strong password
 cors_domains = [] # Needed only when browser apps access the node
 ```
 
-**Need a quick tour of the RPC surface?** Run the helper CLI from the repository root:
-
-```bash
-cargo run --release --bin nimiq-rpc -- -h
-```
+> [!TIP]
+> Need a quick tour of the RPC surface? Run the helper CLI from the repository root `cargo run --release --bin nimiq-rpc -- -h`.
 
 ## Start the node with the config
 
