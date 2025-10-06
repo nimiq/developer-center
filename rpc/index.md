@@ -1,5 +1,6 @@
 ---
 layout: overview
+suggestChanges: 'Page inspired by [DovAzenot](https://www.nimiqhub.com/docs/rpc)'
 
 hero:
   title: Nimiq RPC Client

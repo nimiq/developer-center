@@ -219,7 +219,7 @@ export const themeConfig = {
     {
       text: 'Nodes & Validators',
       subpath: 'nodes',
-      icon: 'i-local:nimiq-dev',
+      icon: 'i-nimiq:verified',
       defaultPageLink: '/nodes/',
       description: 'Validate the network',
       sidebar: [
@@ -280,6 +280,7 @@ export const themeConfig = {
   showLastUpdated: false,
   showEditContent: false,
   search: { provider: 'local' },
+  pageFooterLeftText: false,
   outlineActions: [
     {
       icon: 'i-nimiq:exclamation',

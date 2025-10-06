@@ -1,6 +1,7 @@
 ---
 changelog: false
 secondarySidebar: false
+pageFooterLeftText: 'Page inspired by [DovAzenot](https://www.nimiqhub.com/docs/rpc)'
 ---
 
 <script setup lang="ts">

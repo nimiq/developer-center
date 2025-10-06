@@ -3,6 +3,7 @@ changelog: false
 outline: false
 widget: true
 showSecondarySidebar: true
+pageFooterLeftText: 'Page inspired by [DovAzenot](https://www.nimiqhub.com/docs/rpc)'
 ---
 
 <script setup>
