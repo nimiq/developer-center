@@ -282,6 +282,12 @@ export const themeConfig = {
   search: { provider: 'local' },
   pageFooterLeftText: false,
   betaBadge: true,
+  logoContextMenu: {
+    items: [
+      { label: 'Nimiq UI', icon: 'i-tabler:palette', href: 'https://onmax.github.io/nimiq-ui/' },
+      { label: 'Nimiq.com', icon: 'i-nimiq:logos-nimiq-mono', href: 'https://nimiq.com' },
+    ],
+  },
   outlineActions: [
     {
       icon: 'i-nimiq:exclamation',
