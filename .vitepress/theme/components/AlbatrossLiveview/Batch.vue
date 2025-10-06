@@ -44,7 +44,7 @@ const batchNumberClass = computed(() => {
 <template>
   <div max-w="[calc(100vw-12px)] md:full" flex="~ justify-between items-start" px-16 w-388>
     <div flex="~ col wrap" h="56 md:44">
-      <div v-for="n in createdBlockCount" :key="`micro-block-${n}`" m-4 rounded-2 bg-neutral-300 size-6 inline-block transition-colors outline="1.5 offset--1.5 ~ neutral/6" />
+      <div v-for="n in createdBlockCount" :key="`micro-block-${n}`" m-4 rounded-2 bg-neutral-100 size-6 inline-block transition-colors outline="1.5 offset--1.5 ~ neutral/6" />
       <div
         v-for="n in remainingBlockCount" :key="`micro-block-${createdBlockCount + n}`"
         m-4 rounded-2 bg-neutral-500 size-6 inline-block
