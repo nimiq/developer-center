@@ -1,5 +1,5 @@
 ---
-next: ./installation/
+next: ./integrations/vite
 ---
 
 # What is Nimiq?

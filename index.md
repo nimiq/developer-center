@@ -107,10 +107,10 @@ popularResources:
       links:
         - text: Getting Started
           href: ./web-client/getting-started
-        - text: Installation Guide
-          href: ./web-client/installation
-        - text: Framework Integration
-          href: ./web-client/integrations
+        - text: Quick Install
+          href: ./web-client/#start-with-4-lines-of-code
+        - text: Vite Integration
+          href: ./web-client/integrations/vite
         - text: Interactive Tutorial
           href: https://nimiq.guide
         - text: Web Client vs RPC
