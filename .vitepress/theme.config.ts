@@ -281,6 +281,7 @@ export const themeConfig = {
   showEditContent: false,
   search: { provider: 'local' },
   pageFooterLeftText: false,
+  betaBadge: true,
   outlineActions: [
     {
       icon: 'i-nimiq:exclamation',

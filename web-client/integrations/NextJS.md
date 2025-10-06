@@ -1,3 +1,7 @@
+---
+pageFooterLeftText: 'Page inspired by [DovAzencot](https://github.com/DovAzencot/nimiq-nextjs/)'
+---
+
 # Nimiq Web Client Next.js Integration
 
 Integrate Nimiq Web Client with Next.js for production-ready React blockchain applications.
