@@ -219,7 +219,7 @@ export const themeConfig = {
     {
       text: 'Nodes & Validators',
       subpath: 'nodes',
-      icon: 'i-nimiq:verified',
+      icon: 'i-local:nimiq-dev',
       defaultPageLink: '/nodes/',
       description: 'Validate the network',
       sidebar: [

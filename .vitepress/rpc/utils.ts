@@ -38,7 +38,7 @@ async function deferredMethods(openRpcJson: OpenrpcDocument): Promise<MethodObje
 // Helper function to generate RPC method items
 const tagOrder = ['validator', 'blockchain', 'consensus', 'wallet', 'policy', 'mempool', 'network', 'zkp_component'] as const
 const rpcAccordionIcons: Record<typeof tagOrder[number], string> = {
-  validator: 'i-nimiq:verified-filled',
+  validator: 'i-nimiq:verified',
   blockchain: 'i-nimiq:nodes',
   consensus: 'i-tabler:network',
   wallet: 'i-tabler:wallet',
