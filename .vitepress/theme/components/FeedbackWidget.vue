@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useEventListener, useMounted, useScriptTag, useWindowSize } from '@vueuse/core'
 import { Dialog } from 'reka-ui/namespaced'
-import { useData } from 'vitepress'
 import { computed, nextTick, ref, watch, watchEffect } from 'vue'
 
 type FeedbackFormType = 'bug' | 'feedback'
@@ -28,7 +27,6 @@ const hasError = ref(false)
 const widgetInstance = ref<WidgetInstance | null>(null)
 const isDevEnvironment = import.meta.env?.DEV ?? false
 const { width, height } = useWindowSize()
-const { page } = useData()
 
 const windowWithFeedback = typeof window !== 'undefined' ? window as WindowWithFeedback : undefined
 const globalWidget: FeedbackWidgetApi | null = windowWithFeedback
@@ -107,7 +105,7 @@ async function mountWidget() {
     const meta = {
       windowSize: `${width.value}x${height.value}`,
       browser: navigator.userAgent,
-      url: windowWithFeedback?.location.href || page.value.relativePath,
+      url: windowWithFeedback?.location.href || '',
     }
     formData.append('meta', JSON.stringify(meta))
   })
