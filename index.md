@@ -121,16 +121,6 @@ popularResources:
           href: ./hub/
         - text: Nimiq Utils
           href: ./nimiq-utils/
-    - title: UI & Design
-      links:
-        - text: UI Components
-          href: https://onmax.github.io/nimiq-ui/
-        - text: Nimiq Icons
-          href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
-        - text: Nimiq CSS
-          href: https://onmax.github.io/nimiq-ui/nimiq-css/getting-started
-        - text: Identicons Library
-          href: https://github.com/onmax/nimiq-identicons
     - title: Backend & API
       links:
         - text: RPC Methods
