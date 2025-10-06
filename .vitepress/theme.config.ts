@@ -1,10 +1,8 @@
 import type { OpenrpcDocument } from '@open-rpc/meta-schema'
-import { data } from './data/nimiq-utils.data'
 import { data as webClientReferenceData } from './data/web-client-reference.data'
 import openRpcDocument from './rpc/openrpc-document.json'
 import { loadMethods } from './rpc/utils'
 
-const { sidebar: nimiqUtilsSidebar } = data
 const { apiReferenceSection } = webClientReferenceData
 
 // @unocss-include i-nimiq:verified i-nimiq:cubes i-nimiq:duotone-network i-nimiq:exclamation i-nimiq:leaf-2-filled i-nimiq:star
@@ -181,7 +179,62 @@ export const themeConfig = {
       icon: 'i-local:nimiq-utils',
       defaultPageLink: '/nimiq-utils/',
       description: 'Essential developer utilities',
-      sidebar: nimiqUtilsSidebar,
+      sidebar: [
+        {
+          label: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/nimiq-utils/', icon: 'i-tabler:layout-grid' },
+            { text: 'Installation', link: '/nimiq-utils/installation', icon: 'i-tabler:download' },
+          ],
+        },
+        {
+          label: 'Blockchain Utilities',
+          items: [
+            { text: 'AddressBook', link: '/nimiq-utils/address-book', icon: 'i-nimiq:contact-book' },
+            { text: 'ValidationUtils', link: '/nimiq-utils/validation-utils', icon: 'i-nimiq:verified' },
+            { text: 'Albatross Policy', link: '/nimiq-utils/albatross-policy', icon: 'i-nimiq:nodes' },
+            { text: 'Supply Calculator', link: '/nimiq-utils/supply-calculator', icon: 'i-tabler:calculator' },
+            { text: 'Staking Rewards Calculator', link: '/nimiq-utils/staking-rewards-calculator', icon: 'i-nimiq:digital-gold' },
+          ],
+        },
+        {
+          label: 'Formatting & Display',
+          items: [
+            { text: 'FormattableNumber', link: '/nimiq-utils/formattable-number', icon: 'i-tabler:hash' },
+            { text: 'CurrencyInfo', link: '/nimiq-utils/currency-info', icon: 'i-tabler:currency-dollar' },
+          ],
+        },
+        {
+          label: 'Data & API Utilities',
+          items: [
+            { text: 'Fiat API', link: '/nimiq-utils/fiat-api', icon: 'i-tabler:api' },
+            { text: 'Rate Limit Scheduler', link: '/nimiq-utils/rate-limit-scheduler', icon: 'i-tabler:clock' },
+          ],
+        },
+        {
+          label: 'Browser & Environment',
+          items: [
+            { text: 'Browser Detection', link: '/nimiq-utils/browser-detection', icon: 'i-tabler:browser' },
+            { text: 'Clipboard', link: '/nimiq-utils/clipboard', icon: 'i-tabler:clipboard' },
+            { text: 'Cookie Utilities', link: '/nimiq-utils/cookie-utilities', icon: 'i-tabler:cookie' },
+          ],
+        },
+        {
+          label: 'Miscellaneous',
+          items: [
+            { text: 'Request Link Encoding', link: '/nimiq-utils/request-link-encoding', icon: 'i-tabler:link' },
+            { text: 'Utf8Tools', link: '/nimiq-utils/utf8-tools', icon: 'i-tabler:code' },
+            { text: 'Tweenable', link: '/nimiq-utils/tweenable', icon: 'i-tabler:timeline' },
+          ],
+        },
+        {
+          label: 'Resources',
+          items: [
+            { text: 'GitHub Repository', link: 'https://github.com/nimiq/nimiq-utils', icon: 'i-tabler:brand-github' },
+            { text: 'Report Issues', link: 'https://github.com/nimiq/nimiq-utils/issues', icon: 'i-tabler:bug' },
+          ],
+        },
+      ],
     },
     {
       text: 'Hub',

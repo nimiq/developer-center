@@ -41,13 +41,50 @@ nimiqUtilsFeatures:
 import Hero from '../.vitepress/theme/components/Hero.vue'
 import NimiqFeatures from '../.vitepress/theme/components/NimiqFeatures.vue'
 import CategoryGrid from '../.vitepress/theme/components/CategoryGrid.vue'
-import { data } from '../.vitepress/data/nimiq-utils.data'
-const { modules: nimiqUtilsModules } = data
 
-// Exclude getting started and resources from the grid
-const moduleGroups = nimiqUtilsModules.filter(group =>
-  !['Getting Started', 'Resources'].includes(group.text)
-)
+// Module groups for the category grid
+const moduleGroups = [
+  {
+    text: 'Blockchain Utilities',
+    items: [
+      { text: 'AddressBook', link: '/nimiq-utils/address-book', icon: 'i-nimiq:contact-book', description: 'Manage and validate Nimiq addresses with built-in address book functionality', popular: true },
+      { text: 'ValidationUtils', link: '/nimiq-utils/validation-utils', icon: 'i-nimiq:verified', description: 'Utilities for validating addresses, transactions, and other blockchain data', popular: true },
+      { text: 'Albatross Policy', link: '/nimiq-utils/albatross-policy', icon: 'i-nimiq:nodes', description: 'Constants and utilities related to Nimiq\'s Albatross consensus protocol' },
+      { text: 'Supply Calculator', link: '/nimiq-utils/supply-calculator', icon: 'i-tabler:calculator', description: 'Calculate Nimiq supply at different blocks and times' },
+      { text: 'Staking Rewards Calculator', link: '/nimiq-utils/staking-rewards-calculator', icon: 'i-nimiq:digital-gold', description: 'Calculate staking rewards and yields for validators and stakers' },
+    ],
+  },
+  {
+    text: 'Formatting & Display',
+    items: [
+      { text: 'FormattableNumber', link: '/nimiq-utils/formattable-number', icon: 'i-tabler:hash', description: 'Format and display numbers with proper localization and units', popular: true },
+      { text: 'CurrencyInfo', link: '/nimiq-utils/currency-info', icon: 'i-tabler:currency-dollar', description: 'Get currency information, symbols, and formatting rules' },
+    ],
+  },
+  {
+    text: 'Data & API Utilities',
+    items: [
+      { text: 'Fiat API', link: '/nimiq-utils/fiat-api', icon: 'i-tabler:api', description: 'Fetch fiat currency exchange rates and price data', popular: true },
+      { text: 'Rate Limit Scheduler', link: '/nimiq-utils/rate-limit-scheduler', icon: 'i-tabler:clock', description: 'Schedule and throttle API requests with rate limiting' },
+    ],
+  },
+  {
+    text: 'Browser & Environment',
+    items: [
+      { text: 'Browser Detection', link: '/nimiq-utils/browser-detection', icon: 'i-tabler:browser', description: 'Detect browser capabilities and features for optimal user experience' },
+      { text: 'Clipboard', link: '/nimiq-utils/clipboard', icon: 'i-tabler:clipboard', description: 'Cross-browser clipboard operations with fallback support' },
+      { text: 'Cookie Utilities', link: '/nimiq-utils/cookie-utilities', icon: 'i-tabler:cookie', description: 'Manage browser cookies with type safety and expiration handling' },
+    ],
+  },
+  {
+    text: 'Miscellaneous',
+    items: [
+      { text: 'Request Link Encoding', link: '/nimiq-utils/request-link-encoding', icon: 'i-tabler:link', description: 'Encode and decode Nimiq request links and payment URIs' },
+      { text: 'Utf8Tools', link: '/nimiq-utils/utf8-tools', icon: 'i-tabler:code', description: 'UTF-8 string manipulation and encoding utilities' },
+      { text: 'Tweenable', link: '/nimiq-utils/tweenable', icon: 'i-tabler:timeline', description: 'Animation and tweening utilities for smooth UI transitions' },
+    ],
+  },
+]
 </script>
 
 <Hero v-bind="$frontmatter.hero" />
