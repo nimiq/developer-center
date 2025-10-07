@@ -4,6 +4,10 @@
 
 Defined in: @nimiq/core/types/wasm/web.d.ts:3
 
+`AccountType` replaces the old `Account.Type` enum. The numeric values stayed
+the same, but the members are now PascalCase and include the additional
+`Staking` entry introduced with Proof-of-Stake.
+
 ## Enumeration Members
 
 ### Basic

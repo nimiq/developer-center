@@ -116,6 +116,10 @@ This function is used to tell the network to (re)start connecting to peers.
 This is could be used to tell the network to restart connection operations after
 disconnect network is called.
 
+Call this after [`disconnectNetwork`](#disconnectnetwork) to resume peer
+discovery. Disconnect to tear down existing peers, then call `connectNetwork()` to
+start fresh connections.
+
 #### Returns
 
 `Promise`\<`void`\>
@@ -134,6 +138,9 @@ peer and stop trying to connect to other peers.
 **Important**: this function returns when the signal to disconnect was sent,
 before all peers actually disconnect. This means that in order to ensure the
 network is disconnected, wait for all peers to disappear after calling.
+
+Follow up with [`connectNetwork`](#connectnetwork) when you want to rebuild
+connections and recreate the previous `resetConsensus()` behaviour.
 
 #### Returns
 
