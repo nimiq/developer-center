@@ -1,5 +1,11 @@
 /* container with breadcrumbs and buttons */
 
+@media (max-width: 1279px) {
+  [data-layout="docs"][var\:nq-sidebar-width\:100vw] {
+    --nq-sidebar-width: min(100vw, 100%);
+  }
+}
+
 div:has(+ article) {
   margin: 0 auto;
   gap: 16px;
