@@ -42,8 +42,8 @@ importers:
         specifier: ^1.7.1
         version: 1.7.1(@vueuse/core@13.9.0(vue@3.5.21(typescript@5.9.2)))(vue@3.5.21(typescript@5.9.2))
       nimiq-feedback-widget:
-        specifier: link:../feedback/widget
-        version: link:../feedback/widget
+        specifier: 0.0.1-beta.5
+        version: 0.0.1-beta.5(reka-ui@2.5.0(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2)))(vue@3.5.21(typescript@5.9.2))
       nimiq-rpc-client-ts:
         specifier: 1.0.0-beta.35
         version: 1.0.0-beta.35(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)
@@ -3055,6 +3055,12 @@ packages:
   nimiq-css@1.0.0-beta.129:
     resolution: {integrity: sha512-zAXWcQclIVygClyLlJZZrv8FE5BdxtFMdjgI327hayWS22bbjX2hvKIPCyx2JfYZ5UzU6YnGxc+B8+3ZTgheyw==}
     engines: {node: '>=18'}
+
+  nimiq-feedback-widget@0.0.1-beta.5:
+    resolution: {integrity: sha512-mW1uzdozYsgVFfXWeQm3NOQwZs+YMyitepNjeL1KPmVFAywmt2zH5Y5EiVuaQkLdoAmeggF+JeAMHpMZlkZcKQ==}
+    peerDependencies:
+      reka-ui: ^2.0.0
+      vue: ^3.3.0
 
   nimiq-icons@1.0.0-beta.129:
     resolution: {integrity: sha512-pjwXQ9MHhDUh+VDR4Ed5RNeqsSWYGsXytSvozc5YntcQAebIFqyHB59/Ih2VnRasBtSD12hKATeaxg99VNU+iw==}
@@ -7424,6 +7430,11 @@ snapshots:
       - postcss
       - supports-color
       - vite
+
+  nimiq-feedback-widget@0.0.1-beta.5(reka-ui@2.5.0(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2)))(vue@3.5.21(typescript@5.9.2)):
+    dependencies:
+      reka-ui: 2.5.0(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2))
+      vue: 3.5.21(typescript@5.9.2)
 
   nimiq-icons@1.0.0-beta.129:
     dependencies:
