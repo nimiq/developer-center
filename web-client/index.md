@@ -17,7 +17,7 @@ heroCards:
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
     title: Quick Install
     description: Add to your project in 30 seconds
-    href: #start-with-4-lines-of-code
+    href: "#start-with-4-lines-of-code"
     hoverColor: blue
   - icon: i-logos:vitejs
     iconClass: text-neutral-800 absolute top-16 right-16 text-32
