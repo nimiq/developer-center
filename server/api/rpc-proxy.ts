@@ -25,19 +25,19 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    // Get request body
+    // Get request body (already parsed by Nitro)
     const body = event.method !== 'GET' ? await readBody(event) : undefined
 
     // Forward the request
     const response = await $fetch.raw(targetUrl, {
-      method: event.method as any,
+      method: event.method,
       headers: {
         'Content-Type': 'application/json',
         ...(getHeader(event, 'authorization') && {
           Authorization: getHeader(event, 'authorization') as string,
         }),
       },
-      body: body ? JSON.stringify(body) : undefined,
+      body, // $fetch handles JSON stringification
     })
 
     // Set CORS headers
@@ -49,7 +49,8 @@ export default defineEventHandler(async (event) => {
 
     return response._data
   }
-  catch (error) {
+  catch (error: any) {
+    console.error('RPC Proxy Error:', error)
     setResponseStatus(event, 500)
     setHeaders(event, {
       'Access-Control-Allow-Origin': '*',
@@ -58,7 +59,7 @@ export default defineEventHandler(async (event) => {
       jsonrpc: '2.0',
       error: {
         code: -32603,
-        message: `Proxy error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        message: `Proxy error: ${error?.message || error?.statusMessage || 'Unknown error'}`,
       },
       id: null,
     }

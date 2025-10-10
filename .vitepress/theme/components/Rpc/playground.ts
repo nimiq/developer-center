@@ -27,7 +27,7 @@ export type UsePlaygroundRpcOptions = RpcPlaygroundMethod & {
 }
 
 export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
-  const defaultNodeUrl = 'https://nimiq-website.je-cf9.workers.dev/'
+  const defaultNodeUrl = 'https://rpc.nimiqwatch.com'
   const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_playground`, {
     nodeUrl: defaultNodeUrl,
     auth: { username: '', password: '' },
