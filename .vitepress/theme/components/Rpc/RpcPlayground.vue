@@ -71,6 +71,11 @@ function getErrorStatusCode(error: any): string | null {
                 <Input v-model="playgroundConfig.auth.username" label="User" f-text-xs f-mt-sm />
                 <Input v-model="playgroundConfig.auth.password" label="Password" f-text-xs f-mt-2xs />
 
+                <label flex="~ items-center gap-8" cursor-pointer f-mt-sm>
+                  <input v-model="playgroundConfig.useProxy" type="checkbox" h-16 w-16 cursor-pointer>
+                  <span text="f-2xs neutral-800" font-semibold>Use proxy for custom URLs</span>
+                </label>
+
                 <hr border="b-1 solid neutral-400" mx-auto max-w-32 w-full f-mt-sm>
 
                 <p lh="[1.2]" text="neutral-800 f-2xs" mt-6 italic bottom--4 relative flex="~ items-center gap-4">

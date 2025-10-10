@@ -50,8 +50,19 @@ function getCurlCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMetho
 }
 
 function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>) {
-  const { name, userParams: params } = toValue(method)
-  const paramsStr = params.length > 0 ? `${JSON.stringify(params)}, options` : 'options'
+  const { name, userParams: params, input } = toValue(method)
+
+  // Build params string based on whether method has parameters
+  let paramsStr = 'options'
+  if (input && input.length > 0) {
+    // Create object with named parameters matching the RPC client interface
+    const paramsObj = input.reduce((acc, param, i) => {
+      acc[param.key] = params[i]
+      return acc
+    }, {} as Record<string, any>)
+    paramsStr = `${JSON.stringify(paramsObj)}, options`
+  }
+
   return `import { ${name} } from 'nimiq-rpc-client-ts/http'
 import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
 

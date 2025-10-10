@@ -11,6 +11,7 @@ export interface RpcPlaygroundConfig {
     username: string
     password: string
   }
+  useProxy: boolean
 }
 
 export type RpcPlaygroundMethod = (NimiqRpcMethod & {
@@ -30,6 +31,7 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_playground`, {
     nodeUrl: defaultNodeUrl,
     auth: { username: '', password: '' },
+    useProxy: true,
   })
 
   const method = computed(() => toValue(props).method)
@@ -108,7 +110,9 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       // Use proxy for custom URLs (not the default Cloudflare Worker)
       // This avoids CORS issues with user-configured RPC nodes
       let url: URL
-      if (nodeUrl !== defaultNodeUrl && nodeUrl.startsWith('http')) {
+      const shouldUseProxy = playgroundConfig.value.useProxy && nodeUrl !== defaultNodeUrl && nodeUrl.startsWith('http')
+
+      if (shouldUseProxy) {
         // Use Netlify Edge Function proxy for custom external URLs
         const proxyUrl = typeof window !== 'undefined'
           ? new URL('/api/rpc-proxy', window.location.origin)
