@@ -115,12 +115,12 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
 
       if (shouldUseProxy) {
         // In dev: use Vite dev server proxy
-        // In prod: use Cloudflare Worker proxy (deployed separately)
+        // In prod: use Cloudflare Worker proxy
         const proxyBaseUrl = isDev
           ? (typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
-          : 'https://nimiq-website.je-cf9.workers.dev'
+          : 'https://developer-center-rpc-proxy.je-cf9.workers.dev'
 
-        const proxyUrl = new URL('/api/rpc-proxy', proxyBaseUrl)
+        const proxyUrl = new URL(isDev ? '/api/rpc-proxy' : '/', proxyBaseUrl)
         proxyUrl.searchParams.set('target', nodeUrl)
         url = proxyUrl
       }

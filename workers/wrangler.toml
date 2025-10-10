@@ -1,6 +1,7 @@
 name = "developer-center-rpc-proxy"
 main = "rpc-proxy.js"
 compatibility_date = "2024-01-01"
+account_id = "cf9baad7d68d7ee717f3339731e81dfb"
 
 # Deploy with: wrangler deploy
-# The worker will be available at: https://developer-center-rpc-proxy.YOUR_SUBDOMAIN.workers.dev
+# The worker will be available at: https://developer-center-rpc-proxy.je-cf9.workers.dev
