@@ -1,9 +1,9 @@
 import type { Auth, HttpOptions, HttpRpcResult } from 'nimiq-rpc-client-ts/types'
 import type { MaybeRef } from 'vue'
 import type { NimiqRpcMethod } from '../../../rpc/utils'
-import { useLocalStorage } from '@vueuse/core'
+import { useLocalStorage, useUrlSearchParams } from '@vueuse/core'
 import { rpcCall } from 'nimiq-rpc-client-ts/http'
-import { computed, toValue, watchEffect } from 'vue'
+import { computed, toValue, watch, watchEffect } from 'vue'
 
 export interface RpcPlaygroundConfig {
   nodeUrl: string
@@ -44,6 +44,47 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   watchEffect(() => {
     playground.value.userParams = Object.fromEntries((playground.value.input || []).map(param => [param.key, undefined]))
   })
+
+  // Sync userParams with URL query parameters for sharing
+  const urlParams = useUrlSearchParams('history')
+
+  // Helper to create prefixed param key (e.g., "getAccountByAddress.address")
+  const getParamKey = (inputKey: string) => `${method.value}.${inputKey}`
+
+  // Initialize userParams from URL on mount
+  watchEffect(() => {
+    const methodName = method.value
+    if (!methodName)
+      return
+
+    // Load from URL params if present
+    const inputs = playground.value.input || []
+    inputs.forEach((input) => {
+      const paramKey = getParamKey(input.key)
+      const urlValue = urlParams[paramKey]
+      if (urlValue !== null && urlValue !== undefined && urlValue !== '') {
+        playground.value.userParams[input.key] = String(urlValue)
+      }
+    })
+  })
+
+  // Sync userParams to URL when they change
+  watch(() => playground.value.userParams, (params) => {
+    if (!params || !method.value)
+      return
+
+    // Update URL with current params (prefixed with method name)
+    Object.entries(params).forEach(([key, value]) => {
+      const paramKey = getParamKey(key)
+      if (value !== undefined && value !== null && value !== '') {
+        urlParams[paramKey] = String(value)
+      }
+      else {
+        // Remove param from URL if empty
+        delete urlParams[paramKey]
+      }
+    })
+  }, { deep: true })
 
   const history = useLocalStorage<HttpRpcResult<any>[]>(`v1_rpc_history`, [])
 
