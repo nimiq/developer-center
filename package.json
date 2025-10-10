@@ -14,6 +14,10 @@
     "dev": "DEPLOYMENT_MODE=development vitepress dev",
     "build": "DEPLOYMENT_MODE=production vitepress build",
     "build:staging": "DEPLOYMENT_MODE=staging vitepress build",
+    "build:full": "DEPLOYMENT_MODE=production vitepress build && pnpm exec nitro build && cp -r dist/* .vitepress/dist/",
+    "build:full:staging": "DEPLOYMENT_MODE=staging vitepress build && pnpm exec nitro build && cp -r dist/* .vitepress/dist/",
+    "deploy": "pnpm build:full:staging && CLOUDFLARE_ACCOUNT_ID=cf9baad7d68d7ee717f3339731e81dfb wrangler pages deploy .vitepress/dist --project-name=developer-center-dev",
+    "deploy:prod": "pnpm build:full && CLOUDFLARE_ACCOUNT_ID=cf9baad7d68d7ee717f3339731e81dfb wrangler pages deploy .vitepress/dist --project-name=developer-center-dev --branch=main",
     "preview": "vitepress preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -49,6 +53,7 @@
     "@iconify/utils": "^3.0.2",
     "@nimiq/core": "^2.1.1",
     "@open-rpc/meta-schema": "^1.14.9",
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^24.5.2",
     "@unocss/eslint-plugin": "66.5.1",
@@ -59,6 +64,7 @@
     "markdown-it-mathjax3": "^4.3.2",
     "nimiq-css": "1.0.0-beta.129",
     "nimiq-vitepress-theme": "1.0.0-beta.129",
+    "nitro": "3.0.1-alpha.0",
     "ofetch": "^1.4.1",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
@@ -85,7 +91,8 @@
     "vite-plugin-wasm": "^3.5.0",
     "vitepress": "^2.0.0-alpha.12",
     "vitepress-plugin-llms": "^1.7.5",
-    "vue-tsc": "^3.0.7"
+    "vue-tsc": "^3.0.7",
+    "wrangler": "^4.42.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

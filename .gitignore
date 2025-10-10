@@ -2,6 +2,8 @@ node_modules
 .vitepress/cache
 .vitepress/dist
 .vitepress/.temp
+dist
+.nitro
 
 # Ignore dynamically built web-client docs
 web-client/reference
