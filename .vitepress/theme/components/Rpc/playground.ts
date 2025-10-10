@@ -107,20 +107,14 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       playground.value.state = 'loading'
       const nodeUrl = playgroundConfig.value.nodeUrl
 
-      // Use proxy for custom URLs (not the default Cloudflare Worker)
-      // This avoids CORS issues with user-configured RPC nodes
+      // Use proxy for all URLs to avoid CORS issues
       let url: URL
-      const isDev = import.meta.env.DEV
-      const shouldUseProxy = playgroundConfig.value.useProxy && nodeUrl !== defaultNodeUrl && nodeUrl.startsWith('http')
+      const shouldUseProxy = playgroundConfig.value.useProxy && nodeUrl.startsWith('http')
 
       if (shouldUseProxy) {
-        // In dev: use Vite dev server proxy
-        // In prod: use Cloudflare Worker proxy
-        const proxyBaseUrl = isDev
-          ? (typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
-          : 'https://developer-center-rpc-proxy.je-cf9.workers.dev'
-
-        const proxyUrl = new URL(isDev ? '/api/rpc-proxy' : '/', proxyBaseUrl)
+        // Always use the local /api/rpc-proxy endpoint
+        const proxyBaseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost'
+        const proxyUrl = new URL('/api/rpc-proxy', proxyBaseUrl)
         proxyUrl.searchParams.set('target', nodeUrl)
         url = proxyUrl
       }
