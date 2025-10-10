@@ -116,11 +116,23 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
   return result
 }
 
+function getTypeString(schema: any): string {
+  if (schema.oneOf) {
+    // Handle union types like ValidityStartHeight
+    return schema.oneOf.map((s: any) => s.type).join(' | ')
+  }
+  if (schema.type === 'array' && schema.items) {
+    const itemType = schema.items.type || 'any'
+    return `${itemType}[]`
+  }
+  return schema.type || 'unknown'
+}
+
 function parseInput(params: any[]) {
   const isParamRequired = (param: string) => params.find(p => p.name === param)?.required || false
   const input = params.map(param => ({
     key: param.name,
-    type: param.schema.type,
+    type: getTypeString(param.schema),
     required: isParamRequired(param.name),
     label: param.humanReadableName,
   }))
@@ -130,18 +142,18 @@ function parseInput(params: any[]) {
 function parseOutput(result: any) {
   let output: { key: string, type: string, required: boolean, label: string }[] = []
   if ('properties' in result.schema) {
-    const isResultRequired = (param: string) => (result.schema as any).required.includes(param)
+    const isResultRequired = (param: string) => (result.schema as any).required?.includes(param) || false
     const schema = (result.schema as any).properties || []
     const properties = Object.keys(schema)
     output = properties.map((prop: string) => ({
       key: prop,
-      type: schema[prop].type,
+      type: getTypeString(schema[prop]),
       required: isResultRequired(prop),
       label: schema[prop].humanReadableName,
     }))
   }
-  else if ('type' in result.schema) {
-    output = [{ key: result.name, type: result.schema.type, required: true, label: result.humanReadableName }]
+  else if ('type' in result.schema || 'oneOf' in result.schema) {
+    output = [{ key: result.name, type: getTypeString(result.schema), required: true, label: result.humanReadableName }]
   }
   return output
 }
