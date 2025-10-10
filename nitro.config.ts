@@ -8,8 +8,9 @@ export default defineNitroConfig({
   cloudflare: {
     pages: {
       routes: {
-        // Exclude API routes from static serving
-        exclude: ['/api/*'],
+        // Only handle API routes with worker, serve everything else as static
+        include: ['/api/*'],
+        exclude: [],
       },
     },
   },
