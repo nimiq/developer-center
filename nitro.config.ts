@@ -5,16 +5,6 @@ export default defineNitroConfig({
   srcDir: 'server',
   compatibilityDate: '2025-01-01',
 
-  cloudflare: {
-    pages: {
-      routes: {
-        // Only handle API routes with worker, serve everything else as static
-        include: ['/api/*'],
-        exclude: [],
-      },
-    },
-  },
-
   // Serve VitePress static files as public assets
   publicAssets: [
     {

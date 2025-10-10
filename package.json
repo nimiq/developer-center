@@ -60,6 +60,7 @@
     "@unocss/transformer-directives": "^66.5.1",
     "consola": "^3.4.2",
     "eslint": "^9.35.0",
+    "h3": "2.0.1-rc.2",
     "lint-staged": "^16.1.6",
     "markdown-it-mathjax3": "^4.3.2",
     "nimiq-css": "1.0.0-beta.129",
