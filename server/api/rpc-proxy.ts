@@ -1,10 +1,12 @@
+import { defineEventHandler, getQuery, readBody, setHeaders, setResponseStatus } from 'h3'
+
 // Nitro API route for proxying RPC requests
 export default defineEventHandler(async (event) => {
-  // Enable CORS for all requests
-  appendCorsHeaders(event, {
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowHeaders: ['Content-Type', 'Authorization'],
+  // Set CORS headers for all requests
+  setHeaders(event, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   })
 
   // Handle CORS preflight
@@ -18,48 +20,40 @@ export default defineEventHandler(async (event) => {
   const targetUrl = query.target as string
 
   if (!targetUrl) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Missing target parameter',
-      data: {
-        jsonrpc: '2.0',
-        error: { code: -32600, message: 'Missing target parameter' },
-        id: null,
-      },
-    })
+    setResponseStatus(event, 400)
+    return {
+      jsonrpc: '2.0',
+      error: { code: -32600, message: 'Missing target parameter' },
+      id: null,
+    }
   }
 
   try {
-    // Get request body (already parsed by Nitro)
-    const body = event.method !== 'GET' ? await readBody(event) : undefined
+    // Get request body
+    const body = await readBody(event).catch(() => undefined)
 
-    // Forward the request
-    const response = await $fetch.raw(targetUrl, {
-      method: event.method,
+    // Forward the request using fetch directly
+    const targetResponse = await fetch(targetUrl, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...(getHeader(event, 'authorization') && {
-          Authorization: getHeader(event, 'authorization') as string,
-        }),
       },
-      body, // $fetch handles JSON stringification
+      body: JSON.stringify(body),
     })
 
-    return response._data
+    const data = await targetResponse.json()
+    return data
   }
   catch (error: any) {
-    console.error('RPC Proxy Error:', error)
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'RPC Proxy Error',
-      data: {
-        jsonrpc: '2.0',
-        error: {
-          code: -32603,
-          message: `Proxy error: ${error?.message || error?.statusMessage || 'Unknown error'}`,
-        },
-        id: null,
+    console.error('[RPC Proxy] Error:', error, error.stack)
+    setResponseStatus(event, 500)
+    return {
+      jsonrpc: '2.0',
+      error: {
+        code: -32603,
+        message: `Proxy error: ${error?.message || String(error)}`,
       },
-    })
+      id: null,
+    }
   }
 })
