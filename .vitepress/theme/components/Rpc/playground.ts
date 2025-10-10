@@ -26,7 +26,7 @@ export type UsePlaygroundRpcOptions = RpcPlaygroundMethod & {
 }
 
 export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
-  const defaultNodeUrl = '/api/rpc'
+  const defaultNodeUrl = 'https://nimiq-website.je-cf9.workers.dev/'
   const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_playground`, {
     nodeUrl: defaultNodeUrl,
     auth: { username: '', password: '' },
@@ -103,7 +103,8 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     }
     try {
       playground.value.state = 'loading'
-      const url = new URL(playgroundConfig.value.nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+      const nodeUrl = playgroundConfig.value.nodeUrl
+      const url = nodeUrl.startsWith('http') ? new URL(nodeUrl) : new URL(nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
       const options: HttpOptions = { url, auth }
       const parsedParams = Object.values(params).map((p, i) => {
