@@ -84,7 +84,7 @@ function getErrorStatusCode(error: any): string | null {
               </Popover.Content>
             </Popover.Portal>
           </Popover.Root>
-          <button scale-90 nq-pill nq-pill-gold :disabled="widget.state === 'loading' || props.name.startsWith('subscribe')" :class="{ 'cursor-not-allowed': widget.state === 'loading' }" type="submit">
+          <button scale-90 nq-pill nq-pill-gold :disabled="widget.state === 'loading'" :class="{ 'cursor-not-allowed': widget.state === 'loading' }" type="submit">
             Run
             <div text-10 ml-6 bottom--1 i-nimiq:triangle-right />
           </button>
