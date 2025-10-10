@@ -104,7 +104,23 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     try {
       playground.value.state = 'loading'
       const nodeUrl = playgroundConfig.value.nodeUrl
-      const url = nodeUrl.startsWith('http') ? new URL(nodeUrl) : new URL(nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+
+      // Use proxy for custom URLs (not the default Cloudflare Worker)
+      // This avoids CORS issues with user-configured RPC nodes
+      let url: URL
+      if (nodeUrl !== defaultNodeUrl && nodeUrl.startsWith('http')) {
+        // Use Netlify Edge Function proxy for custom external URLs
+        const proxyUrl = typeof window !== 'undefined'
+          ? new URL('/api/rpc-proxy', window.location.origin)
+          : new URL('http://localhost/api/rpc-proxy')
+        proxyUrl.searchParams.set('target', nodeUrl)
+        url = proxyUrl
+      }
+      else {
+        // Direct connection for default URL or relative paths
+        url = nodeUrl.startsWith('http') ? new URL(nodeUrl) : new URL(nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+      }
+
       const auth: Auth = { username: playgroundConfig.value.auth.username, password: playgroundConfig.value.auth.password }
       const options: HttpOptions = { url, auth }
       const parsedParams = Object.values(params).map((p, i) => {

@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs'
-import { consola } from 'consola'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import { resolve } from 'pathe'
 import { readPackageJSON } from 'pkg-types'
@@ -11,6 +10,7 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
 // import llmstxt from 'vitepress-plugin-llms'
+import { RpcProxyPlugin } from './plugins/rpc-proxy'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
 import { generateWebClientDocs } from './scripts/web-client'
 
@@ -34,24 +34,6 @@ export default defineConfig(async () => {
     },
     server: {
       hmr: { overlay: false },
-
-      proxy: {
-        // Create a proxy for RPC requests to nimiqwatch
-        '/api/rpc': {
-          target: 'https://rpc.nimiqwatch.com/',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api\/rpc/, ''),
-          configure: (proxy) => {
-            proxy.on('proxyReq', (_proxyReq, req, _res) => {
-              // Log RPC requests for debugging
-              consola.info(`Proxying RPC request to nimiqwatch: ${req.method} ${req.url}`)
-            })
-            proxy.on('error', (err, _req, _res) => {
-              consola.error(`Proxy error: ${err}`)
-            })
-          },
-        },
-      },
     },
 
     ssr: {
@@ -75,6 +57,7 @@ export default defineConfig(async () => {
     },
 
     plugins: [
+      RpcProxyPlugin(),
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],
         dts: './.vitepress/components.d.ts',
