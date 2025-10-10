@@ -1,14 +1,16 @@
 // Nitro API route for proxying RPC requests
 export default defineEventHandler(async (event) => {
+  // Enable CORS for all requests
+  appendCorsHeaders(event, {
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+  })
+
   // Handle CORS preflight
   if (event.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      },
-    })
+    setResponseStatus(event, 204)
+    return ''
   }
 
   // Get target URL from query parameter
@@ -16,12 +18,15 @@ export default defineEventHandler(async (event) => {
   const targetUrl = query.target as string
 
   if (!targetUrl) {
-    setResponseStatus(event, 400)
-    return {
-      jsonrpc: '2.0',
-      error: { code: -32600, message: 'Missing target parameter' },
-      id: null,
-    }
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Missing target parameter',
+      data: {
+        jsonrpc: '2.0',
+        error: { code: -32600, message: 'Missing target parameter' },
+        id: null,
+      },
+    })
   }
 
   try {
@@ -40,28 +45,21 @@ export default defineEventHandler(async (event) => {
       body, // $fetch handles JSON stringification
     })
 
-    // Set CORS headers
-    setHeaders(event, {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    })
-
     return response._data
   }
   catch (error: any) {
     console.error('RPC Proxy Error:', error)
-    setResponseStatus(event, 500)
-    setHeaders(event, {
-      'Access-Control-Allow-Origin': '*',
-    })
-    return {
-      jsonrpc: '2.0',
-      error: {
-        code: -32603,
-        message: `Proxy error: ${error?.message || error?.statusMessage || 'Unknown error'}`,
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'RPC Proxy Error',
+      data: {
+        jsonrpc: '2.0',
+        error: {
+          code: -32603,
+          message: `Proxy error: ${error?.message || error?.statusMessage || 'Unknown error'}`,
+        },
+        id: null,
       },
-      id: null,
-    }
+    })
   }
 })

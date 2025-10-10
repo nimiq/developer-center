@@ -34,6 +34,16 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     useProxy: true,
   })
 
+  // Force enable proxy for all users (migration from old config)
+  if (!playgroundConfig.value.useProxy) {
+    playgroundConfig.value.useProxy = true
+  }
+
+  // Migrate old Cloudflare Worker URL to new default
+  if (playgroundConfig.value.nodeUrl === 'https://nimiq-website.je-cf9.workers.dev/') {
+    playgroundConfig.value.nodeUrl = defaultNodeUrl
+  }
+
   const method = computed(() => toValue(props).method)
   const key = computed(() => `v1_rpc_playground_${method.value}`)
 
