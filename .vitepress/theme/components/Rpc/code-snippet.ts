@@ -55,12 +55,9 @@ function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>
   // Build params string based on whether method has parameters
   let paramsStr = 'options'
   if (input && input.length > 0) {
-    // Create object with named parameters matching the RPC client interface
-    const paramsObj = input.reduce((acc, param, i) => {
-      acc[param.key] = params[i]
-      return acc
-    }, {} as Record<string, any>)
-    paramsStr = `${JSON.stringify(paramsObj)}, options`
+    // userParams is already an object with named parameters: { hash: "value", includeBody: true }
+    // Just stringify it for the code snippet
+    paramsStr = `${JSON.stringify(params)}, options`
   }
 
   return `import { ${name} } from 'nimiq-rpc-client-ts/http'

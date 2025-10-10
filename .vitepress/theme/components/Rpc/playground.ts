@@ -110,18 +110,22 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       // Use proxy for custom URLs (not the default Cloudflare Worker)
       // This avoids CORS issues with user-configured RPC nodes
       let url: URL
+      const isDev = import.meta.env.DEV
       const shouldUseProxy = playgroundConfig.value.useProxy && nodeUrl !== defaultNodeUrl && nodeUrl.startsWith('http')
 
       if (shouldUseProxy) {
-        // Use Netlify Edge Function proxy for custom external URLs
-        const proxyUrl = typeof window !== 'undefined'
-          ? new URL('/api/rpc-proxy', window.location.origin)
-          : new URL('http://localhost/api/rpc-proxy')
+        // In dev: use Vite dev server proxy
+        // In prod: use Cloudflare Worker proxy (deployed separately)
+        const proxyBaseUrl = isDev
+          ? (typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+          : 'https://nimiq-website.je-cf9.workers.dev'
+
+        const proxyUrl = new URL('/api/rpc-proxy', proxyBaseUrl)
         proxyUrl.searchParams.set('target', nodeUrl)
         url = proxyUrl
       }
       else {
-        // Direct connection for default URL or relative paths
+        // Direct connection when proxy is disabled
         url = nodeUrl.startsWith('http') ? new URL(nodeUrl) : new URL(nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
       }
 

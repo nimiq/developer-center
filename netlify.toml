@@ -1,7 +1,0 @@
-[build]
-publish = ".vitepress/dist"
-command = "pnpm build"
-
-[[edge_functions]]
-path = "/api/rpc-proxy"
-function = "rpc-proxy"
