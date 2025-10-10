@@ -1,0 +1,9 @@
+name = "developer-center-dev"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = ".vitepress/dist"
+account_id = "cf9baad7d68d7ee717f3339731e81dfb"
+
+# Deploy with: pnpm deploy
+
+[env.production]
+name = "developer-center"
