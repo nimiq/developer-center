@@ -10,6 +10,7 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
 // import llmstxt from 'vitepress-plugin-llms'
+import { NitroBuildPlugin } from './plugins/nitro-build'
 import { RpcProxyPlugin } from './plugins/rpc-proxy'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
 import { generateWebClientDocs } from './scripts/web-client'
@@ -57,6 +58,7 @@ export default defineConfig(async () => {
     },
 
     plugins: [
+      NitroBuildPlugin(),
       RpcProxyPlugin(),
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],

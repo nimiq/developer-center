@@ -35,13 +35,9 @@ export default async () => {
       preset: 'cloudflare_pages',
       srcDir: '.vitepress/server',
       compatibilityDate: '2025-01-01',
-      publicAssets: [
-        {
-          baseURL: '/',
-          dir: '.vitepress/dist',
-          maxAge: 0, // Will be set by Cloudflare
-        },
-      ],
+      routeRules: {
+        '/api/**': { proxy: true },
+      },
     },
 
     markdown: {
