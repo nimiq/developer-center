@@ -28,11 +28,13 @@ export function NitroBuildPlugin(): Plugin {
         const nitroDistDir = resolve(process.cwd(), 'dist')
         const distDir = resolve(process.cwd(), '.vitepress/dist')
 
-        const workerPath = resolve(nitroDistDir, '_worker.js')
+        const workerDirPath = resolve(nitroDistDir, '_worker.js')
+        const workerFilePath = resolve(workerDirPath, 'index.js')
         const routesPath = resolve(nitroDistDir, '_routes.json')
 
-        if (existsSync(workerPath)) {
-          cpSync(workerPath, resolve(distDir, '_worker.js'), { recursive: true })
+        // Cloudflare Pages expects _worker.js as a single file, not a directory
+        if (existsSync(workerFilePath)) {
+          cpSync(workerFilePath, resolve(distDir, '_worker.js'))
           consola.success('[Nitro] Copied _worker.js')
         }
 
