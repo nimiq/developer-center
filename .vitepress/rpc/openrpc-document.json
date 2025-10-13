@@ -3,7 +3,7 @@
   "info": {
     "title": "Nimiq JSON-RPC Specification",
     "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
-    "version": "v1.1.1",
+    "version": "1.1.1",
     "contact": {
       "name": "The Nimiq Core Development Team <info@nimiq.com>",
       "email": "",
@@ -51,9 +51,9 @@
         {
           "name": "passphrase",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -103,7 +103,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -162,7 +169,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -214,7 +228,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -266,7 +287,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -346,7 +374,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -384,9 +419,9 @@
         {
           "name": "delegation",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value",
@@ -405,7 +440,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -478,7 +520,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -551,7 +600,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -603,7 +659,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -669,7 +732,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -749,7 +819,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -808,7 +885,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -867,7 +951,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -919,7 +1010,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -943,9 +1041,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -971,7 +1069,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1016,7 +1121,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1040,9 +1152,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -1068,7 +1180,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1120,7 +1239,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1144,9 +1270,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -1158,9 +1284,9 @@
         {
           "name": "newDelegation",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "reactivateAllStake",
@@ -1179,7 +1305,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1217,30 +1350,30 @@
         {
           "name": "newSigningSecretKey",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newVotingSecretKey",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newRewardAddress",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newSignalData",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fee",
@@ -1252,7 +1385,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1339,6 +1479,25 @@
         "name": "Address",
         "schema": {
           "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getAddressBook",
+      "description": "Returns the address book",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1473,9 +1632,9 @@
         {
           "name": "includeBody",
           "schema": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -1504,9 +1663,9 @@
         {
           "name": "includeBody",
           "schema": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -1870,9 +2029,9 @@
         {
           "name": "includeBody",
           "schema": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -1967,6 +2126,22 @@
         "name": "f64",
         "schema": {
           "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getNetworkId",
+      "description": "Returns the network ID.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "NetworkId",
+        "schema": {
+          "$ref": "#/components/schemas/NetworkId"
         }
       }
     },
@@ -2112,9 +2287,9 @@
         {
           "name": "offsetOpt",
           "schema": {
-            "type": "number"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2280,16 +2455,57 @@
         {
           "name": "max",
           "schema": {
-            "type": "number"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "startAt",
           "schema": {
+            "$ref": "#/components/schemas/Option"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "getTransactionReferencesByAddress",
+      "description": "Returns the transactions receipts (similar to get transactions by address)",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
             "type": "string"
           },
           "required": true
+        },
+        {
+          "name": "max",
+          "schema": {
+            "$ref": "#/components/schemas/Option"
+          },
+          "required": false
+        },
+        {
+          "name": "startAt",
+          "schema": {
+            "$ref": "#/components/schemas/Option"
+          },
+          "required": false
         }
       ],
       "result": {
@@ -2321,16 +2537,16 @@
         {
           "name": "max",
           "schema": {
-            "type": "number"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "startAt",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2510,9 +2726,9 @@
         {
           "name": "passphrase",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2888,7 +3104,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -2947,7 +3170,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -2999,7 +3229,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3051,7 +3288,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3131,7 +3375,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3169,9 +3420,9 @@
         {
           "name": "delegation",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value",
@@ -3190,7 +3441,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3263,7 +3521,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3336,7 +3601,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3412,7 +3684,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3478,7 +3757,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3558,7 +3844,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3617,7 +3910,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3676,7 +3976,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3728,7 +4035,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3752,9 +4066,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -3780,7 +4094,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3825,7 +4146,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3849,9 +4177,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -3877,7 +4205,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3929,7 +4264,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3953,9 +4295,9 @@
         {
           "name": "senderWallet",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -3967,9 +4309,9 @@
         {
           "name": "newDelegation",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "reactivateAllStake",
@@ -3988,7 +4330,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4026,30 +4375,30 @@
         {
           "name": "newSigningSecretKey",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newVotingSecretKey",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newRewardAddress",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newSignalData",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fee",
@@ -4061,7 +4410,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4123,9 +4479,9 @@
         {
           "name": "passphrase",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "isHex",
@@ -4189,7 +4545,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4216,9 +4579,9 @@
         {
           "name": "includeBody",
           "schema": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -4262,7 +4625,10 @@
         {
           "name": "addresses",
           "schema": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "required": true
         },
@@ -4330,16 +4696,16 @@
         {
           "name": "passphrase",
           "schema": {
-            "type": "string"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "duration",
           "schema": {
-            "type": "number"
+            "$ref": "#/components/schemas/Option"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -4398,14 +4764,12 @@
   "components": {
     "schemas": {
       "Account": {
-        "title": "Account",
         "description": "",
-        "required": [
-          "address",
-          "balance",
-          "accountAdditionalFields"
-        ],
         "properties": {
+          "accountAdditionalFields": {
+            "title": "accountAdditionalFields",
+            "type": "object"
+          },
           "address": {
             "title": "address",
             "type": "string"
@@ -4413,16 +4777,89 @@
           "balance": {
             "title": "balance",
             "type": "number"
-          },
-          "accountAdditionalFields": {
-            "title": "accountAdditionalFields",
-            "type": "object"
           }
-        }
+        },
+        "required": [
+          "address",
+          "balance",
+          "accountAdditionalFields"
+        ],
+        "title": "Account"
       },
       "Block": {
-        "title": "Block",
         "description": "",
+        "properties": {
+          "additionalFields": {
+            "title": "additionalFields",
+            "type": "object"
+          },
+          "batch": {
+            "title": "batch",
+            "type": "number"
+          },
+          "bodyHash": {
+            "title": "bodyHash",
+            "type": "string"
+          },
+          "epoch": {
+            "title": "epoch",
+            "type": "number"
+          },
+          "extraData": {
+            "items": {
+              "type": "number"
+            },
+            "title": "extraData",
+            "type": "array"
+          },
+          "hash": {
+            "title": "hash",
+            "type": "string"
+          },
+          "historyHash": {
+            "title": "historyHash",
+            "type": "string"
+          },
+          "network": {
+            "title": "network",
+            "type": "string"
+          },
+          "number": {
+            "title": "number",
+            "type": "number"
+          },
+          "parentHash": {
+            "title": "parentHash",
+            "type": "string"
+          },
+          "seed": {
+            "title": "seed",
+            "type": "string"
+          },
+          "size": {
+            "title": "size",
+            "type": "number"
+          },
+          "stateHash": {
+            "title": "stateHash",
+            "type": "string"
+          },
+          "timestamp": {
+            "title": "timestamp",
+            "type": "number"
+          },
+          "transactions": {
+            "items": {
+              "$ref": "#/components/schemas/ExecutedTransaction"
+            },
+            "title": "transactions",
+            "type": "array"
+          },
+          "version": {
+            "title": "version",
+            "type": "number"
+          }
+        },
         "required": [
           "hash",
           "size",
@@ -4440,260 +4877,252 @@
           "historyHash",
           "additionalFields"
         ],
-        "properties": {
-          "hash": {
-            "title": "hash",
-            "type": "string"
-          },
-          "size": {
-            "title": "size",
-            "type": "number"
-          },
-          "batch": {
-            "title": "batch",
-            "type": "number"
-          },
-          "epoch": {
-            "title": "epoch",
-            "type": "number"
-          },
-          "network": {
-            "title": "network",
-            "type": "string"
-          },
-          "version": {
-            "title": "version",
-            "type": "number"
-          },
-          "number": {
-            "title": "number",
-            "type": "number"
-          },
-          "timestamp": {
-            "title": "timestamp",
-            "type": "number"
-          },
-          "parentHash": {
-            "title": "parentHash",
-            "type": "string"
-          },
-          "seed": {
-            "title": "seed",
-            "type": "string"
-          },
-          "extraData": {
-            "title": "extraData",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "stateHash": {
-            "title": "stateHash",
-            "type": "string"
-          },
-          "bodyHash": {
-            "title": "bodyHash",
-            "type": "string"
-          },
-          "historyHash": {
-            "title": "historyHash",
-            "type": "string"
-          },
-          "transactions": {
-            "title": "transactions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExecutedTransaction"
-            }
-          },
-          "additionalFields": {
-            "title": "additionalFields",
-            "type": "object"
-          }
-        }
+        "title": "Block"
       },
       "BlockchainState": {
-        "title": "BlockchainState",
         "description": "",
+        "properties": {
+          "blockHash": {
+            "title": "blockHash",
+            "type": "string"
+          },
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          }
+        },
         "required": [
           "blockNumber",
           "blockHash"
         ],
+        "title": "BlockchainState"
+      },
+      "DoubleProposalProof": {
+        "description": "",
         "properties": {
           "blockNumber": {
             "title": "blockNumber",
             "type": "number"
-          },
-          "blockHash": {
-            "title": "blockHash",
-            "type": "string"
           }
-        }
-      },
-      "DoubleProposalProof": {
-        "title": "DoubleProposalProof",
-        "description": "",
+        },
         "required": [
           "blockNumber",
           "hashes"
         ],
+        "title": "DoubleProposalProof"
+      },
+      "DoubleVoteProof": {
+        "description": "",
         "properties": {
           "blockNumber": {
             "title": "blockNumber",
             "type": "number"
           }
-        }
-      },
-      "DoubleVoteProof": {
-        "title": "DoubleVoteProof",
-        "description": "",
+        },
         "required": [
           "blockNumber"
         ],
-        "properties": {
-          "blockNumber": {
-            "title": "blockNumber",
-            "type": "number"
-          }
-        }
+        "title": "DoubleVoteProof"
       },
       "ExecutedTransaction": {
-        "title": "ExecutedTransaction",
         "description": "",
+        "properties": {
+          "executionResult": {
+            "title": "executionResult",
+            "type": "boolean"
+          },
+          "transaction": {
+            "$ref": "#/components/schemas/Transaction",
+            "title": "transaction"
+          }
+        },
         "required": [
           "transaction",
           "executionResult"
         ],
-        "properties": {
-          "transaction": {
-            "title": "transaction",
-            "$ref": "#/components/schemas/Transaction"
-          },
-          "executionResult": {
-            "title": "executionResult",
-            "type": "boolean"
-          }
-        }
+        "title": "ExecutedTransaction"
       },
       "ForkProof": {
-        "title": "ForkProof",
         "description": "",
-        "required": [
-          "blockNumber",
-          "hashes"
-        ],
         "properties": {
           "blockNumber": {
             "title": "blockNumber",
             "type": "number"
           }
-        }
+        },
+        "required": [
+          "blockNumber",
+          "hashes"
+        ],
+        "title": "ForkProof"
       },
       "MempoolInfo": {
-        "title": "MempoolInfo",
         "description": "",
-        "required": [
-          "total",
-          "buckets"
-        ],
         "properties": {
-          "0": {
-            "title": "0",
+          "_0": {
+            "title": "_0",
             "type": "number"
           },
-          "1": {
-            "title": "1",
+          "_1": {
+            "title": "_1",
             "type": "number"
           },
-          "2": {
-            "title": "2",
+          "_10": {
+            "title": "_10",
             "type": "number"
           },
-          "5": {
-            "title": "5",
+          "_100": {
+            "title": "_100",
             "type": "number"
           },
-          "10": {
-            "title": "10",
+          "_1000": {
+            "title": "_1000",
             "type": "number"
           },
-          "20": {
-            "title": "20",
+          "_10000": {
+            "title": "_10000",
             "type": "number"
           },
-          "50": {
-            "title": "50",
+          "_2": {
+            "title": "_2",
             "type": "number"
           },
-          "100": {
-            "title": "100",
+          "_20": {
+            "title": "_20",
             "type": "number"
           },
-          "200": {
-            "title": "200",
+          "_200": {
+            "title": "_200",
             "type": "number"
           },
-          "500": {
-            "title": "500",
+          "_2000": {
+            "title": "_2000",
             "type": "number"
           },
-          "1000": {
-            "title": "1000",
+          "_5": {
+            "title": "_5",
             "type": "number"
           },
-          "2000": {
-            "title": "2000",
+          "_50": {
+            "title": "_50",
             "type": "number"
           },
-          "5000": {
-            "title": "5000",
+          "_500": {
+            "title": "_500",
             "type": "number"
           },
-          "10000": {
-            "title": "10000",
+          "_5000": {
+            "title": "_5000",
             "type": "number"
+          },
+          "buckets": {
+            "items": {
+              "type": "number"
+            },
+            "title": "buckets",
+            "type": "array"
           },
           "total": {
             "title": "total",
             "type": "number"
-          },
-          "buckets": {
-            "title": "buckets",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
           }
-        }
+        },
+        "required": [
+          "total",
+          "buckets"
+        ],
+        "title": "MempoolInfo"
       },
       "PenalizedSlots": {
-        "title": "PenalizedSlots",
         "description": "",
-        "required": [
-          "blockNumber",
-          "disabled"
-        ],
         "properties": {
           "blockNumber": {
             "title": "blockNumber",
             "type": "number"
           },
           "disabled": {
+            "items": {
+              "type": "number"
+            },
             "title": "disabled",
-            "type": "object"
+            "type": "array"
           }
-        }
+        },
+        "required": [
+          "blockNumber",
+          "disabled"
+        ],
+        "title": "PenalizedSlots"
       },
       "PolicyConstants": {
-        "title": "PolicyConstants",
         "description": "",
+        "properties": {
+          "batchesPerEpoch": {
+            "title": "batchesPerEpoch",
+            "type": "number"
+          },
+          "blockSeparationTime": {
+            "title": "blockSeparationTime",
+            "type": "number"
+          },
+          "blocksPerBatch": {
+            "title": "blocksPerBatch",
+            "type": "number"
+          },
+          "blocksPerEpoch": {
+            "title": "blocksPerEpoch",
+            "type": "number"
+          },
+          "coinbaseAddress": {
+            "title": "coinbaseAddress",
+            "type": "string"
+          },
+          "genesisBlockNumber": {
+            "title": "genesisBlockNumber",
+            "type": "number"
+          },
+          "jailEpochs": {
+            "title": "jailEpochs",
+            "type": "number"
+          },
+          "maxSizeMicroBody": {
+            "title": "maxSizeMicroBody",
+            "type": "number"
+          },
+          "maxSupportedVersion": {
+            "title": "maxSupportedVersion",
+            "type": "number"
+          },
+          "minimumStake": {
+            "title": "minimumStake",
+            "type": "number"
+          },
+          "slots": {
+            "title": "slots",
+            "type": "number"
+          },
+          "stakingContractAddress": {
+            "title": "stakingContractAddress",
+            "type": "string"
+          },
+          "totalSupply": {
+            "title": "totalSupply",
+            "type": "number"
+          },
+          "transactionValidityWindow": {
+            "title": "transactionValidityWindow",
+            "type": "number"
+          },
+          "validatorDeposit": {
+            "title": "validatorDeposit",
+            "type": "number"
+          }
+        },
         "required": [
           "stakingContractAddress",
           "coinbaseAddress",
           "transactionValidityWindow",
           "maxSizeMicroBody",
-          "version",
           "slots",
           "blocksPerBatch",
           "batchesPerEpoch",
@@ -4703,78 +5132,13 @@
           "totalSupply",
           "blockSeparationTime",
           "jailEpochs",
-          "genesisBlockNumber"
+          "genesisBlockNumber",
+          "maxSupportedVersion"
         ],
-        "properties": {
-          "stakingContractAddress": {
-            "title": "stakingContractAddress",
-            "type": "string"
-          },
-          "coinbaseAddress": {
-            "title": "coinbaseAddress",
-            "type": "string"
-          },
-          "transactionValidityWindow": {
-            "title": "transactionValidityWindow",
-            "type": "number"
-          },
-          "maxSizeMicroBody": {
-            "title": "maxSizeMicroBody",
-            "type": "number"
-          },
-          "version": {
-            "title": "version",
-            "type": "number"
-          },
-          "slots": {
-            "title": "slots",
-            "type": "number"
-          },
-          "blocksPerBatch": {
-            "title": "blocksPerBatch",
-            "type": "number"
-          },
-          "batchesPerEpoch": {
-            "title": "batchesPerEpoch",
-            "type": "number"
-          },
-          "blocksPerEpoch": {
-            "title": "blocksPerEpoch",
-            "type": "number"
-          },
-          "validatorDeposit": {
-            "title": "validatorDeposit",
-            "type": "number"
-          },
-          "minimumStake": {
-            "title": "minimumStake",
-            "type": "number"
-          },
-          "totalSupply": {
-            "title": "totalSupply",
-            "type": "number"
-          },
-          "blockSeparationTime": {
-            "title": "blockSeparationTime",
-            "type": "number"
-          },
-          "jailEpochs": {
-            "title": "jailEpochs",
-            "type": "number"
-          },
-          "genesisBlockNumber": {
-            "title": "genesisBlockNumber",
-            "type": "number"
-          }
-        }
+        "title": "PolicyConstants"
       },
       "RPCData": {
-        "title": "RPCData",
         "description": "",
-        "required": [
-          "data",
-          "metadata"
-        ],
         "properties": {
           "data": {
             "title": "data",
@@ -4784,38 +5148,38 @@
             "title": "metadata",
             "type": "object"
           }
-        }
+        },
+        "required": [
+          "data",
+          "metadata"
+        ],
+        "title": "RPCData"
       },
       "ReturnAccount": {
-        "title": "ReturnAccount",
         "description": "",
-        "required": [
-          "address",
-          "publicKey",
-          "privateKey"
-        ],
         "properties": {
           "address": {
             "title": "address",
             "type": "string"
           },
-          "publicKey": {
-            "title": "publicKey",
-            "type": "string"
-          },
           "privateKey": {
             "title": "privateKey",
             "type": "string"
+          },
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "address",
+          "publicKey",
+          "privateKey"
+        ],
+        "title": "ReturnAccount"
       },
       "ReturnSignature": {
-        "title": "ReturnSignature",
         "description": "",
-        "required": [
-          "publicKey",
-          "signature"
-        ],
         "properties": {
           "publicKey": {
             "title": "publicKey",
@@ -4825,17 +5189,20 @@
             "title": "signature",
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "publicKey",
+          "signature"
+        ],
+        "title": "ReturnSignature"
       },
       "Slot": {
-        "title": "Slot",
         "description": "",
-        "required": [
-          "slotNumber",
-          "validator",
-          "publicKey"
-        ],
         "properties": {
+          "publicKey": {
+            "title": "publicKey",
+            "type": "string"
+          },
           "slotNumber": {
             "title": "slotNumber",
             "type": "number"
@@ -4843,22 +5210,17 @@
           "validator": {
             "title": "validator",
             "type": "string"
-          },
-          "publicKey": {
-            "title": "publicKey",
-            "type": "string"
           }
-        }
-      },
-      "Slots": {
-        "title": "Slots",
-        "description": "",
+        },
         "required": [
-          "firstSlotNumber",
-          "numSlots",
+          "slotNumber",
           "validator",
           "publicKey"
         ],
+        "title": "Slot"
+      },
+      "Slots": {
+        "description": "",
         "properties": {
           "firstSlotNumber": {
             "title": "firstSlotNumber",
@@ -4868,25 +5230,25 @@
             "title": "numSlots",
             "type": "number"
           },
-          "validator": {
-            "title": "validator",
-            "type": "string"
-          },
           "publicKey": {
             "title": "publicKey",
             "type": "string"
+          },
+          "validator": {
+            "title": "validator",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "firstSlotNumber",
+          "numSlots",
+          "validator",
+          "publicKey"
+        ],
+        "title": "Slots"
       },
       "Staker": {
-        "title": "Staker",
         "description": "",
-        "required": [
-          "address",
-          "balance",
-          "inactiveBalance",
-          "retiredBalance"
-        ],
         "properties": {
           "address": {
             "title": "address",
@@ -4912,15 +5274,17 @@
             "title": "retiredBalance",
             "type": "number"
           }
-        }
+        },
+        "required": [
+          "address",
+          "balance",
+          "inactiveBalance",
+          "retiredBalance"
+        ],
+        "title": "Staker"
       },
       "TendermintProof": {
-        "title": "TendermintProof",
         "description": "",
-        "required": [
-          "round",
-          "sig"
-        ],
         "properties": {
           "round": {
             "title": "round",
@@ -4930,11 +5294,98 @@
             "title": "sig",
             "type": "object"
           }
-        }
+        },
+        "required": [
+          "round",
+          "sig"
+        ],
+        "title": "TendermintProof"
       },
       "Transaction": {
-        "title": "Transaction",
         "description": "",
+        "properties": {
+          "blockNumber": {
+            "title": "blockNumber",
+            "type": "number"
+          },
+          "confirmations": {
+            "title": "confirmations",
+            "type": "number"
+          },
+          "fee": {
+            "title": "fee",
+            "type": "number"
+          },
+          "flags": {
+            "title": "flags",
+            "type": "number"
+          },
+          "from": {
+            "title": "from",
+            "type": "string"
+          },
+          "fromType": {
+            "title": "fromType",
+            "type": "number"
+          },
+          "hash": {
+            "title": "hash",
+            "type": "string"
+          },
+          "networkId": {
+            "title": "networkId",
+            "type": "number"
+          },
+          "proof": {
+            "items": {
+              "type": "number"
+            },
+            "title": "proof",
+            "type": "array"
+          },
+          "recipientData": {
+            "items": {
+              "type": "number"
+            },
+            "title": "recipientData",
+            "type": "array"
+          },
+          "relatedAddresses": {
+            "title": "relatedAddresses",
+            "type": "object"
+          },
+          "senderData": {
+            "items": {
+              "type": "number"
+            },
+            "title": "senderData",
+            "type": "array"
+          },
+          "size": {
+            "title": "size",
+            "type": "number"
+          },
+          "timestamp": {
+            "title": "timestamp",
+            "type": "number"
+          },
+          "to": {
+            "title": "to",
+            "type": "string"
+          },
+          "toType": {
+            "title": "toType",
+            "type": "number"
+          },
+          "validityStartHeight": {
+            "title": "validityStartHeight",
+            "type": "number"
+          },
+          "value": {
+            "title": "value",
+            "type": "number"
+          }
+        },
         "required": [
           "hash",
           "size",
@@ -4952,114 +5403,34 @@
           "proof",
           "networkId"
         ],
-        "properties": {
-          "hash": {
-            "title": "hash",
-            "type": "string"
-          },
-          "blockNumber": {
-            "title": "blockNumber",
-            "type": "number"
-          },
-          "timestamp": {
-            "title": "timestamp",
-            "type": "number"
-          },
-          "confirmations": {
-            "title": "confirmations",
-            "type": "number"
-          },
-          "size": {
-            "title": "size",
-            "type": "number"
-          },
-          "relatedAddresses": {
-            "title": "relatedAddresses",
-            "type": "object"
-          },
-          "from": {
-            "title": "from",
-            "type": "string"
-          },
-          "fromType": {
-            "title": "fromType",
-            "type": "number"
-          },
-          "to": {
-            "title": "to",
-            "type": "string"
-          },
-          "toType": {
-            "title": "toType",
-            "type": "number"
-          },
-          "value": {
-            "title": "value",
-            "type": "number"
-          },
-          "fee": {
-            "title": "fee",
-            "type": "number"
-          },
-          "senderData": {
-            "title": "senderData",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "recipientData": {
-            "title": "recipientData",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "flags": {
-            "title": "flags",
-            "type": "number"
-          },
-          "validityStartHeight": {
-            "title": "validityStartHeight",
-            "type": "number"
-          },
-          "proof": {
-            "title": "proof",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "networkId": {
-            "title": "networkId",
-            "type": "number"
-          }
-        }
+        "title": "Transaction"
       },
       "Validator": {
-        "title": "Validator",
         "description": "",
-        "required": [
-          "address",
-          "signingKey",
-          "votingKey",
-          "rewardAddress",
-          "balance",
-          "numStakers",
-          "retired"
-        ],
         "properties": {
           "address": {
             "title": "address",
             "type": "string"
           },
-          "signingKey": {
-            "title": "signingKey",
-            "type": "string"
+          "balance": {
+            "title": "balance",
+            "type": "number"
           },
-          "votingKey": {
-            "title": "votingKey",
-            "type": "string"
+          "inactivityFlag": {
+            "title": "inactivityFlag",
+            "type": "number"
+          },
+          "jailedFrom": {
+            "title": "jailedFrom",
+            "type": "number"
+          },
+          "numStakers": {
+            "title": "numStakers",
+            "type": "number"
+          },
+          "retired": {
+            "title": "retired",
+            "type": "boolean"
           },
           "rewardAddress": {
             "title": "rewardAddress",
@@ -5069,44 +5440,42 @@
             "title": "signalData",
             "type": "string"
           },
-          "balance": {
-            "title": "balance",
-            "type": "number"
+          "signingKey": {
+            "title": "signingKey",
+            "type": "string"
           },
-          "numStakers": {
-            "title": "numStakers",
-            "type": "number"
-          },
-          "inactivityFlag": {
-            "title": "inactivityFlag",
-            "type": "number"
-          },
-          "retired": {
-            "title": "retired",
-            "type": "boolean"
-          },
-          "jailedFrom": {
-            "title": "jailedFrom",
-            "type": "number"
+          "votingKey": {
+            "title": "votingKey",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "address",
+          "signingKey",
+          "votingKey",
+          "rewardAddress",
+          "balance",
+          "numStakers",
+          "retired"
+        ],
+        "title": "Validator"
       },
       "ZKPState": {
-        "title": "ZKPState",
         "description": "",
-        "required": [
-          "latestBlock"
-        ],
         "properties": {
           "latestBlock": {
-            "title": "latestBlock",
-            "$ref": "#/components/schemas/Block"
+            "$ref": "#/components/schemas/Block",
+            "title": "latestBlock"
           },
           "latestProof": {
             "title": "latestProof",
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "latestBlock"
+        ],
+        "title": "ZKPState"
       }
     },
     "examplePairings": {}
