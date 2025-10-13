@@ -1,8 +1,4 @@
 name = "developer-center-dev"
 compatibility_date = "2025-01-01"
 pages_build_output_dir = ".vitepress/dist"
-
-# Deploy with: pnpm run deploy
-
-[env.production]
-name = "developer-center"
+compatibility_flags = [ "nodejs_compat" ]
