@@ -5,7 +5,12 @@ export default defineNitroConfig({
   srcDir: '.vitepress/server',
   compatibilityDate: '2025-01-01',
 
-  routeRules: {
-    '/api/**': { proxy: true },
+  cloudflare: {
+    pages: {
+      routes: {
+        include: ['/api/*'],
+        exclude: [],
+      },
+    },
   },
 })

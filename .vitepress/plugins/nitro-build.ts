@@ -11,7 +11,7 @@ export function NitroBuildPlugin(): Plugin {
   return {
     name: 'nitro-build',
     apply: 'build',
-    closeBundle() {
+    async closeBundle() {
       if (isBuilding)
         return
       isBuilding = true
@@ -30,7 +30,6 @@ export function NitroBuildPlugin(): Plugin {
 
         const workerDirPath = resolve(nitroDistDir, '_worker.js')
         const workerFilePath = resolve(workerDirPath, 'index.js')
-        const routesPath = resolve(nitroDistDir, '_routes.json')
 
         // Cloudflare Pages expects _worker.js as a single file, not a directory
         if (existsSync(workerFilePath)) {
@@ -38,10 +37,18 @@ export function NitroBuildPlugin(): Plugin {
           consola.success('[Nitro] Copied _worker.js')
         }
 
-        if (existsSync(routesPath)) {
-          cpSync(routesPath, resolve(distDir, '_routes.json'))
-          consola.success('[Nitro] Copied _routes.json')
+        // Create simple routes file - only route /api/* to worker, rest to static
+        const routesConfig = {
+          version: 1,
+          include: ['/api/*'],
+          exclude: [],
         }
+        const { writeFileSync } = await import('node:fs')
+        writeFileSync(
+          resolve(distDir, '_routes.json'),
+          JSON.stringify(routesConfig, null, 2),
+        )
+        consola.success('[Nitro] Created _routes.json')
 
         consola.success('[Nitro] Server build complete')
       }
