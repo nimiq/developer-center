@@ -13,4 +13,10 @@ export default defineNitroConfig({
       },
     },
   },
+
+  experimental: {
+    wasm: false,
+  },
+
+  compatibilityFlags: ['nodejs_compat'],
 })
