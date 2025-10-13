@@ -12,11 +12,6 @@ export default defineNitroConfig({
         exclude: [],
       },
     },
+    nodeCompat: true,
   },
-
-  experimental: {
-    wasm: false,
-  },
-
-  compatibilityFlags: ['nodejs_compat'],
 })
