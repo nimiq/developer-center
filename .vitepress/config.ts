@@ -31,6 +31,19 @@ export default async () => {
       configFile: '.vitepress/vite.config.ts',
     },
 
+    nitro: {
+      preset: 'cloudflare_pages',
+      srcDir: '.vitepress/server',
+      compatibilityDate: '2025-01-01',
+      publicAssets: [
+        {
+          baseURL: '/',
+          dir: '.vitepress/dist',
+          maxAge: 0, // Will be set by Cloudflare
+        },
+      ],
+    },
+
     markdown: {
       math: true, // Allow latex math
     },

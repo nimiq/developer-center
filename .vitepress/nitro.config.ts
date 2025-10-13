@@ -2,7 +2,7 @@ import { defineNitroConfig } from 'nitro/config'
 
 export default defineNitroConfig({
   preset: 'cloudflare_pages',
-  srcDir: 'server',
+  srcDir: '.vitepress/server',
   compatibilityDate: '2025-01-01',
 
   // Serve VitePress static files as public assets
