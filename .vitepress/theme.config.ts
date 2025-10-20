@@ -342,21 +342,11 @@ export const themeConfig = {
   },
   outlineActions: [
     {
-      icon: 'i-nimiq:exclamation',
-      label: 'Report a bug',
-      onClick: () => {
-        const widget = (window as any).__nimiqFeedbackWidget
-        if (widget && typeof widget.open === 'function')
-          widget.open('bug')
-      },
-    },
-    {
       icon: 'i-nimiq:thumb-up-thumb-down',
-      label: 'Send feedback',
+      label: 'Create issue',
       onClick: () => {
-        const widget = (window as any).__nimiqFeedbackWidget
-        if (widget && typeof widget.open === 'function')
-          widget.open('feedback')
+        if (typeof window !== 'undefined')
+          window.open('https://github.com/nimiq/developer-center/issues/new', '_blank', 'noopener,noreferrer')
       },
     },
   ],

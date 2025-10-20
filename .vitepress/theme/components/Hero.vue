@@ -43,6 +43,7 @@ const slots = useSlots()
             <NqCard
               v-for="card in cards.filter(c => c.bgColor)" :key="card.title" v-bind="card" class="[&_p]:z-10"
               :icon-class="card.iconClass || 'absolute size-200 op-60 md:op-100 right--12 bottom--24'"
+              flex-1
             />
           </div>
           <div grid="~ rows-3 gap-32">
