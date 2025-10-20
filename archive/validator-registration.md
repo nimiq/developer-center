@@ -1,6 +1,6 @@
 # Registration Guide
 
-This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For more technical details on the migration, see [Migration Technical Details](migration-technical-details).
+This document guides users through the registration process to become one of the first validators on the Nimiq PoS chain. It is part of the overall documentation for the transition from PoW to PoS. For more technical details on the migration, see [Migration Technical Details](../migration/migration-technical-details).
 
 ## Validator Registration Tool
 
@@ -38,11 +38,8 @@ The tool generates fresh keys and stores them into the `validator-keys.json` f
 
 <img class="object-contain max-h-[max(80vh,220px)]" src="/assets/images/migration/migration.png" alt="Validator example keys" />
 
-<Callout type='tip'>
-
-Save the private keys securely, especially the validator private key! **There is no recovery mechanism for lost private keys**. Once lost, access to your validator and related NIM may be permanently lost.
-
-</Callout>
+> [!TIP]
+> Save the private keys securely, especially the validator private key! **There is no recovery mechanism for lost private keys**. Once lost, access to your validator and related NIM may be permanently lost.
 
 For detailed guidance through the scripts and their options, run `node validator-registration.js --help`. This will print out the usage instructions.
 
@@ -52,7 +49,7 @@ You can of course also generate your own validator, signing, and/or voting keys 
 
 ### Step 2: Fund your Validator Address
 
-To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **1 NIM** for both the registration and activation transactions. You can use any Nimiq Wallet to send NIM to this address.
+To start the validator registration process, fund the validator address you just generated to cover the nominal transaction fees of 1 Luna each associated with the validator registration process. During the [Activation Phase](../migration/migration-technical-details#readiness-and-activation-tool), you will also need to pay the readiness transaction, so ensure your address is funded with at least **1 NIM** for both the registration and activation transactions. You can use any Nimiq Wallet to send NIM to this address.
 
 ### Step 3: Run the Validator Registration Tool
 
@@ -76,13 +73,10 @@ To send the transaction manually via **Nimiq Wallet**, you need the following da
 | **Value**             | `100 000` NIM or more                                                |
 | **Public Message**    | Your validator address in human-readable format (starting with `NQ`) |
 
-<Callout type='warning'>
-
-**We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly. You can verify the address included the message with a block explorer like [nimiq.watch](https://nimiq.watch).
-
-Ensure you follow these steps carefully, as failure to do so could result in permanent loss of your funds. Any value below 100 000 NIM will also result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
-
-</Callout>
+> [!WARNING]
+> **We recommend using the Nimiq Wallet** to send the validator deposit, as it allows you to include the necessary public message. If you are using an exchange or another wallet, be aware that they often don’t allow public messages on-chain for withdrawals. To ensure everything works as expected, first send a small transaction (2 Lunas) between your own addresses with a simple message (like "hello world") to verify that the message is included properly. You can verify the address included the message with a block explorer like [nimiq.watch](https://nimiq.watch).
+>
+> Ensure you follow these steps carefully, as failure to do so could result in permanent loss of your funds. Any value below 100 000 NIM will also result in permanent loss. Any amount above 100 000 NIM will be assigned as stake as long as the difference is greater than the minimum stake (100 NIM); otherwise, the excess will be burned.
 
 **Verify Registration and Deposit**
 
@@ -92,4 +86,4 @@ After the command runs successfully and the deposit is sent, you can verify both
 
 Congratulations! You have successfully registered your validator and paid the deposit. The next step is to prepare for the Activation Phase, which begins on **November 19**.
 
-You will need to follow the [Activation Tool](validator-activation) guide, and we recommend running it before November 19, allowing your node to download the database snapshot early and speeding up the activation process. Click [here](migration-technical-details#activation-phase) to learn more about the activation phase.
+You will need to follow the [Activation Tool](validator-activation) guide, and we recommend running it before November 19, allowing your node to download the database snapshot early and speeding up the activation process. Click [here](../migration/migration-technical-details#activation-phase) to learn more about the activation phase.

@@ -1,26 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ESNext",
     "jsx": "preserve",
     "lib": [
-      "es2022",
-      "dom"
+      "esnext"
     ],
-    "baseUrl": ".",
-    "module": "NodeNext",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
+    "module": "esnext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "types": [
-      "node"
+      "node",
+      "vite/client",
+      "vitepress/client"
     ],
-    "allowSyntheticDefaultImports": true
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
   },
-  "include": [".vitepress/**/*", "**/**.d.ts"],
-  "exclude": [
-    "**/dist/**"
-  ]
+  "include": [
+    "**/*.ts",
+    "**/*.vue",
+    "**/*.md"
+  ],
+  "vueCompilerOptions": {
+    "vitePressExtensions": [
+      ".md"
+    ]
+  }
 }

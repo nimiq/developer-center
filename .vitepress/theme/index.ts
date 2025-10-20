@@ -1,32 +1,28 @@
-import { createHead } from '@unhead/vue'
-import mediumZoom from 'medium-zoom'
-import { useRoute } from 'vitepress'
-import Theme from 'vitepress/theme'
-import { h, nextTick, onMounted, watch } from 'vue'
-import MainLayout from './MainLayout.vue'
-// https://vitepress.dev/guide/custom-theme
-import './style.css'
-import 'uno.css'
+import { createHead } from '@unhead/vue/client'
+import { defineNimiqThemeConfig } from 'nimiq-vitepress-theme/theme'
+import { createApp } from 'vue'
+import FeedbackWidget from './components/FeedbackWidget.vue'
+import HeaderNavFeedback from './components/HeaderNavFeedback.vue'
+import 'virtual:uno.css'
+import './main.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code.css'
 
-function initZoom() {
-  mediumZoom('.nq-prose img:not(:is(.not-zoomable,[not-zoomable]))', { background: 'rgb(var(--nq-neutral-0))' })
-}
+// TODO zoom image
 
-export default {
-  extends: Theme,
-  Layout: () => {
-    return h(MainLayout)
+export default defineNimiqThemeConfig({
+  Layout() {
+    return {
+      'header-nav-before-modules': HeaderNavFeedback,
+    }
   },
   enhanceApp({ app }) {
     const head = createHead()
     app.use(head)
+
+    if (typeof window !== 'undefined') {
+      const container = document.createElement('div')
+      document.body.appendChild(container)
+      createApp(FeedbackWidget).mount(container)
+    }
   },
-  setup() {
-    const route = useRoute()
-    onMounted(() => initZoom())
-    watch(
-      () => route.path,
-      () => nextTick(() => initZoom()),
-    )
-  },
-}
+})

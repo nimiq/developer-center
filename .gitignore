@@ -2,15 +2,50 @@ node_modules
 .vitepress/cache
 .vitepress/dist
 .vitepress/.temp
+dist
+.nitro
 
 # Ignore dynamically built web-client docs
-build/web-client/reference
-build/web-client/.version
+web-client/reference
+web-client/.version
 
 # Ignore dynamically built RPC spec docs
-build/set-up-your-own-node/rpc-docs/.version
-build/set-up-your-own-node/rpc-docs/methods.md
+set-up-your-own-node/rpc-docs/.version
+set-up-your-own-node/rpc-docs/methods.md
 
 components.d.ts
 
 deployment-devcenter/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-debug.log
+# Dependency directories
+node_modules/
+# Environment variables
+.env
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+.DS_Store
+
+# Task files
+tasks.json
+tasks/ 
+
+.claude
+.env.example
+.taskmaster
+
+CLAUDE.md
+.mcp.json

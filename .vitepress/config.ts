@@ -1,84 +1,43 @@
-import { existsSync } from 'node:fs'
-import { basename, dirname } from 'node:path'
 import { env } from 'node:process'
 import consola from 'consola'
-import { spawn } from 'cross-spawn'
+import { defineNimiqVitepressConfig } from 'nimiq-vitepress-theme'
 import { readPackageJSON } from 'pkg-types'
-import { defineConfig } from 'vitepress'
-import { navigation } from './navigation.config'
-import { generateRpcDocs } from './scripts/rpc-docs'
-import { generateWebClientDocs } from './scripts/web-client'
-import { sidebar } from './sidebar.config'
-
-function getCommitHash(file: string): Promise<string | undefined> {
-  return new Promise<string | undefined>((resolve, reject) => {
-    const cwd = dirname(file)
-    if (!existsSync(cwd))
-      return resolve(undefined)
-    const fileName = basename(file)
-    const child = spawn('git', ['log', '-1', '--pretty="%H"', fileName], { cwd })
-    let output = ''
-    child.stdout.on('data', d => (output += String(d)))
-    child.on('close', () => resolve(output.trim().replace(/"/g, '')))
-    child.on('error', reject)
-  })
-}
+import { themeConfig } from './theme.config.js'
 
 // https://vitepress.dev/reference/site-config
 export default async () => {
   const { title, description, homepage } = await readPackageJSON()
-  const basesUrl = {
+  const basesUrl: Record<string, string> = {
     production: '/developers',
     development: '/developer-center',
     staging: '/',
   }
-  const base = basesUrl[env.DEPLOYMENT_MODE]
+  const base = basesUrl[env.DEPLOYMENT_MODE!] || ''
   consola.info(`Building for ${env.DEPLOYMENT_MODE}. The base URL is ${base}`)
 
-  await generateWebClientDocs()
-  const { specUrl, specVersion } = await generateRpcDocs()
+  const faviconUrl = `${base}${base.endsWith('/') ? '' : '/'}favicons`
 
-  return defineConfig({
+  return defineNimiqVitepressConfig({
     base,
     title,
-    srcExclude: ['**/README.md'],
+    srcExclude: ['**/README.md', '**/CLAUDE.md', '**/server/**'],
     description,
     lastUpdated: true,
     cleanUrls: true,
 
-    async transformPageData(pageData) {
-      pageData.updatedCommitHash = await getCommitHash(pageData.filePath)
-    },
-
-    themeConfig: {
-      navigation,
-
-      sidebar,
-
-      footerItems: [
-        {
-          link: 'https://forum.nimiq.community',
-          icon: 'i-nimiq:logos-nimiq-forum-mono',
-          text: 'Question? Checkout the ',
-          social: 'Nimiq Forum',
-        },
-        {
-          link: 'https://t.me/nimiq',
-          icon: 'i-nimiq:logos-telegram-mono',
-          text: 'Give us feedback on ',
-          social: 'Telegram',
-        },
-      ],
-
-      search: { provider: 'local' },
-    },
+    themeConfig,
 
     vite: {
-      define: {
-        __ALBATROSS_RPC_OPENRPC_URL__: JSON.stringify(specUrl),
-        __ALBATROSS_RPC_OPENRPC_VERSION__: JSON.stringify(specVersion),
-      },
       configFile: '.vitepress/vite.config.ts',
+    },
+
+    nitro: {
+      preset: 'cloudflare_pages',
+      srcDir: '.vitepress/server',
+      compatibilityDate: '2025-01-01',
+      routeRules: {
+        '/api/**': { proxy: true },
+      },
     },
 
     markdown: {
@@ -87,12 +46,12 @@ export default async () => {
 
     head: [
       ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}/favicons/apple-touch-icon.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}/favicons/favicon-32x32.png` }],
-      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${base}/favicons/favicon-16x16.png` }],
-      // ['link', { rel: 'manifest', href: `${base}favicons/site.webmanifest` }],
-      ['link', { rel: 'mask-icon', href: `${base}/favicons/safari-pinned-tab.svg`, color: '#eaaf0c' }],
-      ['link', { rel: 'shortcut icon', href: `${base}/favicons/favicon.ico` }],
+      ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${faviconUrl}/apple-touch-icon.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${faviconUrl}/favicon-32x32.png` }],
+      ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${faviconUrl}/favicon-16x16.png` }],
+      // ['link', { rel: 'manifest', href: `${faviconUrl}/site.webmanifest` }],
+      ['link', { rel: 'mask-icon', href: `${faviconUrl}/safari-pinned-tab.svg`, color: '#eaaf0c' }],
+      ['link', { rel: 'shortcut icon', href: `${faviconUrl}/favicon.ico` }],
       ['meta', { name: 'msapplication-TileColor', content: '#2b5797' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
 

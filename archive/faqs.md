@@ -46,7 +46,7 @@ No, pre-staking is only available during the pre-staking phase. Your NIM will be
 
 #### What happens if the activation doesn’t collect 80% of readiness?
 
-The 80% readiness applies to the stake that has been pre-staked by pre-registered validators. There is no minimum amount of NIM that must be pre-staked, but 80% of the pre-staked NIM must signal readiness during an activation window. If this threshold is not met, a new activation window will start immediately after the current one ends. Each new activation window spans 1440 PoW blocks, equivalent to one day, and this process will continue until the required readiness threshold is reached. For more details, you can find more information [here](migration-technical-details#activation-phase).
+The 80% readiness applies to the stake that has been pre-staked by pre-registered validators. There is no minimum amount of NIM that must be pre-staked, but 80% of the pre-staked NIM must signal readiness during an activation window. If this threshold is not met, a new activation window will start immediately after the current one ends. Each new activation window spans 1440 PoW blocks, equivalent to one day, and this process will continue until the required readiness threshold is reached. For more details, you can find more information [here](../migration/migration-technical-details#activation-phase).
 
 #### I pre-registered as a validator but forgot to run the activation tool/send the readiness transaction within the activation window. Can I recover my validator?
 
@@ -58,7 +58,7 @@ No, the activation tool is specifically designed to migrate the PoW state and es
 
 #### Can I withdraw my NIM deposit after pre-registration?
 
-Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators [here](/learn/protocol/validators/validators.md).
+Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators [here](/protocol/validators/validators).
 
 #### Can I switch the validator I have pre-staked my NIM to?
 

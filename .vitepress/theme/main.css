@@ -1,0 +1,112 @@
+/* container with breadcrumbs and buttons */
+
+@media (max-width: 1279px) {
+  [data-layout="docs"][var\:nq-sidebar-width\:100vw] {
+    --nq-sidebar-width: min(100vw, 100%);
+  }
+}
+
+div:has(+ article) {
+  margin: 0 auto;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  width: 100%;
+
+}
+
+
+.nq-prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  + p.nq-subline {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--colors-neutral-700) 100%, transparent);
+    margin-top: 0.5lh;
+    padding-bottom: 1.5lh;
+    border-bottom: 1px solid var(--colors-neutral-500);
+  }
+}
+
+.nq-prose h2 {
+  font-size: 1.5rem;
+}
+
+.nq-prose h3 {
+  font-size: 1.25rem;
+}
+
+.nq-prose h4 {
+  font-size: 1rem;
+}
+
+.blocks [class*="language-"] {
+  margin-top: 0;
+  border: 0;
+  outline: none;
+}
+
+/* RPC Widget Sidebar Improvements */
+
+/* Increase widget sidebar width on desktop for better widget display */
+@media (min-width: 1224px) {
+  /* When widget is shown, use a wider secondary sidebar */
+  [data-layout="docs"]:has(#widget:not(:empty)) {
+    --nq-widget-sidebar-width: calc((100vw - var(--nq-sidebar-width)) / 2);
+  }
+
+  /* Apply wider width to the secondary sidebar container when widget is present */
+  [data-layout="docs"]:has(#widget:not(:empty)) > div > div:last-child {
+    width: var(--nq-widget-sidebar-width, 288px) !important;
+  }
+
+  /* Adjust main content max-width when widget sidebar is wider to maintain layout balance */
+  [data-layout="docs"]:has(#widget:not(:empty)) main {
+    max-width: calc(1000px - (var(--nq-widget-sidebar-width, 288px) - 288px)) !important;
+  }
+}
+
+/* RPC Code Snippets Font Size Fix */
+
+/* Increase font size for code snippets in RPC method tabs */
+.tabs pre.shiki {
+  font-size: 0.875rem !important; /* Increased from f-text-xs (0.75rem) to 0.875rem */
+  line-height: 1.5 !important;
+}
+
+/* Also increase font size for inline code in RPC methods */
+.tabs code {
+  font-size: 0.875rem !important;
+}
+
+/* RPC History Timestamp Size Fix */
+
+/* Increase font size for timestamps in RPC history */
+.widget-container span[font-semibold] {
+  font-size: 0.75rem !important; /* Increased from text-9 (very small) to more readable size */
+}
+
+/* RPC Warning Banner Styling */
+
+/* Style the warning banner to connect seamlessly with the form above */
+.rpc-warning-banner {
+  margin-top: 0 !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px !important;
+}
+
+/* Ensure the form container above has no bottom border radius */
+.widget-container:has(+ .rpc-warning-banner) {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+/* Outline Actions Icon Styling */
+
+/* Reduce icon opacity and size for feedback/bug/idea icons */
+[data-layout="docs"] .i-nimiq\:exclamation,
+[data-layout="docs"] .i-nimiq\:leaf-2-filled,
+[data-layout="docs"] .i-nimiq\:star {
+  opacity: 0.8 !important;
+  font-size: 12px !important;
+}

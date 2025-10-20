@@ -29,18 +29,18 @@ function setPill() {
 
 <template>
   <div
-    w-max flex="~ align-center" h-32 relative p-4 border-subtle-sm rounded-full bg-neutral-200
+    flex="~ align-center" border-subtle-sm p-4 rounded-full bg-neutral-200 h-32 w-max relative
   >
     <label
       v-for="[key, option] of Object.entries(options)" :key="`${key}-input`" :tabindex="option.disabled !== true ? undefined : '1'"
-      relative z-2 px-12 text-12 nq-label transition-colors select-none
+
       :class="{
         'text-darkblue': model === key,
         'text-neutral-800': model !== key,
         'cursor-pointer z-1 hover:text-neutral-900': option.disabled !== true && model !== key,
         'cursor-not-allowed text-neutral-500': option.disabled === true,
       }"
-      rounded-full flex="~ items-center"
+      text-12 px-12 rounded-full select-none transition-colors relative z-2 nq-label flex="~ items-center"
     >
       <input
         :id="`${randomName}-${key}`" v-model="model" type="radio" :value="key"
@@ -49,7 +49,10 @@ function setPill() {
       >
       {{ option.label }}
     </label>
-    <div bg-white rounded-full h-27 top-2 absolute z-1 :style="{ ...pillStyles, transition: loaded ? 'left 300ms, width 200ms' : '' }" />
+    <div
+      rounded-full bg-white h-27 top-2 absolute z-1 :style="{ ...pillStyles,
+                                                              transition: loaded ? 'left 300ms, width 200ms' : '' }"
+    />
   </div>
 </template>
 

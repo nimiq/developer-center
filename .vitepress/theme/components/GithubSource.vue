@@ -3,8 +3,8 @@ defineProps<{ href: string }>()
 </script>
 
 <template>
-  <a :href un-text="xs neutral-900 hocus:blue" mt-12 flex="~ items-center" w-max mx-0 nq-arrow font-semibold target="_blank">
-    <div i-nimiq:logos-github-mono mr-6 op-70 />
+  <a :href un-text="xs neutral-900 hocus:blue" flex="~ items-center" font-semibold mx-0 mt-12 w-max nq-arrow target="_blank">
+    <div mr-6 op-70 i-nimiq:logos-github-mono />
     View source
   </a>
 </template>

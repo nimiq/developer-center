@@ -1,13 +1,17 @@
 import { execSync } from 'node:child_process'
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { consola } from 'consola'
 import { readPackageJSON } from 'pkg-types'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 export async function generateWebClientDocs() {
   consola.info('Generating Web-Client docs...')
   const packageVersion = await readPackageJSON(join(__dirname, '../../node_modules/@nimiq/core')).then(pkg => pkg.version)
-  const webClientFolder = join(__dirname, '../../build/web-client')
+  const webClientFolder = join(__dirname, '../../web-client')
   // Read package version of generated docs, if already built
   const versionFile = join(webClientFolder, '.version')
   if (existsSync(versionFile)) {

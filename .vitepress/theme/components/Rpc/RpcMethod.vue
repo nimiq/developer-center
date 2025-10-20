@@ -1,0 +1,135 @@
+<script setup lang="ts">
+import type { NimiqRpcMethod } from '../../../rpc/utils'
+import { Tabs } from 'reka-ui/namespaced'
+import { toValue } from 'vue'
+import { useCodeSnippet } from './code-snippet'
+import { usePlaygroundRpc } from './playground'
+import RpcPlayground from './RpcPlayground.vue'
+
+const props = defineProps<NimiqRpcMethod>()
+
+const { widget } = usePlaygroundRpc(props)
+const { tabs, currentTab } = useCodeSnippet(widget)
+</script>
+
+<template>
+  <div nq-prose>
+    <h1 font-semibold f-text-2xl f-mb-2xs>
+      <code>{{ props.name }}</code> method
+    </h1>
+    <p v-if="props.description" f-mt-xs>
+      {{ props.description }}
+    </p>
+
+    <div :class="{ 'f-mt-lg': !props.description }">
+      <div mx-0>
+        <h2>
+          Params
+        </h2>
+
+        <p v-if="props.input.length === 0" font-italic>
+          This method does not require any parameters.
+        </p>
+        <table v-else class="params-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="({ required, key, type }) in props.input" :key="key">
+              <td><code>{{ key }}</code></td>
+              <td>{{ type }}</td>
+              <td>{{ required ? 'Yes' : 'No' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 f-text-lg f-mt-lg="!">
+          Result
+        </h2>
+        <p v-if="props.output.length === 0" font-italic>
+          This method does not return any result.
+        </p>
+        <table v-else class="params-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="({ required, key, type }) in props.output" :key="key">
+              <td><code>{{ key }}</code></td>
+              <td>{{ type }}</td>
+              <td>{{ required ? 'Yes' : 'No' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 f-text-lg f-mt-lg="!">
+        Code Examples
+      </h2>
+
+      <Tabs.Root v-model="currentTab" class="tabs" outline="1.5 offset--1.5 solid neutral/8" rounded-8 h-max max-w-none min-w-0 w-full f-mt-lg>
+        <Tabs.List flex="~ justify-start gap-16" f-px="20/24" :aria-label="`See how to call ${widget.method}`" py-8 bg-neutral-50 h-44 border="b-1.5 solid neutral/8">
+          <Tabs.Trigger v-for="({ icon, lang, label }) in tabs" :key="lang" :value="lang" bg="transparent reka-active:blue-400" flex="~ items-center gap-8" text="neutral-800 f-xs" font-bold mx-0 ml-2 px-0.65em py-4 rounded-6>
+            <div :class="icon" grayscale="reka-active:0 100" transition-filter />
+            <span reka-active:text-blue>
+              {{ label }}
+            </span>
+          </Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content v-for="({ lang, html }) in tabs" :key="lang" :value="lang">
+          <div v-html="toValue(html)" />
+        </Tabs.Content>
+      </Tabs.Root>
+    </div>
+
+    <ClientOnly>
+      <Teleport defer to="#widget">
+        <RpcPlayground v-if="props" v-bind="props" />
+      </Teleport>
+    </ClientOnly>
+  </div>
+</template>
+
+<style scoped>
+:global(div:has(>#widget)) {
+  --uno: 'border-l border-solid border-neutral-400 '
+}
+
+.widget-container {
+  --uno: 'outline-1.5 outline-offset--1.5 outline-solid outline-neutral-300 of-clip rounded-8';
+
+  > header {
+    --uno: 'z-1 bg-neutral-100 py-8 f-text-xs f-px-xs rounded-2 flex items-baseline justify-between gap-8';
+  }
+
+  > div {
+    --uno: 'f-p-xs';
+  }
+}
+
+.tabs :deep(pre) {
+  --uno: 'of-x-auto max-w-full';
+}
+
+h2 {
+  + p {
+    --uno: 'f-text-xs';
+  }
+}
+
+.tabs {
+
+  :deep(pre.shiki) {
+    --uno: 'outline-0 my-0'
+
+  }
+}
+</style>
