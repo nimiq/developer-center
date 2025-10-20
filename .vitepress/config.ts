@@ -58,7 +58,7 @@ export default async () => {
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: homepage }],
-      ['meta', { property: 'og:image', content: `${base}og-image.png` }],
+      ['meta', { property: 'og:image', content: `${base}${base ? '/' : ''}og-image.png` }],
       ['meta', { property: 'og:site_name', content: title }],
       ['meta', { property: 'og:determiner', content: 'the' }],
       ['meta', { property: 'og:locale', content: 'en_US' }],

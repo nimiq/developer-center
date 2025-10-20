@@ -9,7 +9,7 @@
     "name": "Nimiq",
     "url": "https://nimiq.com"
   },
-  "homepage": "https://nimiq.github.io/developer-center/",
+  "homepage": "https://nimiq.com/developers",
   "scripts": {
     "dev": "DEPLOYMENT_MODE=development vitepress dev",
     "build": "DEPLOYMENT_MODE=production vitepress build",
@@ -101,7 +101,8 @@
       "simple-git-hooks",
       "unrs-resolver",
       "utf-8-validate",
-      "vue-demi"
+      "vue-demi",
+      "workerd"
     ]
   },
   "simple-git-hooks": {
