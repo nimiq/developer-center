@@ -24,13 +24,13 @@ export default defineConfig({
   ],
 
   presets: [
-    presetOnmax(),
     presetNimiq({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
       fonts: false, // Disable fonts in preset, we configure them separately with longer timeout
     }),
+    presetOnmax(),
     presetWebFonts({
       provider: 'google',
       fonts: {
