@@ -105,7 +105,10 @@
       "utf-8-validate",
       "vue-demi",
       "workerd"
-    ]
+    ],
+    "overrides": {
+      "unocss-preset-onmax": "link:../../personal/unocss-preset-onmax/packages/unocss-preset-onmax"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
