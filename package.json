@@ -78,7 +78,7 @@
     "typescript": "^5.9.2",
     "unocss": "66.5.1",
     "unocss-preset-fluid-sizing": "^0.0.17",
-    "unocss-preset-onmax": "1.0.0-beta.51",
+    "unocss-preset-onmax": "1.0.0-beta.52",
     "unocss-preset-scale-px": "^0.0.2",
     "unplugin-auto-import": "^20.1.0",
     "unplugin-icons": "^22.3.0",
@@ -106,7 +106,9 @@
       "vue-demi",
       "workerd"
     ],
-    "overrides": {}
+    "overrides": {
+      "unocss-preset-onmax": "link:../../personal/unocss-preset-onmax/packages/unocss-preset-onmax"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
