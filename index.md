@@ -21,7 +21,6 @@ hero:
       label: Wallet Integration
       href: ./hub/
       bgColor: green
-      iconColor: "#065346"
       iconClass: absolute bottom--48 right--32 text-256
       class: "md:grid-row-span-full [&_p]:max-w-none"
     - icon: i-local:nimiq-rpc
