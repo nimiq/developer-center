@@ -107,7 +107,7 @@
       "workerd"
     ],
     "overrides": {
-      "unocss-preset-onmax": "link:../../personal/unocss-preset-onmax/packages/unocss-preset-onmax"
+      "unocss-preset-onmax": "1.0.0-beta.52"
     }
   },
   "simple-git-hooks": {
