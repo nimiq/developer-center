@@ -2,7 +2,7 @@
   "name": "nimiq-developer-center",
   "title": "Nimiq Developer Center",
   "type": "module",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "packageManager": "pnpm@10.19.0",
   "description": "Guides, resources and tips on how to create with Nimiq. Start building the future now!",
   "author": {
