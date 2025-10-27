@@ -122,6 +122,17 @@ function getTypeString(schema: any): string {
     return schema.oneOf.map((s: any) => s.type).join(' | ')
   }
   if (schema.type === 'array' && schema.items) {
+    // Check if items is a tuple (object with numeric properties)
+    if (schema.items.type === 'object' && schema.items.properties) {
+      const props = Object.keys(schema.items.properties)
+      const allNumeric = props.every((p: string) => /^\d+$/.test(p))
+      if (allNumeric) {
+        // Sort numeric keys and get their types
+        const sortedKeys = props.sort((a, b) => Number(a) - Number(b))
+        const tupleTypes = sortedKeys.map(key => schema.items.properties[key].type || 'any')
+        return `[${tupleTypes.join(', ')}][]`
+      }
+    }
     const itemType = schema.items.type || 'any'
     return `${itemType}[]`
   }
