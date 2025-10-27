@@ -2,7 +2,7 @@
 
 # Interface: PlainStandardProof
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:252
+Defined in: @nimiq/core/types/wasm/web.d.ts:409
 
 JSON-compatible and human-readable format of standard transaction proofs.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of standard transaction proofs.
 
 > **pathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:257
+Defined in: @nimiq/core/types/wasm/web.d.ts:414
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:257
 
 > **publicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:255
+Defined in: @nimiq/core/types/wasm/web.d.ts:412
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:255
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:253
+Defined in: @nimiq/core/types/wasm/web.d.ts:410
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:253
 
 > **signature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:254
+Defined in: @nimiq/core/types/wasm/web.d.ts:411
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:254
 
 > **signer**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:256
+Defined in: @nimiq/core/types/wasm/web.d.ts:413

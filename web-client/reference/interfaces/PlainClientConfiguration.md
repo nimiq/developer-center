@@ -2,7 +2,7 @@
 
 # Interface: PlainClientConfiguration
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:109
+Defined in: @nimiq/core/types/wasm/web.d.ts:591
 
 ## Properties
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:109
 
 > `optional` **desiredPeerCount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:114
+Defined in: @nimiq/core/types/wasm/web.d.ts:596
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:114
 
 > `optional` **logLevel**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:112
+Defined in: @nimiq/core/types/wasm/web.d.ts:594
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:112
 
 > `optional` **networkId**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:110
+Defined in: @nimiq/core/types/wasm/web.d.ts:592
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:110
 
 > `optional` **numInitialConnections**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:119
+Defined in: @nimiq/core/types/wasm/web.d.ts:601
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:119
 
 > `optional` **onlySecureWsConnections**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:113
+Defined in: @nimiq/core/types/wasm/web.d.ts:595
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:113
 
 > `optional` **peerCountMax**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:115
+Defined in: @nimiq/core/types/wasm/web.d.ts:597
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:115
 
 > `optional` **peerCountPerIpMax**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:116
+Defined in: @nimiq/core/types/wasm/web.d.ts:598
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:116
 
 > `optional` **peerCountPerSubnetMax**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:117
+Defined in: @nimiq/core/types/wasm/web.d.ts:599
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:117
 
 > `optional` **seedNodes**: `string`[]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:111
+Defined in: @nimiq/core/types/wasm/web.d.ts:593
 
 ***
 
@@ -82,4 +82,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:111
 
 > `optional` **syncMode**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:118
+Defined in: @nimiq/core/types/wasm/web.d.ts:600

@@ -2,7 +2,7 @@
 
 # Interface: PlainRawData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:135
+Defined in: @nimiq/core/types/wasm/web.d.ts:292
 
 Placeholder struct to serialize data of transactions as hex strings in the style of the Nimiq 1.0 library.
 
@@ -12,4 +12,4 @@ Placeholder struct to serialize data of transactions as hex strings in the style
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:136
+Defined in: @nimiq/core/types/wasm/web.d.ts:293

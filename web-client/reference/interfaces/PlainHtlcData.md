@@ -2,7 +2,7 @@
 
 # Interface: PlainHtlcData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:153
+Defined in: @nimiq/core/types/wasm/web.d.ts:310
 
 JSON-compatible and human-readable format of HTLC creation data.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of HTLC creation data.
 
 > **hashAlgorithm**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:157
+Defined in: @nimiq/core/types/wasm/web.d.ts:314
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:157
 
 > **hashCount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:159
+Defined in: @nimiq/core/types/wasm/web.d.ts:316
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:159
 
 > **hashRoot**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:158
+Defined in: @nimiq/core/types/wasm/web.d.ts:315
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:158
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:154
+Defined in: @nimiq/core/types/wasm/web.d.ts:311
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:154
 
 > **recipient**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:156
+Defined in: @nimiq/core/types/wasm/web.d.ts:313
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:156
 
 > **sender**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:155
+Defined in: @nimiq/core/types/wasm/web.d.ts:312
 
 ***
 
@@ -60,4 +60,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:155
 
 > **timeout**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:160
+Defined in: @nimiq/core/types/wasm/web.d.ts:317

@@ -2,7 +2,7 @@
 
 # Interface: PlainMicroBlock
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:105
+Defined in: @nimiq/core/types/wasm/web.d.ts:248
 
 JSON-compatible and human-readable format of blocks.
 
@@ -16,7 +16,7 @@ JSON-compatible and human-readable format of blocks.
 
 > **batch**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:42
+Defined in: @nimiq/core/types/wasm/web.d.ts:185
 
 The batch number that the block is in.
 
@@ -30,7 +30,7 @@ The batch number that the block is in.
 
 > **bodyHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:83
+Defined in: @nimiq/core/types/wasm/web.d.ts:226
 
 The root of the Merkle tree of the body, in HEX format. It acts as a commitment to the body.
 
@@ -44,7 +44,7 @@ The root of the Merkle tree of the body, in HEX format. It acts as a commitment 
 
 > **epoch**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:46
+Defined in: @nimiq/core/types/wasm/web.d.ts:189
 
 The epoch number that the block is in.
 
@@ -58,7 +58,7 @@ The epoch number that the block is in.
 
 > **extraData**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:75
+Defined in: @nimiq/core/types/wasm/web.d.ts:218
 
 The extra data of the block, in HEX format. Up to 32 raw bytes.
 
@@ -76,7 +76,7 @@ No planned use otherwise.
 
 > **hash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:30
+Defined in: @nimiq/core/types/wasm/web.d.ts:173
 
 The block\'s unique hash, used as its identifier, in HEX format.
 
@@ -90,7 +90,7 @@ The block\'s unique hash, used as its identifier, in HEX format.
 
 > **height**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:38
+Defined in: @nimiq/core/types/wasm/web.d.ts:181
 
 The block\'s block height, also called block number.
 
@@ -104,7 +104,7 @@ The block\'s block height, also called block number.
 
 > **historyHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:87
+Defined in: @nimiq/core/types/wasm/web.d.ts:230
 
 A Merkle root over all of the transactions that happened in the current epoch, in HEX format.
 
@@ -118,7 +118,7 @@ A Merkle root over all of the transactions that happened in the current epoch, i
 
 > **network**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:54
+Defined in: @nimiq/core/types/wasm/web.d.ts:197
 
 The network that this block is valid for.
 
@@ -132,7 +132,7 @@ The network that this block is valid for.
 
 > **prevHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:62
+Defined in: @nimiq/core/types/wasm/web.d.ts:205
 
 The hash of the header of the immediately preceding block (either micro or macro), in HEX format.
 
@@ -146,7 +146,7 @@ The hash of the header of the immediately preceding block (either micro or macro
 
 > **seed**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:67
+Defined in: @nimiq/core/types/wasm/web.d.ts:210
 
 The seed of the block. This is the BLS signature of the seed of the immediately preceding
 block (either micro or macro) using the validator key of the block producer.
@@ -161,7 +161,7 @@ block (either micro or macro) using the validator key of the block producer.
 
 > **size**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:34
+Defined in: @nimiq/core/types/wasm/web.d.ts:177
 
 The block\'s on-chain size, in bytes.
 
@@ -175,7 +175,7 @@ The block\'s on-chain size, in bytes.
 
 > **stateHash**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:79
+Defined in: @nimiq/core/types/wasm/web.d.ts:222
 
 The root of the Merkle tree of the blockchain state, in HEX format. It acts as a commitment to the state.
 
@@ -189,7 +189,7 @@ The root of the Merkle tree of the blockchain state, in HEX format. It acts as a
 
 > **timestamp**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:50
+Defined in: @nimiq/core/types/wasm/web.d.ts:193
 
 The timestamp of the block. It follows the Unix time and has millisecond precision.
 
@@ -203,7 +203,7 @@ The timestamp of the block. It follows the Unix time and has millisecond precisi
 
 > **version**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:58
+Defined in: @nimiq/core/types/wasm/web.d.ts:201
 
 The protocol version that this block is valid for.
 

@@ -2,7 +2,7 @@
 
 # Class: BLSSecretKey
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:743
+Defined in: @nimiq/core/types/wasm/web.d.ts:746
 
 The secret part of the BLS keypair.
 This is specified in the config file, and is used by Validators to vote.
@@ -13,7 +13,7 @@ This is specified in the config file, and is used by Validators to vote.
 
 > **new BLSSecretKey**(`bytes`): `BLSSecretKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:756
+Defined in: @nimiq/core/types/wasm/web.d.ts:760
 
 Creates a new private key from a byte array.
 
@@ -29,11 +29,23 @@ Creates a new private key from a byte array.
 
 ## Methods
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:748
+
+#### Returns
+
+`void`
+
+***
+
 ### free()
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:744
+Defined in: @nimiq/core/types/wasm/web.d.ts:747
 
 #### Returns
 
@@ -45,7 +57,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:744
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:760
+Defined in: @nimiq/core/types/wasm/web.d.ts:764
 
 Serializes the private key to a byte array.
 
@@ -59,7 +71,7 @@ Serializes the private key to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:768
+Defined in: @nimiq/core/types/wasm/web.d.ts:772
 
 Formats the private key into a hex string.
 
@@ -73,7 +85,7 @@ Formats the private key into a hex string.
 
 > `static` **deserialize**(`bytes`): `BLSSecretKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:752
+Defined in: @nimiq/core/types/wasm/web.d.ts:756
 
 Deserializes a private key from a byte array.
 
@@ -93,7 +105,7 @@ Deserializes a private key from a byte array.
 
 > `static` **fromHex**(`hex`): `BLSSecretKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:764
+Defined in: @nimiq/core/types/wasm/web.d.ts:768
 
 Parses a private key from its hex representation.
 
@@ -113,7 +125,7 @@ Parses a private key from its hex representation.
 
 > `static` **generate**(): `BLSSecretKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:748
+Defined in: @nimiq/core/types/wasm/web.d.ts:752
 
 Generates a new private key from secure randomness.
 

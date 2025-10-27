@@ -3,7 +3,7 @@
   "info": {
     "title": "Nimiq JSON-RPC Specification",
     "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
-    "version": "v1.1.1",
+    "version": "v1.2.0",
     "contact": {
       "name": "The Nimiq Core Development Team <info@nimiq.com>",
       "email": "",
@@ -1343,6 +1343,33 @@
       }
     },
     {
+      "name": "getAddressBook",
+      "description": "Returns the address book",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "0": {
+                "type": "string"
+              },
+              "1": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "getBatchAt",
       "description": "Returns the batch number at a given `block_number` (height).",
       "tags": [
@@ -1971,6 +1998,22 @@
       }
     },
     {
+      "name": "getNetworkId",
+      "description": "Returns the network ID.",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "NetworkId",
+        "schema": {
+          "$ref": "#/components/schemas/NetworkId"
+        }
+      }
+    },
+    {
       "name": "getPeerCount",
       "description": "Returns the number of peers.",
       "tags": [
@@ -2214,6 +2257,22 @@
       }
     },
     {
+      "name": "getSyncStatus",
+      "description": "Returns the status of the sync process",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "ConsensusSyncStatus",
+        "schema": {
+          "$ref": "#/components/schemas/ConsensusSyncStatus"
+        }
+      }
+    },
+    {
       "name": "getTransactionByHash",
       "description": "Tries to fetch a transaction (including reward transactions) given its hash.",
       "tags": [
@@ -2298,6 +2357,55 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "getTransactionReferencesByAddress",
+      "description": "Returns the transactions receipts (similar to get transactions by address)",
+      "tags": [
+        {
+          "name": "blockchain"
+        }
+      ],
+      "params": [
+        {
+          "name": "address",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "max",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "startAt",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Vec",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "0": {
+                "type": "string"
+              },
+              "1": {
+                "type": "number"
+              }
+            }
           }
         }
       }
@@ -4693,7 +4801,6 @@
           "coinbaseAddress",
           "transactionValidityWindow",
           "maxSizeMicroBody",
-          "version",
           "slots",
           "blocksPerBatch",
           "batchesPerEpoch",
@@ -4703,7 +4810,8 @@
           "totalSupply",
           "blockSeparationTime",
           "jailEpochs",
-          "genesisBlockNumber"
+          "genesisBlockNumber",
+          "maxSupportedVersion"
         ],
         "properties": {
           "stakingContractAddress": {
@@ -4720,10 +4828,6 @@
           },
           "maxSizeMicroBody": {
             "title": "maxSizeMicroBody",
-            "type": "number"
-          },
-          "version": {
-            "title": "version",
             "type": "number"
           },
           "slots": {
@@ -4764,6 +4868,10 @@
           },
           "genesisBlockNumber": {
             "title": "genesisBlockNumber",
+            "type": "number"
+          },
+          "maxSupportedVersion": {
+            "title": "maxSupportedVersion",
             "type": "number"
           }
         }

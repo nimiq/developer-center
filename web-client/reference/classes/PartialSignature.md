@@ -2,7 +2,7 @@
 
 # Class: PartialSignature
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1403
+Defined in: @nimiq/core/types/wasm/web.d.ts:1418
 
 A partial signature is a signature of one of the co-signers in a multisig.
 Combining all partial signatures yields the full signature (combining is done through summation).
@@ -13,7 +13,7 @@ Combining all partial signatures yields the full signature (combining is done th
 
 > **new PartialSignature**(`bytes`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1423
+Defined in: @nimiq/core/types/wasm/web.d.ts:1439
 
 Creates a new partial signature from a byte array.
 
@@ -35,7 +35,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1444
+Defined in: @nimiq/core/types/wasm/web.d.ts:1460
 
 ***
 
@@ -43,7 +43,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1444
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1443
+Defined in: @nimiq/core/types/wasm/web.d.ts:1459
 
 ## Methods
 
@@ -51,7 +51,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1443
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1405
+Defined in: @nimiq/core/types/wasm/web.d.ts:1421
 
 #### Returns
 
@@ -59,11 +59,23 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1405
 
 ***
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1420
+
+#### Returns
+
+`void`
+
+***
+
 ### equals()
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1442
+Defined in: @nimiq/core/types/wasm/web.d.ts:1458
 
 Returns if this partial signature is equal to the other partial signature.
 
@@ -83,7 +95,7 @@ Returns if this partial signature is equal to the other partial signature.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1404
+Defined in: @nimiq/core/types/wasm/web.d.ts:1419
 
 #### Returns
 
@@ -95,7 +107,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1404
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1428
+Defined in: @nimiq/core/types/wasm/web.d.ts:1444
 
 Serializes the partial signature to a byte array.
 
@@ -109,7 +121,7 @@ Serializes the partial signature to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1438
+Defined in: @nimiq/core/types/wasm/web.d.ts:1454
 
 Formats the partial signature into a hex string.
 
@@ -123,7 +135,7 @@ Formats the partial signature into a hex string.
 
 > `static` **create**(`own_private_key`, `own_public_key`, `own_commitment_pairs`, `other_public_keys`, `other_commitments`, `data`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1424
+Defined in: @nimiq/core/types/wasm/web.d.ts:1440
 
 #### Parameters
 
@@ -161,7 +173,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1424
 
 > `static` **deserialize**(`bytes`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1417
+Defined in: @nimiq/core/types/wasm/web.d.ts:1433
 
 Deserializes a partial signature from a byte array.
 
@@ -183,7 +195,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`secret`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1411
+Defined in: @nimiq/core/types/wasm/web.d.ts:1427
 
 Parses a partial signature from a PartialSignature instance, a hex string representation, or a byte array.
 
@@ -205,7 +217,7 @@ Throws when a PartialSignature cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1434
+Defined in: @nimiq/core/types/wasm/web.d.ts:1450
 
 Parses a partial signature from its hex representation.
 

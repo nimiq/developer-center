@@ -2,7 +2,7 @@
 
 # Interface: PlainStaker
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:471
+Defined in: @nimiq/core/types/wasm/web.d.ts:60
 
 JSON-compatible and human-readable format of a staker. E.g. delegation addresses are presented in their
 human-readable format.
@@ -13,7 +13,7 @@ human-readable format.
 
 > **balance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:475
+Defined in: @nimiq/core/types/wasm/web.d.ts:64
 
 The staker\'s active balance.
 
@@ -23,7 +23,7 @@ The staker\'s active balance.
 
 > **delegation**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:480
+Defined in: @nimiq/core/types/wasm/web.d.ts:69
 
 The address of the validator for which the staker is delegating its stake for. If it is not
 delegating to any validator, this will be set to None.
@@ -34,7 +34,7 @@ delegating to any validator, this will be set to None.
 
 > **inactiveBalance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:487
+Defined in: @nimiq/core/types/wasm/web.d.ts:76
 
 The staker\'s inactive balance. Only released inactive balance can be withdrawn from the staking contract.
 Stake can only be re-delegated if the whole balance of the staker is inactive and released
@@ -47,7 +47,7 @@ the inactive and the validator\'s jailed periods must have passed.
 
 > **inactiveFrom**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:495
+Defined in: @nimiq/core/types/wasm/web.d.ts:84
 
 The block number at which the inactive balance was last inactivated.
 If the stake is currently delegated to a jailed validator, the maximum of its jail release
@@ -61,7 +61,7 @@ future block height.
 
 > **inactiveRelease**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:501
+Defined in: @nimiq/core/types/wasm/web.d.ts:90
 
 The block number from which the staker\'s `inactive_balance` gets released, e.g. for retirement.
 Re-delegation requires the whole balance of the staker to be inactive and released, as well as
@@ -73,7 +73,7 @@ its delegated validator to not currently be jailed.
 
 > **retiredBalance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:508
+Defined in: @nimiq/core/types/wasm/web.d.ts:97
 
 The staker\'s retired balance. Retired balance can only be withdrawn, thus retiring is irreversible.
 Only released inactive balance can be retired, so the maximum of the inactive and the validator\'s jailed

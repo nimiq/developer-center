@@ -2,17 +2,29 @@
 
 # Class: VestingContract
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2241
+Defined in: @nimiq/core/types/wasm/web.d.ts:2266
 
 Utility class providing methods to parse Vesting Contract transaction data and proofs.
 
 ## Methods
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2269
+
+#### Returns
+
+`void`
+
+***
+
 ### free()
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2243
+Defined in: @nimiq/core/types/wasm/web.d.ts:2268
 
 #### Returns
 
@@ -24,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2243
 
 > `static` **dataToPlain**(`data`, `tx_value`): [`PlainTransactionRecipientData`](../type-aliases/PlainTransactionRecipientData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2247
+Defined in: @nimiq/core/types/wasm/web.d.ts:2273
 
 Parses the data of a Vesting Contract creation transaction into a plain object.
 
@@ -48,7 +60,7 @@ Parses the data of a Vesting Contract creation transaction into a plain object.
 
 > `static` **proofToPlain**(`proof`): [`PlainTransactionProof`](../type-aliases/PlainTransactionProof.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2251
+Defined in: @nimiq/core/types/wasm/web.d.ts:2277
 
 Parses the proof of a Vesting Contract claiming transaction into a plain object.
 

@@ -2,7 +2,7 @@
 
 # Interface: PlainValidatorData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:191
+Defined in: @nimiq/core/types/wasm/web.d.ts:348
 
 JSON-compatible and human-readable format of validator deactivation/reactivation data.
 Used for DeactivateValidator & ReactivateValidator, as they have the same fields.
@@ -13,7 +13,7 @@ Used for DeactivateValidator & ReactivateValidator, as they have the same fields
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:192
+Defined in: @nimiq/core/types/wasm/web.d.ts:349
 
 ***
 
@@ -21,4 +21,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:192
 
 > **validator**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:193
+Defined in: @nimiq/core/types/wasm/web.d.ts:350

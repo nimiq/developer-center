@@ -2,7 +2,7 @@
 
 # Class: PrivateKey
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1684
+Defined in: @nimiq/core/types/wasm/web.d.ts:1701
 
 The secret (private) part of an asymmetric key pair that is typically used to digitally sign or decrypt data.
 
@@ -12,7 +12,7 @@ The secret (private) part of an asymmetric key pair that is typically used to di
 
 > **new PrivateKey**(`bytes`): `PrivateKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1701
+Defined in: @nimiq/core/types/wasm/web.d.ts:1719
 
 Creates a new private key from a byte array.
 
@@ -34,7 +34,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1722
+Defined in: @nimiq/core/types/wasm/web.d.ts:1740
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1722
 
 > `readonly` `static` **PURPOSE\_ID**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1720
+Defined in: @nimiq/core/types/wasm/web.d.ts:1738
 
 ***
 
@@ -50,15 +50,27 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1720
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1721
+Defined in: @nimiq/core/types/wasm/web.d.ts:1739
 
 ## Methods
+
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1703
+
+#### Returns
+
+`void`
+
+***
 
 ### equals()
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1719
+Defined in: @nimiq/core/types/wasm/web.d.ts:1737
 
 Returns if this private key is equal to the other private key.
 
@@ -78,7 +90,7 @@ Returns if this private key is equal to the other private key.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1685
+Defined in: @nimiq/core/types/wasm/web.d.ts:1702
 
 #### Returns
 
@@ -90,7 +102,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1685
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1705
+Defined in: @nimiq/core/types/wasm/web.d.ts:1723
 
 Serializes the private key to a byte array.
 
@@ -104,7 +116,7 @@ Serializes the private key to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1715
+Defined in: @nimiq/core/types/wasm/web.d.ts:1733
 
 Formats the private key into a hex string.
 
@@ -118,7 +130,7 @@ Formats the private key into a hex string.
 
 > `static` **deserialize**(`bytes`): `PrivateKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1695
+Defined in: @nimiq/core/types/wasm/web.d.ts:1713
 
 Deserializes a private key from a byte array.
 
@@ -140,7 +152,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromHex**(`hex`): `PrivateKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1711
+Defined in: @nimiq/core/types/wasm/web.d.ts:1729
 
 Parses a private key from its hex representation.
 
@@ -162,7 +174,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **generate**(): `PrivateKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1689
+Defined in: @nimiq/core/types/wasm/web.d.ts:1707
 
 Generates a new private key from secure randomness.
 

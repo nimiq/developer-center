@@ -2,15 +2,27 @@
 
 # Class: Hash
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1267
+Defined in: @nimiq/core/types/wasm/web.d.ts:1278
 
 ## Methods
+
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1281
+
+#### Returns
+
+`void`
+
+***
 
 ### free()
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1269
+Defined in: @nimiq/core/types/wasm/web.d.ts:1280
 
 #### Returns
 
@@ -22,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1269
 
 > `static` **computeBlake2b**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1277
+Defined in: @nimiq/core/types/wasm/web.d.ts:1289
 
 Computes a 32-byte [Blake2b] hash from the input data.
 
@@ -46,7 +58,7 @@ Blake2b is used for example to compute a public key's address.
 
 > `static` **computeNimiqArgon2d**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1302
+Defined in: @nimiq/core/types/wasm/web.d.ts:1314
 
 Computes an [Argon2d] hash with some Nimiq-specific parameters.
 
@@ -87,7 +99,7 @@ password.
 
 > `static` **computeNimiqArgon2id**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1315
+Defined in: @nimiq/core/types/wasm/web.d.ts:1327
 
 Computes an [Argon2id] hash with some Nimiq-specific parameters.
 
@@ -128,7 +140,7 @@ password.
 
 > `static` **computeSha256**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1283
+Defined in: @nimiq/core/types/wasm/web.d.ts:1295
 
 Computes a 32-byte [SHA256] hash from the input data.
 
@@ -150,7 +162,7 @@ Computes a 32-byte [SHA256] hash from the input data.
 
 > `static` **computeSha512**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1289
+Defined in: @nimiq/core/types/wasm/web.d.ts:1301
 
 Computes a 64-byte [SHA512] hash from the input data.
 

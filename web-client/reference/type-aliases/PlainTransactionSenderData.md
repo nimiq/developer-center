@@ -4,6 +4,6 @@
 
 > **PlainTransactionSenderData** = `object` & [`PlainRawData`](../interfaces/PlainRawData.md) \| `object` & [`PlainRawData`](../interfaces/PlainRawData.md) \| `object` & [`PlainRawData`](../interfaces/PlainRawData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:125
+Defined in: @nimiq/core/types/wasm/web.d.ts:282
 
 Enum over all possible meanings of a transaction\'s sender data.

@@ -2,17 +2,29 @@
 
 # Class: MerkleTree
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1391
+Defined in: @nimiq/core/types/wasm/web.d.ts:1405
 
 The Merkle tree is a data structure that allows for efficient verification of the membership of an element in a set.
 
 ## Methods
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1408
+
+#### Returns
+
+`void`
+
+***
+
 ### free()
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1393
+Defined in: @nimiq/core/types/wasm/web.d.ts:1407
 
 #### Returns
 
@@ -24,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1393
 
 > `static` **computeRoot**(`values`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1397
+Defined in: @nimiq/core/types/wasm/web.d.ts:1412
 
 Computes the root of a Merkle tree from a list of Uint8Arrays.
 

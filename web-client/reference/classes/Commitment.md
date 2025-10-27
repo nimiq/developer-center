@@ -2,7 +2,7 @@
 
 # Class: Commitment
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1030
+Defined in: @nimiq/core/types/wasm/web.d.ts:1036
 
 A cryptographic commitment to a [RandomSecret](RandomSecret.md). The commitment is public, while the secret is, well, secret.
 
@@ -12,7 +12,7 @@ A cryptographic commitment to a [RandomSecret](RandomSecret.md). The commitment 
 
 > **new Commitment**(`bytes`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1058
+Defined in: @nimiq/core/types/wasm/web.d.ts:1065
 
 Creates a new commitment from a byte array.
 
@@ -34,7 +34,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1078
+Defined in: @nimiq/core/types/wasm/web.d.ts:1085
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1078
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1077
+Defined in: @nimiq/core/types/wasm/web.d.ts:1084
 
 ## Methods
 
@@ -50,7 +50,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1077
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1032
+Defined in: @nimiq/core/types/wasm/web.d.ts:1039
 
 #### Returns
 
@@ -58,11 +58,23 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1032
 
 ***
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1038
+
+#### Returns
+
+`void`
+
+***
+
 ### equals()
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1076
+Defined in: @nimiq/core/types/wasm/web.d.ts:1083
 
 Returns if this commitment is equal to the other commitment.
 
@@ -82,7 +94,7 @@ Returns if this commitment is equal to the other commitment.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1031
+Defined in: @nimiq/core/types/wasm/web.d.ts:1037
 
 #### Returns
 
@@ -94,7 +106,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1031
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1062
+Defined in: @nimiq/core/types/wasm/web.d.ts:1069
 
 Serializes the commitment to a byte array.
 
@@ -108,7 +120,7 @@ Serializes the commitment to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1072
+Defined in: @nimiq/core/types/wasm/web.d.ts:1079
 
 Formats the commitment into a hex string.
 
@@ -122,7 +134,7 @@ Formats the commitment into a hex string.
 
 > `static` **derive**(`random_secret`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1036
+Defined in: @nimiq/core/types/wasm/web.d.ts:1043
 
 Derives a commitment from an existing random secret.
 
@@ -142,7 +154,7 @@ Derives a commitment from an existing random secret.
 
 > `static` **deserialize**(`bytes`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1052
+Defined in: @nimiq/core/types/wasm/web.d.ts:1059
 
 Deserializes a commitment from a byte array.
 
@@ -164,7 +176,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`commitment`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1046
+Defined in: @nimiq/core/types/wasm/web.d.ts:1053
 
 Parses a commitment from a Commitment instance, a hex string representation, or a byte array.
 
@@ -186,7 +198,7 @@ Throws when a Commitment cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1068
+Defined in: @nimiq/core/types/wasm/web.d.ts:1075
 
 Parses a commitment from its hex representation.
 
@@ -208,7 +220,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **sum**(`commitments`): `Commitment`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1040
+Defined in: @nimiq/core/types/wasm/web.d.ts:1047
 
 Sums up multiple commitments into one aggregated commitment.
 

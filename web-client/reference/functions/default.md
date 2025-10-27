@@ -4,7 +4,7 @@
 
 > **default**(`module_or_path?`): `Promise`\<[`InitOutput`](../interfaces/InitOutput.md)\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2623
+Defined in: @nimiq/core/types/wasm/web.d.ts:2649
 
 If `module_or_path` is {RequestInfo} or {URL}, makes a request and
 for everything else, calls `WebAssembly.instantiate` directly.

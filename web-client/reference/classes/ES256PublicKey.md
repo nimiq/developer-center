@@ -2,7 +2,7 @@
 
 # Class: ES256PublicKey
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1159
+Defined in: @nimiq/core/types/wasm/web.d.ts:1168
 
 The non-secret (public) part of an ES256 asymmetric key pair that is typically used to digitally verify or encrypt data.
 
@@ -12,7 +12,7 @@ The non-secret (public) part of an ES256 asymmetric key pair that is typically u
 
 > **new ES256PublicKey**(`bytes`): `ES256PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1203
+Defined in: @nimiq/core/types/wasm/web.d.ts:1213
 
 Creates a new public key from a byte array.
 
@@ -52,7 +52,7 @@ const publicKey = new Nimiq.ES256PublicKey(new Uint8Array(cred.response.getPubli
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1161
+Defined in: @nimiq/core/types/wasm/web.d.ts:1171
 
 #### Returns
 
@@ -60,11 +60,23 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1161
 
 ***
 
+### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1170
+
+#### Returns
+
+`void`
+
+***
+
 ### compare()
 
 > **compare**(`other`): `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1232
+Defined in: @nimiq/core/types/wasm/web.d.ts:1242
 
 Compares this public key to the other public key.
 
@@ -87,7 +99,7 @@ and 1 if this public key is larger than the other public key.
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1225
+Defined in: @nimiq/core/types/wasm/web.d.ts:1235
 
 Returns if this public key is equal to the other public key.
 
@@ -107,7 +119,7 @@ Returns if this public key is equal to the other public key.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1160
+Defined in: @nimiq/core/types/wasm/web.d.ts:1169
 
 #### Returns
 
@@ -119,7 +131,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1160
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1207
+Defined in: @nimiq/core/types/wasm/web.d.ts:1217
 
 Serializes the public key to a byte array.
 
@@ -133,7 +145,7 @@ Serializes the public key to a byte array.
 
 > **toAddress**(): [`Address`](Address.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1221
+Defined in: @nimiq/core/types/wasm/web.d.ts:1231
 
 Gets the public key's address.
 
@@ -147,7 +159,7 @@ Gets the public key's address.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1217
+Defined in: @nimiq/core/types/wasm/web.d.ts:1227
 
 Formats the public key into a hex string.
 
@@ -161,7 +173,7 @@ Formats the public key into a hex string.
 
 > **verify**(`signature`, `data`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1165
+Defined in: @nimiq/core/types/wasm/web.d.ts:1175
 
 Verifies that a signature is valid for this public key and the provided data.
 
@@ -185,7 +197,7 @@ Verifies that a signature is valid for this public key and the provided data.
 
 > `static` **deserialize**(`bytes`): `ES256PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1171
+Defined in: @nimiq/core/types/wasm/web.d.ts:1181
 
 Deserializes a public key from a byte array.
 
@@ -207,7 +219,7 @@ Throws when the byte array contains less than 33 bytes.
 
 > `static` **fromHex**(`hex`): `ES256PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1213
+Defined in: @nimiq/core/types/wasm/web.d.ts:1223
 
 Parses a public key from its hex representation.
 
@@ -229,7 +241,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **fromRaw**(`raw_bytes`): `ES256PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1179
+Defined in: @nimiq/core/types/wasm/web.d.ts:1189
 
 Deserializes a public key from its raw representation.
 
@@ -249,7 +261,7 @@ Deserializes a public key from its raw representation.
 
 > `static` **fromSpki**(`spki_bytes`): `ES256PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1175
+Defined in: @nimiq/core/types/wasm/web.d.ts:1185
 
 Deserializes a public key from its SPKI representation.
 
