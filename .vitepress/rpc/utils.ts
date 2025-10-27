@@ -145,8 +145,12 @@ function parseOutput(result: any) {
     const isResultRequired = (param: string) => (result.schema as any).required?.includes(param) || false
     const schema = (result.schema as any).properties || []
     const properties = Object.keys(schema)
+
+    // Check if all properties are numeric (tuple representation)
+    const allNumeric = properties.every(prop => /^\d+$/.test(prop))
+
     output = properties.map((prop: string) => ({
-      key: prop,
+      key: allNumeric ? `[${prop}]` : prop,
       type: getTypeString(schema[prop]),
       required: isResultRequired(prop),
       label: schema[prop].humanReadableName,
