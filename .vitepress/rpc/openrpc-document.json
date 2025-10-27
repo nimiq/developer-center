@@ -53,7 +53,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -103,7 +103,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -162,7 +169,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -214,7 +228,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -266,7 +287,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -346,7 +374,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -386,7 +421,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value",
@@ -405,7 +440,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -478,7 +520,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -551,7 +600,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -603,7 +659,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -669,7 +732,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -749,7 +819,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -808,7 +885,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -867,7 +951,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -919,7 +1010,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -945,7 +1043,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -971,7 +1069,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1016,7 +1121,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1042,7 +1154,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -1068,7 +1180,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1120,7 +1239,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1146,7 +1272,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -1160,7 +1286,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "reactivateAllStake",
@@ -1179,7 +1305,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1219,28 +1352,28 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newVotingSecretKey",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newRewardAddress",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newSignalData",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fee",
@@ -1252,7 +1385,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1502,7 +1642,7 @@
           "schema": {
             "type": "boolean"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -1533,7 +1673,7 @@
           "schema": {
             "type": "boolean"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -1899,7 +2039,7 @@
           "schema": {
             "type": "boolean"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2157,7 +2297,7 @@
           "schema": {
             "type": "number"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2341,14 +2481,14 @@
           "schema": {
             "type": "number"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "startAt",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2382,14 +2522,14 @@
           "schema": {
             "type": "number"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "startAt",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2431,14 +2571,14 @@
           "schema": {
             "type": "number"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "startAt",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2620,7 +2760,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -2996,7 +3136,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3055,7 +3202,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3107,7 +3261,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3159,7 +3320,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3239,7 +3407,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3279,7 +3454,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value",
@@ -3298,7 +3473,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3371,7 +3553,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3444,7 +3633,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3520,7 +3716,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3586,7 +3789,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3666,7 +3876,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3725,7 +3942,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3784,7 +4008,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3836,7 +4067,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3862,7 +4100,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -3888,7 +4126,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3933,7 +4178,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3959,7 +4211,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -3985,7 +4237,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4037,7 +4296,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4063,7 +4329,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stakerWallet",
@@ -4077,7 +4343,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "reactivateAllStake",
@@ -4096,7 +4362,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4136,28 +4409,28 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newVotingSecretKey",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newRewardAddress",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "newSignalData",
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fee",
@@ -4169,7 +4442,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4233,7 +4513,7 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "isHex",
@@ -4297,7 +4577,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4326,7 +4613,7 @@
           "schema": {
             "type": "boolean"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -4440,14 +4727,14 @@
           "schema": {
             "type": "string"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "duration",
           "schema": {
             "type": "number"
           },
-          "required": true
+          "required": false
         }
       ],
       "result": {
@@ -4706,60 +4993,60 @@
           "buckets"
         ],
         "properties": {
-          "0": {
-            "title": "0",
+          "_0": {
+            "title": "_0",
             "type": "number"
           },
-          "1": {
-            "title": "1",
+          "_1": {
+            "title": "_1",
             "type": "number"
           },
-          "2": {
-            "title": "2",
+          "_2": {
+            "title": "_2",
             "type": "number"
           },
-          "5": {
-            "title": "5",
+          "_5": {
+            "title": "_5",
             "type": "number"
           },
-          "10": {
-            "title": "10",
+          "_10": {
+            "title": "_10",
             "type": "number"
           },
-          "20": {
-            "title": "20",
+          "_20": {
+            "title": "_20",
             "type": "number"
           },
-          "50": {
-            "title": "50",
+          "_50": {
+            "title": "_50",
             "type": "number"
           },
-          "100": {
-            "title": "100",
+          "_100": {
+            "title": "_100",
             "type": "number"
           },
-          "200": {
-            "title": "200",
+          "_200": {
+            "title": "_200",
             "type": "number"
           },
-          "500": {
-            "title": "500",
+          "_500": {
+            "title": "_500",
             "type": "number"
           },
-          "1000": {
-            "title": "1000",
+          "_1000": {
+            "title": "_1000",
             "type": "number"
           },
-          "2000": {
-            "title": "2000",
+          "_2000": {
+            "title": "_2000",
             "type": "number"
           },
-          "5000": {
-            "title": "5000",
+          "_5000": {
+            "title": "_5000",
             "type": "number"
           },
-          "10000": {
-            "title": "10000",
+          "_10000": {
+            "title": "_10000",
             "type": "number"
           },
           "total": {
@@ -4789,7 +5076,10 @@
           },
           "disabled": {
             "title": "disabled",
-            "type": "object"
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         }
       },
