@@ -88,7 +88,10 @@ export default defineConfig(async () => {
 
       NimiqVitepressVitePlugin({
         repoURL: 'https://github.com/nimiq/developer-center',
-        llms: false, // Disabled temporarily - conflicts with dynamic RPC routes
+        llms: {
+          ignoreFiles: ['rpc/methods/*'], // Exclude dynamic RPC routes
+          experimental: { depth: 2 },
+        },
       }),
     ],
   }
