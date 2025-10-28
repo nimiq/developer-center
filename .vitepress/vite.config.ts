@@ -88,6 +88,9 @@ export default defineConfig(async () => {
 
       NimiqVitepressVitePlugin({
         repoURL: 'https://github.com/nimiq/developer-center',
+        llms: {
+          experimental: { depth: 2 },
+        },
       }),
     ],
   }
