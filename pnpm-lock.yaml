@@ -78,6 +78,9 @@ importers:
       '@iconify/utils':
         specifier: ^3.0.2
         version: 3.0.2
+      '@mdream/vite':
+        specifier: ^0.13.3
+        version: 0.13.3(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       '@nimiq/core':
         specifier: ^2.2.0
         version: 2.2.0
@@ -1203,6 +1206,11 @@ packages:
 
   '@libsql/isomorphic-ws@0.1.5':
     resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
+
+  '@mdream/vite@0.13.3':
+    resolution: {integrity: sha512-hZSPmOpgbbvnYhcfJGCgDsadrZIm17QU+wQI899i1LOem9NehDp42pv+ydTEqQdZVcTqE6+qpHaZ9NeeQVqekQ==}
+    peerDependencies:
+      vite: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
   '@nimiq/core@2.2.0':
     resolution: {integrity: sha512-6k4bax+cc/XPQCNix9+FUXi0ayY3IO6X7ylAC7n8Enoa93dbVuAX1sBfZzwfmtxLjav8q+PDi0eWd7W7ftBEww==}
@@ -3335,6 +3343,10 @@ packages:
 
   mdn-data@2.12.2:
     resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
+
+  mdream@0.13.3:
+    resolution: {integrity: sha512-etByUQNgLPxQ78zYimGZV12RJ83u56vBsSlbIeHsA3ZSHqmiYXBK8T8OPT5ON/KLxY3QTEFSgmXozBrW0NeBvg==}
+    hasBin: true
 
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
@@ -5667,6 +5679,11 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  '@mdream/vite@0.13.3(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
+    dependencies:
+      mdream: 0.13.3
+      vite: 7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
 
   '@nimiq/core@2.2.0':
     dependencies:
@@ -8144,6 +8161,12 @@ snapshots:
   mdn-data@2.0.28: {}
 
   mdn-data@2.12.2: {}
+
+  mdream@0.13.3:
+    dependencies:
+      cac: 6.7.14
+      pathe: 2.0.3
+      tinyglobby: 0.2.15
 
   mdurl@2.0.0: {}
 

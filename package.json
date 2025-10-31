@@ -48,6 +48,7 @@
     "@iconify-json/tabler": "^1.2.23",
     "@iconify-json/vscode-icons": "^1.2.33",
     "@iconify/utils": "^3.0.2",
+    "@mdream/vite": "^0.13.3",
     "@nimiq/core": "^2.2.0",
     "@open-rpc/meta-schema": "^1.14.9",
     "@rollup/plugin-terser": "^0.4.4",
