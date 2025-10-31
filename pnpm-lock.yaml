@@ -121,8 +121,8 @@ importers:
         specifier: 1.0.0-beta.136
         version: 1.0.0-beta.136(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       nimiq-vitepress-theme:
-        specifier: 1.0.0-beta.140
-        version: 1.0.0-beta.140(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: 1.0.0-beta.141
+        version: 1.0.0-beta.141(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
       nitro:
         specifier: 3.0.1-alpha.0
         version: 3.0.1-alpha.0(chokidar@4.0.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
@@ -3576,11 +3576,14 @@ packages:
   nimiq-icons@1.0.0-beta.136:
     resolution: {integrity: sha512-2jA3/Kkp35dLbbAyRB51+wC+q2sumP+aIkTaTMB5ZlDlCAGS3cblRRGUL32gcVxVr5FtTgvlOMIHhxXMPbRYkQ==}
 
+  nimiq-icons@1.0.0-beta.141:
+    resolution: {integrity: sha512-RZxP2clhAbskLQcNOOb6/nDOzErxL92oK/8o8YgGGpyl0vXME+o+VnkLtj8N45Grx0lSULMxVpqix+e7Rrn0zg==}
+
   nimiq-rpc-client-ts@1.0.0-beta.35:
     resolution: {integrity: sha512-7zUM/ySappO53Kvz7NPI4FA/9ErKCu86QTqC3d/FZDbp5rRYbMqPwJDyhrb6lBTdOk5qzImLGX6KULo53/Nl2Q==}
 
-  nimiq-vitepress-theme@1.0.0-beta.140:
-    resolution: {integrity: sha512-TD+IgQdzzDDvptUBE9zkraQFDOWvuBHs9F29RerBeRqOD4302i4knicqOYWsQJBcE/BAFtS2TIU9NJSkisfP3Q==}
+  nimiq-vitepress-theme@1.0.0-beta.141:
+    resolution: {integrity: sha512-yE7A7i1id8NwMEILvY9spd8HqUwNn0Ark8zNziP7OkXcBpP5O8Lt+rE8VZeqAX+HOM+btk8YIiBxQWFXgM4ssQ==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -8519,6 +8522,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  nimiq-icons@1.0.0-beta.141:
+    dependencies:
+      '@iconify/types': 2.0.0
+
   nimiq-rpc-client-ts@1.0.0-beta.35(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10):
     dependencies:
       '@libsql/isomorphic-ws': 0.1.5(bufferutil@4.0.9)(utf-8-validate@5.0.10)
@@ -8529,7 +8536,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  nimiq-vitepress-theme@1.0.0-beta.140(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
+  nimiq-vitepress-theme@1.0.0-beta.141(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@iconify-json/tabler': 1.2.23
       '@iconify-json/vscode-icons': 1.2.33
@@ -8540,7 +8547,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.2.0
       motion-v: 1.7.4(@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
-      nimiq-icons: 1.0.0-beta.136
+      nimiq-icons: 1.0.0-beta.141
       reka-ui: 2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
       vaul-vue: 0.4.1(reka-ui@2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
       vitepress: 2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
