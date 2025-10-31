@@ -14,11 +14,9 @@ Explore Nimiq blockchain data, transactions, addresses, and network statistics t
   </li>
 </NqGrid>
 
-## Testnet
-
 <NqGrid span="2">
   <li v-for="explorer in data.testnet" :key="explorer.link">
-    <NqCard :href="explorer.link" :title="explorer.name" :description="explorer.developer ? `By ${explorer.developer}` : 'Community'" layout="row">
+    <NqCard :href="explorer.link" :title="explorer.name.replace(' Testnet', '')" :description="explorer.developer ? `By ${explorer.developer}` : 'Community'" layout="row">
       <template #icon>
         <img :src="explorer.logo" :alt="explorer.name" size-48 shrink-0 />
       </template>
