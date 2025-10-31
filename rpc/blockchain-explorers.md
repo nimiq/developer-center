@@ -14,6 +14,8 @@ Explore Nimiq blockchain data, transactions, addresses, and network statistics t
   </li>
 </NqGrid>
 
+## Testnet
+
 <NqGrid span="2">
   <li v-for="explorer in data.testnet" :key="explorer.link">
     <NqCard :href="explorer.link" :title="explorer.name.replace(' Testnet', '')" :description="explorer.developer ? `By ${explorer.developer}` : 'Community'" layout="row">
@@ -27,3 +29,9 @@ Explore Nimiq blockchain data, transactions, addresses, and network statistics t
 <script setup lang="ts">
 import { data } from '../.vitepress/data/blockchain-explorers.data'
 </script>
+
+<style scoped>
+:deep(.nq-card h2) {
+  line-height: 1;
+}
+</style>
