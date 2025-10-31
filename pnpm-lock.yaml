@@ -121,8 +121,8 @@ importers:
         specifier: 1.0.0-beta.136
         version: 1.0.0-beta.136(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       nimiq-vitepress-theme:
-        specifier: 1.0.0-beta.137
-        version: 1.0.0-beta.137(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: 1.0.0-beta.139
+        version: 1.0.0-beta.139(typescript@5.9.3)(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
       nitro:
         specifier: 3.0.1-alpha.0
         version: 3.0.1-alpha.0(chokidar@4.0.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
@@ -1203,11 +1203,6 @@ packages:
 
   '@libsql/isomorphic-ws@0.1.5':
     resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
-
-  '@mdream/vite@0.12.3':
-    resolution: {integrity: sha512-/qEiRma4K/6lzFSFwK63enBQ+pHr4zV03aEsyMCwRuZEQtM97EmBweedw/GEZL51QTrRu7h2QeIVEeKCd4mGGA==}
-    peerDependencies:
-      vite: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
   '@nimiq/core@2.2.0':
     resolution: {integrity: sha512-6k4bax+cc/XPQCNix9+FUXi0ayY3IO6X7ylAC7n8Enoa93dbVuAX1sBfZzwfmtxLjav8q+PDi0eWd7W7ftBEww==}
@@ -3341,10 +3336,6 @@ packages:
   mdn-data@2.12.2:
     resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
 
-  mdream@0.12.3:
-    resolution: {integrity: sha512-HMw+1sp8zhemA6UGOehhKSEyNDWaOfxQ3IgkUYHZat69ZOwMN4YJ2AY1To+qg8CYC9yx30Ymsz09gqnfg6W1Gg==}
-    hasBin: true
-
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
@@ -3576,8 +3567,8 @@ packages:
   nimiq-rpc-client-ts@1.0.0-beta.35:
     resolution: {integrity: sha512-7zUM/ySappO53Kvz7NPI4FA/9ErKCu86QTqC3d/FZDbp5rRYbMqPwJDyhrb6lBTdOk5qzImLGX6KULo53/Nl2Q==}
 
-  nimiq-vitepress-theme@1.0.0-beta.137:
-    resolution: {integrity: sha512-dvsEtDwCrHamR1oY3vedRhkzj9olmq/H9pe2vQ++kyC96x+vvegx+n1Z3/LE6YGWUW0d131s9LEOTJSc/omqpQ==}
+  nimiq-vitepress-theme@1.0.0-beta.139:
+    resolution: {integrity: sha512-+m4DIgm7UKUix99pGeLCuN8QfwWaVQaPdd7E6lVCOsP0E2LdQXsHRdsYI8n2Dmz5ddX9dFg0W2uaQ3OmsWxnbw==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -5676,11 +5667,6 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-
-  '@mdream/vite@0.12.3(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
-    dependencies:
-      mdream: 0.12.3
-      vite: 7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
 
   '@nimiq/core@2.2.0':
     dependencies:
@@ -8159,12 +8145,6 @@ snapshots:
 
   mdn-data@2.12.2: {}
 
-  mdream@0.12.3:
-    dependencies:
-      cac: 6.7.14
-      pathe: 2.0.3
-      tinyglobby: 0.2.15
-
   mdurl@2.0.0: {}
 
   medium-zoom@1.1.0: {}
@@ -8526,11 +8506,10 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  nimiq-vitepress-theme@1.0.0-beta.137(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
+  nimiq-vitepress-theme@1.0.0-beta.139(typescript@5.9.3)(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@iconify-json/tabler': 1.2.23
       '@iconify-json/vscode-icons': 1.2.33
-      '@mdream/vite': 0.12.3(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       '@nolebase/vitepress-plugin-git-changelog': 2.18.2(vitepress@2.0.0-alpha.12(@types/node@24.9.1)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))(vue@3.5.22(typescript@5.9.3))
       '@vueuse/core': 13.9.0(vue@3.5.22(typescript@5.9.3))
       '@vueuse/motion': 3.0.3(vue@3.5.22(typescript@5.9.3))
@@ -8551,7 +8530,6 @@ snapshots:
       - react
       - react-dom
       - typescript
-      - vite
 
   nitro@3.0.1-alpha.0(chokidar@4.0.3)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)):
     dependencies:
