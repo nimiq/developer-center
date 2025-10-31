@@ -43,6 +43,8 @@ albatrossLiveview:
   label: Live Demo
   title: See the chain move
   description: Instant, feeless & green payments visualized in real time.
+  ctaText: Open a Block Explorer
+  ctaLink: ./rpc/blockchain-explorers
 
 nimiqFeatures:
   label: Why Nimiq
@@ -120,6 +122,8 @@ popularResources:
           href: ./hub/
         - text: Nimiq Utils
           href: ./nimiq-utils/
+        - text: Blockchain Explorers
+          href: ./rpc/block-explorers
     - title: UI & Design
       links:
         - text: Nimiq Icons
@@ -136,6 +140,8 @@ popularResources:
           href: ./rpc/integrations/typescript
         - text: ARPL CLI Tool
           href: https://github.com/sisou/arpl
+        - text: Blockchain Explorers
+          href: ./rpc/block-explorers
         - text: Account Queries
           href: ./rpc/methods/get-accounts
         - text: Send Transactions

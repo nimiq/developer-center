@@ -42,9 +42,9 @@
     "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.1.0",
+    "@antfu/eslint-config": "^6.2.0",
     "@apidevtools/json-schema-ref-parser": "^14.2.1",
-    "@iconify-json/logos": "^1.2.9",
+    "@iconify-json/logos": "^1.2.10",
     "@iconify-json/tabler": "^1.2.23",
     "@iconify-json/vscode-icons": "^1.2.33",
     "@iconify/utils": "^3.0.2",
@@ -52,7 +52,7 @@
     "@open-rpc/meta-schema": "^1.14.9",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/canvas-confetti": "^1.9.0",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.9.2",
     "@unocss/eslint-plugin": "66.5.1",
     "@unocss/transformer-directives": "^66.5.4",
     "bumpp": "^10.3.1",
@@ -62,9 +62,9 @@
     "lint-staged": "^16.2.6",
     "markdown-it-mathjax3": "^4.3.2",
     "nimiq-css": "1.0.0-beta.136",
-    "nimiq-vitepress-theme": "1.0.0-beta.141",
+    "nimiq-vitepress-theme": "1.0.0-beta.145",
     "nitro": "3.0.1-alpha.0",
-    "ofetch": "^1.4.1",
+    "ofetch": "^1.5.0",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
     "postcss": "^8.5.6",
@@ -84,14 +84,14 @@
     "unplugin-icons": "^22.5.0",
     "unplugin-vue-components": "^30.0.0",
     "vite": "^7.1.12",
-    "vite-plugin-image-optimizer": "^2.0.2",
+    "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-vue-devtools": "^8.0.3",
     "vite-plugin-wasm": "^3.5.0",
-    "vitepress": "^2.0.0-alpha.12",
+    "vitepress": "2.0.0-alpha.12",
     "vitepress-plugin-llms": "^1.8.1",
     "vue-tsc": "^3.1.2",
-    "wrangler": "^4.45.0"
+    "wrangler": "^4.45.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
