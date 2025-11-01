@@ -20,66 +20,104 @@ cd my-nimiq-app && pnpm install && pnpm dev
 
 ## Installation
 
-### Quick Start
-
-Install the Nimiq Web Client and required Vite plugins:
+Install the Nimiq Web Client:
 
 ::: code-group
 
 ```bash [pnpm]
 pnpm add @nimiq/core
-pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [npm]
 npm install @nimiq/core
-npm install -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [yarn]
 yarn add @nimiq/core
-yarn add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [bun]
 bun add @nimiq/core
-bun add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 :::
 
 ## Configuration
 
-### Basic Vite Setup
+The Nimiq Web Client includes a Vite plugin that automatically configures WebAssembly support and all required optimizations.
 
-Update your `vite.config.js` or `vite.config.ts`:
+> [!TIP]
+> View the [plugin source code](https://github.com/nimiq/core-rs-albatross/blob/main/web-client/dist/vite.js) for implementation details.
 
-```javascript
+Update your `vite.config.ts`:
+
+::: code-group
+
+```ts [vite.config.ts]
+import nimiq from '@nimiq/core/vite' // [!code ++]
 import { defineConfig } from 'vite'
-import wasm from 'vite-plugin-wasm' // [!code ++]
 
 export default defineConfig({
-  plugins: [wasm()], // [!code ++]
-  worker: { // [!code ++]
-    format: 'esnext', // [!code ++]
-    plugins: () => [wasm()], // [!code ++]
-  }, // [!code ++]
-
-  optimizeDeps: { // [!code ++]
-    exclude: ['@nimiq/core'], // [!code ++]
-  }, // [!code ++]
-
-  // Additional build configuration for Nimiq // [!code ++]
-  build: { // [!code ++]
-    target: 'esnext', // [!code ++]
-    rollupOptions: { // [!code ++]
-      output: { // [!code ++]
-        format: 'esnext', // [!code ++]
-      }, // [!code ++]
-    }, // [!code ++]
-  }, // [!code ++]
+  plugins: [nimiq()], // [!code ++]
 })
 ```
+
+:::
+
+The plugin automatically configures:
+- WebAssembly support with `vite-plugin-wasm`
+- Worker configuration for WASM modules (opt-out via `{ worker: false }`)
+- Build target optimizations (`esnext`)
+- Dependency exclusions for `@nimiq/core`
+
+<details>
+<summary>Legacy Browser Support</summary>
+
+Modern browsers (Chrome 89+, Firefox 89+, Safari 15+, Edge 89+) support top-level await natively. If you need to support older browsers, install `vite-plugin-top-level-await`:
+
+::: code-group
+
+```bash [pnpm]
+pnpm add -D vite-plugin-top-level-await
+```
+
+```bash [npm]
+npm install -D vite-plugin-top-level-await
+```
+
+```bash [yarn]
+yarn add -D vite-plugin-top-level-await
+```
+
+```bash [bun]
+bun add -D vite-plugin-top-level-await
+```
+
+:::
+
+Then add it to your Vite config:
+
+::: code-group
+
+```ts [vite.config.ts]
+import nimiq from '@nimiq/core/vite'
+import { defineConfig } from 'vite'
+import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
+
+export default defineConfig({
+  plugins: [
+    nimiq(),
+    topLevelAwait(), // [!code ++]
+  ],
+})
+```
+
+:::
+
+> [!NOTE]
+> Top-level await is required for ES modules when using dynamic WASM imports. The plugin transforms top-level await to work in older browsers.
+
+</details>
 
 ## Usage Example
 
