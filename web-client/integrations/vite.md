@@ -59,24 +59,15 @@ import { defineConfig } from 'vite'
 import wasm from 'vite-plugin-wasm' // [!code ++]
 
 export default defineConfig({
-  plugins: [wasm()], // [!code ++]
+  plugins: [
+    wasm(), // [!code ++]
+  ],
   worker: { // [!code ++]
-    format: 'esnext', // [!code ++]
+    format: 'es', // [!code ++]
     plugins: () => [wasm()], // [!code ++]
   }, // [!code ++]
-
   optimizeDeps: { // [!code ++]
     exclude: ['@nimiq/core'], // [!code ++]
-  }, // [!code ++]
-
-  // Additional build configuration for Nimiq // [!code ++]
-  build: { // [!code ++]
-    target: 'esnext', // [!code ++]
-    rollupOptions: { // [!code ++]
-      output: { // [!code ++]
-        format: 'esnext', // [!code ++]
-      }, // [!code ++]
-    }, // [!code ++]
   }, // [!code ++]
 })
 ```
