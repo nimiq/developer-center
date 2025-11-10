@@ -43,8 +43,10 @@ function getCurlCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMetho
   const paramsStr = JSON.stringify(params)
   return `curl -X POST -H "Content-Type: application/json" \\
   -d '{
+    "jsonrpc": "2.0",
     "method": "${name}",
-    "params": ${paramsStr}
+    "params": ${paramsStr},
+    "id": 1
   }' \\
   ${nodeUrl}`
 }
@@ -77,8 +79,10 @@ function getJsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>
   const { name, userParams: params } = toValue(method)
   const paramsStr = JSON.stringify(params)
   return `const body = {
+  jsonrpc: "2.0",
   method: "${name}",
-  params: ${paramsStr}
+  params: ${paramsStr},
+  id: 1
 }
 
 const response = await fetch('${nodeUrl}', {
