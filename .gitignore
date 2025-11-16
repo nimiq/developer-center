@@ -4,10 +4,24 @@ node_modules
 .vitepress/.temp
 dist
 .nitro
+.output
+.cache
+
+# Nuxt server build outputs
+server/.nuxt
+server/.output
+server/.data
+server/.nitro
+server/.cache
+server/dist
+server/node_modules
 
 # Ignore dynamically built web-client docs
 web-client/reference
 web-client/.version
+
+# Ignore downloaded fonts from UnoCSS presetWebFonts
+public/assets/fonts/
 
 # Ignore dynamically built RPC spec docs
 set-up-your-own-node/rpc-docs/.version
@@ -49,3 +63,9 @@ tasks/
 
 CLAUDE.md
 .mcp.json
+
+# Git worktrees
+.worktrees/
+
+# Prevent file:// protocol paths from being tracked
+file:*
