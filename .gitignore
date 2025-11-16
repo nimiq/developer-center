@@ -7,6 +7,8 @@ dist
 .output
 .cache
 
+.env
+
 # Nuxt server build outputs
 server/.nuxt
 server/.output
@@ -16,12 +18,20 @@ server/.cache
 server/dist
 server/node_modules
 
+# Evalite outputs
+server/.evalite
+server/eval-results.json
+server/.env
+
 # Ignore dynamically built web-client docs
 web-client/reference
 web-client/.version
 
 # Ignore downloaded fonts from UnoCSS presetWebFonts
 public/assets/fonts/
+
+# Ignore generated documentation index
+public/list-documentation-pages.json
 
 # Ignore dynamically built RPC spec docs
 set-up-your-own-node/rpc-docs/.version

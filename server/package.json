@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "type": "module",
+  "packageManager": "pnpm@10.19.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "test": "vitest",
+    "eval": "evalite run",
+    "eval:ui": "evalite serve",
+    "eval:watch": "evalite watch",
+    "mcp:studio": "npx @modelcontextprotocol/inspector --server-url http://localhost:3000/mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "@nuxt/content": "^3.0.0",
+    "better-sqlite3": "^12.4.1",
+    "h3": "^1.15.4",
+    "nuxt": "^3.15.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@ai-sdk/mcp": "^0.0.8",
+    "@ai-sdk/openai": "3.0.0-beta.60",
+    "ai": "6.0.0-beta.99",
+    "dotenv": "^17.2.3",
+    "evalite": "1.0.0-beta.13",
+    "vitest": "^4.0.9"
+  }
+}

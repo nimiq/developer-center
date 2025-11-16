@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
-import { nitro } from 'nitro/vite'
 import { resolve } from 'pathe'
 import { readPackageJSON } from 'pkg-types'
 import UnoCSS from 'unocss/vite'
@@ -58,7 +57,6 @@ export default defineConfig(async () => {
     },
 
     plugins: [
-      nitro(),
       RpcProxyPlugin(),
       Components({
         dirs: ['.vitepress/theme/components', 'nimiq-vitepress-theme/components'],
