@@ -1,9 +1,11 @@
 name: Deploy to NuxtHub
-on: push
+on:
+  push:
+    branches: [mcp]
 
 jobs:
   deploy:
-    name: "Deploy to NuxtHub"
+    name: Deploy to NuxtHub
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,7 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: pnpm
           cache-dependency-path: server/pnpm-lock.yaml
 
       - name: Install dependencies
