@@ -79,20 +79,20 @@ nimiqFeatures:
 
 hoverableGrid:
   label: Quick Start
-  title: Jump right in — no install
+  title: Jump right in - no install
   description: Start experimenting with Nimiq right away.
   actions:
     - title: Web Client Tutorial
-      description: Interactive, in‑browser walkthrough
+      description: Interactive, in-browser walkthrough
       href: https://nimiq.guide
       icon: i-local:nimiq-tutorial
     - title: RPC Quick Start
       description: Explore docs and run JSON-RPC from your environment
       href: ./rpc/
       icon: i-local:nimiq-rpc
-    - title: Nimiq MCP
-      description: Build with AI
-      href: https://github.com/onmax/nimiq-mcp
+    - title: Working with AI
+      description: Build with AI assistance
+      href: ./working-with-ai/
       icon: i-local:nimiq-mcp
 
 nimiqAppsSection:
@@ -177,7 +177,7 @@ popularResources:
         - text: Awesome Nimiq
           href: https://github.com/onmax/nimiq-awesome
         - text: AI MCP Server
-          href: https://github.com/onmax/nimiq-mcp
+          href: ./working-with-ai/mcp
     - title: Migration
       links:
         - text: Migration Overview

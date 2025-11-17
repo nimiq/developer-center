@@ -56,7 +56,7 @@ mcpBanner:
   label: AI Development
   headline: Build with AI using Nimiq MCP
   subline: Enable AI assistants like Claude to interact directly with the Nimiq blockchain through our Model Context Protocol server.
-  linkHref: https://github.com/onmax/nimiq-mcp
+  linkHref: /developers/working-with-ai/mcp
   linkLabel: Get Started
 ---
 

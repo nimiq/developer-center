@@ -29,17 +29,16 @@
     "@nimiq/utils": "^0.12.4",
     "@unhead/vue": "^2.0.19",
     "@unocss/reset": "^66.5.4",
-    "@vueuse/core": "^14.0.0",
+    "@vueuse/core": "^13.3.0",
     "canvas-confetti": "^1.9.4",
     "iconify-icon": "^3.0.2",
     "json2md": "^2.0.3",
     "medium-zoom": "^1.1.0",
     "motion-v": "^1.7.4",
-    "nimiq-feedback-widget": "0.0.1-beta.5",
     "nimiq-rpc-client-ts": "1.0.0-beta.35",
     "reka-ui": "^2.6.0",
     "vaul-vue": "^0.4.1",
-    "vue": "^3.5.22"
+    "vue": "^3.5.24"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
@@ -62,7 +61,7 @@
     "lint-staged": "^16.2.6",
     "markdown-it-mathjax3": "^4.3.2",
     "nimiq-css": "1.0.0-beta.136",
-    "nimiq-vitepress-theme": "1.0.0-beta.145",
+    "nimiq-vitepress-theme": "1.0.0-beta.146",
     "nitro": "3.0.1-alpha.0",
     "ofetch": "^1.5.0",
     "pathe": "^2.0.3",
