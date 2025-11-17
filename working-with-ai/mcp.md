@@ -5,7 +5,7 @@ MCP (Model Context Protocol) enables AI assistants to access external data sourc
 ## Server Endpoint
 
 ```
-https://nimiq.com/developers/mcp
+https://developer-center.je-cf9.workers.dev/mcp
 ```
 
 Browser access redirects to docs. MCP protocol access provides structured resources for AI assistants.
@@ -58,7 +58,7 @@ The Nimiq MCP server exposes three types of capabilities:
 {
   "mcpServers": {
     "nimiq": {
-      "url": "https://nimiq.com/developers/mcp"
+      "url": "https://developer-center.je-cf9.workers.dev/mcp"
     }
   }
 }
@@ -70,7 +70,7 @@ The Nimiq MCP server exposes three types of capabilities:
 {
   "mcpServers": {
     "nimiq": {
-      "url": "https://nimiq.com/developers/mcp"
+      "url": "https://developer-center.je-cf9.workers.dev/mcp"
     }
   }
 }
@@ -81,7 +81,7 @@ The Nimiq MCP server exposes three types of capabilities:
 {
   "servers": {
     "nimiq": {
-      "url": "https://nimiq.com/developers/mcp"
+      "url": "https://developer-center.je-cf9.workers.dev/mcp"
     }
   }
 }
@@ -92,7 +92,7 @@ The Nimiq MCP server exposes three types of capabilities:
 {
   "mcpServers": {
     "nimiq": {
-      "url": "https://nimiq.com/developers/mcp"
+      "url": "https://developer-center.je-cf9.workers.dev/mcp"
     }
   }
 }
@@ -104,7 +104,7 @@ The Nimiq MCP server exposes three types of capabilities:
   "mcp": {
     "servers": {
       "nimiq": {
-        "url": "https://nimiq.com/developers/mcp"
+        "url": "https://developer-center.je-cf9.workers.dev/mcp"
       }
     }
   }
@@ -114,10 +114,11 @@ The Nimiq MCP server exposes three types of capabilities:
 
 ### ChatGPT
 
-1. Settings → Features → Developer mode
-2. Create custom connector
-3. URL: `https://nimiq.com/developers/mcp`
-4. Protocol: MCP
+1. Settings → Apps & Connectors → Advanced settings → Enable developer mode → Go back
+2. Click "+" next to "Enabled apps & connectors"
+3. Name: `Nimiq MCP`
+4. URL: `https://developer-center.je-cf9.workers.dev/mcp`
+5. Protocol: MCP
 
 ### GitHub Copilot Agent
 
@@ -126,7 +127,7 @@ Repository settings → Copilot → Enable MCP tools → Add:
 ```json
 {
   "nimiq": {
-    "url": "https://nimiq.com/developers/mcp"
+    "url": "https://developer-center.je-cf9.workers.dev/mcp"
   }
 }
 ```
@@ -134,7 +135,7 @@ Repository settings → Copilot → Enable MCP tools → Add:
 ### Other Clients
 
 **Mistral Le Chat**, **Opencode**, and other MCP-compatible clients:
-- Use server URL: `https://nimiq.com/developers/mcp`
+- Use server URL: `https://developer-center.je-cf9.workers.dev/mcp`
 - Refer to client docs for config steps
 
 ## Usage Examples
@@ -184,7 +185,7 @@ If these work, setup is complete.
 ## Troubleshooting
 
 **Connection issues**
-- Verify URL: `https://nimiq.com/developers/mcp`
+- Verify URL: `https://developer-center.je-cf9.workers.dev/mcp`
 - Check internet connection
 - Restart AI assistant/editor
 
