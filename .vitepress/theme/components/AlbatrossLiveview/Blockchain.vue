@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useElementVisibility } from '@vueuse/core'
+import { useDocumentVisibility, useElementVisibility } from '@vueuse/core'
 import { onBeforeUnmount, ref, watch, watchEffect } from 'vue'
 import { BLOCKS_WINDOW_SIZE, useAlbatrossBlocks } from '../../composables/useAlbatrossBlocks'
 import AlbatrossLiveviewBatch from './Batch.vue'
@@ -34,6 +34,7 @@ The lower the root (chain speed factor), the slower the element travels and vice
 const target = ref<HTMLElement>()
 const chainElement = ref<HTMLElement>()
 const blockchainIsVisible = useElementVisibility(target)
+const docVisibility = useDocumentVisibility()
 
 // Use refs to avoid computed overhead during animation
 const canAnimate = ref(false)
@@ -69,7 +70,7 @@ function stopAnimation() {
 
 // Update animation state only when necessary
 watchEffect(() => {
-  const newCanAnimate = status.value === 'OPEN' && blocks.value.length >= BLOCKS_WINDOW_SIZE && blockchainIsVisible.value
+  const newCanAnimate = status.value === 'OPEN' && blocks.value.length >= BLOCKS_WINDOW_SIZE && blockchainIsVisible.value && docVisibility.value === 'visible'
   if (canAnimate.value !== newCanAnimate) {
     canAnimate.value = newCanAnimate
     if (newCanAnimate && !isAnimating.value) {
