@@ -8,9 +8,8 @@ The Nimiq Model Context Protocol server provides AI assistants with direct block
 
 For complete documentation, installation instructions, and all available methods, visit the official repository:
 
-<a href="https://github.com/onmax/nimiq-mcp" nq-arrow f-mt-sm nq-pill-blue target="_blank" mx-0>
-  <div i-nimiq:logos-github-mono mr-4 />
-  View Nimiq MCP Repository
+<a href="/developers/working-with-ai/mcp" nq-arrow f-mt-sm nq-pill-blue mx-0>
+  Learn More About MCP
 </a>
 
 ## Natural Language Queries

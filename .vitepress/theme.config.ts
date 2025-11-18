@@ -321,6 +321,23 @@ export const themeConfig = {
         },
       ],
     },
+    {
+      text: 'Working with AI',
+      subpath: 'working-with-ai',
+      icon: 'i-tabler:robot',
+      defaultPageLink: '/working-with-ai/',
+      description: 'AI-powered development',
+      sidebar: [
+        {
+          label: 'AI Integration',
+          items: [
+            { text: 'Overview', link: '/working-with-ai/', icon: 'i-tabler:home' },
+            { text: 'Model Context Protocol', link: '/working-with-ai/mcp', icon: 'i-tabler:plug' },
+            { text: 'LLMs.txt', link: '/working-with-ai/llms-txt', icon: 'i-tabler:file-text' },
+          ],
+        },
+      ],
+    },
   ],
   links: [
     { icon: 'i-nimiq:logos-twitter-mono', link: 'https://twitter.com/@nimiq', label: 'Twitter' },

@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.19.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "test": "vitest",
+    "eval": "evalite run",
+    "eval:ui": "evalite serve",
+    "eval:watch": "evalite watch",
+    "mcp:studio": "npx @modelcontextprotocol/inspector --server-url http://localhost:3000/mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "catalog:",
+    "@nuxt/content": "catalog:",
+    "better-sqlite3": "catalog:",
+    "nuxt": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@ai-sdk/mcp": "catalog:",
+    "@ai-sdk/openai": "catalog:",
+    "ai": "catalog:",
+    "dotenv": "catalog:",
+    "evalite": "catalog:",
+    "vitest": "catalog:"
+  }
+}

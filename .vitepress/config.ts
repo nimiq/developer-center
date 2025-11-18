@@ -31,15 +31,6 @@ export default async () => {
       configFile: '.vitepress/vite.config.ts',
     },
 
-    nitro: {
-      preset: 'cloudflare_pages',
-      srcDir: '.vitepress/server',
-      compatibilityDate: '2025-01-01',
-      routeRules: {
-        '/api/**': { proxy: true },
-      },
-    },
-
     markdown: {
       math: true, // Allow latex math
     },
