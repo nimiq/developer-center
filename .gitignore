@@ -26,6 +26,7 @@ server/.env
 # Ignore dynamically built web-client docs
 web-client/reference
 web-client/.version
+build/
 
 # Ignore downloaded fonts from UnoCSS presetWebFonts
 public/assets/fonts/
@@ -71,7 +72,6 @@ tasks/
 .env.example
 .taskmaster
 
-CLAUDE.md
 .mcp.json
 
 # Git worktrees

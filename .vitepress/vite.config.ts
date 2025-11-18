@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import { resolve } from 'pathe'
-import { readPackageJSON } from 'pkg-types'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -9,6 +8,7 @@ import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import wasm from 'vite-plugin-wasm'
+import { parse } from 'yaml'
 // import llmstxt from 'vitepress-plugin-llms'
 import { RpcProxyPlugin } from './plugins/rpc-proxy'
 import { RpcDocsGeneratorPlugin } from './rpc/vite'
@@ -22,9 +22,11 @@ export default defineConfig(async () => {
   const openRpcDoc = JSON.parse(readFileSync(openRpcDocPath, 'utf-8'))
   const openRpcDocInfo = openRpcDoc.info
 
-  // Get the nimiq-rpc-client-ts version from package.json
-  const { devDependencies } = await readPackageJSON()
-  const nimiqRpcVersion = devDependencies?.['@nimiq/core']
+  // Get the nimiq-rpc-client-ts version from pnpm-workspace.yaml catalog
+  const workspaceYamlContent = readFileSync(resolve(__dirname, '../pnpm-workspace.yaml'), 'utf-8')
+  const workspaceYaml = parse(workspaceYamlContent)
+  const coreVersion = workspaceYaml.catalog['@nimiq/core']
+  const nimiqRpcVersion = coreVersion
     // Nimiq Web Client !== GitHub release
     .replace('^2', 'v1') || 'unknown'
 

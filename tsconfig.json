@@ -24,6 +24,9 @@
     "**/*.vue",
     "**/*.md"
   ],
+  "exclude": [
+    "server"
+  ],
   "vueCompilerOptions": {
     "vitePressExtensions": [
       ".md"

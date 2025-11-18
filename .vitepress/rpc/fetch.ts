@@ -3,13 +3,17 @@ import { cwd } from 'node:process'
 import consola from 'consola'
 import { $fetch } from 'ofetch'
 import { join } from 'pathe'
-import { devDependencies } from '../../package.json'
+import { parse } from 'yaml'
 
 // Flag to ensure we only download once per session
 let hasDownloaded = false
 
 // The @nimiq/core version provides the same version as RPC version with the difference of the major.
-const version = devDependencies['@nimiq/core'].replace('^2', 'v1')
+// Read from pnpm-workspace.yaml catalog instead of package.json
+const workspaceYamlContent = readFileSync(join(cwd(), 'pnpm-workspace.yaml'), 'utf-8')
+const workspaceYaml = parse(workspaceYamlContent)
+const coreVersion = workspaceYaml.catalog['@nimiq/core']
+const version = coreVersion.replace('^2', 'v1')
 const openRpcDocumentUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${version}/openrpc-document.json`
 const vitepressDir = join(cwd(), '.vitepress')
 const rpcDir = join(vitepressDir, 'rpc')

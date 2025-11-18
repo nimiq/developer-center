@@ -3,12 +3,12 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { cwd } from 'node:process'
 import { $fetch } from 'ofetch'
 import { join } from 'pathe'
-import { devDependencies } from '../../package.json'
+import { parse } from 'yaml'
 
 export function RpcDocsGeneratorPlugin(): Plugin {
   // The @nimiq/core version provides the same version as RPC version with the difference of the major.
-  const version = devDependencies['@nimiq/core'].replace('^2', 'v1')
-  const openRpcDocumentUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${version}/openrpc-document.json`
+  // Read from pnpm-workspace.yaml catalog instead of package.json
+  let version: string
   const vitepressDir = join(cwd(), '.vitepress')
   const rpcDir = join(vitepressDir, 'rpc')
   const jsonFilePath = join(rpcDir, 'openrpc-document.json')
@@ -19,6 +19,16 @@ export function RpcDocsGeneratorPlugin(): Plugin {
   return {
     name: 'rpc-docs-generator',
     async buildStart() {
+      // Load version from catalog on first run
+      if (!version) {
+        const workspaceYamlContent = readFileSync(join(cwd(), 'pnpm-workspace.yaml'), 'utf-8')
+        const workspaceYaml = parse(workspaceYamlContent)
+        const coreVersion = workspaceYaml.catalog['@nimiq/core']
+        version = coreVersion.replace('^2', 'v1')
+      }
+
+      const openRpcDocumentUrl = `https://github.com/nimiq/core-rs-albatross/releases/download/${version}/openrpc-document.json`
+
       // Skip if we've already downloaded in this session
       if (hasDownloaded)
         return
