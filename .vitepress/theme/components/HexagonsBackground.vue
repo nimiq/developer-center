@@ -1,33 +1,49 @@
 <script setup lang="ts">
-import { useWindowSize } from '@vueuse/core'
-import { computed, onMounted, ref } from 'vue'
+import { useDocumentVisibility, useIntersectionObserver, useWindowSize } from '@vueuse/core'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 
-const rows = computed(() => 5)
+const rows = 5
 const { width } = useWindowSize()
 const columns = ref(0)
+const containerRef = ref<HTMLElement>()
+const isVisible = ref(false)
+const docVisibility = useDocumentVisibility()
 
-function calculateOpacity(rowIndex: number, colIndex: number) {
-  const normalizedRow = rowIndex / (rows.value - 1)
-  const normalizedCol = colIndex / (columns.value - 1)
+useIntersectionObserver(containerRef, ([{ isIntersecting }]) => {
+  isVisible.value = isIntersecting
+})
+
+const shouldAnimate = computed(() => isVisible.value && docVisibility.value === 'visible')
+
+function calculateOpacity(rowIndex: number, colIndex: number, cols: number) {
+  const normalizedRow = rowIndex / (rows - 1)
+  const normalizedCol = colIndex / (cols - 1)
   const distance = Math.abs(normalizedRow + normalizedCol - 1)
-  const threshold = 0.8 // Adjust this value to control the path width
-  if (distance > threshold) // Hide items far from the path
-    return 0
-  else // Adjust opacity based on distance from the path
-    return 1 - (distance / threshold)
+  const threshold = 0.8
+  return distance > threshold ? 0 : 1 - (distance / threshold)
 }
 
-const items = ref<{ rowIndex: number, colIndex: number, opacity: number }[]>([])
+const items = shallowRef<{ rowIndex: number, colIndex: number, opacity: number, animDelay: string, animDuration: string }[]>([])
 
 onMounted(() => {
-  const result: { rowIndex: number, colIndex: number, opacity: number }[] = []
-  columns.value = (Math.floor(width.value / 140) + 4) & ~1
-  for (let rowIndex = 0; rowIndex < rows.value; rowIndex++) {
+  const cols = (Math.floor(width.value / 140) + 4) & ~1
+  columns.value = cols
+  const result: { rowIndex: number, colIndex: number, opacity: number, animDelay: string, animDuration: string }[] = []
+
+  for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
     const isEvenRow = rowIndex % 2 === 0
     const startCol = isEvenRow ? 0 : 1
-    for (let colIndex = startCol; colIndex < columns.value; colIndex += 2) {
-      const opacity = calculateOpacity(rowIndex, colIndex)
-      result.push({ rowIndex, colIndex, opacity })
+    for (let colIndex = startCol; colIndex < cols; colIndex += 2) {
+      const opacity = calculateOpacity(rowIndex, colIndex, cols)
+      if (opacity > 0) { // Skip invisible items
+        result.push({
+          rowIndex,
+          colIndex,
+          opacity,
+          animDelay: `${(rowIndex * 0.1 + colIndex * 0.15).toFixed(2)}s`,
+          animDuration: `${((rows - rowIndex) * 2 + 4)}s`,
+        })
+      }
     }
   }
   items.value = result
@@ -35,17 +51,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div group mx-0 px-0 w-full relative z-2 of-x-hidden f-pt-2xl>
-    <div aria-hidden="true" class="grid-parent" max-w-none :style="`--rows:${rows}; --cols:${columns}`">
+  <div ref="containerRef" group mx-0 px-0 w-full relative z-2 of-x-hidden f-pt-2xl>
+    <div aria-hidden="true" class="grid-parent" max-w-none :style="`--rows:${rows}; --cols:${columns}`" :class="{ paused: !shouldAnimate }">
       <div
         v-for="item in items" :key="`${item.rowIndex}-${item.colIndex}`" :style="{
           '--row': item.rowIndex,
           '--col': item.colIndex,
           'opacity': item.opacity,
-          'animation-delay': `${item.rowIndex * 0.1 + item.colIndex * 0.15}s`,
-          'animation-duration': `${(rows - item.rowIndex) * 2 + 4}s`,
+          'animation-delay': item.animDelay,
+          'animation-duration': item.animDuration,
         }" i-nimiq:logos-nimiq-mono motion-safe:transition="colors duration-800 hocus:duration-100"
-        motion-safe:animate="pulse group-hocus:none"
+        motion-safe:animate="pulse group-hocus:paused"
         text="neutral-300 dark:neutral-500 hocus:neutral-500 dark:hocus:neutral-700"
       />
     </div>
@@ -81,6 +97,11 @@ onMounted(() => {
 
   >*:not([data-social]) {
     animation: pulse 2s infinite;
+    will-change: background-color;
+  }
+
+  &.paused > *:not([data-social]) {
+    animation-play-state: paused;
   }
 
   > :where(div, a) {

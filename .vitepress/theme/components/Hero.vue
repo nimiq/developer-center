@@ -28,7 +28,7 @@ const slots = useSlots()
 
 <template>
   <section relative of-x-clip>
-    <NqHeadline :title :description :align mt-0 :class="{ 'f-mb-sm': !!slots.default }" h1 z-100 />
+    <NqHeadline :title :description :align mt-0 :class="{ 'f-mb-sm': !!slots.default }" h1 />
     <div max-w-none="!" class="nq-raw" op-30 w-screen :class="cards ? 'bottom-32' : 'bottom--32'" absolute of-hidden>
       <ClientOnly>
         <HexagonsBackground pointer-events-none :class="!cards ? 'op-50' : ''" />
