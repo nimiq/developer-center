@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'
+import { encode } from '@toon-format/toon'
 import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
@@ -20,7 +21,7 @@ export default defineEventHandler(async (event) => {
     {
       title: 'Nimiq Documentation Page Index',
       description:
-        'JSON list of all available Nimiq documentation pages across 6 modules (web-client, rpc, protocol, hub, nodes, nimiq-utils). Each entry includes title, URL, description, and module. Use to discover available documentation or find specific topics. Returns comprehensive metadata for all ~50+ documentation pages.',
+        'TOON-formatted list of all available Nimiq documentation pages across 6 modules (web-client, rpc, protocol, hub, nodes, nimiq-utils). Each entry includes title, URL, description, and module. Use to discover available documentation or find specific topics. Returns comprehensive metadata for all ~50+ documentation pages in token-efficient TOON format.',
     },
     async (uri) => {
       const docs = await $fetch('/api/mcp/list-documentation-pages')
@@ -28,8 +29,8 @@ export default defineEventHandler(async (event) => {
         contents: [
           {
             uri: uri.href,
-            mimeType: 'application/json',
-            text: JSON.stringify(docs),
+            mimeType: 'text/plain',
+            text: encode(docs),
           },
         ],
       }
@@ -41,7 +42,7 @@ export default defineEventHandler(async (event) => {
     'resource://nimiq/tutorials',
     {
       title: 'Nimiq Tutorial Catalog',
-      description: 'JSON list of hands-on tutorials for Nimiq blockchain development. Each entry includes title, URL, description, difficulty, and topics covered. Use when users need step-by-step guided learning (not just concept explanations). Returns structured tutorial metadata for discovery and selection.',
+      description: 'TOON-formatted list of hands-on tutorials for Nimiq blockchain development. Each entry includes title, URL, description, difficulty, and topics covered. Use when users need step-by-step guided learning (not just concept explanations). Returns structured tutorial metadata for discovery and selection in token-efficient TOON format.',
     },
     async (uri) => {
       const tutorials = await $fetch('/api/mcp/list-tutorials')
@@ -49,8 +50,8 @@ export default defineEventHandler(async (event) => {
         contents: [
           {
             uri: uri.href,
-            mimeType: 'application/json',
-            text: JSON.stringify(tutorials),
+            mimeType: 'text/plain',
+            text: encode(tutorials),
           },
         ],
       }
@@ -62,7 +63,7 @@ export default defineEventHandler(async (event) => {
     'resource://nimiq/open-rpc-specification-document',
     {
       title: 'Nimiq JSON-RPC API Specification',
-      description: 'Complete OpenRPC specification document containing all 125 Nimiq JSON-RPC methods with schemas, parameters, return types, examples, and error codes. Use to understand available RPC methods, their exact parameter schemas, or generate type-safe API clients. Returns full OpenRPC 1.3 specification in JSON format.',
+      description: 'Complete OpenRPC specification document containing all 125 Nimiq JSON-RPC methods with schemas, parameters, return types, examples, and error codes. Use to understand available RPC methods, their exact parameter schemas, or generate type-safe API clients. Returns full OpenRPC 1.3 specification in TOON format for token efficiency.',
     },
     async (uri) => {
       const spec = await $fetch('/api/mcp/open-rpc-specification-document')
@@ -70,8 +71,8 @@ export default defineEventHandler(async (event) => {
         contents: [
           {
             uri: uri.href,
-            mimeType: 'application/json',
-            text: JSON.stringify(spec),
+            mimeType: 'text/plain',
+            text: encode(spec),
           },
         ],
       }
@@ -149,7 +150,7 @@ export default defineEventHandler(async (event) => {
       try {
         const docs = await $fetch('/api/mcp/list-documentation-pages', { query: { module } })
         return {
-          content: [{ type: 'text', text: JSON.stringify(docs, null, 2) }],
+          content: [{ type: 'text', text: encode(docs) }],
         }
       }
       catch (error: any) {
@@ -197,7 +198,7 @@ export default defineEventHandler(async (event) => {
       try {
         const tutorials = await $fetch('/api/mcp/list-tutorials')
         return {
-          content: [{ type: 'text', text: JSON.stringify(tutorials, null, 2) }],
+          content: [{ type: 'text', text: encode(tutorials) }],
         }
       }
       catch (error: any) {
@@ -247,7 +248,7 @@ export default defineEventHandler(async (event) => {
       try {
         const methods = await $fetch('/api/mcp/list-rpc-methods', { query: { tags } })
         return {
-          content: [{ type: 'text', text: JSON.stringify(methods, null, 2) }],
+          content: [{ type: 'text', text: encode(methods) }],
         }
       }
       catch (error: any) {

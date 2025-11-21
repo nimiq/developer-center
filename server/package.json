@@ -16,6 +16,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "catalog:",
     "@nuxt/content": "catalog:",
+    "@toon-format/toon": "^1.2.0",
     "better-sqlite3": "catalog:",
     "nuxt": "catalog:",
     "zod": "catalog:"
