@@ -5,6 +5,17 @@ import { encode } from '@toon-format/toon'
 import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
+  // CORS headers for MCP Studio
+  setResponseHeaders(event, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
+  })
+
+  if (event.method === 'OPTIONS') {
+    return ''
+  }
+
   if (getHeader(event, 'accept')?.includes('text/html')) {
     return sendRedirect(event, 'https://nimiq.com/developers/working-with-ai/mcp')
   }
