@@ -27,8 +27,8 @@ importers:
         specifier: ^66.5.4
         version: 66.5.4
       '@vueuse/core':
-        specifier: ^14.0.0
-        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
+        specifier: ^13.9.0
+        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
       canvas-confetti:
         specifier: ^1.9.4
         version: 1.9.4
@@ -43,7 +43,7 @@ importers:
         version: 1.1.0
       motion-v:
         specifier: ^1.7.4
-        version: 1.7.4(@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
+        version: 1.7.4(@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
       nimiq-feedback-widget:
         specifier: 0.0.1-beta.5
         version: 0.0.1-beta.5(reka-ui@2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
@@ -118,11 +118,11 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2
       nimiq-css:
-        specifier: 1.0.0-beta.136
-        version: 1.0.0-beta.136(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
+        specifier: 1.0.0-beta.148
+        version: 1.0.0-beta.148(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       nimiq-vitepress-theme:
-        specifier: 1.0.0-beta.147
-        version: 1.0.0-beta.147(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: 1.0.0-beta.148
+        version: 1.0.0-beta.148(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
       nitro:
         specifier: 3.0.1-alpha.0
         version: 3.0.1-alpha.0(chokidar@4.0.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
@@ -176,7 +176,7 @@ importers:
         version: 0.0.2
       unplugin-auto-import:
         specifier: ^20.2.0
-        version: 20.2.0(@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3)))
+        version: 20.2.0(@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3)))
       unplugin-icons:
         specifier: ^22.5.0
         version: 22.5.0(@vue/compiler-sfc@3.5.22)
@@ -1938,11 +1938,6 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  '@vueuse/core@14.0.0':
-    resolution: {integrity: sha512-d6tKRWkZE8IQElX2aHBxXOMD478fHIYV+Dzm2y9Ag122ICBpNKtGICiXKOhWU3L1kKdttDD9dCMS4bGP3jhCTQ==}
-    peerDependencies:
-      vue: ^3.5.0
-
   '@vueuse/integrations@13.9.0':
     resolution: {integrity: sha512-SDobKBbPIOe0cVL7QxMzGkuUGHvWTdihi9zOrrWaWUgFKe15cwEcwfWmgrcNzjT6kHnNmWuTajPHoIzUjYNYYQ==}
     peerDependencies:
@@ -1994,9 +1989,6 @@ packages:
   '@vueuse/metadata@13.9.0':
     resolution: {integrity: sha512-1AFRvuiGphfF7yWixZa0KwjYH8ulyjDCC0aFgrGRz8+P4kvDFSdXLVfTk5xAN9wEuD1J6z4/myMoYbnHoX07zg==}
 
-  '@vueuse/metadata@14.0.0':
-    resolution: {integrity: sha512-6yoGqbJcMldVCevkFiHDBTB1V5Hq+G/haPlGIuaFZHpXC0HADB0EN1ryQAAceiW+ryS3niUwvdFbGiqHqBrfVA==}
-
   '@vueuse/motion@3.0.3':
     resolution: {integrity: sha512-4B+ITsxCI9cojikvrpaJcLXyq0spj3sdlzXjzesWdMRd99hhtFI6OJ/1JsqwtF73YooLe0hUn/xDR6qCtmn5GQ==}
     peerDependencies:
@@ -2010,11 +2002,6 @@ packages:
 
   '@vueuse/shared@13.9.0':
     resolution: {integrity: sha512-e89uuTLMh0U5cZ9iDpEI2senqPGfbPRTHM/0AaQkcxnpqjkZqDYP8rpfm7edOz8s+pOCOROEy1PIveSW8+fL5g==}
-    peerDependencies:
-      vue: ^3.5.0
-
-  '@vueuse/shared@14.0.0':
-    resolution: {integrity: sha512-mTCA0uczBgurRlwVaQHfG0Ja7UdGe4g9mwffiJmvLiTtp1G4AQyIjej6si/k8c8pUwTfVpNufck+23gXptPAkw==}
     peerDependencies:
       vue: ^3.5.0
 
@@ -3547,8 +3534,8 @@ packages:
   nf3@0.1.5:
     resolution: {integrity: sha512-kb6KFkGzOx1ux95s8kSJF17D/j2hgkWn7/gW6qgLYEZYY6a3eJH463zqb/H/gZLNgQAdGd7FpLkdfbSrXncqhw==}
 
-  nimiq-css@1.0.0-beta.136:
-    resolution: {integrity: sha512-bWbSKJbqVQP2jVJ63w4nwFf5pSGw7BOidZzdk/ILlmHkYDlsSskdZxcYrGZi6u8VKvKaHtBJ9mE8ogxyEl3PMg==}
+  nimiq-css@1.0.0-beta.148:
+    resolution: {integrity: sha512-hN6KBCrxCOykoPJhvFUwEThfgGviMSLDkLGi3uDGjDxgBLjmpIXBiZ/+ai5a9RRE0oFvtq5KVhwShesL2pYzlA==}
     engines: {node: '>=18'}
 
   nimiq-feedback-widget@0.0.1-beta.5:
@@ -3557,17 +3544,14 @@ packages:
       reka-ui: ^2.0.0
       vue: ^3.3.0
 
-  nimiq-icons@1.0.0-beta.136:
-    resolution: {integrity: sha512-2jA3/Kkp35dLbbAyRB51+wC+q2sumP+aIkTaTMB5ZlDlCAGS3cblRRGUL32gcVxVr5FtTgvlOMIHhxXMPbRYkQ==}
-
-  nimiq-icons@1.0.0-beta.146:
-    resolution: {integrity: sha512-Ym3MXMWvGksBN2xGANGSIxm0rzIKR/rOpAcS9bzo1m9fVY9x3zJHY6L4eYLKc+oDuiDszbbQHl8Brxy5ctynqw==}
+  nimiq-icons@1.0.0-beta.148:
+    resolution: {integrity: sha512-FIMEiZqt4imVeMcb8Ly6E22pM5AoYFaZUKu5IfIFHNimB7xzv2QYBSwVLR3Wcw/LnufMQvwcrH1BIiOtJr2U8w==}
 
   nimiq-rpc-client-ts@1.0.0-beta.35:
     resolution: {integrity: sha512-7zUM/ySappO53Kvz7NPI4FA/9ErKCu86QTqC3d/FZDbp5rRYbMqPwJDyhrb6lBTdOk5qzImLGX6KULo53/Nl2Q==}
 
-  nimiq-vitepress-theme@1.0.0-beta.147:
-    resolution: {integrity: sha512-IA7cEoCmLTEtCAxLuMfyeVJCoS0MNht2lqzlGjGvAG+NXP0c3HIFHedEZ3WzJKA8I59ijFWa8RGUAuf13E9ZDQ==}
+  nimiq-vitepress-theme@1.0.0-beta.148:
+    resolution: {integrity: sha512-MisHpFqZCj1EIheyM3750bCjCK5xl9AIxwlcreyMbPLUeBeS9rpkSiJ2CNHi1AF9ht+RvkQ5mQfdk+W0+HwP8A==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -6611,13 +6595,6 @@ snapshots:
       '@vueuse/shared': 13.9.0(vue@3.5.22(typescript@5.9.3))
       vue: 3.5.22(typescript@5.9.3)
 
-  '@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3))':
-    dependencies:
-      '@types/web-bluetooth': 0.0.21
-      '@vueuse/metadata': 14.0.0
-      '@vueuse/shared': 14.0.0(vue@3.5.22(typescript@5.9.3))
-      vue: 3.5.22(typescript@5.9.3)
-
   '@vueuse/integrations@13.9.0(change-case@5.4.4)(focus-trap@7.6.6)(vue@3.5.22(typescript@5.9.3))':
     dependencies:
       '@vueuse/core': 13.9.0(vue@3.5.22(typescript@5.9.3))
@@ -6632,8 +6609,6 @@ snapshots:
   '@vueuse/metadata@12.8.2': {}
 
   '@vueuse/metadata@13.9.0': {}
-
-  '@vueuse/metadata@14.0.0': {}
 
   '@vueuse/motion@3.0.3(vue@3.5.22(typescript@5.9.3))':
     dependencies:
@@ -6663,10 +6638,6 @@ snapshots:
       - typescript
 
   '@vueuse/shared@13.9.0(vue@3.5.22(typescript@5.9.3))':
-    dependencies:
-      vue: 3.5.22(typescript@5.9.3)
-
-  '@vueuse/shared@14.0.0(vue@3.5.22(typescript@5.9.3))':
     dependencies:
       vue: 3.5.22(typescript@5.9.3)
 
@@ -8427,18 +8398,6 @@ snapshots:
       - react
       - react-dom
 
-  motion-v@1.7.4(@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3)):
-    dependencies:
-      '@vueuse/core': 14.0.0(vue@3.5.22(typescript@5.9.3))
-      framer-motion: 12.23.12
-      hey-listen: 1.0.8
-      motion-dom: 12.23.12
-      vue: 3.5.22(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@emotion/is-prop-valid'
-      - react
-      - react-dom
-
   mrmime@2.0.1: {}
 
   ms@2.0.0: {}
@@ -8467,12 +8426,12 @@ snapshots:
 
   nf3@0.1.5: {}
 
-  nimiq-css@1.0.0-beta.136(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)):
+  nimiq-css@1.0.0-beta.148(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)):
     dependencies:
       '@iconify/utils': 3.0.2
       '@unocss/preset-web-fonts': 66.5.4
       '@unocss/preset-wind4': 66.5.4
-      nimiq-icons: 1.0.0-beta.136
+      nimiq-icons: 1.0.0-beta.148
       ts-cssjson: 3.0.1
       unocss: 66.5.4(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       unocss-preset-light-dark: 1.0.0-beta.52
@@ -8487,11 +8446,7 @@ snapshots:
       reka-ui: 2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
       vue: 3.5.22(typescript@5.9.3)
 
-  nimiq-icons@1.0.0-beta.136:
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  nimiq-icons@1.0.0-beta.146:
+  nimiq-icons@1.0.0-beta.148:
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8505,7 +8460,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  nimiq-vitepress-theme@1.0.0-beta.147(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
+  nimiq-vitepress-theme@1.0.0-beta.148(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@iconify-json/tabler': 1.2.23
       '@iconify-json/vscode-icons': 1.2.33
@@ -8516,7 +8471,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.2.0
       motion-v: 1.7.4(@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
-      nimiq-icons: 1.0.0-beta.146
+      nimiq-icons: 1.0.0-beta.148
       reka-ui: 2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
       vaul-vue: 0.4.1(reka-ui@2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
       vitepress: 2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
@@ -9510,7 +9465,7 @@ snapshots:
       - postcss
       - supports-color
 
-  unplugin-auto-import@20.2.0(@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3))):
+  unplugin-auto-import@20.2.0(@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3))):
     dependencies:
       local-pkg: 1.1.2
       magic-string: 0.30.21
@@ -9519,7 +9474,7 @@ snapshots:
       unplugin: 2.3.10
       unplugin-utils: 0.3.1
     optionalDependencies:
-      '@vueuse/core': 14.0.0(vue@3.5.22(typescript@5.9.3))
+      '@vueuse/core': 13.9.0(vue@3.5.22(typescript@5.9.3))
 
   unplugin-icons@22.5.0(@vue/compiler-sfc@3.5.22):
     dependencies:

@@ -23,6 +23,7 @@ export const themeConfig = {
             { text: 'Browser vs Server-Side', link: '/web-client/browser-vs-server', icon: 'i-tabler:device-desktop' },
             { text: 'Web Client vs RPC', link: '/web-client/web-client-vs-rpc', icon: 'i-tabler:git-compare' },
             { text: 'Blockchain Explorers', link: '/rpc/blockchain-explorers', icon: 'i-tabler:search' },
+            { text: 'Faucet', link: '/web-client/faucet', icon: 'i-tabler:droplet' },
             { text: 'Nimiq Tutorial', link: 'https://nimiq.guide', icon: 'i-tabler:school' },
           ],
         },
