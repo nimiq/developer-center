@@ -17,10 +17,11 @@
     "@modelcontextprotocol/sdk": "catalog:",
     "@nuxt/content": "catalog:",
     "@nuxthub/core": "^0.9.0",
+    "@nuxtjs/mcp-toolkit": "^0.4.1",
     "@toon-format/toon": "^1.2.0",
     "better-sqlite3": "catalog:",
     "nuxt": "catalog:",
-    "zod": "catalog:"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@ai-sdk/mcp": "catalog:",
