@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxthub/core', '@nuxtjs/mcp-toolkit'],
-  hub: { database: true },
+  hub: { database: 'sqlite' },
+  nitro: { preset: 'cloudflare' },
   mcp: {
     name: 'nimiq',
     version: '1.0.0',

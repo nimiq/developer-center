@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "developer-center-server",
+  "compatibility_date": "2025-11-16",
+  "d1_databases": [{ "binding": "DB", "database_name": "developer-center-server", "database_id": "8c827a3d-279f-4648-b72b-64855e5c2e04" }]
+}
