@@ -43,7 +43,7 @@ catalog:
   nimiq-css: 1.0.0-beta.136
   nimiq-rpc-client-ts: 1.0.0-beta.35
   nimiq-vitepress-theme: 1.0.0-beta.146
-  nuxt: ^3.15.4
+  nuxt: ^4.2.1
   ofetch: ^1.5.0
   pathe: ^2.0.3
   pkg-types: ^2.3.0
