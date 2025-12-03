@@ -1,0 +1,9 @@
+{
+  "id": "omYrXw4jDAIKI0W",
+  "json": "{\"id\":\"omYrXw4jDAIKI0W\",\"url\":\"https://nimiq.github.io/api-reference/checkout#checkout\",\"loadedUrl\":\"https://nimiq.github.io/api-reference/checkout#checkout\",\"uniqueKey\":\"https://nimiq.github.io/api-reference/checkout\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.389Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/api-reference/checkout",
+  "url": "https://nimiq.github.io/api-reference/checkout#checkout"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "LjgJ6F47f8zviZz",
+  "json": "{\"id\":\"LjgJ6F47f8zviZz\",\"url\":\"https://nimiq.github.io/installation#installation\",\"loadedUrl\":\"https://nimiq.github.io/installation#installation\",\"uniqueKey\":\"https://nimiq.github.io/installation\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.159Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/installation",
+  "url": "https://nimiq.github.io/installation#installation"
+}

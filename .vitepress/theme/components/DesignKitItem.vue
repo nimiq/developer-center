@@ -1,56 +1,44 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+import { computed } from 'vue'
+
 const props = defineProps<{
-  logo: string
+  name: string
   label: string
-  size: number
+  svg: string
+  png?: string
   dark?: boolean
 }>()
 
-const { copy: copyToClipboard, copied, isSupported: copyIsSupported } = useClipboard({ copiedDuring: 3000 })
-async function copySnippet(_type: string) {
-  // const logo = props.logo.replace('i-', '')
-  // const str = await getIconSnippet(logo, type)
-  const str = ''
-  if (!str)
-    throw new Error(`Icon ${props.logo} Not found`)
-  copyToClipboard(str)
-}
+const svgUrl = computed(() => withBase(props.svg))
+const pngUrl = computed(() => props.png ? withBase(props.png) : undefined)
 
-async function download() {
-  // const logo = props.logo.replace('i-', '')
-  // const str = await getIconSnippet(logo, 'PNG')
-  // if (!str)
-  //   return
-  // const name = `${logo.replaceAll('nimiq:logos-', '')}.png`
-  // const blob = dataUriToBlob(str)
-  // downloadBlob(blob, name)
+function download(type: 'svg' | 'png') {
+  const url = type === 'svg' ? svgUrl.value : pngUrl.value
+  if (!url)
+    return
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `nimiq-${props.name}.${type}`
+  a.click()
 }
 </script>
 
 <template>
-  <div flex="~ col gap-16 items-center" m-0 class="nq-raw raw" w-full>
+  <div flex="~ col gap-12" class="nq-raw raw">
     <div
-      p-24 rounded-6 flex-1 w-288 w-full
-      :class="{
-        'bg-[rgb(var(--nq-neutral-on-light-0))] border-subtle': !dark,
-        'bg-[rgb(var(--nq-neutral-on-dark-0))] border-subtle-light': dark,
-      }"
-      grid="~ place-content-center"
+      grid="~ place-content-center" p-24 rounded-6 w-full aspect-video
+      :class="dark ? 'bg-darkblue' : 'bg-neutral-100 border-1 border-neutral-300'"
     >
-      <div :class="logo" text-128 :style="`font-size: ${size}px`" />
+      <img :src="svgUrl" :alt="label" h-48 w-auto object-contain>
     </div>
-    <div flex="~ gap-12" w-full>
-      <p text-neutral-800>
-        {{ label }}
-      </p>
-      <div ml-auto flex>
-        <Toast v-if="copyIsSupported" v-model="copied" title="Copied to clipboard!" category="success">
-          <button text-12 mr-12 nq-ghost-btn @click="copySnippet('SVG')">
-            SVG
-          </button>
-        </Toast>
-
-        <button text-12 nq-ghost-btn @click="download()">
+    <div flex="~ items-center justify-between gap-8">
+      <span text-14 text-neutral-800 font-semibold>{{ label }}</span>
+      <div flex="~ gap-8">
+        <button text="f-2xs neutral-800" outline="neutral-400 1.5 ~" px-8 py-2 nq-pill-tertiary @click="download('svg')">
+          SVG
+        </button>
+        <button v-if="pngUrl" text="f-2xs neutral-800" outline="neutral-400 1.5 ~" px-8 py-2 nq-pill-tertiary @click="download('png')">
           PNG
         </button>
       </div>

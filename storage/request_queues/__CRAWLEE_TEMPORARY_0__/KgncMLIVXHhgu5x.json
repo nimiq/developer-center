@@ -1,0 +1,9 @@
+{
+  "id": "KgncMLIVXHhgu5x",
+  "json": "{\"id\":\"KgncMLIVXHhgu5x\",\"url\":\"https://nimiq.github.io/api-reference#api-reference\",\"loadedUrl\":\"https://nimiq.github.io/api-reference#api-reference\",\"uniqueKey\":\"https://nimiq.github.io/api-reference\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.266Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/api-reference",
+  "url": "https://nimiq.github.io/api-reference#api-reference"
+}

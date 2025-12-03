@@ -1,0 +1,9 @@
+{
+  "id": "wKy7i5QykllshTH",
+  "json": "{\"id\":\"wKy7i5QykllshTH\",\"url\":\"https://nimiq.github.io/pages/tech.html#tech-inside\",\"loadedUrl\":\"https://nimiq.github.io/pages/tech.html#tech-inside\",\"uniqueKey\":\"https://nimiq.github.io/pages/tech.html\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.378Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/pages/tech.html",
+  "url": "https://nimiq.github.io/pages/tech.html#tech-inside"
+}

@@ -126,6 +126,8 @@ popularResources:
           href: ./rpc/block-explorers
     - title: UI & Design
       links:
+        - text: Design Kit
+          href: ./design-kit
         - text: Nimiq Icons
           href: https://onmax.github.io/nimiq-ui/nimiq-icons/explorer
         - text: Nimiq CSS

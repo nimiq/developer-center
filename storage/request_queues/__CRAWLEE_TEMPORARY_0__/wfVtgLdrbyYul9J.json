@@ -1,0 +1,9 @@
+{
+  "id": "wfVtgLdrbyYul9J",
+  "json": "{\"id\":\"wfVtgLdrbyYul9J\",\"url\":\"https://nimiq.github.io/api-reference/sign-transaction#sign-transaction\",\"loadedUrl\":\"https://nimiq.github.io/api-reference/sign-transaction#sign-transaction\",\"uniqueKey\":\"https://nimiq.github.io/api-reference/sign-transaction\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.419Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/api-reference/sign-transaction",
+  "url": "https://nimiq.github.io/api-reference/sign-transaction#sign-transaction"
+}

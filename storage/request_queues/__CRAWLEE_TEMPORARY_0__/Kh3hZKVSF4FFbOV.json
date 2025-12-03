@@ -1,0 +1,9 @@
+{
+  "id": "Kh3hZKVSF4FFbOV",
+  "json": "{\"id\":\"Kh3hZKVSF4FFbOV\",\"url\":\"https://nimiq.github.io/tutorials/sven@nimiq.com\",\"loadedUrl\":\"https://nimiq.github.io/tutorials/sven@nimiq.com\",\"uniqueKey\":\"https://nimiq.github.io/tutorials/sven@nimiq.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":3,\"__crawlee\":{\"crawlDepth\":3,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:58.026Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/tutorials/sven@nimiq.com",
+  "url": "https://nimiq.github.io/tutorials/sven@nimiq.com"
+}

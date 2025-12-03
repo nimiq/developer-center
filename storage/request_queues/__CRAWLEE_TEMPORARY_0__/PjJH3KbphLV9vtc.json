@@ -1,0 +1,9 @@
+{
+  "id": "PjJH3KbphLV9vtc",
+  "json": "{\"id\":\"PjJH3KbphLV9vtc\",\"url\":\"https://nimiq.github.io/usage#usage\",\"loadedUrl\":\"https://nimiq.github.io/usage#usage\",\"uniqueKey\":\"https://nimiq.github.io/usage\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.171Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/usage",
+  "url": "https://nimiq.github.io/usage#usage"
+}

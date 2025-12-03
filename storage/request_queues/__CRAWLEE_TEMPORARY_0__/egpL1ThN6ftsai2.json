@@ -1,0 +1,9 @@
+{
+  "id": "egpL1ThN6ftsai2",
+  "json": "{\"id\":\"egpL1ThN6ftsai2\",\"url\":\"https://nimiq.github.io/pages/tutorials.html#tutorials\",\"loadedUrl\":\"https://nimiq.github.io/pages/tutorials.html#tutorials\",\"uniqueKey\":\"https://nimiq.github.io/pages/tutorials.html\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.349Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/pages/tutorials.html",
+  "url": "https://nimiq.github.io/pages/tutorials.html#tutorials"
+}

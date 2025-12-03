@@ -338,6 +338,7 @@ export const themeConfig = {
   betaBadge: true,
   logoContextMenu: {
     items: [
+      { label: 'Design Kit', icon: 'i-tabler:download', href: './design-kit' },
       { label: 'Nimiq UI', icon: 'i-tabler:palette', href: 'https://onmax.github.io/nimiq-ui/' },
       { label: 'Nimiq.com', icon: 'i-nimiq:logos-nimiq-mono', href: 'https://nimiq.com' },
     ],

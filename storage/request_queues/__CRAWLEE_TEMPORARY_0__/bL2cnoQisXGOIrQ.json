@@ -1,0 +1,9 @@
+{
+  "id": "bL2cnoQisXGOIrQ",
+  "json": "{\"id\":\"bL2cnoQisXGOIrQ\",\"url\":\"https://nimiq.github.io/tutorials/basics-1-consensus.html\",\"loadedUrl\":\"https://nimiq.github.io/tutorials/basics-1-consensus.html\",\"uniqueKey\":\"https://nimiq.github.io/tutorials/basics-1-consensus.html\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":3,\"__crawlee\":{\"crawlDepth\":3,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:58.033Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/tutorials/basics-1-consensus.html",
+  "url": "https://nimiq.github.io/tutorials/basics-1-consensus.html"
+}

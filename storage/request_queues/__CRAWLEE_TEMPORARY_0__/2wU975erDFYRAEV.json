@@ -1,0 +1,9 @@
+{
+  "id": "2wU975erDFYRAEV",
+  "json": "{\"id\":\"2wU975erDFYRAEV\",\"url\":\"https://nimiq.github.io/tutorials/ledger-guide\",\"loadedUrl\":\"https://nimiq.github.io/tutorials/ledger-guide\",\"uniqueKey\":\"https://nimiq.github.io/tutorials/ledger-guide\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":2,\"__crawlee\":{\"crawlDepth\":2,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.635Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/tutorials/ledger-guide",
+  "url": "https://nimiq.github.io/tutorials/ledger-guide"
+}

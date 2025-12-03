@@ -1,0 +1,9 @@
+{
+  "id": "LMMDW2pp48nqMPO",
+  "json": "{\"id\":\"LMMDW2pp48nqMPO\",\"url\":\"https://nimiq.github.io/quick-start#quick-start\",\"loadedUrl\":\"https://nimiq.github.io/quick-start#quick-start\",\"uniqueKey\":\"https://nimiq.github.io/quick-start\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2025-12-01T19:20:57.169Z\"}",
+  "method": "GET",
+  "orderNo": null,
+  "retryCount": 0,
+  "uniqueKey": "https://nimiq.github.io/quick-start",
+  "url": "https://nimiq.github.io/quick-start#quick-start"
+}
