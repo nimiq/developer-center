@@ -9,13 +9,13 @@ import FaucetPlayground from '../.vitepress/theme/components/Faucet/FaucetPlaygr
 
 # Faucet
 
-The Nimiq Faucet dispenses free NIM for development and testing.
+The Nimiq Faucet provides **testnet NIM only** and is intended for development and testing purposes.
 
 Accessible via a web interface or a simple API, it ensures you have the resources to deploy contracts and simulate real-world scenarios cost-free.
 
 ## Interactive Playground
 
-Use the interface below to instantly request funds to your address.
+Paste a **testnet** Nimiq address in the interface below to request funds.
 
 <FaucetPlayground />
 
@@ -25,7 +25,7 @@ The faucet currently supports the Nimiq Testnet, offering unlimited requests to 
 
 | Feature | Testnet |
 | :--- | :--- |
-| **URL** | `faucet.pos.nimiq-testnet.com` |
+| **URL** | `https://faucet.pos.nimiq-testnet.com` |
 | **Max Amount** | 10,000 NIM |
 | **Rate Limit** | Unlimited |
 | **Intended Use** | Development, CI/CD, Stress Testing |
