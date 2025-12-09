@@ -11,6 +11,10 @@
     "eval": "evalite run",
     "eval:ui": "evalite serve",
     "eval:watch": "evalite watch",
+    "prepare": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "mcp:studio": "npx @modelcontextprotocol/inspector --server-url http://localhost:3000/mcp"
   },
   "dependencies": {
@@ -22,14 +26,20 @@
     "better-sqlite3": "catalog:",
     "drizzle-orm": "^0.39.0",
     "nuxt": "catalog:",
+    "okapibm25": "^1.4.1",
     "zod": "^4.1.13"
   },
   "devDependencies": {
     "@ai-sdk/mcp": "catalog:",
     "@ai-sdk/openai": "catalog:",
+    "@antfu/eslint-config": "catalog:",
+    "@cloudflare/workers-types": "^4.20251205.0",
+    "@nuxt/eslint": "^1.11.0",
     "ai": "catalog:",
     "dotenv": "catalog:",
     "drizzle-kit": "^0.30.0",
+    "eslint": "catalog:",
+    "eslint-plugin-format": "^1.1.0",
     "evalite": "catalog:",
     "vitest": "catalog:"
   }
