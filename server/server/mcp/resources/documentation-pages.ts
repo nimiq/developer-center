@@ -5,7 +5,7 @@ export default defineMcpResource({
   uri: 'resource://nimiq/documentation-pages',
   metadata: { title: 'Nimiq Documentation Page Index' },
   cache: '1h',
-  handler: async (uri) => {
+  handler: async (uri: URL) => {
     const docs = await $fetch('/api/mcp/list-documentation-pages')
     return { contents: [{ uri: uri.href, mimeType: 'text/plain', text: encode(docs) }] }
   },

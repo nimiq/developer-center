@@ -8,7 +8,7 @@ export default defineMcpResource({
   uri: 'resource://nimiq/open-rpc-specification-document',
   metadata: { title: 'Nimiq JSON-RPC API Specification' },
   cache: '1h',
-  handler: async (uri) => {
+  handler: async (uri: URL) => {
     const specPath = resolve(process.cwd(), '../.vitepress/rpc/openrpc-document.json')
     const spec = JSON.parse(await readFile(specPath, 'utf-8'))
     return { contents: [{ uri: uri.href, mimeType: 'text/plain', text: encode(spec) }] }

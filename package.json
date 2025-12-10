@@ -28,6 +28,7 @@
     "server:mcp": "pnpm --filter server mcp:studio"
   },
   "dependencies": {
+    "@ai-sdk/vue": "3.0.0-beta.139",
     "@iconify-json/carbon": "catalog:",
     "@iconify/vue": "catalog:",
     "@nimiq/utils": "catalog:",
@@ -35,14 +36,17 @@
     "@unocss/reset": "catalog:",
     "@vueuse/core": "catalog:",
     "canvas-confetti": "catalog:",
+    "effect": "^3.19.10",
     "iconify-icon": "catalog:",
     "json2md": "catalog:",
+    "markstream-vue": "0.0.2",
     "medium-zoom": "catalog:",
     "motion-v": "catalog:",
     "nimiq-rpc-client-ts": "catalog:",
     "reka-ui": "catalog:",
     "vaul-vue": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "vue-stick-to-bottom": "^0.1.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",

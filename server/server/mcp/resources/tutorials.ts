@@ -5,7 +5,7 @@ export default defineMcpResource({
   uri: 'resource://nimiq/tutorials',
   metadata: { title: 'Nimiq Tutorial Catalog' },
   cache: '1h',
-  handler: async (uri) => {
+  handler: async (uri: URL) => {
     const tutorials = await $fetch('/api/mcp/list-tutorials')
     return { contents: [{ uri: uri.href, mimeType: 'text/plain', text: encode(tutorials) }] }
   },

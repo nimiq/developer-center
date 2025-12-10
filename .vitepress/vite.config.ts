@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import process from 'node:process'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import { resolve } from 'pathe'
 import UnoCSS from 'unocss/vite'
@@ -45,6 +46,7 @@ export default defineConfig(async () => {
     define: {
       __NIMIQ_OPENRPC_INFO__: JSON.stringify(openRpcDocInfo),
       __NIMIQ_RPC_VERSION__: JSON.stringify(nimiqRpcVersion),
+      __NIMIQ_API_URL__: JSON.stringify(process.env.NIMIQ_API_URL || 'http://localhost:3000'),
       global: 'globalThis',
     },
 

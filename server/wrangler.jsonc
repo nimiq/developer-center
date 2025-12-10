@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "developer-center-server",
+  "account_id": "cf9baad7d68d7ee717f3339731e81dfb",
   "main": ".output/server/index.mjs",
   "assets": { "directory": ".output/public" },
   "compatibility_date": "2025-11-16",

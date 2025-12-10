@@ -3,6 +3,7 @@ packages:
   - server
 
 catalog:
+  '@ai-sdk/google': 3.0.0-beta.67
   '@ai-sdk/mcp': ^0.0.8
   '@ai-sdk/openai': 3.0.0-beta.60
   '@antfu/eslint-config': 6.2.0

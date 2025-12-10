@@ -20,8 +20,8 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "catalog:",
     "@nuxt/content": "catalog:",
-    "@nuxthub/core": "npm:@nuxthub/core-nightly@latest",
-    "@nuxtjs/mcp-toolkit": "^0.4.1",
+    "@nuxthub/core": "^0.10.0",
+    "@nuxtjs/mcp-toolkit": "https://pkg.pr.new/@nuxtjs/mcp-toolkit@50",
     "@toon-format/toon": "^1.2.0",
     "better-sqlite3": "catalog:",
     "drizzle-orm": "^0.39.0",
@@ -30,6 +30,7 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@ai-sdk/google": "catalog:",
     "@ai-sdk/mcp": "catalog:",
     "@ai-sdk/openai": "catalog:",
     "@antfu/eslint-config": "catalog:",
