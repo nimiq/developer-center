@@ -203,4 +203,4 @@ Once a valid transaction is included in a **micro block** (blocks containing use
 ## Reference
 
 - Albatross White Paper: https://arxiv.org/pdf/1903.01589
-- Protocol: https://www.nimiq.com/developers/learn/
+- Protocol: https://www.nimiq.com/developers/protocol/

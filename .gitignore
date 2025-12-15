@@ -15,6 +15,12 @@ set-up-your-own-node/rpc-docs/methods.md
 
 components.d.ts
 
+# Server generated files
+server/.data/
+server/.nuxt/
+server/.output/
+server/.wrangler/
+
 deployment-devcenter/
 
 # Logs
