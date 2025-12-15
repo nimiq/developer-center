@@ -7,6 +7,11 @@ settings:
 overrides:
   unocss-preset-onmax: 1.0.0-beta.52
 
+patchedDependencies:
+  nimiq-vitepress-theme:
+    hash: 408ad4c83044bf1f8ae23ae7c0094454e5bb7be8a3e28c0ed3c7dd120ed68485
+    path: patches/nimiq-vitepress-theme.patch
+
 importers:
 
   .:
@@ -122,7 +127,7 @@ importers:
         version: 1.0.0-beta.148(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       nimiq-vitepress-theme:
         specifier: 1.0.0-beta.148
-        version: 1.0.0-beta.148(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
+        version: 1.0.0-beta.148(patch_hash=408ad4c83044bf1f8ae23ae7c0094454e5bb7be8a3e28c0ed3c7dd120ed68485)(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))
       nitro:
         specifier: 3.0.1-alpha.0
         version: 3.0.1-alpha.0(chokidar@4.0.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
@@ -8460,7 +8465,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  nimiq-vitepress-theme@1.0.0-beta.148(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
+  nimiq-vitepress-theme@1.0.0-beta.148(patch_hash=408ad4c83044bf1f8ae23ae7c0094454e5bb7be8a3e28c0ed3c7dd120ed68485)(typescript@5.9.3)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vitepress@2.0.0-alpha.12(@types/node@24.9.2)(change-case@5.4.4)(jiti@2.6.1)(less@4.4.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.6)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@iconify-json/tabler': 1.2.23
       '@iconify-json/vscode-icons': 1.2.33

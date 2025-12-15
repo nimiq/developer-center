@@ -20,7 +20,7 @@ export default async () => {
   return defineNimiqVitepressConfig({
     base,
     title,
-    srcExclude: ['**/README.md', '**/CLAUDE.md', '**/server/**'],
+    srcExclude: ['**/README.md', '**/CLAUDE.md', '**/server/**', '**/build/**'],
     description,
     lastUpdated: true,
     cleanUrls: true,

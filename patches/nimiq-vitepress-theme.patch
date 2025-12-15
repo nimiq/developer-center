@@ -1,0 +1,478 @@
+diff --git a/dist/layout/CommandMenu.vue b/dist/layout/CommandMenu.vue
+index 446311e5702e68782012f9082ac66a74cbe37bae..835f99a7f2e60e0e62bde1d85fee059dde92c26a 100644
+--- a/dist/layout/CommandMenu.vue
++++ b/dist/layout/CommandMenu.vue
+@@ -30,7 +30,7 @@ function handleClose() {
+       transition-colors flex="~ items-center gap-8" p="l-12 r-4 y-4" rounded-12 f-text-xs var:outline-color:neutral-400
+     >
+       <div i-nimiq:magnifying-glass text-12 op="60 group-hocus:80" transition-opacity aria-hidden />
+-      <span inline-flex lh-none f-text-sm>Search</span>
++      <span inline-flex lh-none f-text-xs text-neutral-700>Search</span>
+       <span
+         ml-auto f-text-3xs bg="group-hocus:neutral-400 neutral-300" ring="1 neutral-500" lh-none p="x-6 y-4"
+         rounded-8 transition-colors
+@@ -42,7 +42,7 @@ function handleClose() {
+     <DialogPortal>
+       <DialogOverlay bg="darkblue/70" fixed inset-0 z-1001 />
+       <DialogContent
+-        fixed top="10%" left="50%" max-h-85vh w-90vw max-w-420px translate-x="-50%" rounded-6 bg-neutral-100
++        fixed top="10%" left="50%" max-h-85vh w-90vw max-w-580 translate-x="-50%" rounded-6 bg-neutral-100
+         shadow of-hidden z-1002 outline="1.5 offset--1.5 neutral-0/6 ~"
+       >
+         <DialogTitle class="sr-only">
+diff --git a/dist/layout/SearchCommandBox.vue b/dist/layout/SearchCommandBox.vue
+index 027fb2d8404f7e759fb7b6f3666dec1a575c90cd..83f797e0eacbe9761c1e5e3ab98cf1ecbea154c4 100644
+--- a/dist/layout/SearchCommandBox.vue
++++ b/dist/layout/SearchCommandBox.vue
+@@ -9,7 +9,7 @@ import localSearchIndex from '@localSearchIndex'
+ import { computedAsync, debouncedWatch } from '@vueuse/core'
+ import Mark from 'mark.js/src/vanilla.js'
+ import MiniSearch from 'minisearch'
+-import { DialogClose, ListboxContent, ListboxFilter, ListboxItem, ListboxRoot } from 'reka-ui'
++import { DialogClose, ListboxContent, ListboxFilter, ListboxItem, ListboxRoot, ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'reka-ui'
+ import { useData, withBase } from 'vitepress'
+ import { computed, markRaw, nextTick, ref, shallowRef, watch } from 'vue'
+ import { useSourceCode } from '../composables/useSourceCode'
+@@ -34,6 +34,23 @@ const enableNoResults = ref(false)
+ const resultsEl = shallowRef<HTMLElement>()
+ const results: Ref<(SearchResult & Result)[]> = shallowRef([])
+ const listboxRef = ref<GenericComponentInstance<typeof ListboxRoot>>()
++const scrollViewportRef = ref<HTMLElement>()
++const canScrollUp = ref(false)
++const canScrollDown = ref(false)
++
++function handleScroll(e: Event) {
++  const target = e.target as HTMLElement
++  if (!target) return
++  canScrollUp.value = target.scrollTop > 8
++  canScrollDown.value = target.scrollTop < target.scrollHeight - target.clientHeight - 8
++}
++
++function checkScrollState() {
++  const viewport = scrollViewportRef.value
++  if (!viewport) return
++  canScrollUp.value = viewport.scrollTop > 8
++  canScrollDown.value = viewport.scrollTop < viewport.scrollHeight - viewport.clientHeight - 8
++}
+ 
+ interface Result {
+   title: string
+@@ -216,6 +233,10 @@ watch(filterText, () => {
+   enableNoResults.value = false
+ })
+ 
++watch(results, () => {
++  nextTick(checkScrollState)
++}, { flush: 'post' })
++
+ function formMarkRegex(terms: Set<string>) {
+   return new RegExp(
+     [...terms]
+@@ -265,6 +286,56 @@ function handleOpenInClaude() {
+   window.open(claudeUrl.value, '_blank', 'noopener,noreferrer')
+   emit('close')
+ }
++
++function getIconForPath(id: string): string {
++  // id includes the base path (e.g., /developer-center/web-client/overview)
++  const rawPath = id.split('#')[0]
++  const path = (rawPath.startsWith('/') ? rawPath : '/' + rawPath).replace(/\/+$/g, '')
++
++  // Find the most specific (longest) matching path
++  let bestMatch: { icon: string; pathLength: number } | null = null
++
++  for (const module of theme.value.modules || []) {
++    const moduleBasePath = withBase(`/${module.subpath}`).replace(/\/+$/g, '')
++    if (!path.startsWith(moduleBasePath)) continue
++
++    for (const section of module.sidebar || []) {
++      for (const item of section.items || []) {
++        if (item.link) {
++          const itemPath = withBase(item.link).replace(/\/+$/g, '')
++          if (path === itemPath || path.startsWith(itemPath + '/')) {
++            if (!bestMatch || itemPath.length > bestMatch.pathLength) {
++              bestMatch = { icon: item.icon, pathLength: itemPath.length }
++            }
++          }
++        }
++        // Check nested items - return parent's icon
++        if (item.items) {
++          for (const sub of item.items) {
++            if (sub.link) {
++              const subPath = withBase(sub.link).replace(/\/+$/g, '')
++              if (path === subPath || path.startsWith(subPath + '/')) {
++                if (!bestMatch || subPath.length > bestMatch.pathLength) {
++                  bestMatch = { icon: item.icon, pathLength: subPath.length }
++                }
++              }
++            }
++          }
++        }
++      }
++    }
++
++    // If we found a match in this module, return it; otherwise fallback to module icon
++    if (bestMatch) return bestMatch.icon
++    return module.icon || 'i-nimiq:document-filled'
++  }
++  return 'i-nimiq:document-filled'
++}
++
++function getUrlPath(id: string): string {
++  const path = id.split('#')[0].replace(/\/+$/g, '')
++  return path.startsWith('/') ? path : '/' + path
++}
+ </script>
+ 
+ <template>
+@@ -276,108 +347,107 @@ function handleOpenInClaude() {
+       </DialogClose>
+     </div>
+ 
+-    <ListboxContent
+-      :ref="(node) => { if (node && '$el' in node){ resultsEl = node.$el } }"
+-      as="ul" md:max-h-55vh of-auto empty="hidden md:block"
+-    >
+-      <!-- Manual Options (only show when no filter text) -->
+-      <template v-if="!filterText">
+-        <!-- 1. Modules (Most Important - Navigation) -->
+-        <ListboxItem
+-          v-for="module in moduleItems" :key="module.subpath"
+-          :value="`module-${module.subpath}`"
+-          class="data-[highlighted]:bg-blue-400 data-[highlighted]:text-blue data-[highlighted]:font-semibold"
+-          as-child @select="handleModuleLink(module.defaultPageLink)"
+-        >
+-          <div inline-flex f-p-sm f-p-xs w-full group cursor-pointer>
+-            <div flex="~ items-center gap-12">
+-              <div :class="module.icon || 'i-nimiq:document-filled'" size-24 text="neutral-700 group-hocus:blue" />
+-              <div flex="~ col">
+-                <span>{{ module.text }}</span>
+-                <span v-if="module.description" text="f-xs neutral-800">{{ module.description }}</span>
+-              </div>
+-            </div>
+-          </div>
+-        </ListboxItem>
+-
+-        <!-- 2. Utility Actions (Theme, etc.) -->
+-        <ListboxItem
+-          v-for="item in utilityItems" :key="item.value"
+-          :value="item.value"
+-          class="data-[highlighted]:bg-blue-400 data-[highlighted]:text-blue data-[highlighted]:font-semibold"
+-          as-child @select="item.action"
+-        >
+-          <div inline-flex f-p-sm f-p-xs w-full group cursor-pointer>
+-            <div flex="~ items-center gap-12">
+-              <div :class="item.icon" size-16 text="neutral-700 group-hocus:blue" />
+-              <span>{{ item.label }}</span>
+-            </div>
+-          </div>
+-        </ListboxItem>
+-
+-        <!-- 3. Copy & Page Actions -->
+-        <ListboxItem
+-          v-for="item in copyItems" :key="item.value"
+-          :value="item.value"
+-          class="data-[highlighted]:bg-blue-400 data-[highlighted]:text-blue data-[highlighted]:font-semibold"
+-          as-child @select="item.action"
+-        >
+-          <div inline-flex f-p-sm f-p-xs w-full group cursor-pointer>
+-            <div flex="~ items-center gap-12">
+-              <div :class="item.icon" size-16 text="neutral-700 group-hocus:blue" />
+-              <span>{{ item.label }}</span>
+-            </div>
+-          </div>
+-        </ListboxItem>
+-
+-        <!-- 4. Social Media Links -->
+-        <ListboxItem
+-          v-for="social in socialItems" :key="social.link"
+-          :value="`social-${social.link}`"
+-          class="data-[highlighted]:bg-blue-400 data-[highlighted]:text-blue data-[highlighted]:font-semibold"
+-          as-child @select="handleSocialLink(social.link)"
++    <!-- Scroll container with curtain effects -->
++    <div class="scroll-container" relative>
++      <!-- Top curtain (CSS scroll-driven) -->
++      <div class="scroll-curtain-top" />
++
++      <ScrollAreaRoot type="hover" class="scroll-area">
++        <ScrollAreaViewport
++          :ref="(node: any) => { if (node?.$el) { resultsEl = node.$el; scrollViewportRef = node.$el } }"
++          class="scroll-viewport"
++          @scroll="handleScroll"
+         >
+-          <div inline-flex f-p-sm f-p-xs w-full group cursor-pointer>
+-            <div flex="~ items-center gap-12">
+-              <div :class="social.icon" size-16 text="neutral-700 group-hocus:blue" />
+-              <span>{{ social.label }}</span>
+-            </div>
+-          </div>
+-        </ListboxItem>
+-
+-        <!-- Separator -->
+-        <li v-if="results.length" h-1 bg-neutral-200 my-8 />
+-      </template>
+-
+-      <!-- Search Results -->
+-      <ListboxItem
+-        v-for="p in results" :key="p.id" :value="p.id"
+-        class="data-[highlighted]:bg-blue-400 data-[highlighted]:text-blue data-[highlighted]:font-semibold" as-child @select="emit('close')"
+-      >
+-        <a :href="p.id" inline-flex f-p-sm f-p-xs w-full group>
+-          <div flex="~ items-center gap-12">
+-            <div i-nimiq:document-filled size-16 text="neutral-700 group-hocus:blue" />
+-            <div flex="~ items-center wrap">
+-              <span v-for="(t, index) in p.titles" :key="index" flex="~ items-center" font-normal>
+-                <span v-html="t" />
+-                <div i-nimiq:chevron-right mx-8 text="8 neutral-700 group-hocus:blue" />
+-              </span>
+-              <span font-normal>
+-                <span v-html="p.title" />
+-              </span>
+-            </div>
+-          </div>
+-        </a>
+-      </ListboxItem>
+-
+-      <li v-if="filterText && !results.length && enableNoResults" flex="~ items-center justify-center" f-p-sm f-text-sm>
+-        No results for "<strong>{{ filterText }}</strong>"
+-      </li>
+-
+-      <li v-else-if="!filterText && !results.length && !moduleItems.length && !utilityItems.length && !copyItems.length && !socialItems.length" italic text="f-xs neutral-700 center" f-py-md>
+-        Start typing to search
+-      </li>
+-    </ListboxContent>
++          <ListboxContent as="ul" empty="hidden md:block" py-4>
++            <!-- Manual Options (only show when no filter text) -->
++            <template v-if="!filterText">
++              <!-- 1. Modules (Most Important - Navigation) -->
++              <ListboxItem
++                v-for="module in moduleItems" :key="module.subpath"
++                :value="`module-${module.subpath}`"
++                class="search-item"
++                as-child @select="handleModuleLink(module.defaultPageLink)"
++              >
++                <div class="search-item-content" cursor-pointer>
++                  <div :class="module.icon || 'i-nimiq:document-filled'" class="search-item-icon" size-20="!" />
++                  <span class="search-item-title">{{ module.text }}</span>
++                  <span v-if="module.description" class="search-item-path">{{ module.description }}</span>
++                </div>
++              </ListboxItem>
++
++              <!-- 2. Utility Actions (Theme, etc.) -->
++              <ListboxItem
++                v-for="item in utilityItems" :key="item.value"
++                :value="item.value"
++                class="search-item"
++                as-child @select="item.action"
++              >
++                <div class="search-item-content search-item-single" cursor-pointer>
++                  <div :class="item.icon" class="search-item-icon" />
++                  <span class="search-item-title">{{ item.label }}</span>
++                </div>
++              </ListboxItem>
++
++              <!-- 3. Copy & Page Actions -->
++              <ListboxItem
++                v-for="item in copyItems" :key="item.value"
++                :value="item.value"
++                class="search-item"
++                as-child @select="item.action"
++              >
++                <div class="search-item-content search-item-single" cursor-pointer>
++                  <div :class="item.icon" class="search-item-icon" />
++                  <span class="search-item-title">{{ item.label }}</span>
++                </div>
++              </ListboxItem>
++
++              <!-- 4. Social Media Links -->
++              <ListboxItem
++                v-for="social in socialItems" :key="social.link"
++                :value="`social-${social.link}`"
++                class="search-item"
++                as-child @select="handleSocialLink(social.link)"
++              >
++                <div class="search-item-content search-item-single" cursor-pointer>
++                  <div :class="social.icon" class="search-item-icon" />
++                  <span class="search-item-title">{{ social.label }}</span>
++                </div>
++              </ListboxItem>
++
++              <!-- Separator -->
++              <li v-if="results.length" h-1 bg-neutral-200 my-4 />
++            </template>
++
++            <!-- Search Results -->
++            <ListboxItem
++              v-for="p in results" :key="p.id" :value="p.id"
++              class="search-item" as-child @select="emit('close')"
++            >
++              <a :href="p.id" class="search-item-content">
++                <div :class="getIconForPath(p.id)" class="search-item-icon" />
++                <span class="search-item-title" v-html="p.title" />
++                <span class="search-item-path">{{ getUrlPath(p.id) }}</span>
++              </a>
++            </ListboxItem>
++
++            <li v-if="filterText && !results.length && enableNoResults" flex="~ items-center justify-center" py-16 text-14>
++              No results for "<strong>{{ filterText }}</strong>"
++            </li>
++
++            <li v-else-if="!filterText && !results.length && !moduleItems.length && !utilityItems.length && !copyItems.length && !socialItems.length" italic text="12 neutral-700 center" py-16>
++              Start typing to search
++            </li>
++          </ListboxContent>
++        </ScrollAreaViewport>
++
++        <ScrollAreaScrollbar orientation="vertical" class="scrollbar">
++          <ScrollAreaThumb class="scrollbar-thumb" />
++        </ScrollAreaScrollbar>
++      </ScrollAreaRoot>
++
++      <!-- Bottom curtain (CSS scroll-driven) -->
++      <div class="scroll-curtain-bottom" />
++    </div>
+ 
+     <div f-py-2xs f-px-xs f-text-xs text-neutral-800 bg-neutral-200 bg-opacity-40 nq-prose-compact children:mx-0 hidden flex="md:~ items-center gap-4 justify-between" h-max>
+       <span flex="~ items-center gap-4">
+@@ -404,7 +474,140 @@ function handleOpenInClaude() {
+ </template>
+ 
+ <style scoped>
++/* Scroll container */
++.scroll-container {
++  --uno: 'relative';
++}
++
++.scroll-area {
++  --uno: 'md:max-h-55vh';
++}
++
++.scroll-viewport {
++  --uno: 'max-h-inherit';
++  scroll-timeline: --scroll-timeline block;
++}
++
++/* Styled scrollbar */
++.scrollbar {
++  --uno: 'flex select-none touch-none p-0.5 bg-transparent transition-colors w-8';
++}
++
++.scrollbar-thumb {
++  --uno: 'relative flex-1 rounded-full bg-neutral-400/40 hover:bg-neutral-400/70 transition-colors';
++}
++
++/* Scroll-driven curtain effects - uses bg-neutral-100 which adapts to dark mode */
++.scroll-curtain-top,
++.scroll-curtain-bottom {
++  --uno: 'absolute left-0 right-8 h-16 pointer-events-none z-10 bg-neutral-100';
++  opacity: 0;
++}
++
++.scroll-curtain-top {
++  --uno: 'top-0';
++  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
++  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
++  animation: curtain-top-fade linear both;
++  animation-timeline: --scroll-timeline;
++  animation-range: 8px 32px; /* only show after scrolling past first 8px */
++}
++
++.scroll-curtain-bottom {
++  --uno: 'bottom-0';
++  mask-image: linear-gradient(to top, black 0%, transparent 100%);
++  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
++  animation: curtain-bottom-fade linear both;
++  animation-timeline: --scroll-timeline;
++  animation-range: calc(100% - 24px) 100%;
++}
++
++@keyframes curtain-top-fade {
++  from { opacity: 0; }
++  to { opacity: 1; }
++}
++
++@keyframes curtain-bottom-fade {
++  from { opacity: 1; }
++  to { opacity: 0; }
++}
++
++/* Fallback for browsers without scroll-timeline support */
++@supports not (animation-timeline: scroll()) {
++  .scroll-curtain-top,
++  .scroll-curtain-bottom {
++    display: none;
++  }
++}
++
++/* Reset list styles */
++:deep(ul) {
++  --uno: 'list-none m-0 p-0';
++}
++
++/* Base item styles */
++.search-item {
++  --uno: 'block w-full';
++}
++
++/* Grid layout for search result content: icon | title/path */
++.search-item-content {
++  --uno: 'grid w-full py-6 pr-12 border-l-2 border-transparent transition-all duration-150';
++  grid-template-columns: 16px 1fr;
++  grid-template-rows: auto auto;
++  gap: 0 10px;
++  padding-left: 14px; /* space between border and icon */
++}
++
++.search-item-icon {
++  --uno: 'size-16 transition-colors text-neutral-800';
++  grid-column: 1;
++  grid-row: 1 / -1; /* span both rows */
++  align-self: center;
++}
++
++.search-item-title {
++  --uno: 'text-14 truncate';
++  grid-column: 2;
++  grid-row: 1;
++}
++
++.search-item-path {
++  --uno: 'font-mono text-10 text-neutral-600 truncate';
++  grid-column: 2;
++  grid-row: 2;
++}
++
++/* Single-line items (no path) */
++.search-item-single {
++  grid-template-rows: auto;
++}
++
++.search-item-single .search-item-icon {
++  grid-row: 1;
++}
++
++/* Highlighted state - with as-child, data-highlighted is on same element as search-item-content */
++.search-item-content[data-highlighted] {
++  background-color: var(--colors-neutral-300);
++  border-left-color: var(--colors-blue);
++}
++
++.search-item-content[data-highlighted] .search-item-icon {
++  color: var(--colors-blue);
++}
++
++.search-item-content[data-highlighted] .search-item-title {
++  color: var(--colors-neutral-0);
++}
++
++.search-item-content[data-highlighted] .search-item-path {
++  color: var(--colors-neutral-800);
++}
++
++/* Subtle search term highlighting */
+ :global([data-markjs]) {
+-  --uno: 'bg-blue rounded-2 px-2 text-white pb-1';
++  --uno: 'font-semibold bg-transparent';
++  color: inherit;
+ }
+ </style>

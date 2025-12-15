@@ -108,6 +108,9 @@
     ],
     "overrides": {
       "unocss-preset-onmax": "1.0.0-beta.52"
+    },
+    "patchedDependencies": {
+      "nimiq-vitepress-theme": "patches/nimiq-vitepress-theme.patch"
     }
   },
   "simple-git-hooks": {
