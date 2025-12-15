@@ -8,8 +8,8 @@ Guides, resources and tips on how to create with Nimiq.<br >Start building the f
 <p>
 
 <p align="center">
-  <a href="https://nimiq.com/developers/learn/" target="__blank"><img src="https://img.shields.io/badge/Learn%20about-Albatross%20Protocol-blue?style=flat&colorA=1F2348&colorB=ffffff" alt="Nimiq Albatross"></a>
-  <a href="https://nimiq.com/developers/build/web-client/" target="__blank"><img src="https://img.shields.io/badge/Build%20with-the%20Web%20Client-blue?style=flat&colorA=1F2348&colorB=ffffff" alt="Nimiq Albatross Web Client"></a>
+  <a href="https://nimiq.com/developers/protocol/" target="__blank"><img src="https://img.shields.io/badge/Learn%20about-Albatross%20Protocol-blue?style=flat&colorA=1F2348&colorB=ffffff" alt="Nimiq Albatross"></a>
+  <a href="https://nimiq.com/developers/web-client/" target="__blank"><img src="https://img.shields.io/badge/Build%20with-the%20Web%20Client-blue?style=flat&colorA=1F2348&colorB=ffffff" alt="Nimiq Albatross Web Client"></a>
 </p>
 
 This repository contains the source code for the Nimiq Developer Center. It is a collection of guides, resources and tips on how to create with Nimiq. It is a place where developers can learn about the Nimiq ecosystem, build with Nimiq and contribute to the Nimiq project.
