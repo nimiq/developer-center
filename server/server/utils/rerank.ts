@@ -23,10 +23,17 @@ export async function rerankResults(query: string, results: SearchResult[], topK
       schema: z.object({
         resultIds: z.array(z.number()).describe('IDs of the most relevant chunks that directly answer the query'),
       }),
-      system: `You are a search result reranker for Nimiq blockchain documentation.
-Your task is to filter search results and keep only those that directly help answer the user's query.
-Be selective - exclude chunks that are only tangentially related.
-Return the IDs of the most relevant chunks (maximum ${topK}).`,
+      system: `Filter search results for Nimiq documentation relevance.
+
+<task>
+Return IDs of chunks that DIRECTLY answer the query.
+Maximum: ${topK} results.
+</task>
+
+<criteria>
+- INCLUDE: chunks containing specific answers, relevant code, or explanations
+- EXCLUDE: tangentially related content, general overviews that don't address the question
+</criteria>`,
       prompt: `Query: ${query}
 
 Available chunks:

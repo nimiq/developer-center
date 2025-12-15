@@ -18,11 +18,13 @@
     "mcp:studio": "npx @modelcontextprotocol/inspector --server-url http://localhost:3000/mcp"
   },
   "dependencies": {
+    "@libsql/client": "^0.15.15",
     "@modelcontextprotocol/sdk": "catalog:",
     "@nuxt/content": "catalog:",
     "@nuxthub/core": "^0.10.0",
     "@nuxtjs/mcp-toolkit": "https://pkg.pr.new/@nuxtjs/mcp-toolkit@50",
     "@toon-format/toon": "^1.2.0",
+    "agents": "^0.2.31",
     "better-sqlite3": "catalog:",
     "drizzle-orm": "^0.39.0",
     "nuxt": "catalog:",

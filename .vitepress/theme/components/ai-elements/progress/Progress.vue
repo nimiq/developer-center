@@ -7,6 +7,7 @@ defineProps<{
 }>()
 
 const stepIcons: Record<string, string> = {
+  analyzing: 'i-tabler:brain',
   searching: 'i-tabler:search',
   reranking: 'i-tabler:sort-ascending',
   context: 'i-tabler:file-text',

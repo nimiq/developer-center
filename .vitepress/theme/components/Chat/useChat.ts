@@ -5,6 +5,8 @@ import { computed, ref } from 'vue'
 declare const __NIMIQ_API_URL__: string
 const API_URL = typeof __NIMIQ_API_URL__ !== 'undefined' ? __NIMIQ_API_URL__ : 'http://localhost:3000'
 
+export type SearchMode = 'standard' | 'graphrag'
+
 export interface ProgressState {
   step: string
   message: string
@@ -17,9 +19,11 @@ interface ChatDataTypes {
 
 export function useChat() {
   const progress = ref<ProgressState>({ step: '', message: '' })
+  const mode = ref<SearchMode>('standard')
 
   const chat = new Chat<UIMessage<unknown, ChatDataTypes>>({
     api: `${API_URL}/api/chat`,
+    body: () => ({ mode: mode.value }),
     onData(data) {
       // Handle custom data parts like progress (type is 'data-progress', data in .data)
       if (data && typeof data === 'object' && 'type' in data) {
@@ -45,12 +49,18 @@ export function useChat() {
     progress.value = { step: '', message: '' }
   }
 
+  function setMode(newMode: SearchMode) {
+    mode.value = newMode
+  }
+
   return {
     messages,
     isLoading,
     progress,
+    mode,
     sendMessage,
     clearMessages,
+    setMode,
   }
 }
 

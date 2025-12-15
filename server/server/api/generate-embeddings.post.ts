@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
       if (existingMap.has(s.vectorId))
         updated++
       else created++
-      return { id: s.vectorId, values: embeddings[i]!, metadata: { sectionId: s.sectionId, path: s.path, title: s.title, contentHash: s.contentHash } }
+      return { id: s.vectorId, values: embeddings[i]!, metadata: { type: 'section', sectionId: s.sectionId, path: s.path, title: s.title, contentHash: s.contentHash } }
     })
 
     await vectorize.upsert(vectors)

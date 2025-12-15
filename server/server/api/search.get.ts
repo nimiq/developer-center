@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { searchDocs } from '../utils/search-docs'
 
 const querySchema = z.object({
   q: z.string().min(1).describe('Search query'),
@@ -10,7 +9,9 @@ const querySchema = z.object({
 export default defineEventHandler(async (event) => {
   const { q, module, limit } = await getValidatedQuery(event, querySchema.parse)
 
-  const results = await searchDocs(event, q, { module, limit })
+  // Generate dual queries from user input
+  const queries = await generateSearchQueries([{ role: 'user', content: q }])
+  const results = await searchDocs(event, queries, { module, limit })
 
   // Truncate content for API response
   return results.map(r => ({

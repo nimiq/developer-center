@@ -23,10 +23,17 @@ export interface SearchOptions {
   limit?: number
 }
 
+export interface SearchQueries {
+  keywords: string[]
+  searchQuery: string
+}
+
 /**
  * Search documentation using BM25 + Vectorize + RRF fusion
+ * @param queries.keywords - for BM25 exact terminology matching
+ * @param queries.searchQuery - for semantic embedding search
  */
-export async function searchDocs(event: H3Event, query: string, opts: SearchOptions = {}): Promise<SearchResult[]> {
+export async function searchDocs(event: H3Event, queries: SearchQueries, opts: SearchOptions = {}): Promise<SearchResult[]> {
   const { module = 'all', limit = 10 } = opts
 
   const modules: (keyof Collections)[] = module === 'all'
@@ -44,9 +51,8 @@ export async function searchDocs(event: H3Event, query: string, opts: SearchOpti
   const corpus = allSections.map(s => `${s.titles.join(' ')} ${s.title} ${s.content}`)
   const sectionById = new Map(allSections.map(s => [s.id.split('#')[0], s]))
 
-  // BM25 keyword search
-  const keywords = await extractKeywords(query)
-  const bm25Scored = BM25(corpus, keywords, { k1: 1.5, b: 0.75 }, (a, b) => b.score - a.score) as BMDocument[]
+  // BM25 keyword search using extracted keywords
+  const bm25Scored = BM25(corpus, queries.keywords, { k1: 1.5, b: 0.75 }, (a, b) => b.score - a.score) as BMDocument[]
   const bm25Paths: string[] = []
   const seenBm25 = new Set<string>()
   for (const item of bm25Scored) {
@@ -64,13 +70,13 @@ export async function searchDocs(event: H3Event, query: string, opts: SearchOpti
       break
   }
 
-  // Semantic search via Vectorize
+  // Semantic search via Vectorize using searchQuery
   const vectorize = (event.context.cloudflare?.env as Record<string, unknown> | undefined)?.VECTORIZE as VectorizeIndex | undefined
   const semanticPaths: string[] = []
 
   if (vectorize) {
-    const { embedding } = await embed({ model: openai.embedding('text-embedding-3-small'), value: query })
-    const matches = await vectorize.query(embedding, { topK: limit * 2 })
+    const { embedding } = await embed({ model: openai.embedding('text-embedding-3-small'), value: queries.searchQuery })
+    const matches = await vectorize.query(embedding, { topK: limit * 2, filter: { type: 'section' } })
     const seenSemantic = new Set<string>()
     for (const match of matches.matches) {
       const path = (match.metadata?.path as string) || match.id.split('#')[0]!

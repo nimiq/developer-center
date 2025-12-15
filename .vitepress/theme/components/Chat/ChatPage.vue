@@ -5,7 +5,7 @@ import { Conversation, ConversationContent, ConversationScrollButton, Message, M
 import ChatInput from './ChatInput.vue'
 import { useChat } from './useChat'
 
-const { messages, isLoading, progress, sendMessage, clearMessages } = useChat()
+const { messages, isLoading, progress, mode, sendMessage, clearMessages, setMode } = useChat()
 
 // Helper to get text content from message
 function getMessageText(msg: UIMessage): string {
@@ -117,8 +117,31 @@ const headerTitle = computed(() => {
       <ConversationScrollButton />
     </Conversation>
 
-    <!-- Input -->
-    <ChatInput :loading="isLoading" @submit="sendMessage" />
+    <!-- Mode toggle + Input -->
+    <div flex="~ col gap-8">
+      <div flex="~ items-center gap-8">
+        <span text="12 neutral/60">Search mode:</span>
+        <div flex="~ gap-4" p-4 rounded-full bg-neutral-100>
+          <button
+            type="button"
+            :class="mode === 'standard' ? 'bg-white shadow-sm' : 'hover:bg-neutral-200'"
+            text="12" px-12 py-4 outline-none rounded-full cursor-pointer transition-all
+            @click="setMode('standard')"
+          >
+            Standard
+          </button>
+          <button
+            type="button"
+            :class="mode === 'graphrag' ? 'bg-white shadow-sm' : 'hover:bg-neutral-200'"
+            text="12" px-12 py-4 outline-none rounded-full cursor-pointer transition-all
+            @click="setMode('graphrag')"
+          >
+            GraphRAG
+          </button>
+        </div>
+      </div>
+      <ChatInput :loading="isLoading" @submit="sendMessage" />
+    </div>
   </div>
 </template>
 
