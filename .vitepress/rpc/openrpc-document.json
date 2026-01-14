@@ -3,7 +3,7 @@
   "info": {
     "title": "Nimiq JSON-RPC Specification",
     "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
-    "version": "v1.2.0",
+    "version": "test",
     "contact": {
       "name": "The Nimiq Core Development Team <info@nimiq.com>",
       "email": "",
@@ -103,7 +103,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -162,7 +169,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -214,7 +228,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -266,7 +287,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -346,7 +374,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -405,7 +440,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -478,7 +520,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -551,7 +600,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -603,7 +659,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -669,7 +732,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -749,7 +819,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -808,7 +885,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -867,7 +951,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -919,7 +1010,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -971,7 +1069,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1016,7 +1121,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1068,7 +1180,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1120,7 +1239,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1179,7 +1305,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1252,7 +1385,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -2996,7 +3136,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3055,7 +3202,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3107,7 +3261,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3159,7 +3320,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3239,7 +3407,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3298,7 +3473,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3371,7 +3553,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3444,7 +3633,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3520,7 +3716,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3586,7 +3789,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3666,7 +3876,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3725,7 +3942,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3784,7 +4008,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3836,7 +4067,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3888,7 +4126,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3933,7 +4178,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3985,7 +4237,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4037,7 +4296,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4096,7 +4362,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4169,7 +4442,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4297,7 +4577,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4511,7 +4798,7 @@
         "required": [
           "address",
           "balance",
-          "accountAdditionalFields"
+          "type"
         ],
         "properties": {
           "address": {
@@ -4522,9 +4809,59 @@
             "title": "balance",
             "type": "number"
           },
-          "accountAdditionalFields": {
-            "title": "accountAdditionalFields",
+          "type": {
+            "title": "type",
+            "type": "string",
+            "enum": [
+              "basic",
+              "vesting",
+              "htlc",
+              "staking"
+            ]
+          },
+          "hashCount": {
+            "title": "hashCount",
+            "type": "number"
+          },
+          "hashRoot": {
+            "title": "hashRoot",
             "type": "object"
+          },
+          "owner": {
+            "title": "owner",
+            "type": "string"
+          },
+          "recipient": {
+            "title": "recipient",
+            "type": "string"
+          },
+          "sender": {
+            "title": "sender",
+            "type": "string"
+          },
+          "timeout": {
+            "title": "timeout",
+            "type": "number"
+          },
+          "totalAmount": {
+            "title": "totalAmount",
+            "type": "number"
+          },
+          "vestingStartTime": {
+            "title": "vestingStartTime",
+            "type": "number"
+          },
+          "vestingStepAmount": {
+            "title": "vestingStepAmount",
+            "type": "number"
+          },
+          "vestingTimeStep": {
+            "title": "vestingTimeStep",
+            "type": "number"
+          },
+          "vestingTotalAmount": {
+            "title": "vestingTotalAmount",
+            "type": "number"
           }
         }
       },
@@ -4546,7 +4883,7 @@
           "stateHash",
           "bodyHash",
           "historyHash",
-          "additionalFields"
+          "type"
         ],
         "properties": {
           "hash": {
@@ -4615,9 +4952,64 @@
               "$ref": "#/components/schemas/ExecutedTransaction"
             }
           },
-          "additionalFields": {
-            "title": "additionalFields",
-            "type": "object"
+          "type": {
+            "title": "type",
+            "type": "string",
+            "enum": [
+              "macro",
+              "micro"
+            ]
+          },
+          "equivocationProofs": {
+            "title": "equivocationProofs",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "interlink": {
+            "title": "interlink",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isElectionBlock": {
+            "title": "isElectionBlock",
+            "type": "boolean"
+          },
+          "justification": {
+            "title": "justification",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TendermintProof"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "nextBatchInitialPunishedSet": {
+            "title": "nextBatchInitialPunishedSet",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "parentElectionHash": {
+            "title": "parentElectionHash",
+            "type": "string"
+          },
+          "producer": {
+            "title": "producer",
+            "$ref": "#/components/schemas/Slot"
+          },
+          "slots": {
+            "title": "slots",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Slots"
+            }
           }
         }
       },
@@ -4706,60 +5098,60 @@
           "buckets"
         ],
         "properties": {
-          "0": {
-            "title": "0",
+          "_0": {
+            "title": "_0",
             "type": "number"
           },
-          "1": {
-            "title": "1",
+          "_1": {
+            "title": "_1",
             "type": "number"
           },
-          "2": {
-            "title": "2",
+          "_2": {
+            "title": "_2",
             "type": "number"
           },
-          "5": {
-            "title": "5",
+          "_5": {
+            "title": "_5",
             "type": "number"
           },
-          "10": {
-            "title": "10",
+          "_10": {
+            "title": "_10",
             "type": "number"
           },
-          "20": {
-            "title": "20",
+          "_20": {
+            "title": "_20",
             "type": "number"
           },
-          "50": {
-            "title": "50",
+          "_50": {
+            "title": "_50",
             "type": "number"
           },
-          "100": {
-            "title": "100",
+          "_100": {
+            "title": "_100",
             "type": "number"
           },
-          "200": {
-            "title": "200",
+          "_200": {
+            "title": "_200",
             "type": "number"
           },
-          "500": {
-            "title": "500",
+          "_500": {
+            "title": "_500",
             "type": "number"
           },
-          "1000": {
-            "title": "1000",
+          "_1000": {
+            "title": "_1000",
             "type": "number"
           },
-          "2000": {
-            "title": "2000",
+          "_2000": {
+            "title": "_2000",
             "type": "number"
           },
-          "5000": {
-            "title": "5000",
+          "_5000": {
+            "title": "_5000",
             "type": "number"
           },
-          "10000": {
-            "title": "10000",
+          "_10000": {
+            "title": "_10000",
             "type": "number"
           },
           "total": {
@@ -4789,7 +5181,10 @@
           },
           "disabled": {
             "title": "disabled",
-            "type": "object"
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         }
       },
