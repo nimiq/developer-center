@@ -249,6 +249,10 @@ function onSubmit() {
   --uno: 'outline-0 my-0';
 }
 
+.tabs :deep(.line:empty::before) {
+  content: ' ';
+}
+
 .param-input {
   --uno: 'w-200';
 }
