@@ -54,22 +54,14 @@ function getCurlCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMetho
 function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>) {
   const { name, userParams: params, input } = toValue(method)
 
-  // Build params string based on whether method has parameters
-  let paramsStr = 'options'
-  if (input && input.length > 0) {
-    // userParams is already an object with named parameters: { hash: "value", includeBody: true }
-    // Just stringify it for the code snippet
-    paramsStr = `${JSON.stringify(params)}, options`
-  }
+  const hasParams = input && input.length > 0
+  const paramsStr = hasParams ? JSON.stringify(params, null, 2) : ''
 
-  return `import { ${name} } from 'nimiq-rpc-client-ts/http'
-import type { HttpOptions } from 'nimiq-rpc-client-ts/types'
+  return `import { initRpcClient, ${name} } from 'nimiq-rpc-client-ts'
 
-// Set \`ALBATROSS_NODE_URL\`, \`ALBATROSS_NODE_USERNAME\` and \`ALBATROSS_NODE_PASSWORD\` environment variables
-// or use \`initRpcClient\` function to set the node URL and authentication options
-// or
-const options: HttpOptions = { url: '${nodeUrl}', auth: { username: '', password: '' } }
-
+initRpcClient({
+  url: '${nodeUrl}',
+})
 
 const { data, error } = await ${name}(${paramsStr})
 console.log(data, error)`

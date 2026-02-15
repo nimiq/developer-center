@@ -2,8 +2,8 @@
 changelog: false
 outline: false
 widget: true
-showSecondarySidebar: true
 copyOptions: hidden
+inlineActions: false
 pageFooterLeftText: 'Page inspired by [DovAzenot](https://www.nimiqhub.com/docs/rpc)'
 ---
 
