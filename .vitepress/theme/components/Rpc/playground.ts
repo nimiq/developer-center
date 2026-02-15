@@ -175,7 +175,11 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   const currentServer = computed(() => allServers.value.find(s => s.endpoint === playgroundConfig.value.nodeUrl))
   const selectValue = computed({
     get: () => isCustomUrl.value ? 'custom' : playgroundConfig.value.nodeUrl,
-    set: (val: string) => { playgroundConfig.value.nodeUrl = val === 'custom' ? '' : val },
+    set: (val: string) => {
+      if (val !== 'custom')
+        playgroundConfig.value.nodeUrl = val
+      // For 'custom', nodeUrl is set by the RpcServerSelect input
+    },
   })
 
   return {

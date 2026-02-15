@@ -2,7 +2,7 @@
 import type { HttpRpcResult } from 'nimiq-rpc-client-ts/types'
 import type { NimiqRpcMethod } from '../../../rpc/utils'
 import { Collapsible, Tabs } from 'reka-ui/namespaced'
-import { ref, toValue } from 'vue'
+import { nextTick, ref, toValue } from 'vue'
 import { capitalizeFirstLetter } from '../../../utils'
 import Input from '../Input.vue'
 import { useCodeSnippet } from './code-snippet'
@@ -14,6 +14,14 @@ const props = defineProps<NimiqRpcMethod>()
 const { widget, callRpc, latestResponse, methodHistory, clearHistory, playgroundConfig, currentServer, selectValue } = usePlaygroundRpc(props)
 const { tabs, currentTab } = useCodeSnippet(widget)
 const serverInfoOpen = ref(false)
+const serverBarRef = ref<HTMLElement>()
+const serverSectionRef = ref<HTMLElement>()
+
+function toggleServerInfo() {
+  serverInfoOpen.value = !serverInfoOpen.value
+  if (serverInfoOpen.value)
+    nextTick(() => serverSectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+}
 
 const formatterWithDate = new Intl.DateTimeFormat('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 function formatTimestamp(timestamp: number) {
@@ -30,11 +38,19 @@ function loadFromHistory(entry: HttpRpcResult<any>) {
   latestResponse.value = entry
 }
 
+function formatValue(value: unknown): string {
+  if (typeof value === 'string') {
+    try { return JSON.stringify(JSON.parse(value), null, 2) }
+    catch { return value }
+  }
+  return JSON.stringify(value, null, 2)
+}
+
 function copyResponse() {
   if (!latestResponse.value)
     return
   const [isOk, error, data] = latestResponse.value
-  navigator.clipboard.writeText(JSON.stringify(isOk ? data : error, null, 2))
+  navigator.clipboard.writeText(formatValue(isOk ? data : error))
 }
 
 function onSubmit() {
@@ -55,15 +71,16 @@ function onSubmit() {
 
     <!-- Server Info -->
     <ClientOnly>
-      <Collapsible.Root v-model:open="serverInfoOpen" f-mt-sm>
-        <Collapsible.Trigger class="nq-raw" bg="neutral-100 hocus:neutral-200" flex="~ items-center gap-8" px-12 py-6 text-left rounded-8 w-full cursor-pointer outline="1.5 offset--1.5 solid neutral/8">
-          <div text-14 op-70 shrink-0 i-nimiq:globe />
-          <span font-semibold truncate f-text-xs>{{ currentServer?.name || 'Custom' }}</span>
-          <span v-if="currentServer?.network" :class="currentServer.network === 'mainnet' ? 'text-green bg-green-200' : 'text-orange bg-orange-200'" text-9 px-6 py-1 rounded-full shrink-0 nq-label>
-            {{ currentServer.network }}
-          </span>
-          <div text-8 ml-auto op-80 shrink-0 transition-transform i-nimiq:chevron-right :class="{ 'rotate-90': serverInfoOpen }" />
-        </Collapsible.Trigger>
+      <div ref="serverSectionRef" aria-hidden h-0 f-mt-sm />
+      <button ref="serverBarRef" class="nq-raw server-bar" bg="neutral-0 hocus:neutral-100" flex="~ items-center gap-10" px-16 py-10 text-left rounded-8 w-full cursor-pointer outline="1.5 offset--1.5 solid neutral/8" shadow="sm" sticky top-0 z-10 @click="toggleServerInfo">
+        <div text-14 op-70 shrink-0 i-nimiq:globe />
+        <span font-semibold truncate f-text-xs>{{ currentServer?.name || 'Custom' }}</span>
+        <span v-if="currentServer?.network" :class="currentServer.network === 'mainnet' ? 'text-green bg-green-200' : 'text-orange bg-orange-200'" text-9 px-6 py-1 rounded-full shrink-0 nq-label>
+          {{ currentServer.network }}
+        </span>
+        <div text-8 ml-auto op-80 shrink-0 transition-transform i-nimiq:chevron-right :class="{ 'rotate-90': serverInfoOpen }" />
+      </button>
+      <Collapsible.Root v-model:open="serverInfoOpen">
         <Collapsible.Content un-animate-collapsible="reka-open:down reka-closed:up" of-hidden>
           <div class="nq-raw" p-12 rounded-8 bg-neutral-50 f-mt-2xs outline="1.5 offset--1.5 solid neutral/8">
             <RpcServerSelect v-model="selectValue" v-model:node-url="playgroundConfig.nodeUrl" />
@@ -150,7 +167,7 @@ function onSubmit() {
             <div text-14 i-nimiq:copy />
           </button>
         </div>
-        <pre m-0 text-left bg-neutral-50 of-x-auto f-text-2xs f-p-xs>{{ latestResponse[0] ? JSON.stringify(latestResponse[2], null, 2) : (typeof latestResponse[1] === 'string' ? latestResponse[1] : JSON.stringify(latestResponse[1], null, 2)) }}</pre>
+        <pre m-0 text-left bg-neutral-50 of-x-auto f-text-2xs f-p-xs>{{ formatValue(latestResponse[0] ? latestResponse[2] : latestResponse[1]) }}</pre>
         <div v-if="!latestResponse[0]" flex="~ items-start gap-8" border="t-1.5 solid neutral/8" bg-orange-200 px-12 py-8 text-left>
           <div text-12 text-orange mt-2 op-80 shrink-0 i-nimiq:info />
           <p text="orange-1100 f-2xs" m-0 lh="[1.4]">
@@ -265,5 +282,12 @@ function onSubmit() {
 
 [nq-prose] > *:last-child {
   padding-bottom: 0 !important;
+}
+</style>
+
+<style>
+/* Override VitePress main overflow:hidden which breaks sticky positioning */
+main:has([nq-prose]) {
+  overflow: visible;
 }
 </style>
