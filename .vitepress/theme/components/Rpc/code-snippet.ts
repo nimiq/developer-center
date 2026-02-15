@@ -55,11 +55,13 @@ function getTsCodeSnippet(nodeUrl: string, method: MaybeRef<RpcPlaygroundMethod>
   const { name, userParams: params, input } = toValue(method)
 
   const hasParams = input && input.length > 0
-  const paramsStr = hasParams ? JSON.stringify(params) : ''
+  const paramsStr = hasParams ? JSON.stringify(params, null, 2) : ''
 
   return `import { initRpcClient, ${name} } from 'nimiq-rpc-client-ts'
 
-initRpcClient({ url: '${nodeUrl}' })
+initRpcClient({
+  url: '${nodeUrl}',
+})
 
 const { data, error } = await ${name}(${paramsStr})
 console.log(data, error)`
