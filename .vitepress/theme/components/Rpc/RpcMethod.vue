@@ -112,8 +112,8 @@ function onSubmit() {
             <code text-neutral-900 font-semibold shrink-0 f-text-xs>{{ field.key }}</code>
             <span text-blue font-mono shrink-0 f-text-2xs>{{ field.type }}</span>
             <span shrink-0>
-              <span v-if="field.required" text="8 green" rounded-2 bg-green-400 nq-label>required</span>
-              <span v-else text="8 neutral-700" rounded-2 bg-neutral-400 nq-label>optional</span>
+              <span v-if="field.required" text="8 green" px-4 rounded-2 bg-green-400 nq-label>required</span>
+              <span v-else text="8 neutral-700" px-4 rounded-2 bg-neutral-400 nq-label>optional</span>
             </span>
             <label v-if="field.type === 'boolean'" flex="~ items-center gap-6" ml-auto shrink-0 cursor-pointer>
               <input v-model="widget.userParams[field.key]" type="checkbox" text-12 cursor-pointer nq-switch>
@@ -181,8 +181,8 @@ function onSubmit() {
           <code text-neutral-900 font-semibold shrink-0 f-text-xs>{{ key }}</code>
           <span text-blue font-mono shrink-0 f-text-2xs>{{ type }}</span>
           <span ml-auto shrink-0>
-            <span v-if="required" text="8 green" rounded-2 bg-green-400 nq-label>required</span>
-            <span v-else text="8 neutral-700" rounded-2 bg-neutral-400 nq-label>optional</span>
+            <span v-if="required" text="8 green" px-4 rounded-2 bg-green-400 nq-label>required</span>
+            <span v-else text="8 neutral-700" px-4 rounded-2 bg-neutral-400 nq-label>optional</span>
           </span>
         </div>
       </div>
