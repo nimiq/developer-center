@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { RadioGroup } from 'reka-ui/namespaced'
+import { computed, ref } from 'vue'
 import { data as rpcServers } from '../../../data/rpc-servers.data'
 
 const selectValue = defineModel<string>({ required: true })
@@ -22,15 +22,15 @@ function applyCustomUrl() {
 <template>
   <div w-full>
     <!-- Server cards -->
-    <RadioGroup.Root v-model="selectValue" class="grid grid-cols-1 lg:grid-cols-2 gap-6" max-h-280 of-y-auto>
+    <RadioGroup.Root v-model="selectValue" class="gap-6 grid grid-cols-1 lg:grid-cols-2" max-h-280 of-y-auto>
       <RadioGroup.Item
         v-for="server in allServers" :key="server.endpoint"
         :value="server.endpoint"
-        flex="~ col gap-2" relative p-8 text-left rounded-6 w-full cursor-pointer
+        flex="~ col gap-2"
         outline="~ 1.5 offset--1.5 neutral-300 reka-checked:blue" bg="transparent reka-checked:neutral-0 hocus:neutral-0"
-        active:scale-97 active:bg-neutral-0 transition="colors transform"
+        p-8 text-left rounded-6 w-full cursor-pointer relative active:bg-neutral-0 active:scale-97 transition="colors transform"
       >
-        <RadioGroup.Indicator absolute bottom-6 right-6 text-blue size-12 i-nimiq:check />
+        <RadioGroup.Indicator text-blue size-12 bottom-6 right-6 absolute i-nimiq:check />
         <div flex="~ items-center gap-6">
           <span font-semibold f-text-xs>{{ server.name }}</span>
           <span :class="server.network === 'mainnet' ? 'text-green bg-green-200' : 'text-orange bg-orange-200'" text-9 ml-auto px-6 py-1 rounded-full nq-label>
@@ -61,7 +61,7 @@ function applyCustomUrl() {
       <div :class="{ 'bg-blue-100': isCustomUrl }" p-8 rounded-6>
         <span font-semibold mb-4 block f-text-xs>Custom URL</span>
         <input v-model="customUrl" type="text" placeholder="https://your-node-url.com" rounded-4 w-full text-f-2xs nq-input-box @keydown.enter="applyCustomUrl">
-        <button nq-pill-sm whitespace-nowrap scale-85 nq-pill mt-6 @click="applyCustomUrl">
+        <button nq-pill-sm mt-6 whitespace-nowrap scale-85 nq-pill @click="applyCustomUrl">
           Use this server
         </button>
       </div>
