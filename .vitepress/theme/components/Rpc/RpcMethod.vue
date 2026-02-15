@@ -135,7 +135,7 @@ function onSubmit() {
 
     <!-- Response -->
     <ClientOnly>
-      <div v-if="latestResponse" outline="1.5 offset--1.5 solid neutral/8" rounded-8 of-clip f-mt-sm>
+      <div v-if="latestResponse" class="nq-raw" outline="1.5 offset--1.5 solid neutral/8" text-left rounded-8 w-full of-clip f-mt-sm>
         <div flex="~ items-center gap-8" px-12 py-8 bg-neutral-100 border="b-1.5 solid neutral/8">
           <span v-if="latestResponse[0]" flex="~ items-center gap-4" text="green f-2xs" font-bold>
             <div rounded-full bg-green size-6 />
