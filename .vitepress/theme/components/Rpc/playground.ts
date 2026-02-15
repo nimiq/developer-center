@@ -3,7 +3,8 @@ import type { MaybeRef } from 'vue'
 import type { NimiqRpcMethod } from '../../../rpc/utils'
 import { useLocalStorage, useUrlSearchParams } from '@vueuse/core'
 import { rpcCall } from 'nimiq-rpc-client-ts/http'
-import { computed, toValue, watch, watchEffect } from 'vue'
+import { computed, ref, toValue, watch, watchEffect } from 'vue'
+import { data as rpcServers } from '../../../data/rpc-servers.data'
 
 export interface RpcPlaygroundConfig {
   nodeUrl: string
@@ -99,6 +100,8 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   }, { deep: true })
 
   const history = useLocalStorage<HttpRpcResult<any>[]>(`v1_rpc_history`, [])
+  const latestResponse = ref<HttpRpcResult<any> | null>(null)
+  const methodHistory = computed(() => history.value.filter(([, , , meta]) => meta?.request?.body?.method === method.value))
 
   function clearHistory(withConfirmation = true) {
     // eslint-disable-next-line no-alert
@@ -158,6 +161,7 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       }
 
       playground.value.state = res[0] ? 'success' : 'error'
+      latestResponse.value = res
       history.value = [res, ...history.value]
     }
     catch (error) {
@@ -166,11 +170,23 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     }
   }
 
+  const allServers = computed(() => [...(rpcServers?.mainnet || []), ...(rpcServers?.testnet || [])])
+  const isCustomUrl = computed(() => !allServers.value.some(s => s.endpoint === playgroundConfig.value.nodeUrl))
+  const currentServer = computed(() => allServers.value.find(s => s.endpoint === playgroundConfig.value.nodeUrl))
+  const selectValue = computed({
+    get: () => isCustomUrl.value ? 'custom' : playgroundConfig.value.nodeUrl,
+    set: (val: string) => { playgroundConfig.value.nodeUrl = val === 'custom' ? '' : val },
+  })
+
   return {
     defaultNodeUrl,
+    selectValue,
+    currentServer,
     widget: playground,
     callRpc,
     history,
+    methodHistory,
+    latestResponse,
     clearHistory,
     playgroundConfig,
   }

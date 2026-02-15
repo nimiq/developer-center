@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 
-defineProps<{
+const { small = false } = defineProps<{
   options: Record<string, { label: string, disabled?: boolean }>
+  small?: boolean
 }>()
 
 const model = defineModel()
@@ -29,18 +30,17 @@ function setPill() {
 
 <template>
   <div
-    flex="~ align-center" border-subtle-sm p-4 rounded-full bg-neutral-200 h-32 w-max relative
+    flex="~ align-center" border-subtle-sm rounded-full bg-neutral-200 w-max relative :class="small ? 'h-26 p-3' : 'h-32 p-4'"
   >
     <label
       v-for="[key, option] of Object.entries(options)" :key="`${key}-input`" :tabindex="option.disabled !== true ? undefined : '1'"
 
-      :class="{
+      :class="[{
         'text-darkblue': model === key,
         'text-neutral-800': model !== key,
         'cursor-pointer z-1 hover:text-neutral-900': option.disabled !== true && model !== key,
         'cursor-not-allowed text-neutral-500': option.disabled === true,
-      }"
-      text-12 px-12 rounded-full select-none transition-colors relative z-2 nq-label flex="~ items-center"
+      }, small ? 'text-10 px-10' : 'text-12 px-12']" rounded-full select-none transition-colors relative z-2 nq-label flex="~ items-center"
     >
       <input
         :id="`${randomName}-${key}`" v-model="model" type="radio" :value="key"
@@ -50,8 +50,8 @@ function setPill() {
       {{ option.label }}
     </label>
     <div
-      rounded-full bg-white h-27 top-2 absolute z-1 :style="{ ...pillStyles,
-                                                              transition: loaded ? 'left 300ms, width 200ms' : '' }"
+      rounded-full bg-white absolute z-1 :class="small ? 'h-22 top-2' : 'h-27 top-2'" :style="{ ...pillStyles,
+                                                                                                transition: loaded ? 'left 300ms, width 200ms' : '' }"
     />
   </div>
 </template>

@@ -47,26 +47,6 @@ div:has(+ article) {
   outline: none;
 }
 
-/* RPC Widget Sidebar Improvements */
-
-/* Increase widget sidebar width on desktop for better widget display */
-@media (min-width: 1224px) {
-  /* When widget is shown, use a wider secondary sidebar */
-  [data-layout="docs"]:has(#widget:not(:empty)) {
-    --nq-widget-sidebar-width: calc((100vw - var(--nq-sidebar-width)) / 2);
-  }
-
-  /* Apply wider width to the secondary sidebar container when widget is present */
-  [data-layout="docs"]:has(#widget:not(:empty)) > div > div:last-child {
-    width: var(--nq-widget-sidebar-width, 288px) !important;
-  }
-
-  /* Main content gets same width as widget sidebar for 50/50 split */
-  [data-layout="docs"]:has(#widget:not(:empty)) main {
-    max-width: var(--nq-widget-sidebar-width) !important;
-  }
-}
-
 /* RPC Code Snippets Font Size Fix */
 
 /* Increase font size for code snippets in RPC method tabs */
@@ -80,26 +60,6 @@ div:has(+ article) {
   font-size: 0.875rem !important;
 }
 
-/* RPC History Timestamp Size Fix */
-
-/* Increase font size for timestamps in RPC history */
-.widget-container span[font-semibold] {
-  font-size: 0.75rem !important; /* Increased from text-9 (very small) to more readable size */
-}
-
-/* RPC Warning Banner Styling */
-
-/* Style the warning banner to connect seamlessly with the form above */
-.rpc-warning-banner {
-  margin-top: 0 !important;
-  border-top: none !important;
-  border-radius: 0 0 8px 8px !important;
-}
-
-/* Ensure the form container above has no bottom border radius */
-.widget-container:has(+ .rpc-warning-banner) {
-  border-radius: 8px 8px 0 0 !important;
-}
 
 /* Outline Actions Icon Styling */
 
