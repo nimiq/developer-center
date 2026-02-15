@@ -8,7 +8,6 @@ const nodeUrl = defineModel<string>('nodeUrl')
 
 const allServers = computed(() => [...(rpcServers?.mainnet || []), ...(rpcServers?.testnet || [])])
 
-// Initialize customUrl from current nodeUrl if it's a custom URL
 const customUrl = ref('')
 const urlVal = nodeUrl.value
 if (urlVal && !allServers.value.some(s => s.endpoint === urlVal))
@@ -16,7 +15,6 @@ if (urlVal && !allServers.value.some(s => s.endpoint === urlVal))
 
 const customInputRef = ref<HTMLInputElement>()
 
-// Auto-focus custom URL input when custom card is selected
 watch(() => selectValue.value, (val) => {
   if (val === 'custom')
     nextTick(() => customInputRef.value?.focus())
@@ -24,7 +22,8 @@ watch(() => selectValue.value, (val) => {
 
 function applyCustomUrl() {
   const url = customUrl.value.trim()
-  if (!url) return
+  if (!url)
+    return
   if (nodeUrl.value !== undefined)
     nodeUrl.value = url
 }
@@ -60,13 +59,12 @@ function applyCustomUrl() {
         </p>
       </RadioGroup.Item>
 
-      <!-- Custom URL -->
       <RadioGroup.Item
         value="custom"
         flex="~ col gap-4"
         outline="~ 1.5 offset--1.5 neutral-300 reka-checked:blue" bg="transparent reka-checked:neutral-0 hocus:neutral-0"
-        p-8 text-left rounded-6 w-full cursor-pointer relative active:bg-neutral-0 active:scale-97 transition="colors transform"
-        lg:col-span-2
+        transition="colors transform"
+        p-8 text-left rounded-6 w-full cursor-pointer relative active:bg-neutral-0 lg:col-span-2 active:scale-97
       >
         <RadioGroup.Indicator text-blue size-12 bottom-6 right-6 absolute i-nimiq:check />
         <span font-semibold f-text-xs>Custom URL</span>

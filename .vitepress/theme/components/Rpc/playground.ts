@@ -23,10 +23,6 @@ export type RpcPlaygroundMethod = (NimiqRpcMethod & {
   userParams: Record<string, any>
 }
 
-export type UsePlaygroundRpcOptions = RpcPlaygroundMethod & {
-  method: string
-}
-
 export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
   const defaultNodeUrl = 'https://rpc.nimiqwatch.com'
   const playgroundConfig = useLocalStorage<RpcPlaygroundConfig>(`v1_rpc_playground`, {
@@ -58,19 +54,14 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     playground.value.userParams = Object.fromEntries((playground.value.input || []).map(param => [param.key, undefined]))
   })
 
-  // Sync userParams with URL query parameters for sharing
   const urlParams = useUrlSearchParams('history')
-
-  // Helper to create prefixed param key (e.g., "getAccountByAddress.address")
   const getParamKey = (inputKey: string) => `${method.value}.${inputKey}`
 
-  // Initialize userParams from URL on mount
   watchEffect(() => {
     const methodName = method.value
     if (!methodName)
       return
 
-    // Load from URL params if present
     const inputs = playground.value.input || []
     inputs.forEach((input) => {
       const paramKey = getParamKey(input.key)
@@ -81,19 +72,16 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     })
   })
 
-  // Sync userParams to URL when they change
   watch(() => playground.value.userParams, (params) => {
     if (!params || !method.value)
       return
 
-    // Update URL with current params (prefixed with method name)
     Object.entries(params).forEach(([key, value]) => {
       const paramKey = getParamKey(key)
       if (value !== undefined && value !== null && value !== '') {
         urlParams[paramKey] = String(value)
       }
       else {
-        // Remove param from URL if empty
         delete urlParams[paramKey]
       }
     })
@@ -120,19 +108,16 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       playground.value.state = 'loading'
       const nodeUrl = playgroundConfig.value.nodeUrl
 
-      // Use proxy for all URLs to avoid CORS issues
       let url: URL
       const shouldUseProxy = playgroundConfig.value.useProxy && nodeUrl.startsWith('http')
 
       if (shouldUseProxy) {
-        // Always use the local /api/rpc-proxy endpoint
         const proxyBaseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost'
         const proxyUrl = new URL('/api/rpc-proxy', proxyBaseUrl)
         proxyUrl.searchParams.set('target', nodeUrl)
         url = proxyUrl
       }
       else {
-        // Direct connection when proxy is disabled
         url = nodeUrl.startsWith('http') ? new URL(nodeUrl) : new URL(nodeUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
       }
 
@@ -147,10 +132,8 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
       })
       const res = await rpcCall(method, parsedParams, options)
 
-      // Check if we need to enhance the error result for better UX
       const isDefaultServer = playgroundConfig.value.nodeUrl === defaultNodeUrl
       if (!res[0] && isDefaultServer) {
-        // This is an error result from the default server - enhance the metadata
         const [_isOk, _error, _data, metadata] = res
         const enhancedMetadata = {
           ...metadata,
@@ -178,7 +161,6 @@ export function usePlaygroundRpc(props: MaybeRef<Partial<NimiqRpcMethod>>) {
     set: (val: string) => {
       if (val !== 'custom')
         playgroundConfig.value.nodeUrl = val
-      // For 'custom', nodeUrl is set by the RpcServerSelect input
     },
   })
 

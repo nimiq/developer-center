@@ -14,7 +14,6 @@ const props = defineProps<NimiqRpcMethod>()
 const { widget, callRpc, latestResponse, methodHistory, clearHistory, playgroundConfig, currentServer, selectValue } = usePlaygroundRpc(props)
 const { tabs, currentTab } = useCodeSnippet(widget)
 const serverInfoOpen = ref(false)
-const serverBarRef = ref<HTMLElement>()
 const serverSectionRef = ref<HTMLElement>()
 
 function toggleServerInfo() {
@@ -40,7 +39,9 @@ function loadFromHistory(entry: HttpRpcResult<any>) {
 
 function formatValue(value: unknown): string {
   if (typeof value === 'string') {
-    try { return JSON.stringify(JSON.parse(value), null, 2) }
+    try {
+      return JSON.stringify(JSON.parse(value), null, 2)
+    }
     catch { return value }
   }
   return JSON.stringify(value, null, 2)
@@ -72,7 +73,7 @@ function onSubmit() {
     <!-- Server Info -->
     <ClientOnly>
       <div ref="serverSectionRef" aria-hidden h-0 f-mt-sm />
-      <button ref="serverBarRef" class="nq-raw server-bar" bg="neutral-0 hocus:neutral-100" flex="~ items-center gap-10" px-16 py-10 text-left rounded-8 w-full cursor-pointer outline="1.5 offset--1.5 solid neutral/8" shadow="sm" sticky top-0 z-10 @click="toggleServerInfo">
+      <button class="nq-raw server-bar" bg="neutral-0 hocus:neutral-100" flex="~ items-center gap-10" outline="1.5 offset--1.5 solid neutral/8" shadow="sm" px-16 py-10 text-left rounded-8 w-full cursor-pointer top-0 sticky z-10 @click="toggleServerInfo">
         <div text-14 op-70 shrink-0 i-nimiq:globe />
         <span font-semibold truncate f-text-xs>{{ currentServer?.name || 'Custom' }}</span>
         <span v-if="currentServer?.network" :class="currentServer.network === 'mainnet' ? 'text-green bg-green-200' : 'text-orange bg-orange-200'" text-9 px-6 py-1 rounded-full shrink-0 nq-label>
@@ -223,7 +224,7 @@ function onSubmit() {
       </Tabs.Root>
     </div>
 
-    <!-- History (teleported to sidebar widget) -->
+    <!-- History -->
     <ClientOnly>
       <Teleport to="#widget">
         <div class="nq-raw" outline="1.5 offset--1.5 solid neutral-400" rounded-8 of-clip>
