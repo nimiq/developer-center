@@ -181,8 +181,8 @@ function onSubmit() {
           <code text-neutral-900 font-semibold shrink-0 f-text-xs>{{ key }}</code>
           <span text-blue font-mono shrink-0 f-text-2xs>{{ type }}</span>
           <span ml-auto shrink-0>
-            <span v-if="required" text="f-2xs green" bg-green-200 nq-label>required</span>
-            <span v-else text="f-2xs neutral-700" bg-neutral-200 nq-label>optional</span>
+            <span v-if="required" text="8 green" bg-green-200 nq-label>required</span>
+            <span v-else text="8 neutral-700" bg-neutral-200 nq-label>optional</span>
           </span>
         </div>
       </div>
