@@ -10,7 +10,7 @@ Build mini apps that let users interact with their Nimiq and Ethereum wallets wi
 
 Mini apps are web applications that run inside the Nimiq Pay app. They give users access to blockchain services without switching apps or managing browser extensions.
 
-Think of it like a specialized web browser embedded within Nimiq Pay. Your mini app loads in the Nimiq Pay app and can request wallet operations like listing accounts, signing messages, sending NIM payments, all while the user stays within the Nimiq Pay app. The wallet handles all the cryptographic operations securely, and users approve every sensitive action through native confirmation dialogs.
+Think of it like a specialized web browser embedded within Nimiq Pay. Your mini app loads in the Nimiq Pay app and can request wallet operations like listing accounts, signing messages, sending payments, all while the user stays within the Nimiq Pay app. The wallet handles all the cryptographic operations securely, and users approve every sensitive action through native confirmation dialogs.
 
 ## How It Works
 
@@ -24,7 +24,7 @@ Mini apps run in a WebView and talk to Nimiq Pay through injected providers.
 | MiniAppHost (host-side API) | Nimiq Pay (native) | Receives requests, validates them, shows approval dialogs, executes actions |
 | Mini App SDK (optional) | WebView (your app or injected) | Typed Nimiq-native APIs + `Result<T, E>` patterns; uses its own message format |
 
-Your mini app uses standard Web3 APIs via `window.ethereum`, and Nimiq-specific APIs via `window.nimiq` or the optional SDK.
+Your mini app uses standard Web3 APIs via `window.ethereum` and Nimiq-specific APIs via `window.nimiq`.
 
 ### Request lifecycle
 
@@ -53,7 +53,7 @@ The framework supports two blockchain ecosystems:
 - BNB Smart Chain (formerly Binance Smart Chain)
 - Sepolia (testnet for developers)
 
-Mini apps can also dynamically request the addition of other Ethereum-compatible networks not pre-configured.
+Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
 
 ## Security and Permissions
 

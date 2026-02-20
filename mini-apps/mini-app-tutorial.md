@@ -12,17 +12,9 @@ In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay a
 | `isConsensusEstablished()` | Check if the wallet has network consensus |
 | `getBlockNumber()` | Get the current blockchain height |
 
-> This guide assumes you’ve already followed the [Developer Setup](/mini-apps/developer-setup.md) page and can open a local URL inside Nimiq Pay.
-
 ## 1. Create the project
 
-Use Vite with Vue + TypeScript for this example, but you can use any framework you like.
-
-```bash
-npm create vite@latest my-mini-app -- --template vue-ts
-cd my-mini-app
-npm install
-```
+Follow the [Developer Setup](/mini-apps/developer-setup.md) steps to install dependencies and start the dev server.
 
 ## 2. Configure the dev server
 
@@ -37,7 +29,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    port: 5175,
+    port: 5173,
     host: true,
   },
 })
@@ -150,13 +142,13 @@ Below the `<script setup>` block in the same `App.vue` file, add this template:
 Start the Vite dev server:
 
 ```bash
-npm run dev
+npm run dev -- --host
 ```
 
 Note the **Network** URL in the terminal, for example:
 
-```text
-http://192.168.1.42:5175
+```bash
+http://192.168.1.42:5173
 ```
 
 ## 6. Test inside Nimiq Pay
@@ -164,7 +156,7 @@ http://192.168.1.42:5175
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.
 3. Go to **Mini Apps**.
-4. Enter your dev URL: `http://<your-ip>:5175`
+4. Enter your network URL: `http://<your-ip>:5173`
 
 Open your mini app and tap **Run 3 requests**.
 

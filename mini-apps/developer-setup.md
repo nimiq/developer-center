@@ -8,10 +8,16 @@ Set up your environment so you can run any local web app inside Nimiq Pay. Then 
 
 ## Prerequisites
 
-- **Node.js** (version 18+ recommended)
+- **Node.js** (version 22+ required)
 - **Nimiq Pay** app installed on a mobile device (or emulator)
 
-## Run a local web app (example: Vite)
+## Run a local web app
+
+1. Create your [Vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) project. We use Vite Vue + TypeScript template for this example, but you can use any framework you like.
+
+```bash
+npm create vite@latest my-mini-app -- --template vue-ts
+```
 
 1. Install dependencies in your project.
 
@@ -22,18 +28,10 @@ npm install
 1. Start the dev server with network access enabled.
 
 ```bash
-npm run dev
+npm run dev -- --host
 ```
 
-1. Find your local IP address.
-
-- If you need to fetch it manually:
-  - macOS: `ipconfig getifaddr en0`
-  - Windows: `ipconfig` (look for “IPv4 Address”)
-  - Linux: `ip a` (look for `inet` on your active interface)
-
-- Use your local IP with the port: `http://000.000.0.000:0000` (replace with your actual IP)
-- Enter this URL in Nimiq Pay's Custom URL field
+The Network URL shown in terminal is what you enter in Nimiq Pay which looks like: `http://xxx.xxx.xxx.xxx:5173`
 
 > [!NOTE]
 > **Note**: Loading a mini app works the same on iOS and Android.
@@ -43,7 +41,7 @@ npm run dev
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.
 3. Go to the **Mini apps** section.
-4. Enter your dev URL `http://<your-ip>:5175`
+4. Enter your network URL in Nimiq Pay's Custom URL field `http://<your-ip>:5173`
 
 Your app should now load inside Nimiq Pay!
 
