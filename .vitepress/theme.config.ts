@@ -272,6 +272,37 @@ export const themeConfig = {
       ],
     },
     {
+      text: 'Mini Apps',
+      subpath: 'mini-apps',
+      icon: 'i-local:nimiq-tutorial',
+      defaultPageLink: '/mini-apps/overview',
+      description: 'Build mini apps',
+      sidebar: [
+        {
+          label: 'Overview',
+          items: [
+            { text: 'Overview', link: '/mini-apps/overview', icon: 'i-tabler:layout-grid' },
+          ],
+        },
+        {
+          label: 'Guides',
+          items: [
+            { text: 'Load a Local Mini App', link: '/mini-apps/load-local-mini-app', icon: 'i-tabler:device-mobile-code' },
+            { text: 'Build Your First Nimiq Mini App', link: '/mini-apps/mini-app-tutorial', icon: 'i-tabler:rocket' },
+            { text: 'Build a Dual-Chain Mini App', link: '/mini-apps/dual-chain-mini-app-tutorial', icon: 'i-tabler:arrows-split-2' },
+          ],
+        },
+        {
+          label: 'API Reference',
+          items: [
+            { text: 'API Reference', link: '/mini-apps/api-reference', icon: 'i-tabler:api' },
+            { text: 'Nimiq Provider API', link: '/mini-apps/api-reference/nimiq-provider', icon: 'i-nimiq:logos-nimiq-mono' },
+            { text: 'Ethereum Provider API', link: '/mini-apps/api-reference/ethereum-provider', icon: 'i-tabler:brand-ethereum' },
+          ],
+        },
+      ],
+    },
+    {
       text: 'Nodes & Validators',
       subpath: 'nodes',
       icon: 'i-local:nimiq-dev',

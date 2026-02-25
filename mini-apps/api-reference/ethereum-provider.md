@@ -1,10 +1,10 @@
 <!-- url: https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider -->
 <!-- type: api reference -->
-<!-- summary: Reference for the EIP-1193 Ethereum provider injected into mini apps -->
+<!-- summary: Reference for the EIP-1193 Ethereum provider injected into mini apps, including EIP-6963 compatibility -->
 
 # Ethereum Provider API (window.ethereum)
 
-This provider follows the EIP-1193 interface and is injected into the mini app environment.
+This provider implements [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) and supports [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963) provider discovery. It is injected into the mini app environment.
 
 ## Access
 
@@ -452,14 +452,6 @@ Not implemented: `eth_sendTransaction`, `eth_signTypedData`.
 
 ## EIP-6963 Provider Discovery
 
-```javascript
-window.addEventListener('eip6963:announceProvider', (event) => {
-  const { info, provider } = event.detail
-  // info.name === "Nimiq Pay"
-  // info.rdns === "com.nimiq.pay"
-  // info.uuid === unique identifier
-  // info.icon === Nimiq Pay logo as SVG data URI
-})
+Nimiq Pay is EIP-6963 compatible and discoverable by wallet discovery flows that support EIP-6963.
 
-window.dispatchEvent(new Event('eip6963:requestProvider'))
-```
+Mini app developers do not need to manually announce the provider. In most cases, using `window.ethereum` or a standard EIP-6963-compatible discovery library is sufficient.

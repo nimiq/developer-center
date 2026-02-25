@@ -4,6 +4,12 @@
 
 # Build Your First Nimiq Mini App
 
+> [!NOTE] Temporary Testing Access
+> Mini app testing is currently limited to allowlisted users.
+>
+> - On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
+> - On Android, share the email associated with your Google account. You will receive an email when access is enabled.
+
 In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
 
 | Method | Description |
@@ -14,15 +20,37 @@ In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay a
 
 ## 1. Create the project
 
-Follow the [Developer Setup](/mini-apps/developer-setup.md) steps to install dependencies and start the dev server.
+Scaffold your app with one of these framework options:
+
+::: code-group
+
+```bash [Vue + Vite]
+npm create vite@latest my-mini-app -- --template vue-ts
+cd my-mini-app
+npm install
+```
+
+```bash [React + JSX]
+npm create vite@latest my-mini-app -- --template react
+cd my-mini-app
+npm install
+```
+
+```bash [Svelte]
+npm create vite@latest my-mini-app -- --template svelte
+cd my-mini-app
+npm install
+```
+
+:::
 
 ## 2. Configure the dev server
 
-Tell Vite to listen on all interfaces so Nimiq Pay on your device can reach it.
+Enable network access so Nimiq Pay on your device can reach the app:
 
-Edit `vite.config.ts`:
+::: code-group
 
-```ts
+```ts [Vue + Vite (vite.config.ts)]
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
@@ -35,15 +63,41 @@ export default defineConfig({
 })
 ```
 
-## 3. Add the mini app logic
+```js [React + JSX (vite.config.js)]
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
-Replace the contents of `src/App.vue` with the following script. It:
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    host: true,
+  },
+})
+```
 
-- Waits for `window.nimiq` to be injected by Nimiq Pay.
-- Calls three methods in parallel.
-- Displays the results or any error.
+```js [Svelte (vite.config.js)]
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from 'vite'
 
-```vue
+export default defineConfig({
+  plugins: [svelte()],
+  server: {
+    port: 5173,
+    host: true,
+  },
+})
+```
+
+:::
+
+## 3. Add mini app logic and UI
+
+Replace the main app component with the variant for your framework:
+
+::: code-group
+
+```vue [Vue + Vite (src/App.vue)]
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -53,14 +107,12 @@ interface NimiqProvider {
   getBlockNumber: () => Promise<number>
 }
 
-// Extend Window interface to include the Nimiq provider
 declare global {
   interface Window {
     nimiq?: NimiqProvider
   }
 }
 
-// Reactive state
 const isAvailable = ref(false)
 const accounts = ref<string[] | null>(null)
 const consensus = ref<boolean | null>(null)
@@ -69,7 +121,6 @@ const errorMessage = ref<string | null>(null)
 
 let checkInterval: number | undefined
 
-// Provider is injected asynchronously by Nimiq Pay; poll every 500ms until it appears.
 onMounted(() => {
   isAvailable.value = !!window.nimiq
   checkInterval = window.setInterval(() => {
@@ -88,10 +139,10 @@ onUnmounted(() => {
 async function runThreeRequests() {
   if (!window.nimiq)
     return
+
   errorMessage.value = null
 
   try {
-    // Run requests in parallel
     const [accountsResult, consensusResult, blockResult] = await Promise.all([
       window.nimiq.listAccounts(),
       window.nimiq.isConsensusEstablished(),
@@ -102,18 +153,12 @@ async function runThreeRequests() {
     consensus.value = consensusResult
     blockNumber.value = blockResult
   }
-  catch (err: any) {
-    errorMessage.value = err?.message ?? String(err)
+  catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : String(error)
   }
 }
 </script>
-```
 
-## 4. Add the UI
-
-Below the `<script setup>` block in the same `App.vue` file, add this template:
-
-```vue
 <template>
   <div style="padding: 24px; font-family: system-ui;">
     <h1>Nimiq Mini App</h1>
@@ -137,7 +182,173 @@ Below the `<script setup>` block in the same `App.vue` file, add this template:
 </template>
 ```
 
-## 5. Run the mini app
+```jsx [React + JSX (src/App.jsx)]
+import { useEffect, useState } from 'react'
+
+function App() {
+  const [isAvailable, setIsAvailable] = useState(Boolean(window.nimiq))
+  const [accounts, setAccounts] = useState(null)
+  const [consensus, setConsensus] = useState(null)
+  const [blockNumber, setBlockNumber] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
+
+  useEffect(() => {
+    const checkInterval = window.setInterval(() => {
+      if (window.nimiq) {
+        setIsAvailable(true)
+        window.clearInterval(checkInterval)
+      }
+    }, 500)
+
+    return () => window.clearInterval(checkInterval)
+  }, [])
+
+  async function runThreeRequests() {
+    if (!window.nimiq)
+      return
+
+    setErrorMessage(null)
+
+    try {
+      const [accountsResult, consensusResult, blockResult] = await Promise.all([
+        window.nimiq.listAccounts(),
+        window.nimiq.isConsensusEstablished(),
+        window.nimiq.getBlockNumber(),
+      ])
+
+      setAccounts(accountsResult)
+      setConsensus(consensusResult)
+      setBlockNumber(blockResult)
+    }
+    catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : String(error))
+    }
+  }
+
+  return (
+    <div style={{ padding: 24, fontFamily: 'system-ui' }}>
+      <h1>Nimiq Mini App</h1>
+
+      {!isAvailable && (
+        <p>
+          Open this inside Nimiq Pay to access
+          {' '}
+          <code>window.nimiq</code>
+          .
+        </p>
+      )}
+
+      <button disabled={!isAvailable} onClick={runThreeRequests}>
+        Run 3 requests
+      </button>
+
+      {accounts && (
+        <pre>
+          Accounts:
+          {JSON.stringify(accounts)}
+        </pre>
+      )}
+      {consensus !== null && (
+        <pre>
+          Consensus:
+          {String(consensus)}
+        </pre>
+      )}
+      {blockNumber !== null && (
+        <pre>
+          Block:
+          {String(blockNumber)}
+        </pre>
+      )}
+
+      {errorMessage && <p style={{ color: '#c00' }}>{errorMessage}</p>}
+    </div>
+  )
+}
+
+export default App
+```
+
+```svelte [Svelte (src/App.svelte)]
+<script>
+  import { onMount } from 'svelte'
+
+  let isAvailable = false
+  let accounts = null
+  let consensus = null
+  let blockNumber = null
+  let errorMessage = null
+
+  onMount(() => {
+    isAvailable = !!window.nimiq
+
+    const checkInterval = window.setInterval(() => {
+      if (window.nimiq) {
+        isAvailable = true
+        window.clearInterval(checkInterval)
+      }
+    }, 500)
+
+    return () => window.clearInterval(checkInterval)
+  })
+
+  async function runThreeRequests() {
+    if (!window.nimiq)
+      return
+
+    errorMessage = null
+
+    try {
+      const [accountsResult, consensusResult, blockResult] = await Promise.all([
+        window.nimiq.listAccounts(),
+        window.nimiq.isConsensusEstablished(),
+        window.nimiq.getBlockNumber(),
+      ])
+
+      accounts = accountsResult
+      consensus = consensusResult
+      blockNumber = blockResult
+    }
+    catch (error) {
+      errorMessage = error instanceof Error ? error.message : String(error)
+    }
+  }
+</script>
+
+<div style="padding: 24px; font-family: system-ui;">
+  <h1>Nimiq Mini App</h1>
+
+  {#if !isAvailable}
+    <p>
+      Open this inside Nimiq Pay to access <code>window.nimiq</code>.
+    </p>
+  {/if}
+
+  <button disabled={!isAvailable} on:click={runThreeRequests}>
+    Run 3 requests
+  </button>
+
+  {#if accounts}
+    <pre>Accounts: {JSON.stringify(accounts)}</pre>
+  {/if}
+
+  {#if consensus !== null}
+    <pre>Consensus: {String(consensus)}</pre>
+  {/if}
+
+  {#if blockNumber !== null}
+    <pre>Block: {String(blockNumber)}</pre>
+  {/if}
+
+  {#if errorMessage}
+    <p style="color: #c00;">{errorMessage}</p>
+  {/if}
+</div>
+```
+
+:::
+
+## 4. Run the mini app
 
 Start the Vite dev server:
 
@@ -151,7 +362,7 @@ Note the **Network** URL in the terminal, for example:
 http://192.168.1.42:5173
 ```
 
-## 6. Test inside Nimiq Pay
+## 5. Test inside Nimiq Pay
 
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.
@@ -172,6 +383,6 @@ If you see an error message, confirm:
 - `window.nimiq` exists in the console.
 - Your dev server is reachable from the device.
 
-From here, you can start adding your own UI, additional Nimiq calls, or mix in `window.ethereum` to build multi‑chain mini apps.
+From here, you can start adding your own UI, additional Nimiq calls, or mix in `window.ethereum` to build dual-chain mini apps.
 
 You can also check [this demo](https://github.com/Eligioo/nimiq-mini-app-demo) repository to see all supported methods.
