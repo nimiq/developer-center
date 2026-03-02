@@ -385,4 +385,6 @@ If you see an error message, confirm:
 
 From here, you can start adding your own UI, additional Nimiq calls, or mix in `window.ethereum` to build dual-chain mini apps.
 
+For the full list of available methods and events, see the [Nimiq Provider API](/mini-apps/api-reference/nimiq-provider) and [Ethereum Provider API](/mini-apps/api-reference/ethereum-provider).
+
 You can also check [this demo](https://github.com/Eligioo/nimiq-mini-app-demo) repository to see all supported methods.

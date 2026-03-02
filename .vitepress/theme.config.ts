@@ -287,9 +287,9 @@ export const themeConfig = {
         {
           label: 'Guides',
           items: [
-            { text: 'Load a Local Mini App', link: '/mini-apps/load-local-mini-app', icon: 'i-tabler:device-mobile-code' },
             { text: 'Build Your First Nimiq Mini App', link: '/mini-apps/mini-app-tutorial', icon: 'i-tabler:rocket' },
             { text: 'Build a Dual-Chain Mini App', link: '/mini-apps/dual-chain-mini-app-tutorial', icon: 'i-tabler:arrows-split-2' },
+            { text: 'Load a Local Mini App', link: '/mini-apps/load-local-mini-app', icon: 'i-tabler:device-mobile-code' },
           ],
         },
         {

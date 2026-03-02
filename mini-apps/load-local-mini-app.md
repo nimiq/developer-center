@@ -14,11 +14,12 @@ Use this guide to load any locally running web app inside Nimiq Pay.
 
 ## Prerequisites
 
-- **Node.js** (version 22+ required)
+- **Node.js** (version 22+, only if your mini app uses Node.js; the examples in this guide use it)
 - **Nimiq Pay** app installed on a mobile device (or emulator)
 - Phone and development machine on the same Wi-Fi network
 
 ## Start your local app
+The commands below assume you're using a Node.js mini app.
 
 1. Go to your project directory.
 
