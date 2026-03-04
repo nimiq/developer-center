@@ -75,7 +75,7 @@ async function fetchApps() {
   error.value = null
 
   try {
-    const response = await fetch('https://raw.githubusercontent.com/onmax/nimiq-awesome/refs/heads/main/src/data/dist/nimiq-apps.json')
+    const response = await fetch('https://raw.githubusercontent.com/nimiq/awesome/refs/heads/main/src/data/dist/nimiq-apps.json')
     if (!response.ok)
       throw new Error(`Failed to fetch apps: ${response.statusText}`)
 
@@ -133,7 +133,7 @@ onMounted(() => {
       </InfiniteScroll>
 
       <div text-center flex="~ col items-center">
-        <a href="https://github.com/onmax/nimiq-awesome" target="_blank" nq-arrow nq-pill-lg nq-pill-blue>
+        <a href="https://github.com/nimiq/awesome" target="_blank" nq-arrow nq-pill-lg nq-pill-blue>
           View All Apps
         </a>
       </div>

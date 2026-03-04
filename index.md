@@ -177,7 +177,7 @@ popularResources:
         - text: Telegram
           href: https://t.me/nimiq
         - text: Awesome Nimiq
-          href: https://github.com/onmax/nimiq-awesome
+          href: https://github.com/nimiq/awesome
         - text: AI MCP Server
           href: https://github.com/onmax/nimiq-mcp
     - title: Migration

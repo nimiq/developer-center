@@ -19,7 +19,7 @@ export { data }
 
 export default defineLoader({
   async load(): Promise<BlockExplorersData> {
-    const response = await fetch('https://raw.githubusercontent.com/onmax/nimiq-awesome/main/src/data/dist/nimiq-explorers.json')
+    const response = await fetch('https://raw.githubusercontent.com/nimiq/awesome/main/src/data/dist/nimiq-explorers.json')
 
     if (!response.ok) {
       throw new Error(`Failed to fetch block explorers data: ${response.statusText}`)
