@@ -19,7 +19,7 @@ export { data }
 
 export default defineLoader({
   async load(): Promise<RpcServersData> {
-    const response = await fetch('https://raw.githubusercontent.com/onmax/nimiq-awesome/main/src/data/dist/rpc-servers.json')
+    const response = await fetch('https://raw.githubusercontent.com/nimiq/awesome/main/src/data/dist/rpc-servers.json')
 
     if (!response.ok) {
       throw new Error(`Failed to fetch RPC servers data: ${response.statusText}`)
