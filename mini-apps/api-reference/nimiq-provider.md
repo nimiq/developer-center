@@ -12,6 +12,20 @@ This provider exposes Nimiq blockchain operations and is injected into the mini 
 const nimiq = window.nimiq
 ```
 
+### Access (TypeScript)
+
+```ts
+import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
+
+declare global {
+  interface Window {
+    nimiq?: NimiqProvider
+  }
+}
+
+const nimiq = window.nimiq
+```
+
 ## Methods
 
 ### `listAccounts`
