@@ -44,7 +44,45 @@ npm install
 
 :::
 
-## 2. Configure the dev server
+## 2. Set up Nimiq provider types (only required for Vue + Vite)
+
+If you're following the **Vue + Vite** path, this step is required because the Vue + TypeScript example imports `@trustwallet/web3-provider-nimiq`.
+
+If you're following **React + JSX** or **Svelte**, skip this step.
+
+1. Clone the provider repository on the `nimiq` branch.
+
+```bash
+cd ..
+git clone --branch nimiq https://github.com/nimiq/trust-web3-provider.git
+```
+
+1. Build the provider packages with Bun.
+
+```bash
+cd trust-web3-provider
+bun install
+bun run build:packages
+cd ../my-mini-app
+```
+
+1. Add the local linked package in `package.json`.
+
+```json
+{
+  "dependencies": {
+    "@trustwallet/web3-provider-nimiq": "../trust-web3-provider/packages/nimiq"
+  }
+}
+```
+
+1. Reinstall dependencies in your mini app.
+
+```bash
+npm install
+```
+
+## 3. Configure the dev server
 
 Enable network access so Nimiq Pay on your device can reach the app:
 
@@ -91,7 +129,7 @@ export default defineConfig({
 
 :::
 
-## 3. Add mini app logic and UI
+## 4. Add mini app logic and UI
 
 Replace the main app component with the variant for your framework:
 
@@ -99,13 +137,8 @@ Replace the main app component with the variant for your framework:
 
 ```vue [Vue + Vite (src/App.vue)]
 <script setup lang="ts">
+import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
 import { onMounted, onUnmounted, ref } from 'vue'
-
-interface NimiqProvider {
-  listAccounts: () => Promise<string[]>
-  isConsensusEstablished: () => Promise<boolean>
-  getBlockNumber: () => Promise<number>
-}
 
 declare global {
   interface Window {
@@ -118,6 +151,17 @@ const accounts = ref<string[] | null>(null)
 const consensus = ref<boolean | null>(null)
 const blockNumber = ref<number | null>(null)
 const errorMessage = ref<string | null>(null)
+
+function getProviderErrorMessage(value: unknown): string | null {
+  if (typeof value !== 'object' || value === null || !('error' in value))
+    return null
+
+  const maybeError = (value as { error?: { message?: unknown } }).error
+  if (maybeError && typeof maybeError.message === 'string')
+    return maybeError.message
+
+  return 'Provider request failed.'
+}
 
 let checkInterval: number | undefined
 
@@ -149,7 +193,11 @@ async function runThreeRequests() {
       window.nimiq.getBlockNumber(),
     ])
 
-    accounts.value = accountsResult
+    const accountsError = getProviderErrorMessage(accountsResult)
+    if (accountsError)
+      throw new Error(accountsError)
+
+    accounts.value = accountsResult as string[]
     consensus.value = consensusResult
     blockNumber.value = blockResult
   }
@@ -348,7 +396,7 @@ export default App
 
 :::
 
-## 4. Run the mini app
+## 5. Run the mini app
 
 Start the Vite dev server:
 
@@ -362,7 +410,7 @@ Note the **Network** URL in the terminal, for example:
 http://192.168.1.42:5173
 ```
 
-## 5. Test inside Nimiq Pay
+## 6. Test inside Nimiq Pay
 
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.

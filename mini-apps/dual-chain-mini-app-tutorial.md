@@ -29,6 +29,7 @@ The mini app includes two action buttons:
 ## 2. Prerequisites
 
 - **Node.js** (version 22+ required)
+- **Bun** (required to build the local `@trustwallet/web3-provider-nimiq` package)
 - **Nimiq Pay** app on a mobile device (or emulator)
 - Phone and dev machine on the same Wi-Fi network
 - At least one Ethereum account available in Nimiq Pay for the Ethereum success path
@@ -60,20 +61,52 @@ export default defineConfig({
 })
 ```
 
-## 5. Add the dual-chain mini app
+## 5. Set up Nimiq provider types
+
+Set up the local Nimiq provider package before editing `src/App.vue`.
+
+1. Clone the provider repository on the `nimiq` branch.
+
+```bash
+cd ..
+git clone --branch nimiq https://github.com/nimiq/trust-web3-provider.git
+```
+
+1. Build the provider packages with Bun and go back to your mini app.
+
+```bash
+cd trust-web3-provider
+bun install
+bun run build:packages
+cd ../my-mini-app
+```
+
+1. Add the local linked package in `package.json`.
+
+```json
+{
+  "dependencies": {
+    "@trustwallet/web3-provider-nimiq": "../trust-web3-provider/packages/nimiq"
+  }
+}
+```
+
+1. Reinstall your mini app dependencies.
+
+```bash
+npm install
+```
+
+## 6. Add the dual-chain mini app
 
 In `src/App.vue`, use separate script, template, and style blocks.
 
-### 5.1 Add the script block
+### 6.1 Add the script block
 
 ```vue
 <script setup lang="ts">
+import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
 import { ref } from 'vue'
-
-interface NimiqProvider {
-  listAccounts: () => Promise<string[]>
-  sign: (message: string | { message: string, isHex: boolean }) => Promise<unknown>
-}
 
 interface EthereumProvider {
   request: (args: { method: string, params?: unknown[] | Record<string, unknown> }) => Promise<any>
@@ -94,6 +127,17 @@ const nimiqAccounts = ref<string[] | null>(null)
 const nimiqSignature = ref<string | null>(null)
 const ethAccounts = ref<string[] | null>(null)
 const ethSignature = ref<string | null>(null)
+
+function getProviderErrorMessage(value: unknown): string | null {
+  if (typeof value !== 'object' || value === null || !('error' in value))
+    return null
+
+  const maybeError = (value as { error?: { message?: unknown } }).error
+  if (maybeError && typeof maybeError.message === 'string')
+    return maybeError.message
+
+  return 'Provider request failed.'
+}
 
 // Convert a UTF-8 string to hex for personal_sign.
 function toHexUtf8(input: string) {
@@ -119,7 +163,12 @@ async function runNimiqFlow() {
   try {
     // Prompt 1: account sharing confirmation.
     status.value = 'Requesting Nimiq accounts...'
-    const accounts = await window.nimiq.listAccounts()
+    const accountsResult = await window.nimiq.listAccounts()
+    const accountsError = getProviderErrorMessage(accountsResult)
+    if (accountsError)
+      throw new Error(accountsError)
+
+    const accounts = accountsResult as string[]
     nimiqAccounts.value = accounts
     if (!accounts.length)
       throw new Error('No Nimiq accounts returned.')
@@ -127,6 +176,10 @@ async function runNimiqFlow() {
     // Prompt 2: signing confirmation.
     status.value = 'Requesting Nimiq signing confirmation...'
     const signatureResult = await window.nimiq.sign('Nimiq Pay dual-chain tutorial')
+    const signatureError = getProviderErrorMessage(signatureResult)
+    if (signatureError)
+      throw new Error(signatureError)
+
     nimiqSignature.value = JSON.stringify(signatureResult, null, 2)
     status.value = 'Nimiq flow completed.'
   }
@@ -179,7 +232,7 @@ async function runEthereumFlow() {
 </script>
 ```
 
-### 5.2 Add the template block
+### 6.2 Add the template block
 
 ```vue
 <template>
@@ -213,7 +266,7 @@ async function runEthereumFlow() {
 </template>
 ```
 
-### 5.3 Add the style block (mobile-friendly)
+### 6.3 Add the style block (mobile-friendly)
 
 ```vue
 <style scoped>
@@ -278,7 +331,7 @@ button:disabled {
 </style>
 ```
 
-## 6. Run the mini app
+## 7. Run the mini app
 
 ```bash
 npm run dev -- --host
@@ -290,7 +343,7 @@ Copy the **Network** URL from the terminal output, for example:
 http://192.168.1.42:5173
 ```
 
-## 7. Test inside Nimiq Pay
+## 8. Test inside Nimiq Pay
 
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.
@@ -304,7 +357,7 @@ You should see:
 - Nimiq accounts and a Nimiq signature response.
 - Ethereum account(s) and an Ethereum signature response.
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 **No Ethereum account returned**\
   The Ethereum success path requires at least one account available through Nimiq Pay.
