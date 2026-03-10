@@ -1,10 +1,9 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  unocss: true,
   typescript: true,
   vue: true,
-  ignores: ['.vitepress/cache', '*.woff2', '.vitepress/rpc/*.json', 'hub/**/*.md', 'build/**'],
+  ignores: ['.nuxt/', '.output/', '.pnpm-patch-docus/', '*.woff2', 'content/web-client/reference/'],
 }, {
   files: ['**/*.md'],
   rules: {

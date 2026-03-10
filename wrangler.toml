@@ -1,4 +1,4 @@
 name = "developer-center-dev"
 compatibility_date = "2025-01-01"
-pages_build_output_dir = ".vitepress/dist"
+pages_build_output_dir = ".output/public"
 compatibility_flags = [ "nodejs_compat" ]
