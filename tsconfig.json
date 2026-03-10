@@ -1,32 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "lib": [
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "types": [
-      "node",
-      "vite/client",
-      "vitepress/client"
-    ],
-    "strict": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.vue",
-    "**/*.md"
-  ],
-  "vueCompilerOptions": {
-    "vitePressExtensions": [
-      ".md"
-    ]
-  }
+  "extends": "./.nuxt/tsconfig.json"
 }

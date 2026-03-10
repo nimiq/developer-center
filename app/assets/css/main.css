@@ -1,0 +1,140 @@
+/*
+ * Nimiq Design System → Nuxt UI
+ * Override Nuxt UI's CSS variables with Nimiq's color palette
+ */
+
+/* ── Nimiq Colors → Nuxt UI semantic color variables ── */
+:root, :host {
+  /* Primary: Nimiq Blue */
+  --ui-color-primary-50: oklch(0.955 0.017 236.69);
+  --ui-color-primary-100: oklch(0.911 0.033 232.24);
+  --ui-color-primary-200: oklch(0.889 0.043 231.75);
+  --ui-color-primary-300: oklch(0.800 0.080 240);
+  --ui-color-primary-400: oklch(0.700 0.120 243);
+  --ui-color-primary-500: oklch(0.585 0.144 244.29);
+  --ui-color-primary-600: oklch(0.520 0.130 244);
+  --ui-color-primary-700: oklch(0.481 0.116 243.72);
+  --ui-color-primary-800: oklch(0.380 0.090 250);
+  --ui-color-primary-900: oklch(0.274 0.068 276.29);
+  --ui-color-primary-950: oklch(0.218 0.037 280.55);
+
+  /* Secondary: Nimiq Gold */
+  --ui-color-secondary-50: oklch(0.977 0.022 89.79);
+  --ui-color-secondary-100: oklch(0.956 0.043 91.27);
+  --ui-color-secondary-200: oklch(0.943 0.054 92.15);
+  --ui-color-secondary-300: oklch(0.900 0.080 88);
+  --ui-color-secondary-400: oklch(0.852 0.120 85);
+  --ui-color-secondary-500: oklch(0.792 0.159 85.61);
+  --ui-color-secondary-600: oklch(0.720 0.150 85);
+  --ui-color-secondary-700: oklch(0.664 0.133 85.55);
+  --ui-color-secondary-800: oklch(0.550 0.100 85);
+  --ui-color-secondary-900: oklch(0.450 0.070 85);
+  --ui-color-secondary-950: oklch(0.350 0.050 85);
+
+  /* Success: Nimiq Green */
+  --ui-color-success-50: oklch(0.964 0.017 187.9);
+  --ui-color-success-100: oklch(0.931 0.034 185.2);
+  --ui-color-success-200: oklch(0.915 0.043 185.62);
+  --ui-color-success-300: oklch(0.850 0.075 180);
+  --ui-color-success-400: oklch(0.780 0.110 178);
+  --ui-color-success-500: oklch(0.693 0.125 178.48);
+  --ui-color-success-600: oklch(0.620 0.110 178);
+  --ui-color-success-700: oklch(0.556 0.099 178.59);
+  --ui-color-success-800: oklch(0.460 0.080 178);
+  --ui-color-success-900: oklch(0.380 0.060 178);
+  --ui-color-success-950: oklch(0.280 0.040 178);
+
+  /* Info: Nimiq Orange */
+  --ui-color-info-50: oklch(0.951 0.022 74.1);
+  --ui-color-info-100: oklch(0.940 0.044 71.7);
+  --ui-color-info-200: oklch(0.925 0.055 71.49);
+  --ui-color-info-300: oklch(0.880 0.090 65);
+  --ui-color-info-400: oklch(0.810 0.140 60);
+  --ui-color-info-500: oklch(0.739 0.179 56.67);
+  --ui-color-info-600: oklch(0.677 0.163 57);
+  --ui-color-info-700: oklch(0.600 0.140 57);
+  --ui-color-info-800: oklch(0.500 0.110 57);
+  --ui-color-info-900: oklch(0.400 0.080 57);
+  --ui-color-info-950: oklch(0.300 0.050 57);
+
+  /* Warning: Nimiq Gold (same as secondary) */
+  --ui-color-warning-50: oklch(0.977 0.022 89.79);
+  --ui-color-warning-100: oklch(0.956 0.043 91.27);
+  --ui-color-warning-200: oklch(0.943 0.054 92.15);
+  --ui-color-warning-300: oklch(0.900 0.080 88);
+  --ui-color-warning-400: oklch(0.852 0.120 85);
+  --ui-color-warning-500: oklch(0.792 0.159 85.61);
+  --ui-color-warning-600: oklch(0.720 0.150 85);
+  --ui-color-warning-700: oklch(0.664 0.133 85.55);
+  --ui-color-warning-800: oklch(0.550 0.100 85);
+  --ui-color-warning-900: oklch(0.450 0.070 85);
+  --ui-color-warning-950: oklch(0.350 0.050 85);
+
+  /* Error: Nimiq Red */
+  --ui-color-error-50: oklch(0.954 0.017 26.65);
+  --ui-color-error-100: oklch(0.911 0.033 27.11);
+  --ui-color-error-200: oklch(0.888 0.042 25.25);
+  --ui-color-error-300: oklch(0.820 0.080 28);
+  --ui-color-error-400: oklch(0.720 0.140 30);
+  --ui-color-error-500: oklch(0.598 0.189 30.3);
+  --ui-color-error-600: oklch(0.540 0.180 30);
+  --ui-color-error-700: oklch(0.515 0.171 30.54);
+  --ui-color-error-800: oklch(0.420 0.130 30);
+  --ui-color-error-900: oklch(0.350 0.090 30);
+  --ui-color-error-950: oklch(0.260 0.060 30);
+
+  /* Neutral: Nimiq Neutral (darkblue-based) */
+  --ui-color-neutral-50: oklch(0.988 0 89.88);
+  --ui-color-neutral-100: oklch(0.979 0 89.88);
+  --ui-color-neutral-200: oklch(0.968 0.003 286.35);
+  --ui-color-neutral-300: oklch(0.950 0.004 286.32);
+  --ui-color-neutral-400: oklch(0.920 0.007 286.27);
+  --ui-color-neutral-500: oklch(0.661 0.028 280.83);
+  --ui-color-neutral-600: oklch(0.589 0.034 281.21);
+  --ui-color-neutral-700: oklch(0.437 0.050 279.71);
+  --ui-color-neutral-800: oklch(0.274 0.068 276.29);
+  --ui-color-neutral-900: oklch(0.218 0.037 280.55);
+  --ui-color-neutral-950: oklch(0.180 0.030 280);
+
+  /* Semantic shortcuts */
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+
+  /* Nimiq design tokens */
+  --ui-radius: 0.5rem;
+  --ui-container: 78rem;
+  --nq-shadow: 0px 18px 38px rgba(31 35 72 / 0.07), 0px 7px 8.5px rgba(31 35 72 / 0.04), 0px 2px 2.5px rgba(31 35 72 / 0.02);
+  --nq-shadow-lg: 0px 6px 20px rgba(59 76 106 / 0.13), 0px 1.34px 4.47px rgba(59 76 106 / 0.08), 0px 0.4px 1.33px rgba(59 76 106 / 0.05);
+  --nq-ease: cubic-bezier(0.25, 0, 0, 1);
+}
+
+:root, :host, .light {
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+}
+
+.dark {
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+
+  --nq-shadow: 0px 18px 38px rgba(0 0 0 / 0.25), 0px 7px 8.5px rgba(0 0 0 / 0.15), 0px 2px 2.5px rgba(0 0 0 / 0.10);
+  --nq-shadow-lg: 0px 6px 20px rgba(0 0 0 / 0.35), 0px 1.34px 4.47px rgba(0 0 0 / 0.20), 0px 0.4px 1.33px rgba(0 0 0 / 0.12);
+}
+
+/* ── Typography ── */
+@theme {
+  --font-sans: 'Mulish', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+}
