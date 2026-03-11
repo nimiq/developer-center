@@ -190,6 +190,6 @@ export default defineNuxtConfig({
     plugins: [wasm(), topLevelAwait()],
   },
   mcp: {
-    enabled: env.DEPLOYMENT_MODE === 'development',
+    enabled: true,
   },
 } as any)
