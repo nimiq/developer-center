@@ -107,10 +107,10 @@
         "../node_modules/.pnpm/nuxt@4.3.1_@parcel+watcher@2.5.6_@types+node@24.9.2_@vue+compiler-sfc@3.5.30_better-sql_bbfa4cf213f17d4d82faca7dc375087b/node_modules/nuxt/dist/app/compat/vue-demi"
       ],
       "#ui": [
-        "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_29035f85326c58c0e26d1f9581c4bda9/node_modules/@nuxt/ui/dist/runtime"
+        "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/@nuxt/ui/dist/runtime"
       ],
       "#ui/*": [
-        "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_29035f85326c58c0e26d1f9581c4bda9/node_modules/@nuxt/ui/dist/runtime/*"
+        "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/@nuxt/ui/dist/runtime/*"
       ],
       "#color-mode-options": [
         "./color-mode-options.mjs"
@@ -158,7 +158,7 @@
         "./mdc-imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/a278515e-aefe-411e-9568-a796dff90bdc.json"
+        "./manifest/meta/b0c750f1-c399-42c5-ba09-6f794ce77d91"
       ],
       "#build": [
         "."
@@ -195,11 +195,11 @@
     "../layers/*/shared/**/*",
     "../*.d.ts",
     "../layers/*/*.d.ts",
-    "../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/shared/**/*",
-    "../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/modules/*/shared/**/*",
-    "../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/layers/*/shared/**/*",
-    "../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/*.d.ts",
-    "../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/layers/*/*.d.ts"
+    "../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/shared/**/*",
+    "../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/modules/*/shared/**/*",
+    "../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/layers/*/shared/**/*",
+    "../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/*.d.ts",
+    "../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/layers/*/*.d.ts"
   ],
   "exclude": []
 }

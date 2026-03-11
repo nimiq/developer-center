@@ -27,8 +27,8 @@ interface NitroRouteRules {
 
 declare module '#og-image/components' {
   export interface OgImageComponents {
-    'Docs': typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/app/components/OgImage/OgImageDocs.vue')['default']
-    'Landing': typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/app/components/OgImage/OgImageLanding.vue')['default']
+    'Docs': typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/components/OgImage/OgImageDocs.vue')['default']
+    'Landing': typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/components/OgImage/OgImageLanding.vue')['default']
     'BrandedLogo': typeof import('../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue')['default']
     'Frame': typeof import('../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue')['default']
     'Nuxt': typeof import('../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue')['default']

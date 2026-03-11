@@ -2,7 +2,7 @@
 import type { AppConfigInput, CustomAppConfig } from 'nuxt/schema'
 import type { Defu } from 'defu'
 import cfg0 from "../../app/app.config"
-import cfg1 from "../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/app/app.config"
+import cfg1 from "../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/app.config"
 
 declare global {
   const defineAppConfig: <C extends AppConfigInput> (config: C) => C

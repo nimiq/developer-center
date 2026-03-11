@@ -13,7 +13,7 @@ declare module "nitropack/types" {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/rpc-servers.get').default>>>>
     }
     '/sitemap.xml': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/server/routes/sitemap.xml').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/server/routes/sitemap.xml').default>>>>
     }
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+nitro-server@4.3.1_better-sqlite3@12.6.2_db0@0.3.4_better-sqlite3@12.6.2__ioredis_b6ab51e5dba87f331145231b301cc5f0/node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>
@@ -28,13 +28,13 @@ declare module "nitropack/types" {
       'GET': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/features/llms/runtime/server/routes/raw/[...slug].md.get').default>>>>
     }
     '/mcp': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_magicast@0.5.2_zod@4.3.6/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/handler').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/handler').default>>>>
     }
     '/mcp/deeplink': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_magicast@0.5.2_zod@4.3.6/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/deeplink').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/deeplink').default>>>>
     }
     '/mcp/badge.svg': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_magicast@0.5.2_zod@4.3.6/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/badge-image').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/badge-image').default>>>>
     }
     '/__og-image__/font/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/server/routes/font').default>>>>
@@ -52,7 +52,7 @@ declare module "nitropack/types" {
       'GET': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/nuxt-llms@0.2.0_magicast@0.5.2/node_modules/nuxt-llms/dist/runtime/server/routes/llms-full.txt.get').default>>>>
     }
     '/__docus__/assistant': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/modules/assistant/runtime/server/api/search').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/modules/assistant/runtime/server/api/search').default>>>>
     }
     '/__nuxt_content/docs/sql_dump.txt': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/runtime/presets/cloudflare/database-handler').default>>>>

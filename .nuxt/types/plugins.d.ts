@@ -19,11 +19,11 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/plugins/og-image-canonical-urls.server.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/plugins/route-rule-og-image.server.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/app/plugins/robot-meta.server.js")> &
-  InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_29035f85326c58c0e26d1f9581c4bda9/node_modules/@nuxt/ui/dist/runtime/plugins/colors.js")> &
+  InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/@nuxt/ui/dist/runtime/plugins/colors.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2_magicast@0.5.2/node_modules/@nuxtjs/color-mode/dist/runtime/plugin.server.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2_magicast@0.5.2/node_modules/@nuxtjs/color-mode/dist/runtime/plugin.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+icon@2.2.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_lig_ccebd15858fadc852491ff7ad9d8ea80/node_modules/@nuxt/icon/dist/runtime/plugin.js")> &
-  InjectionType<typeof import("../../node_modules/.pnpm/docus@5.7.0_patch_hash=ec9e14182a8c08282091fa85abee3c52953ae88979b1c57eec788960958925f2_bd5a7120ae7e562a0996e2c170b568f3/node_modules/docus/app/plugins/i18n")> &
+  InjectionType<typeof import("../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/plugins/i18n")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@4.3.1_@parcel+watcher@2.5.6_@types+node@24.9.2_@vue+compiler-sfc@3.5.30_better-sql_bbfa4cf213f17d4d82faca7dc375087b/node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js")>
 
 declare module '#app' {

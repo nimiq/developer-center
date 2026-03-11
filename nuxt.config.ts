@@ -7,6 +7,8 @@ import wasm from 'vite-plugin-wasm'
 
 const baseURL = '/'
 const contentRoot = join(cwd(), 'content')
+const cloudflareAccountId = process.env.CLOUDFLARE_ACCOUNT_ID ?? 'cf9baad7d68d7ee717f3339731e81dfb'
+const cloudflareContentDbId = process.env.CLOUDFLARE_CONTENT_DB_ID ?? '8f747fba-1896-4e11-8081-5118f7a6f39f'
 
 function slugify(value: string) {
   return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
@@ -59,7 +61,6 @@ const contentRoutes = getFiles(contentRoot)
 const openRpcDocument = JSON.parse(readFileSync(join(cwd(), 'data/openrpc-document.json'), 'utf8')) as { methods?: Array<{ name: string }> }
 const rpcMethodRoutes = (openRpcDocument.methods || []).map(method => `/rpc/methods/${slugify(method.name)}`)
 const prerenderRoutes = Array.from(new Set([...contentRoutes, ...rpcMethodRoutes]))
-const enableMcp = process.env.DEPLOYMENT_MODE !== 'production'
 
 export default defineNuxtConfig({
   extends: ['docus'],
@@ -107,6 +108,15 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       wrangler: {
+        account_id: cloudflareAccountId,
+        d1_databases: [
+          {
+            binding: 'DB',
+            database_name: 'developer-center-dev-content',
+            database_id: cloudflareContentDbId,
+            preview_database_id: cloudflareContentDbId,
+          },
+        ],
         name: 'developer-center-dev-worker',
       },
     },
@@ -171,6 +181,6 @@ export default defineNuxtConfig({
     plugins: [wasm(), topLevelAwait()],
   },
   mcp: {
-    enabled: enableMcp,
+    enabled: true,
   },
 } as any)
