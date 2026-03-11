@@ -172,7 +172,7 @@ export default defineNuxtConfig({
         highlight: {
           langs: ['bash', 'diff', 'json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'md', 'yaml'],
         },
-        remarkPlugins: { 'remark-math': {} },
+        remarkPlugins: { 'remark-math': {}, [join(cwd(), 'remark-extract-title.mjs')]: {} },
         rehypePlugins: { 'rehype-katex': {} },
       },
     },

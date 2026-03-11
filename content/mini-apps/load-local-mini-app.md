@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:device-mobile-code
+navigation:
+  title: Load a Local Mini App
+  order: 4
 ---
 
 <!-- url: https://nimiq.com/developers/mini-apps/load-local-mini-app -->

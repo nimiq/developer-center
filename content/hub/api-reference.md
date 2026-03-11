@@ -2,6 +2,9 @@
 icon: i-tabler:api
 title: API Reference
 description: Summary of Hub API methods, request types, and access levels
+navigation:
+  title: API Reference
+  order: 4
 ---
 
 # API Reference

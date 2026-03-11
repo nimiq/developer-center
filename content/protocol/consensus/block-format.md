@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:file-text
+navigation:
+  title: Block Format
+  order: 1
 ---
 
 # Block Format

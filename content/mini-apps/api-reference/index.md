@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:api
+navigation:
+  title: API Reference
+  order: 1
 ---
 
 <!-- url: https://nimiq.com/developers/mini-apps/api-reference -->

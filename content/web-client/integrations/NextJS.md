@@ -1,6 +1,9 @@
 ---
 icon: i-logos:nextjs-icon
 pageFooterLeftText: 'Page inspired by [DovAzencot](https://github.com/DovAzencot/nimiq-nextjs/)'
+navigation:
+  title: Next.js
+  order: 3
 ---
 
 # Nimiq Web Client Next.js Integration

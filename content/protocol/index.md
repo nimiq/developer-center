@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:home
+navigation:
+  title: Home
+  order: 1
 ---
 
 ---

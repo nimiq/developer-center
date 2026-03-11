@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:device-desktop
+navigation:
+  title: Browser vs Server-Side
+  order: 3
 ---
 
 # Using the Nimiq Web Client Across JavaScript Runtimes

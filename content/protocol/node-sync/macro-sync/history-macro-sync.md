@@ -1,3 +1,10 @@
+---
+icon: i-tabler:history
+navigation:
+  title: History Macro Sync
+  order: 1
+---
+
 # History Macro Sync
 
 History Macro Sync is a full history synchronization mechanism designed exclusively for history nodes. It downloads the complete blockchain transaction history from genesis. The History Macro Sync is required for nodes that need to serve historical queries or verify the full transaction history.

@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:adjustments
+navigation:
+  title: Albatross Policy
+  order: 5
 ---
 
 # Albatross Policy

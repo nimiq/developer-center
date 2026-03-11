@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:download
+navigation:
+  title: Installation
+  order: 2
 ---
 
 # Install Nimiq Utils

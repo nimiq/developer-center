@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:brand-ethereum
+navigation:
+  title: Ethereum Provider API
+  order: 3
 ---
 
 <!-- url: https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider -->

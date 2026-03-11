@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:cookie
+navigation:
+  title: Cookie Utilities
+  order: 14
 ---
 
 # Cookie Utilities

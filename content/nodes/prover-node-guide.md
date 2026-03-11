@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:server
+navigation:
+  title: Prover Node Setup Guide
+  order: 2
 ---
 
 # Prover node

@@ -92,9 +92,9 @@ export default defineAppConfig({
         },
         to: {
           true: {
-            root: 'hover:-translate-y-1.5 hover:shadow-[var(--nq-shadow)] hover:bg-white hover:ring-[color-mix(in_oklch,var(--ui-color-neutral-950)_2%,transparent)]',
-            title: 'group-hover:text-[var(--ui-color-neutral-950)]',
-            description: 'group-hover:text-[var(--ui-color-neutral-700)]',
+            root: 'hover:-translate-y-1.5 hover:shadow-nq hover:bg-white dark:hover:bg-white hover:ring-[color-mix(in_oklch,var(--ui-color-neutral-950)_2%,transparent)]',
+            title: 'group-hover:text-darkblue-950',
+            description: 'group-hover:text-darkblue-700',
             leadingIcon: 'group-hover:text-[var(--ui-color-primary-600)]',
           },
         },

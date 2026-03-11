@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:calendar
+navigation:
+  title: Slots
+  order: 1
 ---
 
 # Slots

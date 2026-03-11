@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:timeline
+navigation:
+  title: Tweenable
+  order: 17
 ---
 
 # Tweenable

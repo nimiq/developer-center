@@ -2,17 +2,10 @@
 icon: i-tabler:home
 title: Nimiq Hub
 description: The secure wallet integration API that lets your users sign transactions, manage accounts, and interact with the blockchain — without you ever touching their private keys.
+navigation:
+  title: Overview
+  order: 1
 ---
-
-::u-page-hero
----
-title: Nimiq Hub
-description: The secure wallet integration API that lets your users sign transactions, manage accounts, and interact with the blockchain — without you ever touching their private keys.
----
-
-[View on GitHub](https://github.com/nimiq/hub){target="_blank"}
-
-::
 
 ## Get started now
 

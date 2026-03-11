@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:arrows-split-2
+navigation:
+  title: Build a Dual-Chain Mini App
+  order: 3
 ---
 
 <!-- url: https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial -->

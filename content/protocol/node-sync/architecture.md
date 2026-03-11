@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:building
+navigation:
+  title: Architecture
+  order: 4
 ---
 
 # Architecture

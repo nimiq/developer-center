@@ -2,16 +2,10 @@
 icon: i-tabler:layout-grid
 title: Nimiq RPC Client
 description: Connect your backend services to the Nimiq blockchain with full access to blockchain data and operations through standard JSON-RPC and RESTful endpoints.
+navigation:
+  title: Overview
+  order: 1
 ---
-
-::u-page-hero
----
-title: Nimiq RPC Client
-description: Connect your backend services to the Nimiq blockchain with full access to blockchain data and operations through standard JSON-RPC and RESTful endpoints.
----
-
-[Open RPC Servers](/rpc/open-servers){.mr-2} [TypeScript Client](/rpc/integrations/typescript){.mr-2} [MCP Server](/rpc/integrations/mcp)
-::
 
 ::u-page-section
 ---

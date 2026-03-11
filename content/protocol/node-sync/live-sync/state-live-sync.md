@@ -1,3 +1,10 @@
+---
+icon: i-tabler:database-export
+navigation:
+  title: State Live Sync
+  order: 2
+---
+
 # State Live Sync
 
 State Live Sync is a comprehensive real-time synchronization mechanism designed exclusively for full blockchain instances. The State Live Sync simultaneously maintains both the latest blockchain state and complete account data through parallel block and state synchronization.

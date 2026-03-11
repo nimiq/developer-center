@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:user-check
+navigation:
+  title: Becoming a Validator
+  order: 1
 ---
 
 # Becoming a Validator

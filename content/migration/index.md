@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:layout-grid
+navigation:
+  title: Overview
+  order: 1
 ---
 
 # Legacy Migration Guide (PoW → PoS)

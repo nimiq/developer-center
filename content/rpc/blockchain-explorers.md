@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:search
+navigation:
+  title: Blockchain Explorers
+  order: 3
 ---
 
 # Nimiq Blockchain Explorers

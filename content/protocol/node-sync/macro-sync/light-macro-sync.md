@@ -1,3 +1,10 @@
+---
+icon: i-tabler:feather
+navigation:
+  title: Light Macro Sync
+  order: 2
+---
+
 # Light Macro Sync
 
 Light Macro Sync is a robust, ZKP-based synchronization mechanism designed for secure blockchain state verification. It operates with both full and light blockchain instances and provides cryptographically verified synchronization by leveraging Zero-Knowledge Proofs (ZKPs) to verify the macro chain validity before application to the local blockchain.

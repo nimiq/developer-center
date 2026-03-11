@@ -1,15 +1,11 @@
 ---
 icon: i-tabler:layout-grid
 title: Nimiq Web Client
+navigation:
+  title: Overview
+  order: 1
 description: The JavaScript library that lets you build blockchain applications directly in the browser — zero servers, zero complexity.
 ---
-
-::u-page-hero
----
-title: Nimiq Web Client
-description: The JavaScript library that lets you build blockchain applications directly in the browser — zero servers, zero complexity.
----
-::
 
 ## Start with 4 lines of code
 

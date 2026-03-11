@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:book
+navigation:
+  title: Staking Handbook
+  order: 2
 ---
 
 # Staking Pools Handbook

@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:terminal-2
+navigation:
+  title: Raw Requests
+  order: 1
 ---
 
 # Nimiq RPC Raw HTTP/WebSocket Requests

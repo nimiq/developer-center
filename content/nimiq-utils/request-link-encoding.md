@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:link
+navigation:
+  title: Request Link Encoding
+  order: 15
 ---
 
 # Request Link Encoding

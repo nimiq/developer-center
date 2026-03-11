@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:clipboard
+navigation:
+  title: Clipboard
+  order: 13
 ---
 
 # Clipboard

@@ -1,3 +1,10 @@
+---
+icon: i-tabler:cube
+navigation:
+  title: Block Live Sync
+  order: 1
+---
+
 # Block Live Sync
 
 **Block Live Sync** is the real-time block synchronization mechanism, used as the second phase of synchronization after macro sync completes. It enables nodes to follow the chain tip by processing micro blocks as they are produced. This mode targets nodes that do not require state synchronization.

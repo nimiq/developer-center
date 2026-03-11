@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:address-book
+navigation:
+  title: Address Book
+  order: 3
 ---
 
 # Address Book

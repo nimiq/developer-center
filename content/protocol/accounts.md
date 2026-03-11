@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:user
+navigation:
+  title: Accounts
+  order: 3
 ---
 
 # Accounts

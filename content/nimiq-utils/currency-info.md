@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:currency-dollar
+navigation:
+  title: Currency Info
+  order: 9
 ---
 
 # Currency Info

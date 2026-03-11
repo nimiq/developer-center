@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:tree
+navigation:
+  title: Merkle Trees
+  order: 2
 ---
 
 # Merkle Trees

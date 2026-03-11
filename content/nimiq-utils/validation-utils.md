@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:check
+navigation:
+  title: Validation Utils
+  order: 4
 ---
 
 # Validation Utils

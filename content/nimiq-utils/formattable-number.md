@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:hash
+navigation:
+  title: Formattable Number
+  order: 8
 ---
 
 # Formattable Number

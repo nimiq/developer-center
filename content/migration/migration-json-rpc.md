@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:code
+navigation:
+  title: JSON-RPC Migration
+  order: 3
 ---
 
 # PoS Migration Guide for JSON-RPC

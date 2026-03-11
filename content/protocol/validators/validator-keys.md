@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:key
+navigation:
+  title: Validator Keys
+  order: 4
 ---
 
 # Validator Keys

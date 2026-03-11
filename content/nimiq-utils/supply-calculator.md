@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:calculator
+navigation:
+  title: Supply Calculator
+  order: 6
 ---
 
 # Supply Calculator

@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:gift
+navigation:
+  title: Rewards
+  order: 1
 ---
 
 # Rewards

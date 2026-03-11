@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:shield-check
+navigation:
+  title: Equivocation Proofs
+  order: 3
 ---
 
 # Equivocation Proofs

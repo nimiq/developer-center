@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:database
+navigation:
+  title: History Store
+  order: 3
 ---
 
 # History Store
