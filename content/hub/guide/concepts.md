@@ -2,6 +2,9 @@
 icon: i-tabler:book
 title: Core Concepts
 description: Understand the Hub architecture, request behaviors, and security model
+navigation:
+  title: Concepts
+  order: 1
 ---
 
 # Core Concepts

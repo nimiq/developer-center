@@ -1,3 +1,10 @@
+---
+icon: i-tabler:minimize
+navigation:
+  title: Pico Macro Sync
+  order: 3
+---
+
 # Pico Macro Sync
 
 Pico Macro Sync is a lightweight sync mechanism designed for resource-constrained environments. It operates exclusively with light blockchain instances and provides fast initial synchronization by requesting only essential macro blocks (election and checkpoint blocks) from peers on a per-peer basis. Pico Macro Sync takes an optimistic approach by accepting macro blocks with minimal validation, then falling back to a more robust sync method if conflicts are detected.

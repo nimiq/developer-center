@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:clock
+navigation:
+  title: Rate Limit Scheduler
+  order: 11
 ---
 
 # Rate Limit Scheduler

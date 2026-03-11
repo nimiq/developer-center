@@ -107,9 +107,6 @@
   /* Nimiq design tokens */
   --ui-radius: 0.5rem;
   --ui-container: 78rem;
-  --nq-shadow: 0px 18px 38px rgba(31 35 72 / 0.07), 0px 7px 8.5px rgba(31 35 72 / 0.04), 0px 2px 2.5px rgba(31 35 72 / 0.02);
-  --nq-shadow-lg: 0px 6px 20px rgba(59 76 106 / 0.13), 0px 1.34px 4.47px rgba(59 76 106 / 0.08), 0px 0.4px 1.33px rgba(59 76 106 / 0.05);
-  --nq-ease: cubic-bezier(0.25, 0, 0, 1);
 }
 
 :root, :host, .light {
@@ -128,13 +125,36 @@
   --ui-info: var(--ui-color-info-400);
   --ui-warning: var(--ui-color-warning-400);
   --ui-error: var(--ui-color-error-400);
-
-  --nq-shadow: 0px 18px 38px rgba(0 0 0 / 0.25), 0px 7px 8.5px rgba(0 0 0 / 0.15), 0px 2px 2.5px rgba(0 0 0 / 0.10);
-  --nq-shadow-lg: 0px 6px 20px rgba(0 0 0 / 0.35), 0px 1.34px 4.47px rgba(0 0 0 / 0.20), 0px 0.4px 1.33px rgba(0 0 0 / 0.12);
 }
 
-/* ── Typography ── */
+/* ── Tailwind v4 theme tokens ── */
 @theme {
+  /* Typography */
   --font-sans: 'Mulish', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+
+  /* Darkblue: Nimiq Darkblue (#1F2348) */
+  --color-darkblue-50: oklch(0.970 0.006 280);
+  --color-darkblue-100: oklch(0.940 0.012 280);
+  --color-darkblue-200: oklch(0.880 0.025 280);
+  --color-darkblue-300: oklch(0.780 0.045 280);
+  --color-darkblue-400: oklch(0.650 0.065 280);
+  --color-darkblue-500: oklch(0.500 0.080 280);
+  --color-darkblue-600: oklch(0.400 0.080 280);
+  --color-darkblue-700: oklch(0.320 0.075 280);
+  --color-darkblue-800: oklch(0.260 0.068 280);
+  --color-darkblue-900: oklch(0.210 0.055 280);
+  --color-darkblue-950: oklch(0.180 0.045 280);
+
+  /* Shadows */
+  --shadow-nq: 0px 18px 38px rgba(31 35 72 / 0.07), 0px 7px 8.5px rgba(31 35 72 / 0.04), 0px 2px 2.5px rgba(31 35 72 / 0.02);
+  --shadow-nq-lg: 0px 6px 20px rgba(59 76 106 / 0.13), 0px 1.34px 4.47px rgba(59 76 106 / 0.08), 0px 0.4px 1.33px rgba(59 76 106 / 0.05);
+
+  /* Easing */
+  --ease-nq: cubic-bezier(0.25, 0, 0, 1);
+}
+
+.dark {
+  --shadow-nq: 0px 18px 38px rgba(0 0 0 / 0.25), 0px 7px 8.5px rgba(0 0 0 / 0.15), 0px 2px 2.5px rgba(0 0 0 / 0.10);
+  --shadow-nq-lg: 0px 6px 20px rgba(0 0 0 / 0.35), 0px 1.34px 4.47px rgba(0 0 0 / 0.20), 0px 0.4px 1.33px rgba(0 0 0 / 0.12);
 }

@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:users
+navigation:
+  title: Validators
+  order: 3
 ---
 
 # Validators

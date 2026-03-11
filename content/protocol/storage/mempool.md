@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:list
+navigation:
+  title: Mempool
+  order: 1
 ---
 
 # Mempool

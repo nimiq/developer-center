@@ -1,5 +1,8 @@
 ---
 icon: i-logos:javascript
+navigation:
+  title: JavaScript Native
+  order: 4
 ---
 
 # Nimiq RPC with JavaScript

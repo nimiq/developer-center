@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:git-merge
+navigation:
+  title: Migration for Integrators
+  order: 2
 ---
 
 # Guide for Integrators and Exchanges

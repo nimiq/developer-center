@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:settings
+navigation:
+  title: RPC Node Setup
+  order: 4
 ---
 
 # Exposing a Nimiq Node over JSON-RPC

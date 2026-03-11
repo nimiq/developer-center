@@ -2,6 +2,9 @@
 icon: i-tabler:network
 title: Sync and Network Consensus
 description: Design-level overview of how Nimiq nodes synchronize with the blockchain, across all node types and sync modes.
+navigation:
+  title: Sync and Network Consensus
+  order: 1
 ---
 
 # Node Sync System

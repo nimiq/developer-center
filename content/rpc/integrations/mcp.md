@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:robot
+navigation:
+  title: MCP Server (AI)
+  order: 5
 ---
 
 # MCP Server (AI Integration)

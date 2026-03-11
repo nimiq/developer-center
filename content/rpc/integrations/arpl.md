@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:terminal
+navigation:
+  title: ARPL CLI Tool
+  order: 2
 ---
 
 # Nimiq RPC with ARPL CLI Tool

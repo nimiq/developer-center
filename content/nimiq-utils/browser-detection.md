@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:browser
+navigation:
+  title: Browser Detection
+  order: 12
 ---
 
 # Browser Detection

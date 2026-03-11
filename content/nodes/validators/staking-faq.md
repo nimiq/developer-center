@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:help
+navigation:
+  title: FAQs for Stakers and Pools
+  order: 4
 ---
 
 # Comprehensive Staking FAQ

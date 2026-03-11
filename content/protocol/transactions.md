@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:receipt
+navigation:
+  title: Transactions
+  order: 4
 ---
 
 # Transactions

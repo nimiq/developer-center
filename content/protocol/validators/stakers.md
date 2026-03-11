@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:user-star
+navigation:
+  title: Stakers
+  order: 5
 ---
 
 # Stakers

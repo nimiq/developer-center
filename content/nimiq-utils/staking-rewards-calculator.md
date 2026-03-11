@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:coins
+navigation:
+  title: Staking Rewards Calculator
+  order: 7
 ---
 
 # Staking Rewards Calculator

@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:server
+navigation:
+  title: Open RPC Servers
+  order: 2
 ---
 
 # Open RPC Servers

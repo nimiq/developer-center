@@ -1,5 +1,11 @@
-export const checksums = {}
-export const checksumsStructure = {}
+export const checksums = {
+  "docs": "v3.5.0--fS8u-LDfE9WpJx6cZsjqFMyslRxvMsT-Mfgsk9GoiyY",
+  "landing": "v3.5.0--6PwhFTgRgATNdg3Ek91DFjFVTx3PaNySxHT4X90KROA"
+}
+export const checksumsStructure = {
+  "docs": "WhSqpCmvkYqGdx62TNDrial4iL1HDGUV52p0hnM_Ld0",
+  "landing": "tZyOKbtBW1Y6jgOgyl3rm-ghuJUJsbLCHIgBPzIXDfk"
+}
 
 export const tables = {
   "docs": "_content_docs",

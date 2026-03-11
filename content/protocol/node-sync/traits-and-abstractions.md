@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:code
+navigation:
+  title: Traits and Abstractions
+  order: 5
 ---
 
 # Traits and Abstractions

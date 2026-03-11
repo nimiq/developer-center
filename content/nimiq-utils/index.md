@@ -2,14 +2,10 @@
 icon: i-tabler:layout-grid
 title: Nimiq Utils
 description: Production-ready JavaScript utilities for blockchain development. Battle-tested, type-safe, and tree-shakable.
+navigation:
+  title: Overview
+  order: 1
 ---
-
-::u-page-hero
----
-title: Nimiq Utils
-description: Production-ready JavaScript utilities for blockchain development. Battle-tested, type-safe, and tree-shakable.
----
-::
 
 ::u-page-section
 ---

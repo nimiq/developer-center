@@ -2,6 +2,9 @@
 icon: i-tabler:droplet
 outline: deep
 description: Get free NIM for development and testing on Nimiq Testnet.
+navigation:
+  title: Faucet
+  order: 5
 ---
 
 # Faucet

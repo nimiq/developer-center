@@ -1,5 +1,8 @@
 ---
 icon: i-logos:nuxt-icon
+navigation:
+  title: Nuxt
+  order: 2
 ---
 
 # Nimiq Web Client Nuxt Integration

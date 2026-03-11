@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:shield-star
+navigation:
+  title: Validator Trustscore
+  order: 3
 ---
 
 # Nimiq Validator Trustscore

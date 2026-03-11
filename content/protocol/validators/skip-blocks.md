@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:skip-forward
+navigation:
+  title: Skip Blocks
+  order: 6
 ---
 
 # Skip Blocks

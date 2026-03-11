@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:rocket
+navigation:
+  title: Build Your First Mini App
+  order: 2
 ---
 
 <!-- url: https://nimiq.com/developers/mini-apps/mini-app-tutorial -->

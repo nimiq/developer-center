@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:wallet
+navigation:
+  title: Staking Contract
+  order: 2
 ---
 
 # Staking Contract

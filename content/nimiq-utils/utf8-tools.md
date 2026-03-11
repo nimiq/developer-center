@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:code
+navigation:
+  title: Utf8 Tools
+  order: 16
 ---
 
 # Utf8 Tools

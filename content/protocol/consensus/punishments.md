@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:alert-triangle
+navigation:
+  title: Punishments
+  order: 4
 ---
 
 # Punishments

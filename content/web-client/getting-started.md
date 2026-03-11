@@ -1,6 +1,9 @@
 ---
 icon: i-tabler:rocket
 next: ./integrations/vite
+navigation:
+  title: Getting Started
+  order: 2
 ---
 
 # What is Nimiq?

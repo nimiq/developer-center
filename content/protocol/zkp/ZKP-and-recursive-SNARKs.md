@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:lock
+navigation:
+  title: ZKP and Recursive SNARKs
+  order: 1
 ---
 
 # ZKP and Recursive SNARKs

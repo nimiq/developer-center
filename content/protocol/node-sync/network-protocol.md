@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:globe
+navigation:
+  title: Network Protocol
+  order: 6
 ---
 
 # Network Messages

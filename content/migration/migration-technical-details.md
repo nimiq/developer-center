@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:settings
+navigation:
+  title: Technical Details
+  order: 5
 ---
 
 # Migration Technical Details

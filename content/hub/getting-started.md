@@ -2,6 +2,9 @@
 icon: i-tabler:rocket
 title: Getting Started
 description: Get up and running with the Nimiq Hub API in minutes
+navigation:
+  title: Getting Started
+  order: 2
 ---
 
 # Getting Started

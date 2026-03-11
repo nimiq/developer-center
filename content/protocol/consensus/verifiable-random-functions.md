@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:dice
+navigation:
+  title: Verifiable Random Functions
+  order: 2
 ---
 
 # Verifiable Random Functions

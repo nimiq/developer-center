@@ -2,6 +2,9 @@
 icon: i-tabler:user
 title: Account Management
 description: Onboard users, manage accounts, and handle addresses
+navigation:
+  title: Accounts
+  order: 4
 ---
 
 # Account Management

@@ -7,6 +7,9 @@ next: false
 aside: false
 footer: false
 secondarySidebar: false
+navigation:
+  title: Overview
+  order: 1
 ---
 
 # Nodes & Validators

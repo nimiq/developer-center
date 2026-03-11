@@ -2,6 +2,9 @@
 icon: i-tabler:code
 title: Integration Guide
 description: Best practices for integrating the Nimiq Hub API into your application
+navigation:
+  title: Integration
+  order: 2
 ---
 
 # Integration Guide

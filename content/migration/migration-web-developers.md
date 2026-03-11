@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:browser
+navigation:
+  title: Web Developers Migration
+  order: 4
 ---
 
 # Migration Guide for Web Developers

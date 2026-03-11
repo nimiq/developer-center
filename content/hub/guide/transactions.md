@@ -2,6 +2,9 @@
 icon: i-tabler:receipt
 title: Transaction Methods
 description: Request payments, sign transactions, and interact with the blockchain
+navigation:
+  title: Transactions
+  order: 3
 ---
 
 # Transaction Methods

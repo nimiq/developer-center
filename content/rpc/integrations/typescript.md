@@ -1,5 +1,8 @@
 ---
 icon: i-logos:typescript-icon
+navigation:
+  title: TypeScript Client
+  order: 3
 ---
 
 # Nimiq RPC With TypeScript Client

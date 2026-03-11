@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:api
+navigation:
+  title: Fiat API
+  order: 10
 ---
 
 # Fiat API

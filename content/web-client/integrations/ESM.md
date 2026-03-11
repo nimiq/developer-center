@@ -1,5 +1,8 @@
 ---
 icon: i-logos:javascript
+navigation:
+  title: ESM
+  order: 4
 ---
 
 # Nimiq Web Client ESM Integration

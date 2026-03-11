@@ -1,5 +1,8 @@
 ---
 icon: i-logos:vitejs
+navigation:
+  title: Vite
+  order: 1
 ---
 
 # Nimiq Web Client Vite Integration

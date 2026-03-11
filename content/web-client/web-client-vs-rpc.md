@@ -1,5 +1,8 @@
 ---
 icon: i-tabler:git-compare
+navigation:
+  title: Web Client vs RPC
+  order: 4
 ---
 
 # Web Client vs RPC Client

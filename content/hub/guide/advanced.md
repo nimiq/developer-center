@@ -2,6 +2,9 @@
 icon: i-tabler:star
 title: Advanced Features
 description: Cashlinks, privileged swap helpers, and multi-chain considerations
+navigation:
+  title: Advanced Features
+  order: 5
 ---
 
 # Advanced Features
