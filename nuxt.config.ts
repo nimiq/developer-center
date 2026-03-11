@@ -59,12 +59,19 @@ const contentRoutes = getFiles(contentRoot)
 const openRpcDocument = JSON.parse(readFileSync(join(cwd(), 'data/openrpc-document.json'), 'utf8')) as { methods?: Array<{ name: string }> }
 const rpcMethodRoutes = (openRpcDocument.methods || []).map(method => `/rpc/methods/${slugify(method.name)}`)
 const prerenderRoutes = Array.from(new Set([...contentRoutes, ...rpcMethodRoutes]))
+const enableMcp = process.env.DEPLOYMENT_MODE !== 'production'
 
 export default defineNuxtConfig({
   extends: ['docus'],
+  modules: ['@nuxt/eslint'],
   ssr: true,
   devtools: {
     enabled: true,
+  },
+  eslint: {
+    config: {
+      standalone: false,
+    },
   },
   app: {
     baseURL,
@@ -164,6 +171,6 @@ export default defineNuxtConfig({
     plugins: [wasm(), topLevelAwait()],
   },
   mcp: {
-    enabled: true,
+    enabled: enableMcp,
   },
 } as any)
