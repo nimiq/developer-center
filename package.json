@@ -11,6 +11,7 @@
   },
   "homepage": "https://nimiq.com/developers",
   "scripts": {
+    "postinstall": "nuxt prepare",
     "dev": "DEPLOYMENT_MODE=development nuxi dev",
     "build": "DEPLOYMENT_MODE=production nuxi build",
     "build:staging": "DEPLOYMENT_MODE=staging nuxi build",
@@ -46,6 +47,7 @@
     "@iconify-json/vscode-icons": "^1.2.33",
     "@iconify/utils": "^3.0.2",
     "@nimiq/core": "^2.2.0",
+    "@nuxt/eslint": "^1.15.2",
     "@open-rpc/meta-schema": "^1.14.9",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/canvas-confetti": "^1.9.0",
@@ -98,6 +100,6 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint . --fix"
+    "*.{js,mjs,cjs,ts,mts,cts,vue,md}": "eslint --fix"
   }
 }

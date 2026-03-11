@@ -1,0 +1,1017 @@
+{
+  "id": "#",
+  "properties": {
+    "appConfig": {
+      "id": "#appConfig",
+      "properties": {
+        "icon": {
+          "title": "Nuxt Icon",
+          "description": "Configure Nuxt Icon module preferences.",
+          "tags": [
+            "@studioIcon material-symbols:star"
+          ],
+          "id": "#appConfig/icon",
+          "properties": {
+            "size": {
+              "title": "Icon Size",
+              "description": "Set the default icon size.",
+              "tags": [
+                "@studioIcon material-symbols:format-size-rounded"
+              ],
+              "tsType": "string | undefined",
+              "id": "#appConfig/icon/size",
+              "default": {},
+              "type": "any"
+            },
+            "class": {
+              "title": "CSS Class",
+              "description": "Set the default CSS class.",
+              "tags": [
+                "@studioIcon material-symbols:css"
+              ],
+              "id": "#appConfig/icon/class",
+              "default": "",
+              "type": "string"
+            },
+            "attrs": {
+              "title": "Default Attributes",
+              "description": "Attributes applied to every icon component.\n\n@default { \"aria-hidden\": true }",
+              "tags": [
+                "@studioIcon material-symbols:settings"
+              ],
+              "tsType": "Record<string, string | number | boolean>",
+              "id": "#appConfig/icon/attrs",
+              "default": {
+                "aria-hidden": true
+              },
+              "type": "object"
+            },
+            "mode": {
+              "title": "Default Rendering Mode",
+              "description": "Set the default rendering mode for the icon component",
+              "enum": [
+                "css",
+                "svg"
+              ],
+              "tags": [
+                "@studioIcon material-symbols:move-down-rounded"
+              ],
+              "id": "#appConfig/icon/mode",
+              "default": "css",
+              "type": "string"
+            },
+            "aliases": {
+              "title": "Icon aliases",
+              "description": "Define Icon aliases to update them easily without code changes.",
+              "tags": [
+                "@studioIcon material-symbols:star-rounded"
+              ],
+              "tsType": "{ [alias: string]: string }",
+              "id": "#appConfig/icon/aliases",
+              "default": {},
+              "type": "object"
+            },
+            "cssSelectorPrefix": {
+              "title": "CSS Selector Prefix",
+              "description": "Set the default CSS selector prefix.",
+              "tags": [
+                "@studioIcon material-symbols:format-textdirection-l-to-r"
+              ],
+              "id": "#appConfig/icon/cssSelectorPrefix",
+              "default": "i-",
+              "type": "string"
+            },
+            "cssLayer": {
+              "title": "CSS Layer Name",
+              "description": "Set the default CSS `@layer` name.",
+              "tags": [
+                "@studioIcon material-symbols:layers"
+              ],
+              "tsType": "string | undefined",
+              "id": "#appConfig/icon/cssLayer",
+              "default": {},
+              "type": "any"
+            },
+            "cssWherePseudo": {
+              "title": "Use CSS `:where()` Pseudo Selector",
+              "description": "Use CSS `:where()` pseudo selector to reduce specificity.",
+              "tags": [
+                "@studioIcon material-symbols:low-priority"
+              ],
+              "id": "#appConfig/icon/cssWherePseudo",
+              "default": true,
+              "type": "boolean"
+            },
+            "collections": {
+              "title": "Icon Collections",
+              "description": "List of known icon collections name. Used to resolve collection name ambiguity.\ne.g. `simple-icons-github` -> `simple-icons:github` instead of `simple:icons-github`\n\nWhen not provided, will use the full Iconify collection list.",
+              "tags": [
+                "@studioIcon material-symbols:format-list-bulleted"
+              ],
+              "tsType": "string[] | null",
+              "id": "#appConfig/icon/collections",
+              "default": null,
+              "type": "any"
+            },
+            "customCollections": {
+              "title": "Custom Icon Collections",
+              "tags": [
+                "@studioIcon material-symbols:format-list-bulleted"
+              ],
+              "tsType": "string[] | null",
+              "id": "#appConfig/icon/customCollections",
+              "default": null,
+              "type": "any"
+            },
+            "provider": {
+              "title": "Icon Provider",
+              "description": "Provider to use for fetching icons\n\n- `server` - Fetch icons with a server handler\n- `iconify` - Fetch icons with Iconify API, purely client-side\n- `none` - Do not fetch icons (use client bundle only)\n\n`server` by default; `iconify` when `ssr: false`",
+              "enum": [
+                "server",
+                "iconify",
+                "none"
+              ],
+              "tags": [
+                "@studioIcon material-symbols:cloud"
+              ],
+              "type": "\"server\" | \"iconify\" | \"none\" | undefined",
+              "id": "#appConfig/icon/provider"
+            },
+            "iconifyApiEndpoint": {
+              "title": "Iconify API Endpoint URL",
+              "description": "Define a custom Iconify API endpoint URL. Useful if you want to use a self-hosted Iconify API. Learn more: https://iconify.design/docs/api.",
+              "tags": [
+                "@studioIcon material-symbols:api"
+              ],
+              "id": "#appConfig/icon/iconifyApiEndpoint",
+              "default": "https://api.iconify.design",
+              "type": "string"
+            },
+            "fallbackToApi": {
+              "title": "Fallback to Iconify API",
+              "description": "Fallback to Iconify API if server provider fails to found the collection.",
+              "tags": [
+                "@studioIcon material-symbols:public"
+              ],
+              "enum": [
+                true,
+                false,
+                "server-only",
+                "client-only"
+              ],
+              "type": "boolean | \"server-only\" | \"client-only\"",
+              "id": "#appConfig/icon/fallbackToApi",
+              "default": true
+            },
+            "localApiEndpoint": {
+              "title": "Local API Endpoint Path",
+              "description": "Define a custom path for the local API endpoint.",
+              "tags": [
+                "@studioIcon material-symbols:api"
+              ],
+              "id": "#appConfig/icon/localApiEndpoint",
+              "default": "/api/_nuxt_icon",
+              "type": "string"
+            },
+            "fetchTimeout": {
+              "title": "Fetch Timeout",
+              "description": "Set the timeout for fetching icons.",
+              "tags": [
+                "@studioIcon material-symbols:timer"
+              ],
+              "id": "#appConfig/icon/fetchTimeout",
+              "default": 1500,
+              "type": "number"
+            },
+            "customize": {
+              "title": "Customize callback",
+              "description": "Customize icon content (replace stroke-width, colors, etc...).",
+              "tags": [
+                "@studioIcon material-symbols:edit"
+              ],
+              "type": "IconifyIconCustomizeCallback",
+              "id": "#appConfig/icon/customize"
+            }
+          },
+          "type": "object",
+          "default": {
+            "size": {},
+            "class": "",
+            "attrs": {
+              "aria-hidden": true
+            },
+            "mode": "css",
+            "aliases": {},
+            "cssSelectorPrefix": "i-",
+            "cssLayer": {},
+            "cssWherePseudo": true,
+            "collections": null,
+            "customCollections": null,
+            "iconifyApiEndpoint": "https://api.iconify.design",
+            "fallbackToApi": true,
+            "localApiEndpoint": "/api/_nuxt_icon",
+            "fetchTimeout": 1500
+          }
+        },
+        "ui": {
+          "title": "UI",
+          "description": "UI Customization.",
+          "tags": [
+            "@previewIcon i-lucide-palette"
+          ],
+          "id": "#appConfig/ui",
+          "properties": {
+            "colors": {
+              "title": "Colors",
+              "description": "Manage main colors of your application",
+              "tags": [
+                "@previewIcon i-lucide-palette"
+              ],
+              "id": "#appConfig/ui/colors",
+              "properties": {
+                "primary": {
+                  "type": "string",
+                  "title": "Primary",
+                  "description": "Primary color of your UI.",
+                  "default": "green",
+                  "required": [
+                    "red",
+                    "orange",
+                    "amber",
+                    "yellow",
+                    "lime",
+                    "green",
+                    "emerald",
+                    "teal",
+                    "cyan",
+                    "sky",
+                    "blue",
+                    "indigo",
+                    "violet",
+                    "purple",
+                    "fuchsia",
+                    "pink",
+                    "rose"
+                  ],
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-palette"
+                  ],
+                  "id": "#appConfig/ui/colors/primary"
+                },
+                "neutral": {
+                  "type": "string",
+                  "title": "Neutral",
+                  "description": "Neutral color of your UI.",
+                  "default": "slate",
+                  "required": [
+                    "slate",
+                    "gray",
+                    "zinc",
+                    "neutral",
+                    "stone"
+                  ],
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-palette"
+                  ],
+                  "id": "#appConfig/ui/colors/neutral"
+                }
+              },
+              "type": "object",
+              "default": {
+                "primary": "green",
+                "neutral": "slate"
+              }
+            },
+            "icons": {
+              "title": "Icons",
+              "description": "Manage icons used in the application.",
+              "tags": [
+                "@previewIcon i-lucide-settings"
+              ],
+              "id": "#appConfig/ui/icons",
+              "properties": {
+                "search": {
+                  "type": "string",
+                  "title": "Search Bar",
+                  "description": "Icon to display in the search bar.",
+                  "default": "i-lucide-search",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-search"
+                  ],
+                  "id": "#appConfig/ui/icons/search"
+                },
+                "dark": {
+                  "type": "string",
+                  "title": "Dark mode",
+                  "description": "Icon of color mode button for dark mode.",
+                  "default": "i-lucide-moon",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-moon"
+                  ],
+                  "id": "#appConfig/ui/icons/dark"
+                },
+                "light": {
+                  "type": "string",
+                  "title": "Light mode",
+                  "description": "Icon of color mode button for light mode.",
+                  "default": "i-lucide-sun",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-sun"
+                  ],
+                  "id": "#appConfig/ui/icons/light"
+                },
+                "external": {
+                  "type": "string",
+                  "title": "External Link",
+                  "description": "Icon for external link.",
+                  "default": "i-lucide-external-link",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-external-link"
+                  ],
+                  "id": "#appConfig/ui/icons/external"
+                },
+                "chevron": {
+                  "type": "string",
+                  "title": "Chevron",
+                  "description": "Icon for chevron.",
+                  "default": "i-lucide-chevron-down",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-chevron-down"
+                  ],
+                  "id": "#appConfig/ui/icons/chevron"
+                },
+                "hash": {
+                  "type": "string",
+                  "title": "Hash",
+                  "description": "Icon for hash anchors.",
+                  "default": "i-lucide-hash",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-hash"
+                  ],
+                  "id": "#appConfig/ui/icons/hash"
+                }
+              },
+              "type": "object",
+              "default": {
+                "search": "i-lucide-search",
+                "dark": "i-lucide-moon",
+                "light": "i-lucide-sun",
+                "external": "i-lucide-external-link",
+                "chevron": "i-lucide-chevron-down",
+                "hash": "i-lucide-hash"
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "colors": {
+              "primary": "green",
+              "neutral": "slate"
+            },
+            "icons": {
+              "search": "i-lucide-search",
+              "dark": "i-lucide-moon",
+              "light": "i-lucide-sun",
+              "external": "i-lucide-external-link",
+              "chevron": "i-lucide-chevron-down",
+              "hash": "i-lucide-hash"
+            }
+          }
+        },
+        "seo": {
+          "title": "SEO",
+          "description": "SEO configuration.",
+          "tags": [
+            "@previewIcon i-lucide-search"
+          ],
+          "id": "#appConfig/seo",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "description": "Title to display in the header.",
+              "default": "",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-type"
+              ],
+              "id": "#appConfig/seo/title"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description",
+              "description": "Description to display in the header.",
+              "default": "",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-type"
+              ],
+              "id": "#appConfig/seo/description"
+            }
+          },
+          "type": "object",
+          "default": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "header": {
+          "title": "Header",
+          "description": "Header configuration.",
+          "tags": [
+            "@previewIcon i-lucide-layout"
+          ],
+          "id": "#appConfig/header",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "description": "Title to display in the header.",
+              "default": "",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-type"
+              ],
+              "id": "#appConfig/header/title"
+            },
+            "logo": {
+              "title": "Logo",
+              "description": "Header logo configuration.",
+              "tags": [
+                "@previewIcon i-lucide-image"
+              ],
+              "id": "#appConfig/header/logo",
+              "properties": {
+                "light": {
+                  "type": "string",
+                  "title": "Light Mode Logo",
+                  "description": "Pick an image from your gallery.",
+                  "default": "",
+                  "tags": [
+                    "@previewInput media",
+                    "@previewIcon i-lucide-sun"
+                  ],
+                  "id": "#appConfig/header/logo/light"
+                },
+                "dark": {
+                  "type": "string",
+                  "title": "Dark Mode Logo",
+                  "description": "Pick an image from your gallery.",
+                  "default": "",
+                  "tags": [
+                    "@previewInput media",
+                    "@previewIcon i-lucide-moon"
+                  ],
+                  "id": "#appConfig/header/logo/dark"
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Alt",
+                  "description": "Alt to display for accessibility.",
+                  "default": "",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-text"
+                  ],
+                  "id": "#appConfig/header/logo/alt"
+                },
+                "wordmark": {
+                  "title": "Wordmark",
+                  "description": "Wordmark (text logo) configuration for brand assets.",
+                  "tags": [
+                    "@previewIcon i-lucide-type"
+                  ],
+                  "id": "#appConfig/header/logo/wordmark",
+                  "properties": {
+                    "light": {
+                      "type": "string",
+                      "title": "Light Mode Wordmark",
+                      "description": "Wordmark image for light mode.",
+                      "default": "",
+                      "tags": [
+                        "@previewInput media",
+                        "@previewIcon i-lucide-sun"
+                      ],
+                      "id": "#appConfig/header/logo/wordmark/light"
+                    },
+                    "dark": {
+                      "type": "string",
+                      "title": "Dark Mode Wordmark",
+                      "description": "Wordmark image for dark mode.",
+                      "default": "",
+                      "tags": [
+                        "@previewInput media",
+                        "@previewIcon i-lucide-moon"
+                      ],
+                      "id": "#appConfig/header/logo/wordmark/dark"
+                    }
+                  },
+                  "type": "object",
+                  "default": {
+                    "light": "",
+                    "dark": ""
+                  }
+                },
+                "class": {
+                  "type": "string",
+                  "title": "Class",
+                  "description": "Additional CSS classes to apply to the logo image.",
+                  "default": "",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-paintbrush"
+                  ],
+                  "id": "#appConfig/header/logo/class"
+                },
+                "display": {
+                  "type": "string",
+                  "title": "Display",
+                  "description": "Which logo variant to show in the header: \"logo\" for the icon or \"wordmark\" for the full wordmark.",
+                  "default": "logo",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-layout"
+                  ],
+                  "id": "#appConfig/header/logo/display"
+                },
+                "favicon": {
+                  "type": "string",
+                  "title": "Favicon",
+                  "description": "Path to the favicon file for brand asset downloads.",
+                  "default": "/favicon.ico",
+                  "tags": [
+                    "@previewInput media",
+                    "@previewIcon i-lucide-app-window"
+                  ],
+                  "id": "#appConfig/header/logo/favicon"
+                },
+                "brandAssetsUrl": {
+                  "type": "string",
+                  "title": "Brand Assets URL",
+                  "description": "Link to the full brand assets page (shown in the logo context menu).",
+                  "default": "",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-palette"
+                  ],
+                  "id": "#appConfig/header/logo/brandAssetsUrl"
+                }
+              },
+              "type": "object",
+              "default": {
+                "light": "",
+                "dark": "",
+                "alt": "",
+                "wordmark": {
+                  "light": "",
+                  "dark": ""
+                },
+                "class": "",
+                "display": "logo",
+                "favicon": "/favicon.ico",
+                "brandAssetsUrl": ""
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "title": "",
+            "logo": {
+              "light": "",
+              "dark": "",
+              "alt": "",
+              "wordmark": {
+                "light": "",
+                "dark": ""
+              },
+              "class": "",
+              "display": "logo",
+              "favicon": "/favicon.ico",
+              "brandAssetsUrl": ""
+            }
+          }
+        },
+        "socials": {
+          "type": "object",
+          "title": "Social Networks",
+          "description": "Social links configuration.",
+          "default": {},
+          "tags": [
+            "@previewInput object",
+            "@previewIcon i-lucide-network"
+          ],
+          "id": "#appConfig/socials"
+        },
+        "toc": {
+          "title": "Table of contents",
+          "description": "TOC configuration.",
+          "tags": [
+            "@previewIcon i-lucide-list"
+          ],
+          "id": "#appConfig/toc",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "description": "Title of the table of contents.",
+              "default": "On this page",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-heading"
+              ],
+              "id": "#appConfig/toc/title"
+            },
+            "bottom": {
+              "title": "Bottom",
+              "description": "Bottom section of the table of contents.",
+              "tags": [
+                "@previewIcon i-lucide-list"
+              ],
+              "id": "#appConfig/toc/bottom",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "Title",
+                  "description": "Title of the bottom section.",
+                  "default": "Community",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-heading"
+                  ],
+                  "id": "#appConfig/toc/bottom/title"
+                },
+                "links": {
+                  "type": "array",
+                  "title": "Links",
+                  "description": "Links to display in the bottom section.",
+                  "default": [],
+                  "tags": [
+                    "@previewInput array",
+                    "@previewIcon i-lucide-link"
+                  ],
+                  "id": "#appConfig/toc/bottom/links",
+                  "items": {
+                    "type": "any"
+                  }
+                }
+              },
+              "type": "object",
+              "default": {
+                "title": "Community",
+                "links": []
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "title": "On this page",
+            "bottom": {
+              "title": "Community",
+              "links": []
+            }
+          }
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "GitHub configuration.",
+          "tags": [
+            "@previewIcon i-simple-icons-github"
+          ],
+          "id": "#appConfig/github",
+          "properties": {
+            "url": {
+              "type": "string",
+              "title": "URL",
+              "description": "GitHub URL.",
+              "default": "",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-simple-icons-github"
+              ],
+              "id": "#appConfig/github/url"
+            },
+            "branch": {
+              "type": "string",
+              "title": "Branch",
+              "description": "GitHub branch.",
+              "default": "main",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-git-branch"
+              ],
+              "id": "#appConfig/github/branch"
+            },
+            "rootDir": {
+              "type": "string",
+              "title": "Root Directory",
+              "description": "Root directory of the GitHub repository.",
+              "default": "",
+              "tags": [
+                "@previewInput string",
+                "@previewIcon i-lucide-folder"
+              ],
+              "id": "#appConfig/github/rootDir"
+            }
+          },
+          "type": "object",
+          "default": {
+            "url": "",
+            "branch": "main",
+            "rootDir": ""
+          }
+        },
+        "assistant": {
+          "title": "Assistant",
+          "description": "Assistant configuration.",
+          "tags": [
+            "@previewIcon i-custom-ai"
+          ],
+          "id": "#appConfig/assistant",
+          "properties": {
+            "floatingInput": {
+              "type": "boolean",
+              "title": "Floating Input",
+              "description": "Show the floating input at the bottom of documentation pages.",
+              "default": true,
+              "tags": [
+                "@previewInput boolean",
+                "@previewIcon i-lucide-message-circle"
+              ],
+              "id": "#appConfig/assistant/floatingInput"
+            },
+            "explainWithAi": {
+              "type": "boolean",
+              "title": "Explain with AI",
+              "description": "Show the \"Explain with AI\" button in the documentation sidebar.",
+              "default": true,
+              "tags": [
+                "@previewInput boolean",
+                "@previewIcon i-lucide-brain"
+              ],
+              "id": "#appConfig/assistant/explainWithAi"
+            },
+            "faqQuestions": {
+              "type": "array",
+              "title": "FAQ Questions",
+              "description": "List of FAQ questions. Can be an array of strings or an array of categories with questions.",
+              "default": [],
+              "tags": [
+                "@previewInput array",
+                "@previewIcon i-lucide-help-circle"
+              ],
+              "id": "#appConfig/assistant/faqQuestions",
+              "items": {
+                "type": "any"
+              }
+            },
+            "shortcuts": {
+              "title": "Shortcuts",
+              "description": "Keyboard shortcuts configuration.",
+              "tags": [
+                "@previewIcon i-lucide-keyboard"
+              ],
+              "id": "#appConfig/assistant/shortcuts",
+              "properties": {
+                "focusInput": {
+                  "type": "string",
+                  "title": "Focus Input",
+                  "description": "Shortcut to focus the floating input (e.g., meta_i, ctrl_k).",
+                  "default": "meta_i",
+                  "tags": [
+                    "@previewInput string",
+                    "@previewIcon i-lucide-keyboard"
+                  ],
+                  "id": "#appConfig/assistant/shortcuts/focusInput"
+                }
+              },
+              "type": "object",
+              "default": {
+                "focusInput": "meta_i"
+              }
+            },
+            "icons": {
+              "title": "Icons",
+              "description": "Icons configuration.",
+              "tags": [
+                "@previewIcon i-lucide-settings"
+              ],
+              "id": "#appConfig/assistant/icons",
+              "properties": {
+                "trigger": {
+                  "type": "string",
+                  "title": "Trigger",
+                  "description": "Icon for the AI chat trigger button and slideover header.",
+                  "default": "i-lucide-sparkles",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-sparkles"
+                  ],
+                  "id": "#appConfig/assistant/icons/trigger"
+                },
+                "explain": {
+                  "type": "string",
+                  "title": "Explain",
+                  "description": "Icon for the \"Explain with AI\" button.",
+                  "default": "i-lucide-brain",
+                  "tags": [
+                    "@previewInput icon",
+                    "@previewIcon i-lucide-brain"
+                  ],
+                  "id": "#appConfig/assistant/icons/explain"
+                }
+              },
+              "type": "object",
+              "default": {
+                "trigger": "i-lucide-sparkles",
+                "explain": "i-lucide-brain"
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "floatingInput": true,
+            "explainWithAi": true,
+            "faqQuestions": [],
+            "shortcuts": {
+              "focusInput": "meta_i"
+            },
+            "icons": {
+              "trigger": "i-lucide-sparkles",
+              "explain": "i-lucide-brain"
+            }
+          }
+        }
+      },
+      "type": "object",
+      "default": {
+        "icon": {
+          "size": {},
+          "class": "",
+          "attrs": {
+            "aria-hidden": true
+          },
+          "mode": "css",
+          "aliases": {},
+          "cssSelectorPrefix": "i-",
+          "cssLayer": {},
+          "cssWherePseudo": true,
+          "collections": null,
+          "customCollections": null,
+          "iconifyApiEndpoint": "https://api.iconify.design",
+          "fallbackToApi": true,
+          "localApiEndpoint": "/api/_nuxt_icon",
+          "fetchTimeout": 1500
+        },
+        "ui": {
+          "colors": {
+            "primary": "green",
+            "neutral": "slate"
+          },
+          "icons": {
+            "search": "i-lucide-search",
+            "dark": "i-lucide-moon",
+            "light": "i-lucide-sun",
+            "external": "i-lucide-external-link",
+            "chevron": "i-lucide-chevron-down",
+            "hash": "i-lucide-hash"
+          }
+        },
+        "seo": {
+          "title": "",
+          "description": ""
+        },
+        "header": {
+          "title": "",
+          "logo": {
+            "light": "",
+            "dark": "",
+            "alt": "",
+            "wordmark": {
+              "light": "",
+              "dark": ""
+            },
+            "class": "",
+            "display": "logo",
+            "favicon": "/favicon.ico",
+            "brandAssetsUrl": ""
+          }
+        },
+        "socials": {},
+        "toc": {
+          "title": "On this page",
+          "bottom": {
+            "title": "Community",
+            "links": []
+          }
+        },
+        "github": {
+          "url": "",
+          "branch": "main",
+          "rootDir": ""
+        },
+        "assistant": {
+          "floatingInput": true,
+          "explainWithAi": true,
+          "faqQuestions": [],
+          "shortcuts": {
+            "focusInput": "meta_i"
+          },
+          "icons": {
+            "trigger": "i-lucide-sparkles",
+            "explain": "i-lucide-brain"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "default": {
+    "appConfig": {
+      "icon": {
+        "size": {},
+        "class": "",
+        "attrs": {
+          "aria-hidden": true
+        },
+        "mode": "css",
+        "aliases": {},
+        "cssSelectorPrefix": "i-",
+        "cssLayer": {},
+        "cssWherePseudo": true,
+        "collections": null,
+        "customCollections": null,
+        "iconifyApiEndpoint": "https://api.iconify.design",
+        "fallbackToApi": true,
+        "localApiEndpoint": "/api/_nuxt_icon",
+        "fetchTimeout": 1500
+      },
+      "ui": {
+        "colors": {
+          "primary": "green",
+          "neutral": "slate"
+        },
+        "icons": {
+          "search": "i-lucide-search",
+          "dark": "i-lucide-moon",
+          "light": "i-lucide-sun",
+          "external": "i-lucide-external-link",
+          "chevron": "i-lucide-chevron-down",
+          "hash": "i-lucide-hash"
+        }
+      },
+      "seo": {
+        "title": "",
+        "description": ""
+      },
+      "header": {
+        "title": "",
+        "logo": {
+          "light": "",
+          "dark": "",
+          "alt": "",
+          "wordmark": {
+            "light": "",
+            "dark": ""
+          },
+          "class": "",
+          "display": "logo",
+          "favicon": "/favicon.ico",
+          "brandAssetsUrl": ""
+        }
+      },
+      "socials": {},
+      "toc": {
+        "title": "On this page",
+        "bottom": {
+          "title": "Community",
+          "links": []
+        }
+      },
+      "github": {
+        "url": "",
+        "branch": "main",
+        "rootDir": ""
+      },
+      "assistant": {
+        "floatingInput": true,
+        "explainWithAi": true,
+        "faqQuestions": [],
+        "shortcuts": {
+          "focusInput": "meta_i"
+        },
+        "icons": {
+          "trigger": "i-lucide-sparkles",
+          "explain": "i-lucide-brain"
+        }
+      }
+    }
+  }
+}

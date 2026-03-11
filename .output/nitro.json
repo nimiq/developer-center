@@ -1,15 +1,31 @@
 {
-  "date": "2025-10-13T06:33:43.747Z",
-  "preset": "node-server",
+  "date": "2026-03-11T06:33:09.719Z",
+  "preset": "cloudflare-module",
   "framework": {
-    "name": "nitro",
-    "version": ""
+    "name": "nuxt",
+    "version": "4.3.1"
   },
   "versions": {
-    "nitro": "3.0.1-alpha.0"
+    "nitro": "2.13.1"
   },
   "commands": {
-    "preview": "node ./server/index.mjs"
+    "preview": "npx wrangler --cwd . dev",
+    "deploy": "npx wrangler --cwd . deploy"
   },
-  "config": {}
+  "config": {
+    "cloudflare": {
+      "deployConfig": true,
+      "wrangler": {
+        "name": "developer-center-dev-worker"
+      },
+      "pages": {
+        "routes": {
+          "exclude": [
+            "/__og-image__/static/*"
+          ]
+        }
+      },
+      "nodeCompat": true
+    }
+  }
 }

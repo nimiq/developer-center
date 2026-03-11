@@ -1,0 +1,2 @@
+import{e as o}from"../../nitro/nitro.mjs";import"node:buffer";import"node:fs/promises";import"node:events";import"node:process";import"cloudflare:workers";import"node:timers";import"node:async_hooks";import"node:path";const e=o(async()=>await $fetch("https://raw.githubusercontent.com/nimiq/awesome/main/src/data/dist/rpc-servers.json"),{maxAge:3600});export{e as default};
+//# sourceMappingURL=rpc-servers.get.mjs.map
