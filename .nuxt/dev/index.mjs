@@ -3503,11 +3503,11 @@ const _O3LcuPCs_nLZNGvhBTHQFtfM0_kYLduxpssaI2w_A = (function(nitro) {
 });
 
 const checksums = {
-  "docs": "v3.5.0--fS8u-LDfE9WpJx6cZsjqFMyslRxvMsT-Mfgsk9GoiyY",
+  "docs": "v3.5.0--Y_uL27_8EHKhyxK15KOPOhM0XLHI9TNfCT43w5V7GPo",
   "landing": "v3.5.0--6PwhFTgRgATNdg3Ek91DFjFVTx3PaNySxHT4X90KROA"
 };
 const checksumsStructure = {
-  "docs": "WhSqpCmvkYqGdx62TNDrial4iL1HDGUV52p0hnM_Ld0",
+  "docs": "L-cue8lpfCcbrsOyK1iUgSmH6rJbEYAyEFmxq_KEzNM",
   "landing": "tZyOKbtBW1Y6jgOgyl3rm-ghuJUJsbLCHIgBPzIXDfk"
 };
 const tables = {
@@ -3526,13 +3526,10 @@ const contentManifest = {
       "extension": "string",
       "icon": "string",
       "layout": "string",
-      "links": "string",
       "meta": "json",
-      "navigation": "string",
-      "outline": "string",
+      "navigation": "json",
       "path": "string",
       "seo": "json",
-      "sidebar": "string",
       "stem": "string"
     }
   },
@@ -6260,16 +6257,16 @@ __yFNjhkclKpnweIoizPjd2f23i9DsVsvxsxsw6oqBlo
 const assets$1 = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"7cb85-ZDf5ETDgbmd2euwgQlJALDJ39bQ\"",
-    "mtime": "2026-03-11T19:40:41.664Z",
-    "size": 510853,
+    "etag": "\"7cb34-uPjxhCoJY0/Ziaa3R+z38WPK2Q8\"",
+    "mtime": "2026-03-11T19:47:47.447Z",
+    "size": 510772,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"208afc-IG//qtZsg/OMi9q6pSgUds3OUDs\"",
-    "mtime": "2026-03-11T19:40:41.683Z",
-    "size": 2132732,
+    "etag": "\"208985-lwP0/5ASD3N4A+51TtmDAKFFMG8\"",
+    "mtime": "2026-03-11T19:47:47.453Z",
+    "size": 2132357,
     "path": "index.mjs.map"
   }
 };

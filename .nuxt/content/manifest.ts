@@ -1,9 +1,9 @@
 export const checksums = {
-  "docs": "v3.5.0--fS8u-LDfE9WpJx6cZsjqFMyslRxvMsT-Mfgsk9GoiyY",
+  "docs": "v3.5.0--Y_uL27_8EHKhyxK15KOPOhM0XLHI9TNfCT43w5V7GPo",
   "landing": "v3.5.0--6PwhFTgRgATNdg3Ek91DFjFVTx3PaNySxHT4X90KROA"
 }
 export const checksumsStructure = {
-  "docs": "WhSqpCmvkYqGdx62TNDrial4iL1HDGUV52p0hnM_Ld0",
+  "docs": "L-cue8lpfCcbrsOyK1iUgSmH6rJbEYAyEFmxq_KEzNM",
   "landing": "tZyOKbtBW1Y6jgOgyl3rm-ghuJUJsbLCHIgBPzIXDfk"
 }
 
@@ -24,13 +24,10 @@ export default {
       "extension": "string",
       "icon": "string",
       "layout": "string",
-      "links": "string",
       "meta": "json",
-      "navigation": "string",
-      "outline": "string",
+      "navigation": "json",
       "path": "string",
       "seo": "json",
-      "sidebar": "string",
       "stem": "string"
     }
   },

@@ -9,14 +9,8 @@ declare module '@nuxt/content' {
    */
   
   interface DocsCollectionItem extends PageCollectionItemBase {
-    title?: string;
-    description?: string;
     icon?: string;
     layout?: string;
-    outline?: unknown;
-    sidebar?: unknown;
-    links?: unknown;
-    navigation?: unknown;
   }
   
    /* eslint-disable */
