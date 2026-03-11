@@ -56,18 +56,51 @@ index 4d00d342fc87af56378dabee2974e574ecd6e440..085244a66c2e586ae78cdc1b5399289f
        // Try current locale, then default locale, then first available
        const questions = localizedConfig[currentLocale]
 diff --git a/server/mcp/tools/get-page.ts b/server/mcp/tools/get-page.ts
-index dadf3cb..30688de 100644
+index dadf3cb..b4bf1a0 100644
 --- a/server/mcp/tools/get-page.ts
 +++ b/server/mcp/tools/get-page.ts
+@@ -1,8 +1,8 @@
+ import { z } from 'zod'
+ import { queryCollection } from '@nuxt/content/server'
+ import type { Collections } from '@nuxt/content'
++import { stringify } from 'minimark/stringify'
+ import { getAvailableLocales, getCollectionFromPath } from '../../utils/content'
+-import { inferSiteURL } from '../../../utils/meta'
+ 
+ export default defineMcpTool({
 @@ -24,7 +24,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
    handler: async ({ path }) => {
      const event = useEvent()
      const config = useRuntimeConfig(event).public
 -    const siteUrl = import.meta.dev ? 'http://localhost:3000' : inferSiteURL()
-+    const siteUrl = getRequestURL(event).origin || inferSiteURL()
++    const siteUrl = getRequestURL(event).origin
  
      const availableLocales = getAvailableLocales(config)
      const collectionName = config.i18n?.locales
+@@ -32,12 +32,9 @@ WORKFLOW: This tool returns the complete page content including title, descripti
+     try {
+       const page = await queryCollection(event, collectionName as keyof Collections)
+         .where('path', '=', path)
+-        .select('title', 'path', 'description')
++        .select('title', 'path', 'description', 'body')
+         .first()
+ 
+       if (!page) {
+         return errorResult('Page not found')
+       }
+ 
+-      const content = await $fetch<string>(`/raw${path}.md`, {
+-        baseURL: siteUrl,
+-      })
++      const body = page.body ? stringify(page.body).trim() : ''
++      const content = [
++        `# ${page.title}`,
++        page.description ? `> ${page.description}` : '',
++        body,
++      ].filter(Boolean).join('\n\n')
+ 
+       return jsonResult({
+         title: page.title,
 diff --git a/server/mcp/tools/list-pages.ts b/server/mcp/tools/list-pages.ts
 index 5d34acc..91563e1 100644
 --- a/server/mcp/tools/list-pages.ts
