@@ -97,6 +97,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   nitro: {
+    cloudflare: {
+      deployConfig: true,
+      wrangler: {
+        name: 'developer-center-dev-worker',
+      },
+    },
     preset: 'cloudflare_module',
     prerender: {
       crawlLinks: true,
