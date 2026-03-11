@@ -1,14 +1,14 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
-import { cwd } from 'node:process'
+import { cwd, env } from 'node:process'
 import { defineNuxtConfig } from 'nuxt/config'
 import topLevelAwait from 'vite-plugin-top-level-await'
 import wasm from 'vite-plugin-wasm'
 
 const baseURL = '/'
 const contentRoot = join(cwd(), 'content')
-const cloudflareAccountId = process.env.CLOUDFLARE_ACCOUNT_ID ?? 'cf9baad7d68d7ee717f3339731e81dfb'
-const cloudflareContentDbId = process.env.CLOUDFLARE_CONTENT_DB_ID ?? '8f747fba-1896-4e11-8081-5118f7a6f39f'
+const cloudflareAccountId = env.CLOUDFLARE_ACCOUNT_ID ?? 'cf9baad7d68d7ee717f3339731e81dfb'
+const cloudflareContentDbId = env.CLOUDFLARE_CONTENT_DB_ID ?? '8f747fba-1896-4e11-8081-5118f7a6f39f'
 
 function slugify(value: string) {
   return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
@@ -54,6 +54,10 @@ function contentFileToRoute(filePath: string) {
   return `/${normalized}`
 }
 
+function shouldPrerenderRoute(route: string) {
+  return !route.startsWith('/rpc/') && !route.startsWith('/web-client/reference/')
+}
+
 const contentRoutes = getFiles(contentRoot)
   .filter(isPublicDocFile)
   .map(contentFileToRoute)
@@ -61,6 +65,7 @@ const contentRoutes = getFiles(contentRoot)
 const openRpcDocument = JSON.parse(readFileSync(join(cwd(), 'data/openrpc-document.json'), 'utf8')) as { methods?: Array<{ name: string }> }
 const rpcMethodRoutes = (openRpcDocument.methods || []).map(method => `/rpc/methods/${slugify(method.name)}`)
 const prerenderRoutes = Array.from(new Set([...contentRoutes, ...rpcMethodRoutes]))
+  .filter(shouldPrerenderRoute)
 
 export default defineNuxtConfig({
   extends: ['docus'],
@@ -128,7 +133,11 @@ export default defineNuxtConfig({
       routes: prerenderRoutes,
     },
     routeRules: {
+      '/__og-image__/**': { prerender: false },
       '/api/**': { cors: true },
+      '/raw/**': { prerender: false },
+      '/rpc/**': { prerender: false },
+      '/web-client/reference/**': { prerender: false },
     },
   },
   site: {
@@ -181,6 +190,6 @@ export default defineNuxtConfig({
     plugins: [wasm(), topLevelAwait()],
   },
   mcp: {
-    enabled: true,
+    enabled: env.DEPLOYMENT_MODE === 'development',
   },
 } as any)

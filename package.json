@@ -13,8 +13,8 @@
   "scripts": {
     "postinstall": "nuxt prepare",
     "dev": "DEPLOYMENT_MODE=development nuxi dev",
-    "build": "DEPLOYMENT_MODE=production nuxi build",
-    "build:staging": "DEPLOYMENT_MODE=staging nuxi build",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 DEPLOYMENT_MODE=production nuxi build",
+    "build:staging": "NODE_OPTIONS=--max-old-space-size=4096 DEPLOYMENT_MODE=staging nuxi build",
     "preview": "nuxi preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
