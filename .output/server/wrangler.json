@@ -1,5 +1,14 @@
 {
   "compatibility_date": "2025-07-14",
+  "account_id": "cf9baad7d68d7ee717f3339731e81dfb",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "developer-center-dev-content",
+      "database_id": "8f747fba-1896-4e11-8081-5118f7a6f39f",
+      "preview_database_id": "8f747fba-1896-4e11-8081-5118f7a6f39f"
+    }
+  ],
   "name": "developer-center-dev-worker",
   "main": "index.mjs",
   "assets": {

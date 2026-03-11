@@ -29,6 +29,7 @@
     "@iconify/vue": "^5.0.0",
     "@nimiq/utils": "^0.12.4",
     "@vueuse/core": "^13.9.0",
+    "agents": "^0.7.5",
     "canvas-confetti": "^1.9.4",
     "json2md": "^2.0.3",
     "medium-zoom": "^1.1.0",

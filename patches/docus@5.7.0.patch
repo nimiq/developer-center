@@ -55,3 +55,29 @@ index 4d00d342fc87af56378dabee2974e574ecd6e440..085244a66c2e586ae78cdc1b5399289f
  
        // Try current locale, then default locale, then first available
        const questions = localizedConfig[currentLocale]
+diff --git a/server/mcp/tools/get-page.ts b/server/mcp/tools/get-page.ts
+index dadf3cb..30688de 100644
+--- a/server/mcp/tools/get-page.ts
++++ b/server/mcp/tools/get-page.ts
+@@ -24,7 +24,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
+   handler: async ({ path }) => {
+     const event = useEvent()
+     const config = useRuntimeConfig(event).public
+-    const siteUrl = import.meta.dev ? 'http://localhost:3000' : inferSiteURL()
++    const siteUrl = getRequestURL(event).origin || inferSiteURL()
+ 
+     const availableLocales = getAvailableLocales(config)
+     const collectionName = config.i18n?.locales
+diff --git a/server/mcp/tools/list-pages.ts b/server/mcp/tools/list-pages.ts
+index 5d34acc..91563e1 100644
+--- a/server/mcp/tools/list-pages.ts
++++ b/server/mcp/tools/list-pages.ts
+@@ -30,7 +30,7 @@ OUTPUT: Returns a structured list with:
+     const event = useEvent()
+     const config = useRuntimeConfig(event).public
+ 
+-    const siteUrl = import.meta.dev ? 'http://localhost:3000' : getRequestURL(event).origin
++    const siteUrl = getRequestURL(event).origin
+     const availableLocales = getAvailableLocales(config)
+     const collections = getCollectionsToQuery(locale, availableLocales)
+ 
