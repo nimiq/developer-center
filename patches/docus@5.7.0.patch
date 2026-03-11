@@ -1,83 +1,25 @@
-diff --git a/app/app.vue b/app/app.vue
-index c2f904a38fb3360672bc46133656e0ae9cc3fe33..e55051cebfd8fa4e388b996d6738299a01466c35 100644
---- a/app/app.vue
-+++ b/app/app.vue
-@@ -45,7 +45,7 @@ if (isEnabled.value) {
-   })
- }
- 
--const { data: navigation } = await useAsyncData(() => `navigation_${collectionName.value}`, () => queryCollectionNavigation(collectionName.value as keyof PageCollections), {
-+const { data: navigation } = await useAsyncData(() => `navigation_${collectionName.value}`, () => queryCollectionNavigation(collectionName.value as keyof PageCollections, ['icon']), {
-   transform: (data: ContentNavigationItem[]) => transformNavigation(data, isEnabled.value, locale.value),
-   watch: [locale],
- })
-diff --git a/modules/assistant/runtime/composables/useAssistant.ts b/modules/assistant/runtime/composables/useAssistant.ts
-index 4d00d342fc87af56378dabee2974e574ecd6e440..085244a66c2e586ae78cdc1b5399289f03b73d9a 100644
---- a/modules/assistant/runtime/composables/useAssistant.ts
-+++ b/modules/assistant/runtime/composables/useAssistant.ts
-@@ -1,5 +1,7 @@
- import type { UIMessage } from 'ai'
-+import { useAppConfig, useRuntimeConfig, useState } from '#imports'
- import { useMediaQuery } from '@vueuse/core'
-+import { computed } from 'vue'
- import type { FaqCategory, FaqQuestions, LocalizedFaqQuestions } from '../types'
- 
- function normalizeFaqQuestions(questions: FaqQuestions): FaqCategory[] {
-@@ -23,7 +25,11 @@ const PANEL_WIDTH_EXPANDED = 520
- export function useAssistant() {
-   const config = useRuntimeConfig()
-   const appConfig = useAppConfig()
--  const isEnabled = computed(() => config.public.assistant?.enabled ?? false)
-+  const assistantRuntimeConfig = config.public.assistant as { enabled?: boolean } | undefined
-+  const docusRuntimeConfig = appConfig.docus as { locale?: string } | undefined
-+  const localizedAssistantConfig = appConfig.assistant as { faqQuestions?: FaqQuestions | LocalizedFaqQuestions } | undefined
-+  const i18nConfig = config.public.i18n as { defaultLocale?: string } | undefined
-+  const isEnabled = computed(() => assistantRuntimeConfig?.enabled ?? false)
- 
-   const isOpen = useState('assistant-open', () => false)
-   const isExpanded = useState('assistant-expanded', () => false)
-@@ -35,15 +41,14 @@ export function useAssistant() {
-   const shouldPushContent = computed(() => !isMobile.value && isOpen.value)
- 
-   const faqQuestions = computed<FaqCategory[]>(() => {
--    const assistantConfig = appConfig.assistant
--    const faqConfig = assistantConfig?.faqQuestions
-+    const faqConfig = localizedAssistantConfig?.faqQuestions
-     if (!faqConfig) return []
- 
-     // Check if it's a localized object (has locale keys like 'en', 'fr')
-     if (!Array.isArray(faqConfig)) {
-       const localizedConfig = faqConfig as LocalizedFaqQuestions
--      const currentLocale = appConfig.docus?.locale || 'en'
--      const defaultLocale = config.public.i18n?.defaultLocale || 'en'
-+      const currentLocale = docusRuntimeConfig?.locale || 'en'
-+      const defaultLocale = i18nConfig?.defaultLocale || 'en'
- 
-       // Try current locale, then default locale, then first available
-       const questions = localizedConfig[currentLocale]
 diff --git a/server/mcp/tools/get-page.ts b/server/mcp/tools/get-page.ts
-index dadf3cb..b4bf1a0 100644
+index dadf3cb..d167339 100644
 --- a/server/mcp/tools/get-page.ts
 +++ b/server/mcp/tools/get-page.ts
-@@ -1,8 +1,8 @@
+@@ -1,6 +1,7 @@
  import { z } from 'zod'
  import { queryCollection } from '@nuxt/content/server'
  import type { Collections } from '@nuxt/content'
 +import { stringify } from 'minimark/stringify'
  import { getAvailableLocales, getCollectionFromPath } from '../../utils/content'
--import { inferSiteURL } from '../../../utils/meta'
+ import { inferSiteURL } from '../../../utils/meta'
  
- export default defineMcpTool({
-@@ -24,7 +24,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
+@@ -24,7 +25,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
    handler: async ({ path }) => {
      const event = useEvent()
      const config = useRuntimeConfig(event).public
 -    const siteUrl = import.meta.dev ? 'http://localhost:3000' : inferSiteURL()
-+    const siteUrl = getRequestURL(event).origin
++    const siteUrl = getRequestURL(event).origin || inferSiteURL()
  
      const availableLocales = getAvailableLocales(config)
      const collectionName = config.i18n?.locales
-@@ -32,12 +32,9 @@ WORKFLOW: This tool returns the complete page content including title, descripti
+@@ -34,16 +35,19 @@ WORKFLOW: This tool returns the complete page content including title, descripti
      try {
        const page = await queryCollection(event, collectionName as keyof Collections)
          .where('path', '=', path)
@@ -102,15 +44,23 @@ index dadf3cb..b4bf1a0 100644
        return jsonResult({
          title: page.title,
 diff --git a/server/mcp/tools/list-pages.ts b/server/mcp/tools/list-pages.ts
-index 5d34acc..91563e1 100644
+index 5d34acc..66df7da 100644
 --- a/server/mcp/tools/list-pages.ts
 +++ b/server/mcp/tools/list-pages.ts
-@@ -30,7 +30,7 @@ OUTPUT: Returns a structured list with:
+@@ -2,6 +2,7 @@ import { z } from 'zod'
+ import { queryCollection } from '@nuxt/content/server'
+ import type { Collections } from '@nuxt/content'
+ import { getCollectionsToQuery, getAvailableLocales } from '../../utils/content'
++import { inferSiteURL } from '../../../utils/meta'
+ 
+ export default defineMcpTool({
+   description: `Lists all available documentation pages with their categories and basic information.
+@@ -30,7 +31,7 @@ OUTPUT: Returns a structured list with:
      const event = useEvent()
      const config = useRuntimeConfig(event).public
  
 -    const siteUrl = import.meta.dev ? 'http://localhost:3000' : getRequestURL(event).origin
-+    const siteUrl = getRequestURL(event).origin
++    const siteUrl = getRequestURL(event).origin || inferSiteURL()
      const availableLocales = getAvailableLocales(config)
      const collections = getCollectionsToQuery(locale, availableLocales)
  
