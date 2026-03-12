@@ -8,15 +8,21 @@ const props = defineProps<{
 }>()
 
 const serverUrl = ref('https://rpc.nimiqwatch.com')
-const params = reactive<Record<string, string | boolean>>({})
+const textParams = reactive<Record<string, string>>({})
+const booleanParams = reactive<Record<string, boolean>>({})
 const loading = ref(false)
 const response = ref<any>(null)
 const error = ref<string | null>(null)
 
 watchEffect(() => {
   for (const input of props.method.input) {
-    if (!(input.key in params)) {
-      params[input.key] = input.type === 'boolean' ? false : ''
+    if (input.type === 'boolean') {
+      if (!(input.key in booleanParams)) {
+        booleanParams[input.key] = false
+      }
+    }
+    else if (!(input.key in textParams)) {
+      textParams[input.key] = ''
     }
   }
 })
@@ -28,14 +34,13 @@ async function callRpc() {
 
   try {
     const parsedParams = props.method.input.map((input) => {
-      const value = params[input.key]
       if (input.type.includes('number')) {
-        return Number(value)
+        return Number(textParams[input.key])
       }
       if (input.type === 'boolean') {
-        return Boolean(value)
+        return booleanParams[input.key]
       }
-      return value
+      return textParams[input.key]
     })
 
     const result = await $fetch('/api/rpc-proxy', {
@@ -103,11 +108,11 @@ async function callRpc() {
           >
             <USwitch
               v-if="input.type === 'boolean'"
-              v-model="params[input.key]"
+              v-model="booleanParams[input.key]"
             />
             <UInput
               v-else
-              v-model="params[input.key]"
+              v-model="textParams[input.key]"
               :placeholder="input.type"
             />
           </UFormField>

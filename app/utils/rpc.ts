@@ -1,5 +1,4 @@
 import type { MethodObject, OpenrpcDocument, TagObject } from '@open-rpc/meta-schema'
-import type { SidebarSection } from '../types/navigation'
 import $RefParser from '@apidevtools/json-schema-ref-parser'
 import { capitalizeFirstLetter, slugify, toHumanReadable } from './string'
 
@@ -67,8 +66,16 @@ export interface MethodIO {
   label: string
 }
 
-export type NimiqRpcMethods = SidebarSection & {
+export interface RpcMethodNavigationItem {
   text: string
+  link: string
+  popular?: boolean
+}
+
+export interface NimiqRpcMethods {
+  icon: string
+  text: string
+  items: RpcMethodNavigationItem[]
   methods: NimiqRpcMethod[]
 }
 
