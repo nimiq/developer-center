@@ -1,16 +1,8 @@
 diff --git a/server/mcp/tools/get-page.ts b/server/mcp/tools/get-page.ts
-index dadf3cb..d167339 100644
+index dadf3cb..1f2bec3 100644
 --- a/server/mcp/tools/get-page.ts
 +++ b/server/mcp/tools/get-page.ts
-@@ -1,6 +1,7 @@
- import { z } from 'zod'
- import { queryCollection } from '@nuxt/content/server'
- import type { Collections } from '@nuxt/content'
-+import { stringify } from 'minimark/stringify'
- import { getAvailableLocales, getCollectionFromPath } from '../../utils/content'
- import { inferSiteURL } from '../../../utils/meta'
- 
-@@ -24,7 +25,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
+@@ -24,7 +24,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
    handler: async ({ path }) => {
      const event = useEvent()
      const config = useRuntimeConfig(event).public
@@ -19,27 +11,14 @@ index dadf3cb..d167339 100644
  
      const availableLocales = getAvailableLocales(config)
      const collectionName = config.i18n?.locales
-@@ -34,16 +35,19 @@ WORKFLOW: This tool returns the complete page content including title, descripti
-     try {
-       const page = await queryCollection(event, collectionName as keyof Collections)
-         .where('path', '=', path)
--        .select('title', 'path', 'description')
-+        .select('title', 'path', 'description', 'body')
-         .first()
- 
-       if (!page) {
+@@ -41,9 +41,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
          return errorResult('Page not found')
        }
  
 -      const content = await $fetch<string>(`/raw${path}.md`, {
 -        baseURL: siteUrl,
 -      })
-+      const body = page.body ? stringify(page.body).trim() : ''
-+      const content = [
-+        `# ${page.title}`,
-+        page.description ? `> ${page.description}` : '',
-+        body,
-+      ].filter(Boolean).join('\n\n')
++      const content = await event.$fetch<string>(`/raw${path}.md`)
  
        return jsonResult({
          title: page.title,
