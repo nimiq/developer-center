@@ -55,7 +55,7 @@
     "@types/node": "^24.9.2",
     "bumpp": "^10.3.1",
     "consola": "^3.4.2",
-    "docus": "^5.7.0",
+    "docus": "https://pkg.pr.new/docus@1304",
     "eslint": "^9.38.0",
     "katex": "^0.16.38",
     "lint-staged": "^16.2.6",
@@ -92,10 +92,7 @@
       "workerd",
       "@parcel/watcher",
       "better-sqlite3"
-    ],
-    "patchedDependencies": {
-      "docus@5.7.0": "patches/docus@5.7.0.patch"
-    }
+    ]
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
