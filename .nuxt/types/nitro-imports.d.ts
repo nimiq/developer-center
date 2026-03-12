@@ -28,10 +28,10 @@ declare global {
   const defineCachedFunction: typeof import('../../node_modules/.pnpm/nitropack@2.13.1_better-sqlite3@12.6.2/node_modules/nitropack/dist/runtime/internal/cache').defineCachedFunction
   const defineEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').defineEventHandler
   const defineLazyEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').defineLazyEventHandler
-  const defineMcpHandler: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpHandler
-  const defineMcpPrompt: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpPrompt
-  const defineMcpResource: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpResource
-  const defineMcpTool: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpTool
+  const defineMcpHandler: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpHandler
+  const defineMcpPrompt: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpPrompt
+  const defineMcpResource: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpResource
+  const defineMcpTool: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').defineMcpTool
   const defineNitroErrorHandler: typeof import('../../node_modules/.pnpm/nitropack@2.13.1_better-sqlite3@12.6.2/node_modules/nitropack/dist/runtime/internal/error/utils').defineNitroErrorHandler
   const defineNitroPlugin: typeof import('../../node_modules/.pnpm/nitropack@2.13.1_better-sqlite3@12.6.2/node_modules/nitropack/dist/runtime/internal/plugin').defineNitroPlugin
   const defineNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').defineNodeListener
@@ -45,17 +45,17 @@ declare global {
   const defineWebSocketHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').defineWebSocketHandler
   const deleteCookie: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').deleteCookie
   const dynamicEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').dynamicEventHandler
-  const errorResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').errorResult
+  const errorResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').errorResult
   const eventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').eventHandler
   const fetchWithEvent: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').fetchWithEvent
   const fromNodeMiddleware: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').fromNodeMiddleware
   const fromPlainHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').fromPlainHandler
   const fromWebHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').fromWebHandler
-  const getAvailableLocales: typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/server/utils/content').getAvailableLocales
+  const getAvailableLocales: typeof import('../../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/server/utils/content').getAvailableLocales
   const getBotDetection: typeof import('../../node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getBotDetection').getBotDetection
   const getBotInfo: typeof import('../../node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getBotDetection').getBotInfo
-  const getCollectionFromPath: typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/server/utils/content').getCollectionFromPath
-  const getCollectionsToQuery: typeof import('../../node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/server/utils/content').getCollectionsToQuery
+  const getCollectionFromPath: typeof import('../../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/server/utils/content').getCollectionFromPath
+  const getCollectionsToQuery: typeof import('../../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/server/utils/content').getCollectionsToQuery
   const getCookie: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').getCookie
   const getHeader: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').getHeader
   const getHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').getHeaders
@@ -88,7 +88,7 @@ declare global {
   const getValidatedRouterParams: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').getValidatedRouterParams
   const handleCacheHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').handleCacheHeaders
   const handleCors: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').handleCors
-  const imageResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').imageResult
+  const imageResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').imageResult
   const isBot: typeof import('../../node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getBotDetection').isBot
   const isCorsOriginAllowed: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').isCorsOriginAllowed
   const isError: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').isError
@@ -98,7 +98,7 @@ declare global {
   const isPreflightRequest: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').isPreflightRequest
   const isStream: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').isStream
   const isWebResponse: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').isWebResponse
-  const jsonResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').jsonResult
+  const jsonResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').jsonResult
   const lazyEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').lazyEventHandler
   const llmsHooks: typeof import('../../node_modules/.pnpm/nuxt-llms@0.2.0_magicast@0.5.2/node_modules/nuxt-llms/dist/runtime/server/utils/hooks').llmsHooks
   const nitroPlugin: typeof import('../../node_modules/.pnpm/nitropack@2.13.1_better-sqlite3@12.6.2/node_modules/nitropack/dist/runtime/internal/plugin').nitroPlugin
@@ -137,7 +137,7 @@ declare global {
   const setResponseStatus: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').setResponseStatus
   const splitCookiesString: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').splitCookiesString
   const stringifyMarkdown: typeof import('../../node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/stringify').stringifyMarkdown
-  const textResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').textResult
+  const textResult: typeof import('../../node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions').textResult
   const toEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').toEventHandler
   const toNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').toNodeListener
   const toPlainHandler: typeof import('../../node_modules/.pnpm/h3@1.15.6/node_modules/h3').toPlainHandler
@@ -186,7 +186,7 @@ export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsUR
 export { defineAppConfig } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxt+nitro-server@4.3.1_better-sqlite3@12.6.2_db0@0.3.4_better-sqlite3@12.6.2__ioredis_b6ab51e5dba87f331145231b301cc5f0/node_modules/@nuxt/nitro-server/dist/runtime/utils/config';
 export { queryCollection, queryCollectionSearchSections, queryCollectionNavigation, queryCollectionItemSurroundings } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/runtime/nitro';
 export { useImage } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxt+image@2.0.0_db0@0.3.4_better-sqlite3@12.6.2__ioredis@5.10.0_magicast@0.5.2/node_modules/@nuxt/image/dist/runtime/server/utils/image';
-export { defineMcpTool, defineMcpResource, defineMcpPrompt, defineMcpHandler, textResult, jsonResult, errorResult, imageResult } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_d90a8c64dba33f82f4d93b681351a301/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions';
+export { defineMcpTool, defineMcpResource, defineMcpPrompt, defineMcpHandler, textResult, jsonResult, errorResult, imageResult } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+mcp-toolkit@0.7.0_@cfworker+json-schema@4.1.1_agents@0.7.5_@cloudflare+workers-_355c10e38512178b6cedf667dc660192/node_modules/@nuxtjs/mcp-toolkit/dist/runtime/server/mcp/definitions';
 export { llmsHooks } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-llms@0.2.0_magicast@0.5.2/node_modules/nuxt-llms/dist/runtime/server/utils/hooks';
 export { parseMarkdown } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { stringifyMarkdown } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/stringify';
@@ -201,4 +201,4 @@ export { getBotDetection, isBot, getBotInfo } from '/Users/maxi/nimiq/developer-
 export { getPathRobotConfig } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getPathRobotConfig';
 export { getSiteRobotConfig } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getSiteRobotConfig';
 export { useRuntimeConfigNuxtRobots } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/@nuxtjs+robots@5.7.1_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4.4.2_a88ed50aee39da19c7ae91f792529c20/node_modules/@nuxtjs/robots/dist/runtime/server/composables/useRuntimeConfigNuxtRobots';
-export { getAvailableLocales, getCollectionsToQuery, getCollectionFromPath } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/server/utils/content';
+export { getAvailableLocales, getCollectionsToQuery, getCollectionFromPath } from '/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/server/utils/content';

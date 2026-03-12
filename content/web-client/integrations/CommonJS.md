@@ -1,3 +1,10 @@
+---
+icon: i-tabler:package
+navigation:
+  title: CommonJS
+  order: 5
+---
+
 # Install for CommonJS
 
 The Nimiq Web Client ships with support for CommonJS.

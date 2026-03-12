@@ -12,7 +12,7 @@ import stringify from 'file:///Users/maxi/nimiq/developer-center/node_modules/.p
 import { toMdast, defaultHandlers } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/hast-util-to-mdast@10.1.2/node_modules/hast-util-to-mdast/index.js';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withBase, joinRelativeURL, withoutTrailingSlash, hasProtocol, withHttps, withLeadingSlash, withTrailingSlash, withoutLeadingSlash, decodePath } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/ufo@1.6.3/node_modules/ufo/dist/index.mjs';
 import { toHtml } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/index.js';
-import { visit } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/unist-util-visit@5.0.0/node_modules/unist-util-visit/index.js';
+import { visit } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/unist-util-visit@5.1.0/node_modules/unist-util-visit/index.js';
 import { format } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/hast-util-format@1.1.0/node_modules/hast-util-format/index.js';
 import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
 import { html as html$1 } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/satori-html@0.3.2/node_modules/satori-html/dist/index.js';
@@ -59,7 +59,7 @@ import ms from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/ms@
 import { McpServer } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/@modelcontextprotocol+sdk@1.27.1_@cfworker+json-schema@4.1.1_zod@4.3.6/node_modules/@modelcontextprotocol/sdk/dist/esm/server/mcp.js';
 import { StreamableHTTPServerTransport } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/@modelcontextprotocol+sdk@1.27.1_@cfworker+json-schema@4.1.1_zod@4.3.6/node_modules/@modelcontextprotocol/sdk/dist/esm/server/streamableHttp.js';
 import satori from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/satori@0.19.3/node_modules/satori/dist/index.js';
-import { createUIMessageStream, convertToModelMessages, streamText, createUIMessageStreamResponse } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/ai@6.0.86_zod@4.3.6/node_modules/ai/dist/index.mjs';
+import { createUIMessageStream, convertToModelMessages, streamText, createUIMessageStreamResponse } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/ai@6.0.116_zod@4.3.6/node_modules/ai/dist/index.mjs';
 import { createMCPClient } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/@ai-sdk+mcp@1.0.25_zod@4.3.6/node_modules/@ai-sdk/mcp/dist/index.mjs';
 import sqliteConnector from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/db0@0.3.4_better-sqlite3@12.6.2/node_modules/db0/dist/connectors/node-sqlite.mjs';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/maxi/nimiq/developer-center/node_modules/.pnpm/ipx@3.1.1_db0@0.3.4_better-sqlite3@12.6.2__ioredis@5.10.0/node_modules/ipx/dist/index.mjs';
@@ -2064,7 +2064,7 @@ const _inlineRuntimeConfig = {
       "height": 600,
       "cacheMaxAgeSeconds": 259200
     },
-    "debug": false,
+    "debug": true,
     "baseCacheKey": "/cache/nuxt-og-image/5.1.13",
     "fonts": [
       {
@@ -2087,9 +2087,9 @@ const _inlineRuntimeConfig = {
     "strictNuxtContentPaths": "",
     "isNuxtContentDocumentDriven": false,
     "componentDirs": [
-      "OgImage",
+      "OgImageTemplate",
       "og-image",
-      "OgImageTemplate"
+      "OgImage"
     ]
   },
   "ipx": {
@@ -3502,14 +3502,8 @@ const _O3LcuPCs_nLZNGvhBTHQFtfM0_kYLduxpssaI2w_A = (function(nitro) {
   });
 });
 
-const checksums = {
-  "docs": "v3.5.0--Y_uL27_8EHKhyxK15KOPOhM0XLHI9TNfCT43w5V7GPo",
-  "landing": "v3.5.0--6PwhFTgRgATNdg3Ek91DFjFVTx3PaNySxHT4X90KROA"
-};
-const checksumsStructure = {
-  "docs": "L-cue8lpfCcbrsOyK1iUgSmH6rJbEYAyEFmxq_KEzNM",
-  "landing": "tZyOKbtBW1Y6jgOgyl3rm-ghuJUJsbLCHIgBPzIXDfk"
-};
+const checksums = {};
+const checksumsStructure = {};
 const tables = {
   "docs": "_content_docs",
   "landing": "_content_landing",
@@ -5839,7 +5833,7 @@ const logger = createConsola({
   }
 });
 
-const componentNames = [{"hash":"3gUNmfj0r7TVdbezwVTxxzzSeYVg6wGL0QEVQ-YQ5j4","pascalName":"OgImageDocs","kebabName":"og-image-docs","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/components/OgImage/OgImageDocs.vue","category":"app"},{"hash":"X0dlpeDv-7Dglooh2sjU880WkWJoTe52a28d87dpLpI","pascalName":"OgImageLanding","kebabName":"og-image-landing","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@5.7.0_patch_hash=e1dee8c9c8843a392306949f7ebf97dcdeefac9f3a069edfda13b23f4bc57aa7_1fbacde2369ba083df6cfe03d3e97a5f/node_modules/docus/app/components/OgImage/OgImageLanding.vue","category":"app"},{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"VAHSTZlVcPHzkozocV1iTnwc4-YttdoOkHsYfoSgDZ4","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"b-Juo-FXQepo6SOCnA478MTAqbXNZuve6-MzHgTKA7s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"vRUm5ru-64PEHIGsBby6-vCgLBg7iUJfvFKL6VuCXtI","pascalName":"UnJs","kebabName":"un-js","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"}];
+const componentNames = [{"hash":"3gUNmfj0r7TVdbezwVTxxzzSeYVg6wGL0QEVQ-YQ5j4","pascalName":"OgImageDocs","kebabName":"og-image-docs","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageDocs.vue","category":"app"},{"hash":"X0dlpeDv-7Dglooh2sjU880WkWJoTe52a28d87dpLpI","pascalName":"OgImageLanding","kebabName":"og-image-landing","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageLanding.vue","category":"app"},{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"VAHSTZlVcPHzkozocV1iTnwc4-YttdoOkHsYfoSgDZ4","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"b-Juo-FXQepo6SOCnA478MTAqbXNZuve6-MzHgTKA7s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"vRUm5ru-64PEHIGsBby6-vCgLBg7iUJfvFKL6VuCXtI","pascalName":"UnJs","kebabName":"un-js","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"}];
 
 function normaliseOptions(_options) {
   const options = { ..._options };
@@ -6257,16 +6251,16 @@ __yFNjhkclKpnweIoizPjd2f23i9DsVsvxsxsw6oqBlo
 const assets$1 = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"7cb34-uPjxhCoJY0/Ziaa3R+z38WPK2Q8\"",
-    "mtime": "2026-03-11T19:47:47.447Z",
-    "size": 510772,
+    "etag": "\"7ca5d-ETa0u/4fqmSD8oiLf+HuS0AffiQ\"",
+    "mtime": "2026-03-12T06:25:39.864Z",
+    "size": 510557,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"208985-lwP0/5ASD3N4A+51TtmDAKFFMG8\"",
-    "mtime": "2026-03-11T19:47:47.453Z",
-    "size": 2132357,
+    "etag": "\"20851a-bIHpNyzTHAf509qBn8TJ7b/hDU8\"",
+    "mtime": "2026-03-12T06:25:39.893Z",
+    "size": 2131226,
     "path": "index.mjs.map"
   }
 };
@@ -6997,9 +6991,7 @@ WORKFLOW: This tool returns the complete page content including title, descripti
       if (!page) {
         return errorResult("Page not found");
       }
-      const content = await $fetch(`/raw${path}.md`, {
-        baseURL: siteUrl
-      });
+      const content = await event.$fetch(`/raw${path}.md`);
       return jsonResult({
         title: page.title,
         path: page.path,
@@ -7039,7 +7031,7 @@ OUTPUT: Returns a structured list with:
   handler: async ({ locale }) => {
     const event = useEvent();
     const config = useRuntimeConfig(event).public;
-    const siteUrl = getRequestURL(event).origin;
+    const siteUrl = getRequestURL(event).origin || inferSiteURL();
     const availableLocales = getAvailableLocales(config);
     const collections = getCollectionsToQuery(locale, availableLocales);
     try {
@@ -7154,7 +7146,7 @@ function createMcpHandler(config) {
   });
 }
 
-const __H3WXW = createMcpHandler((event) => {
+const _AorWAH = createMcpHandler((event) => {
   const handlerName = getRouterParam(event, "handler");
   if (handlerName) {
     const handlerDef = handlers$1.find(
@@ -7206,7 +7198,7 @@ function escapeHtmlAttr(str) {
 function escapeJs(str) {
   return str.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/'/g, "\\'").replace(/</g, "\\u003c").replace(/>/g, "\\u003e");
 }
-const _fAWKpT = defineEventHandler((event) => {
+const _fFYbvj = defineEventHandler((event) => {
   const requestUrl = getRequestURL(event);
   const query = getQuery$1(event);
   const ide = query.ide || "cursor";
@@ -7369,7 +7361,7 @@ async function loadFont$1() {
   }
   return response.arrayBuffer();
 }
-const _cwb9_C = defineEventHandler(async (event) => {
+const _86ReHi = defineEventHandler(async (event) => {
   const query = getQuery$1(event);
   const ide = query.ide || "cursor";
   const ideConfig = IDE_CONFIG[ide] || IDE_CONFIG.cursor;
@@ -7479,14 +7471,16 @@ function getSystemPrompt(siteName) {
 - "${siteName} supports TypeScript out of the box" instead of "I support TypeScript"
 - Provide actionable guidance, not just information dumps`;
 }
-const _DdjF2R = defineEventHandler(async (event) => {
+const _Y9RqYF = defineEventHandler(async (event) => {
+  var _a, _b;
   const { messages } = await readBody(event);
   const config = useRuntimeConfig();
   const siteConfig = getSiteConfig(event);
   const siteName = siteConfig.name || "Documentation";
   const mcpServer = config.assistant.mcpServer;
   const isExternalUrl = mcpServer.startsWith("http://") || mcpServer.startsWith("https://");
-  const mcpUrl = isExternalUrl ? mcpServer : `http://localhost:3000${mcpServer}` ;
+  const baseURL = ((_b = (_a = config.app) == null ? void 0 : _a.baseURL) == null ? void 0 : _b.replace(/\/$/, "")) || "";
+  const mcpUrl = isExternalUrl ? mcpServer : `http://localhost:3000${baseURL}${mcpServer}` ;
   const httpClient = await createMCPClient({
     transport: { type: "http", url: mcpUrl }
   });
@@ -7503,10 +7497,10 @@ const _DdjF2R = defineEventHandler(async (event) => {
         messages: modelMessages,
         tools: mcpTools,
         onStepFinish: ({ toolCalls }) => {
-          var _a;
+          var _a2;
           if (toolCalls.length === 0) return;
           writer.write({
-            id: (_a = toolCalls[0]) == null ? void 0 : _a.toolCallId,
+            id: (_a2 = toolCalls[0]) == null ? void 0 : _a2.toolCallId,
             type: "data-tool-calls",
             data: {
               tools: toolCalls.map((tc) => {
@@ -7872,7 +7866,7 @@ const _b9JA2j = lazyEventHandler(() => {
 const _lazy_lw7_kA = () => Promise.resolve().then(function () { return blockchainExplorers_get$1; });
 const _lazy_octDCq = () => Promise.resolve().then(function () { return rpcProxy$1; });
 const _lazy_g9auZ1 = () => Promise.resolve().then(function () { return rpcServers_get$1; });
-const _lazy_2trQzN = () => Promise.resolve().then(function () { return sitemap_xml$1; });
+const _lazy_gxRqwh = () => Promise.resolve().then(function () { return sitemap_xml$1; });
 const _lazy_8HkFyx = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_Nyzscb = () => Promise.resolve().then(function () { return font$1; });
 const _lazy_ZetO5i = () => Promise.resolve().then(function () { return debug_json$1; });
@@ -7883,7 +7877,7 @@ const handlers = [
   { route: '/api/blockchain-explorers', handler: _lazy_lw7_kA, lazy: true, middleware: false, method: "get" },
   { route: '/api/rpc-proxy', handler: _lazy_octDCq, lazy: true, middleware: false, method: undefined },
   { route: '/api/rpc-servers', handler: _lazy_g9auZ1, lazy: true, middleware: false, method: "get" },
-  { route: '/sitemap.xml', handler: _lazy_2trQzN, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xml', handler: _lazy_gxRqwh, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_8HkFyx, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/api/_nuxt_icon/:collection', handler: _IgwkC0, lazy: false, middleware: false, method: undefined },
@@ -7893,16 +7887,16 @@ const handlers = [
   { route: '', handler: _hjRAL9, lazy: false, middleware: true, method: undefined },
   { route: '/__robots__/debug.json', handler: _8x0dkX, lazy: false, middleware: false, method: undefined },
   { route: '/__robots__/debug-path.json', handler: _QUz1Vf, lazy: false, middleware: false, method: undefined },
-  { route: '/mcp', handler: __H3WXW, lazy: false, middleware: false, method: undefined },
-  { route: '/mcp/deeplink', handler: _fAWKpT, lazy: false, middleware: false, method: undefined },
-  { route: '/mcp/badge.svg', handler: _cwb9_C, lazy: false, middleware: false, method: undefined },
+  { route: '/mcp', handler: _AorWAH, lazy: false, middleware: false, method: undefined },
+  { route: '/mcp/deeplink', handler: _fFYbvj, lazy: false, middleware: false, method: undefined },
+  { route: '/mcp/badge.svg', handler: _86ReHi, lazy: false, middleware: false, method: undefined },
   { route: '/__og-image__/font/**', handler: _lazy_Nyzscb, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/debug.json', handler: _lazy_ZetO5i, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/image/**', handler: _lazy_LsHJyF, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/static/**', handler: _lazy_LsHJyF, lazy: true, middleware: false, method: undefined },
   { route: '/llms.txt', handler: _Wujq8o, lazy: false, middleware: false, method: "get" },
   { route: '/llms-full.txt', handler: _96vTRu, lazy: false, middleware: false, method: "get" },
-  { route: '/__docus__/assistant', handler: _DdjF2R, lazy: false, middleware: false, method: undefined },
+  { route: '/__docus__/assistant', handler: _Y9RqYF, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_content/docs/sql_dump.txt', handler: _FlqMSP, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_content/landing/sql_dump.txt', handler: _FlqMSP, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_content/info/sql_dump.txt', handler: _FlqMSP, lazy: false, middleware: false, method: undefined },
