@@ -16,12 +16,27 @@ const { data: groups } = await useAsyncData('rpc-method-groups', () => loadMetho
           {{ group.text }}
         </h2>
       </div>
-      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <UButton
-          v-for="method in group.methods" :key="method.name"
-          :to="method.link" :label="method.name"
-          variant="soft" color="neutral" class="justify-start rounded-xl font-mono text-sm"
-        />
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <NuxtLink
+          v-for="method in group.methods"
+          :key="method.name"
+          :to="method.link"
+          class="group block rounded-2xl border border-default bg-default p-5 transition hover:border-primary/40 hover:bg-elevated"
+        >
+          <div class="space-y-3">
+            <div class="space-y-1">
+              <p class="font-mono text-sm text-muted">
+                {{ method.name }}
+              </p>
+              <h3 class="text-base font-semibold text-highlighted group-hover:text-primary">
+                {{ method.humanReadableName }}
+              </h3>
+            </div>
+            <p class="line-clamp-3 text-sm leading-6 text-toned">
+              {{ method.description }}
+            </p>
+          </div>
+        </NuxtLink>
       </div>
     </section>
   </div>
