@@ -20,9 +20,9 @@ This repository contains the source code for the Nimiq Developer Center. It is a
 
 ## Tech Stack
 
-- [VitePress](https://vitepress.vuejs.org/) - Static Site Generator
-- [Vue 3](https://v3.vuejs.org/) - Frontend Framework
-- [UnoCSS](https://unocss.com/) - Utility-first CSS Framework
+- [Nuxt](https://nuxt.com/) - Application framework
+- [Docus](https://docus.dev/) - Documentation layer for Nuxt Content
+- [Nuxt UI](https://ui.nuxt.com/) - UI component system
 
 ## Contributing
 
@@ -30,13 +30,11 @@ Feel free to contribute if you want to improve any part of the docs. PRs all wel
 
 ## Set up
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fb410bb8-181e-4aa9-8343-9d636c728c2c/deploy-status)](https://app.netlify.com/sites/developer-center/deploys)
-
 ```bash
 git clone https://github.com/nimiq/developer-center # Clone repo. You can also fork it and clone from your fork
 cd developer-center
 pnpm install # Install pnpm first if you don't have it -> https://pnpm.io/installation
-pnpm dev # Start dev server
+pnpm dev # Start the Nuxt development server
 ```
 
 ## License

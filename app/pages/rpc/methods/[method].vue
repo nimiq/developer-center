@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { OpenrpcDocument } from '@open-rpc/meta-schema'
 import type { NimiqRpcMethods } from '../../../utils/rpc'
-import { createError, setPageLayout, useAsyncData, useRoute, useSeoMeta } from '#imports'
+import { createError, definePageMeta, useAsyncData, useRoute, useSeoMeta } from '#imports'
 import { computed } from 'vue'
 import openRpcDocument from '../../../../data/openrpc-document.json'
 import { loadMethods } from '../../../utils/rpc'
 
-const applyLayout = setPageLayout as unknown as (name: string) => void
-applyLayout('docs')
+definePageMeta({
+  layout: 'docs',
+})
 
 const route = useRoute()
 const methodSlug = computed(() => String(route.params.method))
@@ -30,7 +31,7 @@ useSeoMeta({
     <UContainer>
       <UPage>
         <UPageBody>
-          <RpcMethod :method="method!" />
+          <RpcMethod v-if="method" :method="method" />
         </UPageBody>
       </UPage>
     </UContainer>

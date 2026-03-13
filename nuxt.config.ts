@@ -148,7 +148,13 @@ export default defineNuxtConfig({
     robotsTxt: false,
   },
   llms: {
-    domain: 'https://nimiq.com',
+    domain: 'https://nimiq.com/developers',
+    title: 'Nimiq Developer Center',
+    description: 'Guides, resources and tips on how to create with Nimiq. Start building the future now!',
+    full: {
+      title: 'Full Documentation',
+      description: 'Full documentation of the Nimiq Developer Center.',
+    },
   },
   icon: {
     provider: 'iconify',
