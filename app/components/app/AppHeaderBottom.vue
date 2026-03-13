@@ -1,35 +1,12 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
-import { mapContentNavigation } from '@nuxt/ui/utils/content'
+import { DOC_MODULES } from '../../utils/modules'
 
 const route = useRoute()
-const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
-
-const moduleOrder = [
-  'web-client',
-  'rpc',
-  'hub',
-  'nodes',
-  'protocol',
-  'mini-apps',
-  'nimiq-utils',
-  'migration',
-]
-
-function getSegment(path?: string) {
-  return path?.split('/').filter(Boolean)[0] || ''
-}
 
 const items = computed(() => {
-  const topLevelNavigation = navigation?.value || []
-  const orderedModules = moduleOrder
-    .map(segment => topLevelNavigation.find(item => getSegment(item.path) === segment))
-    .filter((item): item is ContentNavigationItem => Boolean(item))
-    .map(item => ({ ...item, children: undefined }))
-
-  return (mapContentNavigation(orderedModules) || []).map(item => ({
-    ...item,
-    active: route.path === item.to || route.path.startsWith(`${item.to}/`),
+  return DOC_MODULES.map(module => ({
+    ...module,
+    active: route.path === module.to.slice(0, -1) || route.path.startsWith(module.to),
   }))
 })
 </script>
