@@ -5,6 +5,9 @@
 
 /* ── Nimiq Colors → Nuxt UI semantic color variables ── */
 :root, :host {
+  --docs-header-bottom-height: 2.75rem;
+  --docs-header-offset: calc(var(--ui-header-height) + var(--docs-header-bottom-height));
+
   /* Primary: Nimiq Blue */
   --ui-color-primary-50: oklch(0.955 0.017 236.69);
   --ui-color-primary-100: oklch(0.911 0.033 232.24);

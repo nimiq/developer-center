@@ -15,7 +15,7 @@ const items = computed(() => {
 <template>
   <USeparator class="hidden lg:flex" />
 
-  <UContainer class="hidden lg:flex items-center justify-between py-2">
+  <UContainer class="hidden lg:flex items-center justify-between h-(--docs-header-bottom-height)">
     <UNavigationMenu
       :items="items"
       variant="link"
