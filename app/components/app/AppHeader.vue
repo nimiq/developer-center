@@ -23,12 +23,12 @@ const links = computed(() => appConfig.github && appConfig.github.url
 
 <template>
   <UHeader
-    :ui="{ left: 'min-w-0' }"
+    :ui="{ center: 'flex-1' }"
     :to="localePath('/')"
     :title="appConfig.header?.title || site.name"
     class="flex flex-col"
   >
-    <template #left>
+    <template #title>
       <AppHeaderLogo class="h-6 w-auto shrink-0" />
     </template>
 
