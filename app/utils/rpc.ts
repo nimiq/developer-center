@@ -99,6 +99,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
     ...method,
     method: slugify(method.name),
     humanReadableName: toHumanReadable(method.name),
+    description: normalizeMethodDescription(method.description, toHumanReadable(method.name)),
     input: parseInput(method.params),
     output: parseOutput(method.result),
     link: `/rpc/methods/${slugify(method.name)}`,
@@ -122,6 +123,15 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
   }
 
   return result
+}
+
+function normalizeMethodDescription(description: string | undefined, humanReadableName: string) {
+  const normalized = description?.trim()
+  if (normalized) {
+    return normalized
+  }
+
+  return `Reference for the ${humanReadableName} RPC method.`
 }
 
 function getTypeString(schema: any): string {

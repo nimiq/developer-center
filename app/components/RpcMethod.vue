@@ -72,64 +72,18 @@ async function callRpc() {
       <h1 class="text-4xl font-semibold tracking-tight text-highlighted">
         {{ props.method.humanReadableName }}
       </h1>
-      <p v-if="props.method.description" class="max-w-3xl text-base leading-7 text-muted">
+      <p class="max-w-3xl text-base leading-7 text-muted">
         {{ props.method.description }}
       </p>
-    </section>
-
-    <UCard class="border-0">
-      <template #header>
-        <div class="flex items-center justify-between gap-3">
-          <div>
-            <h2 class="text-lg font-semibold text-highlighted">
-              Interactive playground
-            </h2>
-            <p class="text-sm text-muted">
-              Try the method against a public RPC endpoint.
-            </p>
-          </div>
-        </div>
-      </template>
-
-      <div class="space-y-4">
-        <UFormField label="RPC endpoint" name="server">
-          <UInput v-model="serverUrl" icon="i-tabler:server" />
-        </UFormField>
-
-        <div
-          v-if="props.method.input.length"
-          class="grid gap-4 md:grid-cols-2"
-        >
-          <UFormField
-            v-for="input in props.method.input"
-            :key="input.key"
-            :label="input.label || input.key"
-            :name="input.key"
-          >
-            <USwitch
-              v-if="input.type === 'boolean'"
-              v-model="booleanParams[input.key]"
-            />
-            <UInput
-              v-else
-              v-model="textParams[input.key]"
-              :placeholder="input.type"
-            />
-          </UFormField>
-        </div>
-
-        <div class="flex justify-end">
-          <UButton
-            :loading="loading"
-            label="Call method"
-            trailing-icon="i-tabler:player-play"
-            color="primary"
-            class="rounded-full"
-            @click="callRpc"
-          />
-        </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <UBadge color="neutral" variant="soft">
+          {{ props.method.name }}
+        </UBadge>
+        <UBadge :color="props.method.popular ? 'primary' : 'secondary'" variant="soft">
+          {{ props.method.popular ? 'popular method' : 'rpc method' }}
+        </UBadge>
       </div>
-    </UCard>
+    </section>
 
     <div class="grid gap-6 lg:grid-cols-2">
       <UCard class="border-0">
@@ -191,6 +145,60 @@ async function callRpc() {
         </p>
       </UCard>
     </div>
+
+    <UCard class="border-0">
+      <template #header>
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-semibold text-highlighted">
+              Interactive playground
+            </h2>
+            <p class="text-sm text-muted">
+              Try the method against a public RPC endpoint.
+            </p>
+          </div>
+        </div>
+      </template>
+
+      <div class="space-y-4">
+        <UFormField label="RPC endpoint" name="server">
+          <UInput v-model="serverUrl" icon="i-tabler:server" />
+        </UFormField>
+
+        <div
+          v-if="props.method.input.length"
+          class="grid gap-4 md:grid-cols-2"
+        >
+          <UFormField
+            v-for="input in props.method.input"
+            :key="input.key"
+            :label="input.label || input.key"
+            :name="input.key"
+          >
+            <USwitch
+              v-if="input.type === 'boolean'"
+              v-model="booleanParams[input.key]"
+            />
+            <UInput
+              v-else
+              v-model="textParams[input.key]"
+              :placeholder="input.type"
+            />
+          </UFormField>
+        </div>
+
+        <div class="flex justify-end">
+          <UButton
+            :loading="loading"
+            label="Call method"
+            trailing-icon="i-tabler:player-play"
+            color="primary"
+            class="rounded-full"
+            @click="callRpc"
+          />
+        </div>
+      </div>
+    </UCard>
 
     <UAlert
       v-if="error"
