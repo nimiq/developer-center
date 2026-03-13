@@ -155,7 +155,20 @@ export default defineAppConfig({
     // ── Header ──
     header: {
       slots: {
-        root: 'bg-default/80 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)]',
+        root: 'bg-default/80 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)] sticky top-0 z-50',
+        container: 'flex items-center justify-between gap-3 h-(--ui-header-height)',
+      },
+    },
+
+    pageAside: {
+      slots: {
+        root: 'hidden overflow-y-auto lg:block lg:max-h-[calc(100vh-var(--docs-header-offset))] lg:sticky lg:top-(--docs-header-offset) py-8 lg:ps-4 lg:-ms-4 lg:pe-6.5',
+      },
+    },
+
+    contentToc: {
+      slots: {
+        root: 'sticky top-(--docs-header-offset) z-10 bg-default/75 lg:bg-[initial] backdrop-blur -mx-4 px-4 sm:px-6 sm:-mx-6 overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
       },
     },
 
