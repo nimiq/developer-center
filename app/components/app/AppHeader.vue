@@ -1,27 +1,13 @@
 <script setup lang="ts">
+import { isDocModulePath } from '../../utils/modules'
+
 const route = useRoute()
 
 const appConfig = useAppConfig()
 const site = useSiteConfig()
 
-const { isEnabled: isAssistantEnabled } = useAssistant()
 const { localePath, isEnabled, locales } = useDocusI18n()
-
-const moduleSegments = new Set([
-  'web-client',
-  'rpc',
-  'hub',
-  'nodes',
-  'protocol',
-  'mini-apps',
-  'nimiq-utils',
-  'migration',
-])
-
-const showModuleTabs = computed(() => {
-  const currentSegment = route.path.split('/').filter(Boolean)[0]
-  return !!currentSegment && moduleSegments.has(currentSegment)
-})
+const showModuleTabs = computed(() => isDocModulePath(route.path))
 
 const links = computed(() => appConfig.github && appConfig.github.url
   ? [
@@ -37,24 +23,16 @@ const links = computed(() => appConfig.github && appConfig.github.url
 
 <template>
   <UHeader
-    :ui="{ center: 'flex-1' }"
+    :ui="{ left: 'min-w-0' }"
     :to="localePath('/')"
     :title="appConfig.header?.title || site.name"
     class="flex flex-col"
   >
-    <AppHeaderCenter />
-
-    <template #title>
+    <template #left>
       <AppHeaderLogo class="h-6 w-auto shrink-0" />
     </template>
 
     <template #right>
-      <AppHeaderCTA />
-
-      <template v-if="isAssistantEnabled">
-        <AssistantChat />
-      </template>
-
       <template v-if="isEnabled && locales.length > 1">
         <ClientOnly>
           <LanguageSelect />
@@ -67,7 +45,7 @@ const links = computed(() => appConfig.github && appConfig.github.url
         <USeparator orientation="vertical" class="h-8" />
       </template>
 
-      <UContentSearchButton class="lg:hidden" />
+      <UContentSearchButton />
 
       <ClientOnly>
         <UColorModeButton />
