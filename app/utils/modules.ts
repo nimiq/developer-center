@@ -1,6 +1,7 @@
 export const DOC_MODULES = [
   { label: 'Web Client', icon: 'i-custom-nimiq-web-client', to: '/web-client/', segment: 'web-client' },
   { label: 'RPC', icon: 'i-custom-nimiq-rpc', to: '/rpc/', segment: 'rpc' },
+  { label: 'AI', icon: 'i-lucide-bot', to: '/ai/', segment: 'ai' },
   { label: 'Hub', icon: 'i-custom-nimiq-hub', to: '/hub/', segment: 'hub' },
   { label: 'Nodes & Validators', icon: 'i-custom-nimiq-dev', to: '/nodes/', segment: 'nodes' },
   { label: 'Protocol', icon: 'i-custom-nimiq-albatross', to: '/protocol/', segment: 'protocol' },
