@@ -15,12 +15,12 @@ const items = computed(() => {
 <template>
   <USeparator class="hidden lg:flex" />
 
-  <UContainer class="hidden lg:flex items-center justify-between">
+  <UContainer class="hidden lg:flex items-center justify-between py-2">
     <UNavigationMenu
       :items="items"
       variant="link"
       highlight
-      class="-mx-2.5 -mb-px min-w-0"
+      class="-mx-2.5 min-w-0"
     />
   </UContainer>
 </template>
