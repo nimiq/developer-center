@@ -6,7 +6,8 @@ const route = useRoute()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 const moduleItems = computed(() => DOC_MODULES.map(module => ({
-  ...module,
+  label: module.label,
+  to: module.to,
   active: route.path === module.to.slice(0, -1) || route.path.startsWith(module.to),
 })))
 

@@ -5,7 +5,8 @@ const route = useRoute()
 
 const items = computed(() => {
   return DOC_MODULES.map(module => ({
-    ...module,
+    label: module.label,
+    to: module.to,
     active: route.path === module.to.slice(0, -1) || route.path.startsWith(module.to),
   }))
 })
@@ -17,9 +18,9 @@ const items = computed(() => {
   <UContainer class="hidden lg:flex items-center justify-between">
     <UNavigationMenu
       :items="items"
-      variant="pill"
+      variant="link"
       highlight
-      class="-mx-2.5 -mb-px"
+      class="-mx-2.5 -mb-px min-w-0"
     />
   </UContainer>
 </template>

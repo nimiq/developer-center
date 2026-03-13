@@ -26,13 +26,16 @@ const links = computed(() => appConfig.github && appConfig.github.url
     :ui="{ center: 'flex-1' }"
     :to="localePath('/')"
     :title="appConfig.header?.title || site.name"
-    class="flex flex-col"
   >
+    <AppHeaderCenter />
+
     <template #title>
       <AppHeaderLogo class="h-6 w-auto shrink-0" />
     </template>
 
     <template #right>
+      <AppHeaderCTA />
+
       <template v-if="isEnabled && locales.length > 1">
         <ClientOnly>
           <LanguageSelect />
@@ -45,7 +48,7 @@ const links = computed(() => appConfig.github && appConfig.github.url
         <USeparator orientation="vertical" class="h-8" />
       </template>
 
-      <UContentSearchButton />
+      <UContentSearchButton class="lg:hidden" />
 
       <ClientOnly>
         <UColorModeButton />
