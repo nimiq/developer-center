@@ -50,6 +50,16 @@ title: Choose your path
 
     ::::u-page-card
     ---
+    title: AI
+    description: Connect assistants and agent workflows with MCP, llms.txt, and the upcoming built-in docs assistant
+    icon: i-lucide-bot
+    to: /ai/
+    variant: outline
+    ---
+    ::::
+
+    ::::u-page-card
+    ---
     title: Nodes & Validators
     description: Run a node, stake and contribute proofs
     icon: i-lucide-server
@@ -113,9 +123,9 @@ description: Start experimenting with Nimiq right away.
     ::::u-page-card
     ---
     title: Nimiq MCP
-    description: Build with AI using the Model Context Protocol
+    description: Connect AI tools to the Developer Center documentation server
     icon: i-lucide-bot
-    to: https://github.com/onmax/nimiq-mcp
+    to: /ai/mcp
     variant: outline
     spotlight: true
     ---
@@ -215,6 +225,7 @@ title: Everything you need to build with Nimiq
     variant: outline
     ---
     - [Hub API](/hub/)
+    - [AI Integrations](/ai/)
     - [Nimiq Utils](/nimiq-utils/)
     - [Blockchain Explorers](/rpc/block-explorers)
     ::::
@@ -275,7 +286,7 @@ title: Everything you need to build with Nimiq
     - [Community Forum](https://forum.nimiq.community/)
     - [Telegram](https://t.me/nimiq)
     - [Awesome Nimiq](https://github.com/nimiq/awesome)
-    - [AI MCP Server](https://github.com/onmax/nimiq-mcp)
+    - [AI Integrations](/ai/)
     ::::
 
     ::::u-page-card

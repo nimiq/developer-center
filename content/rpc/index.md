@@ -110,8 +110,8 @@ description: The Nimiq RPC API is ideal for servers, exchanges, analytics platfo
   :::
 ::
 
-::callout{icon="i-tabler:bot" to="https://github.com/onmax/nimiq-mcp"}
-**Build with AI using Nimiq MCP** --- Enable AI assistants like Claude to interact directly with the Nimiq blockchain through our Model Context Protocol server.
+::callout{icon="i-tabler:bot" to="/ai/mcp"}
+**Build with AI using the Developer Center** --- Connect assistants to the built-in MCP server and AI docs in the dedicated AI section.
 ::
 
 ::u-page-section
