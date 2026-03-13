@@ -26,6 +26,7 @@ const links = computed(() => appConfig.github && appConfig.github.url
     :ui="{ center: 'flex-1' }"
     :to="localePath('/')"
     :title="appConfig.header?.title || site.name"
+    class="flex flex-col"
   >
     <AppHeaderCenter />
 

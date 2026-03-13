@@ -155,7 +155,7 @@ export default defineAppConfig({
     // ── Header ──
     header: {
       slots: {
-        root: 'bg-default/80 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)] sticky top-0 z-50',
+        root: 'h-auto bg-default/90 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)] sticky top-0 z-50',
         container: 'flex items-center justify-between gap-3 h-(--ui-header-height)',
       },
     },
