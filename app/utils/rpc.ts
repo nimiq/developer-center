@@ -1,6 +1,6 @@
 import type { MethodObject, OpenrpcDocument, TagObject } from '@open-rpc/meta-schema'
 import $RefParser from '@apidevtools/json-schema-ref-parser'
-import { capitalizeFirstLetter, slugify, toHumanReadable } from './string'
+import { slugify, toHumanReadable } from './string'
 
 // Define types for RPC methods
 export type RpcMethodTag = typeof tagOrder[number]
@@ -37,14 +37,24 @@ async function deferredMethods(openRpcJson: OpenrpcDocument): Promise<MethodObje
 // Helper function to generate RPC method items
 const tagOrder = ['validator', 'blockchain', 'consensus', 'wallet', 'policy', 'mempool', 'network', 'zkp_component'] as const
 const rpcAccordionIcons: Record<typeof tagOrder[number], string> = {
-  validator: 'i-nimiq:verified',
-  blockchain: 'i-nimiq:nodes',
+  validator: 'i-tabler:shield-check',
+  blockchain: 'i-tabler:blocks',
   consensus: 'i-tabler:network',
   wallet: 'i-tabler:wallet',
-  policy: 'i-nimiq:verified',
-  mempool: 'i-nimiq:cubes',
-  network: 'i-nimiq:duotone-network',
+  policy: 'i-tabler:scale',
+  mempool: 'i-tabler:stack-2',
+  network: 'i-tabler:world',
   zkp_component: 'i-tabler:lock',
+}
+const rpcTagLabels: Record<typeof tagOrder[number], string> = {
+  validator: 'Validator',
+  blockchain: 'Blockchain',
+  consensus: 'Consensus',
+  wallet: 'Wallet',
+  policy: 'Policy',
+  mempool: 'Mempool',
+  network: 'Network',
+  zkp_component: 'ZKP Component',
 }
 
 export interface NimiqRpcMethod {
@@ -112,7 +122,7 @@ export async function loadMethods(openRpcJson: OpenrpcDocument): Promise<NimiqRp
     result.push({
       icon: rpcAccordionIcons[tag],
       methods: methodsByTag,
-      text: capitalizeFirstLetter(tag),
+      text: rpcTagLabels[tag],
       items: methodsByTag.map(method => ({
         text: `\`${method.name}\``,
         link: `/rpc/methods/${slugify(method.name)}`,
