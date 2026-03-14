@@ -78,7 +78,7 @@ export default defineAppConfig({
     // nq-hoverable: lift on hover, shadow appears, smooth transitions
     pageCard: {
       slots: {
-        root: 'rounded-lg transition-all duration-300 ease-[cubic-bezier(0.25,0,0,1)]',
+        root: 'relative isolate overflow-hidden rounded-lg transition-all duration-300 ease-[cubic-bezier(0.25,0,0,1)]',
         container: 'p-6',
         leadingIcon: 'size-6 text-primary',
         title: 'text-base font-bold text-highlighted',
