@@ -31,7 +31,8 @@ export { setInterval } from '#app/compat/interval';
 export { definePageMeta } from '../node_modules/.pnpm/nuxt@4.3.1_@parcel+watcher@2.5.6_@types+node@24.9.2_@vue+compiler-sfc@3.5.30_better-sql_bbfa4cf213f17d4d82faca7dc375087b/node_modules/nuxt/dist/pages/runtime/composables';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useFaucet } from '../app/composables/useFaucet';
-export { POPULAR_METHODS, loadMethods, RpcMethodTag, RpcMethodOption, RpcMethodGroup, NimiqRpcMethod, MethodIO, NimiqRpcMethods } from '../app/utils/rpc';
+export { DOC_MODULES, isDocModulePath } from '../app/utils/modules';
+export { POPULAR_METHODS, loadMethods, RpcMethodTag, RpcMethodOption, RpcMethodGroup, NimiqRpcMethod, MethodIO, RpcMethodNavigationItem, NimiqRpcMethods } from '../app/utils/rpc';
 export { slugify, capitalizeFirstLetter, toHumanReadable } from '../app/utils/string';
 export { useDocusI18n } from '../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/composables/useDocusI18n';
 export { useLogoAssets } from '../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/composables/useLogoAssets';
@@ -69,6 +70,7 @@ export { defineOgImage } from '../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhea
 export { defineOgImageComponent } from '../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/composables/defineOgImageComponent';
 export { defineOgImageScreenshot } from '../node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/composables/defineOgImageScreenshot';
 export { useAssistant } from '../node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/modules/assistant/runtime/composables/useAssistant';
+export { useNuxtDevTools } from '../node_modules/.pnpm/@nuxt+devtools@3.2.3_bufferutil@4.0.9_utf-8-validate@5.0.10_vite@7.3.1_@types+node@24.9_8b88be94702b81a336bdafc10f817b65/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { flatUnwrap as unwrapSlot } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/utils/node';
 export { parseMarkdown } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { stringifyMarkdown } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.2_magicast@0.5.2/node_modules/@nuxtjs/mdc/dist/runtime/stringify';

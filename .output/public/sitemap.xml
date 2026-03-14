@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/ai/assistant</loc>
+  </url>
+  <url>
+    <loc>/ai</loc>
+  </url>
+  <url>
+    <loc>/ai/llms</loc>
+  </url>
+  <url>
+    <loc>/ai/mcp</loc>
+  </url>
+  <url>
     <loc>/archive/faqs</loc>
   </url>
   <url>
@@ -269,12 +281,6 @@
   </url>
   <url>
     <loc>/rpc/rpc-node-setup</loc>
-  </url>
-  <url>
-    <loc>/web-client/_demo.bundler</loc>
-  </url>
-  <url>
-    <loc>/web-client/_demo.web</loc>
   </url>
   <url>
     <loc>/web-client/browser-vs-server</loc>

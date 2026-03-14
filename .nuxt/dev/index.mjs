@@ -760,7 +760,18 @@ const appConfig0 = defineAppConfig({
     // ── Header ──
     header: {
       slots: {
-        root: "bg-default/80 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)]"
+        root: "h-auto bg-default/90 backdrop-blur-lg border-b border-[color-mix(in_oklch,var(--ui-color-neutral-950)_6%,transparent)] dark:border-[color-mix(in_oklch,var(--ui-color-neutral-50)_6%,transparent)] sticky top-0 z-50",
+        container: "flex items-center justify-between gap-3 h-(--ui-header-height)"
+      }
+    },
+    pageAside: {
+      slots: {
+        root: "hidden overflow-y-auto lg:block lg:max-h-[calc(100vh-var(--docs-header-offset))] lg:sticky lg:top-(--docs-header-offset) py-8 lg:ps-4 lg:-ms-4 lg:pe-6.5"
+      }
+    },
+    contentToc: {
+      slots: {
+        root: "sticky top-(--docs-header-offset) z-10 bg-default/75 lg:bg-[initial] backdrop-blur -mx-4 px-4 sm:px-6 sm:-mx-6 overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]"
       }
     },
     // ── NavigationMenu ──
@@ -1233,6 +1244,18 @@ const _inlineRuntimeConfig = {
           "X-Robots-Tag": "noindex"
         }
       },
+      "/ai/assistant": {
+        "prerender": true
+      },
+      "/ai/": {
+        "prerender": true
+      },
+      "/ai/llms": {
+        "prerender": true
+      },
+      "/ai/mcp": {
+        "prerender": true
+      },
       "/archive/faqs": {
         "prerender": true
       },
@@ -1523,6 +1546,18 @@ const _inlineRuntimeConfig = {
         "prerender": true
       },
       "/__nuxt_content/landing/sql_dump.txt/_payload.json": {
+        "prerender": true
+      },
+      "/ai/assistant/_payload.json": {
+        "prerender": true
+      },
+      "/ai//_payload.json": {
+        "prerender": true
+      },
+      "/ai/llms/_payload.json": {
+        "prerender": true
+      },
+      "/ai/mcp/_payload.json": {
         "prerender": true
       },
       "/archive/faqs/_payload.json": {
@@ -1951,7 +1986,7 @@ const _inlineRuntimeConfig = {
     "serverKnownCssClasses": []
   },
   "llms": {
-    "domain": "https://nimiq.com",
+    "domain": "https://nimiq.com/developers",
     "title": "Nimiq Developer Center",
     "description": "Guides, resources and tips on how to create with Nimiq. Start building the future now!",
     "notes": [],
@@ -1960,9 +1995,9 @@ const _inlineRuntimeConfig = {
         "title": "Documentation Sets",
         "links": [
           {
-            "title": "Nimiq Developer Center",
-            "description": "Guides, resources and tips on how to create with Nimiq. Start building the future now!",
-            "href": "https://nimiq.com/llms-full.txt"
+            "title": "Full Documentation",
+            "description": "Full documentation of the Nimiq Developer Center.",
+            "href": "https://nimiq.com/developers/llms-full.txt"
           }
         ]
       }
@@ -2064,7 +2099,7 @@ const _inlineRuntimeConfig = {
       "height": 600,
       "cacheMaxAgeSeconds": 259200
     },
-    "debug": true,
+    "debug": false,
     "baseCacheKey": "/cache/nuxt-og-image/5.1.13",
     "fonts": [
       {
@@ -3502,8 +3537,14 @@ const _O3LcuPCs_nLZNGvhBTHQFtfM0_kYLduxpssaI2w_A = (function(nitro) {
   });
 });
 
-const checksums = {};
-const checksumsStructure = {};
+const checksums = {
+  "docs": "v3.5.0--gM1wTTu4ikueJFJ8BFVI0Lyp5W7s7tlYh1thXIXbO54",
+  "landing": "v3.5.0--X6H8TJEndwP1K9hVQAifwFFV1akp2bImhb0E3c-MQdI"
+};
+const checksumsStructure = {
+  "docs": "L-cue8lpfCcbrsOyK1iUgSmH6rJbEYAyEFmxq_KEzNM",
+  "landing": "tZyOKbtBW1Y6jgOgyl3rm-ghuJUJsbLCHIgBPzIXDfk"
+};
 const tables = {
   "docs": "_content_docs",
   "landing": "_content_landing",
@@ -5833,7 +5874,7 @@ const logger = createConsola({
   }
 });
 
-const componentNames = [{"hash":"3gUNmfj0r7TVdbezwVTxxzzSeYVg6wGL0QEVQ-YQ5j4","pascalName":"OgImageDocs","kebabName":"og-image-docs","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageDocs.vue","category":"app"},{"hash":"X0dlpeDv-7Dglooh2sjU880WkWJoTe52a28d87dpLpI","pascalName":"OgImageLanding","kebabName":"og-image-landing","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageLanding.vue","category":"app"},{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"VAHSTZlVcPHzkozocV1iTnwc4-YttdoOkHsYfoSgDZ4","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"b-Juo-FXQepo6SOCnA478MTAqbXNZuve6-MzHgTKA7s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"vRUm5ru-64PEHIGsBby6-vCgLBg7iUJfvFKL6VuCXtI","pascalName":"UnJs","kebabName":"un-js","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"}];
+const componentNames = [{"hash":"3gUNmfj0r7TVdbezwVTxxzzSeYVg6wGL0QEVQ-YQ5j4","pascalName":"OgImageDocs","kebabName":"og-image-docs","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageDocs.vue","category":"app"},{"hash":"X0dlpeDv-7Dglooh2sjU880WkWJoTe52a28d87dpLpI","pascalName":"OgImageLanding","kebabName":"og-image-landing","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/docus@https+++pkg.pr.new+docus@1304_b79fef1be70f1ab244195d66774a0d68/node_modules/docus/app/components/OgImage/OgImageLanding.vue","category":"app"},{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"VAHSTZlVcPHzkozocV1iTnwc4-YttdoOkHsYfoSgDZ4","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"b-Juo-FXQepo6SOCnA478MTAqbXNZuve6-MzHgTKA7s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"vRUm5ru-64PEHIGsBby6-vCgLBg7iUJfvFKL6VuCXtI","pascalName":"UnJs","kebabName":"un-js","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"},{"hash":"njH1LfLeLtVueHOae-tZt-swReEVOPXDLsV8PnrbkME","pascalName":"OgImage","kebabName":"og-image","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImage.js","category":"app"},{"hash":"NzCotdygpoQ3qU3xklHxt0cgQRgGOF6UB9WxxAvQz4U","pascalName":"OgImageScreenshot","kebabName":"og-image-screenshot","path":"/Users/maxi/nimiq/developer-center/node_modules/.pnpm/nuxt-og-image@5.1.13_@unhead+vue@2.1.12_vue@3.5.22_typescript@5.9.3___magicast@0.5.2_un_ced3702be2babf4cb20a92ccc97b041e/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImageScreenshot.js","category":"app"}];
 
 function normaliseOptions(_options) {
   const options = { ..._options };
@@ -6251,16 +6292,16 @@ __yFNjhkclKpnweIoizPjd2f23i9DsVsvxsxsw6oqBlo
 const assets$1 = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"7ca5d-ETa0u/4fqmSD8oiLf+HuS0AffiQ\"",
-    "mtime": "2026-03-12T06:25:39.864Z",
-    "size": 510557,
+    "etag": "\"7cdce-p/c1Y7hdDJbr7zlcSDqAmfPl+wQ\"",
+    "mtime": "2026-03-13T20:50:17.898Z",
+    "size": 511438,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"20851a-bIHpNyzTHAf509qBn8TJ7b/hDU8\"",
-    "mtime": "2026-03-12T06:25:39.893Z",
-    "size": 2131226,
+    "etag": "\"2097f8-ZywV/DidxE4DJHXCfsOkfHE7NaM\"",
+    "mtime": "2026-03-13T20:50:17.902Z",
+    "size": 1048576,
     "path": "index.mjs.map"
   }
 };

@@ -158,7 +158,7 @@
         "./mdc-imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/49d93e56-5a34-48ab-bb82-453da5a87361.json"
+        "./manifest/meta/dev"
       ],
       "#components": [
         "./components"
@@ -290,14 +290,14 @@
     "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/*.*",
     "../node_modules/.pnpm/@nuxt+ui@4.5.1_@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5_2a70ca21d15564cf8f87ca6e8fc65067/node_modules/dist/*.*",
-    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/runtime/server",
-    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/dist/runtime/server",
-    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/*.*",
-    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/dist/*.*",
     "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/features/llms/runtime/server",
     "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/features/llms/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/features/llms/*.*",
     "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/@nuxt/content/dist/features/llms/dist/*.*",
+    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/runtime/server",
+    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/dist/runtime/server",
+    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/*.*",
+    "../node_modules/.pnpm/@nuxt+content@3.12.0_better-sqlite3@12.6.2_bufferutil@4.0.9_magicast@0.5.2_utf-8-valida_9fb1a01edc2b18f083422cb9683dc43a/node_modules/dist/*.*",
     "../node_modules/.pnpm/@nuxt+image@2.0.0_db0@0.3.4_better-sqlite3@12.6.2__ioredis@5.10.0_magicast@0.5.2/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+image@2.0.0_db0@0.3.4_better-sqlite3@12.6.2__ioredis@5.10.0_magicast@0.5.2/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+image@2.0.0_db0@0.3.4_better-sqlite3@12.6.2__ioredis@5.10.0_magicast@0.5.2/node_modules/*.*",
@@ -349,7 +349,7 @@
     "../node_modules/.pnpm/nuxt-site-config@3.2.21_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4._5e853b47806d8a0b6f9c766cc091a912/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/nuxt-site-config@3.2.21_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4._5e853b47806d8a0b6f9c766cc091a912/node_modules/*.*",
     "../node_modules/.pnpm/nuxt-site-config@3.2.21_magicast@0.5.2_vite@7.3.1_@types+node@24.9.2_jiti@2.6.1_less@4._5e853b47806d8a0b6f9c766cc091a912/node_modules/dist/*.*",
-    "../.output",
+    "dev",
     "../server"
   ]
 }

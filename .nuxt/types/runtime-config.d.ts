@@ -144,6 +144,8 @@ import { RuntimeConfig as UserRuntimeConfig, PublicRuntimeConfig as UserPublicRu
       strictNuxtContentPaths: any,
 
       isNuxtContentDocumentDriven: boolean,
+
+      componentDirs: Array<string>,
    },
   }
   interface SharedPublicRuntimeConfig {
