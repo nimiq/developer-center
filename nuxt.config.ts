@@ -123,6 +123,7 @@ export default defineNuxtConfig({
           },
         ],
         name: 'developer-center-dev-worker',
+        observability: { logs: { enabled: true, invocation_logs: true } },
       },
     },
     preset: 'cloudflare_module',
