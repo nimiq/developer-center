@@ -1,0 +1,185 @@
+import type { ToolCallPart, ToolSet, UIMessageStreamWriter } from 'ai'
+import { createMCPClient } from '@ai-sdk/mcp'
+import { convertToModelMessages, createUIMessageStream, createUIMessageStreamResponse, streamText } from 'ai'
+import type { H3Event } from 'h3'
+
+interface McpTransport {
+  start(): Promise<void>
+  close(): Promise<void>
+  send(message: Record<string, unknown>): Promise<void>
+  onmessage?: ((message: Record<string, unknown>) => void) | undefined
+  onerror?: ((error: Error) => void) | undefined
+  onclose?: (() => void) | undefined
+}
+
+const MAX_STEPS = 10
+
+/**
+ * MCP transport that routes through Nitro's internal localFetch (event.fetch)
+ * instead of globalThis.$fetch (event.$fetch) which uses the global fetch()
+ * and triggers CF Workers self-fetch error 1042.
+ */
+function createInternalMcpTransport(event: H3Event, mcpPath: string): McpTransport {
+  let _onmessage: ((message: Record<string, unknown>) => void) | undefined
+  let _onerror: ((error: Error) => void) | undefined
+  let _onclose: (() => void) | undefined
+
+  return {
+    async start() {},
+    async close() { _onclose?.() },
+    get onmessage() { return _onmessage },
+    set onmessage(fn) { _onmessage = fn },
+    get onerror() { return _onerror },
+    set onerror(fn) { _onerror = fn },
+    get onclose() { return _onclose },
+    set onclose(fn) { _onclose = fn },
+    async send(message: Record<string, unknown>) {
+      try {
+        const response = await event.fetch(mcpPath, {
+          method: 'POST',
+          body: JSON.stringify(message),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/event-stream',
+          },
+        })
+
+        const contentType = response.headers.get('content-type') || ''
+
+        if (contentType.includes('text/event-stream') && response.body) {
+          const reader = response.body.pipeThrough(new TextDecoderStream()).getReader()
+          let buffer = ''
+          while (true) {
+            const { done, value } = await reader.read()
+            if (done) break
+            buffer += value
+            const lines = buffer.split('\n')
+            buffer = lines.pop() || ''
+            for (const line of lines) {
+              if (line.startsWith('data: '))
+                _onmessage?.(JSON.parse(line.slice(6)))
+            }
+          }
+          if (buffer.startsWith('data: '))
+            _onmessage?.(JSON.parse(buffer.slice(6)))
+        }
+        else {
+          const body = await response.json()
+          const messages = Array.isArray(body) ? body : [body]
+          for (const m of messages) _onmessage?.(m as Record<string, unknown>)
+        }
+      }
+      catch (error) {
+        _onerror?.(error as Error)
+      }
+    },
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function stopWhenResponseComplete({ steps }: { steps: any[] }): boolean {
+  const lastStep = steps.at(-1)
+  if (!lastStep)
+    return false
+
+  // Primary condition: stop when model gives a text response without tool calls
+  const hasText = Boolean(lastStep.text && lastStep.text.trim().length > 0)
+  const hasNoToolCalls = !lastStep.toolCalls || lastStep.toolCalls.length === 0
+
+  if (hasText && hasNoToolCalls)
+    return true
+
+  return steps.length >= MAX_STEPS
+}
+
+function getSystemPrompt(siteName: string) {
+  return `You are the documentation assistant for ${siteName}. Help users navigate and understand the project documentation.
+
+**Your identity:**
+- You are an assistant helping users with ${siteName} documentation
+- NEVER use first person ("I", "me", "my") - always refer to the project by name: "${siteName} provides...", "${siteName} supports...", "The project offers..."
+- Be confident and knowledgeable about the project
+- Speak as a helpful guide, not as the documentation itself
+
+**Tool usage (CRITICAL):**
+- You have tools: list-pages (discover pages) and get-page (read a page)
+- If a page title clearly matches the question, read it directly without listing first
+- ALWAYS respond with text after using tools - never end with just tool calls
+
+**Guidelines:**
+- If you can't find something, say "There is no documentation on that yet" or "${siteName} doesn't cover that topic yet"
+- Be concise, helpful, and direct
+- Guide users like a friendly expert would
+
+**FORMATTING RULES (CRITICAL):**
+- NEVER use markdown headings (#, ##, ###, etc.)
+- Use **bold text** for emphasis and section labels
+- Start responses with content directly, never with a heading
+- Use bullet points for lists
+- Keep code examples focused and minimal
+
+**Response style:**
+- Conversational but professional
+- "Here's how you can do that:" instead of "The documentation shows:"
+- "${siteName} supports TypeScript out of the box" instead of "I support TypeScript"
+- Provide actionable guidance, not just information dumps`
+}
+
+export default defineEventHandler(async (event) => {
+  const { messages } = await readBody(event)
+  const config = useRuntimeConfig()
+  const siteConfig = getSiteConfig(event)
+
+  const siteName = siteConfig.name || 'Documentation'
+
+  const mcpServer = config.assistant.mcpServer
+  const isExternalUrl = mcpServer.startsWith('http://') || mcpServer.startsWith('https://')
+
+  const transport = isExternalUrl
+    ? { type: 'http' as const, url: mcpServer }
+    : import.meta.dev
+      ? { type: 'http' as const, url: `http://localhost:3000${mcpServer}` }
+      : createInternalMcpTransport(event, mcpServer)
+
+  const httpClient = await createMCPClient({ transport })
+  const mcpTools = await httpClient.tools()
+
+  const stream = createUIMessageStream({
+    execute: async ({ writer }: { writer: UIMessageStreamWriter }) => {
+      const modelMessages = await convertToModelMessages(messages)
+      const result = streamText({
+        model: config.assistant.model,
+        maxOutputTokens: 4000,
+        maxRetries: 2,
+        stopWhen: stopWhenResponseComplete,
+        system: getSystemPrompt(siteName),
+        messages: modelMessages,
+        tools: mcpTools as ToolSet,
+        onStepFinish: ({ toolCalls }: { toolCalls: ToolCallPart[] }) => {
+          if (toolCalls.length === 0)
+            return
+          writer.write({
+            id: toolCalls[0]?.toolCallId,
+            type: 'data-tool-calls',
+            data: {
+              tools: toolCalls.map((tc: ToolCallPart) => {
+                const args = 'args' in tc ? tc.args : 'input' in tc ? tc.input : {}
+                return {
+                  toolName: tc.toolName,
+                  toolCallId: tc.toolCallId,
+                  args,
+                }
+              }),
+            },
+          })
+        },
+      })
+      writer.merge(result.toUIMessageStream())
+    },
+    onFinish: async () => {
+      await httpClient.close()
+    },
+  })
+
+  return createUIMessageStreamResponse({ stream })
+})

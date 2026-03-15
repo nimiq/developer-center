@@ -1,20 +1,19 @@
 import antfu from '@antfu/eslint-config'
+import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default antfu({
-  unocss: true,
+export default withNuxt(antfu({
   typescript: true,
   vue: true,
-  ignores: ['.vitepress/cache', '*.woff2', '.vitepress/rpc/*.json', 'hub/**/*.md', 'build/**'],
+  ignores: ['.nuxt/', '.output/', '.pnpm-patch-docus/', '.wrangler/', '*.woff2', 'content/web-client/reference/'],
 }, {
   files: ['**/*.md'],
   rules: {
-    'no-irregular-whitespace': 'off', // TODO Test i this works
+    'no-irregular-whitespace': 'off',
   },
 }, {
   rules: {
-    // Fix for vue/object-property-newline rule compatibility issue
     'vue/object-property-newline': ['error', {
       allowAllPropertiesOnSameLine: false,
     }],
   },
-})
+}))
