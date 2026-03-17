@@ -2,7 +2,7 @@
 <!-- type: api reference -->
 <!-- summary: Reference for the EIP-1193 Ethereum provider injected into mini apps, including EIP-6963 compatibility -->
 
-# Ethereum Provider API (window.ethereum)
+# Ethereum Provider API
 
 This provider implements [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) and supports [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963) provider discovery. It is injected into the mini app environment.
 

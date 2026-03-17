@@ -16,14 +16,12 @@ Think of it like a specialized web browser embedded within Nimiq Pay. Your mini 
 
 Mini apps run in a WebView and talk to Nimiq Pay through injected providers.
 
-To use an injected provider, read it from `window`, confirm it is available, and then call its methods as in this example:
+For Nimiq provider access, the recommended pattern is to use the Mini App SDK `init()` helper to wait until the provider is ready:
 
 ```javascript
-const nimiq = window.nimiq
+import { init } from '@nimiq/mini-app-sdk'
 
-if (!nimiq) {
-  throw new Error('Nimiq provider not available')
-}
+const nimiq = await init()
 
 const [accounts, consensus, blockNumber] = await Promise.all([
   nimiq.listAccounts(),
@@ -36,11 +34,11 @@ const [accounts, consensus, blockNumber] = await Promise.all([
 
 | Component | Lives in | What it does |
 |---|---|---|
-| Injected Provider (`window.ethereum`, `window.nimiq`) | WebView (injected by Nimiq Pay) | Exposes wallet APIs and sends requests to the host |
+| Injected Provider (`window.ethereum`, Nimiq provider) | WebView (injected by Nimiq Pay) | Exposes wallet APIs and sends requests to the host |
 | Host-side API | Nimiq Pay (native) | Receives requests, validates them, shows approval dialogs, executes actions |
-| Mini App SDK (optional) | WebView (your app or injected) | Typed Nimiq-native APIs + `Result<T, E>` patterns; uses its own message format |
+| Mini App SDK | WebView (your app or injected) | Waits for the Nimiq provider, adds typed access for TypeScript, and exposes Nimiq-native APIs |
 
-Your mini app uses standard Web3 APIs via `window.ethereum` and Nimiq-specific APIs via `window.nimiq`.
+Your mini app uses standard Web3 APIs via `window.ethereum` and Nimiq-specific APIs via the Mini App SDK `init()` helper.
 
 ### Request lifecycle
 

@@ -2,29 +2,29 @@
 <!-- type: api reference -->
 <!-- summary: Reference for the Nimiq provider injected into mini apps -->
 
-# Nimiq Provider API (window.nimiq)
+# Nimiq Provider API
 
 This provider exposes Nimiq blockchain operations and is injected into the mini app environment.
 
 ## Access
 
-```javascript
-const nimiq = window.nimiq
+Use the Mini App SDK `init()` helper to wait until Nimiq Pay injects the provider.
+
+::: code-group
+
+```ts [TypeScript]
+import { init } from '@nimiq/mini-app-sdk'
+
+const nimiq = await init()
 ```
 
-### Access (TypeScript)
+```javascript [JavaScript]
+import { init } from '@nimiq/mini-app-sdk'
 
-```ts
-import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
-
-declare global {
-  interface Window {
-    nimiq?: NimiqProvider
-  }
-}
-
-const nimiq = window.nimiq
+const nimiq = await init()
 ```
+
+:::
 
 ## Methods
 
@@ -50,7 +50,7 @@ Returns the user's Nimiq account addresses.
 
 **Example**
 
-```javascript
+```ts
 const accounts = await nimiq.listAccounts()
 ```
 
@@ -76,7 +76,7 @@ Signs a message with the user's Nimiq key.
 
 **Example**
 
-```javascript
+```ts
 const signed = await nimiq.sign('hello')
 ```
 
@@ -98,7 +98,7 @@ Checks whether the Nimiq network consensus is established.
 
 **Example**
 
-```javascript
+```ts
 const ready = await nimiq.isConsensusEstablished()
 ```
 
@@ -120,7 +120,7 @@ Returns the current Nimiq block height.
 
 **Example**
 
-```javascript
+```ts
 const height = await nimiq.getBlockNumber()
 ```
 
@@ -149,7 +149,7 @@ Sends a basic NIM payment.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendBasicTransaction({
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
@@ -182,7 +182,7 @@ Sends a NIM payment with an attached text message.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendBasicTransactionWithData({
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
@@ -215,7 +215,7 @@ Creates a new staking transaction.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendNewStakerTransaction({
   delegation: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
@@ -247,7 +247,7 @@ Adds stake to an existing staker.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendAddStakeTransaction({
   value: 100000,
   fee: 1000,
@@ -278,7 +278,7 @@ Sets the active stake amount.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendSetActiveStakeTransaction({
   newActiveBalance: 100000,
   fee: 1000,
@@ -310,7 +310,7 @@ Updates staker settings.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendUpdateStakerTransaction({
   newDelegation: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   reactivateAllStake: true,
@@ -342,7 +342,7 @@ Retires stake from a staker.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendRetireStakeTransaction({
   retireStake: 100000,
   fee: 1000,
@@ -373,7 +373,7 @@ Removes stake from a staker.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendRemoveStakeTransaction({
   value: 100000,
   fee: 1000,

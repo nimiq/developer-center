@@ -12,8 +12,8 @@
 
 In this tutorial, you will build a mini app that uses both injected providers:
 
-- `window.nimiq` for Nimiq account and signing flows
-- `window.ethereum` for EIP-1193 account and signing flows
+- the Nimiq provider for Nimiq account and signing flows
+- the Ethereum provider for EIP-1193 account and signing flows
 
 You will implement methods that require user confirmations so you can test real wallet interactions end to end.
 
@@ -29,7 +29,6 @@ The mini app includes two action buttons:
 ## 2. Prerequisites
 
 - **Node.js** (version 22+ required)
-- **Bun** (required to build the local `@trustwallet/web3-provider-nimiq` package)
 - **Nimiq Pay** app on a mobile device (or emulator)
 - Phone and dev machine on the same Wi-Fi network
 - At least one Ethereum account available in Nimiq Pay for the Ethereum success path
@@ -61,40 +60,12 @@ export default defineConfig({
 })
 ```
 
-## 5. Set up Nimiq provider types
+## 5. Install the Nimiq Mini App SDK
 
-Set up the local Nimiq provider package before editing `src/App.vue`.
-
-1. Clone the provider repository on the `nimiq` branch.
+Install the published Nimiq Mini App SDK before editing `src/App.vue`.
 
 ```bash
-cd ..
-git clone --branch nimiq https://github.com/nimiq/trust-web3-provider.git
-```
-
-1. Build the provider packages with Bun and go back to your mini app.
-
-```bash
-cd trust-web3-provider
-bun install
-bun run build:packages
-cd ../my-mini-app
-```
-
-1. Add the local linked package in `package.json`.
-
-```json
-{
-  "dependencies": {
-    "@trustwallet/web3-provider-nimiq": "../trust-web3-provider/packages/nimiq"
-  }
-}
-```
-
-1. Reinstall your mini app dependencies.
-
-```bash
-npm install
+npm install @nimiq/mini-app-sdk
 ```
 
 ## 6. Add the dual-chain mini app
@@ -105,8 +76,8 @@ In `src/App.vue`, use separate script, template, and style blocks.
 
 ```vue
 <script setup lang="ts">
-import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
-import { ref } from 'vue'
+import { init } from '@nimiq/mini-app-sdk'
+import { onMounted, ref } from 'vue'
 
 interface EthereumProvider {
   request: (args: { method: string, params?: unknown[] | Record<string, unknown> }) => Promise<any>
@@ -114,12 +85,14 @@ interface EthereumProvider {
 
 declare global {
   interface Window {
-    nimiq?: NimiqProvider
     ethereum?: EthereumProvider
   }
 }
 
+let nimiqPromise: ReturnType<typeof init> | null = null
+
 const loading = ref(false)
+const isNimiqConnecting = ref(true)
 const status = ref<string | null>(null)
 const errorMessage = ref<string | null>(null)
 
@@ -146,24 +119,43 @@ function toHexUtf8(input: string) {
     .join('')}`
 }
 
-function resetMessages() {
+function resetFeedback() {
   errorMessage.value = null
   status.value = null
 }
 
+onMounted(async () => {
+  try {
+    nimiqPromise = init({ timeout: 10_000 })
+    await nimiqPromise
+  }
+  catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : String(error)
+  }
+  finally {
+    isNimiqConnecting.value = false
+  }
+})
+
 async function runNimiqFlow() {
-  if (!window.nimiq) {
-    errorMessage.value = 'Nimiq provider not found. Open this app inside Nimiq Pay.'
+  resetFeedback()
+  nimiqAccounts.value = null
+  nimiqSignature.value = null
+
+  if (!nimiqPromise) {
+    errorMessage.value = 'Nimiq provider not ready. Open this app inside Nimiq Pay.'
+    status.value = 'Nimiq flow failed.'
     return
   }
 
-  resetMessages()
   loading.value = true
 
   try {
+    const nimiq = await nimiqPromise
+
     // Prompt 1: account sharing confirmation.
     status.value = 'Requesting Nimiq accounts...'
-    const accountsResult = await window.nimiq.listAccounts()
+    const accountsResult = await nimiq.listAccounts()
     const accountsError = getProviderErrorMessage(accountsResult)
     if (accountsError)
       throw new Error(accountsError)
@@ -175,7 +167,7 @@ async function runNimiqFlow() {
 
     // Prompt 2: signing confirmation.
     status.value = 'Requesting Nimiq signing confirmation...'
-    const signatureResult = await window.nimiq.sign('Nimiq Pay dual-chain tutorial')
+    const signatureResult = await nimiq.sign('Nimiq Pay dual-chain tutorial')
     const signatureError = getProviderErrorMessage(signatureResult)
     if (signatureError)
       throw new Error(signatureError)
@@ -193,12 +185,16 @@ async function runNimiqFlow() {
 }
 
 async function runEthereumFlow() {
+  resetFeedback()
+  ethAccounts.value = null
+  ethSignature.value = null
+
   if (!window.ethereum) {
     errorMessage.value = 'Ethereum provider not found. Open this app inside Nimiq Pay.'
+    status.value = 'Ethereum flow failed.'
     return
   }
 
-  resetMessages()
   loading.value = true
 
   try {
@@ -240,13 +236,17 @@ async function runEthereumFlow() {
     <h1>Dual-Chain Mini App</h1>
 
     <div class="actions">
-      <button :disabled="loading" @click="runNimiqFlow">
+      <button :disabled="loading || isNimiqConnecting" @click="runNimiqFlow">
         Run Nimiq flow
       </button>
       <button :disabled="loading" @click="runEthereumFlow">
         Run Ethereum flow
       </button>
     </div>
+
+    <p v-if="isNimiqConnecting">
+      Waiting for the Nimiq provider to initialize...
+    </p>
 
     <p v-if="status">
       <strong>Status:</strong> {{ status }}

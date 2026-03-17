@@ -10,7 +10,7 @@
 > - On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
 > - On Android, share the email associated with your Google account. You will receive an email when access is enabled.
 
-In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
+In this tutorial, you'll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
 
 | Method | Description |
 | --- | --- |
@@ -44,42 +44,12 @@ npm install
 
 :::
 
-## 2. Set up Nimiq provider types (only required for Vue + Vite)
+## 2. Install the Nimiq Mini App SDK
 
-If you're following the **Vue + Vite** path, this step is required because the Vue + TypeScript example imports `@trustwallet/web3-provider-nimiq`.
-
-If you're following **React + JSX** or **Svelte**, skip this step.
-
-1. Clone the provider repository on the `nimiq` branch.
+Install the Nimiq Mini App SDK. For package details, see [`@nimiq/mini-app-sdk`](https://www.npmjs.com/package/@nimiq/mini-app-sdk).
 
 ```bash
-cd ..
-git clone --branch nimiq https://github.com/nimiq/trust-web3-provider.git
-```
-
-1. Build the provider packages with Bun.
-
-```bash
-cd trust-web3-provider
-bun install
-bun run build:packages
-cd ../my-mini-app
-```
-
-1. Add the local linked package in `package.json`.
-
-```json
-{
-  "dependencies": {
-    "@trustwallet/web3-provider-nimiq": "../trust-web3-provider/packages/nimiq"
-  }
-}
-```
-
-1. Reinstall dependencies in your mini app.
-
-```bash
-npm install
+npm install @nimiq/mini-app-sdk
 ```
 
 ## 3. Configure the dev server
@@ -137,16 +107,12 @@ Replace the main app component with the variant for your framework:
 
 ```vue [Vue + Vite (src/App.vue)]
 <script setup lang="ts">
-import type { NimiqProvider } from '@trustwallet/web3-provider-nimiq'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { init } from '@nimiq/mini-app-sdk'
+import { onMounted, ref } from 'vue'
 
-declare global {
-  interface Window {
-    nimiq?: NimiqProvider
-  }
-}
-
-const isAvailable = ref(false)
+let nimiqPromise: ReturnType<typeof init> | null = null
+const isConnecting = ref(true)
+const isReady = ref(false)
 const accounts = ref<string[] | null>(null)
 const consensus = ref<boolean | null>(null)
 const blockNumber = ref<number | null>(null)
@@ -163,34 +129,32 @@ function getProviderErrorMessage(value: unknown): string | null {
   return 'Provider request failed.'
 }
 
-let checkInterval: number | undefined
-
-onMounted(() => {
-  isAvailable.value = !!window.nimiq
-  checkInterval = window.setInterval(() => {
-    if (window.nimiq) {
-      isAvailable.value = true
-      clearInterval(checkInterval)
-    }
-  }, 500)
-})
-
-onUnmounted(() => {
-  if (checkInterval)
-    clearInterval(checkInterval)
+onMounted(async () => {
+  try {
+    nimiqPromise = init({ timeout: 10_000 })
+    await nimiqPromise
+    isReady.value = true
+  }
+  catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : String(error)
+  }
+  finally {
+    isConnecting.value = false
+  }
 })
 
 async function runThreeRequests() {
-  if (!window.nimiq)
+  if (!nimiqPromise)
     return
 
   errorMessage.value = null
 
   try {
+    const nimiq = await nimiqPromise
     const [accountsResult, consensusResult, blockResult] = await Promise.all([
-      window.nimiq.listAccounts(),
-      window.nimiq.isConsensusEstablished(),
-      window.nimiq.getBlockNumber(),
+      nimiq.listAccounts(),
+      nimiq.isConsensusEstablished(),
+      nimiq.getBlockNumber(),
     ])
 
     const accountsError = getProviderErrorMessage(accountsResult)
@@ -211,11 +175,15 @@ async function runThreeRequests() {
   <div style="padding: 24px; font-family: system-ui;">
     <h1>Nimiq Mini App</h1>
 
-    <p v-if="!isAvailable">
-      Open this inside Nimiq Pay to access <code>window.nimiq</code>.
+    <p v-if="isConnecting">
+      Waiting for Nimiq Pay to initialize the provider...
     </p>
 
-    <button :disabled="!isAvailable" @click="runThreeRequests">
+    <p v-else-if="!isReady">
+      Open this mini app inside Nimiq Pay to connect to the Nimiq provider.
+    </p>
+
+    <button :disabled="isConnecting || !isReady" @click="runThreeRequests">
       Run 3 requests
     </button>
 
@@ -231,38 +199,73 @@ async function runThreeRequests() {
 ```
 
 ```jsx [React + JSX (src/App.jsx)]
-import { useEffect, useState } from 'react'
+import { init } from '@nimiq/mini-app-sdk'
+import { useEffect, useRef, useState } from 'react'
+
+function getProviderErrorMessage(value) {
+  if (typeof value !== 'object' || value === null || !('error' in value))
+    return null
+
+  const maybeError = value.error
+  if (maybeError && typeof maybeError.message === 'string')
+    return maybeError.message
+
+  return 'Provider request failed.'
+}
 
 function App() {
-  const [isAvailable, setIsAvailable] = useState(Boolean(window.nimiq))
+  const nimiqPromiseRef = useRef(null)
+  const [isConnecting, setIsConnecting] = useState(true)
+  const [isReady, setIsReady] = useState(false)
   const [accounts, setAccounts] = useState(null)
   const [consensus, setConsensus] = useState(null)
   const [blockNumber, setBlockNumber] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
-    const checkInterval = window.setInterval(() => {
-      if (window.nimiq) {
-        setIsAvailable(true)
-        window.clearInterval(checkInterval)
-      }
-    }, 500)
+    let ignore = false
 
-    return () => window.clearInterval(checkInterval)
+    async function connect() {
+      try {
+        nimiqPromiseRef.current = init({ timeout: 10000 })
+        await nimiqPromiseRef.current
+        if (!ignore)
+          setIsReady(true)
+      }
+      catch (error) {
+        if (!ignore)
+          setErrorMessage(error instanceof Error ? error.message : String(error))
+      }
+      finally {
+        if (!ignore)
+          setIsConnecting(false)
+      }
+    }
+
+    connect()
+
+    return () => {
+      ignore = true
+    }
   }, [])
 
   async function runThreeRequests() {
-    if (!window.nimiq)
+    if (!nimiqPromiseRef.current)
       return
 
     setErrorMessage(null)
 
     try {
+      const nimiq = await nimiqPromiseRef.current
       const [accountsResult, consensusResult, blockResult] = await Promise.all([
-        window.nimiq.listAccounts(),
-        window.nimiq.isConsensusEstablished(),
-        window.nimiq.getBlockNumber(),
+        nimiq.listAccounts(),
+        nimiq.isConsensusEstablished(),
+        nimiq.getBlockNumber(),
       ])
+
+      const accountsError = getProviderErrorMessage(accountsResult)
+      if (accountsError)
+        throw new Error(accountsError)
 
       setAccounts(accountsResult)
       setConsensus(consensusResult)
@@ -277,16 +280,15 @@ function App() {
     <div style={{ padding: 24, fontFamily: 'system-ui' }}>
       <h1>Nimiq Mini App</h1>
 
-      {!isAvailable && (
-        <p>
-          Open this inside Nimiq Pay to access
-          {' '}
-          <code>window.nimiq</code>
-          .
-        </p>
+      {isConnecting && (
+        <p>Waiting for Nimiq Pay to initialize the provider...</p>
       )}
 
-      <button disabled={!isAvailable} onClick={runThreeRequests}>
+      {!isConnecting && !isReady && (
+        <p>Open this mini app inside Nimiq Pay to connect to the Nimiq provider.</p>
+      )}
+
+      <button disabled={isConnecting || !isReady} onClick={runThreeRequests}>
         Run 3 requests
       </button>
 
@@ -320,38 +322,71 @@ export default App
 ```svelte [Svelte (src/App.svelte)]
 <script>
   import { onMount } from 'svelte'
+  import { init } from '@nimiq/mini-app-sdk'
 
-  let isAvailable = false
+  let nimiqPromise = null
+  let isConnecting = true
+  let isReady = false
   let accounts = null
   let consensus = null
   let blockNumber = null
   let errorMessage = null
 
+  function getProviderErrorMessage(value) {
+    if (typeof value !== 'object' || value === null || !('error' in value))
+      return null
+
+    const maybeError = value.error
+    if (maybeError && typeof maybeError.message === 'string')
+      return maybeError.message
+
+    return 'Provider request failed.'
+  }
+
   onMount(() => {
-    isAvailable = !!window.nimiq
+    let active = true
 
-    const checkInterval = window.setInterval(() => {
-      if (window.nimiq) {
-        isAvailable = true
-        window.clearInterval(checkInterval)
+    async function connect() {
+      try {
+        nimiqPromise = init({ timeout: 10000 })
+        await nimiqPromise
+        if (active)
+          isReady = true
       }
-    }, 500)
+      catch (error) {
+        if (active)
+          errorMessage = error instanceof Error ? error.message : String(error)
+      }
+      finally {
+        if (active)
+          isConnecting = false
+      }
+    }
 
-    return () => window.clearInterval(checkInterval)
+    connect()
+
+    return () => {
+      active = false
+    }
   })
 
   async function runThreeRequests() {
-    if (!window.nimiq)
+    if (!nimiqPromise)
       return
 
     errorMessage = null
 
     try {
+      const nimiq = await nimiqPromise
       const [accountsResult, consensusResult, blockResult] = await Promise.all([
-        window.nimiq.listAccounts(),
-        window.nimiq.isConsensusEstablished(),
-        window.nimiq.getBlockNumber(),
+        nimiq.listAccounts(),
+        nimiq.isConsensusEstablished(),
+        nimiq.getBlockNumber(),
       ])
+
+      const accountsError = getProviderErrorMessage(accountsResult)
+      if (accountsError)
+        throw new Error(accountsError)
 
       accounts = accountsResult
       consensus = consensusResult
@@ -366,13 +401,15 @@ export default App
 <div style="padding: 24px; font-family: system-ui;">
   <h1>Nimiq Mini App</h1>
 
-  {#if !isAvailable}
+  {#if isConnecting}
+    <p>Waiting for Nimiq Pay to initialize the provider...</p>
+  {:else if !isReady}
     <p>
-      Open this inside Nimiq Pay to access <code>window.nimiq</code>.
+      Open this mini app inside Nimiq Pay to connect to the Nimiq provider.
     </p>
   {/if}
 
-  <button disabled={!isAvailable} on:click={runThreeRequests}>
+  <button disabled={isConnecting || !isReady} on:click={runThreeRequests}>
     Run 3 requests
   </button>
 
@@ -412,12 +449,12 @@ http://192.168.1.42:5173
 
 ## 6. Test inside Nimiq Pay
 
-1. Make sure your phone and dev machine are on the same Wi‑Fi network.
+1. Make sure your phone and dev machine are on the same Wi-Fi network.
 2. Open **Nimiq Pay**.
 3. Go to **Mini Apps**.
 4. Enter your network URL: `http://<your-ip>:5173`
 
-Open your mini app and tap **Run 3 requests**.
+Open your mini app and wait for the provider to initialize. Once the button becomes enabled, tap **Run 3 requests**.
 
 You should see:
 
@@ -427,11 +464,8 @@ You should see:
 
 If you see an error message, confirm:
 
-- You are opening the app inside Nimiq Pay (not a regular browser).
-- `window.nimiq` exists in the console.
+- You are opening the app inside Nimiq Pay and not a regular browser.
 - Your dev server is reachable from the device.
-
-From here, you can start adding your own UI, additional Nimiq calls, or mix in `window.ethereum` to build dual-chain mini apps.
 
 For the full list of available methods and events, see the [Nimiq Provider API](/mini-apps/api-reference/nimiq-provider) and [Ethereum Provider API](/mini-apps/api-reference/ethereum-provider).
 
