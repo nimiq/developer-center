@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  docus@5.7.0:
+    hash: 8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd
+    path: patches/docus@5.7.0.patch
+
 importers:
 
   .:
@@ -95,7 +100,7 @@ importers:
         version: 3.4.2
       docus:
         specifier: https://pkg.pr.new/docus@1304
-        version: https://pkg.pr.new/docus@1304(b79fef1be70f1ab244195d66774a0d68)
+        version: https://pkg.pr.new/docus@1304(patch_hash=8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd)(b79fef1be70f1ab244195d66774a0d68)
       eslint:
         specifier: ^9.38.0
         version: 9.38.0(jiti@2.6.1)
@@ -13599,7 +13604,7 @@ snapshots:
 
   diff@8.0.3: {}
 
-  docus@https://pkg.pr.new/docus@1304(b79fef1be70f1ab244195d66774a0d68):
+  docus@https://pkg.pr.new/docus@1304(patch_hash=8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd)(b79fef1be70f1ab244195d66774a0d68):
     dependencies:
       '@ai-sdk/gateway': 3.0.66(zod@4.3.6)
       '@ai-sdk/mcp': 1.0.25(zod@4.3.6)

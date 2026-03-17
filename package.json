@@ -92,7 +92,10 @@
       "workerd",
       "@parcel/watcher",
       "better-sqlite3"
-    ]
+    ],
+    "patchedDependencies": {
+      "docus@5.7.0": "patches/docus@5.7.0.patch"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

@@ -1,0 +1,135 @@
+diff --git a/modules/assistant/runtime/server/api/search.ts b/modules/assistant/runtime/server/api/search.ts
+index 279508057d9fee9d7cc3a7f09cd8be5687e1c3e0..3a836d65bf7bc8e2dc41273463bdf9e7376d80f5 100644
+--- a/modules/assistant/runtime/server/api/search.ts
++++ b/modules/assistant/runtime/server/api/search.ts
+@@ -1,19 +1,93 @@
+-import { streamText, convertToModelMessages, createUIMessageStream, createUIMessageStreamResponse } from 'ai'
+-import type { UIMessageStreamWriter, ToolCallPart, ToolSet } from 'ai'
++import type { ToolCallPart, ToolSet, UIMessageStreamWriter } from 'ai'
+ import { createMCPClient } from '@ai-sdk/mcp'
++import { convertToModelMessages, createUIMessageStream, createUIMessageStreamResponse, streamText } from 'ai'
++import type { H3Event } from 'h3'
++
++interface McpTransport {
++  start(): Promise<void>
++  close(): Promise<void>
++  send(message: Record<string, unknown>): Promise<void>
++  onmessage?: ((message: Record<string, unknown>) => void) | undefined
++  onerror?: ((error: Error) => void) | undefined
++  onclose?: (() => void) | undefined
++}
+ 
+ const MAX_STEPS = 10
+ 
++/**
++ * MCP transport that routes through Nitro's internal localFetch (event.fetch)
++ * instead of globalThis.$fetch (event.$fetch) which uses the global fetch()
++ * and triggers CF Workers self-fetch error 1042.
++ */
++function createInternalMcpTransport(event: H3Event, mcpPath: string): McpTransport {
++  let _onmessage: ((message: Record<string, unknown>) => void) | undefined
++  let _onerror: ((error: Error) => void) | undefined
++  let _onclose: (() => void) | undefined
++
++  return {
++    async start() {},
++    async close() { _onclose?.() },
++    get onmessage() { return _onmessage },
++    set onmessage(fn) { _onmessage = fn },
++    get onerror() { return _onerror },
++    set onerror(fn) { _onerror = fn },
++    get onclose() { return _onclose },
++    set onclose(fn) { _onclose = fn },
++    async send(message: Record<string, unknown>) {
++      try {
++        const response = await event.fetch(mcpPath, {
++          method: 'POST',
++          body: JSON.stringify(message),
++          headers: {
++            'Content-Type': 'application/json',
++            'Accept': 'application/json, text/event-stream',
++          },
++        })
++
++        const contentType = response.headers.get('content-type') || ''
++
++        if (contentType.includes('text/event-stream') && response.body) {
++          const reader = response.body.pipeThrough(new TextDecoderStream()).getReader()
++          let buffer = ''
++          while (true) {
++            const { done, value } = await reader.read()
++            if (done) break
++            buffer += value
++            const lines = buffer.split('\n')
++            buffer = lines.pop() || ''
++            for (const line of lines) {
++              if (line.startsWith('data: '))
++                _onmessage?.(JSON.parse(line.slice(6)))
++            }
++          }
++          if (buffer.startsWith('data: '))
++            _onmessage?.(JSON.parse(buffer.slice(6)))
++        }
++        else {
++          const body = await response.json()
++          const messages = Array.isArray(body) ? body : [body]
++          for (const m of messages) _onmessage?.(m as Record<string, unknown>)
++        }
++      }
++      catch (error) {
++        _onerror?.(error as Error)
++      }
++    },
++  }
++}
++
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ function stopWhenResponseComplete({ steps }: { steps: any[] }): boolean {
+   const lastStep = steps.at(-1)
+-  if (!lastStep) return false
++  if (!lastStep)
++    return false
+ 
+   // Primary condition: stop when model gives a text response without tool calls
+   const hasText = Boolean(lastStep.text && lastStep.text.trim().length > 0)
+   const hasNoToolCalls = !lastStep.toolCalls || lastStep.toolCalls.length === 0
+ 
+-  if (hasText && hasNoToolCalls) return true
++  if (hasText && hasNoToolCalls)
++    return true
+ 
+   return steps.length >= MAX_STEPS
+ }
+@@ -60,16 +134,14 @@ export default defineEventHandler(async (event) => {
+ 
+   const mcpServer = config.assistant.mcpServer
+   const isExternalUrl = mcpServer.startsWith('http://') || mcpServer.startsWith('https://')
+-  const baseURL = config.app?.baseURL?.replace(/\/$/, '') || ''
+-  const mcpUrl = isExternalUrl
+-    ? mcpServer
++
++  const transport = isExternalUrl
++    ? { type: 'http' as const, url: mcpServer }
+     : import.meta.dev
+-      ? `http://localhost:3000${baseURL}${mcpServer}`
+-      : `${getRequestURL(event).origin}${baseURL}${mcpServer}`
++      ? { type: 'http' as const, url: `http://localhost:3000${mcpServer}` }
++      : createInternalMcpTransport(event, mcpServer)
+ 
+-  const httpClient = await createMCPClient({
+-    transport: { type: 'http', url: mcpUrl },
+-  })
++  const httpClient = await createMCPClient({ transport })
+   const mcpTools = await httpClient.tools()
+ 
+   const stream = createUIMessageStream({
+@@ -84,7 +156,8 @@ export default defineEventHandler(async (event) => {
+         messages: modelMessages,
+         tools: mcpTools as ToolSet,
+         onStepFinish: ({ toolCalls }: { toolCalls: ToolCallPart[] }) => {
+-          if (toolCalls.length === 0) return
++          if (toolCalls.length === 0)
++            return
+           writer.write({
+             id: toolCalls[0]?.toolCallId,
+             type: 'data-tool-calls',
