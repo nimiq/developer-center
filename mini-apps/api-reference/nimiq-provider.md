@@ -10,21 +10,11 @@ This provider exposes Nimiq blockchain operations and is injected into the mini 
 
 Use the Mini App SDK `init()` helper to wait until Nimiq Pay injects the provider.
 
-::: code-group
-
-```ts [TypeScript]
+```ts
 import { init } from '@nimiq/mini-app-sdk'
 
 const nimiq = await init()
 ```
-
-```javascript [JavaScript]
-import { init } from '@nimiq/mini-app-sdk'
-
-const nimiq = await init()
-```
-
-:::
 
 ## Methods
 
@@ -223,14 +213,15 @@ const txHash = await nimiq.sendNewStakerTransaction({
 })
 ```
 
-### `sendAddStakeTransaction`
+### `sendStakeTransaction`
 
 Adds stake to an existing staker.
 
 **Parameters**
 
 - `value` (number, required): amount in Luna.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -248,9 +239,12 @@ Adds stake to an existing staker.
 **Example**
 
 ```ts
-const txHash = await nimiq.sendAddStakeTransaction({
+const txHash = await nimiq.sendStakeTransaction({
   value: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
