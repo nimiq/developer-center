@@ -4,7 +4,7 @@
 
 # API Reference
 
-This API is injected by the host app into the mini app environment. The providers are available on the `window` object. This section is reference-only.
+This API is injected by the host app into the mini app environment. For Nimiq access, the recommended pattern is to use the Mini App SDK `init()` helper. This section is reference-only.
 
 ## Contents
 
@@ -17,14 +17,15 @@ To load and build a mini app, see [Load a Local Mini App in Nimiq Pay](https://n
 
 ### Nimiq Provider
 
-```javascript
-const nimiq = window.nimiq
+```typescript
+import { init } from '@nimiq/mini-app-sdk'
+
+const nimiq = await init()
 
 const accounts = await nimiq.listAccounts()
-const address = accounts[0]
-
 const signed = await nimiq.sign('hello')
-console.log({ address, signed })
+
+console.log({ accounts, signed })
 ```
 
 ### Ethereum dApp (EIP-1193)

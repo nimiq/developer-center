@@ -2,14 +2,18 @@
 <!-- type: api reference -->
 <!-- summary: Reference for the Nimiq provider injected into mini apps -->
 
-# Nimiq Provider API (window.nimiq)
+# Nimiq Provider API
 
 This provider exposes Nimiq blockchain operations and is injected into the mini app environment.
 
 ## Access
 
-```javascript
-const nimiq = window.nimiq
+Use the Mini App SDK `init()` helper to wait until Nimiq Pay injects the provider.
+
+```ts
+import { init } from '@nimiq/mini-app-sdk'
+
+const nimiq = await init()
 ```
 
 ## Methods
@@ -36,7 +40,7 @@ Returns the user's Nimiq account addresses.
 
 **Example**
 
-```javascript
+```ts
 const accounts = await nimiq.listAccounts()
 ```
 
@@ -62,7 +66,7 @@ Signs a message with the user's Nimiq key.
 
 **Example**
 
-```javascript
+```ts
 const signed = await nimiq.sign('hello')
 ```
 
@@ -84,7 +88,7 @@ Checks whether the Nimiq network consensus is established.
 
 **Example**
 
-```javascript
+```ts
 const ready = await nimiq.isConsensusEstablished()
 ```
 
@@ -106,7 +110,7 @@ Returns the current Nimiq block height.
 
 **Example**
 
-```javascript
+```ts
 const height = await nimiq.getBlockNumber()
 ```
 
@@ -119,6 +123,7 @@ Sends a basic NIM payment.
 - `recipient` (string, required): Nimiq user-friendly address.
 - `value` (number, required): amount in Luna (1 NIM = 100,000 Luna).
 - `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -135,10 +140,14 @@ Sends a basic NIM payment.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendBasicTransaction({
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
+  fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -151,7 +160,8 @@ Sends a NIM payment with an attached text message.
 - `recipient` (string, required): Nimiq user-friendly address.
 - `value` (number, required): amount in Luna (1 NIM = 100,000 Luna).
 - `fee` (number, optional): transaction fee in Luna.
-- `data` (string, optional): text message to attach.
+- `data` (string, required): text message to attach.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -168,11 +178,15 @@ Sends a NIM payment with an attached text message.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendBasicTransactionWithData({
   recipient: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
   data: 'mic check',
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
+  fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -184,7 +198,8 @@ Creates a new staking transaction.
 
 - `delegation` (string, required): validator address or delegation target.
 - `value` (number, required): amount in Luna.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -201,22 +216,26 @@ Creates a new staking transaction.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendNewStakerTransaction({
   delegation: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   value: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
-### `sendAddStakeTransaction`
+### `sendStakeTransaction`
 
 Adds stake to an existing staker.
 
 **Parameters**
 
 - `value` (number, required): amount in Luna.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -233,10 +252,13 @@ Adds stake to an existing staker.
 
 **Example**
 
-```javascript
-const txHash = await nimiq.sendAddStakeTransaction({
+```ts
+const txHash = await nimiq.sendStakeTransaction({
   value: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -247,7 +269,8 @@ Sets the active stake amount.
 **Parameters**
 
 - `newActiveBalance` (number, required): active stake amount in Luna.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -264,10 +287,13 @@ Sets the active stake amount.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendSetActiveStakeTransaction({
   newActiveBalance: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -278,8 +304,9 @@ Updates staker settings.
 **Parameters**
 
 - `newDelegation` (string, required): new validator address or delegation target.
-- `reactivateAllStake` (boolean, required): whether to reactivate all stake.
-- `fee` (number, required): transaction fee in Luna.
+- `reactivateAllStake` (boolean, optional): whether to reactivate all stake.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -296,11 +323,14 @@ Updates staker settings.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendUpdateStakerTransaction({
   newDelegation: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000',
   reactivateAllStake: true,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -311,7 +341,8 @@ Retires stake from a staker.
 **Parameters**
 
 - `retireStake` (number, required): amount in Luna to retire.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -328,10 +359,13 @@ Retires stake from a staker.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendRetireStakeTransaction({
   retireStake: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
 
@@ -342,7 +376,8 @@ Removes stake from a staker.
 **Parameters**
 
 - `value` (number, required): amount in Luna.
-- `fee` (number, required): transaction fee in Luna.
+- `fee` (number, optional): transaction fee in Luna.
+- `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
 
@@ -359,9 +394,12 @@ Removes stake from a staker.
 
 **Example**
 
-```javascript
+```ts
 const txHash = await nimiq.sendRemoveStakeTransaction({
   value: 100000,
+  // Optional. Nimiq Pay chooses a fee automatically, using 0 if possible.
   fee: 1000,
+  // Optional.
+  validityStartHeight: 123456,
 })
 ```
