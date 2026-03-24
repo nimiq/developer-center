@@ -4,6 +4,7 @@ node_modules
 .vitepress/.temp
 dist
 .nitro
+.nuxt/
 
 # Ignore dynamically built web-client docs
 web-client/reference
