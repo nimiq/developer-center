@@ -2,7 +2,7 @@
 icon: i-tabler:user
 navigation:
   title: Accounts
-  order: 3
+  order: 2
 ---
 
 # Accounts

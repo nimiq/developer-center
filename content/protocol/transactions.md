@@ -2,7 +2,7 @@
 icon: i-tabler:receipt
 navigation:
   title: Transactions
-  order: 4
+  order: 3
 ---
 
 # Transactions

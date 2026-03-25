@@ -43,8 +43,29 @@ type SidebarNavigationItem = ContentNavigationItem & {
   icon?: string
 }
 
+const protocolNavigationOrder = [
+  '',
+  'accounts',
+  'transactions',
+  'consensus',
+  'validators',
+  'economics',
+  'node-sync',
+  'storage',
+  'zkp',
+  'glossary',
+] as const
+
+const protocolNavigationRank = new Map(
+  protocolNavigationOrder.map((segment, index) => [segment, index]),
+)
+
 const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
   if (!isRpcMethodsPage.value) {
+    if (currentModule.value === 'protocol') {
+      return sortProtocolNavigation(filteredNavigation.value)
+    }
+
     return filteredNavigation.value
   }
 
@@ -81,6 +102,35 @@ const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
 
 function normalizePath(path: string) {
   return path.replace(/\/+$/, '') || '/'
+}
+
+function sortProtocolNavigation(items: SidebarNavigationItem[]) {
+  return [...items].sort((a, b) => {
+    const rankA = getProtocolNavigationRank(a)
+    const rankB = getProtocolNavigationRank(b)
+
+    if (rankA !== rankB) {
+      return rankA - rankB
+    }
+
+    return (a.title || '').localeCompare(b.title || '')
+  })
+}
+
+function getProtocolNavigationRank(item: SidebarNavigationItem) {
+  const segment = getProtocolSegment(item)
+  return protocolNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
+}
+
+function getProtocolSegment(item: SidebarNavigationItem) {
+  const candidatePath = item.path || item.children?.[0]?.path || ''
+  const segments = normalizePath(candidatePath).split('/').filter(Boolean)
+
+  if (segments[0] !== 'protocol') {
+    return ''
+  }
+
+  return segments[1] || ''
 }
 </script>
 

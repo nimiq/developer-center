@@ -2,7 +2,7 @@
 icon: i-tabler:book-2
 navigation:
   title: Glossary
-  order: 2
+  order: 10
 ---
 
 # Glossary Nimiq PoS
