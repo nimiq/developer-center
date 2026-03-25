@@ -1,13 +1,10 @@
 ---
+description: Reference for the Nimiq provider injected into mini apps
 icon: i-tabler:currency-bitcoin
 navigation:
   title: Nimiq Provider API
   order: 2
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider -->
-<!-- type: api reference -->
-<!-- summary: Reference for the Nimiq provider injected into mini apps -->
 
 # Nimiq Provider API
 

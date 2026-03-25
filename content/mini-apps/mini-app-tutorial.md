@@ -1,13 +1,10 @@
 ---
+description: Guide to setting up a Nimiq Pay minimal mini app dev
 icon: i-tabler:rocket
 navigation:
   title: Build Your First Mini App
   order: 2
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/mini-app-tutorial -->
-<!-- type: setup guide -->
-<!-- summary: Guide to setting up a Nimiq Pay minimal mini app dev -->
 
 # Build Your First Nimiq Mini App
 
@@ -20,7 +17,7 @@ Mini app testing is currently limited to allowlisted users.
 - On Android, share the email associated with your Google account. You will receive an email when access is enabled.
 ::
 
-In this tutorial, you'll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
+In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
 
 | Method | Description |
 | --- | --- |

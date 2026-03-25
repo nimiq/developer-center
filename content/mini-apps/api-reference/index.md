@@ -1,13 +1,10 @@
 ---
+description: Reference documentation for Nimiq Pay mini app providers and APIs
 icon: i-tabler:api
 navigation:
   title: API Reference
   order: 1
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/api-reference -->
-<!-- type: api reference -->
-<!-- summary: Reference documentation for Nimiq Pay mini app providers and APIs -->
 
 # API Reference
 

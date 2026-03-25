@@ -1,13 +1,10 @@
 ---
+description: High-level overview of Nimiq Pay mini apps, capabilities, and architecture
 icon: i-tabler:layout-grid
 navigation:
   title: Overview
   order: 1
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/overview -->
-<!-- type: overview -->
-<!-- summary: High-level overview of Nimiq Pay mini apps, capabilities, and architecture -->
 
 # Mini Apps
 

@@ -1,13 +1,10 @@
 ---
+description: Reference for the EIP-1193 Ethereum provider injected into mini apps, including EIP-6963 compatibility
 icon: i-tabler:brand-ethereum
 navigation:
   title: Ethereum Provider API
   order: 3
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider -->
-<!-- type: api reference -->
-<!-- summary: Reference for the EIP-1193 Ethereum provider injected into mini apps, including EIP-6963 compatibility -->
 
 # Ethereum Provider API
 

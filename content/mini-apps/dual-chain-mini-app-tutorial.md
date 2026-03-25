@@ -1,13 +1,10 @@
 ---
+description: Build a mini app that uses both Nimiq and Ethereum providers with user confirmation flows
 icon: i-tabler:arrows-split-2
 navigation:
   title: Build a Dual-Chain Mini App
   order: 3
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial -->
-<!-- type: setup guide -->
-<!-- summary: Build a mini app that uses both Nimiq and Ethereum providers with user confirmation flows -->
 
 # Build a Dual-Chain Mini App with Nimiq Pay
 
