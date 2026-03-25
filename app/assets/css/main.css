@@ -7,6 +7,8 @@
 :root, :host {
   --docs-header-bottom-height: 2.75rem;
   --docs-header-offset: calc(var(--ui-header-height) + var(--docs-header-bottom-height));
+  --font-sans: 'Mulish', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
 
   /* Primary: Nimiq Blue */
   --ui-color-primary-50: oklch(0.955 0.017 236.69);
@@ -109,7 +111,7 @@
 
   /* Nimiq design tokens */
   --ui-radius: 0.5rem;
-  --ui-container: 78rem;
+  --ui-container: 90rem;
 }
 
 :root, :host, .light {
@@ -130,12 +132,27 @@
   --ui-error: var(--ui-color-error-400);
 }
 
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+}
+
 /* ── Tailwind v4 theme tokens ── */
 @theme {
-  /* Typography */
-  --font-sans: 'Mulish', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
-
   /* Darkblue: Nimiq Darkblue (#1F2348) */
   --color-darkblue-50: oklch(0.970 0.006 280);
   --color-darkblue-100: oklch(0.940 0.012 280);
