@@ -8,8 +8,7 @@ navigation:
 
 # Build Your First Nimiq Mini App
 
-::callout{icon="i-tabler-info-circle" color="info"}
-**Temporary Testing Access**
+::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
 
 Mini app testing is currently limited to allowlisted users.
 
@@ -473,6 +472,7 @@ If you see an error message, confirm:
 
 - You are opening the app inside Nimiq Pay and not a regular browser.
 - Your dev server is reachable from the device.
+- If your app uses secure-context-only Web APIs, check whether they are available over the local network URL. For example, `crypto.randomUUID()` may not be available at `http://<your-ip>:5173`. Add feature detection and a fallback.
 
 For the full list of available methods and events, see the [Nimiq Provider API](/mini-apps/api-reference/nimiq-provider) and [Ethereum Provider API](/mini-apps/api-reference/ethereum-provider).
 

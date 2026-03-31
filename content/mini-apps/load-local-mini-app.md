@@ -13,8 +13,7 @@ navigation:
 
 Use this guide to load any locally running web app inside Nimiq Pay.
 
-::callout{icon="i-tabler-info-circle" color="info"}
-**Temporary Testing Access**
+::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
 
 Mini app testing is currently limited to allowlisted users.
 
@@ -29,6 +28,7 @@ Mini app testing is currently limited to allowlisted users.
 - Phone and development machine on the same Wi-Fi network
 
 ## Start your local app
+
 The commands below assume you're using a Node.js mini app.
 
 1. Go to your project directory.
@@ -60,6 +60,13 @@ http://192.168.1.42:5173
 1. Open **Nimiq Pay** on your phone.
 2. Go to **Mini Apps**.
 3. Enter your network URL in the Custom URL field: `http://<your-ip>:5173`.
+
+::callout{color="neutral" title="Secure-Context APIs"}
+
+`http://<your-ip>:5173` is not HTTPS, so secure-context-only Web APIs may be unavailable. For example, `crypto.randomUUID()` may work on `localhost` in a desktop browser but fail when the same app is opened from your phone inside a WebView.
+
+If your app uses one of these APIs, feature-detect it and add a fallback. For ID generation, use `crypto.getRandomValues()` or a UUID helper that falls back to it. If no fallback is practical, test over local HTTPS.
+::
 
 Your app should load inside Nimiq Pay. You can also test [this demo](https://github.com/Eligioo/nimiq-mini-app-demo) to see a working mini app.
 

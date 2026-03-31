@@ -8,8 +8,7 @@ navigation:
 
 # Build a Dual-Chain Mini App with Nimiq Pay
 
-::callout{icon="i-tabler-info-circle" color="info"}
-**Temporary Testing Access**
+::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
 
 Mini app testing is currently limited to allowlisted users.
 
@@ -371,6 +370,9 @@ You should see:
 
 **Cannot open local URL from phone**\
   Restart the dev server with `--host`, then use the terminal's Network URL.
+
+**Secure-context-only API missing**\
+  If your app uses APIs such as `crypto.randomUUID()`, they may be unavailable when the mini app is loaded from a local network URL like `http://<your-ip>:5173`. Add feature detection and a fallback, or use local HTTPS if the API is required.
 
 **Port 5173 is busy**\
   Vite chooses another port automatically (for example `5174` or `5175`). Always use the exact Network URL shown in the terminal.
