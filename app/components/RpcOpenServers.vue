@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useFetch } from '#imports'
-
 interface RpcServer {
   name: string
   endpoint: string
@@ -13,10 +11,13 @@ interface RpcServersData {
   testnet: RpcServer[]
 }
 
-const { data } = await useFetch<RpcServersData>('/api/rpc-servers', {
-  key: 'rpc-servers',
-  default: () => ({ mainnet: [], testnet: [] }),
-})
+const data = ref<RpcServersData>({ mainnet: [], testnet: [] })
+
+fetch('/api/rpc-servers')
+  .then(r => r.json())
+  .then((result: RpcServersData) => {
+    data.value = result
+  })
 
 const columns = [
   { accessorKey: 'name', header: 'Server' },

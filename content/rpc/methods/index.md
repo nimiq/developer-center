@@ -9,4 +9,5 @@ pageFooterLeftText: 'Page inspired by [DovAzenot](https://www.nimiqhub.com/docs/
 
 Explore all available JSON-RPC methods for interacting with the Nimiq blockchain. Each method provides full documentation, parameters, return types, and interactive examples.
 
-<RpcMethodsGrid />
+::rpc-methods-grid
+::

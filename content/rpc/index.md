@@ -129,6 +129,7 @@ description: Discover the full range of RPC methods available for interacting wi
 | **Validators** | `getValidators`, `getValidatorByAddress`, `getSlotAt` | Access validator and staking data |
 | **Network** | `getNetworkInfo`, `getEpochNumber` | Monitor network status and consensus |
 
-<UButton to="./methods/" label="View All RPC Methods" trailing-icon="i-tabler:arrow-up-right" color="primary" class="rounded-full" />
+::u-button{to="./methods/" label="View All RPC Methods" trailing-icon="i-tabler:arrow-up-right" color="primary" class="rounded-full"}
+::
 
 ::

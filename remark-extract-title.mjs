@@ -1,6 +1,6 @@
-// Remark plugin: extracts title from first h1 and description from first paragraph,
-// sets them as frontmatter, then removes both from the AST to avoid duplication with
-// Docus's UPageHeader.
+// Remark plugin: extracts title from first h1 and sets it as frontmatter,
+// then removes the h1 from the AST to avoid duplication with Docus's UPageHeader.
+// Description comes from frontmatter only — the first paragraph stays in the body.
 export default function remarkExtractTitle() {
   return (tree, file) => {
     const children = tree.children
@@ -25,19 +25,6 @@ export default function remarkExtractTitle() {
 
     // Remove h1
     children.splice(h1Idx, 1)
-
-    // Extract and remove first paragraph after h1 position (description)
-    const pIdx = children.findIndex((n, i) => i >= h1Idx && n.type === 'paragraph')
-    if (pIdx !== -1) {
-      const description = extractText(children[pIdx])
-      if (file.data && description) {
-        if (!file.data.description)
-          file.data.description = description
-        if (file.data.matter && !file.data.matter.description)
-          file.data.matter.description = description
-      }
-      children.splice(pIdx, 1)
-    }
   }
 }
 

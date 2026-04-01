@@ -182,6 +182,7 @@ export default defineNuxtConfig({
     },
     build: {
       markdown: {
+        contentHeading: false,
         highlight: {
           langs: ['bash', 'diff', 'json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'md', 'yaml'],
         },

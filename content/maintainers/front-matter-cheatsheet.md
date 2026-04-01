@@ -78,6 +78,14 @@ layout: docs
 ---
 ```
 
+## How `title` and `description` Work
+
+The page title displayed in the header comes from the **H1 heading** in the markdown file, not from the frontmatter `title` field. A remark plugin (`remark-extract-title.mjs`) extracts the H1 text and removes it from the body so it renders once via `UPageHeader`.
+
+- **`title` in frontmatter** — used for the sidebar label and SEO. Does not appear as the page heading.
+- **`# H1` in markdown** — used as the visible page title in the header.
+- **`description` in frontmatter** — shown as the gray subtitle under the page title. If omitted, no subtitle is shown.
+
 ## Add a New Typed Front Matter Field
 
 If you want a front matter field to be part of the project's typed content schema, add it in `content.config.ts`.

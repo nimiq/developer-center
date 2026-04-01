@@ -9,8 +9,11 @@ navigation:
 
 Docus publishes model-friendly text indexes for this site. They are generated from the live Developer Center content, so assistants can discover pages without scraping HTML.
 
-<UButton to="/llms.txt" label="Open llms.txt" icon="i-tabler:file-text" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 mr-3 rounded-full" />
-<UButton to="/llms-full.txt" label="Open llms-full.txt" icon="i-tabler:file-text" trailing-icon="i-tabler:arrow-up-right" color="neutral" variant="outline" class="mt-4 rounded-full" />
+::u-button{to="/llms.txt" label="Open llms.txt" icon="i-tabler:file-text" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 mr-3 rounded-full"}
+::
+
+::u-button{to="/llms-full.txt" label="Open llms-full.txt" icon="i-tabler:file-text" trailing-icon="i-tabler:arrow-up-right" color="neutral" variant="outline" class="mt-4 rounded-full"}
+::
 
 ## Available Files
 

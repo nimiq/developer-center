@@ -35,4 +35,5 @@ bun add nimiq-albatross-rpc-client
 
 For complete documentation, installation instructions, and all available methods, visit the official repository:
 
-<UButton to="https://github.com/onmax/albatross-rpc-client-ts" target="_blank" label="View TypeScript Client Repository" icon="i-simple-icons:github" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 rounded-full" />
+::u-button{to="https://github.com/onmax/albatross-rpc-client-ts" target="_blank" label="View TypeScript Client Repository" icon="i-simple-icons:github" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 rounded-full"}
+::

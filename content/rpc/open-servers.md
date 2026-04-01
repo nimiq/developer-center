@@ -13,7 +13,8 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
 
 > For current information about rate limits, uptime, supported methods, and service status, visit each server's status page.
 
-<RpcOpenServers />
+::rpc-open-servers
+::
 
 ::callout{icon="i-lucide-users" color="info"}
 **Share Your Node with the Community**

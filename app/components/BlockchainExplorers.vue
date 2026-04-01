@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useFetch } from '#imports'
-
 interface Explorer {
   name: string
   description: string
@@ -14,10 +12,13 @@ interface ExplorerData {
   testnet: Explorer[]
 }
 
-const { data } = await useFetch<ExplorerData>('/api/blockchain-explorers', {
-  key: 'blockchain-explorers',
-  default: () => ({ mainnet: [], testnet: [] }),
-})
+const data = ref<ExplorerData>({ mainnet: [], testnet: [] })
+
+fetch('/api/blockchain-explorers')
+  .then(r => r.json())
+  .then((result: ExplorerData) => {
+    data.value = result
+  })
 </script>
 
 <template>

@@ -15,4 +15,5 @@ Albatross Remote (ARPL) provides comprehensive Nimiq node management through an 
 
 For complete documentation, installation instructions, and all available methods, visit the official repository:
 
-<UButton to="https://github.com/sisou/arpl" target="_blank" label="View ARPL Repository" icon="i-simple-icons:github" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 rounded-full" />
+::u-button{to="https://github.com/sisou/arpl" target="_blank" label="View ARPL Repository" icon="i-simple-icons:github" trailing-icon="i-tabler:arrow-up-right" color="primary" class="mt-4 rounded-full"}
+::

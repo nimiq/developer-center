@@ -4,7 +4,7 @@ outline: deep
 description: Get free NIM for development and testing on Nimiq Testnet.
 navigation:
   title: Faucet
-  order: 5
+  order: 3
 ---
 
 # Faucet
@@ -17,7 +17,8 @@ Accessible via a web interface or a simple API, it ensures you have the resource
 
 Paste a **testnet** Nimiq address in the interface below to request funds.
 
-<FaucetPlayground />
+::faucet-playground
+::
 
 ## Network Details
 
@@ -43,7 +44,7 @@ The endpoint accepts a `application/x-www-form-urlencoded` body with the followi
 | Parameter | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `address` | `string` | **Yes** | The recipient's Nimiq address in User-Friendly format (e.g., `NQ...`). |
-| `amount` | `number` | No | The amount of NIM to request. Defaults to `10000`. <br>Max: `110000`. |
+| `amount` | `number` | No | The amount of NIM to request. Defaults to `10000`. <br>Max: `10000`. |
 
 ### Response
 
