@@ -4,7 +4,7 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 export default withNuxt(antfu({
   typescript: true,
   vue: true,
-  ignores: ['.nuxt/', '.output/', '.pnpm-patch-docus/', '.wrangler/', '*.woff2', 'content/web-client/reference/'],
+  ignores: ['.nuxt/', '.output/', '.pnpm-patch-docus/', '.wrangler/', '*.woff2', 'content/web-client/reference/', 'content/web-client/guides/'],
 }, {
   files: ['**/*.md'],
   rules: {
