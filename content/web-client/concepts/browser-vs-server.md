@@ -1,8 +1,9 @@
 ---
 icon: i-tabler:device-desktop
+description: How to use the Nimiq Web Client across different JavaScript runtimes — browsers, bundlers, Node.js, and edge environments.
 navigation:
-  title: Browser vs Server-Side
-  order: 3
+  title: Browser vs Server
+  order: 1
 ---
 
 # Using the Nimiq Web Client Across JavaScript Runtimes
@@ -80,7 +81,7 @@ const client = await Nimiq.Client.create(config)
 
 ## Server Environments
 
-### Node.js (v24+)
+### Node.js
 
 Node.js uses the synchronous build – no initialization needed:
 
@@ -100,6 +101,9 @@ The Node.js build reads the WebAssembly file directly from disk synchronously.
 ::callout{icon="i-tabler:help-circle" to="https://github.com/nimiq/developer-center/issues"}
 **Need help with a different environment?** — We're here to help you integrate Nimiq with any JavaScript runtime or deployment platform.
 ::
+
+<!-- TODO: Bun, Cloudflare Workers, Deno, and TypeScript integration sections below are
+     untested drafts (as of Oct 2025). Kept as a starting point if demand arises. -->
 
 <!-- ### Bun Runtime
 
