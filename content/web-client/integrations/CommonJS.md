@@ -1,15 +1,14 @@
 ---
 icon: i-tabler:package
+description: Use the Nimiq Web Client with CommonJS require() in Node.js environments.
 navigation:
   title: CommonJS
   order: 5
 ---
 
-# Install for CommonJS
+# Nimiq Web Client CommonJS Integration
 
-The Nimiq Web Client ships with support for CommonJS.
-
----
+Integrate Nimiq Web Client using CommonJS `require()` for Node.js environments.
 
 ## Installation
 
@@ -33,7 +32,7 @@ bun add @nimiq/core
 
 ::
 
-And now you are ready to go!
+## Usage Example
 
 ```javascript
 const Nimiq = require('@nimiq/core')
@@ -41,8 +40,11 @@ const Nimiq = require('@nimiq/core')
 async function main() {
   const config = new Nimiq.ClientConfiguration()
   const client = await Nimiq.Client.create(config.build())
+  await client.waitForConsensusEstablished()
 }
 main()
 ```
 
-<!--@include: ./_contribute.md-->
+## Next steps
+
+Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Nuxt](./nuxt), [Next.js](./NextJS), or [ESM](./ESM).

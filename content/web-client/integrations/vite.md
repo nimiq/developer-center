@@ -1,5 +1,6 @@
 ---
 icon: i-logos:vitejs
+description: Set up the Nimiq Web Client with Vite for fast blockchain development with minimal configuration.
 navigation:
   title: Vite
   order: 1
@@ -81,4 +82,15 @@ export default defineConfig({
 
 ## Usage Example
 
-<!--@include: ../_demo.web.md-->
+```js
+import { Client, ClientConfiguration } from '@nimiq/core'
+
+const config = new ClientConfiguration()
+const client = await Client.create(config.build())
+
+await client.waitForConsensusEstablished()
+```
+
+## Next steps
+
+Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Nuxt](./nuxt), [Next.js](./NextJS), [ESM](./ESM), or [CommonJS](./CommonJS).

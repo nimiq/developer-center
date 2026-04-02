@@ -135,8 +135,7 @@ curl -X POST https://faucet.pos.nimiq-testnet.com/tapit \
 
 ::
 
-<details>
-<summary>Faucet Status</summary>
+### Faucet Status
 
 You can query the faucet's current status, including its balance and configuration limits.
 
@@ -208,5 +207,3 @@ curl -s https://faucet.pos.nimiq-testnet.com/info
   "availableInRegion": true
 }
 ```
-
-</details>

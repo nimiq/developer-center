@@ -1,5 +1,6 @@
 ---
 icon: i-logos:nextjs-icon
+description: Set up the Nimiq Web Client with Next.js for production-ready React blockchain applications.
 pageFooterLeftText: 'Page inspired by [DovAzencot](https://github.com/DovAzencot/nimiq-nextjs/)'
 navigation:
   title: Next.js
@@ -19,8 +20,7 @@ npx degit onmax/nimiq-starter/starters/next-js my-nimiq-app
 cd my-nimiq-app && pnpm install && pnpm dev
 ```
 
-::callout{icon="i-tabler-info-circle" color="info"}
-**Community Contribution**
+::callout{icon="i-tabler-info-circle" color="info" title="Community Contribution"}
 
 The Next.js starter is based on the original implementation by [DovAzencot](https://github.com/DovAzencot/nimiq-nextjs/).
 ::
@@ -133,7 +133,7 @@ export function useNimiq() {
 
         if (mounted) {
           setClient(nimiqClient)
-          setBlockHeight(await nimiqClient.getBlockNumber())
+          setBlockHeight(await nimiqClient.getHeadHeight())
         }
       }
       catch (err) {
@@ -190,3 +190,7 @@ export default function Wallet() {
 ```
 
 ::
+
+## Next steps
+
+Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Nuxt](./nuxt), [ESM](./ESM), or [CommonJS](./CommonJS).

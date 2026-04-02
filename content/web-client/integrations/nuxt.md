@@ -1,5 +1,6 @@
 ---
 icon: i-logos:nuxt-icon
+description: Set up the Nimiq Web Client with Nuxt 3 for full-stack blockchain applications.
 navigation:
   title: Nuxt
   order: 2
@@ -79,7 +80,14 @@ The Nimiq Web Client must run in the browser. Use one of these approaches:
 - Set `ssr: false` in page meta
 ::
 
-<!--@include: ../_demo.bundler.md-->
+```js
+import { Client, ClientConfiguration } from '@nimiq/core'
+
+const config = new ClientConfiguration()
+const client = await Client.create(config.build())
+
+await client.waitForConsensusEstablished()
+```
 
 ### With Client-Only Wrapper
 
@@ -90,3 +98,7 @@ The Nimiq Web Client must run in the browser. Use one of these approaches:
   </ClientOnly>
 </template>
 ```
+
+## Next steps
+
+Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Next.js](./NextJS), [ESM](./ESM), or [CommonJS](./CommonJS).
