@@ -4,12 +4,70 @@ title: Nimiq Web Client
 navigation:
   title: Overview
   order: 1
-description: The JavaScript library that lets you build blockchain applications directly in the browser — zero servers, zero complexity.
+description: A JavaScript light client that connects directly to the Nimiq blockchain from any browser or Node.js environment — no servers, no intermediaries.
 ---
 
-## Start with 4 lines of code
+The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm module. It lets your JavaScript application participate in the Nimiq blockchain directly — syncing with the network, reading on-chain state, and broadcasting transactions — without relying on any server or third-party API.
 
-Get up and running in under a minute.
+## What you can build
+
+::u-page-grid
+
+  :::u-page-card
+  ---
+  title: Query the Blockchain
+  description: Fetch account balances, look up blocks, and check transaction status — all from the browser.
+  icon: i-nimiq:duotone-network
+  to: ./guides/query-the-blockchain
+  variant: outline
+  ---
+  :::
+
+  :::u-page-card
+  ---
+  title: Listen for Events
+  description: Subscribe to new blocks, track transactions for an address, and react to consensus changes in real time.
+  icon: i-nimiq:duotone-speedmeter
+  to: ./guides/listen-for-events
+  variant: outline
+  ---
+  :::
+
+  :::u-page-card
+  ---
+  title: Create and Manage Wallets
+  description: Generate keypairs, derive addresses from mnemonics, and manage HD wallets entirely client-side.
+  icon: i-nimiq:wallet
+  to: ./guides/wallets
+  variant: outline
+  ---
+  :::
+
+  :::u-page-card
+  ---
+  title: Send Transactions
+  description: Build, sign, and broadcast NIM transfers with optional data payloads.
+  icon: i-nimiq:duotone-send
+  to: ./guides/send-transactions
+  variant: outline
+  ---
+  :::
+
+  :::u-page-card
+  ---
+  title: Stake NIM
+  description: Create stakers, delegate to validators, and manage your stake directly from your application.
+  icon: i-nimiq:verified
+  to: ./guides/stake-nim
+  variant: outline
+  ---
+  :::
+
+::
+
+## Quick start
+
+Install the package and connect to the network in a few lines:
 
 ::code-group
 
@@ -34,7 +92,7 @@ bun add @nimiq/core
 ::code-group
 
 ```js [browser.js]
-import init, * as Nimiq from '@nimiq/core'
+import init, * as Nimiq from '@nimiq/core/web'
 
 await init()
 
@@ -55,124 +113,20 @@ await client.waitForConsensusEstablished()
 
 ::
 
-::u-page-section
----
-headline: Why Choose Web Client
-title: Skip the Infrastructure, Build the Future
-description: Traditional blockchain apps require servers, databases, and complex setups. Nimiq Web Client connects directly to the blockchain from any browser.
----
+## Where to go next
 
-  :::u-page-grid
-    ::::u-page-card
-    ---
-    title: Zero Infrastructure
-    description: No servers, APIs, or third-party dependencies
-    icon: i-nimiq:duotone-network
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Fast Sync
-    description: Connect to the network in seconds, not hours
-    icon: i-nimiq:duotone-speedmeter
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Mobile Ready
-    description: Works on phones, tablets, and desktops
-    icon: i-nimiq:duotone-incognito
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: WebAssembly Powered
-    description: Rust performance compiled to WASM
-    icon: i-nimiq:verified
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Developer Friendly
-    description: Modern JavaScript APIs you already know
-    icon: i-nimiq:widget
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Always Online
-    description: Your users' data stays with them
-    icon: i-nimiq:watch-1-50
-    variant: outline
-    ---
-    ::::
-  :::
+::callout{icon="i-tabler:rocket" to="./getting-started"}
+**New to the Web Client?** — Set up your environment, pick a network, and get test funds in the Getting Started guide.
 ::
 
-::callout{icon="i-tabler:device-laptop" to="./browser-vs-server"}
-**Building for browser or server environment?** — Learn about the differences between browser and Node.js implementations and choose the right approach.
+::callout{icon="i-tabler:code" to="./integrations/vite"}
+**Using a framework?** — Follow the integration guide for [Vite](./integrations/vite), [Nuxt](./integrations/nuxt), [Next.js](./integrations/NextJS), or [plain ESM](./integrations/ESM).
 ::
 
-::callout{icon="i-tabler:arrows-exchange"}
-**Need More Power?** — For advanced use cases, consider our [RPC interface](/rpc/) with full node capabilities, or [compare Web Client vs RPC](./web-client-vs-rpc).
+::callout{icon="i-tabler:book" to="./concepts/browser-vs-server"}
+**Want to understand the fundamentals?** — Learn how the light client works, or compare the [Web Client vs RPC](./concepts/web-client-vs-rpc) approach.
 ::
 
-::u-page-section
----
-headline: Get Started
-title: Choose Your Stack
-description: Nimiq works with the tools you already use. Pick your framework and start building in minutes.
----
-
-  :::u-page-grid
-    ::::u-page-card
-    ---
-    title: Vite
-    description: Lightning-fast development with hot reload
-    icon: i-logos:vitejs
-    to: ./integrations/vite
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Next.js
-    description: Full-stack React with server-side rendering
-    icon: i-logos:nextjs-icon
-    to: ./integrations/NextJS
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Nuxt
-    description: Vue.js framework with auto-imports
-    icon: i-logos:nuxt-icon
-    to: ./integrations/nuxt
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: ESM
-    description: Native ES modules for modern browsers
-    icon: i-logos:javascript
-    to: ./integrations/ESM
-    variant: outline
-    ---
-    ::::
-  :::
+::callout{icon="i-tabler:file-search" to="./reference/"}
+**Looking for a specific method?** — Browse the full API Reference.
 ::

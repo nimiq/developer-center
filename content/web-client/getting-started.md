@@ -1,53 +1,106 @@
 ---
 icon: i-tabler:rocket
-next: ./integrations/vite
 navigation:
   title: Getting Started
   order: 2
+description: Install the Web Client, pick a network, connect to the blockchain, and get test funds — everything you need to start building.
 ---
 
-# What is Nimiq?
+# Getting Started
 
-Nimiq is an open-source cryptocurrency designed for simplicity and ease of use. With our browser-first approach, Nimiq works directly within web browsers without the need for additional software, providing easy integration for developers and seamless interaction for users.
+This guide takes you from zero to a connected Nimiq light client. By the end you'll have a running client synced with the network and test NIM to experiment with.
 
-The protocol is based on the [Albatross consensus algorithm](/protocol/index), a Proof-of-Stake system renowned for its speed, security, and low power consumption. Albatross supports high transaction throughput and can handle thousands of transactions per second.
+## Install
 
-## The Nimiq Web Client
+::code-group
 
-The Nimiq Web Client is a JavaScript library that allows you to participate in the Nimiq PoS blockchain directly in your browser. No intermediaries, no servers.
-
-The Web Client provides a simple interface to build consensus with other nodes, create wallets, send transactions, and interact with the blockchain.
-
-Reaching consensus with the network is easy:
-
-<figure>
-
-<!--@include: ./_demo.web.md-->
-
-<figcaption mt--16 mb-32 op-80 mx-0>
-
-This is a simple example using the `web` integration. For other environments, be sure to modify the import statement accordingly.
-
-</figcaption>
-
-</figure>
-
-Then, you can start interacting with the blockchain:
-
-```js
-client.addHeadChangedListener((head) => {
-  console.log('New head:', head)
-})
+```bash [pnpm]
+pnpm add @nimiq/core
 ```
 
-## Using Your Private Node
+```bash [npm]
+npm install @nimiq/core
+```
 
-Although the Web Client already offers extensive functionality, you can also set up your own private node for full control and advanced customization. [Find out more about their differences](./web-client-vs-rpc.md).
+```bash [yarn]
+yarn add @nimiq/core
+```
 
-## Issues, Bugs, and Feedback
+```bash [bun]
+bun add @nimiq/core
+```
 
-This is an early version of the client code compiled to WebAssembly, and as such there might be issues and friction, especially now that more people are trying it in more environments than we could ever test ourselves.
+::
 
-If you encounter problems or find a bug, please open an issue in our [GitHub repository](https://github.com/nimiq/core-rs-albatross).
+If you're using a framework like Vite, Nuxt, or Next.js, see the [integration guides](./integrations/vite) for bundler-specific configuration.
 
-If you want to provide feedback or have questions about the client, our Nimiq Coders Dojo [Telegram](https://t.me/nimiq) and [Community Forum](https://forum.nimiq.community/) are the places to go.
+## Pick a network
+
+Nimiq runs three networks. Choose the one that fits your current task:
+
+| Network | Use for | Network ID |
+| :--- | :--- | :--- |
+| **TestAlbatross** | Development and testing. Free test NIM via the faucet. | `TestAlbatross` |
+| **MainAlbatross** | Production. Real NIM, real transactions. | `MainAlbatross` |
+| **DevAlbatross** | Local development and protocol work. | `DevAlbatross` |
+
+Start with **TestAlbatross** — it behaves like mainnet but costs nothing.
+
+## Connect
+
+Create a client and wait for it to sync with the network:
+
+::code-group
+
+```js [browser.js]
+import init, * as Nimiq from '@nimiq/core/web'
+
+await init()
+
+const config = new Nimiq.ClientConfiguration()
+config.network('TestAlbatross')
+
+const client = await Nimiq.Client.create(config.build())
+await client.waitForConsensusEstablished()
+
+console.log('Connected! Head block:', await client.getHeadHeight())
+```
+
+```js [Node.js]
+import Nimiq from '@nimiq/core'
+
+const config = new Nimiq.ClientConfiguration()
+config.network('TestAlbatross')
+
+const client = await Nimiq.Client.create(config.build())
+await client.waitForConsensusEstablished()
+
+console.log('Connected! Head block:', await client.getHeadHeight())
+```
+
+::
+
+Once `waitForConsensusEstablished()` resolves, your client is synced and ready to query the blockchain, listen for events, and send transactions.
+
+## Get test funds
+
+The [Nimiq Faucet](./faucet) dispenses free NIM on TestAlbatross for development and testing.
+
+You can request funds through the interactive playground on the [Faucet page](./faucet), or programmatically:
+
+```sh
+curl -X POST https://faucet.pos.nimiq-testnet.com/tapit \
+     -d "address=NQ07 0000 0000 0000 0000 0000 0000 0000 0000"
+```
+
+The faucet sends 10,000 NIM per request with no rate limit. See the [Faucet API reference](./faucet#api-reference) for details on parameters and response format.
+
+## You're ready
+
+You have a synced client and test funds. Here's where to go next:
+
+- [Query the Blockchain](./guides/query-the-blockchain) — fetch balances, blocks, and transaction status
+- [Listen for Events](./guides/listen-for-events) — subscribe to blocks, transactions, and consensus changes
+- [Create and Manage Wallets](./guides/wallets) — generate keypairs and derive addresses
+- [Send Transactions](./guides/send-transactions) — build, sign, and broadcast NIM transfers
+- [Stake NIM](./guides/stake-nim) — delegate to validators and manage your stake
