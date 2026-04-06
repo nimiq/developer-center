@@ -56,7 +56,7 @@ const protocolNavigationOrder = [
   'glossary',
 ] as const
 
-const protocolNavigationRank = new Map(
+const protocolNavigationRank = new Map<string, number>(
   protocolNavigationOrder.map((segment, index) => [segment, index]),
 )
 
@@ -88,6 +88,7 @@ const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
         ...(rpcMethodGroups.value || []).map(group => ({
           title: group.text,
           icon: group.icon,
+          path: `/rpc/methods/_group/${group.text.toLowerCase().replace(/\s+/g, '-')}`,
           defaultOpen: group.methods.some(method => normalizePath(method.link) === activePath),
           children: group.methods.map(method => ({
             title: method.name,
