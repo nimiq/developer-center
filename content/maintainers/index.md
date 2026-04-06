@@ -19,6 +19,8 @@ For landing-page ownership, module ordering, and sidebar file ownership, see [Na
 
 For the operational steps for running the site and making changes, see [Maintenance Workflow](/maintainers/maintenance-workflow).
 
+For the current brand layer, visual ownership, asset locations, and external visual dependencies, see [Visual Language Cheatsheet](/maintainers/visual-language-cheatsheet).
+
 ## What This Repository Is
 
 This repository is the source for the Nimiq Developer Center docs site. In the current architecture, it is a Nuxt application that uses Docus, Nuxt Content, Nuxt UI, and Nitro to serve documentation, dynamic docs features, and a small set of server endpoints.
