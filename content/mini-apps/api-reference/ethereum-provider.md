@@ -66,6 +66,74 @@ const signature = await provider.request({
 })
 ```
 
+### `eth_sendTransaction`
+
+Submits a transaction for signing and broadcasting.
+
+**Parameters**
+
+- `from` (string, required): sender address.
+- `to` (string, required): recipient address or contract address.
+- `value` (string, optional): hex-encoded amount of native token to send (in wei).
+- `data` (string, optional): hex-encoded contract call data.
+- `gas` (string, optional): hex-encoded gas limit.
+
+**Returns**
+
+- `string` — transaction hash.
+
+**User confirmation**
+
+- yes
+
+**Example**
+
+```javascript
+const txHash = await provider.request({
+  method: 'eth_sendTransaction',
+  params: [{
+    from: '0x1234567890abcdef1234567890abcdef12345678',
+    to: '0x1234567890abcdef1234567890abcdef12345678',
+    value: '0x0',
+    data: '0x',
+  }],
+})
+```
+
+### `eth_signTypedData_v4`
+
+Signs typed structured data. Unlike `personal_sign`, this method presents the user with a readable breakdown of the data being signed, making it suitable for permits, order approvals, or login challenges. This is the current recommended signing method. The data structure follows the [EIP-712](https://eips.ethereum.org/EIPS/eip-712) standard. See the [MetaMask signing guide](https://docs.metamask.io/metamask-connect/evm/guides/sign-data) for more context on signing methods.
+
+**Parameters**
+
+- `address` (string, required): Ethereum address to sign with.
+- `typedData` (string, required): JSON-stringified object containing `domain`, `types`, `primaryType`, and `message`.
+
+**Returns**
+
+- `string` — hex signature.
+
+**User confirmation**
+
+- yes
+
+**Example**
+
+```javascript
+const signature = await provider.request({
+  method: 'eth_signTypedData_v4',
+  params: [
+    '0x1234567890abcdef1234567890abcdef12345678',
+    JSON.stringify({
+      domain: { name: 'My App', version: '1', chainId: 137 },
+      types: { Message: [{ name: 'content', type: 'string' }] },
+      primaryType: 'Message',
+      message: { content: 'Hello' },
+    }),
+  ],
+})
+```
+
 ### `wallet_switchEthereumChain` / `switchEthereumChain`
 
 Switches the active Ethereum network.
@@ -452,7 +520,7 @@ Returns the current network id.
 const networkId = await provider.request({ method: 'net_version' })
 ```
 
-Not implemented: `eth_sendTransaction`, `eth_signTypedData`.
+For a practical guide to reading ERC-20 token balances and sending token transfers through this provider, see [Using EVM Tokens in Mini Apps](/mini-apps/evm-tokens).
 
 ## EIP-6963 Provider Discovery
 

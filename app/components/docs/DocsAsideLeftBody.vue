@@ -65,6 +65,7 @@ const miniAppsNavigationOrder = [
   'mini-app-tutorial',
   'dual-chain-mini-app-tutorial',
   'load-local-mini-app',
+  'evm-tokens',
   'api-reference',
 ] as const
 

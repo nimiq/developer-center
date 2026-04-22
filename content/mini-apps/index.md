@@ -64,12 +64,14 @@ The framework supports two blockchain ecosystems:
 **Ethereum + Layer 2 networks** (EVM-compatible)
 
 - Ethereum Mainnet
-- Polygon
+- [Polygon](/mini-apps/evm-tokens)
 - Arbitrum One
 - Optimism
 - Base
 - BNB Smart Chain (formerly Binance Smart Chain)
 - Sepolia (testnet for developers)
+
+ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/evm-tokens) for a worked example.
 
 Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
 
