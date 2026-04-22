@@ -105,7 +105,7 @@ export default defineAppConfig({
     pageHero: {
       slots: {
         root: '',
-        container: 'py-20 sm:py-28 lg:py-36',
+        container: 'pt-20 pb-8 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-16',
         title: 'text-5xl sm:text-7xl tracking-tight font-extrabold text-highlighted',
         description: 'text-lg sm:text-xl text-muted leading-relaxed',
         links: 'flex flex-wrap gap-4',
