@@ -168,7 +168,7 @@ export default defineAppConfig({
 
     contentToc: {
       slots: {
-        root: 'sticky top-(--docs-header-offset) z-10 bg-default/75 lg:bg-[initial] backdrop-blur -mx-4 px-4 sm:px-6 sm:-mx-6 overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
+        root: 'hidden lg:block lg:sticky top-(--docs-header-offset) z-10 lg:bg-[initial] overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
       },
     },
 
