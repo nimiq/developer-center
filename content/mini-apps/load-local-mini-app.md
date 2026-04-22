@@ -11,14 +11,6 @@ navigation:
 
 Use this guide to load any locally running web app inside Nimiq Pay.
 
-::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
-
-Mini app testing is currently limited to allowlisted users.
-
-- On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
-- On Android, share the email associated with your Google account. You will receive an email when access is enabled.
-::
-
 ## Prerequisites
 
 - **Node.js** (version 22+, only if your mini app uses Node.js; the examples in this guide use it)
