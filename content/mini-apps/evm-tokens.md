@@ -4,14 +4,14 @@ description: Read balances and send ERC-20 tokens like USDT on Polygon through t
 icon: i-tabler:coins
 navigation:
   title: EVM Tokens
-  order: 5
+  order: 7
 ---
 
 # Using EVM Tokens in Mini Apps
 
 The Mini Apps Framework exposes a standard EVM provider through `window.ethereum`. This provider works with any EVM-compatible chain supported by Nimiq Pay, including Polygon, Arbitrum, Base, and others. Any ERC-20 token deployed on those chains is accessible through standard contract calls, with no extra setup.
 
-This page uses USDT on Polygon as a worked example. The same pattern applies to any ERC-20 token on any supported chain.
+This page uses USDT on Polygon as a working example. The same pattern applies to any ERC-20 token on any supported chain.
 
 ## How it works
 
@@ -99,11 +99,17 @@ const balance = formatUnits(BigInt(rawBalance), 6)
 console.log(`USDT balance: ${balance}`)
 ```
 
-**A note on decimals:** Most tokens use 18 decimal places, but stablecoins like USDT and USDC use 6. This means 1 USDT is stored as `1000000` on-chain. Always check the token's `decimals` value. Getting this wrong will show balances that are off by a factor of 10¹².
+**A note on decimals:** USDT and USDC use 6 decimal places, not the 18 used by most ERC-20 tokens. Always use the token's actual `decimals` value when parsing or formatting amounts. A 1 USDT balance displayed with 18 decimals would show as `0.000000000001` instead of `1.0`.
 
 ## Send a USDT transfer
 
 To send USDT, call the `transfer` method on the token contract. This triggers the native Nimiq Pay approval dialog. The user sees the transaction details and approves it. Keys never leave the wallet.
+
+When sending ERC-20 tokens through a mini app, the transaction goes through the EVM provider `window.ethereum`. This is different from sending USDT natively through Nimiq Pay's, which uses gas abstraction. In a mini app, standard EVM gas rules apply.
+
+::callout{icon="i-tabler-alert-triangle" color="warning" title="Gas fees"}
+The user must hold the native token of the chain to cover gas fees. On Polygon, this is POL (formerly MATIC). On Ethereum and Arbitrum, ETH. If the user has no native token balance, the transaction will fail.
+::
 
 ```ts
 import { encodeFunctionData, parseUnits } from 'viem'
