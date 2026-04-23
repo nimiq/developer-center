@@ -56,6 +56,22 @@ If your app uses one of these APIs, feature-detect it and add a fallback. For ID
 
 Your app should load inside Nimiq Pay. You can also test [this demo](https://github.com/Eligioo/nimiq-mini-app-demo) to see a working mini app.
 
+## Test on testnet
+
+Nimiq Pay has a hidden dev menu with a network switch for testing without real funds.
+
+To access it: open the app menu and long-press the settings button for 10 seconds. A dev menu appears with three network options:
+
+- **Default**: follows the build type (dev builds use testnet, production builds use mainnet)
+- **Mainnet**: force mainnet regardless of build type
+- **Testnet**: force testnet regardless of build type
+
+Switching clears transaction history and reloads the app.
+
+::callout{icon="i-tabler-info-circle" color="info" title="Testnet applies to Nimiq only"}
+The testnet switch only affects Nimiq provider operations (NIM payments, signing, staking). EVM mini apps continue running against mainnet chains.
+::
+
 ## Tutorials
 
 - Build a first mini app: [Mini app tutorial](/mini-apps/mini-app-tutorial)
