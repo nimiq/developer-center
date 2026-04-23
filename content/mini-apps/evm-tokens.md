@@ -105,7 +105,7 @@ console.log(`USDT balance: ${balance}`)
 
 To send USDT, call the `transfer` method on the token contract. This triggers the native Nimiq Pay approval dialog. The user sees the transaction details and approves it. Keys never leave the wallet.
 
-When sending ERC-20 tokens through a mini app, the transaction goes through the EVM provider `window.ethereum`. This is different from sending USDT natively through Nimiq Pay's, which uses gas abstraction. In a mini app, standard EVM gas rules apply.
+When sending ERC-20 tokens through a mini app, the transaction goes through the EVM provider `window.ethereum`. This is different from sending USDT natively through Nimiq Pay, which uses gas abstraction. In a mini app, standard EVM gas rules apply.
 
 ::callout{icon="i-tabler-alert-triangle" color="warning" title="Gas fees"}
 The user must hold the native token of the chain to cover gas fees. On Polygon, this is POL (formerly MATIC). On Ethereum and Arbitrum, ETH. If the user has no native token balance, the transaction will fail.
