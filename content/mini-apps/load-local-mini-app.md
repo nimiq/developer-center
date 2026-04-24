@@ -69,7 +69,7 @@ To access it: open the app menu and long-press the settings button for 10 second
 Switching clears transaction history and reloads the app.
 
 ::callout{icon="i-tabler-info-circle" color="info" title="Testnet applies to Nimiq only"}
-The testnet switch only affects Nimiq provider operations (NIM payments, signing, staking). EVM mini apps continue running against mainnet chains.
+The testnet switch only affects Nimiq provider operations (NIM payments, signing, staking). EVM mini apps continue running against mainnet chains. To add custom EVM chains for development, use [`wallet_addEthereumChain`](https://docs.metamask.io/metamask-connect/evm/reference/json-rpc-api/wallet_addEthereumChain/).
 ::
 
 ## Tutorials

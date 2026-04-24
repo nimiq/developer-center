@@ -30,7 +30,7 @@ Available capabilities:
 - **NIM payments**: send basic NIM transactions, with or without attached text data. Requires user confirmation. Amounts are in Luna (1 NIM = 100,000 Luna). Methods: `sendBasicTransaction`, `sendBasicTransactionWithData`.
 - **Staking**: all require user confirmation. Capability → method: create a new staker (`sendNewStakerTransaction`), add stake (`sendStakeTransaction`), set active stake (`sendSetActiveStakeTransaction`), update delegation (`sendUpdateStakerTransaction`), retire stake (`sendRetireStakeTransaction`), remove stake (`sendRemoveStakeTransaction`).
 
-For exact method signatures, parameters, and return types, see the [Nimiq Provider API reference](https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider).
+For exact method signatures, parameters, and return types, see [references/nimiq-provider-api.md](references/nimiq-provider-api.md).
 
 ### Ethereum provider
 
@@ -40,12 +40,12 @@ Available capabilities:
 - **Account access**: request the user's Ethereum addresses. Same address works across all EVM chains. Requires user confirmation.
 - **Message signing**: for typed structured data — permits, order approvals, login challenges — prefer `eth_signTypedData_v4` (EIP-712). It presents the user with a readable breakdown of what they're signing instead of an opaque hash. Use `personal_sign` only for plain text messages that have no structure worth showing. Both require user confirmation.
 - **Transactions**: send native token transfers or contract calls (`eth_sendTransaction`). Requires user confirmation.
-- **Chain management**: switch the active EVM chain (`wallet_switchEthereumChain`) or add a new one (`wallet_addEthereumChain`). No confirmation needed.
+- **Chain management**: switch the active EVM chain (`wallet_switchEthereumChain`) or add a new one (`wallet_addEthereumChain`). Requires user confirmation.
 - **Read-only queries**: get balances, call contracts, estimate gas, read blocks and logs, get transaction receipts. No confirmation needed. These are routed through RPC.
 - **Arbitrary RPC**: `rpcCall` proxies a JSON-RPC request through the host for methods not in the standard list. Use sparingly; prefer the typed methods above.
 - **Discovery**: Nimiq Pay implements EIP-6963, so wallet-discovery libraries (wagmi, RainbowKit, etc.) detect it automatically. You don't need to announce the provider manually.
 
-For exact method signatures, parameters, and return types, see the [Ethereum Provider API reference](https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider).
+For exact method signatures, parameters, and return types, see [references/ethereum-provider-api.md](references/ethereum-provider-api.md).
 
 ## Supported EVM chains
 
@@ -84,7 +84,7 @@ USDT contract addresses:
 | Arbitrum One | `0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9` | 6 |
 | Optimism | `0x94b008aA00579c1307B0EF2c499aD98a8ce58e58` | 6 |
 
-For a full worked example of EVM token interaction, see [Using EVM Tokens in Mini Apps](https://nimiq.com/developers/mini-apps/evm-tokens).
+For chain IDs, token addresses, and decimals, see [references/chains-and-tokens.md](references/chains-and-tokens.md).
 
 ## Mobile-first
 
@@ -111,7 +111,7 @@ Do not fire multiple provider calls that require user confirmation in rapid sequ
 
 Nimiq Pay has a hidden dev menu with a network switch. Long-press the settings button for 10 seconds to reveal it. Options: Default, Mainnet, Testnet.
 
-The testnet switch only affects Nimiq provider operations. EVM operations continue running against mainnet chains.
+The testnet switch only affects Nimiq provider operations. EVM operations continue running against mainnet chains. For EVM testing, developers can add custom chains (e.g. Sepolia) using `wallet_addEthereumChain`.
 
 When suggesting test flows that involve payments or staking, recommend testnet to avoid using real funds.
 
@@ -119,9 +119,6 @@ When suggesting test flows that involve payments or staking, recommend testnet t
 
 Do not do any of the following:
 
-- **Do not build a custom Polygon provider.** Polygon is EVM-compatible. `window.ethereum` already works on it after switching chains with `wallet_switchEthereumChain`.
-- **Do not build a custom token provider.** ERC-20 tokens are smart contracts on EVM chains. Interact with them through standard contract calls via `window.ethereum`.
-- **Do not assume USDT needs special setup.** USDT on Polygon is a standard ERC-20 contract. Switch to Polygon, call the contract. No special integration required.
 - **Do not access private keys.** The app runs in a sandbox. Keys never leave the wallet. All signing goes through the approval dialog.
 - **Do not bypass the approval dialog.** Every sensitive action (account access, signing, transactions) requires explicit user confirmation through native Nimiq Pay dialogs.
 - **Do not use third-party payment providers** (Stripe, PayPal, etc.) for payments. Use the Nimiq and Ethereum providers exclusively.
@@ -130,13 +127,13 @@ Do not do any of the following:
 
 Documentation:
 
-- [Mini Apps Overview](https://nimiq.com/developers/mini-apps/)
-- [Build Your First Mini App](https://nimiq.com/developers/mini-apps/mini-app-tutorial)
-- [Build a Dual-Chain Mini App](https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial)
-- [Load a Local Mini App](https://nimiq.com/developers/mini-apps/load-local-mini-app)
-- [Using EVM Tokens in Mini Apps](https://nimiq.com/developers/mini-apps/evm-tokens)
-- [Nimiq Provider API](https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider)
-- [Ethereum Provider API](https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider)
+- [Mini Apps Overview](https://nimiq.dev/mini-apps/)
+- [Build Your First Mini App](https://nimiq.dev/mini-apps/mini-app-tutorial)
+- [Build a Dual-Chain Mini App](https://nimiq.dev/mini-apps/dual-chain-mini-app-tutorial)
+- [Load a Local Mini App](https://nimiq.dev/mini-apps/load-local-mini-app)
+- [Using EVM Tokens in Mini Apps](https://nimiq.dev/mini-apps/evm-tokens)
+- [Nimiq Provider API](https://nimiq.dev/mini-apps/api-reference/nimiq-provider)
+- [Ethereum Provider API](https://nimiq.dev/mini-apps/api-reference/ethereum-provider)
 
 Reference implementations:
 

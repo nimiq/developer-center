@@ -52,9 +52,9 @@ await window.ethereum.request({
 })
 ```
 
-No user confirmation is needed for chain switching. If the chain is not configured, the provider returns error `4902`.
+This triggers a confirmation dialog. If the chain is not configured, the provider returns error `4902`.
 
-The same method works for any supported chain. Swap the chain ID for the target network. See [Other chains and tokens](#other-chains-and-tokens) for the full list.
+The same method works for any supported chain. Swap the chain ID for the target network. See [Other chains and tokens](#other-chains-and-tokens) for the full list. To add a chain that isn't in the default list, use [`wallet_addEthereumChain`](https://docs.metamask.io/metamask-connect/evm/reference/json-rpc-api/wallet_addEthereumChain/). See the [Ethereum Provider API reference](/mini-apps/api-reference/ethereum-provider) for parameters.
 
 ## Read a USDT balance
 

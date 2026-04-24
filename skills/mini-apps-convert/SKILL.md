@@ -100,10 +100,10 @@ These rules apply to every conversion:
 
 ## Reference
 
-- [Mini Apps Overview](https://nimiq.com/developers/mini-apps/)
-- [Nimiq Provider API](https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider)
-- [Ethereum Provider API](https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider)
-- [Using EVM Tokens in Mini Apps](https://nimiq.com/developers/mini-apps/evm-tokens)
+- [Nimiq Provider API](references/nimiq-provider-api.md)
+- [Ethereum Provider API](references/ethereum-provider-api.md)
+- [Chains and Tokens](references/chains-and-tokens.md)
+- Full documentation: https://nimiq.dev/mini-apps/
 - [evm-mini-wallet](https://github.com/Albermonte/evm-mini-wallet): full EVM wallet mini app with token sends, receives, and balance tracking
 - [nimiq-mini-app-demo](https://github.com/Eligioo/nimiq-mini-app-demo): demo of all supported provider methods
 

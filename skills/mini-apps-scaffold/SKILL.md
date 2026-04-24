@@ -141,12 +141,13 @@ If the app involves payments or staking, suggest testing on testnet first. Nimiq
 
 The project is now connected and verified. Proceed with the requested functionality based on the developer's intent from Step 0.
 
-For patterns, constraints, and API details during development, install the `mini-apps-best-practices` skill (`npx skills add nimiq/developer-center --skill mini-apps-best-practices`) or refer to the documentation:
+For patterns, constraints, and API details during development, install the `mini-apps-best-practices` skill (`npx skills add nimiq/developer-center --skill mini-apps-best-practices`) or refer to the local references:
 
-- [Mini Apps Overview](https://nimiq.com/developers/mini-apps/)
-- [Nimiq Provider API](https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider)
-- [Ethereum Provider API](https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider)
-- [Using EVM Tokens in Mini Apps](https://nimiq.com/developers/mini-apps/evm-tokens)
+- [Nimiq Provider API](references/nimiq-provider-api.md)
+- [Ethereum Provider API](references/ethereum-provider-api.md)
+- [Chains and Tokens](references/chains-and-tokens.md)
+
+Full documentation: https://nimiq.dev/mini-apps/
 
 ## Before shipping
 

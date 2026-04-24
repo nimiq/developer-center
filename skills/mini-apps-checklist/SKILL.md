@@ -56,7 +56,7 @@ Tell the AI to run the checklist on your project. It will go through each catego
 
 ## 7. Chain usage (if applicable)
 
-- [ ] Only supported chains are used: Ethereum (0x1), Polygon (0x89), Arbitrum One (0xa4b1), Optimism (0xa), Base (0x2105), BNB Smart Chain (0x38), Sepolia (0xaa36a7).
+- [ ] Default supported chains: Ethereum (0x1), Polygon (0x89), Arbitrum One (0xa4b1), Optimism (0xa), Base (0x2105), BNB Smart Chain (0x38), Sepolia (0xaa36a7). Custom chains can be added via `wallet_addEthereumChain`.
 - [ ] Chain IDs passed to `wallet_switchEthereumChain` and `wallet_addEthereumChain` use hex-string format (`'0x89'`, not `137`). Numeric chain IDs inside EIP-712 typed data (the `domain.chainId` field) are correct and expected — do not flag those.
 - [ ] The app handles `wallet_switchEthereumChain` error `4902` (chain not configured).
 

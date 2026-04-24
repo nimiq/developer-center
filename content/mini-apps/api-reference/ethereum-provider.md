@@ -152,7 +152,7 @@ Switches the active Ethereum network.
 
 **User confirmation**
 
-- no
+- yes
 
 **Example**
 
@@ -181,7 +181,7 @@ Adds a new chain configuration and switches to it.
 
 **User confirmation**
 
-- no
+- yes
 
 **Example**
 
