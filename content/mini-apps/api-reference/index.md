@@ -12,10 +12,10 @@ This API is injected by the host app into the mini app environment. For Nimiq ac
 
 ## Contents
 
-- [Nimiq provider](https://nimiq.com/developers/mini-apps/api-reference/nimiq-provider)
-- [Ethereum provider](https://nimiq.com/developers/mini-apps/api-reference/ethereum-provider)
+- [Nimiq provider](/mini-apps/api-reference/nimiq-provider)
+- [Ethereum provider](/mini-apps/api-reference/ethereum-provider)
 
-To load and build a mini app, see [Load a Local Mini App in Nimiq Pay](https://nimiq.com/developers/mini-apps/load-local-mini-app), the [Mini app tutorial](https://nimiq.com/developers/mini-apps/mini-app-tutorial), and [Build a Dual-Chain Mini App with Nimiq Pay](https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial).
+To load and build a mini app, see [Load a Local Mini App in Nimiq Pay](/mini-apps/load-local-mini-app), the [Mini app tutorial](/mini-apps/mini-app-tutorial), and [Build a Dual-Chain Mini App with Nimiq Pay](/mini-apps/dual-chain-mini-app-tutorial).
 
 ## Quick Start Examples
 

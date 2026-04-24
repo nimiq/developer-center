@@ -1,13 +1,11 @@
 ---
+title: Load a Local Mini App
+description: Load a local mini app into Nimiq Pay from your development machine
 icon: i-tabler:device-mobile-code
 navigation:
   title: Load a Local Mini App
   order: 4
 ---
-
-<!-- url: https://nimiq.com/developers/mini-apps/load-local-mini-app -->
-<!-- type: setup guide -->
-<!-- summary: Load a local mini app into Nimiq Pay from your development machine. -->
 
 # Load a Local Mini App in Nimiq Pay
 
@@ -31,29 +29,25 @@ Mini app testing is currently limited to allowlisted users.
 
 The commands below assume you're using a Node.js mini app.
 
-1. Go to your project directory.
+Go to your project directory.
 
 ```bash
 cd my-mini-app
 ```
 
-1. Install dependencies.
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-1. Start the dev server with network access enabled.
+Start the dev server with network access enabled.
 
 ```bash
 npm run dev -- --host
 ```
 
-Example:
-
-```bash
-http://192.168.1.42:5173
-```
+Note the **Network** URL in the terminal output, for example `http://192.168.1.42:5173`.
 
 ## Open your local app in Nimiq Pay
 
@@ -72,5 +66,5 @@ Your app should load inside Nimiq Pay. You can also test [this demo](https://git
 
 ## Tutorials
 
-- Build a first mini app: [Mini app tutorial](https://nimiq.com/developers/mini-apps/mini-app-tutorial)
-- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial)
+- Build a first mini app: [Mini app tutorial](/mini-apps/mini-app-tutorial)
+- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](/mini-apps/dual-chain-mini-app-tutorial)

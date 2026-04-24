@@ -353,7 +353,7 @@ Returns the transaction receipt.
 ```javascript
 const receipt = await provider.request({
   method: 'eth_getTransactionReceipt',
-  params: ['0xabc...'],
+  params: ['0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'],
 })
 ```
 
