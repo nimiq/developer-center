@@ -25,5 +25,5 @@ Custom chains can be added using `wallet_addEthereumChain`.
 
 USDT and USDC use 6 decimals, not 18. Always use the token's actual `decimals` value.
 
-Full token list: https://github.com/Albermonte/evm-mini-wallet/blob/main/src/utils/well-known-tokens.ts
-Full documentation: https://nimiq.dev/mini-apps/evm-tokens
+Full token list: https://raw.githubusercontent.com/Albermonte/evm-mini-wallet/refs/heads/main/src/utils/well-known-tokens.ts
+Full documentation: https://nimiq.dev/raw/mini-apps/evm-tokens.md

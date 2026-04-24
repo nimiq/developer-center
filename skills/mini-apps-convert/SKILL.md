@@ -103,7 +103,7 @@ These rules apply to every conversion:
 - [Nimiq Provider API](references/nimiq-provider-api.md)
 - [Ethereum Provider API](references/ethereum-provider-api.md)
 - [Chains and Tokens](references/chains-and-tokens.md)
-- Full documentation: https://nimiq.dev/mini-apps/
+- Full documentation: https://nimiq.dev/raw/mini-apps/index.md
 - [evm-mini-wallet](https://github.com/Albermonte/evm-mini-wallet): full EVM wallet mini app with token sends, receives, and balance tracking
 - [nimiq-mini-app-demo](https://github.com/Eligioo/nimiq-mini-app-demo): demo of all supported provider methods
 

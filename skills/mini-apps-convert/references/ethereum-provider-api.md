@@ -17,4 +17,4 @@ Access via `window.ethereum`. Standard EIP-1193 provider.
 
 `eth_chainId`, `eth_accounts`, `eth_getBalance`, `eth_call`, `eth_estimateGas`, `eth_gasPrice`, `eth_getTransactionCount`, `eth_getTransactionReceipt`, `eth_blockNumber`, `eth_getBlockByNumber`, `eth_getLogs`, `net_version`.
 
-Full documentation: https://nimiq.dev/mini-apps/api-reference/ethereum-provider
+Full documentation: https://nimiq.dev/raw/mini-apps/api-reference/ethereum-provider.md

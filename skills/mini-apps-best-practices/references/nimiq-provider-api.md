@@ -19,4 +19,4 @@ Access via `init()` from `@nimiq/mini-app-sdk`.
 
 1 NIM = 100,000 Luna.
 
-Full documentation: https://nimiq.dev/mini-apps/api-reference/nimiq-provider
+Full documentation: https://nimiq.dev/raw/mini-apps/api-reference/nimiq-provider.md

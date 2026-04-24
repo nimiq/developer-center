@@ -68,7 +68,7 @@ Tell the AI to run the checklist on your project. It will go through each catego
 
 ## 9. Visual identity
 
-- [ ] If using the Nimiq logo or brand assets, they are sourced from the [Nimiq Design Kit](https://nimiq.dev/design-kit).
+- [ ] If using the Nimiq logo or brand assets, they are sourced from the [Nimiq Design Kit](https://nimiq.dev/raw/design-kit/index.md).
 
 ## Output format
 

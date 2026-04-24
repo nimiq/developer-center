@@ -147,7 +147,7 @@ For patterns, constraints, and API details during development, install the `mini
 - [Ethereum Provider API](references/ethereum-provider-api.md)
 - [Chains and Tokens](references/chains-and-tokens.md)
 
-Full documentation: https://nimiq.dev/mini-apps/
+Full documentation: https://nimiq.dev/raw/mini-apps/index.md
 
 ## Before shipping
 

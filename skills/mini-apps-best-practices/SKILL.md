@@ -127,13 +127,13 @@ Do not do any of the following:
 
 Documentation:
 
-- [Mini Apps Overview](https://nimiq.dev/mini-apps/)
-- [Build Your First Mini App](https://nimiq.dev/mini-apps/mini-app-tutorial)
-- [Build a Dual-Chain Mini App](https://nimiq.dev/mini-apps/dual-chain-mini-app-tutorial)
-- [Load a Local Mini App](https://nimiq.dev/mini-apps/load-local-mini-app)
-- [Using EVM Tokens in Mini Apps](https://nimiq.dev/mini-apps/evm-tokens)
-- [Nimiq Provider API](https://nimiq.dev/mini-apps/api-reference/nimiq-provider)
-- [Ethereum Provider API](https://nimiq.dev/mini-apps/api-reference/ethereum-provider)
+- [Mini Apps Overview](https://nimiq.dev/raw/mini-apps/index.md)
+- [Build Your First Mini App](https://nimiq.dev/raw/mini-apps/mini-app-tutorial.md)
+- [Build a Dual-Chain Mini App](https://nimiq.dev/raw/mini-apps/dual-chain-mini-app-tutorial.md)
+- [Load a Local Mini App](https://nimiq.dev/raw/mini-apps/load-local-mini-app.md)
+- [Using EVM Tokens in Mini Apps](https://nimiq.dev/raw/mini-apps/evm-tokens.md)
+- [Nimiq Provider API](https://nimiq.dev/raw/mini-apps/api-reference/nimiq-provider.md)
+- [Ethereum Provider API](https://nimiq.dev/raw/mini-apps/api-reference/ethereum-provider.md)
 
 Reference implementations:
 
@@ -142,7 +142,7 @@ Reference implementations:
 
 Nimiq visual assets:
 
-- [Nimiq Design Kit](https://nimiq.dev/design-kit)
+- [Nimiq Design Kit](https://nimiq.dev/raw/design-kit/index.md)
 
 ## Before shipping
 
