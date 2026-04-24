@@ -13,9 +13,7 @@
   "scripts": {
     "postinstall": "nuxt prepare",
     "dev": "DEPLOYMENT_MODE=development nuxi dev",
-    "build": "bash -lc 'if [[ -z \"${WORKERS_CI_BRANCH:-}\" || \"$WORKERS_CI_BRANCH\" == \"main\" ]]; then pnpm run build:production; else pnpm run build:preview; fi'",
-    "build:production": "nuxt build",
-    "build:preview": "nuxt build --envName preview",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 DEPLOYMENT_MODE=production nuxi build",
     "build:staging": "NODE_OPTIONS=--max-old-space-size=4096 DEPLOYMENT_MODE=staging nuxi build",
     "preview": "nuxi preview",
     "lint": "eslint .",
