@@ -8,14 +8,6 @@ navigation:
 
 # Build a Dual-Chain Mini App with Nimiq Pay
 
-::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
-
-Mini app testing is currently limited to allowlisted users.
-
-- On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
-- On Android, share the email associated with your Google account. You will receive an email when access is enabled.
-::
-
 In this tutorial, you will build a mini app that uses both injected providers:
 
 - the Nimiq provider for Nimiq account and signing flows
@@ -23,7 +15,7 @@ In this tutorial, you will build a mini app that uses both injected providers:
 
 You will implement methods that require user confirmations so you can test real wallet interactions end to end.
 
-## 1. What you'll build
+## What you'll build
 
 The mini app includes two action buttons:
 
@@ -32,14 +24,14 @@ The mini app includes two action buttons:
 | Nimiq | `listAccounts()` -> `sign()` | 2 prompts (account sharing, signing) |
 | Ethereum | `eth_requestAccounts` -> `personal_sign` | 2 prompts (account connection, signing) |
 
-## 2. Prerequisites
+## Prerequisites
 
 - **Node.js** (version 22+ required)
 - **Nimiq Pay** app on a mobile device (or emulator)
 - Phone and dev machine on the same Wi-Fi network
 - At least one Ethereum account available in Nimiq Pay for the Ethereum success path
 
-## 3. Create the project
+## 1. Create the project
 
 Use Vite with Vue + TypeScript for this tutorial:
 
@@ -49,7 +41,7 @@ cd my-mini-app
 npm install
 ```
 
-## 4. Configure the dev server
+## 2. Configure the dev server
 
 Edit `vite.config.ts`:
 
@@ -66,7 +58,7 @@ export default defineConfig({
 })
 ```
 
-## 5. Install the Nimiq Mini App SDK
+## 3. Install the Nimiq Mini App SDK
 
 Install the published Nimiq Mini App SDK before editing `src/App.vue`.
 
@@ -74,11 +66,11 @@ Install the published Nimiq Mini App SDK before editing `src/App.vue`.
 npm install @nimiq/mini-app-sdk
 ```
 
-## 6. Add the dual-chain mini app
+## 4. Add the dual-chain mini app
 
 In `src/App.vue`, use separate script, template, and style blocks.
 
-### 6.1 Add the script block
+### 4.1 Add the script block
 
 ```vue
 <script setup lang="ts">
@@ -234,7 +226,7 @@ async function runEthereumFlow() {
 </script>
 ```
 
-### 6.2 Add the template block
+### 4.2 Add the template block
 
 ```vue
 <template>
@@ -272,7 +264,7 @@ async function runEthereumFlow() {
 </template>
 ```
 
-### 6.3 Add the style block (mobile-friendly)
+### 4.3 Add the style block (mobile-friendly)
 
 ```vue
 <style scoped>
@@ -337,7 +329,7 @@ button:disabled {
 </style>
 ```
 
-## 7. Run the mini app
+## 5. Run the mini app
 
 ```bash
 npm run dev -- --host
@@ -349,7 +341,7 @@ Copy the **Network** URL from the terminal output, for example:
 http://192.168.1.42:5173
 ```
 
-## 8. Test inside Nimiq Pay
+## 6. Test inside Nimiq Pay
 
 1. Make sure your phone and dev machine are on the same Wi‑Fi network.
 2. Open **Nimiq Pay**.
@@ -363,7 +355,7 @@ You should see:
 - Nimiq accounts and a Nimiq signature response.
 - Ethereum account(s) and an Ethereum signature response.
 
-## 9. Troubleshooting
+## Troubleshooting
 
 **No Ethereum account returned**\
   The Ethereum success path requires at least one account available through Nimiq Pay.

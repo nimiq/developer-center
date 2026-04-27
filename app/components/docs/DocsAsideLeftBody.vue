@@ -60,10 +60,29 @@ const protocolNavigationRank = new Map<string, number>(
   protocolNavigationOrder.map((segment, index) => [segment, index]),
 )
 
+const miniAppsNavigationOrder = [
+  '',
+  'mini-app-tutorial',
+  'dual-chain-mini-app-tutorial',
+  'load-local-mini-app',
+  'build-with-ai',
+  'ideas',
+  'evm-tokens',
+  'api-reference',
+] as const
+
+const miniAppsNavigationRank = new Map<string, number>(
+  miniAppsNavigationOrder.map((segment, index) => [segment, index]),
+)
+
 const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
   if (!isRpcMethodsPage.value) {
     if (currentModule.value === 'protocol') {
       return sortProtocolNavigation(filteredNavigation.value)
+    }
+
+    if (currentModule.value === 'mini-apps') {
+      return sortMiniAppsNavigation(filteredNavigation.value)
     }
 
     return filteredNavigation.value
@@ -132,6 +151,31 @@ function getProtocolSegment(item: SidebarNavigationItem) {
   }
 
   return segments[1] || ''
+}
+
+function sortMiniAppsNavigation(items: SidebarNavigationItem[]) {
+  return [...items].sort((a, b) => {
+    const rankA = getMiniAppsNavigationRank(a)
+    const rankB = getMiniAppsNavigationRank(b)
+
+    if (rankA !== rankB) {
+      return rankA - rankB
+    }
+
+    return (a.title || '').localeCompare(b.title || '')
+  })
+}
+
+function getMiniAppsNavigationRank(item: SidebarNavigationItem) {
+  const candidatePath = item.path || item.children?.[0]?.path || ''
+  const segments = normalizePath(candidatePath).split('/').filter(Boolean)
+
+  if (segments[0] !== 'mini-apps') {
+    return Number.MAX_SAFE_INTEGER
+  }
+
+  const segment = segments[1] || ''
+  return miniAppsNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
 }
 </script>
 

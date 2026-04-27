@@ -64,14 +64,26 @@ The framework supports two blockchain ecosystems:
 **Ethereum + Layer 2 networks** (EVM-compatible)
 
 - Ethereum Mainnet
-- Polygon
+- [Polygon](/mini-apps/evm-tokens)
 - Arbitrum One
 - Optimism
 - Base
 - BNB Smart Chain (formerly Binance Smart Chain)
 - Sepolia (testnet for developers)
 
+ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/evm-tokens) for a worked example.
+
 Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
+
+## User Language
+
+Nimiq Pay exposes the user's selected language to mini apps via `window.nimiqPay.language`. The value is a read-only ISO 639-1 two-letter code (e.g. `'en'`, `'de'`, `'es'`) that mirrors the user's Nimiq Pay language setting. It is injected before page scripts run, so it is safe to read during app initialization. The value is static for the lifetime of the session. If the user changes their language in Nimiq Pay, the mini app picks it up the next time it opens.
+
+```javascript
+const language = window.nimiqPay?.language // e.g. 'en'
+```
+
+Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay.
 
 ## Security and Permissions
 

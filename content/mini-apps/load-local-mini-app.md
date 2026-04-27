@@ -1,25 +1,15 @@
 ---
+title: Load a Local Mini App
+description: Load a local mini app into Nimiq Pay from your development machine
 icon: i-tabler:device-mobile-code
 navigation:
   title: Load a Local Mini App
   order: 4
 ---
 
-<!-- url: https://nimiq.com/developers/mini-apps/load-local-mini-app -->
-<!-- type: setup guide -->
-<!-- summary: Load a local mini app into Nimiq Pay from your development machine. -->
-
 # Load a Local Mini App in Nimiq Pay
 
 Use this guide to load any locally running web app inside Nimiq Pay.
-
-::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
-
-Mini app testing is currently limited to allowlisted users.
-
-- On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
-- On Android, share the email associated with your Google account. You will receive an email when access is enabled.
-::
 
 ## Prerequisites
 
@@ -31,29 +21,25 @@ Mini app testing is currently limited to allowlisted users.
 
 The commands below assume you're using a Node.js mini app.
 
-1. Go to your project directory.
+Go to your project directory.
 
 ```bash
 cd my-mini-app
 ```
 
-1. Install dependencies.
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-1. Start the dev server with network access enabled.
+Start the dev server with network access enabled.
 
 ```bash
 npm run dev -- --host
 ```
 
-Example:
-
-```bash
-http://192.168.1.42:5173
-```
+Note the **Network** URL in the terminal output, for example `http://192.168.1.42:5173`.
 
 ## Open your local app in Nimiq Pay
 
@@ -70,7 +56,23 @@ If your app uses one of these APIs, feature-detect it and add a fallback. For ID
 
 Your app should load inside Nimiq Pay. You can also test [this demo](https://github.com/Eligioo/nimiq-mini-app-demo) to see a working mini app.
 
+## Test on testnet
+
+Nimiq Pay has a hidden dev menu with a network switch for testing without real funds.
+
+To access it: open the app menu and long-press the settings button for 10 seconds. A dev menu appears with three network options:
+
+- **Default**: follows the build type (dev builds use testnet, production builds use mainnet)
+- **Mainnet**: force mainnet regardless of build type
+- **Testnet**: force testnet regardless of build type
+
+Switching clears transaction history and reloads the app.
+
+::callout{icon="i-tabler-info-circle" color="info" title="Testnet applies to Nimiq only"}
+The testnet switch only affects Nimiq provider operations (NIM payments, signing, staking). EVM mini apps continue running against mainnet chains. To add custom EVM chains for development, use [`wallet_addEthereumChain`](https://docs.metamask.io/metamask-connect/evm/reference/json-rpc-api/wallet_addEthereumChain/).
+::
+
 ## Tutorials
 
-- Build a first mini app: [Mini app tutorial](https://nimiq.com/developers/mini-apps/mini-app-tutorial)
-- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](https://nimiq.com/developers/mini-apps/dual-chain-mini-app-tutorial)
+- Build a first mini app: [Mini app tutorial](/mini-apps/mini-app-tutorial)
+- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](/mini-apps/dual-chain-mini-app-tutorial)

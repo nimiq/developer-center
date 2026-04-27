@@ -8,14 +8,6 @@ navigation:
 
 # Build Your First Nimiq Mini App
 
-::callout{icon="i-tabler-info-circle" color="info" title="Temporary Testing Access"}
-
-Mini app testing is currently limited to allowlisted users.
-
-- On iOS, share the email associated with your Apple account. Install TestFlight, and the Nimiq Pay test build will appear there once your account is allowlisted.
-- On Android, share the email associated with your Google account. You will receive an email when access is enabled.
-::
-
 In this tutorial, you’ll build a minimal mini app that runs inside Nimiq Pay and calls three Nimiq provider methods:
 
 | Method | Description |

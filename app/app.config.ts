@@ -105,7 +105,7 @@ export default defineAppConfig({
     pageHero: {
       slots: {
         root: '',
-        container: 'py-20 sm:py-28 lg:py-36',
+        container: 'pt-20 pb-8 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-16',
         title: 'text-5xl sm:text-7xl tracking-tight font-extrabold text-highlighted',
         description: 'text-lg sm:text-xl text-muted leading-relaxed',
         links: 'flex flex-wrap gap-4',
@@ -168,7 +168,7 @@ export default defineAppConfig({
 
     contentToc: {
       slots: {
-        root: 'sticky top-(--docs-header-offset) z-10 bg-default/75 lg:bg-[initial] backdrop-blur -mx-4 px-4 sm:px-6 sm:-mx-6 overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
+        root: 'hidden lg:block lg:sticky top-(--docs-header-offset) z-10 lg:bg-[initial] overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
       },
     },
 

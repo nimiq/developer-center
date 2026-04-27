@@ -4,6 +4,15 @@ description: Guides, resources and tips on how to create with Nimiq. Start build
 navigation: false
 ---
 
+::u-banner
+---
+id: mini-apps-launch
+color: success
+title: "Mini Apps Framework is live! Build inside Nimiq Pay"
+to: /mini-apps/
+---
+::
+
 ::u-page-hero
 ---
 title: Build. Connect. Validate.
@@ -21,7 +30,7 @@ title: Choose your path
     ::::u-page-card
     ---
     title: Web Client
-    description: Build web and mobile apps that interact with Nimiq directly in the browser. Fully decentralized — no server required.
+    description: Build web and mobile apps that interact with Nimiq directly in the browser. Fully decentralized — no server required
     icon: i-lucide-globe
     to: /web-client/
     variant: outline
@@ -31,9 +40,19 @@ title: Choose your path
     ::::u-page-card
     ---
     title: Hub API
-    description: Integrate wallet features into your app. Sign transactions, manage accounts, and access the Nimiq ecosystem.
+    description: Integrate wallet features into your app. Sign transactions, manage accounts, and access the Nimiq ecosystem
     icon: i-lucide-wallet
     to: /hub/
+    variant: outline
+    ---
+    ::::
+
+    ::::u-page-card
+    ---
+    title: Mini Apps
+    description: Build apps that run inside Nimiq Pay with Nimiq and Ethereum wallet access
+    icon: i-lucide-layout-grid
+    to: /mini-apps/
     variant: outline
     ---
     ::::
@@ -44,16 +63,6 @@ title: Choose your path
     description: Build full-stack applications with the JSON-RPC API
     icon: i-lucide-terminal
     to: /rpc/
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: AI
-    description: Connect assistants and agent workflows with MCP, llms.txt, and the upcoming built-in docs assistant
-    icon: i-lucide-bot
-    to: /ai/
     variant: outline
     ---
     ::::
@@ -74,16 +83,6 @@ title: Choose your path
     description: Learn about the Albatross protocol
     icon: i-lucide-book-open
     to: /protocol/
-    variant: outline
-    ---
-    ::::
-
-    ::::u-page-card
-    ---
-    title: Mini Apps
-    description: Build lightweight apps on the Nimiq ecosystem
-    icon: i-lucide-layout-grid
-    to: /mini-apps/
     variant: outline
     ---
     ::::
