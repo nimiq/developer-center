@@ -80,6 +80,18 @@ const text = t(lang)
 console.log(text.greeting) // "Hello", "Hola", etc.
 ```
 
+::callout{icon="i-tabler-info-circle" color="info" title="TypeScript"}
+If you're using TypeScript, indexing the translations object with an arbitrary string may cause a type error. Use the `in` operator to check if the key exists before accessing it:
+
+```ts
+const nimiqPayLanguage = window.nimiqPay?.language
+const browserLanguage = navigator.language.split('-')[0]
+const t = (nimiqPayLanguage in translations ? translations[nimiqPayLanguage] : null)
+  ?? (browserLanguage in translations ? translations[browserLanguage] : null)
+  ?? translations.en
+```
+::
+
 ## Framework examples
 
 The examples below show how to make the language value reactive in Vue, React, and Svelte. These are the frameworks covered in the [starter tutorials](/mini-apps/mini-app-tutorial). If you use a different framework, adapt the same pattern: read `window.nimiqPay?.language` once at init, apply the fallback chain, and use the result to index your translations.
