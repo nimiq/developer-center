@@ -1,13 +1,31 @@
 ---
-name: mini-apps-best-practices
-description: The rulebook for building mini apps inside Nimiq Pay. Contains correct patterns for the Nimiq provider (`@nimiq/mini-app-sdk`) and the Ethereum provider (`window.ethereum`), supported chain IDs, ERC-20 conventions (USDT, USDC, decimals), NIM staking methods, and anti-patterns to avoid. Use whenever the user mentions a Nimiq Pay mini app, the `@nimiq/mini-app-sdk` package, `window.ethereum` in a Nimiq context, sending NIM or USDT from inside a wallet, switching EVM chains from a mini app, or anything involving `listAccounts`, `sign`, `sendBasicTransaction`, staking, or ERC-20 contract calls in a mini-app context. Load alongside scaffold or convert, or on its own when the developer is writing feature code for an existing mini app.
+name: mini-apps
+description: Build, scaffold, convert, validate, audit, or ship a Nimiq Pay mini app. Covers the Nimiq provider (@nimiq/mini-app-sdk) and the Ethereum provider (window.ethereum), ERC-20 tokens (USDT, USDC), supported EVM chains (Polygon, Arbitrum, Base, Optimism, BNB, Sepolia), NIM payments, staking, message signing, and project setup. Use when the user wants to build, create, start, bootstrap, or scaffold a mini app; convert, port, migrate, or adapt an existing web app to run inside Nimiq Pay; add NIM, USDT, or ERC-20 token support; integrate Nimiq Pay wallet features; replace Stripe, PayPal, or MetaMask with Nimiq Pay providers; check, review, validate, or audit a mini app before shipping; or mentions window.ethereum, @nimiq/mini-app-sdk, listAccounts, sendBasicTransaction, wallet_switchEthereumChain, eth_sendTransaction, eth_signTypedData_v4, or balanceOf in a Nimiq context.
 ---
 
-# Nimiq Mini Apps — Best Practices
+# Nimiq Mini Apps
 
 A mini app is a web application that runs inside Nimiq Pay in a mobile WebView. It communicates with the wallet through injected providers. The app runs in a sandbox with no access to private keys. Every sensitive action requires user approval through native dialogs.
 
-This skill is a continuous guardrail. It shapes every suggestion the AI makes during development. It does not scaffold projects or run checklists — it ensures the AI never generates code that violates the framework's rules.
+## How to proceed
+
+If the developer's request already implies a path, route directly:
+
+- Wants to build, create, start, or scaffold something new → read and follow [references/scaffold.md](references/scaffold.md)
+- Has existing code to convert, port, migrate, or adapt → read and follow [references/convert.md](references/convert.md)
+- Wants to check, review, validate, or audit before shipping → read and follow [references/checklist.md](references/checklist.md)
+- Already building, asks a specific question → continue with the rules below, consult API references as needed
+
+If invoked without context or the intent is unclear, present these options and ask the developer to choose:
+
+1. **Start from scratch** — I have an idea and no project yet
+2. **Convert an existing app** — I have a web app I want to run inside Nimiq Pay
+3. **Check if my app is ready** — I want to validate my mini app before shipping
+4. **Just build** — I'm already building, I just need the rules and API context
+
+Do not guess. Do not load a reference until you understand what the developer needs.
+
+After completing the scaffold or convert flow, always run the checklist ([references/checklist.md](references/checklist.md)) as the final step. When the developer says the app is done, ready, or complete during any flow, run the checklist.
 
 ## Providers
 
@@ -28,7 +46,7 @@ Available capabilities:
 - **Message signing**: sign arbitrary messages with the user's Nimiq key. Requires user confirmation.
 - **Consensus and block state**: check if the wallet has network consensus, get the current block height. No confirmation needed.
 - **NIM payments**: send basic NIM transactions, with or without attached text data. Requires user confirmation. Amounts are in Luna (1 NIM = 100,000 Luna). Methods: `sendBasicTransaction`, `sendBasicTransactionWithData`.
-- **Staking**: all require user confirmation. Capability → method: create a new staker (`sendNewStakerTransaction`), add stake (`sendStakeTransaction`), set active stake (`sendSetActiveStakeTransaction`), update delegation (`sendUpdateStakerTransaction`), retire stake (`sendRetireStakeTransaction`), remove stake (`sendRemoveStakeTransaction`).
+- **Staking**: all require user confirmation. Capability to method: create a new staker (`sendNewStakerTransaction`), add stake (`sendStakeTransaction`), set active stake (`sendSetActiveStakeTransaction`), update delegation (`sendUpdateStakerTransaction`), retire stake (`sendRetireStakeTransaction`), remove stake (`sendRemoveStakeTransaction`).
 
 For exact method signatures, parameters, and return types, see [references/nimiq-provider-api.md](references/nimiq-provider-api.md).
 
@@ -38,10 +56,10 @@ For EVM chain interaction, ERC-20 tokens, message signing, and contract calls. A
 
 Available capabilities:
 - **Account access**: request the user's Ethereum addresses. Same address works across all EVM chains. Requires user confirmation.
-- **Message signing**: for typed structured data — permits, order approvals, login challenges — prefer `eth_signTypedData_v4` (EIP-712). It presents the user with a readable breakdown of what they're signing instead of an opaque hash. Use `personal_sign` only for plain text messages that have no structure worth showing. Both require user confirmation.
+- **Message signing**: for typed structured data (permits, order approvals, login challenges) prefer `eth_signTypedData_v4` (EIP-712). It presents the user with a readable breakdown of what they're signing instead of an opaque hash. Use `personal_sign` only for plain text messages that have no structure worth showing. Both require user confirmation.
 - **Transactions**: send native token transfers or contract calls (`eth_sendTransaction`). Requires user confirmation.
 - **Chain management**: switch the active EVM chain (`wallet_switchEthereumChain`) or add a new one (`wallet_addEthereumChain`). Requires user confirmation.
-- **Read-only queries**: get balances, call contracts, estimate gas, read blocks and logs, get transaction receipts. No confirmation needed. These are routed through RPC.
+- **Read-only queries**: get balances, call contracts, estimate gas, read blocks and logs, get transaction receipts. No confirmation needed. Routed through RPC.
 - **Arbitrary RPC**: `rpcCall` proxies a JSON-RPC request through the host for methods not in the standard list. Use sparingly; prefer the typed methods above.
 - **Discovery**: Nimiq Pay implements EIP-6963, so wallet-discovery libraries (wagmi, RainbowKit, etc.) detect it automatically. You don't need to announce the provider manually.
 
@@ -49,19 +67,9 @@ For exact method signatures, parameters, and return types, see [references/ether
 
 ## Supported EVM chains
 
-These are the chains currently exposed in Nimiq Pay. Do not hardcode chains beyond this list. Do not assume other chains are available.
+These are the chains currently exposed in Nimiq Pay. Custom chains can be added using `wallet_addEthereumChain`. Sepolia is for development and testing only. Do not ship mini apps that transact on Sepolia to real users.
 
-| Chain | Chain ID (hex) | Chain ID (decimal) |
-| --- | --- | --- |
-| Ethereum Mainnet | `0x1` | 1 |
-| Polygon | `0x89` | 137 |
-| Arbitrum One | `0xa4b1` | 42161 |
-| Optimism | `0xa` | 10 |
-| Base | `0x2105` | 8453 |
-| BNB Smart Chain | `0x38` | 56 |
-| Sepolia (testnet) | `0xaa36a7` | 11155111 |
-
-Sepolia is exposed for development and testing only. Do not ship mini apps that transact on Sepolia to real users.
+For chain IDs, token addresses, and decimals, see [references/chains-and-tokens.md](references/chains-and-tokens.md).
 
 ## ERC-20 token rules
 
@@ -73,18 +81,7 @@ The pattern is always:
 
 Use an EVM library (viem, ethers.js, or wagmi) for ABI encoding. Do not manually encode contract calls.
 
-Critical rule on decimals: USDT and USDC use 6 decimal places, not the 18 used by most ERC-20 tokens. Always use the token's actual `decimals` value when parsing or formatting amounts. A 1 USDT balance displayed with 18 decimals would show as `0.000000000001` instead of `1.0`.
-
-USDT contract addresses:
-
-| Chain | Address | Decimals |
-| --- | --- | --- |
-| Polygon | `0xc2132D05D31c914a87C6611C10748AEb04B58e8F` | 6 |
-| Ethereum | `0xdAC17F958D2ee523a2206206994597C13D831ec7` | 6 |
-| Arbitrum One | `0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9` | 6 |
-| Optimism | `0x94b008aA00579c1307B0EF2c499aD98a8ce58e58` | 6 |
-
-For chain IDs, token addresses, and decimals, see [references/chains-and-tokens.md](references/chains-and-tokens.md).
+USDT and USDC use 6 decimal places, not the 18 used by most ERC-20 tokens. Always use the token's actual `decimals` value when parsing or formatting amounts. A 1 USDT balance displayed with 18 decimals would show as `0.000000000001` instead of `1.0`.
 
 ## Mobile-first
 
@@ -143,7 +140,3 @@ Reference implementations:
 Nimiq visual assets:
 
 - [Nimiq Design Kit](https://nimiq.dev/raw/design-kit/index.md)
-
-## Before shipping
-
-When the app is functionally complete, run the `mini-apps-checklist` skill to verify it meets all requirements for running inside Nimiq Pay. Install it with `npx skills add nimiq/developer-center --skill mini-apps-checklist`.

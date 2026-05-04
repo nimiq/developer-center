@@ -1,13 +1,4 @@
----
-name: mini-apps-scaffold
-description: Scaffold a new Nimiq Pay mini app from scratch — captures intent, sets up the project, installs `@nimiq/mini-app-sdk`, configures the Vite dev server for LAN access, and verifies the provider connection before any feature code. Use whenever the user says they want to 'start', 'build', 'create', 'scaffold', 'set up', or 'bootstrap' a new mini app, Nimiq Pay app, or wallet mini app, or says they have an idea for one but no project yet. Triggers on phrases like 'I have an idea for a mini app', 'how do I start a Nimiq mini app', 'new Nimiq Pay app', 'build a wallet mini app'.
----
-
-# Nimiq Mini Apps — Scaffold
-
-This skill creates a new mini app project from scratch. It guides the developer from idea to a working, connected shell that's ready for feature development.
-
-A mini app is a web application that runs inside Nimiq Pay on mobile devices. It communicates with the wallet through injected providers: a Nimiq provider for NIM operations and an Ethereum provider (`window.ethereum`) for EVM chain and token interactions.
+# Scaffold a New Mini App
 
 ## Step 0 — Understand the request
 
@@ -19,7 +10,7 @@ Before writing any code, ask the developer these questions:
    - Ethereum provider: for EVM tokens (like USDT), Ethereum signing, or multi-chain interaction
    - Both: for apps that bridge Nimiq and EVM functionality
 3. **Which framework or language?** Any web framework works. The mini app just needs to run in a browser. The documentation has examples for Vue, React, and Svelte. If the developer uses a different framework, adapt the patterns from the docs. If they don't have a preference, recommend Vue (it's what the reference implementations use).
-4. **Does it involve specific tokens or chains?** If yes, confirm which ones. Only these EVM chains are supported: Ethereum, Polygon, Arbitrum One, Optimism, Base, BNB Smart Chain, Sepolia.
+4. **Does it involve specific tokens or chains?** If yes, confirm which ones. Only these EVM chains are supported: Ethereum, Polygon, Arbitrum One, Optimism, Base, BNB Smart Chain, Sepolia. Custom chains can be added via `wallet_addEthereumChain`.
 
 Summarize your understanding back to the developer. Do not proceed until they confirm.
 
@@ -99,12 +90,12 @@ onMounted(async () => {
 })
 ```
 
-For the Ethereum provider, no SDK is involved — just feature-detect the injected object:
+For the Ethereum provider, no SDK is involved. Feature-detect the injected object:
 
 ```ts
 const provider = window.ethereum
 if (!provider) {
-  // Not inside Nimiq Pay — show a clear message and keep non-wallet UI usable.
+  // Not inside Nimiq Pay. Show a clear message and keep non-wallet UI usable.
 }
 ```
 
@@ -135,20 +126,12 @@ Tell the developer:
 - Is the app opened through Nimiq Pay, not a regular browser?
 - If using secure-context-only APIs (like `crypto.randomUUID()`), add a fallback. They may not work over HTTP on LAN.
 
-If the app involves payments or staking, suggest testing on testnet first. Nimiq Pay has a hidden dev menu: long-press the settings button for 10 seconds to reveal it, then switch to Testnet. Note: testnet only affects Nimiq provider operations. EVM operations stay on mainnet.
+If the app involves payments or staking, suggest testing on testnet first. Nimiq Pay has a hidden dev menu: long-press the settings button for 10 seconds to reveal it, then switch to Testnet. Testnet only affects Nimiq provider operations. EVM operations stay on mainnet.
 
 ## Step 6 — Build
 
-The project is now connected and verified. Proceed with the requested functionality based on the developer's intent from Step 0.
+The project is now connected and verified. Proceed with the requested functionality based on the developer's intent from Step 0. The rules in the main SKILL.md apply throughout development.
 
-For patterns, constraints, and API details during development, install the `mini-apps-best-practices` skill (`npx skills add nimiq/developer-center --skill mini-apps-best-practices`) or refer to the local references:
+## When the app is complete
 
-- [Nimiq Provider API](references/nimiq-provider-api.md)
-- [Ethereum Provider API](references/ethereum-provider-api.md)
-- [Chains and Tokens](references/chains-and-tokens.md)
-
-Full documentation: https://nimiq.dev/raw/mini-apps/index.md
-
-## Before shipping
-
-When the app is functionally complete, run the `mini-apps-checklist` skill to verify it meets all requirements for running inside Nimiq Pay. Install it with `npx skills add nimiq/developer-center --skill mini-apps-checklist`.
+Run the checklist: [checklist.md](checklist.md)
