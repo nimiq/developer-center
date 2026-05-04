@@ -431,7 +431,19 @@ export default App
 
 ::
 
-## 5. Run the mini app
+## 5. Add localization
+
+Nimiq Pay injects the user's selected language at `window.nimiqPay.language`. If you want your app to match the user's Nimiq Pay language, read it at the top of your script:
+
+```javascript
+const language = window.nimiqPay?.language
+  || navigator.language.split('-')[0]
+  || 'en'
+```
+
+This reads the Nimiq Pay language first, falls back to the device locale, then to English. For a full translations setup with framework examples, see [Localization in Mini Apps](/mini-apps/localization).
+
+## 6. Run the mini app
 
 Start the Vite dev server:
 
@@ -445,7 +457,7 @@ Note the **Network** URL in the terminal, for example:
 http://192.168.1.42:5173
 ```
 
-## 6. Test inside Nimiq Pay
+## 7. Test inside Nimiq Pay
 
 1. Make sure your phone and dev machine are on the same Wi-Fi network.
 2. Open **Nimiq Pay**.

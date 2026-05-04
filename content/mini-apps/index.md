@@ -83,7 +83,7 @@ Nimiq Pay exposes the user's selected language to mini apps via `window.nimiqPay
 const language = window.nimiqPay?.language // e.g. 'en'
 ```
 
-Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay.
+Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/localization).
 
 ## Security and Permissions
 

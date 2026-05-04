@@ -68,6 +68,7 @@ const miniAppsNavigationOrder = [
   'build-with-ai',
   'ideas',
   'evm-tokens',
+  'localization',
   'api-reference',
 ] as const
 
