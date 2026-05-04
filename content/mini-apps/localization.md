@@ -68,10 +68,10 @@ const translations = {
   pt: { greeting: 'Olá', tagline: 'Modelo de mini-app para Nimiq Pay' },
 }
 
-const defaultTranslation = translations.en
-
-function t(lang) {
-  return translations[lang] ?? defaultTranslation
+function getTranslations(lang) {
+  return translations[lang]
+    ?? translations[navigator.language.split('-')[0]]
+    ?? translations.en
 }
 
 // Usage
@@ -96,11 +96,9 @@ const translations = {
   pt: { greeting: 'Olá', tagline: 'Modelo de mini-app para Nimiq Pay' },
 }
 
-const language = window.nimiqPay?.language
-  || navigator.language.split('-')[0]
-  || 'en'
-
-const t = translations[language] ?? translations.en
+const t = translations[window.nimiqPay?.language]
+  ?? translations[navigator.language.split('-')[0]]
+  ?? translations.en
 </script>
 
 <template>
@@ -118,11 +116,9 @@ const translations = {
   pt: { greeting: 'Olá', tagline: 'Modelo de mini-app para Nimiq Pay' },
 }
 
-const language = window.nimiqPay?.language
-  || navigator.language.split('-')[0]
-  || 'en'
-
-const t = translations[language] ?? translations.en
+const t = translations[window.nimiqPay?.language]
+  ?? translations[navigator.language.split('-')[0]]
+  ?? translations.en
 
 export default function App() {
   return (
@@ -144,11 +140,9 @@ const translations = {
   pt: { greeting: 'Olá', tagline: 'Modelo de mini-app para Nimiq Pay' },
 }
 
-const language = window.nimiqPay?.language
-  || navigator.language.split('-')[0]
-  || 'en'
-
-const t = translations[language] ?? translations.en
+const t = translations[window.nimiqPay?.language]
+  ?? translations[navigator.language.split('-')[0]]
+  ?? translations.en
 </script>
 
 <h1>{t.greeting}</h1>
