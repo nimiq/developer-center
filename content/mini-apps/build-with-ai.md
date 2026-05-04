@@ -31,7 +31,11 @@ This pulls the skill from the Nimiq Developer Center GitHub repo and saves it to
 
 After installing, open your AI coding tool in the project directory and start working. The skill is picked up automatically by the AI, but you can also invoke it directly. Either way, the AI will have the Nimiq Mini Apps context available.
 
-To remove the skill, delete its folder from the skills directory.
+To remove the skill:
+
+```bash
+npx skills remove mini-apps
+```
 
 ## What the skill covers
 
