@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   docus@5.7.0:
-    hash: 8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd
+    hash: jeqlr2bdok63rtobzs7ykvhhdm
     path: patches/docus@5.7.0.patch
 
 importers:
@@ -100,7 +100,7 @@ importers:
         version: 3.4.2
       docus:
         specifier: https://pkg.pr.new/docus@1304
-        version: https://pkg.pr.new/docus@1304(patch_hash=8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd)(b79fef1be70f1ab244195d66774a0d68)
+        version: https://pkg.pr.new/docus@1304(patch_hash=jeqlr2bdok63rtobzs7ykvhhdm)(nymaxnpoiagymxra4px6ixlahm)
       eslint:
         specifier: ^9.38.0
         version: 9.38.0(jiti@2.6.1)
@@ -110,6 +110,9 @@ importers:
       lint-staged:
         specifier: ^16.2.6
         version: 16.2.6
+      nimiq-icons:
+        specifier: 1.0.0-beta.162
+        version: 1.0.0-beta.162
       nuxt:
         specifier: ^4.3.1
         version: 4.3.1(@parcel/watcher@2.5.6)(@types/node@24.9.2)(@vue/compiler-sfc@3.5.30)(better-sqlite3@12.6.2)(bufferutil@4.0.9)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@12.6.2))(eslint@9.38.0(jiti@2.6.1))(ioredis@5.10.0)(less@4.4.2)(lightningcss@1.32.0)(magicast@0.5.2)(optionator@0.9.4)(rollup@4.59.0)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(utf-8-validate@5.0.10)(vite@7.3.1(@types/node@24.9.2)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.32.0)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.2))(vue-tsc@3.1.2(typescript@5.9.3))(yaml@2.8.2)
@@ -6667,6 +6670,9 @@ packages:
     peerDependencies:
       reka-ui: ^2.0.0
       vue: ^3.3.0
+
+  nimiq-icons@1.0.0-beta.162:
+    resolution: {integrity: sha512-ozGy+5cvPIeRefE/TtN5DdnhuvXvuSQNSUIS3iuoywURHtmllGSR3BoittFL5VhZ79ovlD+h6G4sZguA9ZK5WQ==}
 
   nimiq-rpc-client-ts@1.0.0-beta.35:
     resolution: {integrity: sha512-7zUM/ySappO53Kvz7NPI4FA/9ErKCu86QTqC3d/FZDbp5rRYbMqPwJDyhrb6lBTdOk5qzImLGX6KULo53/Nl2Q==}
@@ -13604,7 +13610,7 @@ snapshots:
 
   diff@8.0.3: {}
 
-  docus@https://pkg.pr.new/docus@1304(patch_hash=8dcb01cfab982143cdfeeddf04959c69e3c3593a45277b518eb5800965e9eafd)(b79fef1be70f1ab244195d66774a0d68):
+  docus@https://pkg.pr.new/docus@1304(patch_hash=jeqlr2bdok63rtobzs7ykvhhdm)(nymaxnpoiagymxra4px6ixlahm):
     dependencies:
       '@ai-sdk/gateway': 3.0.66(zod@4.3.6)
       '@ai-sdk/mcp': 1.0.25(zod@4.3.6)
@@ -16181,6 +16187,10 @@ snapshots:
     dependencies:
       reka-ui: 2.6.0(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
       vue: 3.5.22(typescript@5.9.3)
+
+  nimiq-icons@1.0.0-beta.162:
+    dependencies:
+      '@iconify/types': 2.0.0
 
   nimiq-rpc-client-ts@1.0.0-beta.35(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10):
     dependencies:
