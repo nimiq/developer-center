@@ -23,7 +23,7 @@ const model = defineModel({ type: String })
 
 const appConfig = useAppConfig() as any
 const uiProp = useComponentUI('prose.codeGroup', props)
-const ui = computed(() => tv({ extend: tv(theme), ...appConfig.ui?.prose?.codeGroup || {} })())
+const ui = computed(() => tv({ extend: tv(theme), ...appConfig.ui?.prose?.codeGroup || {} })() as unknown as Record<keyof typeof theme.slots, (opts?: { class?: any }) => string>)
 
 const rerenderCount = ref(1)
 
