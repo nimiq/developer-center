@@ -1,5 +1,5 @@
 ---
-icon: i-nimiq:wallet
+icon: i-tabler:wallet
 navigation:
   title: Create and Manage Wallets
   order: 3

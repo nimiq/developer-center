@@ -17,7 +17,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   ---
   title: Query the Blockchain
   description: Fetch account balances, look up blocks, and check transaction status — all from the browser.
-  icon: i-nimiq:duotone-network
+  icon: i-nimiq:nodes
   to: ./guides/query-the-blockchain
   variant: outline
   ---
@@ -27,7 +27,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   ---
   title: Listen for Events
   description: Subscribe to new blocks, track transactions for an address, and react to consensus changes in real time.
-  icon: i-nimiq:duotone-speedmeter
+  icon: i-nimiq:bolt
   to: ./guides/listen-for-events
   variant: outline
   ---
@@ -37,7 +37,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   ---
   title: Create and Manage Wallets
   description: Generate keypairs, derive addresses from mnemonics, and manage HD wallets entirely client-side.
-  icon: i-nimiq:wallet
+  icon: i-tabler:wallet
   to: ./guides/wallets
   variant: outline
   ---
@@ -47,7 +47,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   ---
   title: Send Transactions
   description: Build, sign, and broadcast NIM transfers with optional data payloads.
-  icon: i-nimiq:duotone-send
+  icon: i-tabler:send
   to: ./guides/send-transactions
   variant: outline
   ---
