@@ -95,3 +95,13 @@ Here's how security works:
 - **Sandboxed execution**: Mini apps run in an isolated WebView with no access to the wallet's internal state or private keys
 - **Host app controls everything**: Your app can only *request* actions. The Nimiq Pay app decides whether to fulfill them, always with user approval
 - **Wallet requests are mediated**: Nimiq Pay handles wallet-related provider requests, while other RPC calls use the configured endpoint or your mini app's own RPC
+
+## Sharing Your Mini App
+
+Once your mini app is published, you can share it using a deeplink that opens it directly inside Nimiq Pay:
+
+```
+nimiqpay://miniapp?url=your-app.com
+```
+
+When a user taps this link on their phone, Nimiq Pay opens and loads your mini app with full provider access. If the URL is not in the Nimiq Pay mini app list or has never been accessed before, Nimiq Pay displays a warning before proceeding.
