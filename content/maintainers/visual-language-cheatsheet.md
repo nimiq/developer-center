@@ -173,13 +173,15 @@ These support many of the generic icons used across docs content and shared UI.
 
 ### `i-nimiq:*` Icons
 
-Content also references many `i-nimiq:*` icons.
+`i-nimiq:*` references resolve to the [`nimiq-icons`](https://www.npmjs.com/package/nimiq-icons) npm package — the Nimiq design system's icon set as an Iconify collection. It is installed as a dev dependency and registered in `nuxt.config.ts` as a custom collection (`prefix: nimiq`).
 
-These are **not** stored in `app/assets/icons/`, and there is no local `@iconify-json/nimiq` package checked into this repo today.
+The package ships ~323 icons. Browse the full set in [the Nimiq UI repository](https://github.com/onmax/nimiq-ui).
 
-Treat them as part of the wider Iconify resolution path rather than a local brand-asset folder in this repository.
+Notes for maintainers:
 
-If an `i-nimiq:*` icon becomes a maintenance issue, inspect the Nuxt Icon configuration before assuming the icon is local.
+- `customCollections` in `nuxt.config.ts` loads `nimiq-icons/icons.json` directly — no separate svg files in this repo.
+- Adding the collection bumped the client icon bundle past Nuxt Icon's default 256KB limit, so `clientBundle.sizeLimitKb` is set to `512`.
+- If an `i-nimiq:*` reference fails to render, first confirm the icon name exists in the package (its `icons.json` is the source of truth). Some legacy names from earlier `nimiq-css` versions may not exist (e.g. `wallet`, `duotone-send`) — use a Tabler alternative or a different nimiq icon in those cases.
 
 ## Images And Diagrams
 

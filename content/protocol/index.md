@@ -70,7 +70,7 @@ Albatross is Nimiq's innovative Proof-of-Stake consensus algorithm designed for 
   ---
   title: High Throughput
   description: Achieve 1000+ TPS with lightning-fast 1-second block separation for optimal performance
-  icon: i-nimiq:duotone-speedmeter
+  icon: i-nimiq:bolt
   variant: outline
   ---
   ::::
@@ -79,7 +79,7 @@ Albatross is Nimiq's innovative Proof-of-Stake consensus algorithm designed for 
   ---
   title: Energy Efficient
   description: Reduced power consumption compared to traditional Proof-of-Work blockchain systems
-  icon: i-nimiq:duotone-network
+  icon: i-nimiq:eco
   variant: outline
   ---
   ::::
@@ -97,7 +97,7 @@ Albatross is Nimiq's innovative Proof-of-Stake consensus algorithm designed for 
   ---
   title: Scalable
   description: Dynamic validator set with periodic rotation maintains active validator participation
-  icon: i-nimiq:duotone-incognito
+  icon: i-nimiq:cycle
   variant: outline
   ---
   ::::
@@ -158,7 +158,7 @@ Validators earn rewards for contributions and face [punishments](/protocol/conse
   ---
   title: Liveness
   description: Network continues operating even with f faulty validators
-  icon: i-nimiq:duotone-network
+  icon: i-nimiq:nodes
   variant: outline
   ---
   ::::

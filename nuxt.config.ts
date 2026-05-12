@@ -1,9 +1,12 @@
 import { readdirSync, readFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import { join, relative } from 'node:path'
 import { cwd, env } from 'node:process'
 import { defineNuxtConfig } from 'nuxt/config'
 import topLevelAwait from 'vite-plugin-top-level-await'
 import wasm from 'vite-plugin-wasm'
+
+const nimiqIcons = createRequire(import.meta.url)('nimiq-icons/icons.json')
 
 const baseURL = '/'
 const contentRoot = join(cwd(), 'content')
@@ -170,10 +173,12 @@ export default defineNuxtConfig({
         prefix: 'custom',
         dir: './app/assets/icons',
       },
+      nimiqIcons,
     ],
     clientBundle: {
       scan: true,
       includeCustomCollections: true,
+      sizeLimitKb: 512,
     },
   },
   content: {
@@ -184,7 +189,7 @@ export default defineNuxtConfig({
       markdown: {
         contentHeading: false,
         highlight: {
-          langs: ['bash', 'diff', 'json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'md', 'yaml'],
+          langs: ['bash', 'diff', 'json', 'js', 'jsx', 'ts', 'tsx', 'html', 'css', 'vue', 'svelte', 'shell', 'sh', 'md', 'yaml', 'rust', 'toml', 'python'],
         },
         remarkPlugins: { 'remark-math': {}, [join(cwd(), 'remark-extract-title.mjs')]: {} },
         rehypePlugins: { 'rehype-katex': {} },

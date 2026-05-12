@@ -1,5 +1,5 @@
 ---
-icon: i-nimiq:duotone-speedmeter
+icon: i-nimiq:bolt
 navigation:
   title: Listen for Events
   order: 2

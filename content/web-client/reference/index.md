@@ -2,7 +2,7 @@
 title: API Reference
 icon: i-tabler:book
 navigation:
-  title: Overview
+  title: API Reference
   order: 0
 description: API reference for the Nimiq Web Client (@nimiq/core) — classes, interfaces, enumerations, and type aliases grouped by domain.
 ---

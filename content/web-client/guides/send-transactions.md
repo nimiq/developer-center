@@ -1,5 +1,5 @@
 ---
-icon: i-nimiq:duotone-send
+icon: i-tabler:send
 navigation:
   title: Send Transactions
   order: 4

@@ -1,5 +1,5 @@
 ---
-icon: i-nimiq:duotone-network
+icon: i-nimiq:nodes
 navigation:
   title: Query the Blockchain
   order: 1
