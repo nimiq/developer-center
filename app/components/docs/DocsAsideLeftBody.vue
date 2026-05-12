@@ -70,10 +70,21 @@ const miniAppsNavigationOrder = [
   'evm-tokens',
   'localization',
   'api-reference',
+  'faq',
 ] as const
 
 const miniAppsNavigationRank = new Map<string, number>(
   miniAppsNavigationOrder.map((segment, index) => [segment, index]),
+)
+
+const apiReferenceChildOrder = [
+  '',
+  'nimiq-provider',
+  'ethereum-provider',
+] as const
+
+const apiReferenceChildRank = new Map<string, number>(
+  apiReferenceChildOrder.map((segment, index) => [segment, index]),
 )
 
 const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
@@ -155,9 +166,31 @@ function getProtocolSegment(item: SidebarNavigationItem) {
 }
 
 function sortMiniAppsNavigation(items: SidebarNavigationItem[]) {
+  return [...items]
+    .sort((a, b) => {
+      const rankA = getMiniAppsNavigationRank(a)
+      const rankB = getMiniAppsNavigationRank(b)
+
+      if (rankA !== rankB) {
+        return rankA - rankB
+      }
+
+      return (a.title || '').localeCompare(b.title || '')
+    })
+    .map((item) => {
+      if (getMiniAppsSegment(item) === 'api-reference' && item.children?.length) {
+        return { ...item, children: sortApiReferenceChildren(item.children) }
+      }
+      return item
+    })
+}
+
+function sortApiReferenceChildren(items: SidebarNavigationItem[]) {
   return [...items].sort((a, b) => {
-    const rankA = getMiniAppsNavigationRank(a)
-    const rankB = getMiniAppsNavigationRank(b)
+    const segA = getApiReferenceChildSegment(a)
+    const segB = getApiReferenceChildSegment(b)
+    const rankA = apiReferenceChildRank.get(segA) ?? Number.MAX_SAFE_INTEGER
+    const rankB = apiReferenceChildRank.get(segB) ?? Number.MAX_SAFE_INTEGER
 
     if (rankA !== rankB) {
       return rankA - rankB
@@ -167,16 +200,31 @@ function sortMiniAppsNavigation(items: SidebarNavigationItem[]) {
   })
 }
 
-function getMiniAppsNavigationRank(item: SidebarNavigationItem) {
+function getMiniAppsSegment(item: SidebarNavigationItem) {
   const candidatePath = item.path || item.children?.[0]?.path || ''
   const segments = normalizePath(candidatePath).split('/').filter(Boolean)
 
   if (segments[0] !== 'mini-apps') {
+    return null
+  }
+
+  return segments[1] || ''
+}
+
+function getMiniAppsNavigationRank(item: SidebarNavigationItem) {
+  const segment = getMiniAppsSegment(item)
+
+  if (segment === null) {
     return Number.MAX_SAFE_INTEGER
   }
 
-  const segment = segments[1] || ''
   return miniAppsNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
+}
+
+function getApiReferenceChildSegment(item: SidebarNavigationItem) {
+  const candidatePath = item.path || ''
+  const segments = normalizePath(candidatePath).split('/').filter(Boolean)
+  return segments[2] || ''
 }
 </script>
 
