@@ -29,7 +29,7 @@ No. Mini apps can be games, calculators, to-do lists, social tools, tipping jars
 
 The [Mini App Ideas](/mini-apps/ideas) page has a categorized list of mini app concepts, each with a description, which providers it needs, and any external APIs that could power it. Pick one, adapt it, or use it as a starting point for something entirely different.
 
-### Does I need a Nimiq Pay account to use my mini app?
+### Do I need a Nimiq Pay account to use my mini app?
 
 Yes. Mini apps run inside Nimiq Pay, so users need the app installed. When your mini app requests wallet access, Nimiq Pay handles authentication and user approval natively.
 
