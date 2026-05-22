@@ -67,3 +67,4 @@ A collection of ideas for mini apps that run inside Nimiq Pay. Each idea lists w
 | QR Pay | Generate QR codes that trigger NIM or USDT payments when scanned | Both | |
 | Pastebin | Create shareable text snippets, tip the author in NIM | Nimiq | |
 | Translator | Translate text using an AI model, pay per translation in NIM | Nimiq | DeepL, OpenAI |
+| Faucet | Distribute free testnet NIM to new users, gated by captcha and rate limits | Nimiq | Captcha API |
