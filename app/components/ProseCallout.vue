@@ -22,12 +22,15 @@ type CalloutColor = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | '
     v-bind="$attrs"
     :to="to"
     :target="target"
-    :icon="icon"
+    :icon="title ? undefined : icon"
     :color="color"
     :class="props.class"
     :ui="ui"
   >
-    <span v-if="title" class="mr-1 font-semibold">{{ title }}</span>
+    <div v-if="title" class="mb-1 flex items-center gap-2 font-semibold">
+      <UIcon v-if="icon" :name="(icon as string)" class="size-5 shrink-0" />
+      <span>{{ title }}</span>
+    </div>
     <slot />
   </BaseProseCallout>
 </template>
