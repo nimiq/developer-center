@@ -55,6 +55,10 @@ Yes. The Mini Apps Framework only governs how your app talks to the wallet, thro
 
 Yes. Your mini app can call any external API using `fetch()` or your HTTP client of choice. The [Mini App Ideas](/mini-apps/ideas) page lists some external APIs that pair well with mini apps, like CoinGecko for prices or OpenWeatherMap for weather data, but you're free to use any API you want. If it needs a secret key, keep it on your own backend rather than in the mini app bundle.
 
+### Can mini apps integrate external payment processors or fiat payment flows?
+
+Yes. Mini apps can integrate third-party payment services such as Stripe, fiat on-ramps, or other card payment providers. However, native Google Pay API payments can't be triggered from within a mini app. To qualify for the competition, your mini app must still meaningfully integrate with the Mini Apps Framework and supported providers.
+
 ### Can I use open-source libraries and templates?
 
 Yes. You can use any npm package, open-source template, or starter kit you like. Just respect the licenses of anything you depend on.
