@@ -116,6 +116,8 @@ The testnet switch only affects Nimiq provider operations. EVM operations contin
 
 When suggesting test flows that involve payments or staking, recommend testnet to avoid using real funds.
 
+On testnet, the "Get free NIM" button credits the account with 110'000 NIM per request. It appears on the home empty state and inside the Top Up modal.
+
 ## Anti-patterns
 
 Do not do any of the following:
