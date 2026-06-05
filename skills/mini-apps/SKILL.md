@@ -100,6 +100,10 @@ Nimiq Pay exposes the user's selected language at `window.nimiqPay.language`. Th
 
 Mini apps can and should call external APIs and use server-side backends. This makes mini apps richer. The only constraint is that wallet operations (payments, signing, account access) must go through the injected providers.
 
+When the mini app calls a backend the developer controls, the backend must include the mini app's origin in its `Access-Control-Allow-Origin` response header. The origin is the URL Nimiq Pay loaded the mini app from.
+
+In dev, the mini app runs in Nimiq Pay on a phone, so `localhost` from inside the WebView resolves to the phone, not the dev machine. If the backend also runs locally during dev, point `fetch` URLs at the dev machine's LAN IP (e.g. `http://192.168.x.x:3000`), not `localhost`.
+
 ## Approval dialog UX
 
 Do not fire multiple provider calls that require user confirmation in rapid sequence. Each confirmation triggers a native dialog that the user must respond to. Queuing several creates a confusing experience. Batch read-only calls freely, but sequence confirmation-requiring calls with clear user intent between them.
