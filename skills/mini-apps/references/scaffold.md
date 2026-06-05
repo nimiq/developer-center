@@ -38,6 +38,8 @@ If the app uses the Nimiq provider (most apps will):
 npm install @nimiq/mini-app-sdk
 ```
 
+If the developer encounters unexpected behaviour, check the [SDK release notes](https://www.npmjs.com/package/@nimiq/mini-app-sdk) for recent breaking changes.
+
 If the app only uses the Ethereum provider, no SDK is needed. `window.ethereum` is injected by Nimiq Pay.
 
 If the app needs ABI encoding for ERC-20 token interaction, also install an EVM library:

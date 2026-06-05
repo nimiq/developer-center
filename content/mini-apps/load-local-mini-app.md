@@ -41,6 +41,27 @@ npm run dev -- --host
 
 Note the **Network** URL in the terminal output, for example `http://192.168.1.42:5173`.
 
+::callout{color="info" title="HMR over LAN with Docker"}
+
+If you're running the Vite dev server inside Docker, hot module reload (HMR) may fail silently when the app is opened on your phone. The HMR client tries to connect through container-internal addresses the phone cannot reach.
+
+To fix it, set `VITE_HMR_HOST` to your host machine's LAN IP and add an `hmr` block to your `vite.config`:
+
+```ts
+const hmrHost = process.env.VITE_HMR_HOST
+
+export default defineConfig({
+  server: {
+    host: true,
+    port: 5173,
+    hmr: hmrHost ? { host: hmrHost, protocol: 'ws', clientPort: 5173 } : undefined,
+  },
+})
+```
+
+Then run with the env variable set: `VITE_HMR_HOST=<your-LAN-IP> npm run dev -- --host`. Outside Docker, the default Vite config works without this.
+::
+
 ## Open your local app in Nimiq Pay
 
 1. Open **Nimiq Pay** on your phone.
