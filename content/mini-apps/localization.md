@@ -35,24 +35,6 @@ function getLanguage() {
 
 `navigator.language` returns a BCP 47 tag like `en-US`. The `.split('-')[0]` extracts the two-letter language code. The final fallback to `'en'` covers the case where both are unavailable.
 
-## TypeScript type declaration
-
-TypeScript does not know about `window.nimiqPay` by default. Add a declaration file to your project to avoid type errors:
-
-```ts
-// nimiq-pay.d.ts
-declare global {
-  interface Window {
-    nimiqPay?: {
-      readonly language?: string
-    }
-  }
-}
-export {}
-```
-
-Place this file anywhere in your project's source directory. TypeScript picks it up automatically. No import needed.
-
 ## Translations without a library
 
 For most mini apps, a plain object map is enough. No i18n library is needed.
