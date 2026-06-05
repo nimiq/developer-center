@@ -85,6 +85,18 @@ const language = window.nimiqPay?.language // e.g. 'en'
 
 Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/localization).
 
+## Device Identifier
+
+Nimiq Pay can issue a pseudonymous per-device identifier to mini apps that need a stable handle, for example for leaderboards, anti-spam, or save slots. The identifier is a 64-character hex SHA-256 string scoped to your mini app's origin. It identifies the device, not the user: a shared device returns the same value to every user, and the same user on two devices receives two different identifiers.
+
+```ts
+import { requestDeviceIdentifier } from '@nimiq/mini-app-sdk'
+
+const id = await requestDeviceIdentifier({ reason: 'Leaderboard ranking' })
+```
+
+The first call per origin prompts the user with the `reason` you provide; subsequent calls resolve silently. For privacy properties, error handling, and TypeScript types, see [Device Identifier in Mini Apps](/mini-apps/device-identifier).
+
 ## Security and Permissions
 
 Every sensitive action requires explicit user approval through native dialogs that mini apps cannot bypass. Your app runs in a secure sandbox with no direct access to private keys. The Nimiq Pay app mediates all wallet operations.
