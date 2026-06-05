@@ -93,6 +93,12 @@ Switching clears transaction history and reloads the app.
 The testnet switch only affects Nimiq provider operations (NIM payments, signing, staking). EVM mini apps continue running against mainnet chains. To add custom EVM chains for development, use [`wallet_addEthereumChain`](https://docs.metamask.io/metamask-connect/evm/reference/json-rpc-api/wallet_addEthereumChain/).
 ::
 
+### Get testnet NIM
+
+To test mini app flows that involve real transactions (payments, signing, staking), a testnet account can claim free NIM directly inside Nimiq Pay.
+
+After switching to testnet, the empty-state home screen shows a **Get free NIM** button. Tapping it credits the account with 110'000 testnet NIM per request. The same button is also available inside the **Top Up** modal.
+
 ## Tutorials
 
 - Build a first mini app: [Mini app tutorial](/mini-apps/mini-app-tutorial)
