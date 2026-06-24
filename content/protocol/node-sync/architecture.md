@@ -14,7 +14,7 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 **Macro Sync Phase**: Establishes current network state efficiently by downloading and verifying macro blocks (epoch and checkpoint blocks). Different strategies optimize for various resource constraints:
 
 - [History Macro Sync](macro-sync/history-macro-sync): Complete historical verification for history nodes
-- [Light Macro Sync](macro-sync/light-macro-sync): ZKP-based verification for resource efficiency
+- [Light Macro Sync](macro-sync/light-macro-sync): Signature-verified macro sync for full and light nodes
 - [Pico Macro Sync](macro-sync/pico-macro-sync): Trust-based approach with automatic security fallback
 
 **Live Sync Phase**: Maintains real-time synchronization with ongoing micro block production:
@@ -116,7 +116,7 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 **Async Stream Processing**: All major components implement `Stream` trait for non-blocking, event-driven processing that maintains responsiveness under load.
 
 **Concurrency and Parallel Requests**:
-The sync system frequently needs to communicate with multiple peers at once, such as when requesting blocks or proofs. To handle this efficiently, it uses Rust’s `FuturesUnordered` collection. This allows the system to manage many asynchronous tasks in parallel and process each result as soon as it becomes available, regardless of the order they were started. By doing so, the node can take advantage of the fastest responses, keep the synchronization pipeline full, and avoid delays caused by slower peers. This approach ensures high throughput and responsiveness during all phases of synchronization.
+The sync system frequently needs to communicate with multiple peers at once, such as when requesting blocks. To handle this efficiently, it uses Rust’s `FuturesUnordered` collection. This allows the system to manage many asynchronous tasks in parallel and process each result as soon as it becomes available, regardless of the order they were started. By doing so, the node can take advantage of the fastest responses, keep the synchronization pipeline full, and avoid delays caused by slower peers. This approach ensures high throughput and responsiveness during all phases of synchronization.
 
 **Parallel Request Management**: Multi-peer concurrent request coordination with automatic load balancing and failure recovery ensures optimal network utilization.
 
@@ -126,9 +126,9 @@ The sync system frequently needs to communicate with multiple peers at once, suc
 
 **Cryptographic Verification**: History and full nodes perform complete cryptographic validation of all received data.
 
-**ZKP Security**: Full and light nodes achieve high security through zero-knowledge proof verification.
+**Macro Chain Verification**: Light and full nodes verify each election and checkpoint block against the current validator set, extending a chain of trust without storing the full history.
 
-**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to cryptographic verification when conflicts are detected.
+**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to verified sync when conflicts are detected.
 
 ## Error Handling
 
@@ -153,9 +153,9 @@ A node establishes consensus when it achieves both **peer connectivity** (minimu
 - Require 2/3+ agreement on current blockchain state
 - Disconnect from peers with significantly different state
 
-**Multi-Peer Verification and Proof Validation:**
+**Multi-Peer Verification:**
 
-- Request proofs from multiple peers for cross-validation
+- Request data from multiple peers for cross-validation
 - Compare responses to detect inconsistencies
 - Build consensus from majority agreement
 - Ban peers providing invalid data

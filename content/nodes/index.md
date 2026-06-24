@@ -14,7 +14,7 @@ navigation:
 
 # Nodes & Validators
 
-This hub helps you choose between being a validator, hosting your own RPC endpoint or contributing prover capacity to the zero-knowledge sync.
+This hub helps you choose between being a validator or hosting your own RPC endpoint.
 
 :::u-page-grid
   ::::u-page-card
@@ -36,16 +36,6 @@ This hub helps you choose between being a validator, hosting your own RPC endpoi
   variant: outline
   ---
   ::::
-
-  ::::u-page-card
-  ---
-  title: Operate a Prover
-  description: Supply zk-SNARK proofs for Albatross with the hardware, storage, and monitoring it demands.
-  icon: i-tabler:cpu
-  to: ./prover-node-guide
-  variant: outline
-  ---
-  ::::
 :::
 
 ## Choose your path
@@ -55,10 +45,9 @@ This hub helps you choose between being a validator, hosting your own RPC endpoi
 | Prototype quickly | [Explore the RPC](../rpc/) | Make JSON-RPC calls right away using hosted or local endpoints |
 | Control your own endpoint | [Run a node](https://github.com/nimiq/core-rs-albatross?tab=readme-ov-file#configuration) | Tune availability, security, and data retention to your needs |
 | Stake or pool NIM | [Become a validator](./validators/becoming-a-validator) | Enter consensus and earn rewards from bonded or delegated stake |
-| Provide zero-knowledge proofs | [Operate a prover](./prover-node-guide) | Supply zk-SNARK proofs that feed the Albatross pipeline |
 
 ## Helpful references
 
 - [Web Client vs RPC Client](/web-client/web-client-vs-rpc) — decide when a hosted node is necessary.
 - [JSON-RPC Methods](../rpc/methods/index.md) — integrate your applications once the endpoint is live.
-- [Protocol documentation](/protocol/) — understand how validators, staking, and ZKP systems fit into Albatross.
+- [Protocol documentation](/protocol/) — understand how validators and staking fit into Albatross.

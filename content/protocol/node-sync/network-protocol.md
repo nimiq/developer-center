@@ -25,7 +25,6 @@ All messages implement the `RequestCommon` trait with unique `TYPE_ID` ident
 | **207** | [`RequestBlock`](#requestblock) | Get specific block by hash | `Block` | Individual block retrieval |
 | **209** | [`RequestMissingBlocks`](#requestmissingblocks) | Get blocks between locators and target | `ResponseBlocks` | Chain gap filling |
 | **210** | [`RequestHead`](#requesthead) | Get peer's current chain tip | `ResponseHead` | Sync coordination |
-| **211** | [`RequestZKP`](#requestzkp) | Get zero-knowledge proof | `RequestZKPResponse` | Full and Light client sync |
 | **212** | [`RequestChunk`](#requestchunk) | Get accounts trie chunk | `ResponseChunk` | State live sync |
 | **213** | [`RequestTransactionsProof`](#requesttransactionsproof) | Get transaction inclusion proof | `ResponseTransactionsProof` | Transaction verification |
 | **214** | [`RequestTransactionReceiptsByAddress`](#requesttransactionreceiptsbyaddress) | Get receipts for address | `ResponseTransactionReceiptsByAddress` | Address queries |
@@ -183,29 +182,6 @@ pub struct ResponseHead {
 ```
 
 Polls multiple peers simultaneously to establish network consensus. If 2/3+ peers agree on the same head, consensus is likely established.
-
-### RequestZKP
-
-Requests zero-knowledge proofs for efficient chain verification for full and light nodes. Includes block number filter to prevent outdated proof flooding. Optionally requests the corresponding election block. Responds with either a recent proof or indicates the request is outdated.
-
-```rust
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RequestZKP {
-    pub(crate) block_number: u32,
-    pub(crate) request_election_block: bool,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[repr(u8)]
-pub enum RequestZKPResponse {
-    Proof(ZKProof, Option<MacroBlock>),
-    Outdated(u32),
-}
-```
-
-Sets `block_number` to its current height, preventing the node from receiving outdated proofs it already has. Sets `request_election_block: true` when the node needs the full election block data for state verification, not just the proof itself.
-
-**Error handling**: `Outdated` built in the response `enum`
 
 ### RequestChunk
 

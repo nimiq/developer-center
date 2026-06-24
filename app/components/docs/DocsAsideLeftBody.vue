@@ -52,7 +52,6 @@ const protocolNavigationOrder = [
   'economics',
   'node-sync',
   'storage',
-  'zkp',
   'glossary',
 ] as const
 
