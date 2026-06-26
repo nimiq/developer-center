@@ -153,7 +153,7 @@ Nimiq's native cryptocurrency.
 
 ## Pinned Election Block
 
-A recent election macro block, identified by its block number and hash, that is hardcoded into the client release. Pico nodes use it as a trusted anchor when they fall back to [light macro sync](/protocol/node-sync/macro-sync/light-macro-sync): instead of re-syncing the election chain from genesis, they seed their chain to the pinned election block and verify forward. Other node types (light, full, history) do not sync from it. They only cross-check it against their own chain and log a mismatch. When no pinned election block is set for a network, clients behave as if the feature were absent. Distinct from a [checkpoint block](#checkpoint-block) (a macro block ending a batch) and from the transient checkpoint message used during macro sync.
+A recent election macro block, identified by its block number and hash, that is hardcoded into the client release. It speeds up the fallback to [light macro sync](/protocol/node-sync/macro-sync/light-macro-sync): a Pico node that falls back uses it as a trusted anchor, seeding its chain to the pinned election block and verifying forward instead of re-syncing the election chain from genesis. Other node types (light, full, history) do not sync from it. They only cross-check it against their own chain and log a mismatch. When no pinned election block is set for a network, clients behave as if the feature were absent. Distinct from a [checkpoint block](#checkpoint-block) (a macro block ending a batch) and from the transient checkpoint message used during macro sync.
 
 ## Potential Validator
 

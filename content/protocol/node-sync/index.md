@@ -49,7 +49,7 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 ### Pico Nodes
 
 - Sync with the latest election block only (no historical data; trust-based)
-- Ultra-fast startup with trust-based consensus and automatic fallback to verified sync
+- Ultra-fast startup with trust-based consensus and automatic fallback to trustless sync
 - Development environments, testing, and trusted network scenarios
 - Rely on full or history nodes for data availability and fallback verification
 
@@ -117,7 +117,7 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
 *Macro Sync Strategies:*
 
 - [History Macro Sync](macro-sync/history-macro-sync) - Full chain download for history nodes
-- [Light Macro Sync](macro-sync/light-macro-sync) - Verified macro sync for full and light nodes
+- [Light Macro Sync](macro-sync/light-macro-sync) - Trustless macro sync for full and light nodes
 - [Pico Macro Sync](macro-sync/pico-macro-sync) - Optimistic sync with automatic fallback
 
 *Live Sync Strategies:*

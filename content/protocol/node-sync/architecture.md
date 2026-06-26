@@ -128,7 +128,7 @@ The sync system frequently needs to communicate with multiple peers at once, suc
 
 **Macro Chain Verification**: Light and full nodes verify each election and checkpoint block against the current validator set, extending a chain of trust without storing the full history.
 
-**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to verified sync when conflicts are detected.
+**Trust-Based Operation**: Pico nodes use optimistic trust with automatic fallback to trustless sync when conflicts are detected.
 
 ## Error Handling
 

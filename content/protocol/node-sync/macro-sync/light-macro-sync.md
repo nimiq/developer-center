@@ -7,7 +7,7 @@ navigation:
 
 # Light Macro Sync
 
-Light Macro Sync is the macro block synchronization mechanism for full and light nodes, and the verified fallback for [Pico Macro Sync](pico-macro-sync). It brings a node to the current macro state by requesting and verifying the chain of election and checkpoint blocks, without the full block history. Macro block requests run through a bounded, ordered **`SyncQueue`**, which prevents a node that is many epochs behind from flooding its peers with requests.
+Light Macro Sync is the macro block synchronization mechanism for full and light nodes, and the trustless fallback for [Pico Macro Sync](pico-macro-sync). It brings a node to the current macro state by requesting and verifying the chain of election and checkpoint blocks, without the full block history. Macro block requests run through a bounded, ordered **`SyncQueue`**, which prevents a node that is many epochs behind from flooding its peers with requests.
 
 ## Key Characteristics
 
@@ -15,7 +15,7 @@ Light Macro Sync is the macro block synchronization mechanism for full and light
 - **Signature-Verified**: Each election and checkpoint block is verified against the current validator set before it is applied
 - **Dual Blockchain Support**: Compatible with both full and light blockchain instances
 - **Validity Window Sync**: Full nodes perform additional history chunk validation
-- **Verified Fallback**: Serves as the fallback mechanism for Pico Macro Sync
+- **Trustless Fallback**: Serves as the fallback mechanism for Pico Macro Sync
 - **Stream-Based**: Implements the `Stream` trait for asynchronous event processing
 
 ## How It Works

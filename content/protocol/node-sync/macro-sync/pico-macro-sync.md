@@ -127,7 +127,7 @@ The `EitherSyncer` enum allows transitions between sync mechanisms:
 ```rust
 pub enum EitherSyncer<N: Network> {
     Normal(PicoMacroSync<N>),       // Fast optimistic sync
-    Fallback(LightMacroSync<N>),    // Verified fallback sync
+    Fallback(LightMacroSync<N>),    // Trustless fallback sync
 }
 ```
 
@@ -146,7 +146,7 @@ Pico Macro Sync emits structured events for different synchronization scenarios:
 
 - Fallback trigger detection when block validation fails
 - Transition from `PicoMacroSync` to `LightMacroSync` via `EitherSyncer`
-- Peer transfer to Light Macro Sync (verified sync)
+- Peer transfer to Light Macro Sync (trustless sync)
 
 ## Transition to Live Sync
 
