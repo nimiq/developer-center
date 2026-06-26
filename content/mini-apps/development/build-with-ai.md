@@ -4,7 +4,7 @@ description: Install an AI skill that gives your coding tool accurate context ab
 icon: i-tabler:sparkles
 navigation:
   title: Build with AI
-  order: 5
+  order: 2
 ---
 
 # Build with AI
@@ -55,8 +55,8 @@ The skill also includes local reference files with method signatures, supported 
 ## Reference
 
 - [Mini Apps Overview](/mini-apps/)
-- [Build Your First Mini App](/mini-apps/mini-app-tutorial)
-- [Using EVM Tokens](/mini-apps/evm-tokens)
+- [Build Your First Mini App](/mini-apps/tutorials/mini-app-tutorial)
+- [Using EVM Tokens](/mini-apps/features/evm-tokens)
 - [Nimiq Provider API](/mini-apps/api-reference/nimiq-provider)
 - [Ethereum Provider API](/mini-apps/api-reference/ethereum-provider)
 - [Agent Skills spec](https://skills.sh/)

@@ -64,14 +64,14 @@ The framework supports two blockchain ecosystems:
 **Ethereum + Layer 2 networks** (EVM-compatible)
 
 - Ethereum Mainnet
-- [Polygon](/mini-apps/evm-tokens)
+- [Polygon](/mini-apps/features/evm-tokens)
 - Arbitrum One
 - Optimism
 - Base
 - BNB Smart Chain (formerly Binance Smart Chain)
 - Sepolia (testnet for developers)
 
-ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/evm-tokens) for a worked example.
+ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/features/evm-tokens) for a worked example.
 
 Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
 
@@ -83,7 +83,7 @@ Nimiq Pay exposes the user's selected language to mini apps via `window.nimiqPay
 const language = window.nimiqPay?.language // e.g. 'en'
 ```
 
-Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/localization).
+Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
 
 ## Device Identifier
 
@@ -95,7 +95,7 @@ import { requestDeviceIdentifier } from '@nimiq/mini-app-sdk'
 const id = await requestDeviceIdentifier({ reason: 'Leaderboard ranking' })
 ```
 
-The first call per origin prompts the user with the `reason` you provide; subsequent calls resolve silently. For privacy properties, error handling, and TypeScript types, see [Device Identifier in Mini Apps](/mini-apps/device-identifier).
+The first call per origin prompts the user with the `reason` you provide; subsequent calls resolve silently. For privacy properties, error handling, and TypeScript types, see [Device Identifier in Mini Apps](/mini-apps/features/device-identifier).
 
 ## Security and Permissions
 

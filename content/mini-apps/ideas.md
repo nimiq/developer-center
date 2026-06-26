@@ -4,7 +4,7 @@ description: A list of mini app ideas you can build with the Nimiq Mini Apps Fra
 icon: i-tabler:bulb
 navigation:
   title: Mini App Ideas
-  order: 6
+  order: 2
 ---
 
 # Mini App Ideas

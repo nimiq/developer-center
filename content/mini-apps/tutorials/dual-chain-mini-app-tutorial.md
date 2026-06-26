@@ -3,7 +3,7 @@ description: Build a mini app that uses both Nimiq and Ethereum providers with u
 icon: i-tabler:arrows-split-2
 navigation:
   title: Build a Dual-Chain Mini App
-  order: 3
+  order: 2
 ---
 
 # Build a Dual-Chain Mini App with Nimiq Pay
@@ -339,7 +339,7 @@ const language = window.nimiqPay?.language
   || 'en'
 ```
 
-This reads the Nimiq Pay language first, falls back to the device locale, then to English. For a full translations setup, see [Localization in Mini Apps](/mini-apps/localization).
+This reads the Nimiq Pay language first, falls back to the device locale, then to English. For a full translations setup, see [Localization in Mini Apps](/mini-apps/features/localization).
 
 ## 6. Run the mini app
 

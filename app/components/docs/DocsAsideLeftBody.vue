@@ -62,14 +62,10 @@ const protocolNavigationRank = new Map<string, number>(
 
 const miniAppsNavigationOrder = [
   '',
-  'mini-app-tutorial',
-  'dual-chain-mini-app-tutorial',
-  'load-local-mini-app',
-  'build-with-ai',
   'ideas',
-  'evm-tokens',
-  'localization',
-  'device-identifier',
+  'tutorials',
+  'development',
+  'features',
   'api-reference',
   'faq',
 ] as const
@@ -78,15 +74,15 @@ const miniAppsNavigationRank = new Map<string, number>(
   miniAppsNavigationOrder.map((segment, index) => [segment, index]),
 )
 
-const apiReferenceChildOrder = [
-  '',
-  'nimiq-provider',
-  'ethereum-provider',
-] as const
-
-const apiReferenceChildRank = new Map<string, number>(
-  apiReferenceChildOrder.map((segment, index) => [segment, index]),
-)
+// Within-folder order for mini-apps sections, keyed by folder segment then leaf
+// slug. Nuxt Content sorts children alphabetically by default, so each folder
+// whose order matters is listed explicitly here ('' is the folder's index page).
+const miniAppsChildOrder: Record<string, readonly string[]> = {
+  'tutorials': ['mini-app-tutorial', 'dual-chain-mini-app-tutorial'],
+  'development': ['load-local-mini-app', 'build-with-ai'],
+  'features': ['evm-tokens', 'localization', 'device-identifier'],
+  'api-reference': ['', 'nimiq-provider', 'ethereum-provider'],
+}
 
 const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
   if (!isRpcMethodsPage.value) {
@@ -179,19 +175,21 @@ function sortMiniAppsNavigation(items: SidebarNavigationItem[]) {
       return (a.title || '').localeCompare(b.title || '')
     })
     .map((item) => {
-      if (getMiniAppsSegment(item) === 'api-reference' && item.children?.length) {
-        return { ...item, children: sortApiReferenceChildren(item.children) }
+      const segment = getMiniAppsSegment(item)
+      if (segment && item.children?.length && miniAppsChildOrder[segment]) {
+        return { ...item, children: sortMiniAppsChildren(item.children, segment) }
       }
       return item
     })
 }
 
-function sortApiReferenceChildren(items: SidebarNavigationItem[]) {
+function sortMiniAppsChildren(items: SidebarNavigationItem[], parentSegment: string) {
+  const order = miniAppsChildOrder[parentSegment] ?? []
+  const rank = new Map<string, number>(order.map((segment, index) => [segment, index]))
+
   return [...items].sort((a, b) => {
-    const segA = getApiReferenceChildSegment(a)
-    const segB = getApiReferenceChildSegment(b)
-    const rankA = apiReferenceChildRank.get(segA) ?? Number.MAX_SAFE_INTEGER
-    const rankB = apiReferenceChildRank.get(segB) ?? Number.MAX_SAFE_INTEGER
+    const rankA = rank.get(getMiniAppsChildSegment(a)) ?? Number.MAX_SAFE_INTEGER
+    const rankB = rank.get(getMiniAppsChildSegment(b)) ?? Number.MAX_SAFE_INTEGER
 
     if (rankA !== rankB) {
       return rankA - rankB
@@ -222,7 +220,7 @@ function getMiniAppsNavigationRank(item: SidebarNavigationItem) {
   return miniAppsNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
 }
 
-function getApiReferenceChildSegment(item: SidebarNavigationItem) {
+function getMiniAppsChildSegment(item: SidebarNavigationItem) {
   const candidatePath = item.path || ''
   const segments = normalizePath(candidatePath).split('/').filter(Boolean)
   return segments[2] || ''

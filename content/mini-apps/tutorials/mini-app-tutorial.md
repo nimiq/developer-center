@@ -3,7 +3,7 @@ description: Guide to setting up a Nimiq Pay minimal mini app dev
 icon: i-tabler:rocket
 navigation:
   title: Build Your First Mini App
-  order: 2
+  order: 1
 ---
 
 # Build Your First Nimiq Mini App
@@ -441,7 +441,7 @@ const language = window.nimiqPay?.language
   || 'en'
 ```
 
-This reads the Nimiq Pay language first, falls back to the device locale, then to English. For a full translations setup with framework examples, see [Localization in Mini Apps](/mini-apps/localization).
+This reads the Nimiq Pay language first, falls back to the device locale, then to English. For a full translations setup with framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
 
 ## 6. Run the mini app
 

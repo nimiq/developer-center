@@ -4,7 +4,7 @@ description: Match your mini app's language to the user's Nimiq Pay setting usin
 icon: i-tabler:language
 navigation:
   title: Localization
-  order: 8
+  order: 2
 ---
 
 # Localization in Mini Apps
@@ -76,7 +76,7 @@ const t = (nimiqPayLanguage in translations ? translations[nimiqPayLanguage] : n
 
 ## Framework examples
 
-The examples below show how to make the language value reactive in Vue, React, and Svelte. These are the frameworks covered in the [starter tutorials](/mini-apps/mini-app-tutorial). If you use a different framework, adapt the same pattern: read `window.nimiqPay?.language` once at init, apply the fallback chain, and use the result to index your translations.
+The examples below show how to make the language value reactive in Vue, React, and Svelte. These are the frameworks covered in the [starter tutorials](/mini-apps/tutorials/mini-app-tutorial). If you use a different framework, adapt the same pattern: read `window.nimiqPay?.language` once at init, apply the fallback chain, and use the result to index your translations.
 
 ::code-group
 

@@ -4,7 +4,7 @@ description: Answers to common questions about building mini apps for Nimiq Pay
 icon: i-tabler:help
 navigation:
   title: FAQ
-  order: 10
+  order: 7
 ---
 
 # Mini Apps FAQ
@@ -65,11 +65,11 @@ Yes. You can use any npm package, open-source template, or starter kit you like.
 
 ### Do I need to build a mini app from scratch, or can I reuse a project of mine?
 
-You don't have to start from scratch. If you already have a web app, you can adapt it. The main change is adding provider integration: connecting to the Nimiq or Ethereum provider and using it for at least one interaction. The `mini-apps` [AI skill](/mini-apps/build-with-ai) can audit your codebase, map your existing functionality to Nimiq Pay's providers, assess feasibility, and plan the conversion before making any changes. If you don't want to use AI, install the [Mini App SDK](https://www.npmjs.com/package/@nimiq/mini-app-sdk) for Nimiq provider access or call `window.ethereum` directly for Ethereum, and wire up the interactions that make sense for your app.
+You don't have to start from scratch. If you already have a web app, you can adapt it. The main change is adding provider integration: connecting to the Nimiq or Ethereum provider and using it for at least one interaction. The `mini-apps` [AI skill](/mini-apps/development/build-with-ai) can audit your codebase, map your existing functionality to Nimiq Pay's providers, assess feasibility, and plan the conversion before making any changes. If you don't want to use AI, install the [Mini App SDK](https://www.npmjs.com/package/@nimiq/mini-app-sdk) for Nimiq provider access or call `window.ethereum` directly for Ethereum, and wire up the interactions that make sense for your app.
 
 ### Do I need to use AI tools to build a mini app?
 
-No. AI tools are entirely optional. The [Build with AI](/mini-apps/build-with-ai) page documents a skill that gives AI coding tools accurate context about the framework, which helps them generate working code. If you prefer to build without AI, the tutorials and API reference have everything you need.
+No. AI tools are entirely optional. The [Build with AI](/mini-apps/development/build-with-ai) page documents a skill that gives AI coding tools accurate context about the framework, which helps them generate working code. If you prefer to build without AI, the tutorials and API reference have everything you need.
 
 ## Testing, security, and deployment
 

@@ -4,7 +4,7 @@ description: Load a local mini app into Nimiq Pay from your development machine
 icon: i-tabler:device-mobile-code
 navigation:
   title: Load a Local Mini App
-  order: 4
+  order: 1
 ---
 
 # Load a Local Mini App in Nimiq Pay
@@ -101,5 +101,5 @@ After switching to testnet, the empty-state home screen shows a **Get free NIM**
 
 ## Tutorials
 
-- Build a first mini app: [Mini app tutorial](/mini-apps/mini-app-tutorial)
-- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](/mini-apps/dual-chain-mini-app-tutorial)
+- Build a first mini app: [Mini app tutorial](/mini-apps/tutorials/mini-app-tutorial)
+- Build a dual-chain mini app: [Build a Dual-Chain Mini App with Nimiq Pay](/mini-apps/tutorials/dual-chain-mini-app-tutorial)

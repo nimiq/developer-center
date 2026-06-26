@@ -4,7 +4,7 @@ description: Read balances and send ERC-20 tokens like USDT on Polygon through t
 icon: i-tabler:coins
 navigation:
   title: EVM Tokens
-  order: 7
+  order: 1
 ---
 
 # Using EVM Tokens in Mini Apps

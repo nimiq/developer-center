@@ -4,7 +4,7 @@ description: Request a pseudonymous per-device handle from Nimiq Pay using reque
 icon: i-tabler:fingerprint
 navigation:
   title: Device Identifier
-  order: 9
+  order: 3
 ---
 
 # Device Identifier in Mini Apps

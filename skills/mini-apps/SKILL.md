@@ -131,10 +131,10 @@ Do not do any of the following:
 Documentation:
 
 - [Mini Apps Overview](https://nimiq.dev/raw/mini-apps/index.md)
-- [Build Your First Mini App](https://nimiq.dev/raw/mini-apps/mini-app-tutorial.md)
-- [Build a Dual-Chain Mini App](https://nimiq.dev/raw/mini-apps/dual-chain-mini-app-tutorial.md)
-- [Load a Local Mini App](https://nimiq.dev/raw/mini-apps/load-local-mini-app.md)
-- [Using EVM Tokens in Mini Apps](https://nimiq.dev/raw/mini-apps/evm-tokens.md)
+- [Build Your First Mini App](https://nimiq.dev/raw/mini-apps/tutorials/mini-app-tutorial.md)
+- [Build a Dual-Chain Mini App](https://nimiq.dev/raw/mini-apps/tutorials/dual-chain-mini-app-tutorial.md)
+- [Load a Local Mini App](https://nimiq.dev/raw/mini-apps/development/load-local-mini-app.md)
+- [Using EVM Tokens in Mini Apps](https://nimiq.dev/raw/mini-apps/features/evm-tokens.md)
 - [Nimiq Provider API](https://nimiq.dev/raw/mini-apps/api-reference/nimiq-provider.md)
 - [Ethereum Provider API](https://nimiq.dev/raw/mini-apps/api-reference/ethereum-provider.md)
 

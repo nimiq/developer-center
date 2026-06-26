@@ -520,7 +520,7 @@ Returns the current network id.
 const networkId = await provider.request({ method: 'net_version' })
 ```
 
-For a practical guide to reading ERC-20 token balances and sending token transfers through this provider, see [Using EVM Tokens in Mini Apps](/mini-apps/evm-tokens).
+For a practical guide to reading ERC-20 token balances and sending token transfers through this provider, see [Using EVM Tokens in Mini Apps](/mini-apps/features/evm-tokens).
 
 ## EIP-6963 Provider Discovery
 
