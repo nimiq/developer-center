@@ -48,14 +48,16 @@ pub struct LightMacroSync<TNetwork: Network> {
     pub(crate) epoch_ids_stream:
         FuturesUnordered<BoxFuture<'static, Option<EpochIds<TNetwork::PeerId>>>>,
 
-    /// Pinned election block to bootstrap from on the pico sync fallback path.
-    /// `None` for light and full sync, which sync the election chain from genesis
-    /// and only verify the pinned election block.
+    /// Hardcoded election block to bootstrap from on the pico sync fallback path; `None` for
+    /// light/full sync (which sync the election chain from genesis and only verify the checkpoint).
+    /// When set and the chain is still behind it, the checkpoint election block is fetched through
+    /// `macro_block_queue` and seeded via `apply_macro_block` (see `add_peer`).
     pub(crate) bootstrap_checkpoint: Option<HardcodedElection>,
 
     /// Bounded, ordered, failover queue for fetching macro (election) block headers:
-    /// the bootstrap seed, the forward catch-up, and the full-node previous_slots
-    /// recovery block all go through here.
+    /// the checkpoint seed, the forward catch-up after it, and the full-node `previous_slots`
+    /// recovery block all go through here. Requests are bounded, responses applied in epoch
+    /// order, and a timed-out block is re-requested from another peer instead of stalling.
     pub(crate) macro_block_queue: SyncQueue<
         TNetwork,
         Blake2bHash,
@@ -64,16 +66,20 @@ pub struct LightMacroSync<TNetwork: Network> {
         (),
     >,
 
-    /// Macro block hashes currently queued or in flight. Deduplicates overlapping
-    /// epoch ids from multiple peers.
+    /// Macro block hashes currently queued or in flight in `macro_block_queue`. Deduplicates
+    /// overlapping `epoch_ids` (and seed requests) from multiple peers; entries are removed
+    /// once the block is applied or its request is exhausted.
     pub(crate) in_flight_macro_blocks: HashSet<Blake2bHash>,
 
-    /// Peers waiting for the queue to advance our head to their reported target,
-    /// at which point they are re-queried for epoch ids.
+    /// Peers waiting for `macro_block_queue` to advance our head to their reported target block
+    /// number. Once reached they are re-queried for epoch ids (emitting `Good` when nothing is
+    /// left, or enqueuing the next epochs if the tip moved). Drives the checkpoint seed and
+    /// forward catch-up.
     pub(crate) waiting_macro_peers: HashMap<TNetwork::PeerId, u32>,
 
-    /// Peers to re-query once a specific queued block resolves, keyed by that
-    /// block's hash. Used for the full-node previous_slots recovery fetch.
+    /// Peers to re-query once a specific queued block resolves, keyed by that block's hash. Used
+    /// for the full-node `previous_slots` recovery fetch, whose `update_previous_slots` apply does
+    /// not advance the head (so `waiting_macro_peers` can't drive it).
     pub(crate) pending_followup_requests: HashMap<Blake2bHash, Vec<TNetwork::PeerId>>,
 
     #[cfg(feature = "full")]
