@@ -148,6 +148,22 @@ export default defineNuxtConfig({
       '/raw/**': { prerender: false },
       '/rpc/**': { prerender: false },
       '/web-client/reference/**': { prerender: false },
+      // Redirects for mini-apps pages moved into tutorials/development/features sections
+      '/mini-apps/build-with-ai': { redirect: '/mini-apps/development/build-with-ai' },
+      '/mini-apps/load-local-mini-app': { redirect: '/mini-apps/development/load-local-mini-app' },
+      '/mini-apps/device-identifier': { redirect: '/mini-apps/features/device-identifier' },
+      '/mini-apps/evm-tokens': { redirect: '/mini-apps/features/evm-tokens' },
+      '/mini-apps/localization': { redirect: '/mini-apps/features/localization' },
+      '/mini-apps/dual-chain-mini-app-tutorial': { redirect: '/mini-apps/tutorials/dual-chain-mini-app-tutorial' },
+      '/mini-apps/mini-app-tutorial': { redirect: '/mini-apps/tutorials/mini-app-tutorial' },
+      // Matching redirects for the raw markdown routes (consumed by llms.txt, MCP, and the "view as markdown" links)
+      '/raw/mini-apps/build-with-ai.md': { redirect: '/raw/mini-apps/development/build-with-ai.md' },
+      '/raw/mini-apps/load-local-mini-app.md': { redirect: '/raw/mini-apps/development/load-local-mini-app.md' },
+      '/raw/mini-apps/device-identifier.md': { redirect: '/raw/mini-apps/features/device-identifier.md' },
+      '/raw/mini-apps/evm-tokens.md': { redirect: '/raw/mini-apps/features/evm-tokens.md' },
+      '/raw/mini-apps/localization.md': { redirect: '/raw/mini-apps/features/localization.md' },
+      '/raw/mini-apps/dual-chain-mini-app-tutorial.md': { redirect: '/raw/mini-apps/tutorials/dual-chain-mini-app-tutorial.md' },
+      '/raw/mini-apps/mini-app-tutorial.md': { redirect: '/raw/mini-apps/tutorials/mini-app-tutorial.md' },
     },
   },
   site: {
