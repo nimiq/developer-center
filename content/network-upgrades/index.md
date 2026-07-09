@@ -8,13 +8,13 @@ navigation:
 
 # Network upgrades
 
-::callout{icon="i-tabler-info-circle" color="info" title="Preview: Upgrade in preparation"}
-This network upgrade is scheduled for a future date, which we will announce soon. The documentation below is published now so you can review the changes and prepare ahead of activation. We will update this notice once the upgrade is live.
+Network upgrades, or hard forks, are coordinated changes to the Nimiq protocol. Nimiq ships them periodically, and each upgrade is announced ahead of its activation date. When one activates, validators and node operators must update their client to stay on the canonical chain.
+
+The actions, timing, and activation method vary per upgrade. Track upcoming and past upgrades in the table below, and follow the page for the specific upgrade you are preparing for.
+
+::callout{icon="i-tabler-info-circle" color="info" title="Preview: upgrade in preparation"}
+An upgrade is currently in preparation. The documentation is published here as a preview so you can review the changes and prepare ahead of activation. We will announce the activation date and update this notice when it is ready.
 ::
-
-Network upgrades, or hard forks, are coordinated changes to the Nimiq protocol. When one activates, validators and node operators must update their client to stay on the canonical chain.
-
-Every upgrade affects validators and node operators, and the actions, timing, and activation method vary per upgrade. Always follow the page for the specific upgrade you are preparing for.
 
 ## Upgrades
 
