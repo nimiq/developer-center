@@ -62,10 +62,6 @@ pub struct PicoMacroSync<TNetwork: Network> {
     >,
     /// Collection of peers we are currently pico macro syncing with
     pub(crate) syncing_peers: HashSet<TNetwork::PeerId>,
-    /// Reference to the ZKP proxy used to interact with the ZKP component
-    /// It is not used by the pico consensus itself, but we need the reference
-    /// as part of the fallback mechanism
-    pub(crate) zkp_component_proxy: ZKPComponentProxy<TNetwork>,
 }
 ```
 
@@ -117,7 +113,7 @@ It only accepts a new election block if the local chain is at genesis, since it 
 If the node is not at genesis and receives an unknown election block, it cannot verify its validity.
 Accepting such a block could allow a malicious or faulty peer to inject an alternate chain or fork, risking the node’s security and consensus.
 
-When a peer provides a block that cannot be optimistically and safely applied, the node marks the peer as **conflicting**. This triggers a fallback to Light Macro Sync, which uses ZKPs to securely verify the chain state and resolve discrepancies.
+When a peer provides a block that cannot be optimistically and safely applied, the node marks the peer as **conflicting**. This triggers a fallback to Light Macro Sync, which securely re-syncs and verifies the chain state to resolve discrepancies.
 
 Fallback to `LightMacroSync` is triggered when:
 
@@ -131,7 +127,7 @@ The `EitherSyncer` enum allows transitions between sync mechanisms:
 ```rust
 pub enum EitherSyncer<N: Network> {
     Normal(PicoMacroSync<N>),       // Fast optimistic sync
-    Fallback(LightMacroSync<N>),    // ZKP-based sync
+    Fallback(LightMacroSync<N>),    // Trustless fallback sync
 }
 ```
 
@@ -150,7 +146,7 @@ Pico Macro Sync emits structured events for different synchronization scenarios:
 
 - Fallback trigger detection when block validation fails
 - Transition from `PicoMacroSync` to `LightMacroSync` via `EitherSyncer`
-- Peer transfer to ZKP-based verification system
+- Peer transfer to Light Macro Sync (trustless sync)
 
 ## Transition to Live Sync
 

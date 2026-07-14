@@ -17,12 +17,12 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 
 |  | **History Node** | **Full Node** | **Light Node** | **Pico Node** |
 | --- | --- | --- | --- | --- |
-| **Verification** | Entire history | Full blocks and uses ZKP | Uses ZKPs | No ZKPs |
+| **Verification** | Entire chain + full history | Full blocks and state | Election-header chain (validator BLS signatures) | Trust-based (peer-reported state) |
 | **Macro Sync Method** | [History Macro Sync](macro-sync/history-macro-sync) | [Light Macro Sync](macro-sync/light-macro-sync) | [Light Macro Sync](macro-sync/light-macro-sync) | [Pico Macro Sync](macro-sync/pico-macro-sync)* |
 | **Live Sync Method** | [Block Live Sync](live-sync/block-live-sync) | [State Live Sync](live-sync/state-live-sync) | [Block Live Sync](live-sync/block-live-sync) | [Block Live Sync](live-sync/block-live-sync) |
 | **Consensus Level** | Fully verified | Verified | Verified | Trust-based |
 | **Fallback** | N/A | N/A | N/A | *Falls back to [Light Macro Sync](macro-sync/light-macro-sync) |
-| **Sync Speed** | Slower, full chain from genesis | Efficient, grows with chain length | Fast, includes proof verification | Faster, based on peer responses |
+| **Sync Speed** | Slower, full chain from genesis | Efficient, grows with chain length | Fast, election headers only | Fastest, based on peer responses |
 | **Web Client** | Not supported | Not supported | Supported | Supported |
 
 ### History Nodes
@@ -30,35 +30,30 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 - Complete blockchain history from genesis
 - Deep chain queries, historical analysis, and serving data to other nodes
 - Can act as validators and provide historical data to the network
-- Serve data to other nodes, generate and verify ZKPs, validate transactions and produce blocks (if validator)
-- Can serve as prover nodes (ZKP generation) and validators
+- Serve data to other nodes, validate transactions and produce blocks (if validator)
 - Rely on other history nodes for initial sync
 
 ### Full Nodes
 
 - Complete current state with pruned history - maintains full validation capability
-- Serve data to other nodes, generate and verify ZKPs, validate transactions and produce blocks (if validator)
-- Can serve as prover nodes (ZKP generation) and validators
+- Serve data to other nodes, validate transactions and produce blocks (if validator)
 - Rely on full or history nodes for initial sync
 
 ### Light Nodes
 
-- Latest election block with ZKP and subsequent micro block headers only
+- Election block headers (verified via validator BLS signatures) and subsequent micro block headers only
 - Transaction verification and sending with cryptographic security guarantees
 - Browser/mobile deployment, web client integration (WASM support)
-- Rely on full or history nodes for data availability and ZKP proofs
+- Rely on full or history nodes for data availability
 
 ### Pico Nodes
 
-- Sync with the latest election block only (no historical data or ZKP verification)
-- Ultra-fast startup with trust-based consensus and automatic fallback to secure sync
+- Sync with the latest election block only (no historical data; trust-based)
+- Ultra-fast startup with trust-based consensus and automatic fallback to trustless sync
 - Development environments, testing, and trusted network scenarios
 - Rely on full or history nodes for data availability and fallback verification
 
 ### Service Nodes
-
-**[Prover Nodes](/protocol/zkp/prover-node)**:
-Generate [zero-knowledge proofs](/protocol/zkp/ZKP-and-recursive-SNARKs) for light and full node sync. Require significant computational resources.
 
 **[Validator Nodes](/protocol/validators/validators)**:
 Produce blocks and participate in consensus. Any node with a minimum of 100'000 NIM deposit that runs a full or history client can become a validator.
@@ -122,7 +117,7 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
 *Macro Sync Strategies:*
 
 - [History Macro Sync](macro-sync/history-macro-sync) - Full chain download for history nodes
-- [Light Macro Sync](macro-sync/light-macro-sync) - ZKP-verified state sync for full nodes
+- [Light Macro Sync](macro-sync/light-macro-sync) - Trustless macro sync for full and light nodes
 - [Pico Macro Sync](macro-sync/pico-macro-sync) - Optimistic sync with automatic fallback
 
 *Live Sync Strategies:*

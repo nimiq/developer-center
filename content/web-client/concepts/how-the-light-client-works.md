@@ -16,8 +16,8 @@ The client supports two sync modes. You choose one at configuration time via `Cl
 
 | Mode | How it syncs | Trust model | Best for |
 | :--- | :--- | :--- | :--- |
-| **Light** (default) | Downloads the latest election block and verifies it with a zero-knowledge proof (zk-SNARK), then follows subsequent micro block headers in real time. | Cryptographically verified — no trust in individual peers required. | Production applications where security matters. |
-| **Pico** | Downloads only the latest election block without ZKP verification. Trusts connected peers optimistically. Falls back to light sync automatically if a conflicting peer is detected. | Trust-based with automatic fallback to verified sync. | Development, testing, and fast prototyping where startup speed matters more than cryptographic verification. |
+| **Light** (default) | Downloads and verifies the chain of election block headers using the validators' signatures, then follows subsequent micro block headers in real time. | Cryptographically verified — no trust in individual peers required. | Production applications where security matters. |
+| **Pico** | Downloads only the latest election block and trusts connected peers optimistically. Falls back to light sync automatically if a conflicting peer is detected. | Trust-based with automatic fallback to trustless sync. | Development, testing, and fast prototyping where startup speed matters more than cryptographic verification. |
 
 Both modes transition to [block live sync](/protocol/node-sync/live-sync/block-live-sync) once the initial sync is complete, following new blocks as they are produced.
 
@@ -80,6 +80,6 @@ You can configure peer behaviour through `ClientConfiguration`:
 ## Further reading
 
 - [Node sync architecture](/protocol/node-sync/) — the full sync protocol specification
-- [Light macro sync](/protocol/node-sync/macro-sync/light-macro-sync) — how ZKP-based sync works
+- [Light macro sync](/protocol/node-sync/macro-sync/light-macro-sync) — the trustless light macro sync protocol
 - [Pico macro sync](/protocol/node-sync/macro-sync/pico-macro-sync) — the trust-based fast sync protocol
 - [Browser vs Server](./browser-vs-server) — runtime-specific differences when using the client

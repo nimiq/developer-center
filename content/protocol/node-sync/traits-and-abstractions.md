@@ -24,7 +24,7 @@ Different node types need fundamentally different approaches to reach current st
 **Key Implementations**:
 
 - `HistoryMacroSync` - Downloads complete blockchain history for history nodes
-- `LightMacroSync` - Uses ZKP verification for efficient sync
+- `LightMacroSync` - Trustless macro sync for full and light nodes
 - `PicoMacroSync` - Optimistic sync with automatic fallback to Light Macro Sync
 - `EitherSyncer` - Flexible wrapper enabling transition between Pico and Light macro sync strategies, automatically falling back to LightMacroSync when conflicts or limitations are detected during Pico Sync
 

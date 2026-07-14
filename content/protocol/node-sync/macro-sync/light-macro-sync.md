@@ -7,27 +7,28 @@ navigation:
 
 # Light Macro Sync
 
-Light Macro Sync is a robust, ZKP-based synchronization mechanism designed for secure blockchain state verification. It operates with both full and light blockchain instances and provides cryptographically verified synchronization by leveraging Zero-Knowledge Proofs (ZKPs) to verify the macro chain validity before application to the local blockchain.
+Light Macro Sync is the macro block synchronization mechanism for full and light nodes, and the trustless fallback for [Pico Macro Sync](pico-macro-sync). It brings a node to the current macro state by requesting and verifying the chain of election and checkpoint blocks, without the full block history. Macro block requests run through a bounded, ordered **`SyncQueue`**, which prevents a node that is many epochs behind from flooding its peers with requests.
 
 ## Key Characteristics
 
-- **Peer-to-Peer Operation**: Each peer is handled independently with separate request queues
-- **ZKP-Based Security**: Verifies macro chain correctness with recursive zk-SNARKs without needing full block history
+- **Multi-Peer Fetching**: Macro blocks are fetched from multiple peers through a shared, bounded queue with per-block failover
+- **Signature-Verified**: Each election and checkpoint block is verified against the current validator set before it is applied
 - **Dual Blockchain Support**: Compatible with both full and light blockchain instances
 - **Validity Window Sync**: Full nodes perform additional history chunk validation
-- **Robust Fallback**: Serves as the fallback mechanism for Pico Macro Sync
+- **Trustless Fallback**: Serves as the fallback mechanism for Pico Macro Sync
 - **Stream-Based**: Implements the `Stream` trait for asynchronous event processing
 
 ## How It Works
 
-The `LightMacroSync` manages ZKP-verified macro block synchronization for each peer individually. It requests and validates ZKPs before applying any blockchain state changes, ensuring cryptographic integrity throughout the sync process.
+The `LightMacroSync` discovers the macro chain from its peers, then fetches and applies the missing election and checkpoint blocks in epoch order. Block fetches are routed through the `macro_block_queue` so that requests stay bounded and responses are applied in order.
 
-The `LightMacroSync` follows a ZKP-secured request pattern:
+The `LightMacroSync` follows this request pattern:
 
-1. **RequestZKP** → Request and validate ZKPs from any node (any node type has the last ZKP proof it has seen)
-2. **RequestMacroChain** → Request epoch IDs using known block locators
-3. **RequestBlock** → Retrieve specific macro blocks with verified hashes
-4. **RequestHistoryChunk** → Validate transaction history within the validity window (full nodes only)
+1. **RequestMacroChain** → Request epoch IDs using known block locators
+2. **RequestBlock** → Fetch the missing macro blocks by hash, through the `macro_block_queue`
+3. **RequestHistoryChunk** → Validate transaction history within the validity window (full nodes only)
+
+When Light Macro Sync runs as the [Pico Macro Sync](pico-macro-sync) fallback, it is given a [pinned election block](/protocol/glossary#pinned-election-block) to bootstrap from: instead of syncing the election chain from genesis, it seeds the chain to that block and verifies forward. Full and light nodes do not bootstrap this way. They sync the election chain from genesis and only verify the pinned election block against their own chain.
 
 The complete message specifications are documented in the [Network Protocol](../network-protocol) document.
 
@@ -43,26 +44,43 @@ pub struct LightMacroSync<TNetwork: Network> {
     pub(crate) network: Arc<TNetwork>,
     /// Stream for peer joined and peer left events
     pub(crate) network_event_rx: SubscribeEvents<TNetwork::PeerId>,
-    /// Used to track the macro requests on a per peer basis
-    pub(crate) peer_requests: HashMap<TNetwork::PeerId, PeerMacroRequests>,
     /// The stream for epoch ids requests
     pub(crate) epoch_ids_stream:
         FuturesUnordered<BoxFuture<'static, Option<EpochIds<TNetwork::PeerId>>>>,
-    /// Reference to the ZKP proxy used to interact with the ZKP component
-    pub(crate) zkp_component_proxy: ZKPComponentProxy<TNetwork>,
-    /// ZKP related requests (proofs)
-    pub(crate) zkp_requests:
-        FuturesUnordered<BoxFuture<'static, (Result<ZKPRequestEvent, Error>, TNetwork::PeerId)>>,
-    /// Block requests
-    pub(crate) block_headers: FuturesUnordered<
-        BoxFuture<
-            'static,
-            (
-                Result<Result<Block, BlockError>, RequestError>,
-                TNetwork::PeerId,
-            ),
-        >,
+
+    /// Hardcoded election block to bootstrap from on the pico sync fallback path; `None` for
+    /// light/full sync (which sync the election chain from genesis and only verify the checkpoint).
+    /// When set and the chain is still behind it, the checkpoint election block is fetched through
+    /// `macro_block_queue` and seeded via `apply_macro_block` (see `add_peer`).
+    pub(crate) bootstrap_checkpoint: Option<HardcodedElection>,
+
+    /// Bounded, ordered, failover queue for fetching macro (election) block headers:
+    /// the checkpoint seed, the forward catch-up after it, and the full-node `previous_slots`
+    /// recovery block all go through here. Requests are bounded, responses applied in epoch
+    /// order, and a timed-out block is re-requested from another peer instead of stalling.
+    pub(crate) macro_block_queue: SyncQueue<
+        TNetwork,
+        Blake2bHash,
+        (Blake2bHash, Result<Block, BlockError>, TNetwork::PeerId),
+        MacroBlockError,
+        (),
     >,
+
+    /// Macro block hashes currently queued or in flight in `macro_block_queue`. Deduplicates
+    /// overlapping `epoch_ids` (and seed requests) from multiple peers; entries are removed
+    /// once the block is applied or its request is exhausted.
+    pub(crate) in_flight_macro_blocks: HashSet<Blake2bHash>,
+
+    /// Peers waiting for `macro_block_queue` to advance our head to their reported target block
+    /// number. Once reached they are re-queried for epoch ids (emitting `Good` when nothing is
+    /// left, or enqueuing the next epochs if the tip moved). Drives the checkpoint seed and
+    /// forward catch-up.
+    pub(crate) waiting_macro_peers: HashMap<TNetwork::PeerId, u32>,
+
+    /// Peers to re-query once a specific queued block resolves, keyed by that block's hash. Used
+    /// for the full-node `previous_slots` recovery fetch, whose `update_previous_slots` apply does
+    /// not advance the head (so `waiting_macro_peers` can't drive it).
+    pub(crate) pending_followup_requests: HashMap<Blake2bHash, Vec<TNetwork::PeerId>>,
 
     #[cfg(feature = "full")]
     /// The validity (history chunks) queue
@@ -97,47 +115,37 @@ pub struct LightMacroSync<TNetwork: Network> {
 
 ## Step-by-Step Process
 
-### 1. ZKP Request
+### 1. Epoch Discovery
 
-Request the latest ZKP from the peer:
+- Send a `RequestMacroChain` with known block locators
+- Peer responds with epoch IDs and, when applicable, the metadata of the last checkpoint block
 
-- If valid → Apply to blockchain
-- If outdated → Skip application, but continue to epoch ID requests
-- If invalid → Disconnect peer
+### 2. Block Retrieval
 
-### 2. Epoch Discovery
+- Request the missing macro blocks by hash through the `macro_block_queue`
+- The queue bounds the number of in-flight requests, applies blocks in epoch order, and re-requests a timed-out block from another peer instead of stalling
+- A block whose hash does not match the request is rejected, and the responding peer is disconnected
 
-- Send a `RequestMacroChain` with known block locators
-- Peer responds with epoch IDs and checkpoint info
+### 3. Validity Window Sync (Full Nodes Only)
 
-### 3. Block Retrieval
-
-- Request any missing macro blocks using `RequestBlock`
-- Apply blocks only if they match the expected sequence
-
-### 4. Validity Window Sync (Full Nodes Only)
-
-For full nodes, the Light Macro Sync includes an additional step to synchronize and validate historical transaction data within the blockchain’s **validity window**.
+For full nodes, the Light Macro Sync includes an additional step to synchronize and validate historical transaction data within the blockchain's **validity window**.
 
 - The node requests history chunks associated with recently applied macro blocks. These chunks include the historical transactions necessary to maintain full state validity without storing the entire chain history
 - Chunks are applied to the local blockchain to ensure that transaction history within the validity window is complete and consistent
 
-### 5. Sync Completion
+### 4. Sync Completion
 
-1. **Macro State Synchronized**: All election and checkpoint blocks up to the network's current state have been applied:
-    - If the peer has no new blocks → Emit as `Good`
-    - If missing blocks are found → Emit as `Outdated`
-2. **ZKP Validation Complete**: ZKPs have verified the cryptographic integrity of the macro chain
-3. **Validity Window Satisfied** (full nodes only): Transaction history within the validity window has been downloaded and validated
+1. **Macro State Synchronized**: All election and checkpoint blocks up to the network's current state have been applied:
+    - If the peer has no new blocks → Emit as `Good`
+    - If missing blocks are found → Emit as `Outdated`
+2. **Validity Window Satisfied** (full nodes only): Transaction history within the validity window has been downloaded and validated
 
-## ZKP Integration
+## Verification
 
-The ZKP component provides cryptographic security with:
+Light Macro Sync builds trust forward from a known block rather than from a single proof:
 
-- **Proof Generation**: Prover nodes generate proofs for their latest election block
-- **Proof Verification**: Local verification before applying any state changes
-
-Learn more about ZKP and Nimiq’s use of recursive zk-SNARKs [here](/protocol/zkp/ZKP-and-recursive-SNARKs).
+- **Macro chain verification**: Each election and checkpoint block is verified against the current validator set before it is applied. Because each election block determines the next set of validators, the node extends a chain of trust block by block.
+- **Pinned election block check**: When the network defines a [pinned election block](/protocol/glossary#pinned-election-block), every node verifies the committed election block at that height against it. A mismatch is logged and surfaced through the `checkpoint_mismatch` metric, but it does not stop the node. Pico nodes additionally use the pinned election block as the bootstrap anchor on this fallback path.
 
 ## Validity Window Synchronization
 
@@ -171,15 +179,9 @@ Light Macro Sync emits structured events for different synchronization scenarios
 
 **Sync Events:**
 
-- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized with ZKP verification complete and reached the most recent macro block
+- `MacroSyncReturn::Good(peer_id)` - Peer successfully synchronized and reached the most recent macro block
 - `MacroSyncReturn::Outdated(peer_id)` - Peer provided outdated blocks or failed validation
 - `MacroSyncReturn::Incompatible(peer_id)` - Peer does not provide required services for synchronization; _Example: A light node cannot serve a full node because it does not store the validity window, making it incompatible for full nodes sync requests_
-
-**ZKP Events:**
-
-- `ZKPRequestEvent::Applied` - ZKP successfully verified and applied
-- `ZKPRequestEvent::Outdated` - ZKP is outdated but sync continues with epoch IDs
-- `ZKPRequestEvent::Invalid` - ZKP verification failed, peer disconnected
 
 ## **Transition to Live Sync**
 

@@ -263,7 +263,6 @@ title: Everything you need to build with Nimiq
     - [Staking Handbook](/nodes/validators/staking-handbook)
     - [Trustscore System](/nodes/validators/validator-trustscore)
     - [Staking FAQ](/nodes/validators/staking-faq)
-    - [Prover Node Guide](/nodes/prover-node-guide)
     ::::
 
     ::::u-page-card
