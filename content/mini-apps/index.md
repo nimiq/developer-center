@@ -110,10 +110,20 @@ Here's how security works:
 
 ## Sharing Your Mini App
 
-Once your mini app is published, you can share it using a deeplink that opens it directly inside Nimiq Pay:
+Once your mini app is published, you can share it using a deeplink that opens it directly inside Nimiq Pay. Two link formats are available:
+
+**Custom scheme**
 
 ```
 nimiqpay://miniapp?url=your-app.com
 ```
 
 When a user taps this link on their phone, Nimiq Pay opens and loads your mini app with full provider access. If the URL is not in the Nimiq Pay mini app list or has never been accessed before, Nimiq Pay displays a warning before proceeding.
+
+**HTTPS link**
+
+```
+https://nimpay.app/miniapps/open/your-app.com
+```
+
+Tapping this link opens the mini app the same way. It works with any domain.
