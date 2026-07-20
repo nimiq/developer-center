@@ -160,7 +160,7 @@ description: No middlemen. No servers. No barriers. No fees. Connect directly fr
 
     ::::u-page-card
     ---
-    title: Instant Finality
+    title: Fast Confirmations
     description: 1-second confirmations
     icon: i-lucide-zap
     variant: outline
