@@ -8,7 +8,7 @@ navigation:
 
 # Network upgrades
 
-Network upgrades, or hard forks, introduce coordinated changes to the Nimiq protocol. Upgrade implementations are released ahead of activation so validators and node operators can review the changes and decide whether to run compatible software. Activation follows the mechanism defined for each upgrade, such as validator stake signaling or a predetermined block height.
+Network upgrades, or hard forks, introduce coordinated changes to the Nimiq protocol. Upgrade implementations are released ahead of activation so validators and node operators can review the changes and decide whether to update their client. Activation follows the mechanism defined for each upgrade, such as validator stake signaling or a predetermined block height.
 
 The actions, timing, and activation method vary per upgrade. Track upcoming and past upgrades in the table below, and follow the page for the specific upgrade you are preparing for.
 
