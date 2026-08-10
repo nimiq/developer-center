@@ -12,15 +12,15 @@ Network upgrades, or hard forks, introduce coordinated changes to the Nimiq prot
 
 The actions, timing, and activation method vary per upgrade. Track upcoming and past upgrades in the table below, and follow the page for the specific upgrade you are preparing for.
 
-::callout{icon="i-tabler-info-circle" color="info" title="Preview: upgrade in preparation"}
-An upgrade is currently in preparation. The documentation is published here as a preview so you can review the changes and prepare ahead of activation. This notice is updated as the status changes.
+::callout{icon="i-tabler-progress" color="info" title="Upgrade in progress"}
+The v2.0.0 hard fork is underway. Validators can apply the patch and signal readiness now. This notice is updated as the status changes.
 ::
 
 ## Upgrades
 
 | Upgrade | Status | Who acts | Activation | What's changing |
 | --- | --- | --- | --- | --- |
-| [v2.0.0 hard fork](./upgrades/v2-0-0) | Proposed | Validators, node operators | Stake signaling, 80% threshold | Security-relevant protocol improvements |
+| [v2.0.0 hard fork](./upgrades/v2-0-0) | In progress | Validators, node operators | Stake signaling, 80% threshold | Security-relevant protocol improvements |
 | [PoS migration](/migration/) | Completed | Validators, node operators | Fixed block | Proof-of-Work to Proof-of-Stake consensus |
 
 Status is one of **Proposed** (published, no action yet), **In progress** (actions are live), or **Completed** (activated; the chain runs the upgraded rules). Each upgrade page carries its own detailed status and, where relevant, a live readiness dashboard.
