@@ -45,12 +45,12 @@ If the `curl` command is not already installed on your machine, try installing i
 ### Generating your validator address and keys
 
 For running a validator you need the following items which we are generating now:
-- A validator address: Nimiq address
-- A voting keypair: BLS keypair
-- A signing keypair: Schnorr keypair
+- A validator address: Nimiq address, derived from your cold keypair (Schnorr)
+- A voting keypair: BLS keypair, also called the hot key
+- A signing keypair: Schnorr keypair, also called the warm key
 - Optionally a fee keypair: Schnorr keypair
 
-Note that we will use these in the following steps to configure your validator.
+Note that we will use these in the following steps to configure your validator. For what each key does, and why validators hold separate cold, warm, and hot keys, see [Validator keys](/protocol/validators/validator-keys).
 
 ::callout{icon="i-tabler-bulb"}
 Keep your public and private keys accessible by writing them down or saving them on your computer.
@@ -249,7 +249,7 @@ Note that the `balance` returned is in Luna. Devide by 100'000 to get NIM.
 
 To sign and send transactions from your validator account, you need to import its keypair.
 
-In the following commands, `validator_private_key` is the private key of the Schnorr keypair you generated for the validator address.
+In the following commands, `validator_private_key` is the private key of the Schnorr keypair you generated for the validator address, that is, your cold key.
 
 ::collapsible{title="ARPL"}
 
