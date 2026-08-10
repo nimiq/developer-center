@@ -55,7 +55,7 @@ bun add @nimiq/core
 The Nimiq Web Client includes a Vite plugin that automatically configures WebAssembly support and all required optimizations.
 
 > [!TIP]
-> View the [plugin source code](https://github.com/nimiq/core-rs-albatross/blob/main/web-client/dist/vite.js) for implementation details.
+> View the [plugin source code](https://github.com/nimiq/core-rs-albatross/blob/albatross/web-client/dist/vite.js) for implementation details.
 
 Update your `vite.config.ts`:
 

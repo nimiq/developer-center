@@ -1,6 +1,6 @@
 ---
 icon: i-logos:nuxt-icon
-description: Set up the Nimiq Web Client with Nuxt 3 for full-stack blockchain applications.
+description: Set up the Nimiq Web Client with Nuxt for full-stack blockchain applications.
 navigation:
   title: Nuxt
   order: 2
@@ -8,66 +8,118 @@ navigation:
 
 # Nimiq Web Client Nuxt Integration
 
-Integrate Nimiq Web Client with Nuxt 3 for full-stack blockchain applications.
+Integrate Nimiq Web Client with Nuxt for full-stack blockchain applications.
 
 ## Installation
 
-### Quick Start
-
-Install the Nimiq Web Client and required Vite plugins:
+Install the Nimiq Web Client:
 
 ::code-group
 
 ```bash [pnpm]
 pnpm add @nimiq/core
-pnpm add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [npm]
 npm install @nimiq/core
-npm install -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [yarn]
 yarn add @nimiq/core
-yarn add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ```bash [bun]
 bun add @nimiq/core
-bun add -D vite-plugin-top-level-await vite-plugin-wasm
 ```
 
 ::
 
 ## Configuration
 
-### Basic Nuxt Setup
+The Nimiq Web Client includes a Vite plugin that automatically configures WebAssembly support and all required optimizations.
+
+> [!TIP]
+> View the [plugin source code](https://github.com/nimiq/core-rs-albatross/blob/albatross/web-client/dist/vite.js) for implementation details.
 
 Update your `nuxt.config.ts`:
 
-```typescript
-import wasm from 'vite-plugin-wasm' // [!code ++]
+::code-group
+
+```ts [nuxt.config.ts]
+import nimiq from '@nimiq/core/vite' // [!code ++]
 
 export default defineNuxtConfig({
   vite: { // [!code ++]
-    build: { target: 'esnext' }, // [!code ++]
-    plugins: [wasm()], // [!code ++]
-    worker: { plugins: () => [wasm()] }, // [!code ++]
-    optimizeDeps: { // [!code ++]
-      exclude: ['@nimiq/core'], // [!code ++]
-    }, // [!code ++]
+    plugins: [nimiq()], // [!code ++]
   }, // [!code ++]
 
   // Only if you are using SSR or @nimiq/core in the server,
   // otherwise use `ssr: false` or `<ClientOnly />`
   nitro: { // [!code ++]
     experimental: { // [!code ++]
-      wasm: true // [!code ++]
+      wasm: true, // [!code ++]
     }, // [!code ++]
   }, // [!code ++]
 })
 ```
+
+::
+
+The plugin automatically configures:
+- WebAssembly support with `vite-plugin-wasm`
+- Worker configuration for WASM modules (opt-out via `{ worker: false }`)
+- Build target optimizations (`esnext`)
+- Dependency exclusions for `@nimiq/core`
+
+<details>
+<summary>Legacy Browser Support</summary>
+
+Modern browsers (Chrome 89+, Firefox 89+, Safari 15+, Edge 89+) support top-level await natively. If you need to support older browsers, install `vite-plugin-top-level-await`:
+
+::code-group
+
+```bash [pnpm]
+pnpm add -D vite-plugin-top-level-await
+```
+
+```bash [npm]
+npm install -D vite-plugin-top-level-await
+```
+
+```bash [yarn]
+yarn add -D vite-plugin-top-level-await
+```
+
+```bash [bun]
+bun add -D vite-plugin-top-level-await
+```
+
+::
+
+Then add it to your Nuxt config:
+
+::code-group
+
+```ts [nuxt.config.ts]
+import nimiq from '@nimiq/core/vite'
+import topLevelAwait from 'vite-plugin-top-level-await' // [!code ++]
+
+export default defineNuxtConfig({
+  vite: {
+    plugins: [
+      nimiq(),
+      topLevelAwait(), // [!code ++]
+    ],
+  },
+})
+```
+
+::
+
+> [!NOTE]
+> Top-level await is required for ES modules when using dynamic WASM imports. The plugin transforms top-level await to work in older browsers.
+
+</details>
 
 ## Usage Example
 
