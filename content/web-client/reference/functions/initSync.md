@@ -4,7 +4,7 @@
 
 > **initSync**(`module`): [`InitOutput`](../interfaces/InitOutput.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2639
+Defined in: @nimiq/core/types/wasm/web.d.ts:3001
 
 Instantiates the given `module`, which can either be bytes or
 a precompiled `WebAssembly.Module`.

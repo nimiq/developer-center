@@ -2,7 +2,7 @@
 
 # Interface: PlainHtlcContract
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:36
+Defined in: @nimiq/core/types/wasm/web.d.ts:602
 
 ## Properties
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:36
 
 > **balance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:37
+Defined in: @nimiq/core/types/wasm/web.d.ts:603
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:37
 
 > **hashAlgorithm**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:40
+Defined in: @nimiq/core/types/wasm/web.d.ts:606
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:40
 
 > **hashCount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:42
+Defined in: @nimiq/core/types/wasm/web.d.ts:608
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:42
 
 > **hashRoot**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:41
+Defined in: @nimiq/core/types/wasm/web.d.ts:607
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:41
 
 > **recipient**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:39
+Defined in: @nimiq/core/types/wasm/web.d.ts:605
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:39
 
 > **sender**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:38
+Defined in: @nimiq/core/types/wasm/web.d.ts:604
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:38
 
 > **timeout**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:43
+Defined in: @nimiq/core/types/wasm/web.d.ts:609
 
 ***
 
@@ -66,4 +66,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:43
 
 > **totalAmount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:44
+Defined in: @nimiq/core/types/wasm/web.d.ts:610

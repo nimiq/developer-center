@@ -2,7 +2,7 @@
 
 # Interface: PlainUpdateValidatorData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:335
+Defined in: @nimiq/core/types/wasm/web.d.ts:526
 
 JSON-compatible and human-readable format of validator update data.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of validator update data.
 
 > **newProofOfKnowledge**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:341
+Defined in: @nimiq/core/types/wasm/web.d.ts:532
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:341
 
 > **newRewardAddress**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:339
+Defined in: @nimiq/core/types/wasm/web.d.ts:530
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:339
 
 > **newSignalData**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:340
+Defined in: @nimiq/core/types/wasm/web.d.ts:531
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:340
 
 > **newSigningKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:337
+Defined in: @nimiq/core/types/wasm/web.d.ts:528
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:337
 
 > **newVotingKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:338
+Defined in: @nimiq/core/types/wasm/web.d.ts:529
 
 ***
 
@@ -52,4 +52,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:338
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:336
+Defined in: @nimiq/core/types/wasm/web.d.ts:527

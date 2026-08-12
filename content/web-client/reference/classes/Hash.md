@@ -2,7 +2,7 @@
 
 # Class: Hash
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1278
+Defined in: @nimiq/core/types/wasm/web.d.ts:1387
 
 ## Methods
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1278
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1281
+Defined in: @nimiq/core/types/wasm/web.d.ts:1390
 
 #### Returns
 
@@ -22,7 +22,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1281
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1280
+Defined in: @nimiq/core/types/wasm/web.d.ts:1389
 
 #### Returns
 
@@ -34,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1280
 
 > `static` **computeBlake2b**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1289
+Defined in: @nimiq/core/types/wasm/web.d.ts:1398
 
 Computes a 32-byte [Blake2b] hash from the input data.
 
@@ -58,7 +58,7 @@ Blake2b is used for example to compute a public key's address.
 
 > `static` **computeNimiqArgon2d**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1314
+Defined in: @nimiq/core/types/wasm/web.d.ts:1411
 
 Computes an [Argon2d] hash with some Nimiq-specific parameters.
 
@@ -99,7 +99,7 @@ password.
 
 > `static` **computeNimiqArgon2id**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1327
+Defined in: @nimiq/core/types/wasm/web.d.ts:1424
 
 Computes an [Argon2id] hash with some Nimiq-specific parameters.
 
@@ -140,7 +140,7 @@ password.
 
 > `static` **computeSha256**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1295
+Defined in: @nimiq/core/types/wasm/web.d.ts:1430
 
 Computes a 32-byte [SHA256] hash from the input data.
 
@@ -162,7 +162,7 @@ Computes a 32-byte [SHA256] hash from the input data.
 
 > `static` **computeSha512**(`data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1301
+Defined in: @nimiq/core/types/wasm/web.d.ts:1436
 
 Computes a 64-byte [SHA512] hash from the input data.
 

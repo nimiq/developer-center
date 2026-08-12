@@ -2,7 +2,7 @@
 
 # Class: RandomSecret
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1819
+Defined in: @nimiq/core/types/wasm/web.d.ts:2022
 
 A random secret that proves a [Commitment](Commitment.md) for signing multisignature transactions.
 It is supposed to be kept secret (similar to a private key).
@@ -13,7 +13,7 @@ It is supposed to be kept secret (similar to a private key).
 
 > **new RandomSecret**(`bytes`): `RandomSecret`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1840
+Defined in: @nimiq/core/types/wasm/web.d.ts:2053
 
 Creates a new random secret from a byte array.
 
@@ -35,7 +35,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1860
+Defined in: @nimiq/core/types/wasm/web.d.ts:2062
 
 ***
 
@@ -43,7 +43,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1860
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1859
+Defined in: @nimiq/core/types/wasm/web.d.ts:2063
 
 ## Methods
 
@@ -51,7 +51,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1859
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1822
+Defined in: @nimiq/core/types/wasm/web.d.ts:2025
 
 #### Returns
 
@@ -63,7 +63,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1822
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1821
+Defined in: @nimiq/core/types/wasm/web.d.ts:2024
 
 #### Returns
 
@@ -75,7 +75,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1821
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1858
+Defined in: @nimiq/core/types/wasm/web.d.ts:2035
 
 Returns if this random secret is equal to the other random secret.
 
@@ -95,7 +95,7 @@ Returns if this random secret is equal to the other random secret.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1820
+Defined in: @nimiq/core/types/wasm/web.d.ts:2023
 
 #### Returns
 
@@ -107,7 +107,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1820
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1844
+Defined in: @nimiq/core/types/wasm/web.d.ts:2057
 
 Serializes the random secret to a byte array.
 
@@ -121,7 +121,7 @@ Serializes the random secret to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1854
+Defined in: @nimiq/core/types/wasm/web.d.ts:2061
 
 Formats the random secret into a hex string.
 
@@ -135,7 +135,7 @@ Formats the random secret into a hex string.
 
 > `static` **deserialize**(`bytes`): `RandomSecret`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1834
+Defined in: @nimiq/core/types/wasm/web.d.ts:2031
 
 Deserializes a random secret from a byte array.
 
@@ -157,7 +157,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`secret`): `RandomSecret`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1828
+Defined in: @nimiq/core/types/wasm/web.d.ts:2041
 
 Parses a random secret from a RandomSecret instance, a hex string representation, or a byte array.
 
@@ -179,7 +179,7 @@ Throws when a RandomSecret cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `RandomSecret`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1850
+Defined in: @nimiq/core/types/wasm/web.d.ts:2047
 
 Parses a random secret from its hex representation.
 

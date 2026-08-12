@@ -2,7 +2,7 @@
 
 # Interface: PlainStakingContract
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:47
+Defined in: @nimiq/core/types/wasm/web.d.ts:635
 
 ## Properties
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:47
 
 > **activeValidators**: \[`string`, `number`\][]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:49
+Defined in: @nimiq/core/types/wasm/web.d.ts:637
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:49
 
 > **balance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:48
+Defined in: @nimiq/core/types/wasm/web.d.ts:636
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:48
 
 > **currentEpochDisabledSlots**: \[`string`, `number`[]\][]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:50
+Defined in: @nimiq/core/types/wasm/web.d.ts:638
 
 ***
 
@@ -34,4 +34,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:50
 
 > **previousDisabledSlots**: `number`[]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:51
+Defined in: @nimiq/core/types/wasm/web.d.ts:639

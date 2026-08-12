@@ -2,7 +2,7 @@
 
 # Class: TransactionBuilder
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2146
+Defined in: @nimiq/core/types/wasm/web.d.ts:2434
 
 The TransactionBuilder class provides helper methods to easily create standard types of transactions.
 It can only be instantiated from a Client with `client.transactionBuilder()`.
@@ -13,7 +13,7 @@ It can only be instantiated from a Client with `client.transactionBuilder()`.
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2149
+Defined in: @nimiq/core/types/wasm/web.d.ts:2437
 
 #### Returns
 
@@ -25,7 +25,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2149
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2148
+Defined in: @nimiq/core/types/wasm/web.d.ts:2436
 
 #### Returns
 
@@ -37,7 +37,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2148
 
 > `static` **newAddStake**(`sender`, `staker_address`, `value`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2185
+Defined in: @nimiq/core/types/wasm/web.d.ts:2446
 
 Adds stake to a staker in the staking contract and transfers `value` amount of luna (NIM's smallest unit)
 from the sender account to this staker.
@@ -82,7 +82,7 @@ Throws when the numbers given for value and fee do not fit within a u64 or the n
 
 > `static` **newBasic**(`sender`, `recipient`, `value`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2158
+Defined in: @nimiq/core/types/wasm/web.d.ts:2455
 
 Creates a basic transaction that transfers `value` amount of luna (NIM's smallest unit) from the
 sender to the recipient.
@@ -127,7 +127,7 @@ Throws when the numbers given for value and fee do not fit within a u64 or the n
 
 > `static` **newBasicWithData**(`sender`, `recipient`, `data`, `value`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2167
+Defined in: @nimiq/core/types/wasm/web.d.ts:2464
 
 Creates a basic transaction that transfers `value` amount of luna (NIM's smallest unit) from the
 sender to the recipient. It can include arbitrary `data`, up to 64 bytes.
@@ -176,7 +176,7 @@ Throws when the numbers given for value and fee do not fit within a u64 or the n
 
 > `static` **newCreateStaker**(`sender`, `delegation`, `value`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2176
+Defined in: @nimiq/core/types/wasm/web.d.ts:2473
 
 Creates a new staker in the staking contract and transfers `value` amount of luna (NIM's smallest unit)
 from the sender account to this new staker.
@@ -221,7 +221,7 @@ Throws when the numbers given for value and fee do not fit within a u64 or the n
 
 > `static` **newCreateValidator**(`sender`, `reward_address`, `signing_key`, `voting_key_pair`, `signal_data`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2229
+Defined in: @nimiq/core/types/wasm/web.d.ts:2481
 
 Registers a new validator in the staking contract.
 
@@ -273,7 +273,7 @@ Throws when the fee does not fit within a u64 or the `networkId` is unknown.
 
 > `static` **newDeactivateValidator**(`sender`, `validator`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2245
+Defined in: @nimiq/core/types/wasm/web.d.ts:2489
 
 Deactivates a validator in the staking contract.
 
@@ -313,7 +313,7 @@ Throws when the fee does not fit within a u64 or the `networkId` is unknown.
 
 > `static` **newDeleteValidator**(`sender`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2253
+Defined in: @nimiq/core/types/wasm/web.d.ts:2497
 
 Deleted a validator the staking contract. The deposit is returned to the Sender
 
@@ -349,7 +349,7 @@ Throws when the fee does not fit within a u64 or the `networkId` is unknown.
 
 > `static` **newRemoveStake**(`recipient`, `value`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2221
+Defined in: @nimiq/core/types/wasm/web.d.ts:2506
 
 Removes stake from the staking contract and transfers `value` amount of luna (NIM's smallest unit)
 from the staker to the recipient.
@@ -390,7 +390,7 @@ Throws when the numbers given for value and fee do not fit within a u64 or the n
 
 > `static` **newRetireStake**(`sender`, `retire_stake`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2212
+Defined in: @nimiq/core/types/wasm/web.d.ts:2515
 
 Retires a portion of the inactive stake balance of the staker. This is a
 signaling transaction and as such does not transfer any value.
@@ -431,7 +431,7 @@ Throws when the numbers given for fee and `retire_stake` do not fit within a u64
 
 > `static` **newRetireValidator**(`sender`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2261
+Defined in: @nimiq/core/types/wasm/web.d.ts:2523
 
 Retires a validator in the staking contract.
 
@@ -467,7 +467,7 @@ Throws when the fee does not fit within a u64 or the `networkId` is unknown.
 
 > `static` **newSetActiveStake**(`sender`, `new_active_balance`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2203
+Defined in: @nimiq/core/types/wasm/web.d.ts:2532
 
 Sets the active stake balance of the staker. This is a
 signaling transaction and as such does not transfer any value.
@@ -504,11 +504,105 @@ Throws when the numbers given for fee and `new_active_balance` do not fit within
 
 ***
 
+### newSetSignalData()
+
+> `static` **newSetSignalData**(`sender`, `validator`, `signal_data`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2543
+
+Sets the signal data of a validator in the staking contract. In contrast to
+`newUpdateValidator`, this transaction is signed with the validator's *signing (warm) key*,
+so the cold key is not required to signal protocol upgrades. Pass `undefined` as
+`signalData` to clear the signal.
+
+The returned transaction is not yet signed. You can sign it e.g. with `tx.sign(keyPair)`.
+
+Throws when the fee does not fit within a u64 or the `networkId` is unknown.
+
+#### Parameters
+
+##### sender
+
+[`Address`](Address.md)
+
+##### validator
+
+[`Address`](Address.md)
+
+##### signal\_data
+
+`string`
+
+##### fee
+
+`bigint`
+
+##### validity\_start\_height
+
+`number`
+
+##### network\_id
+
+`number`
+
+#### Returns
+
+[`Transaction`](Transaction.md)
+
+***
+
+### newSignalVersion()
+
+> `static` **newSignalVersion**(`sender`, `validator`, `version`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2554
+
+Signals support for the given protocol `version` with the validator's *signing (warm) key*
+by updating the validator's signal data in the staking contract. In contrast to
+`newSetSignalData`, this only updates the protocol-version bytes of the signal data and
+preserves the rest. To clear the signal data entirely, use `newSetSignalData` with `null`.
+
+The returned transaction is not yet signed. You can sign it e.g. with `tx.sign(keyPair)`.
+
+Throws when the fee does not fit within a u64 or the `networkId` is unknown.
+
+#### Parameters
+
+##### sender
+
+[`Address`](Address.md)
+
+##### validator
+
+[`Address`](Address.md)
+
+##### version
+
+`number`
+
+##### fee
+
+`bigint`
+
+##### validity\_start\_height
+
+`number`
+
+##### network\_id
+
+`number`
+
+#### Returns
+
+[`Transaction`](Transaction.md)
+
+***
+
 ### newUpdateStaker()
 
 > `static` **newUpdateStaker**(`sender`, `new_delegation`, `reactivate_all_stake`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2194
+Defined in: @nimiq/core/types/wasm/web.d.ts:2563
 
 Updates a staker in the staking contract to stake for a different validator. This is a
 signaling transaction and as such does not transfer any value.
@@ -553,7 +647,7 @@ Throws when the number given for fee does not fit within a u64 or the networkId 
 
 > `static` **newUpdateValidator**(`sender`, `reward_address`, `signing_key`, `voting_key_pair`, `signal_data`, `fee`, `validity_start_height`, `network_id`): [`Transaction`](Transaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2237
+Defined in: @nimiq/core/types/wasm/web.d.ts:2571
 
 Updates parameters of a validator in the staking contract.
 

@@ -2,7 +2,7 @@
 
 # Interface: PlainRetireStakeData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:389
+Defined in: @nimiq/core/types/wasm/web.d.ts:328
 
 JSON-compatible and human-readable format of retire stake data.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of retire stake data.
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:390
+Defined in: @nimiq/core/types/wasm/web.d.ts:329
 
 ***
 
@@ -20,4 +20,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:390
 
 > **retireStake**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:391
+Defined in: @nimiq/core/types/wasm/web.d.ts:330

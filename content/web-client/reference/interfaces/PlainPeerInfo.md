@@ -2,7 +2,7 @@
 
 # Interface: PlainPeerInfo
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:255
+Defined in: @nimiq/core/types/wasm/web.d.ts:36
 
 Information about a networking peer.
 
@@ -12,7 +12,7 @@ Information about a networking peer.
 
 > **address**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:263
+Defined in: @nimiq/core/types/wasm/web.d.ts:44
 
 Address of the peer in `Multiaddr` format
 
@@ -22,7 +22,7 @@ Address of the peer in `Multiaddr` format
 
 > **peerId**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:259
+Defined in: @nimiq/core/types/wasm/web.d.ts:40
 
 A libp2p peer ID
 
@@ -32,7 +32,7 @@ A libp2p peer ID
 
 > **services**: [`PlainService`](../type-aliases/PlainService.md)[]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:271
+Defined in: @nimiq/core/types/wasm/web.d.ts:52
 
 List of services the peer is providing
 
@@ -42,6 +42,6 @@ List of services the peer is providing
 
 > **type**: `"full"` \| `"history"` \| `"light"`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:267
+Defined in: @nimiq/core/types/wasm/web.d.ts:48
 
 Node type of the peer

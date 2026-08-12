@@ -2,7 +2,7 @@
 
 # Class: PublicKey
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1745
+Defined in: @nimiq/core/types/wasm/web.d.ts:1939
 
 The non-secret (public) part of an asymmetric key pair that is typically used to digitally verify or encrypt data.
 
@@ -12,7 +12,7 @@ The non-secret (public) part of an asymmetric key pair that is typically used to
 
 > **new PublicKey**(`bytes`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1782
+Defined in: @nimiq/core/types/wasm/web.d.ts:1993
 
 Creates a new public key from a byte array.
 
@@ -34,7 +34,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1813
+Defined in: @nimiq/core/types/wasm/web.d.ts:2014
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1813
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1812
+Defined in: @nimiq/core/types/wasm/web.d.ts:2015
 
 ## Methods
 
@@ -50,7 +50,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1812
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1748
+Defined in: @nimiq/core/types/wasm/web.d.ts:1942
 
 #### Returns
 
@@ -62,7 +62,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1748
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1747
+Defined in: @nimiq/core/types/wasm/web.d.ts:1941
 
 #### Returns
 
@@ -74,7 +74,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1747
 
 > **compare**(`other`): `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1811
+Defined in: @nimiq/core/types/wasm/web.d.ts:1953
 
 Compares this public key to the other public key.
 
@@ -97,7 +97,7 @@ and 1 if this public key is larger than the other public key.
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1804
+Defined in: @nimiq/core/types/wasm/web.d.ts:1967
 
 Returns if this public key is equal to the other public key.
 
@@ -117,7 +117,7 @@ Returns if this public key is equal to the other public key.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1746
+Defined in: @nimiq/core/types/wasm/web.d.ts:1940
 
 #### Returns
 
@@ -129,7 +129,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1746
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1786
+Defined in: @nimiq/core/types/wasm/web.d.ts:1997
 
 Serializes the public key to a byte array.
 
@@ -143,7 +143,7 @@ Serializes the public key to a byte array.
 
 > **toAddress**(): [`Address`](Address.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1800
+Defined in: @nimiq/core/types/wasm/web.d.ts:2005
 
 Gets the public key's address.
 
@@ -157,7 +157,7 @@ Gets the public key's address.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1796
+Defined in: @nimiq/core/types/wasm/web.d.ts:2009
 
 Formats the public key into a hex string.
 
@@ -171,7 +171,7 @@ Formats the public key into a hex string.
 
 > **verify**(`signature`, `data`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1762
+Defined in: @nimiq/core/types/wasm/web.d.ts:2013
 
 Verifies that a signature is valid for this public key and the provided data.
 
@@ -191,11 +191,35 @@ Verifies that a signature is valid for this public key and the provided data.
 
 ***
 
+### combinations()
+
+> `static` **combinations**(`keys`, `num_signers`): `PublicKey`[]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1946
+
+Generates all possible combinations (sums) of delinearized public keys for a given number of signers.
+
+#### Parameters
+
+##### keys
+
+(`string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `PublicKey`)[]
+
+##### num\_signers
+
+`number`
+
+#### Returns
+
+`PublicKey`[]
+
+***
+
 ### derive()
 
 > `static` **derive**(`private_key`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1752
+Defined in: @nimiq/core/types/wasm/web.d.ts:1957
 
 Derives a public key from an existing private key.
 
@@ -215,7 +239,7 @@ Derives a public key from an existing private key.
 
 > `static` **deserialize**(`bytes`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1768
+Defined in: @nimiq/core/types/wasm/web.d.ts:1963
 
 Deserializes a public key from a byte array.
 
@@ -237,7 +261,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`key`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1758
+Defined in: @nimiq/core/types/wasm/web.d.ts:1973
 
 Parses a public key from a PublicKey instance, a hex string representation, or a byte array.
 
@@ -259,7 +283,7 @@ Throws when an PublicKey cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1792
+Defined in: @nimiq/core/types/wasm/web.d.ts:1979
 
 Parses a public key from its hex representation.
 
@@ -281,7 +305,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **fromRaw**(`raw_bytes`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1776
+Defined in: @nimiq/core/types/wasm/web.d.ts:1983
 
 Deserializes a public key from its raw representation.
 
@@ -301,7 +325,7 @@ Deserializes a public key from its raw representation.
 
 > `static` **fromSpki**(`spki_bytes`): `PublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1772
+Defined in: @nimiq/core/types/wasm/web.d.ts:1987
 
 Deserializes a public key from its SPKI representation.
 
@@ -310,6 +334,26 @@ Deserializes a public key from its SPKI representation.
 ##### spki\_bytes
 
 `Uint8Array`
+
+#### Returns
+
+`PublicKey`
+
+***
+
+### sum()
+
+> `static` **sum**(`keys`): `PublicKey`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2001
+
+Sums public keys into one combined public key.
+
+#### Parameters
+
+##### keys
+
+(`string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `PublicKey`)[]
 
 #### Returns
 

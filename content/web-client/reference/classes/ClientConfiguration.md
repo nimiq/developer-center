@@ -2,7 +2,7 @@
 
 # Class: ClientConfiguration
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:968
+Defined in: @nimiq/core/types/wasm/web.d.ts:1051
 
 Use this to provide initialization-time configuration to the Client.
 This is a simplified version of the configuration that is used for regular nodes,
@@ -14,7 +14,7 @@ since not all configuration knobs are available when running inside a browser.
 
 > **new ClientConfiguration**(): `ClientConfiguration`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:976
+Defined in: @nimiq/core/types/wasm/web.d.ts:1087
 
 Creates a default client configuration that can be used to change the client's configuration.
 
@@ -30,7 +30,7 @@ Use its `instantiateClient()` method to launch the client and connect to the net
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:970
+Defined in: @nimiq/core/types/wasm/web.d.ts:1053
 
 #### Returns
 
@@ -42,7 +42,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:970
 
 > **build**(): [`PlainClientConfiguration`](../interfaces/PlainClientConfiguration.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1031
+Defined in: @nimiq/core/types/wasm/web.d.ts:1057
 
 Returns a plain configuration object to be passed to `Client.create`.
 
@@ -56,7 +56,7 @@ Returns a plain configuration object to be passed to `Client.create`.
 
 > **desiredPeerCount**(`desired_peer_count`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1006
+Defined in: @nimiq/core/types/wasm/web.d.ts:1062
 
 Sets the desired number of peers the client should try to connect to.
 Default is `12`.
@@ -77,7 +77,7 @@ Default is `12`.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:969
+Defined in: @nimiq/core/types/wasm/web.d.ts:1052
 
 #### Returns
 
@@ -89,7 +89,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:969
 
 > **logLevel**(`log_level`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:996
+Defined in: @nimiq/core/types/wasm/web.d.ts:1069
 
 Sets the log level that is used when logging to the console.
 
@@ -112,7 +112,7 @@ Default is `'info'`.
 
 > **network**(`network`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:983
+Defined in: @nimiq/core/types/wasm/web.d.ts:1076
 
 Sets the network ID the client should use. Input is case-insensitive.
 
@@ -131,11 +131,32 @@ Default is `'MainAlbatross'`.
 
 ***
 
+### networkBufferSize()
+
+> **networkBufferSize**(`network_buffer_size`): `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1081
+
+Sets the maximum network buffer size, which should be greater than 0
+Default is `1024`.
+
+#### Parameters
+
+##### network\_buffer\_size
+
+`number`
+
+#### Returns
+
+`void`
+
+***
+
 ### onlySecureWsConnections()
 
 > **onlySecureWsConnections**(`only_secure_ws_connections`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1001
+Defined in: @nimiq/core/types/wasm/web.d.ts:1092
 
 Sets whether the client should only connect to secure WebSocket connections.
 Default is `true`.
@@ -156,7 +177,7 @@ Default is `true`.
 
 > **peerCountMax**(`peer_count_max`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1011
+Defined in: @nimiq/core/types/wasm/web.d.ts:1097
 
 Sets the maximum number of peers the client should connect to.
 Default is `50`.
@@ -177,7 +198,7 @@ Default is `50`.
 
 > **peerCountPerIpMax**(`peer_count_per_ip_max`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1016
+Defined in: @nimiq/core/types/wasm/web.d.ts:1102
 
 Sets the maximum number of peers the client should connect to per IP address.
 Default is `10`.
@@ -198,7 +219,7 @@ Default is `10`.
 
 > **peerCountPerSubnetMax**(`peer_count_per_subnet_max`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1021
+Defined in: @nimiq/core/types/wasm/web.d.ts:1107
 
 Sets the maximum number of peers the client should connect to per subnet.
 Default is `10`.
@@ -219,11 +240,13 @@ Default is `10`.
 
 > **seedNodes**(`seeds`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:989
+Defined in: @nimiq/core/types/wasm/web.d.ts:1115
 
 Sets the list of seed nodes that are used to connect to the Nimiq Albatross network.
 
 Each array entry must be a proper Multiaddr format string.
+
+Throws when an entry cannot be deserialized as a string.
 
 #### Parameters
 
@@ -241,11 +264,11 @@ Each array entry must be a proper Multiaddr format string.
 
 > **syncMode**(`sync_mode`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1027
+Defined in: @nimiq/core/types/wasm/web.d.ts:1121
 
-Sets the sync mode that shoud be used.
+Sets the sync mode that should be used.
 Only "light" and "pico" are supported for web clients
-Default is "light"
+Default is "pico"
 
 #### Parameters
 

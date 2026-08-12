@@ -2,7 +2,7 @@
 
 # Interface: PlainHtlcTimeoutResolveProof
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:438
+Defined in: @nimiq/core/types/wasm/web.d.ts:92
 
 JSON-compatible and human-readable format of HTLC timeout proofs.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of HTLC timeout proofs.
 
 > **creator**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:443
+Defined in: @nimiq/core/types/wasm/web.d.ts:97
 
 The creator (also called the \"sender\") of the HTLC
 
@@ -22,7 +22,7 @@ The creator (also called the \"sender\") of the HTLC
 
 > **creatorPathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:446
+Defined in: @nimiq/core/types/wasm/web.d.ts:100
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:446
 
 > **creatorPublicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:445
+Defined in: @nimiq/core/types/wasm/web.d.ts:99
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:445
 
 > **creatorSignature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:444
+Defined in: @nimiq/core/types/wasm/web.d.ts:98
 
 ***
 
@@ -46,4 +46,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:444
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:439
+Defined in: @nimiq/core/types/wasm/web.d.ts:93

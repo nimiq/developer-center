@@ -2,15 +2,37 @@
 
 # Interface: InitOutput
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2282
+Defined in: @nimiq/core/types/wasm/web.d.ts:2609
 
 ## Properties
+
+### \_\_externref\_drop\_slice()
+
+> `readonly` **\_\_externref\_drop\_slice**: (`a`, `b`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2987
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`void`
+
+***
 
 ### \_\_externref\_table\_alloc()
 
 > `readonly` **\_\_externref\_table\_alloc**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2614
+Defined in: @nimiq/core/types/wasm/web.d.ts:2982
 
 #### Returns
 
@@ -22,7 +44,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2614
 
 > `readonly` **\_\_externref\_table\_dealloc**: (`a`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2618
+Defined in: @nimiq/core/types/wasm/web.d.ts:2986
 
 #### Parameters
 
@@ -40,7 +62,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2618
 
 > `readonly` **\_\_wbg\_address\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2285
+Defined in: @nimiq/core/types/wasm/web.d.ts:2611
 
 #### Parameters
 
@@ -62,7 +84,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2285
 
 > `readonly` **\_\_wbg\_blskeypair\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2547
+Defined in: @nimiq/core/types/wasm/web.d.ts:2612
 
 #### Parameters
 
@@ -84,7 +106,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2547
 
 > `readonly` **\_\_wbg\_blspublickey\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2556
+Defined in: @nimiq/core/types/wasm/web.d.ts:2613
 
 #### Parameters
 
@@ -106,7 +128,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2556
 
 > `readonly` **\_\_wbg\_blssecretkey\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2402
+Defined in: @nimiq/core/types/wasm/web.d.ts:2614
 
 #### Parameters
 
@@ -128,7 +150,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2402
 
 > `readonly` **\_\_wbg\_client\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2519
+Defined in: @nimiq/core/types/wasm/web.d.ts:2720
 
 #### Parameters
 
@@ -150,7 +172,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2519
 
 > `readonly` **\_\_wbg\_clientconfiguration\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2507
+Defined in: @nimiq/core/types/wasm/web.d.ts:2751
 
 #### Parameters
 
@@ -172,7 +194,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2507
 
 > `readonly` **\_\_wbg\_commitment\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2357
+Defined in: @nimiq/core/types/wasm/web.d.ts:2615
 
 #### Parameters
 
@@ -194,7 +216,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2357
 
 > `readonly` **\_\_wbg\_commitmentpair\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2369
+Defined in: @nimiq/core/types/wasm/web.d.ts:2752
 
 #### Parameters
 
@@ -216,7 +238,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2369
 
 > `readonly` **\_\_wbg\_cryptoutils\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2351
+Defined in: @nimiq/core/types/wasm/web.d.ts:2753
 
 #### Parameters
 
@@ -238,7 +260,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2351
 
 > `readonly` **\_\_wbg\_es256publickey\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2410
+Defined in: @nimiq/core/types/wasm/web.d.ts:2616
 
 #### Parameters
 
@@ -260,7 +282,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2410
 
 > `readonly` **\_\_wbg\_es256signature\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2423
+Defined in: @nimiq/core/types/wasm/web.d.ts:2754
 
 #### Parameters
 
@@ -282,7 +304,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2423
 
 > `readonly` **\_\_wbg\_hash\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2429
+Defined in: @nimiq/core/types/wasm/web.d.ts:2755
 
 #### Parameters
 
@@ -304,7 +326,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2429
 
 > `readonly` **\_\_wbg\_hashedtimelockedcontract\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2297
+Defined in: @nimiq/core/types/wasm/web.d.ts:2892
 
 #### Parameters
 
@@ -326,7 +348,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2297
 
 > `readonly` **\_\_wbg\_keypair\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2435
+Defined in: @nimiq/core/types/wasm/web.d.ts:2756
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`void`
+
+***
+
+### \_\_wbg\_merklepath\_free()
+
+> `readonly` **\_\_wbg\_merklepath\_free**: (`a`, `b`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2617
 
 #### Parameters
 
@@ -348,7 +392,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2435
 
 > `readonly` **\_\_wbg\_merkletree\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2448
+Defined in: @nimiq/core/types/wasm/web.d.ts:2893
 
 #### Parameters
 
@@ -370,7 +414,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2448
 
 > `readonly` **\_\_wbg\_partialsignature\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2384
+Defined in: @nimiq/core/types/wasm/web.d.ts:2757
 
 #### Parameters
 
@@ -392,7 +436,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2384
 
 > `readonly` **\_\_wbg\_policy\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2563
+Defined in: @nimiq/core/types/wasm/web.d.ts:2918
 
 #### Parameters
 
@@ -414,7 +458,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2563
 
 > `readonly` **\_\_wbg\_privatekey\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2450
+Defined in: @nimiq/core/types/wasm/web.d.ts:2618
 
 #### Parameters
 
@@ -436,7 +480,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2450
 
 > `readonly` **\_\_wbg\_publickey\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2461
+Defined in: @nimiq/core/types/wasm/web.d.ts:2619
 
 #### Parameters
 
@@ -458,7 +502,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2461
 
 > `readonly` **\_\_wbg\_randomsecret\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2394
+Defined in: @nimiq/core/types/wasm/web.d.ts:2758
 
 #### Parameters
 
@@ -480,7 +524,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2394
 
 > `readonly` **\_\_wbg\_signature\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2477
+Defined in: @nimiq/core/types/wasm/web.d.ts:2620
 
 #### Parameters
 
@@ -502,7 +546,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2477
 
 > `readonly` **\_\_wbg\_signatureproof\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2300
+Defined in: @nimiq/core/types/wasm/web.d.ts:2894
 
 #### Parameters
 
@@ -524,7 +568,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2300
 
 > `readonly` **\_\_wbg\_stakingcontract\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2314
+Defined in: @nimiq/core/types/wasm/web.d.ts:2895
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`void`
+
+***
+
+### \_\_wbg\_stakingdatabuilder\_free()
+
+> `readonly` **\_\_wbg\_stakingdatabuilder\_free**: (`a`, `b`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2759
 
 #### Parameters
 
@@ -546,7 +612,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2314
 
 > `readonly` **\_\_wbg\_transaction\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2318
+Defined in: @nimiq/core/types/wasm/web.d.ts:2760
 
 #### Parameters
 
@@ -568,7 +634,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2318
 
 > `readonly` **\_\_wbg\_transactionbuilder\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2484
+Defined in: @nimiq/core/types/wasm/web.d.ts:2876
 
 #### Parameters
 
@@ -590,7 +656,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2484
 
 > `readonly` **\_\_wbg\_vestingcontract\_free**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2349
+Defined in: @nimiq/core/types/wasm/web.d.ts:2896
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`void`
+
+***
+
+### \_\_wbindgen\_destroy\_closure()
+
+> `readonly` **\_\_wbindgen\_destroy\_closure**: (`a`, `b`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2984
 
 #### Parameters
 
@@ -612,7 +700,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2349
 
 > `readonly` **\_\_wbindgen\_exn\_store**: (`a`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2613
+Defined in: @nimiq/core/types/wasm/web.d.ts:2981
 
 #### Parameters
 
@@ -626,19 +714,11 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2613
 
 ***
 
-### \_\_wbindgen\_export\_4
+### \_\_wbindgen\_externrefs
 
-> `readonly` **\_\_wbindgen\_export\_4**: `Table`
+> `readonly` **\_\_wbindgen\_externrefs**: `Table`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2615
-
-***
-
-### \_\_wbindgen\_export\_5
-
-> `readonly` **\_\_wbindgen\_export\_5**: `Table`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2616
+Defined in: @nimiq/core/types/wasm/web.d.ts:2983
 
 ***
 
@@ -646,7 +726,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2616
 
 > `readonly` **\_\_wbindgen\_free**: (`a`, `b`, `c`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2617
+Defined in: @nimiq/core/types/wasm/web.d.ts:2985
 
 #### Parameters
 
@@ -672,7 +752,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2617
 
 > `readonly` **\_\_wbindgen\_malloc**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2611
+Defined in: @nimiq/core/types/wasm/web.d.ts:2979
 
 #### Parameters
 
@@ -694,7 +774,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2611
 
 > `readonly` **\_\_wbindgen\_realloc**: (`a`, `b`, `c`, `d`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2612
+Defined in: @nimiq/core/types/wasm/web.d.ts:2980
 
 #### Parameters
 
@@ -724,7 +804,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2612
 
 > `readonly` **\_\_wbindgen\_start**: () => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2627
+Defined in: @nimiq/core/types/wasm/web.d.ts:2988
 
 #### Returns
 
@@ -736,7 +816,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2627
 
 > `readonly` **address\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2284
+Defined in: @nimiq/core/types/wasm/web.d.ts:2621
 
 #### Parameters
 
@@ -754,7 +834,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2284
 
 > `readonly` **address\_compare**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2296
+Defined in: @nimiq/core/types/wasm/web.d.ts:2622
 
 #### Parameters
 
@@ -776,7 +856,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2296
 
 > `readonly` **address\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2287
+Defined in: @nimiq/core/types/wasm/web.d.ts:2623
 
 #### Parameters
 
@@ -798,7 +878,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2287
 
 > `readonly` **address\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2295
+Defined in: @nimiq/core/types/wasm/web.d.ts:2624
 
 #### Parameters
 
@@ -820,7 +900,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2295
 
 > `readonly` **address\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2288
+Defined in: @nimiq/core/types/wasm/web.d.ts:2625
 
 #### Parameters
 
@@ -838,7 +918,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2288
 
 > `readonly` **address\_fromPublicKeys**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2291
+Defined in: @nimiq/core/types/wasm/web.d.ts:2626
 
 #### Parameters
 
@@ -860,7 +940,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2291
 
 > `readonly` **address\_fromString**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2289
+Defined in: @nimiq/core/types/wasm/web.d.ts:2627
 
 #### Parameters
 
@@ -882,7 +962,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2289
 
 > `readonly` **address\_fromUserFriendlyAddress**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2290
+Defined in: @nimiq/core/types/wasm/web.d.ts:2628
 
 #### Parameters
 
@@ -904,7 +984,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2290
 
 > `readonly` **address\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2286
+Defined in: @nimiq/core/types/wasm/web.d.ts:2629
 
 #### Parameters
 
@@ -922,11 +1002,23 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2286
 
 ***
 
+### address\_null()
+
+> `readonly` **address\_null**: () => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2630
+
+#### Returns
+
+`number`
+
+***
+
 ### address\_serialize()
 
 > `readonly` **address\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2294
+Defined in: @nimiq/core/types/wasm/web.d.ts:2631
 
 #### Parameters
 
@@ -944,7 +1036,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2294
 
 > `readonly` **address\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2293
+Defined in: @nimiq/core/types/wasm/web.d.ts:2632
 
 #### Parameters
 
@@ -962,7 +1054,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2293
 
 > `readonly` **address\_toPlain**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2292
+Defined in: @nimiq/core/types/wasm/web.d.ts:2633
 
 #### Parameters
 
@@ -980,7 +1072,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2292
 
 > `readonly` **address\_toUserFriendlyAddress**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2506
+Defined in: @nimiq/core/types/wasm/web.d.ts:2717
 
 #### Parameters
 
@@ -998,7 +1090,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2506
 
 > `readonly` **blskeypair\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2549
+Defined in: @nimiq/core/types/wasm/web.d.ts:2634
 
 #### Parameters
 
@@ -1016,7 +1108,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2549
 
 > `readonly` **blskeypair\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2550
+Defined in: @nimiq/core/types/wasm/web.d.ts:2635
 
 #### Parameters
 
@@ -1038,7 +1130,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2550
 
 > `readonly` **blskeypair\_generate**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2548
+Defined in: @nimiq/core/types/wasm/web.d.ts:2636
 
 #### Returns
 
@@ -1050,7 +1142,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2548
 
 > `readonly` **blskeypair\_new**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2551
+Defined in: @nimiq/core/types/wasm/web.d.ts:2637
 
 #### Parameters
 
@@ -1072,7 +1164,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2551
 
 > `readonly` **blskeypair\_publicKey**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2554
+Defined in: @nimiq/core/types/wasm/web.d.ts:2638
 
 #### Parameters
 
@@ -1090,7 +1182,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2554
 
 > `readonly` **blskeypair\_secretKey**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2553
+Defined in: @nimiq/core/types/wasm/web.d.ts:2639
 
 #### Parameters
 
@@ -1108,7 +1200,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2553
 
 > `readonly` **blskeypair\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2552
+Defined in: @nimiq/core/types/wasm/web.d.ts:2640
 
 #### Parameters
 
@@ -1126,7 +1218,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2552
 
 > `readonly` **blskeypair\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2555
+Defined in: @nimiq/core/types/wasm/web.d.ts:2641
 
 #### Parameters
 
@@ -1144,7 +1236,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2555
 
 > `readonly` **blspublickey\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2557
+Defined in: @nimiq/core/types/wasm/web.d.ts:2642
 
 #### Parameters
 
@@ -1162,7 +1254,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2557
 
 > `readonly` **blspublickey\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2558
+Defined in: @nimiq/core/types/wasm/web.d.ts:2643
 
 #### Parameters
 
@@ -1184,7 +1276,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2558
 
 > `readonly` **blspublickey\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2560
+Defined in: @nimiq/core/types/wasm/web.d.ts:2644
 
 #### Parameters
 
@@ -1206,7 +1298,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2560
 
 > `readonly` **blspublickey\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2562
+Defined in: @nimiq/core/types/wasm/web.d.ts:2645
 
 #### Parameters
 
@@ -1228,7 +1320,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2562
 
 > `readonly` **blspublickey\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2559
+Defined in: @nimiq/core/types/wasm/web.d.ts:2646
 
 #### Parameters
 
@@ -1246,7 +1338,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2559
 
 > `readonly` **blspublickey\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2561
+Defined in: @nimiq/core/types/wasm/web.d.ts:2647
 
 #### Parameters
 
@@ -1264,7 +1356,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2561
 
 > `readonly` **blssecretkey\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2404
+Defined in: @nimiq/core/types/wasm/web.d.ts:2648
 
 #### Parameters
 
@@ -1286,7 +1378,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2404
 
 > `readonly` **blssecretkey\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2407
+Defined in: @nimiq/core/types/wasm/web.d.ts:2649
 
 #### Parameters
 
@@ -1308,7 +1400,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2407
 
 > `readonly` **blssecretkey\_generate**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2403
+Defined in: @nimiq/core/types/wasm/web.d.ts:2650
 
 #### Returns
 
@@ -1320,7 +1412,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2403
 
 > `readonly` **blssecretkey\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2405
+Defined in: @nimiq/core/types/wasm/web.d.ts:2651
 
 #### Parameters
 
@@ -1342,7 +1434,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2405
 
 > `readonly` **blssecretkey\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2406
+Defined in: @nimiq/core/types/wasm/web.d.ts:2652
 
 #### Parameters
 
@@ -1360,7 +1452,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2406
 
 > `readonly` **blssecretkey\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2408
+Defined in: @nimiq/core/types/wasm/web.d.ts:2653
 
 #### Parameters
 
@@ -1378,7 +1470,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2408
 
 > `readonly` **client\_addConsensusChangedListener**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2521
+Defined in: @nimiq/core/types/wasm/web.d.ts:2721
 
 #### Parameters
 
@@ -1400,7 +1492,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2521
 
 > `readonly` **client\_addHeadChangedListener**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2522
+Defined in: @nimiq/core/types/wasm/web.d.ts:2722
 
 #### Parameters
 
@@ -1422,7 +1514,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2522
 
 > `readonly` **client\_addPeerChangedListener**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2523
+Defined in: @nimiq/core/types/wasm/web.d.ts:2723
 
 #### Parameters
 
@@ -1444,7 +1536,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2523
 
 > `readonly` **client\_addTransactionListener**: (`a`, `b`, `c`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2524
+Defined in: @nimiq/core/types/wasm/web.d.ts:2724
 
 #### Parameters
 
@@ -1470,7 +1562,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2524
 
 > `readonly` **client\_connectNetwork**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2546
+Defined in: @nimiq/core/types/wasm/web.d.ts:2725
 
 #### Parameters
 
@@ -1488,7 +1580,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2546
 
 > `readonly` **client\_create**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2520
+Defined in: @nimiq/core/types/wasm/web.d.ts:2726
 
 #### Parameters
 
@@ -1506,7 +1598,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2520
 
 > `readonly` **client\_disconnectNetwork**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2545
+Defined in: @nimiq/core/types/wasm/web.d.ts:2727
 
 #### Parameters
 
@@ -1524,7 +1616,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2545
 
 > `readonly` **client\_getAccount**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2535
+Defined in: @nimiq/core/types/wasm/web.d.ts:2728
 
 #### Parameters
 
@@ -1546,7 +1638,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2535
 
 > `readonly` **client\_getAccounts**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2536
+Defined in: @nimiq/core/types/wasm/web.d.ts:2729
 
 #### Parameters
 
@@ -1568,7 +1660,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2536
 
 > `readonly` **client\_getAddressBook**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2532
+Defined in: @nimiq/core/types/wasm/web.d.ts:2730
 
 #### Parameters
 
@@ -1586,7 +1678,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2532
 
 > `readonly` **client\_getBlock**: (`a`, `b`, `c`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2533
+Defined in: @nimiq/core/types/wasm/web.d.ts:2731
 
 #### Parameters
 
@@ -1612,7 +1704,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2533
 
 > `readonly` **client\_getBlockAt**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2534
+Defined in: @nimiq/core/types/wasm/web.d.ts:2732
 
 #### Parameters
 
@@ -1630,11 +1722,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2534
 
 ***
 
+### client\_getElectedValidators()
+
+> `readonly` **client\_getElectedValidators**: (`a`) => `any`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2733
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`any`
+
+***
+
 ### client\_getHeadBlock()
 
 > `readonly` **client\_getHeadBlock**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2531
+Defined in: @nimiq/core/types/wasm/web.d.ts:2734
 
 #### Parameters
 
@@ -1652,7 +1762,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2531
 
 > `readonly` **client\_getHeadHash**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2529
+Defined in: @nimiq/core/types/wasm/web.d.ts:2735
 
 #### Parameters
 
@@ -1670,7 +1780,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2529
 
 > `readonly` **client\_getHeadHeight**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2530
+Defined in: @nimiq/core/types/wasm/web.d.ts:2736
 
 #### Parameters
 
@@ -1688,7 +1798,25 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2530
 
 > `readonly` **client\_getNetworkId**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2526
+Defined in: @nimiq/core/types/wasm/web.d.ts:2737
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`any`
+
+***
+
+### client\_getProtocolVersion()
+
+> `readonly` **client\_getProtocolVersion**: (`a`) => `any`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2738
 
 #### Parameters
 
@@ -1706,7 +1834,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2526
 
 > `readonly` **client\_getStaker**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2537
+Defined in: @nimiq/core/types/wasm/web.d.ts:2739
 
 #### Parameters
 
@@ -1728,7 +1856,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2537
 
 > `readonly` **client\_getStakers**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2538
+Defined in: @nimiq/core/types/wasm/web.d.ts:2740
 
 #### Parameters
 
@@ -1750,7 +1878,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2538
 
 > `readonly` **client\_getTransaction**: (`a`, `b`, `c`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2542
+Defined in: @nimiq/core/types/wasm/web.d.ts:2741
 
 #### Parameters
 
@@ -1776,7 +1904,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2542
 
 > `readonly` **client\_getTransactionReceiptsByAddress**: (`a`, `b`, `c`, `d`, `e`, `f`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2543
+Defined in: @nimiq/core/types/wasm/web.d.ts:2742
 
 #### Parameters
 
@@ -1814,7 +1942,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2543
 
 > `readonly` **client\_getTransactionsByAddress**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2544
+Defined in: @nimiq/core/types/wasm/web.d.ts:2743
 
 #### Parameters
 
@@ -1860,7 +1988,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2544
 
 > `readonly` **client\_getValidator**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2539
+Defined in: @nimiq/core/types/wasm/web.d.ts:2744
 
 #### Parameters
 
@@ -1882,7 +2010,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2539
 
 > `readonly` **client\_getValidators**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2540
+Defined in: @nimiq/core/types/wasm/web.d.ts:2745
 
 #### Parameters
 
@@ -1900,11 +2028,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2540
 
 ***
 
+### client\_getVersion()
+
+> `readonly` **client\_getVersion**: (`a`) => `any`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2746
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`any`
+
+***
+
 ### client\_isConsensusEstablished()
 
 > `readonly` **client\_isConsensusEstablished**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2527
+Defined in: @nimiq/core/types/wasm/web.d.ts:2747
 
 #### Parameters
 
@@ -1922,7 +2068,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2527
 
 > `readonly` **client\_removeListener**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2525
+Defined in: @nimiq/core/types/wasm/web.d.ts:2748
 
 #### Parameters
 
@@ -1944,7 +2090,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2525
 
 > `readonly` **client\_sendTransaction**: (`a`, `b`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2541
+Defined in: @nimiq/core/types/wasm/web.d.ts:2749
 
 #### Parameters
 
@@ -1966,7 +2112,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2541
 
 > `readonly` **client\_waitForConsensusEstablished**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2528
+Defined in: @nimiq/core/types/wasm/web.d.ts:2750
 
 #### Parameters
 
@@ -1984,7 +2130,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2528
 
 > `readonly` **clientconfiguration\_build**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2518
+Defined in: @nimiq/core/types/wasm/web.d.ts:2761
 
 #### Parameters
 
@@ -2002,7 +2148,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2518
 
 > `readonly` **clientconfiguration\_desiredPeerCount**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2513
+Defined in: @nimiq/core/types/wasm/web.d.ts:2762
 
 #### Parameters
 
@@ -2024,7 +2170,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2513
 
 > `readonly` **clientconfiguration\_logLevel**: (`a`, `b`, `c`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2511
+Defined in: @nimiq/core/types/wasm/web.d.ts:2763
 
 #### Parameters
 
@@ -2050,7 +2196,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2511
 
 > `readonly` **clientconfiguration\_network**: (`a`, `b`, `c`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2509
+Defined in: @nimiq/core/types/wasm/web.d.ts:2764
 
 #### Parameters
 
@@ -2072,11 +2218,33 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2509
 
 ***
 
+### clientconfiguration\_networkBufferSize()
+
+> `readonly` **clientconfiguration\_networkBufferSize**: (`a`, `b`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2765
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`void`
+
+***
+
 ### clientconfiguration\_new()
 
 > `readonly` **clientconfiguration\_new**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2508
+Defined in: @nimiq/core/types/wasm/web.d.ts:2766
 
 #### Returns
 
@@ -2088,7 +2256,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2508
 
 > `readonly` **clientconfiguration\_onlySecureWsConnections**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2512
+Defined in: @nimiq/core/types/wasm/web.d.ts:2767
 
 #### Parameters
 
@@ -2110,7 +2278,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2512
 
 > `readonly` **clientconfiguration\_peerCountMax**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2514
+Defined in: @nimiq/core/types/wasm/web.d.ts:2768
 
 #### Parameters
 
@@ -2132,7 +2300,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2514
 
 > `readonly` **clientconfiguration\_peerCountPerIpMax**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2515
+Defined in: @nimiq/core/types/wasm/web.d.ts:2769
 
 #### Parameters
 
@@ -2154,7 +2322,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2515
 
 > `readonly` **clientconfiguration\_peerCountPerSubnetMax**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2516
+Defined in: @nimiq/core/types/wasm/web.d.ts:2770
 
 #### Parameters
 
@@ -2174,9 +2342,9 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2516
 
 ### clientconfiguration\_seedNodes()
 
-> `readonly` **clientconfiguration\_seedNodes**: (`a`, `b`, `c`) => `void`
+> `readonly` **clientconfiguration\_seedNodes**: (`a`, `b`, `c`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2510
+Defined in: @nimiq/core/types/wasm/web.d.ts:2771
 
 #### Parameters
 
@@ -2194,7 +2362,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2510
 
 #### Returns
 
-`void`
+\[`number`, `number`\]
 
 ***
 
@@ -2202,7 +2370,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2510
 
 > `readonly` **clientconfiguration\_syncMode**: (`a`, `b`, `c`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2517
+Defined in: @nimiq/core/types/wasm/web.d.ts:2772
 
 #### Parameters
 
@@ -2217,166 +2385,6 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2517
 ##### c
 
 `number`
-
-#### Returns
-
-`void`
-
-***
-
-### closure1780\_externref\_shim()
-
-> `readonly` **closure1780\_externref\_shim**: (`a`, `b`, `c`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2619
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
-
-#### Returns
-
-`void`
-
-***
-
-### closure2314\_externref\_shim()
-
-> `readonly` **closure2314\_externref\_shim**: (`a`, `b`, `c`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2620
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
-
-#### Returns
-
-`void`
-
-***
-
-### closure2668\_externref\_shim()
-
-> `readonly` **closure2668\_externref\_shim**: (`a`, `b`, `c`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2622
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
-
-#### Returns
-
-`void`
-
-***
-
-### closure2882\_externref\_shim()
-
-> `readonly` **closure2882\_externref\_shim**: (`a`, `b`, `c`, `d`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2626
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
-
-##### d
-
-`any`
-
-#### Returns
-
-`void`
-
-***
-
-### closure793\_externref\_shim()
-
-> `readonly` **closure793\_externref\_shim**: (`a`, `b`, `c`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2623
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
-
-#### Returns
-
-`void`
-
-***
-
-### closure794\_externref\_shim()
-
-> `readonly` **closure794\_externref\_shim**: (`a`, `b`, `c`) => `void`
-
-Defined in: @nimiq/core/types/wasm/web.d.ts:2624
-
-#### Parameters
-
-##### a
-
-`number`
-
-##### b
-
-`number`
-
-##### c
-
-`any`
 
 #### Returns
 
@@ -2388,7 +2396,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2624
 
 > `readonly` **commitment\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2356
+Defined in: @nimiq/core/types/wasm/web.d.ts:2654
 
 #### Parameters
 
@@ -2406,7 +2414,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2356
 
 > `readonly` **commitment\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2360
+Defined in: @nimiq/core/types/wasm/web.d.ts:2655
 
 #### Parameters
 
@@ -2424,7 +2432,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2360
 
 > `readonly` **commitment\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2363
+Defined in: @nimiq/core/types/wasm/web.d.ts:2656
 
 #### Parameters
 
@@ -2446,7 +2454,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2363
 
 > `readonly` **commitment\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2367
+Defined in: @nimiq/core/types/wasm/web.d.ts:2657
 
 #### Parameters
 
@@ -2468,7 +2476,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2367
 
 > `readonly` **commitment\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2362
+Defined in: @nimiq/core/types/wasm/web.d.ts:2658
 
 #### Parameters
 
@@ -2486,7 +2494,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2362
 
 > `readonly` **commitment\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2365
+Defined in: @nimiq/core/types/wasm/web.d.ts:2659
 
 #### Parameters
 
@@ -2508,7 +2516,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2365
 
 > `readonly` **commitment\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2498
+Defined in: @nimiq/core/types/wasm/web.d.ts:2660
 
 #### Parameters
 
@@ -2530,7 +2538,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2498
 
 > `readonly` **commitment\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2364
+Defined in: @nimiq/core/types/wasm/web.d.ts:2661
 
 #### Parameters
 
@@ -2548,7 +2556,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2364
 
 > `readonly` **commitment\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2359
+Defined in: @nimiq/core/types/wasm/web.d.ts:2662
 
 #### Parameters
 
@@ -2566,7 +2574,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2359
 
 > `readonly` **commitment\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2358
+Defined in: @nimiq/core/types/wasm/web.d.ts:2663
 
 #### Returns
 
@@ -2578,7 +2586,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2358
 
 > `readonly` **commitment\_sum**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2361
+Defined in: @nimiq/core/types/wasm/web.d.ts:2664
 
 #### Parameters
 
@@ -2592,11 +2600,41 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2361
 
 ***
 
+### commitment\_sumMuSig2()
+
+> `readonly` **commitment\_sumMuSig2**: (`a`, `b`, `c`, `d`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2665
+
+#### Parameters
+
+##### a
+
+`any`
+
+##### b
+
+`any`
+
+##### c
+
+`number`
+
+##### d
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
 ### commitment\_toHex()
 
 > `readonly` **commitment\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2366
+Defined in: @nimiq/core/types/wasm/web.d.ts:2666
 
 #### Parameters
 
@@ -2614,7 +2652,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2366
 
 > `readonly` **commitmentpair\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2368
+Defined in: @nimiq/core/types/wasm/web.d.ts:2773
 
 #### Parameters
 
@@ -2632,7 +2670,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2368
 
 > `readonly` **commitmentpair\_commitment**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2381
+Defined in: @nimiq/core/types/wasm/web.d.ts:2774
 
 #### Parameters
 
@@ -2650,7 +2688,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2381
 
 > `readonly` **commitmentpair\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2375
+Defined in: @nimiq/core/types/wasm/web.d.ts:2775
 
 #### Parameters
 
@@ -2668,7 +2706,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2375
 
 > `readonly` **commitmentpair\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2373
+Defined in: @nimiq/core/types/wasm/web.d.ts:2776
 
 #### Parameters
 
@@ -2690,7 +2728,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2373
 
 > `readonly` **commitmentpair\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2382
+Defined in: @nimiq/core/types/wasm/web.d.ts:2777
 
 #### Parameters
 
@@ -2712,7 +2750,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2382
 
 > `readonly` **commitmentpair\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2372
+Defined in: @nimiq/core/types/wasm/web.d.ts:2778
 
 #### Parameters
 
@@ -2730,7 +2768,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2372
 
 > `readonly` **commitmentpair\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2378
+Defined in: @nimiq/core/types/wasm/web.d.ts:2779
 
 #### Parameters
 
@@ -2752,7 +2790,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2378
 
 > `readonly` **commitmentpair\_generate**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2374
+Defined in: @nimiq/core/types/wasm/web.d.ts:2780
 
 #### Returns
 
@@ -2764,7 +2802,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2374
 
 > `readonly` **commitmentpair\_new**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2376
+Defined in: @nimiq/core/types/wasm/web.d.ts:2781
 
 #### Parameters
 
@@ -2786,7 +2824,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2376
 
 > `readonly` **commitmentpair\_secret**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2380
+Defined in: @nimiq/core/types/wasm/web.d.ts:2782
 
 #### Parameters
 
@@ -2804,7 +2842,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2380
 
 > `readonly` **commitmentpair\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2377
+Defined in: @nimiq/core/types/wasm/web.d.ts:2783
 
 #### Parameters
 
@@ -2822,7 +2860,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2377
 
 > `readonly` **commitmentpair\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2371
+Defined in: @nimiq/core/types/wasm/web.d.ts:2784
 
 #### Parameters
 
@@ -2840,7 +2878,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2371
 
 > `readonly` **commitmentpair\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2370
+Defined in: @nimiq/core/types/wasm/web.d.ts:2785
 
 #### Returns
 
@@ -2852,7 +2890,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2370
 
 > `readonly` **commitmentpair\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2379
+Defined in: @nimiq/core/types/wasm/web.d.ts:2786
 
 #### Parameters
 
@@ -2870,7 +2908,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2379
 
 > `readonly` **cryptoutils\_computeHmacSha512**: (`a`, `b`, `c`, `d`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2353
+Defined in: @nimiq/core/types/wasm/web.d.ts:2787
 
 #### Parameters
 
@@ -2900,7 +2938,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2353
 
 > `readonly` **cryptoutils\_computePBKDF2sha512**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2354
+Defined in: @nimiq/core/types/wasm/web.d.ts:2788
 
 #### Parameters
 
@@ -2938,7 +2976,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2354
 
 > `readonly` **cryptoutils\_getRandomValues**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2352
+Defined in: @nimiq/core/types/wasm/web.d.ts:2789
 
 #### Parameters
 
@@ -2956,7 +2994,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2352
 
 > `readonly` **cryptoutils\_otpKdf**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2355
+Defined in: @nimiq/core/types/wasm/web.d.ts:2790
 
 #### Parameters
 
@@ -2998,7 +3036,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2355
 
 > `readonly` **es256publickey\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2409
+Defined in: @nimiq/core/types/wasm/web.d.ts:2667
 
 #### Parameters
 
@@ -3016,7 +3054,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2409
 
 > `readonly` **es256publickey\_compare**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2421
+Defined in: @nimiq/core/types/wasm/web.d.ts:2668
 
 #### Parameters
 
@@ -3038,7 +3076,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2421
 
 > `readonly` **es256publickey\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2412
+Defined in: @nimiq/core/types/wasm/web.d.ts:2669
 
 #### Parameters
 
@@ -3060,7 +3098,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2412
 
 > `readonly` **es256publickey\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2420
+Defined in: @nimiq/core/types/wasm/web.d.ts:2670
 
 #### Parameters
 
@@ -3082,7 +3120,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2420
 
 > `readonly` **es256publickey\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2417
+Defined in: @nimiq/core/types/wasm/web.d.ts:2671
 
 #### Parameters
 
@@ -3104,7 +3142,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2417
 
 > `readonly` **es256publickey\_fromRaw**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2414
+Defined in: @nimiq/core/types/wasm/web.d.ts:2672
 
 #### Parameters
 
@@ -3126,7 +3164,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2414
 
 > `readonly` **es256publickey\_fromSpki**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2413
+Defined in: @nimiq/core/types/wasm/web.d.ts:2673
 
 #### Parameters
 
@@ -3148,7 +3186,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2413
 
 > `readonly` **es256publickey\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2415
+Defined in: @nimiq/core/types/wasm/web.d.ts:2674
 
 #### Parameters
 
@@ -3170,7 +3208,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2415
 
 > `readonly` **es256publickey\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2416
+Defined in: @nimiq/core/types/wasm/web.d.ts:2675
 
 #### Parameters
 
@@ -3188,7 +3226,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2416
 
 > `readonly` **es256publickey\_toAddress**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2419
+Defined in: @nimiq/core/types/wasm/web.d.ts:2676
 
 #### Parameters
 
@@ -3206,7 +3244,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2419
 
 > `readonly` **es256publickey\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2418
+Defined in: @nimiq/core/types/wasm/web.d.ts:2677
 
 #### Parameters
 
@@ -3224,7 +3262,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2418
 
 > `readonly` **es256publickey\_verify**: (`a`, `b`, `c`, `d`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2411
+Defined in: @nimiq/core/types/wasm/web.d.ts:2678
 
 #### Parameters
 
@@ -3254,7 +3292,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2411
 
 > `readonly` **es256signature\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2422
+Defined in: @nimiq/core/types/wasm/web.d.ts:2791
 
 #### Parameters
 
@@ -3272,7 +3310,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2422
 
 > `readonly` **es256signature\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2424
+Defined in: @nimiq/core/types/wasm/web.d.ts:2792
 
 #### Parameters
 
@@ -3294,7 +3332,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2424
 
 > `readonly` **es256signature\_fromAsn1**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2426
+Defined in: @nimiq/core/types/wasm/web.d.ts:2793
 
 #### Parameters
 
@@ -3316,7 +3354,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2426
 
 > `readonly` **es256signature\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2427
+Defined in: @nimiq/core/types/wasm/web.d.ts:2794
 
 #### Parameters
 
@@ -3338,7 +3376,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2427
 
 > `readonly` **es256signature\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2425
+Defined in: @nimiq/core/types/wasm/web.d.ts:2795
 
 #### Parameters
 
@@ -3356,7 +3394,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2425
 
 > `readonly` **es256signature\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2428
+Defined in: @nimiq/core/types/wasm/web.d.ts:2796
 
 #### Parameters
 
@@ -3374,7 +3412,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2428
 
 > `readonly` **hash\_computeBlake2b**: (`a`, `b`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2430
+Defined in: @nimiq/core/types/wasm/web.d.ts:2797
 
 #### Parameters
 
@@ -3396,7 +3434,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2430
 
 > `readonly` **hash\_computeNimiqArgon2d**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2433
+Defined in: @nimiq/core/types/wasm/web.d.ts:2798
 
 #### Parameters
 
@@ -3434,7 +3472,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2433
 
 > `readonly` **hash\_computeNimiqArgon2id**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2434
+Defined in: @nimiq/core/types/wasm/web.d.ts:2799
 
 #### Parameters
 
@@ -3472,7 +3510,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2434
 
 > `readonly` **hash\_computeSha256**: (`a`, `b`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2431
+Defined in: @nimiq/core/types/wasm/web.d.ts:2800
 
 #### Parameters
 
@@ -3494,7 +3532,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2431
 
 > `readonly` **hash\_computeSha512**: (`a`, `b`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2432
+Defined in: @nimiq/core/types/wasm/web.d.ts:2801
 
 #### Parameters
 
@@ -3516,7 +3554,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2432
 
 > `readonly` **hashedtimelockedcontract\_dataToPlain**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2298
+Defined in: @nimiq/core/types/wasm/web.d.ts:2897
 
 #### Parameters
 
@@ -3538,7 +3576,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2298
 
 > `readonly` **hashedtimelockedcontract\_proofToPlain**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2299
+Defined in: @nimiq/core/types/wasm/web.d.ts:2898
 
 #### Parameters
 
@@ -3556,11 +3594,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2299
 
 ***
 
+### keypair\_\_\_getClassname()
+
+> `readonly` **keypair\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2802
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+\[`number`, `number`\]
+
+***
+
 ### keypair\_derive()
 
 > `readonly` **keypair\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2437
+Defined in: @nimiq/core/types/wasm/web.d.ts:2803
 
 #### Parameters
 
@@ -3578,7 +3634,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2437
 
 > `readonly` **keypair\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2439
+Defined in: @nimiq/core/types/wasm/web.d.ts:2804
 
 #### Parameters
 
@@ -3600,7 +3656,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2439
 
 > `readonly` **keypair\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2438
+Defined in: @nimiq/core/types/wasm/web.d.ts:2805
 
 #### Parameters
 
@@ -3622,7 +3678,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2438
 
 > `readonly` **keypair\_generate**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2436
+Defined in: @nimiq/core/types/wasm/web.d.ts:2806
 
 #### Returns
 
@@ -3634,7 +3690,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2436
 
 > `readonly` **keypair\_new**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2440
+Defined in: @nimiq/core/types/wasm/web.d.ts:2807
 
 #### Parameters
 
@@ -3656,7 +3712,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2440
 
 > `readonly` **keypair\_privateKey**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2444
+Defined in: @nimiq/core/types/wasm/web.d.ts:2808
 
 #### Parameters
 
@@ -3674,7 +3730,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2444
 
 > `readonly` **keypair\_publicKey**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2445
+Defined in: @nimiq/core/types/wasm/web.d.ts:2809
 
 #### Parameters
 
@@ -3692,7 +3748,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2445
 
 > `readonly` **keypair\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2441
+Defined in: @nimiq/core/types/wasm/web.d.ts:2810
 
 #### Parameters
 
@@ -3710,7 +3766,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2441
 
 > `readonly` **keypair\_sign**: (`a`, `b`, `c`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2442
+Defined in: @nimiq/core/types/wasm/web.d.ts:2811
 
 #### Parameters
 
@@ -3736,7 +3792,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2442
 
 > `readonly` **keypair\_signTransaction**: (`a`, `b`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2443
+Defined in: @nimiq/core/types/wasm/web.d.ts:2812
 
 #### Parameters
 
@@ -3758,7 +3814,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2443
 
 > `readonly` **keypair\_toAddress**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2446
+Defined in: @nimiq/core/types/wasm/web.d.ts:2813
 
 #### Parameters
 
@@ -3776,7 +3832,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2446
 
 > `readonly` **keypair\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2447
+Defined in: @nimiq/core/types/wasm/web.d.ts:2814
 
 #### Parameters
 
@@ -3794,7 +3850,109 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2447
 
 > `readonly` **memory**: `Memory`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2283
+Defined in: @nimiq/core/types/wasm/web.d.ts:2610
+
+***
+
+### merklepath\_computeRoot()
+
+> `readonly` **merklepath\_computeRoot**: (`a`, `b`, `c`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2679
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
+### merklepath\_deserialize()
+
+> `readonly` **merklepath\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2680
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
+### merklepath\_hashes()
+
+> `readonly` **merklepath\_hashes**: (`a`) => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2681
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+\[`number`, `number`\]
+
+***
+
+### merklepath\_length()
+
+> `readonly` **merklepath\_length**: (`a`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2682
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
+### merklepath\_serialize()
+
+> `readonly` **merklepath\_serialize**: (`a`) => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2683
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+\[`number`, `number`\]
 
 ***
 
@@ -3802,7 +3960,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2283
 
 > `readonly` **merkletree\_computeRoot**: (`a`, `b`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2449
+Defined in: @nimiq/core/types/wasm/web.d.ts:2899
 
 #### Parameters
 
@@ -3824,7 +3982,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2449
 
 > `readonly` **partialsignature\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2383
+Defined in: @nimiq/core/types/wasm/web.d.ts:2815
 
 #### Parameters
 
@@ -3842,7 +4000,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2383
 
 > `readonly` **partialsignature\_create**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2388
+Defined in: @nimiq/core/types/wasm/web.d.ts:2816
 
 #### Parameters
 
@@ -3884,7 +4042,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2388
 
 > `readonly` **partialsignature\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2387
+Defined in: @nimiq/core/types/wasm/web.d.ts:2817
 
 #### Parameters
 
@@ -3906,7 +4064,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2387
 
 > `readonly` **partialsignature\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2392
+Defined in: @nimiq/core/types/wasm/web.d.ts:2818
 
 #### Parameters
 
@@ -3928,7 +4086,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2392
 
 > `readonly` **partialsignature\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2386
+Defined in: @nimiq/core/types/wasm/web.d.ts:2819
 
 #### Parameters
 
@@ -3946,7 +4104,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2386
 
 > `readonly` **partialsignature\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2390
+Defined in: @nimiq/core/types/wasm/web.d.ts:2820
 
 #### Parameters
 
@@ -3968,7 +4126,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2390
 
 > `readonly` **partialsignature\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2499
+Defined in: @nimiq/core/types/wasm/web.d.ts:2821
 
 #### Parameters
 
@@ -3990,7 +4148,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2499
 
 > `readonly` **partialsignature\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2389
+Defined in: @nimiq/core/types/wasm/web.d.ts:2822
 
 #### Parameters
 
@@ -4008,7 +4166,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2389
 
 > `readonly` **partialsignature\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2385
+Defined in: @nimiq/core/types/wasm/web.d.ts:2823
 
 #### Parameters
 
@@ -4026,7 +4184,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2385
 
 > `readonly` **partialsignature\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2501
+Defined in: @nimiq/core/types/wasm/web.d.ts:2824
 
 #### Returns
 
@@ -4034,11 +4192,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2501
 
 ***
 
+### partialsignature\_sum()
+
+> `readonly` **partialsignature\_sum**: (`a`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2825
+
+#### Parameters
+
+##### a
+
+`any`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
 ### partialsignature\_toHex()
 
 > `readonly` **partialsignature\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2391
+Defined in: @nimiq/core/types/wasm/web.d.ts:2826
 
 #### Parameters
 
@@ -4052,11 +4228,33 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2391
 
 ***
 
+### partialsignature\_toSignature()
+
+> `readonly` **partialsignature\_toSignature**: (`a`, `b`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2827
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
 ### policy\_batchAt()
 
 > `readonly` **policy\_batchAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2574
+Defined in: @nimiq/core/types/wasm/web.d.ts:2919
 
 #### Parameters
 
@@ -4074,7 +4272,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2574
 
 > `readonly` **policy\_batchDelayPenalty**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2610
+Defined in: @nimiq/core/types/wasm/web.d.ts:2967
 
 #### Parameters
 
@@ -4092,7 +4290,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2610
 
 > `readonly` **policy\_batches\_per\_epoch**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2566
+Defined in: @nimiq/core/types/wasm/web.d.ts:2921
 
 #### Returns
 
@@ -4104,7 +4302,25 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2566
 
 > `readonly` **policy\_batchIndexAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2575
+Defined in: @nimiq/core/types/wasm/web.d.ts:2920
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
+### policy\_blockAfterCollateralLockup()
+
+> `readonly` **policy\_blockAfterCollateralLockup**: (`a`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2922
 
 #### Parameters
 
@@ -4122,7 +4338,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2575
 
 > `readonly` **policy\_blockAfterJail**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2592
+Defined in: @nimiq/core/types/wasm/web.d.ts:2923
 
 #### Parameters
 
@@ -4140,7 +4356,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2592
 
 > `readonly` **policy\_blockAfterReportingWindow**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2591
+Defined in: @nimiq/core/types/wasm/web.d.ts:2968
 
 #### Parameters
 
@@ -4158,7 +4374,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2591
 
 > `readonly` **policy\_blocks\_per\_batch**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2567
+Defined in: @nimiq/core/types/wasm/web.d.ts:2924
 
 #### Returns
 
@@ -4170,7 +4386,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2567
 
 > `readonly` **policy\_blocks\_per\_epoch**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2568
+Defined in: @nimiq/core/types/wasm/web.d.ts:2925
 
 #### Returns
 
@@ -4182,7 +4398,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2568
 
 > `readonly` **policy\_electionBlockAfter**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2576
+Defined in: @nimiq/core/types/wasm/web.d.ts:2926
 
 #### Parameters
 
@@ -4200,7 +4416,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2576
 
 > `readonly` **policy\_electionBlockBefore**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2577
+Defined in: @nimiq/core/types/wasm/web.d.ts:2927
 
 #### Parameters
 
@@ -4218,7 +4434,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2577
 
 > `readonly` **policy\_electionBlockOf**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2587
+Defined in: @nimiq/core/types/wasm/web.d.ts:2928
 
 #### Parameters
 
@@ -4236,7 +4452,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2587
 
 > `readonly` **policy\_epochAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2572
+Defined in: @nimiq/core/types/wasm/web.d.ts:2929
 
 #### Parameters
 
@@ -4254,7 +4470,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2572
 
 > `readonly` **policy\_epochIndexAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2573
+Defined in: @nimiq/core/types/wasm/web.d.ts:2930
 
 #### Parameters
 
@@ -4272,7 +4488,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2573
 
 > `readonly` **policy\_firstBatchOfEpoch**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2589
+Defined in: @nimiq/core/types/wasm/web.d.ts:2931
 
 #### Parameters
 
@@ -4290,7 +4506,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2589
 
 > `readonly` **policy\_firstBlockOf**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2585
+Defined in: @nimiq/core/types/wasm/web.d.ts:2932
 
 #### Parameters
 
@@ -4308,7 +4524,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2585
 
 > `readonly` **policy\_firstBlockOfBatch**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2586
+Defined in: @nimiq/core/types/wasm/web.d.ts:2933
 
 #### Parameters
 
@@ -4326,7 +4542,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2586
 
 > `readonly` **policy\_genesis\_block\_number**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2569
+Defined in: @nimiq/core/types/wasm/web.d.ts:2934
 
 #### Returns
 
@@ -4338,7 +4554,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2569
 
 > `readonly` **policy\_isElectionBlockAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2579
+Defined in: @nimiq/core/types/wasm/web.d.ts:2935
 
 #### Parameters
 
@@ -4356,7 +4572,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2579
 
 > `readonly` **policy\_isMacroBlockAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2583
+Defined in: @nimiq/core/types/wasm/web.d.ts:2936
 
 #### Parameters
 
@@ -4374,7 +4590,43 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2583
 
 > `readonly` **policy\_isMicroBlockAt**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2584
+Defined in: @nimiq/core/types/wasm/web.d.ts:2937
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
+### policy\_lastBlockOfCollateralLockup()
+
+> `readonly` **policy\_lastBlockOfCollateralLockup**: (`a`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2938
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
+### policy\_lastBlockOfEquivocationReportingWindow()
+
+> `readonly` **policy\_lastBlockOfEquivocationReportingWindow**: (`a`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2939
 
 #### Parameters
 
@@ -4392,7 +4644,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2584
 
 > `readonly` **policy\_lastBlockOfReportingWindow**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2590
+Defined in: @nimiq/core/types/wasm/web.d.ts:2966
 
 #### Parameters
 
@@ -4410,7 +4662,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2590
 
 > `readonly` **policy\_lastElectionBlock**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2578
+Defined in: @nimiq/core/types/wasm/web.d.ts:2940
 
 #### Parameters
 
@@ -4428,7 +4680,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2578
 
 > `readonly` **policy\_lastMacroBlock**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2582
+Defined in: @nimiq/core/types/wasm/web.d.ts:2941
 
 #### Parameters
 
@@ -4446,7 +4698,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2582
 
 > `readonly` **policy\_macroBlockAfter**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2580
+Defined in: @nimiq/core/types/wasm/web.d.ts:2942
 
 #### Parameters
 
@@ -4464,7 +4716,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2580
 
 > `readonly` **policy\_macroBlockBefore**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2581
+Defined in: @nimiq/core/types/wasm/web.d.ts:2943
 
 #### Parameters
 
@@ -4482,7 +4734,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2581
 
 > `readonly` **policy\_macroBlockOf**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2588
+Defined in: @nimiq/core/types/wasm/web.d.ts:2944
 
 #### Parameters
 
@@ -4500,7 +4752,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2588
 
 > `readonly` **policy\_max\_supported\_version**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2570
+Defined in: @nimiq/core/types/wasm/web.d.ts:2945
 
 #### Returns
 
@@ -4512,7 +4764,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2570
 
 > `readonly` **policy\_state\_chunks\_max\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2571
+Defined in: @nimiq/core/types/wasm/web.d.ts:2946
 
 #### Returns
 
@@ -4524,7 +4776,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2571
 
 > `readonly` **policy\_supplyAt**: (`a`, `b`, `c`) => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2593
+Defined in: @nimiq/core/types/wasm/web.d.ts:2947
 
 #### Parameters
 
@@ -4550,7 +4802,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2593
 
 > `readonly` **policy\_transaction\_validity\_window**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2564
+Defined in: @nimiq/core/types/wasm/web.d.ts:2948
 
 #### Returns
 
@@ -4562,7 +4814,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2564
 
 > `readonly` **policy\_transaction\_validity\_window\_blocks**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2565
+Defined in: @nimiq/core/types/wasm/web.d.ts:2949
 
 #### Returns
 
@@ -4574,7 +4826,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2565
 
 > `readonly` **policy\_wasm\_block\_separation\_time**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2601
+Defined in: @nimiq/core/types/wasm/web.d.ts:2950
 
 #### Returns
 
@@ -4586,7 +4838,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2601
 
 > `readonly` **policy\_wasm\_bls\_cache\_max\_capacity**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2608
+Defined in: @nimiq/core/types/wasm/web.d.ts:2951
 
 #### Returns
 
@@ -4598,7 +4850,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2608
 
 > `readonly` **policy\_wasm\_coinbase\_address**: () => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2595
+Defined in: @nimiq/core/types/wasm/web.d.ts:2952
 
 #### Returns
 
@@ -4610,7 +4862,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2595
 
 > `readonly` **policy\_wasm\_f\_plus\_one**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2599
+Defined in: @nimiq/core/types/wasm/web.d.ts:2953
 
 #### Returns
 
@@ -4622,7 +4874,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2599
 
 > `readonly` **policy\_wasm\_history\_chunks\_max\_size**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2609
+Defined in: @nimiq/core/types/wasm/web.d.ts:2954
 
 #### Returns
 
@@ -4634,7 +4886,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2609
 
 > `readonly` **policy\_wasm\_jail\_epochs**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2606
+Defined in: @nimiq/core/types/wasm/web.d.ts:2955
 
 #### Returns
 
@@ -4646,7 +4898,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2606
 
 > `readonly` **policy\_wasm\_max\_size\_micro\_body**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2596
+Defined in: @nimiq/core/types/wasm/web.d.ts:2956
 
 #### Returns
 
@@ -4658,7 +4910,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2596
 
 > `readonly` **policy\_wasm\_min\_block\_producer\_timeout**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2600
+Defined in: @nimiq/core/types/wasm/web.d.ts:2957
 
 #### Returns
 
@@ -4670,7 +4922,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2600
 
 > `readonly` **policy\_wasm\_min\_epochs\_stored**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2602
+Defined in: @nimiq/core/types/wasm/web.d.ts:2958
 
 #### Returns
 
@@ -4682,7 +4934,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2602
 
 > `readonly` **policy\_wasm\_minimum\_rewards\_percentage**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2604
+Defined in: @nimiq/core/types/wasm/web.d.ts:2959
 
 #### Returns
 
@@ -4694,7 +4946,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2604
 
 > `readonly` **policy\_wasm\_slots**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2597
+Defined in: @nimiq/core/types/wasm/web.d.ts:2960
 
 #### Returns
 
@@ -4706,7 +4958,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2597
 
 > `readonly` **policy\_wasm\_staking\_contract\_address**: () => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2594
+Defined in: @nimiq/core/types/wasm/web.d.ts:2961
 
 #### Returns
 
@@ -4718,7 +4970,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2594
 
 > `readonly` **policy\_wasm\_timestamp\_max\_drift**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2603
+Defined in: @nimiq/core/types/wasm/web.d.ts:2962
 
 #### Returns
 
@@ -4730,7 +4982,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2603
 
 > `readonly` **policy\_wasm\_total\_supply**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2607
+Defined in: @nimiq/core/types/wasm/web.d.ts:2963
 
 #### Returns
 
@@ -4742,7 +4994,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2607
 
 > `readonly` **policy\_wasm\_two\_f\_plus\_one**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2598
+Defined in: @nimiq/core/types/wasm/web.d.ts:2964
 
 #### Returns
 
@@ -4754,7 +5006,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2598
 
 > `readonly` **policy\_wasm\_validator\_deposit**: () => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2605
+Defined in: @nimiq/core/types/wasm/web.d.ts:2965
 
 #### Returns
 
@@ -4766,7 +5018,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2605
 
 > `readonly` **privatekey\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2454
+Defined in: @nimiq/core/types/wasm/web.d.ts:2684
 
 #### Parameters
 
@@ -4788,7 +5040,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2454
 
 > `readonly` **privatekey\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2459
+Defined in: @nimiq/core/types/wasm/web.d.ts:2685
 
 #### Parameters
 
@@ -4810,7 +5062,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2459
 
 > `readonly` **privatekey\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2457
+Defined in: @nimiq/core/types/wasm/web.d.ts:2686
 
 #### Parameters
 
@@ -4832,7 +5084,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2457
 
 > `readonly` **privatekey\_generate**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2453
+Defined in: @nimiq/core/types/wasm/web.d.ts:2687
 
 #### Returns
 
@@ -4844,7 +5096,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2453
 
 > `readonly` **privatekey\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2455
+Defined in: @nimiq/core/types/wasm/web.d.ts:2688
 
 #### Parameters
 
@@ -4866,7 +5118,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2455
 
 > `readonly` **privatekey\_purpose\_id**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2451
+Defined in: @nimiq/core/types/wasm/web.d.ts:2689
 
 #### Returns
 
@@ -4878,7 +5130,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2451
 
 > `readonly` **privatekey\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2456
+Defined in: @nimiq/core/types/wasm/web.d.ts:2690
 
 #### Parameters
 
@@ -4896,7 +5148,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2456
 
 > `readonly` **privatekey\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2452
+Defined in: @nimiq/core/types/wasm/web.d.ts:2691
 
 #### Parameters
 
@@ -4914,7 +5166,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2452
 
 > `readonly` **privatekey\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2503
+Defined in: @nimiq/core/types/wasm/web.d.ts:2718
 
 #### Returns
 
@@ -4926,7 +5178,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2503
 
 > `readonly` **privatekey\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2458
+Defined in: @nimiq/core/types/wasm/web.d.ts:2692
 
 #### Parameters
 
@@ -4944,7 +5196,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2458
 
 > `readonly` **publickey\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2460
+Defined in: @nimiq/core/types/wasm/web.d.ts:2693
 
 #### Parameters
 
@@ -4958,11 +5210,33 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2460
 
 ***
 
+### publickey\_combinations()
+
+> `readonly` **publickey\_combinations**: (`a`, `b`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2694
+
+#### Parameters
+
+##### a
+
+`any`
+
+##### b
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
 ### publickey\_compare()
 
 > `readonly` **publickey\_compare**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2475
+Defined in: @nimiq/core/types/wasm/web.d.ts:2695
 
 #### Parameters
 
@@ -4984,7 +5258,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2475
 
 > `readonly` **publickey\_derive**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2463
+Defined in: @nimiq/core/types/wasm/web.d.ts:2696
 
 #### Parameters
 
@@ -5002,7 +5276,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2463
 
 > `readonly` **publickey\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2466
+Defined in: @nimiq/core/types/wasm/web.d.ts:2697
 
 #### Parameters
 
@@ -5024,7 +5298,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2466
 
 > `readonly` **publickey\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2474
+Defined in: @nimiq/core/types/wasm/web.d.ts:2698
 
 #### Parameters
 
@@ -5046,7 +5320,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2474
 
 > `readonly` **publickey\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2464
+Defined in: @nimiq/core/types/wasm/web.d.ts:2699
 
 #### Parameters
 
@@ -5064,7 +5338,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2464
 
 > `readonly` **publickey\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2471
+Defined in: @nimiq/core/types/wasm/web.d.ts:2700
 
 #### Parameters
 
@@ -5086,7 +5360,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2471
 
 > `readonly` **publickey\_fromRaw**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2468
+Defined in: @nimiq/core/types/wasm/web.d.ts:2701
 
 #### Parameters
 
@@ -5108,7 +5382,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2468
 
 > `readonly` **publickey\_fromSpki**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2467
+Defined in: @nimiq/core/types/wasm/web.d.ts:2702
 
 #### Parameters
 
@@ -5130,7 +5404,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2467
 
 > `readonly` **publickey\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2469
+Defined in: @nimiq/core/types/wasm/web.d.ts:2703
 
 #### Parameters
 
@@ -5152,7 +5426,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2469
 
 > `readonly` **publickey\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2470
+Defined in: @nimiq/core/types/wasm/web.d.ts:2704
 
 #### Parameters
 
@@ -5170,7 +5444,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2470
 
 > `readonly` **publickey\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2462
+Defined in: @nimiq/core/types/wasm/web.d.ts:2705
 
 #### Parameters
 
@@ -5188,7 +5462,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2462
 
 > `readonly` **publickey\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2504
+Defined in: @nimiq/core/types/wasm/web.d.ts:2719
 
 #### Returns
 
@@ -5196,11 +5470,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2504
 
 ***
 
+### publickey\_sum()
+
+> `readonly` **publickey\_sum**: (`a`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2706
+
+#### Parameters
+
+##### a
+
+`any`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
 ### publickey\_toAddress()
 
 > `readonly` **publickey\_toAddress**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2473
+Defined in: @nimiq/core/types/wasm/web.d.ts:2707
 
 #### Parameters
 
@@ -5218,7 +5510,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2473
 
 > `readonly` **publickey\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2472
+Defined in: @nimiq/core/types/wasm/web.d.ts:2708
 
 #### Parameters
 
@@ -5236,7 +5528,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2472
 
 > `readonly` **publickey\_verify**: (`a`, `b`, `c`, `d`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2465
+Defined in: @nimiq/core/types/wasm/web.d.ts:2709
 
 #### Parameters
 
@@ -5266,7 +5558,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2465
 
 > `readonly` **randomsecret\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2393
+Defined in: @nimiq/core/types/wasm/web.d.ts:2828
 
 #### Parameters
 
@@ -5284,7 +5576,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2393
 
 > `readonly` **randomsecret\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2397
+Defined in: @nimiq/core/types/wasm/web.d.ts:2829
 
 #### Parameters
 
@@ -5306,7 +5598,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2397
 
 > `readonly` **randomsecret\_equals**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2401
+Defined in: @nimiq/core/types/wasm/web.d.ts:2830
 
 #### Parameters
 
@@ -5328,7 +5620,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2401
 
 > `readonly` **randomsecret\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2396
+Defined in: @nimiq/core/types/wasm/web.d.ts:2831
 
 #### Parameters
 
@@ -5346,7 +5638,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2396
 
 > `readonly` **randomsecret\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2399
+Defined in: @nimiq/core/types/wasm/web.d.ts:2832
 
 #### Parameters
 
@@ -5368,7 +5660,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2399
 
 > `readonly` **randomsecret\_new**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2500
+Defined in: @nimiq/core/types/wasm/web.d.ts:2833
 
 #### Parameters
 
@@ -5390,7 +5682,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2500
 
 > `readonly` **randomsecret\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2398
+Defined in: @nimiq/core/types/wasm/web.d.ts:2834
 
 #### Parameters
 
@@ -5408,7 +5700,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2398
 
 > `readonly` **randomsecret\_serialized\_size**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2395
+Defined in: @nimiq/core/types/wasm/web.d.ts:2835
 
 #### Parameters
 
@@ -5426,7 +5718,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2395
 
 > `readonly` **randomsecret\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2502
+Defined in: @nimiq/core/types/wasm/web.d.ts:2875
 
 #### Returns
 
@@ -5438,7 +5730,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2502
 
 > `readonly` **randomsecret\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2400
+Defined in: @nimiq/core/types/wasm/web.d.ts:2836
 
 #### Parameters
 
@@ -5456,7 +5748,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2400
 
 > `readonly` **signature\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2476
+Defined in: @nimiq/core/types/wasm/web.d.ts:2710
 
 #### Parameters
 
@@ -5474,7 +5766,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2476
 
 > `readonly` **signature\_create**: (`a`, `b`, `c`, `d`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2480
+Defined in: @nimiq/core/types/wasm/web.d.ts:2711
 
 #### Parameters
 
@@ -5504,7 +5796,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2480
 
 > `readonly` **signature\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2478
+Defined in: @nimiq/core/types/wasm/web.d.ts:2712
 
 #### Parameters
 
@@ -5526,7 +5818,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2478
 
 > `readonly` **signature\_fromAsn1**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2481
+Defined in: @nimiq/core/types/wasm/web.d.ts:2713
 
 #### Parameters
 
@@ -5548,7 +5840,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2481
 
 > `readonly` **signature\_fromHex**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2482
+Defined in: @nimiq/core/types/wasm/web.d.ts:2714
 
 #### Parameters
 
@@ -5570,7 +5862,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2482
 
 > `readonly` **signature\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2479
+Defined in: @nimiq/core/types/wasm/web.d.ts:2715
 
 #### Parameters
 
@@ -5588,7 +5880,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2479
 
 > `readonly` **signature\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2483
+Defined in: @nimiq/core/types/wasm/web.d.ts:2716
 
 #### Parameters
 
@@ -5606,7 +5898,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2483
 
 > `readonly` **signatureproof\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2313
+Defined in: @nimiq/core/types/wasm/web.d.ts:2900
 
 #### Parameters
 
@@ -5628,7 +5920,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2313
 
 > `readonly` **signatureproof\_es256\_single\_sig\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2302
+Defined in: @nimiq/core/types/wasm/web.d.ts:2901
 
 #### Returns
 
@@ -5640,7 +5932,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2302
 
 > `readonly` **signatureproof\_isSignedBy**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2308
+Defined in: @nimiq/core/types/wasm/web.d.ts:2902
 
 #### Parameters
 
@@ -5658,11 +5950,29 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2308
 
 ***
 
+### signatureproof\_merklePath()
+
+> `readonly` **signatureproof\_merklePath**: (`a`) => `number`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2903
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+`number`
+
+***
+
 ### signatureproof\_multiSig()
 
 > `readonly` **signatureproof\_multiSig**: (`a`, `b`, `c`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2304
+Defined in: @nimiq/core/types/wasm/web.d.ts:2904
 
 #### Parameters
 
@@ -5688,7 +5998,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2304
 
 > `readonly` **signatureproof\_publicKey**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2310
+Defined in: @nimiq/core/types/wasm/web.d.ts:2905
 
 #### Parameters
 
@@ -5706,7 +6016,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2310
 
 > `readonly` **signatureproof\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2311
+Defined in: @nimiq/core/types/wasm/web.d.ts:2906
 
 #### Parameters
 
@@ -5724,7 +6034,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2311
 
 > `readonly` **signatureproof\_signature**: (`a`) => `any`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2309
+Defined in: @nimiq/core/types/wasm/web.d.ts:2907
 
 #### Parameters
 
@@ -5742,7 +6052,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2309
 
 > `readonly` **signatureproof\_single\_sig\_size**: () => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2301
+Defined in: @nimiq/core/types/wasm/web.d.ts:2909
 
 #### Returns
 
@@ -5754,7 +6064,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2301
 
 > `readonly` **signatureproof\_singleSig**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2303
+Defined in: @nimiq/core/types/wasm/web.d.ts:2908
 
 #### Parameters
 
@@ -5776,7 +6086,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2303
 
 > `readonly` **signatureproof\_toPlain**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2312
+Defined in: @nimiq/core/types/wasm/web.d.ts:2910
 
 #### Parameters
 
@@ -5794,7 +6104,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2312
 
 > `readonly` **signatureproof\_verify**: (`a`, `b`, `c`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2307
+Defined in: @nimiq/core/types/wasm/web.d.ts:2911
 
 #### Parameters
 
@@ -5820,7 +6130,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2307
 
 > `readonly` **signatureproof\_webauthnMultiSig**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2306
+Defined in: @nimiq/core/types/wasm/web.d.ts:2912
 
 #### Parameters
 
@@ -5862,7 +6172,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2306
 
 > `readonly` **signatureproof\_webauthnSingleSig**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2305
+Defined in: @nimiq/core/types/wasm/web.d.ts:2913
 
 #### Parameters
 
@@ -5900,7 +6210,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2305
 
 > `readonly` **stakingcontract\_dataToPlain**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2315
+Defined in: @nimiq/core/types/wasm/web.d.ts:2914
 
 #### Parameters
 
@@ -5922,7 +6232,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2315
 
 > `readonly` **stakingcontract\_proofToPlain**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2316
+Defined in: @nimiq/core/types/wasm/web.d.ts:2915
 
 #### Parameters
 
@@ -5940,11 +6250,143 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2316
 
 ***
 
+### stakingdatabuilder\_addStake()
+
+> `readonly` **stakingdatabuilder\_addStake**: (`a`) => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2837
+
+#### Parameters
+
+##### a
+
+`number`
+
+#### Returns
+
+\[`number`, `number`\]
+
+***
+
+### stakingdatabuilder\_createStaker()
+
+> `readonly` **stakingdatabuilder\_createStaker**: (`a`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2838
+
+#### Parameters
+
+##### a
+
+`any`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
+### stakingdatabuilder\_removeStake()
+
+> `readonly` **stakingdatabuilder\_removeStake**: () => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2839
+
+#### Returns
+
+\[`number`, `number`\]
+
+***
+
+### stakingdatabuilder\_retireStake()
+
+> `readonly` **stakingdatabuilder\_retireStake**: (`a`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2840
+
+#### Parameters
+
+##### a
+
+`bigint`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
+### stakingdatabuilder\_setActiveStake()
+
+> `readonly` **stakingdatabuilder\_setActiveStake**: (`a`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2841
+
+#### Parameters
+
+##### a
+
+`bigint`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
+### stakingdatabuilder\_setProof()
+
+> `readonly` **stakingdatabuilder\_setProof**: (`a`, `b`, `c`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2842
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
+### stakingdatabuilder\_updateStaker()
+
+> `readonly` **stakingdatabuilder\_updateStaker**: (`a`, `b`) => \[`number`, `number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2843
+
+#### Parameters
+
+##### a
+
+`any`
+
+##### b
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`, `number`\]
+
+***
+
 ### transaction\_\_\_getClassname()
 
 > `readonly` **transaction\_\_\_getClassname**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2317
+Defined in: @nimiq/core/types/wasm/web.d.ts:2844
 
 #### Parameters
 
@@ -5962,7 +6404,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2317
 
 > `readonly` **transaction\_data**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2338
+Defined in: @nimiq/core/types/wasm/web.d.ts:2845
 
 #### Parameters
 
@@ -5980,7 +6422,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2338
 
 > `readonly` **transaction\_deserialize**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2346
+Defined in: @nimiq/core/types/wasm/web.d.ts:2846
 
 #### Parameters
 
@@ -6002,7 +6444,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2346
 
 > `readonly` **transaction\_fee**: (`a`) => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2333
+Defined in: @nimiq/core/types/wasm/web.d.ts:2847
 
 #### Parameters
 
@@ -6020,7 +6462,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2333
 
 > `readonly` **transaction\_feePerByte**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2334
+Defined in: @nimiq/core/types/wasm/web.d.ts:2848
 
 #### Parameters
 
@@ -6038,7 +6480,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2334
 
 > `readonly` **transaction\_flags**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2337
+Defined in: @nimiq/core/types/wasm/web.d.ts:2849
 
 #### Parameters
 
@@ -6056,7 +6498,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2337
 
 > `readonly` **transaction\_format**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2327
+Defined in: @nimiq/core/types/wasm/web.d.ts:2850
 
 #### Parameters
 
@@ -6074,7 +6516,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2327
 
 > `readonly` **transaction\_fromAny**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2347
+Defined in: @nimiq/core/types/wasm/web.d.ts:2851
 
 #### Parameters
 
@@ -6092,7 +6534,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2347
 
 > `readonly` **transaction\_fromPlain**: (`a`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2348
+Defined in: @nimiq/core/types/wasm/web.d.ts:2852
 
 #### Parameters
 
@@ -6110,7 +6552,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2348
 
 > `readonly` **transaction\_getContractCreationAddress**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2324
+Defined in: @nimiq/core/types/wasm/web.d.ts:2853
 
 #### Parameters
 
@@ -6128,7 +6570,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2324
 
 > `readonly` **transaction\_hash**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2321
+Defined in: @nimiq/core/types/wasm/web.d.ts:2854
 
 #### Parameters
 
@@ -6146,7 +6588,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2321
 
 > `readonly` **transaction\_isValidAt**: (`a`, `b`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2323
+Defined in: @nimiq/core/types/wasm/web.d.ts:2855
 
 #### Parameters
 
@@ -6168,7 +6610,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2323
 
 > `readonly` **transaction\_networkId**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2336
+Defined in: @nimiq/core/types/wasm/web.d.ts:2856
 
 #### Parameters
 
@@ -6186,7 +6628,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2336
 
 > `readonly` **transaction\_new**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2319
+Defined in: @nimiq/core/types/wasm/web.d.ts:2857
 
 #### Parameters
 
@@ -6252,7 +6694,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2319
 
 > `readonly` **transaction\_proof**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2341
+Defined in: @nimiq/core/types/wasm/web.d.ts:2858
 
 #### Parameters
 
@@ -6270,7 +6712,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2341
 
 > `readonly` **transaction\_recipient**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2330
+Defined in: @nimiq/core/types/wasm/web.d.ts:2859
 
 #### Parameters
 
@@ -6288,7 +6730,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2330
 
 > `readonly` **transaction\_recipientType**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2331
+Defined in: @nimiq/core/types/wasm/web.d.ts:2860
 
 #### Parameters
 
@@ -6306,7 +6748,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2331
 
 > `readonly` **transaction\_sender**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2328
+Defined in: @nimiq/core/types/wasm/web.d.ts:2861
 
 #### Parameters
 
@@ -6324,7 +6766,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2328
 
 > `readonly` **transaction\_senderData**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2340
+Defined in: @nimiq/core/types/wasm/web.d.ts:2862
 
 #### Parameters
 
@@ -6342,7 +6784,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2340
 
 > `readonly` **transaction\_senderType**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2329
+Defined in: @nimiq/core/types/wasm/web.d.ts:2863
 
 #### Parameters
 
@@ -6360,7 +6802,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2329
 
 > `readonly` **transaction\_serialize**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2326
+Defined in: @nimiq/core/types/wasm/web.d.ts:2864
 
 #### Parameters
 
@@ -6378,7 +6820,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2326
 
 > `readonly` **transaction\_serializeContent**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2325
+Defined in: @nimiq/core/types/wasm/web.d.ts:2865
 
 #### Parameters
 
@@ -6396,7 +6838,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2325
 
 > `readonly` **transaction\_serializedSize**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2343
+Defined in: @nimiq/core/types/wasm/web.d.ts:2866
 
 #### Parameters
 
@@ -6414,7 +6856,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2343
 
 > `readonly` **transaction\_set\_data**: (`a`, `b`, `c`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2339
+Defined in: @nimiq/core/types/wasm/web.d.ts:2867
 
 #### Parameters
 
@@ -6440,7 +6882,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2339
 
 > `readonly` **transaction\_set\_proof**: (`a`, `b`, `c`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2342
+Defined in: @nimiq/core/types/wasm/web.d.ts:2868
 
 #### Parameters
 
@@ -6464,9 +6906,9 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2342
 
 ### transaction\_sign()
 
-> `readonly` **transaction\_sign**: (`a`, `b`) => \[`number`, `number`\]
+> `readonly` **transaction\_sign**: (`a`, `b`, `c`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2320
+Defined in: @nimiq/core/types/wasm/web.d.ts:2869
 
 #### Parameters
 
@@ -6478,6 +6920,10 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2320
 
 `number`
 
+##### c
+
+`any`
+
 #### Returns
 
 \[`number`, `number`\]
@@ -6488,7 +6934,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2320
 
 > `readonly` **transaction\_toHex**: (`a`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2344
+Defined in: @nimiq/core/types/wasm/web.d.ts:2870
 
 #### Parameters
 
@@ -6506,7 +6952,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2344
 
 > `readonly` **transaction\_toPlain**: (`a`, `b`, `c`, `d`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2345
+Defined in: @nimiq/core/types/wasm/web.d.ts:2871
 
 #### Parameters
 
@@ -6536,7 +6982,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2345
 
 > `readonly` **transaction\_validityStartHeight**: (`a`) => `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2335
+Defined in: @nimiq/core/types/wasm/web.d.ts:2872
 
 #### Parameters
 
@@ -6554,7 +7000,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2335
 
 > `readonly` **transaction\_value**: (`a`) => `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2332
+Defined in: @nimiq/core/types/wasm/web.d.ts:2873
 
 #### Parameters
 
@@ -6570,9 +7016,9 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2332
 
 ### transaction\_verify()
 
-> `readonly` **transaction\_verify**: (`a`, `b`) => \[`number`, `number`\]
+> `readonly` **transaction\_verify**: (`a`, `b`, `c`) => \[`number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2322
+Defined in: @nimiq/core/types/wasm/web.d.ts:2874
 
 #### Parameters
 
@@ -6581,6 +7027,10 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2322
 `number`
 
 ##### b
+
+`number`
+
+##### c
 
 `number`
 
@@ -6594,7 +7044,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2322
 
 > `readonly` **transactionbuilder\_newAddStake**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2488
+Defined in: @nimiq/core/types/wasm/web.d.ts:2877
 
 #### Parameters
 
@@ -6636,7 +7086,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2488
 
 > `readonly` **transactionbuilder\_newBasic**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2485
+Defined in: @nimiq/core/types/wasm/web.d.ts:2878
 
 #### Parameters
 
@@ -6678,7 +7128,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2485
 
 > `readonly` **transactionbuilder\_newBasicWithData**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2486
+Defined in: @nimiq/core/types/wasm/web.d.ts:2879
 
 #### Parameters
 
@@ -6728,7 +7178,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2486
 
 > `readonly` **transactionbuilder\_newCreateStaker**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2487
+Defined in: @nimiq/core/types/wasm/web.d.ts:2880
 
 #### Parameters
 
@@ -6738,7 +7188,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2487
 
 ##### b
 
-`number`
+`any`
 
 ##### c
 
@@ -6770,7 +7220,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2487
 
 > `readonly` **transactionbuilder\_newCreateValidator**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2493
+Defined in: @nimiq/core/types/wasm/web.d.ts:2881
 
 #### Parameters
 
@@ -6824,7 +7274,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2493
 
 > `readonly` **transactionbuilder\_newDeactivateValidator**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2495
+Defined in: @nimiq/core/types/wasm/web.d.ts:2882
 
 #### Parameters
 
@@ -6862,7 +7312,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2495
 
 > `readonly` **transactionbuilder\_newDeleteValidator**: (`a`, `b`, `c`, `d`, `e`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2496
+Defined in: @nimiq/core/types/wasm/web.d.ts:2883
 
 #### Parameters
 
@@ -6896,7 +7346,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2496
 
 > `readonly` **transactionbuilder\_newRemoveStake**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2492
+Defined in: @nimiq/core/types/wasm/web.d.ts:2884
 
 #### Parameters
 
@@ -6934,7 +7384,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2492
 
 > `readonly` **transactionbuilder\_newRetireStake**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2491
+Defined in: @nimiq/core/types/wasm/web.d.ts:2885
 
 #### Parameters
 
@@ -6972,7 +7422,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2491
 
 > `readonly` **transactionbuilder\_newRetireValidator**: (`a`, `b`, `c`, `d`, `e`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2497
+Defined in: @nimiq/core/types/wasm/web.d.ts:2886
 
 #### Parameters
 
@@ -7006,7 +7456,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2497
 
 > `readonly` **transactionbuilder\_newSetActiveStake**: (`a`, `b`, `c`, `d`, `e`, `f`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2490
+Defined in: @nimiq/core/types/wasm/web.d.ts:2887
 
 #### Parameters
 
@@ -7040,11 +7490,57 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2490
 
 ***
 
-### transactionbuilder\_newUpdateStaker()
+### transactionbuilder\_newSetSignalData()
 
-> `readonly` **transactionbuilder\_newUpdateStaker**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
+> `readonly` **transactionbuilder\_newSetSignalData**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2489
+Defined in: @nimiq/core/types/wasm/web.d.ts:2888
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`number`
+
+##### d
+
+`number`
+
+##### e
+
+`number`
+
+##### f
+
+`bigint`
+
+##### g
+
+`number`
+
+##### h
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
+### transactionbuilder\_newSignalVersion()
+
+> `readonly` **transactionbuilder\_newSignalVersion**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2889
 
 #### Parameters
 
@@ -7082,11 +7578,53 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2489
 
 ***
 
+### transactionbuilder\_newUpdateStaker()
+
+> `readonly` **transactionbuilder\_newUpdateStaker**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`) => \[`number`, `number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2890
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`any`
+
+##### c
+
+`number`
+
+##### d
+
+`number`
+
+##### e
+
+`bigint`
+
+##### f
+
+`number`
+
+##### g
+
+`number`
+
+#### Returns
+
+\[`number`, `number`, `number`\]
+
+***
+
 ### transactionbuilder\_newUpdateValidator()
 
 > `readonly` **transactionbuilder\_newUpdateValidator**: (`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2494
+Defined in: @nimiq/core/types/wasm/web.d.ts:2891
 
 #### Parameters
 
@@ -7140,7 +7678,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2494
 
 > `readonly` **vestingcontract\_dataToPlain**: (`a`, `b`, `c`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2350
+Defined in: @nimiq/core/types/wasm/web.d.ts:2916
 
 #### Parameters
 
@@ -7166,7 +7704,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2350
 
 > `readonly` **vestingcontract\_proofToPlain**: (`a`, `b`) => \[`number`, `number`, `number`\]
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2505
+Defined in: @nimiq/core/types/wasm/web.d.ts:2917
 
 #### Parameters
 
@@ -7184,11 +7722,11 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2505
 
 ***
 
-### wasm\_bindgen\_\_convert\_\_closures\_\_\_\_\_invoke\_\_h8c32cda5bcc26c90()
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_\_\_\_\_true\_()
 
-> `readonly` **wasm\_bindgen\_\_convert\_\_closures\_\_\_\_\_invoke\_\_h8c32cda5bcc26c90**: (`a`, `b`) => `void`
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_\_\_\_\_true\_**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2625
+Defined in: @nimiq/core/types/wasm/web.d.ts:2977
 
 #### Parameters
 
@@ -7206,11 +7744,11 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2625
 
 ***
 
-### wasm\_bindgen\_\_convert\_\_closures\_\_\_\_\_invoke\_\_ha2bc1ea94075baaf()
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_\_\_\_\_true\_\_1\_()
 
-> `readonly` **wasm\_bindgen\_\_convert\_\_closures\_\_\_\_\_invoke\_\_ha2bc1ea94075baaf**: (`a`, `b`) => `void`
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_\_\_\_\_true\_\_1\_**: (`a`, `b`) => `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2621
+Defined in: @nimiq/core/types/wasm/web.d.ts:2978
 
 #### Parameters
 
@@ -7221,6 +7759,218 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2621
 ##### b
 
 `number`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_js\_sys\_7ff7cdb33730fe00\_\_\_Function\_fn\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_sys\_\_Undefined\_\_\_js\_sys\_7ff7cdb33730fe00\_\_\_Function\_fn\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_sys\_\_Undefined\_\_\_\_\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_js\_sys\_7ff7cdb33730fe00\_\_\_Function\_fn\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_sys\_\_Undefined\_\_\_js\_sys\_7ff7cdb33730fe00\_\_\_Function\_fn\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_sys\_\_Undefined\_\_\_\_\_\_\_true\_**: (`a`, `b`, `c`, `d`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2970
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+##### d
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_core\_9b3796e30d99ddb7\_\_\_result\_\_Result\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsError\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsValue\_\_core\_9b3796e30d99ddb7\_\_\_result\_\_Result\_\_\_\_\_wasm\_bindgen\_8e56df5fa3736b7e\_\_\_JsError\_\_\_true\_**: (`a`, `b`, `c`) => \[`number`, `number`\]
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2969
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+\[`number`, `number`\]
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2971
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_\_2()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_\_2**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2972
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_\_5()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_CloseEvent\_\_CloseEvent\_\_\_\_\_\_true\_\_5**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2975
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_Event\_\_Event\_\_\_\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_Event\_\_Event\_\_\_\_\_\_true\_**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2973
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_IdbVersionChangeEvent\_\_IdbVersionChangeEvent\_\_\_\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_IdbVersionChangeEvent\_\_IdbVersionChangeEvent\_\_\_\_\_\_true\_**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2974
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_MessageEvent\_\_MessageEvent\_\_\_\_\_\_true\_()
+
+> `readonly` **wasm\_bindgen\_8e56df5fa3736b7e\_\_\_convert\_\_closures\_\_\_\_\_invoke\_\_\_web\_sys\_2af8cd294dd713b7\_\_\_features\_\_gen\_MessageEvent\_\_MessageEvent\_\_\_\_\_\_true\_**: (`a`, `b`, `c`) => `void`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:2976
+
+#### Parameters
+
+##### a
+
+`number`
+
+##### b
+
+`number`
+
+##### c
+
+`any`
 
 #### Returns
 

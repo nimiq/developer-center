@@ -6,10 +6,6 @@ dist
 .nitro
 .nuxt/
 
-# Ignore dynamically built web-client docs
-web-client/reference
-web-client/.version
-
 # Ignore dynamically built RPC spec docs
 set-up-your-own-node/rpc-docs/.version
 set-up-your-own-node/rpc-docs/methods.md
@@ -48,7 +44,7 @@ node_modules/
 
 # Task files
 tasks.json
-tasks/ 
+tasks/
 
 .claude
 .env.example

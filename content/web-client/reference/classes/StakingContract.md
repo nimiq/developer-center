@@ -2,7 +2,7 @@
 
 # Class: StakingContract
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1959
+Defined in: @nimiq/core/types/wasm/web.d.ts:2169
 
 Utility class providing methods to parse Staking Contract transaction data and proofs.
 
@@ -12,7 +12,7 @@ Utility class providing methods to parse Staking Contract transaction data and p
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1962
+Defined in: @nimiq/core/types/wasm/web.d.ts:2172
 
 #### Returns
 
@@ -24,7 +24,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1962
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1961
+Defined in: @nimiq/core/types/wasm/web.d.ts:2171
 
 #### Returns
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1961
 
 > `static` **dataToPlain**(`data`): [`PlainTransactionRecipientData`](../type-aliases/PlainTransactionRecipientData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1966
+Defined in: @nimiq/core/types/wasm/web.d.ts:2176
 
 Parses the data of a Staking Contract incoming transaction into a plain object.
 
@@ -56,7 +56,7 @@ Parses the data of a Staking Contract incoming transaction into a plain object.
 
 > `static` **proofToPlain**(`proof`): [`PlainTransactionProof`](../type-aliases/PlainTransactionProof.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1970
+Defined in: @nimiq/core/types/wasm/web.d.ts:2180
 
 Parses the proof of a Staking Contract outgoing transaction into a plain object.
 

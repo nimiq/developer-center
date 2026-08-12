@@ -98,6 +98,10 @@ export default {
             link: '/web-client/reference/classes/keypair',
           },
           {
+            text: 'MerklePath',
+            link: '/web-client/reference/classes/merklepath',
+          },
+          {
             text: 'MerkleTree',
             link: '/web-client/reference/classes/merkletree',
           },
@@ -148,6 +152,10 @@ export default {
           {
             text: 'StakingContract',
             link: '/web-client/reference/classes/stakingcontract',
+          },
+          {
+            text: 'StakingDataBuilder',
+            link: '/web-client/reference/classes/stakingdatabuilder',
           },
           {
             text: 'StringUtils',
@@ -232,6 +240,10 @@ export default {
             link: '/web-client/reference/interfaces/plaincreatevalidatordata',
           },
           {
+            text: 'PlainElectedValidator',
+            link: '/web-client/reference/interfaces/plainelectedvalidator',
+          },
+          {
             text: 'PlainHtlcContract',
             link: '/web-client/reference/interfaces/plainhtlccontract',
           },
@@ -278,6 +290,14 @@ export default {
           {
             text: 'PlainSetActiveStakeData',
             link: '/web-client/reference/interfaces/plainsetactivestakedata',
+          },
+          {
+            text: 'PlainSetSignalDataData',
+            link: '/web-client/reference/interfaces/plainsetsignaldatadata',
+          },
+          {
+            text: 'PlainSlot',
+            link: '/web-client/reference/interfaces/plainslot',
           },
           {
             text: 'PlainStaker',
@@ -352,6 +372,10 @@ export default {
           {
             text: 'PlainService',
             link: '/web-client/reference/type-aliases/plainservice',
+          },
+          {
+            text: 'PlainSignalDataUpdateMode',
+            link: '/web-client/reference/type-aliases/plainsignaldataupdatemode',
           },
           {
             text: 'PlainTransactionProof',
@@ -474,6 +498,10 @@ export default {
           link: '/web-client/reference/classes/keypair',
         },
         {
+          text: 'MerklePath',
+          link: '/web-client/reference/classes/merklepath',
+        },
+        {
           text: 'MerkleTree',
           link: '/web-client/reference/classes/merkletree',
         },
@@ -524,6 +552,10 @@ export default {
         {
           text: 'StakingContract',
           link: '/web-client/reference/classes/stakingcontract',
+        },
+        {
+          text: 'StakingDataBuilder',
+          link: '/web-client/reference/classes/stakingdatabuilder',
         },
         {
           text: 'StringUtils',
@@ -608,6 +640,10 @@ export default {
           link: '/web-client/reference/interfaces/plaincreatevalidatordata',
         },
         {
+          text: 'PlainElectedValidator',
+          link: '/web-client/reference/interfaces/plainelectedvalidator',
+        },
+        {
           text: 'PlainHtlcContract',
           link: '/web-client/reference/interfaces/plainhtlccontract',
         },
@@ -654,6 +690,14 @@ export default {
         {
           text: 'PlainSetActiveStakeData',
           link: '/web-client/reference/interfaces/plainsetactivestakedata',
+        },
+        {
+          text: 'PlainSetSignalDataData',
+          link: '/web-client/reference/interfaces/plainsetsignaldatadata',
+        },
+        {
+          text: 'PlainSlot',
+          link: '/web-client/reference/interfaces/plainslot',
         },
         {
           text: 'PlainStaker',
@@ -728,6 +772,10 @@ export default {
         {
           text: 'PlainService',
           link: '/web-client/reference/type-aliases/plainservice',
+        },
+        {
+          text: 'PlainSignalDataUpdateMode',
+          link: '/web-client/reference/type-aliases/plainsignaldataupdatemode',
         },
         {
           text: 'PlainTransactionProof',

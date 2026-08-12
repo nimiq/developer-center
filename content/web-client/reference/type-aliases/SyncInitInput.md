@@ -4,4 +4,4 @@
 
 > **SyncInitInput** = `BufferSource` \| `WebAssembly.Module`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2630
+Defined in: @nimiq/core/types/wasm/web.d.ts:2991

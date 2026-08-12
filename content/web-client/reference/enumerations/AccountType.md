@@ -2,7 +2,7 @@
 
 # Enumeration: AccountType
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:3
+Defined in: @nimiq/core/types/wasm/web.d.ts:656
 
 ## Enumeration Members
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:3
 
 > **Basic**: `0`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:4
+Defined in: @nimiq/core/types/wasm/web.d.ts:657
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:4
 
 > **HTLC**: `2`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:6
+Defined in: @nimiq/core/types/wasm/web.d.ts:659
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:6
 
 > **Staking**: `3`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:7
+Defined in: @nimiq/core/types/wasm/web.d.ts:660
 
 ***
 
@@ -34,4 +34,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:7
 
 > **Vesting**: `1`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:5
+Defined in: @nimiq/core/types/wasm/web.d.ts:658

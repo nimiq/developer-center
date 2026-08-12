@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process'
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmdirSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { readPackageJSON } from 'pkg-types'
@@ -65,11 +65,15 @@ export async function generateWebClientDocs() {
     }
   }
 
-  // Rebuild docs. They are built in the folder `web-client/tmp` and then we selectively copy them to `web-client`
+  // Rebuild docs. They are written in-place, deleting anything non-generated that was there before.
+  // Secure the manually written index.md and _dir.yml files, as we need to put them back in afterwards.
   console.info(`Generating Web-Client docs ${packageVersion}...`)
+  mkdirSync('tmp')
+  execSync(`mv ${join(generatedDocsFolder, 'index.md')} tmp/index.md`)
+  execSync(`mv ${join(generatedDocsFolder, '_dir.yml')} tmp/_dir.yml`)
   execSync('pnpm run build:web-client', { stdio: 'inherit' })
 
-  // get all the README.md files in the generated docs folder and rename them to index.md
+  // Get all the README.md files in the generated docs folder and rename them to index.md
   // then go to ./globals.md and change the links to the README.md files to index.md
   lsFiles(generatedDocsFolder)
     .filter(file => file.endsWith('README.md'))
@@ -87,6 +91,11 @@ export async function generateWebClientDocs() {
   // Remove the first four lines of all files in the generated docs folder
   removeFirstFourLines(generatedDocsFolder)
   writeWebClientReferenceData(generatedDocsFolder)
+
+  // Now move the manually written files back in place
+  execSync(`mv tmp/index.md ${join(generatedDocsFolder, 'index.md')}`)
+  execSync(`mv tmp/_dir.yml ${join(generatedDocsFolder, '_dir.yml')}`)
+  rmdirSync('tmp')
 }
 
 function lsFiles(folderPath: string): string[] {

@@ -2,7 +2,7 @@
 
 # Class: KeyPair
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1349
+Defined in: @nimiq/core/types/wasm/web.d.ts:1460
 
 A keypair represents a private key and its respective public key.
 It is used for signing data, usually transactions.
@@ -13,7 +13,7 @@ It is used for signing data, usually transactions.
 
 > **new KeyPair**(`private_key`, `public_key`): `KeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1372
+Defined in: @nimiq/core/types/wasm/web.d.ts:1485
 
 #### Parameters
 
@@ -35,7 +35,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1372
 
 > `readonly` **privateKey**: [`PrivateKey`](PrivateKey.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1396
+Defined in: @nimiq/core/types/wasm/web.d.ts:1509
 
 Gets the keypair's private key.
 
@@ -45,17 +45,29 @@ Gets the keypair's private key.
 
 > `readonly` **publicKey**: [`PublicKey`](PublicKey.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1400
+Defined in: @nimiq/core/types/wasm/web.d.ts:1513
 
 Gets the keypair's public key.
 
 ## Methods
 
+### \_\_getClassname()
+
+> **\_\_getClassname**(): `string`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1463
+
+#### Returns
+
+`string`
+
+***
+
 ### \[dispose\]()
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1351
+Defined in: @nimiq/core/types/wasm/web.d.ts:1462
 
 #### Returns
 
@@ -67,7 +79,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1351
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1350
+Defined in: @nimiq/core/types/wasm/web.d.ts:1461
 
 #### Returns
 
@@ -79,7 +91,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1350
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1376
+Defined in: @nimiq/core/types/wasm/web.d.ts:1489
 
 Serializes the keypair to a byte array.
 
@@ -93,7 +105,7 @@ Serializes the keypair to a byte array.
 
 > **sign**(`data`): [`Signature`](Signature.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1380
+Defined in: @nimiq/core/types/wasm/web.d.ts:1493
 
 Signs arbitrary data, returns a signature object.
 
@@ -113,7 +125,7 @@ Signs arbitrary data, returns a signature object.
 
 > **signTransaction**(`transaction`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1384
+Defined in: @nimiq/core/types/wasm/web.d.ts:1497
 
 Signs a transaction and sets the signature proof on the transaction object.
 
@@ -133,7 +145,7 @@ Signs a transaction and sets the signature proof on the transaction object.
 
 > **toAddress**(): [`Address`](Address.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1388
+Defined in: @nimiq/core/types/wasm/web.d.ts:1501
 
 Gets the keypair's address.
 
@@ -147,7 +159,7 @@ Gets the keypair's address.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1392
+Defined in: @nimiq/core/types/wasm/web.d.ts:1505
 
 Formats the keypair into a hex string.
 
@@ -161,7 +173,7 @@ Formats the keypair into a hex string.
 
 > `static` **derive**(`private_key`): `KeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1359
+Defined in: @nimiq/core/types/wasm/web.d.ts:1467
 
 Derives a keypair from an existing private key.
 
@@ -181,7 +193,7 @@ Derives a keypair from an existing private key.
 
 > `static` **deserialize**(`bytes`): `KeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1371
+Defined in: @nimiq/core/types/wasm/web.d.ts:1473
 
 Deserializes a keypair from a byte array.
 
@@ -203,11 +215,12 @@ Throws when the byte array contains less than 64 bytes.
 
 > `static` **fromHex**(`hex`): `KeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1365
+Defined in: @nimiq/core/types/wasm/web.d.ts:1480
 
 Parses a keypair from its hex representation.
 
-Throws when the string is not valid hex format or when it represents less than 64 bytes.
+Throws when the string is not valid hex or does not represent a 64-byte keypair
+(optionally followed by a 1-byte lock-state flag, as produced by `toHex`).
 
 #### Parameters
 
@@ -225,7 +238,7 @@ Throws when the string is not valid hex format or when it represents less than 6
 
 > `static` **generate**(): `KeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1355
+Defined in: @nimiq/core/types/wasm/web.d.ts:1484
 
 Generates a new keypair from secure randomness.
 

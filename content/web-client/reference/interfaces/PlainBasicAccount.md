@@ -2,7 +2,7 @@
 
 # Interface: PlainBasicAccount
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:23
+Defined in: @nimiq/core/types/wasm/web.d.ts:584
 
 ## Properties
 
@@ -10,4 +10,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:23
 
 > **balance**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:24
+Defined in: @nimiq/core/types/wasm/web.d.ts:585

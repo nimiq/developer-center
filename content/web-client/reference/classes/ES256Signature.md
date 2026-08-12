@@ -2,7 +2,7 @@
 
 # Class: ES256Signature
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1248
+Defined in: @nimiq/core/types/wasm/web.d.ts:1356
 
 An ES256 Signature represents a cryptographic proof that an ES256 private key signed some data.
 It can be verified with the private key's public key.
@@ -13,7 +13,7 @@ It can be verified with the private key's public key.
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1252
+Defined in: @nimiq/core/types/wasm/web.d.ts:1360
 
 #### Returns
 
@@ -25,7 +25,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1252
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1251
+Defined in: @nimiq/core/types/wasm/web.d.ts:1359
 
 #### Returns
 
@@ -37,7 +37,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1251
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1250
+Defined in: @nimiq/core/types/wasm/web.d.ts:1358
 
 #### Returns
 
@@ -49,7 +49,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1250
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1262
+Defined in: @nimiq/core/types/wasm/web.d.ts:1380
 
 Serializes the signature to a byte array.
 
@@ -63,7 +63,7 @@ Serializes the signature to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1276
+Defined in: @nimiq/core/types/wasm/web.d.ts:1384
 
 Formats the signature into a hex string.
 
@@ -77,7 +77,7 @@ Formats the signature into a hex string.
 
 > `static` **deserialize**(`bytes`): `ES256Signature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1258
+Defined in: @nimiq/core/types/wasm/web.d.ts:1366
 
 Deserializes an ES256 signature from a byte array.
 
@@ -99,7 +99,7 @@ Throws when the byte array contains less than 64 bytes.
 
 > `static` **fromAsn1**(`bytes`): `ES256Signature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1266
+Defined in: @nimiq/core/types/wasm/web.d.ts:1370
 
 Parses an ES256 signature from its ASN.1 representation.
 
@@ -119,7 +119,7 @@ Parses an ES256 signature from its ASN.1 representation.
 
 > `static` **fromHex**(`hex`): `ES256Signature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1272
+Defined in: @nimiq/core/types/wasm/web.d.ts:1376
 
 Parses an ES256 signature from its hex representation.
 

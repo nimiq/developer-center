@@ -2,7 +2,7 @@
 
 # Class: BLSPublicKey
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:714
+Defined in: @nimiq/core/types/wasm/web.d.ts:774
 
 The public part of the BLS keypair.
 This is specified in the staking contract to verify votes from Validators.
@@ -13,7 +13,7 @@ This is specified in the staking contract to verify votes from Validators.
 
 > **new BLSPublicKey**(`bytes`): `BLSPublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:728
+Defined in: @nimiq/core/types/wasm/web.d.ts:792
 
 Creates a new public key from a byte array.
 
@@ -33,7 +33,7 @@ Creates a new public key from a byte array.
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:716
+Defined in: @nimiq/core/types/wasm/web.d.ts:776
 
 #### Returns
 
@@ -45,7 +45,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:716
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:715
+Defined in: @nimiq/core/types/wasm/web.d.ts:775
 
 #### Returns
 
@@ -57,7 +57,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:715
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:732
+Defined in: @nimiq/core/types/wasm/web.d.ts:796
 
 Serializes the public key to a byte array.
 
@@ -71,7 +71,7 @@ Serializes the public key to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:740
+Defined in: @nimiq/core/types/wasm/web.d.ts:800
 
 Formats the public key into a hex string.
 
@@ -85,7 +85,7 @@ Formats the public key into a hex string.
 
 > `static` **derive**(`secret_key`): `BLSPublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:720
+Defined in: @nimiq/core/types/wasm/web.d.ts:780
 
 Derives a public key from an existing private key.
 
@@ -105,7 +105,7 @@ Derives a public key from an existing private key.
 
 > `static` **deserialize**(`bytes`): `BLSPublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:724
+Defined in: @nimiq/core/types/wasm/web.d.ts:784
 
 Deserializes a public key from a byte array.
 
@@ -125,7 +125,7 @@ Deserializes a public key from a byte array.
 
 > `static` **fromHex**(`hex`): `BLSPublicKey`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:736
+Defined in: @nimiq/core/types/wasm/web.d.ts:788
 
 Parses a public key from its hex representation.
 

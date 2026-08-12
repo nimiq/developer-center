@@ -2,7 +2,7 @@
 
 # Class: BLSKeyPair
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:677
+Defined in: @nimiq/core/types/wasm/web.d.ts:736
 
 A BLS keypair
 It is used by validators to vote during Tendermint rounds.
@@ -14,7 +14,7 @@ This is just a wrapper around our internal BLS structs
 
 > **new BLSKeyPair**(`secret_key`, `public_key`): `BLSKeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:692
+Defined in: @nimiq/core/types/wasm/web.d.ts:751
 
 #### Parameters
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:692
 
 > `readonly` **publicKey**: [`BLSPublicKey`](BLSPublicKey.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:708
+Defined in: @nimiq/core/types/wasm/web.d.ts:763
 
 Gets the keypair's public key.
 
@@ -46,7 +46,7 @@ Gets the keypair's public key.
 
 > `readonly` **secretKey**: [`BLSSecretKey`](BLSSecretKey.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:704
+Defined in: @nimiq/core/types/wasm/web.d.ts:767
 
 Gets the keypair's secret key.
 
@@ -56,7 +56,7 @@ Gets the keypair's secret key.
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:679
+Defined in: @nimiq/core/types/wasm/web.d.ts:738
 
 #### Returns
 
@@ -68,7 +68,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:679
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:678
+Defined in: @nimiq/core/types/wasm/web.d.ts:737
 
 #### Returns
 
@@ -80,7 +80,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:678
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:696
+Defined in: @nimiq/core/types/wasm/web.d.ts:755
 
 Serializes to a byte array.
 
@@ -94,7 +94,7 @@ Serializes to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:700
+Defined in: @nimiq/core/types/wasm/web.d.ts:759
 
 Formats the keypair into a hex string.
 
@@ -108,7 +108,7 @@ Formats the keypair into a hex string.
 
 > `static` **derive**(`private_key`): `BLSKeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:687
+Defined in: @nimiq/core/types/wasm/web.d.ts:742
 
 Derives a keypair from an existing private key.
 
@@ -128,7 +128,7 @@ Derives a keypair from an existing private key.
 
 > `static` **deserialize**(`bytes`): `BLSKeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:691
+Defined in: @nimiq/core/types/wasm/web.d.ts:746
 
 Deserializes a keypair from a byte array.
 
@@ -148,7 +148,7 @@ Deserializes a keypair from a byte array.
 
 > `static` **generate**(): `BLSKeyPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:683
+Defined in: @nimiq/core/types/wasm/web.d.ts:750
 
 Generates a new keypair from secure randomness.
 

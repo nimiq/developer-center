@@ -2,7 +2,7 @@
 
 # Interface: PlainHtlcRegularTransferProof
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:420
+Defined in: @nimiq/core/types/wasm/web.d.ts:106
 
 JSON-compatible and human-readable format of HTLC transfer proofs.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of HTLC transfer proofs.
 
 > **hashAlgorithm**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:422
+Defined in: @nimiq/core/types/wasm/web.d.ts:108
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:422
 
 > **hashDepth**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:423
+Defined in: @nimiq/core/types/wasm/web.d.ts:109
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:423
 
 > **hashRoot**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:424
+Defined in: @nimiq/core/types/wasm/web.d.ts:110
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:424
 
 > **pathLength**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:432
+Defined in: @nimiq/core/types/wasm/web.d.ts:118
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:432
 
 > **preImage**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:425
+Defined in: @nimiq/core/types/wasm/web.d.ts:111
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:425
 
 > **publicKey**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:431
+Defined in: @nimiq/core/types/wasm/web.d.ts:117
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:431
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:421
+Defined in: @nimiq/core/types/wasm/web.d.ts:107
 
 ***
 
@@ -68,7 +68,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:421
 
 > **signature**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:430
+Defined in: @nimiq/core/types/wasm/web.d.ts:116
 
 ***
 
@@ -76,6 +76,6 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:430
 
 > **signer**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:429
+Defined in: @nimiq/core/types/wasm/web.d.ts:115
 
 The signer (also called the \"recipient\") of the HTLC

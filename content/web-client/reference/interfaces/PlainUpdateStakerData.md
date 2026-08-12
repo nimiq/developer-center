@@ -2,7 +2,7 @@
 
 # Interface: PlainUpdateStakerData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:372
+Defined in: @nimiq/core/types/wasm/web.d.ts:496
 
 JSON-compatible and human-readable format of update staker data.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of update staker data.
 
 > **newDelegation**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:374
+Defined in: @nimiq/core/types/wasm/web.d.ts:498
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:374
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:373
+Defined in: @nimiq/core/types/wasm/web.d.ts:497
 
 ***
 
@@ -28,4 +28,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:373
 
 > **reactivateAllStake**: `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:375
+Defined in: @nimiq/core/types/wasm/web.d.ts:499

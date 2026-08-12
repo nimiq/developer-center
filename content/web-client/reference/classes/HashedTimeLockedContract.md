@@ -2,7 +2,7 @@
 
 # Class: HashedTimeLockedContract
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1332
+Defined in: @nimiq/core/types/wasm/web.d.ts:1442
 
 Utility class providing methods to parse Hashed Time Locked Contract transaction data and proofs.
 
@@ -12,7 +12,7 @@ Utility class providing methods to parse Hashed Time Locked Contract transaction
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1335
+Defined in: @nimiq/core/types/wasm/web.d.ts:1445
 
 #### Returns
 
@@ -24,7 +24,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1335
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1334
+Defined in: @nimiq/core/types/wasm/web.d.ts:1444
 
 #### Returns
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1334
 
 > `static` **dataToPlain**(`data`): [`PlainTransactionRecipientData`](../type-aliases/PlainTransactionRecipientData.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1339
+Defined in: @nimiq/core/types/wasm/web.d.ts:1449
 
 Parses the data of a Hashed Time Locked Contract creation transaction into a plain object.
 
@@ -56,7 +56,7 @@ Parses the data of a Hashed Time Locked Contract creation transaction into a pla
 
 > `static` **proofToPlain**(`proof`): [`PlainTransactionProof`](../type-aliases/PlainTransactionProof.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1343
+Defined in: @nimiq/core/types/wasm/web.d.ts:1453
 
 Parses the proof of a Hashed Time Locked Contract settlement transaction into a plain object.
 

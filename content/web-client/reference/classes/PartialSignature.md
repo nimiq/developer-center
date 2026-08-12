@@ -2,7 +2,7 @@
 
 # Class: PartialSignature
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1418
+Defined in: @nimiq/core/types/wasm/web.d.ts:1562
 
 A partial signature is a signature of one of the co-signers in a multisig.
 Combining all partial signatures yields the full signature (combining is done through summation).
@@ -13,7 +13,7 @@ Combining all partial signatures yields the full signature (combining is done th
 
 > **new PartialSignature**(`bytes`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1439
+Defined in: @nimiq/core/types/wasm/web.d.ts:1602
 
 Creates a new partial signature from a byte array.
 
@@ -35,7 +35,7 @@ Throws when the byte array is not exactly 32 bytes long.
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1460
+Defined in: @nimiq/core/types/wasm/web.d.ts:1621
 
 ***
 
@@ -43,7 +43,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1460
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1459
+Defined in: @nimiq/core/types/wasm/web.d.ts:1622
 
 ## Methods
 
@@ -51,7 +51,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1459
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1421
+Defined in: @nimiq/core/types/wasm/web.d.ts:1565
 
 #### Returns
 
@@ -63,7 +63,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1421
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1420
+Defined in: @nimiq/core/types/wasm/web.d.ts:1564
 
 #### Returns
 
@@ -75,7 +75,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1420
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1458
+Defined in: @nimiq/core/types/wasm/web.d.ts:1584
 
 Returns if this partial signature is equal to the other partial signature.
 
@@ -95,7 +95,7 @@ Returns if this partial signature is equal to the other partial signature.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1419
+Defined in: @nimiq/core/types/wasm/web.d.ts:1563
 
 #### Returns
 
@@ -107,7 +107,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1419
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1444
+Defined in: @nimiq/core/types/wasm/web.d.ts:1606
 
 Serializes the partial signature to a byte array.
 
@@ -121,7 +121,7 @@ Serializes the partial signature to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1454
+Defined in: @nimiq/core/types/wasm/web.d.ts:1616
 
 Formats the partial signature into a hex string.
 
@@ -131,11 +131,38 @@ Formats the partial signature into a hex string.
 
 ***
 
+### toSignature()
+
+> **toSignature**(`aggregated_commitment`): [`Signature`](Signature.md)
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1620
+
+Converts a (aggregated) partial signature into a final signature using the aggregated commitment.
+
+#### Parameters
+
+##### aggregated\_commitment
+
+[`Commitment`](Commitment.md)
+
+#### Returns
+
+[`Signature`](Signature.md)
+
+***
+
 ### create()
 
 > `static` **create**(`own_private_key`, `own_public_key`, `own_commitment_pairs`, `other_public_keys`, `other_commitments`, `data`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1440
+Defined in: @nimiq/core/types/wasm/web.d.ts:1574
+
+Creates a new partial signature for the MuSig2 scheme.
+
+- `ownCommitmentPairs` must be 2 pairs of random secret and commitments generated for this signing session.
+- `otherCommitments` must contain 2 commitments each for all other signers.
+
+Returns the created partial signature.
 
 #### Parameters
 
@@ -173,7 +200,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1440
 
 > `static` **deserialize**(`bytes`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1433
+Defined in: @nimiq/core/types/wasm/web.d.ts:1580
 
 Deserializes a partial signature from a byte array.
 
@@ -193,9 +220,9 @@ Throws when the byte array contains less than 32 bytes.
 
 ### fromAny()
 
-> `static` **fromAny**(`secret`): `PartialSignature`
+> `static` **fromAny**(`sig`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1427
+Defined in: @nimiq/core/types/wasm/web.d.ts:1590
 
 Parses a partial signature from a PartialSignature instance, a hex string representation, or a byte array.
 
@@ -203,7 +230,7 @@ Throws when a PartialSignature cannot be parsed from the argument.
 
 #### Parameters
 
-##### secret
+##### sig
 
 `string` | `Uint8Array`\<`ArrayBufferLike`\> | `PartialSignature`
 
@@ -217,7 +244,7 @@ Throws when a PartialSignature cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `PartialSignature`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1450
+Defined in: @nimiq/core/types/wasm/web.d.ts:1596
 
 Parses a partial signature from its hex representation.
 
@@ -228,6 +255,28 @@ Throws when the string is not valid hex format or when it represents less than 3
 ##### hex
 
 `string`
+
+#### Returns
+
+`PartialSignature`
+
+***
+
+### sum()
+
+> `static` **sum**(`partial_signatures`): `PartialSignature`
+
+Defined in: @nimiq/core/types/wasm/web.d.ts:1612
+
+Sums an array of partial signatures into an aggregated partial signature.
+
+Afterwards, use `.toSignature(aggregatedCommitment)` on the result to get the final signature.
+
+#### Parameters
+
+##### partial\_signatures
+
+(`string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `PartialSignature`)[]
 
 #### Returns
 

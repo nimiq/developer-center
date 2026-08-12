@@ -2,7 +2,7 @@
 
 # Class: CryptoUtils
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1136
+Defined in: @nimiq/core/types/wasm/web.d.ts:1242
 
 ## Methods
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1136
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1139
+Defined in: @nimiq/core/types/wasm/web.d.ts:1245
 
 #### Returns
 
@@ -22,7 +22,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1139
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1138
+Defined in: @nimiq/core/types/wasm/web.d.ts:1244
 
 #### Returns
 
@@ -34,7 +34,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1138
 
 > `static` **computeHmacSha512**(`key`, `data`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1149
+Defined in: @nimiq/core/types/wasm/web.d.ts:1251
 
 Computes a 64-byte [HMAC]-SHA512 hash from the input key and data.
 
@@ -60,7 +60,7 @@ Computes a 64-byte [HMAC]-SHA512 hash from the input key and data.
 
 > `static` **computePBKDF2sha512**(`password`, `salt`, `iterations`, `derived_key_length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1155
+Defined in: @nimiq/core/types/wasm/web.d.ts:1257
 
 Computes a [PBKDF2]-over-SHA512 key from the password with the given parameters.
 
@@ -94,7 +94,7 @@ Computes a [PBKDF2]-over-SHA512 key from the password with the given parameters.
 
 > `static` **getRandomValues**(`length`): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1143
+Defined in: @nimiq/core/types/wasm/web.d.ts:1261
 
 Generates a secure random byte array of the given length.
 
@@ -114,7 +114,7 @@ Generates a secure random byte array of the given length.
 
 > `static` **otpKdf**(`message`, `key`, `salt`, `iterations`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1163
+Defined in: @nimiq/core/types/wasm/web.d.ts:1269
 
 Encrypts a message with an [OTP] [KDF] and the given parameters.
 The KDF uses Argon2d for hashing.

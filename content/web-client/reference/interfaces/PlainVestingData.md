@@ -2,7 +2,7 @@
 
 # Interface: PlainVestingData
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:299
+Defined in: @nimiq/core/types/wasm/web.d.ts:538
 
 JSON-compatible and human-readable format of vesting creation data.
 
@@ -12,7 +12,7 @@ JSON-compatible and human-readable format of vesting creation data.
 
 > **owner**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:301
+Defined in: @nimiq/core/types/wasm/web.d.ts:540
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:301
 
 > **raw**: `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:300
+Defined in: @nimiq/core/types/wasm/web.d.ts:539
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:300
 
 > **startTime**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:302
+Defined in: @nimiq/core/types/wasm/web.d.ts:541
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:302
 
 > **stepAmount**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:304
+Defined in: @nimiq/core/types/wasm/web.d.ts:543
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:304
 
 > **timeStep**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:303
+Defined in: @nimiq/core/types/wasm/web.d.ts:542

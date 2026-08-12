@@ -2,7 +2,7 @@
 
 # Class: CommitmentPair
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1091
+Defined in: @nimiq/core/types/wasm/web.d.ts:1196
 
 A structure holding both a random secret and its corresponding public commitment.
 This is similar to a `KeyPair`.
@@ -13,7 +13,7 @@ This is similar to a `KeyPair`.
 
 > **new CommitmentPair**(`random_secret`, `commitment`): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1112
+Defined in: @nimiq/core/types/wasm/web.d.ts:1227
 
 #### Parameters
 
@@ -35,7 +35,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1112
 
 > `readonly` **commitment**: [`Commitment`](Commitment.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1134
+Defined in: @nimiq/core/types/wasm/web.d.ts:1236
 
 ***
 
@@ -43,7 +43,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1134
 
 > `readonly` **secret**: [`RandomSecret`](RandomSecret.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1133
+Defined in: @nimiq/core/types/wasm/web.d.ts:1237
 
 ***
 
@@ -51,7 +51,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1133
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1132
+Defined in: @nimiq/core/types/wasm/web.d.ts:1238
 
 ***
 
@@ -59,7 +59,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1132
 
 > `readonly` `static` **SIZE**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1131
+Defined in: @nimiq/core/types/wasm/web.d.ts:1239
 
 ## Methods
 
@@ -67,7 +67,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1131
 
 > **\_\_getClassname**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1094
+Defined in: @nimiq/core/types/wasm/web.d.ts:1199
 
 #### Returns
 
@@ -79,7 +79,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1094
 
 > **\[dispose\]**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1093
+Defined in: @nimiq/core/types/wasm/web.d.ts:1198
 
 #### Returns
 
@@ -91,7 +91,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1093
 
 > **equals**(`other`): `boolean`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1130
+Defined in: @nimiq/core/types/wasm/web.d.ts:1213
 
 Returns if this commitment pair is equal to the other commitment pair.
 
@@ -111,7 +111,7 @@ Returns if this commitment pair is equal to the other commitment pair.
 
 > **free**(): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1092
+Defined in: @nimiq/core/types/wasm/web.d.ts:1197
 
 #### Returns
 
@@ -123,7 +123,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:1092
 
 > **serialize**(): `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1116
+Defined in: @nimiq/core/types/wasm/web.d.ts:1231
 
 Serializes the commitment pair to a byte array.
 
@@ -137,7 +137,7 @@ Serializes the commitment pair to a byte array.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1126
+Defined in: @nimiq/core/types/wasm/web.d.ts:1235
 
 Formats the commitment pair into a hex string.
 
@@ -151,7 +151,7 @@ Formats the commitment pair into a hex string.
 
 > `static` **derive**(`random_secret`): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1111
+Defined in: @nimiq/core/types/wasm/web.d.ts:1203
 
 Derives a commitment pair from an existing random secret.
 
@@ -171,7 +171,7 @@ Derives a commitment pair from an existing random secret.
 
 > `static` **deserialize**(`bytes`): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1106
+Defined in: @nimiq/core/types/wasm/web.d.ts:1209
 
 Deserializes a commitment pair from a byte array.
 
@@ -193,7 +193,7 @@ Throws when the byte array contains less than 32 bytes.
 
 > `static` **fromAny**(`pair`): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1100
+Defined in: @nimiq/core/types/wasm/web.d.ts:1219
 
 Parses a commitment pair from a CommitmentPair instance, a hex string representation, or a byte array.
 
@@ -215,7 +215,7 @@ Throws when a CommitmentPair cannot be parsed from the argument.
 
 > `static` **fromHex**(`hex`): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1122
+Defined in: @nimiq/core/types/wasm/web.d.ts:1225
 
 Parses a commitment pair from its hex representation.
 
@@ -237,7 +237,7 @@ Throws when the string is not valid hex format or when it represents less than 3
 
 > `static` **generate**(): `CommitmentPair`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:1107
+Defined in: @nimiq/core/types/wasm/web.d.ts:1226
 
 #### Returns
 
