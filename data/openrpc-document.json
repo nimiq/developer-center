@@ -3,7 +3,7 @@
   "info": {
     "title": "Nimiq JSON-RPC Specification",
     "description": "Through the use of JSON-RPC, Nimiq nodes expose a set of standardized methods and endpoints that allow external applications and tools to interact, stream and control the behavior of the nodes. This includes functionalities such as retrieving information about the blockchain state, submitting transactions, managing accounts, and configuring node settings.",
-    "version": "v1.2.0",
+    "version": "v2.0.0",
     "contact": {
       "name": "The Nimiq Core Development Team <info@nimiq.com>",
       "email": "",
@@ -103,7 +103,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -162,7 +169,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -214,7 +228,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -266,7 +287,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -346,7 +374,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -405,7 +440,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -478,7 +520,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -551,7 +600,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -603,7 +659,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -669,7 +732,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -749,7 +819,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -808,7 +885,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -867,7 +951,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -919,7 +1010,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -971,7 +1069,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1016,7 +1121,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1068,7 +1180,146 @@
         {
           "name": "validityStartHeight",
           "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createSetSignalDataTransaction",
+      "description": "Returns a serialized `set_signal_data` transaction, signed with the validator's signing (warm) key. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee. The `new_signal_data` field is interpreted as follows: null = Clear the signal data field (set it to None). \\\"0x29a4b...\\\" = Set the signal data field to Some(0x29a4b...). Note: this *replaces the entire signal data field*, overwriting any protocol version previously signaled via `create_signal_version_transaction`. Use that method instead if you only want to update the version while preserving the rest of the signal data. This transaction is only valid from protocol version `upgrades::v2::WARM_KEY_SIGNALING` onwards.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSignalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
             "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createSignalVersionTransaction",
+      "description": "Returns a serialized `signal_version` transaction that signals support for the given protocol `version`, signed with the validator's signing (warm) key. You need to provide the address of a basic account (the sender wallet) to pay the transaction fee. Note: this only updates the protocol-version bytes of the signal data and preserves the rest of the field; it cannot clear the field. To replace the entire signal data (including clearing it), use `create_set_signal_data_transaction`. This transaction is only valid from protocol version `upgrades::v2::WARM_KEY_SIGNALING` onwards.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "version",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1120,7 +1371,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1179,7 +1437,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1252,7 +1517,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -1434,6 +1706,30 @@
       }
     },
     {
+      "name": "getBlockAfterCollateralLockup",
+      "description": "Returns the first block after the collateral lock-up window of a given block number has ended.",
+      "tags": [
+        {
+          "name": "policy"
+        }
+      ],
+      "params": [
+        {
+          "name": "blockNumber",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "u32",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
       "name": "getBlockAfterJail",
       "description": "Returns the first block after the jail period of a given block number has ended.",
       "tags": [
@@ -1459,7 +1755,7 @@
     },
     {
       "name": "getBlockAfterReportingWindow",
-      "description": "Returns the first block after the reporting window of a given block number has ended.",
+      "description": "**Deprecated**: renamed to `getBlockAfterCollateralLockup`. This window never governed equivocation reporting; it has always been the collateral lock-up window. Kept for API backwards compatibility — prefer `getBlockAfterCollateralLockup` in new clients.",
       "tags": [
         {
           "name": "policy"
@@ -1556,6 +1852,22 @@
         "name": "u32",
         "schema": {
           "type": "number"
+        }
+      }
+    },
+    {
+      "name": "getClientVersion",
+      "description": "Returns the version of the client the RPC server is running.",
+      "tags": [
+        {
+          "name": "network"
+        }
+      ],
+      "params": [],
+      "result": {
+        "name": "String",
+        "schema": {
+          "type": "string"
         }
       }
     },
@@ -2121,22 +2433,6 @@
       }
     },
     {
-      "name": "getSigningKey",
-      "description": "Returns our validator signing key.",
-      "tags": [
-        {
-          "name": "validator"
-        }
-      ],
-      "params": [],
-      "result": {
-        "name": "String",
-        "schema": {
-          "type": "string"
-        }
-      }
-    },
-    {
       "name": "getSlotAt",
       "description": "Returns information about the proposer slot at the given block height and offset. The offset is optional, it will default to getting the offset for the existing block at the given height. We only have this information available for the last 2 batches at most.",
       "tags": [
@@ -2549,57 +2845,6 @@
       }
     },
     {
-      "name": "getVotingKey",
-      "description": "Returns our current validator voting key.",
-      "tags": [
-        {
-          "name": "validator"
-        }
-      ],
-      "params": [],
-      "result": {
-        "name": "String",
-        "schema": {
-          "type": "string"
-        }
-      }
-    },
-    {
-      "name": "getVotingKeys",
-      "description": "Returns all available voting keys.",
-      "tags": [
-        {
-          "name": "validator"
-        }
-      ],
-      "params": [],
-      "result": {
-        "name": "Vec",
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    {
-      "name": "getZkpState",
-      "description": "Returns the current ZKP state (proof with its related block hash and block number).",
-      "tags": [
-        {
-          "name": "zkp_component"
-        }
-      ],
-      "params": [],
-      "result": {
-        "name": "ZKPState",
-        "schema": {
-          "$ref": "#/components/schemas/ZKPState"
-        }
-      }
-    },
-    {
       "name": "importRawKey",
       "description": "Import an account by its private key, in hexadecimal format, and lock it with the passphrase.",
       "tags": [
@@ -2996,7 +3241,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3055,7 +3307,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3107,7 +3366,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3159,7 +3425,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3239,7 +3512,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3298,7 +3578,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3371,7 +3658,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3444,7 +3738,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3520,7 +3821,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3586,7 +3894,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3666,7 +3981,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3725,7 +4047,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3784,7 +4113,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3836,7 +4172,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3888,7 +4231,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3933,7 +4283,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -3985,7 +4342,146 @@
         {
           "name": "validityStartHeight",
           "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendSetSignalDataTransaction",
+      "description": "Sends a `set_signal_data` transaction to the network. See `create_set_signal_data_transaction` for the meaning of `new_signal_data`.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "newSignalData",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
             "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Blake2bHash",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendSignalVersionTransaction",
+      "description": "Sends a `signal_version` transaction that signals support for the given protocol `version` to the network.",
+      "tags": [
+        {
+          "name": "consensus"
+        }
+      ],
+      "params": [
+        {
+          "name": "senderWallet",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "validatorAddress",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "signingSecretKey",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "version",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "fee",
+          "schema": {
+            "type": "number"
+          },
+          "required": true
+        },
+        {
+          "name": "validityStartHeight",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4037,7 +4533,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4096,7 +4599,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4169,7 +4679,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4297,7 +4814,14 @@
         {
           "name": "validityStartHeight",
           "schema": {
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "required": true
         }
@@ -4511,7 +5035,7 @@
         "required": [
           "address",
           "balance",
-          "accountAdditionalFields"
+          "type"
         ],
         "properties": {
           "address": {
@@ -4522,9 +5046,59 @@
             "title": "balance",
             "type": "number"
           },
-          "accountAdditionalFields": {
-            "title": "accountAdditionalFields",
+          "type": {
+            "title": "type",
+            "type": "string",
+            "enum": [
+              "basic",
+              "vesting",
+              "htlc",
+              "staking"
+            ]
+          },
+          "hashCount": {
+            "title": "hashCount",
+            "type": "number"
+          },
+          "hashRoot": {
+            "title": "hashRoot",
             "type": "object"
+          },
+          "owner": {
+            "title": "owner",
+            "type": "string"
+          },
+          "recipient": {
+            "title": "recipient",
+            "type": "string"
+          },
+          "sender": {
+            "title": "sender",
+            "type": "string"
+          },
+          "timeout": {
+            "title": "timeout",
+            "type": "number"
+          },
+          "totalAmount": {
+            "title": "totalAmount",
+            "type": "number"
+          },
+          "vestingStartTime": {
+            "title": "vestingStartTime",
+            "type": "number"
+          },
+          "vestingStepAmount": {
+            "title": "vestingStepAmount",
+            "type": "number"
+          },
+          "vestingTimeStep": {
+            "title": "vestingTimeStep",
+            "type": "number"
+          },
+          "vestingTotalAmount": {
+            "title": "vestingTotalAmount",
+            "type": "number"
           }
         }
       },
@@ -4546,7 +5120,7 @@
           "stateHash",
           "bodyHash",
           "historyHash",
-          "additionalFields"
+          "type"
         ],
         "properties": {
           "hash": {
@@ -4615,9 +5189,64 @@
               "$ref": "#/components/schemas/ExecutedTransaction"
             }
           },
-          "additionalFields": {
-            "title": "additionalFields",
-            "type": "object"
+          "type": {
+            "title": "type",
+            "type": "string",
+            "enum": [
+              "macro",
+              "micro"
+            ]
+          },
+          "equivocationProofs": {
+            "title": "equivocationProofs",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "interlink": {
+            "title": "interlink",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isElectionBlock": {
+            "title": "isElectionBlock",
+            "type": "boolean"
+          },
+          "justification": {
+            "title": "justification",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TendermintProof"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "nextBatchInitialPunishedSet": {
+            "title": "nextBatchInitialPunishedSet",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "parentElectionHash": {
+            "title": "parentElectionHash",
+            "type": "string"
+          },
+          "producer": {
+            "title": "producer",
+            "$ref": "#/components/schemas/Slot"
+          },
+          "slots": {
+            "title": "slots",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Slots"
+            }
           }
         }
       },
@@ -4706,60 +5335,60 @@
           "buckets"
         ],
         "properties": {
-          "0": {
-            "title": "0",
+          "_0": {
+            "title": "_0",
             "type": "number"
           },
-          "1": {
-            "title": "1",
+          "_1": {
+            "title": "_1",
             "type": "number"
           },
-          "2": {
-            "title": "2",
+          "_2": {
+            "title": "_2",
             "type": "number"
           },
-          "5": {
-            "title": "5",
+          "_5": {
+            "title": "_5",
             "type": "number"
           },
-          "10": {
-            "title": "10",
+          "_10": {
+            "title": "_10",
             "type": "number"
           },
-          "20": {
-            "title": "20",
+          "_20": {
+            "title": "_20",
             "type": "number"
           },
-          "50": {
-            "title": "50",
+          "_50": {
+            "title": "_50",
             "type": "number"
           },
-          "100": {
-            "title": "100",
+          "_100": {
+            "title": "_100",
             "type": "number"
           },
-          "200": {
-            "title": "200",
+          "_200": {
+            "title": "_200",
             "type": "number"
           },
-          "500": {
-            "title": "500",
+          "_500": {
+            "title": "_500",
             "type": "number"
           },
-          "1000": {
-            "title": "1000",
+          "_1000": {
+            "title": "_1000",
             "type": "number"
           },
-          "2000": {
-            "title": "2000",
+          "_2000": {
+            "title": "_2000",
             "type": "number"
           },
-          "5000": {
-            "title": "5000",
+          "_5000": {
+            "title": "_5000",
             "type": "number"
           },
-          "10000": {
-            "title": "10000",
+          "_10000": {
+            "title": "_10000",
             "type": "number"
           },
           "total": {
@@ -4789,7 +5418,10 @@
           },
           "disabled": {
             "title": "disabled",
-            "type": "object"
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         }
       },
@@ -5196,23 +5828,6 @@
           "jailedFrom": {
             "title": "jailedFrom",
             "type": "number"
-          }
-        }
-      },
-      "ZKPState": {
-        "title": "ZKPState",
-        "description": "",
-        "required": [
-          "latestBlock"
-        ],
-        "properties": {
-          "latestBlock": {
-            "title": "latestBlock",
-            "$ref": "#/components/schemas/Block"
-          },
-          "latestProof": {
-            "title": "latestProof",
-            "type": "string"
           }
         }
       }

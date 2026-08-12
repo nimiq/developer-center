@@ -28,8 +28,8 @@ async function fetchOpenRpcDocument() {
     throw new Error('Could not determine @nimiq/core version')
   }
 
-  // @nimiq/core v2.x.y maps to RPC release v1.x.y
-  const rpcVersion = coreVersion.replace(/^2/, '1')
+  // @nimiq/core v2.2x.y maps to RPC release v2.x.y
+  const rpcVersion = coreVersion.replace(/^2\.2/, '2\.')
 
   // Skip if already downloaded for this version
   if (existsSync(versionFile) && readFileSync(versionFile, 'utf-8').trim() === rpcVersion && existsSync(jsonFilePath)) {
