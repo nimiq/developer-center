@@ -47,7 +47,7 @@
     "@iconify-json/tabler": "^1.2.23",
     "@iconify-json/vscode-icons": "^1.2.33",
     "@iconify/utils": "^3.0.2",
-    "@nimiq/core": "^2.20.0",
+    "@nimiq/core": "^2.21.0",
     "@nuxt/eslint": "^1.15.2",
     "@open-rpc/meta-schema": "^1.14.9",
     "@rollup/plugin-terser": "^0.4.4",

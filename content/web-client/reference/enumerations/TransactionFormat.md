@@ -2,7 +2,7 @@
 
 # Enumeration: TransactionFormat
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2585
+Defined in: @nimiq/core/types/wasm/web.d.ts:2589
 
 ## Enumeration Members
 
@@ -10,7 +10,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2585
 
 > **Basic**: `0`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2586
+Defined in: @nimiq/core/types/wasm/web.d.ts:2590
 
 ***
 
@@ -18,4 +18,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2586
 
 > **Extended**: `1`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2587
+Defined in: @nimiq/core/types/wasm/web.d.ts:2591

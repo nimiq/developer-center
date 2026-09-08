@@ -105,7 +105,7 @@ given for contract creation transactions, or no data is given for signaling tran
 
 > **data**: `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2369
+Defined in: @nimiq/core/types/wasm/web.d.ts:2373
 
 The transaction's data as a byte array.
 
@@ -115,7 +115,7 @@ The transaction's data as a byte array.
 
 > `readonly` **fee**: `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2373
+Defined in: @nimiq/core/types/wasm/web.d.ts:2377
 
 The transaction's fee in luna (NIM's smallest unit).
 
@@ -125,7 +125,7 @@ The transaction's fee in luna (NIM's smallest unit).
 
 > `readonly` **feePerByte**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2377
+Defined in: @nimiq/core/types/wasm/web.d.ts:2381
 
 The transaction's fee per byte in luna (NIM's smallest unit).
 
@@ -135,7 +135,7 @@ The transaction's fee per byte in luna (NIM's smallest unit).
 
 > `readonly` **flags**: [`TransactionFlag`](../enumerations/TransactionFlag.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2383
+Defined in: @nimiq/core/types/wasm/web.d.ts:2387
 
 The transaction's flags: `0b1` = contract creation, `0b10` = signaling.
 Bit patterns outside the known variants collapse to `None`.
@@ -147,7 +147,7 @@ Inspect `toPlain().flags` for the raw value.
 
 > `readonly` **format**: [`TransactionFormat`](../enumerations/TransactionFormat.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2387
+Defined in: @nimiq/core/types/wasm/web.d.ts:2391
 
 The transaction's [TransactionFormat](../enumerations/TransactionFormat.md).
 
@@ -157,7 +157,7 @@ The transaction's [TransactionFormat](../enumerations/TransactionFormat.md).
 
 > `readonly` **networkId**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2391
+Defined in: @nimiq/core/types/wasm/web.d.ts:2395
 
 The transaction's network ID.
 
@@ -167,7 +167,7 @@ The transaction's network ID.
 
 > **proof**: `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2395
+Defined in: @nimiq/core/types/wasm/web.d.ts:2399
 
 The transaction's signature proof as a byte array.
 
@@ -177,7 +177,7 @@ The transaction's signature proof as a byte array.
 
 > `readonly` **recipient**: [`Address`](Address.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2399
+Defined in: @nimiq/core/types/wasm/web.d.ts:2403
 
 The transaction's recipient address.
 
@@ -187,7 +187,7 @@ The transaction's recipient address.
 
 > `readonly` **recipientType**: [`AccountType`](../enumerations/AccountType.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2403
+Defined in: @nimiq/core/types/wasm/web.d.ts:2407
 
 The transaction's recipient [AccountType](../enumerations/AccountType.md).
 
@@ -197,7 +197,7 @@ The transaction's recipient [AccountType](../enumerations/AccountType.md).
 
 > `readonly` **sender**: [`Address`](Address.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2407
+Defined in: @nimiq/core/types/wasm/web.d.ts:2411
 
 The transaction's sender address.
 
@@ -207,7 +207,7 @@ The transaction's sender address.
 
 > `readonly` **senderData**: `Uint8Array`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2411
+Defined in: @nimiq/core/types/wasm/web.d.ts:2415
 
 The transaction's sender data as a byte array.
 
@@ -217,7 +217,7 @@ The transaction's sender data as a byte array.
 
 > `readonly` **senderType**: [`AccountType`](../enumerations/AccountType.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2415
+Defined in: @nimiq/core/types/wasm/web.d.ts:2419
 
 The transaction's sender [AccountType](../enumerations/AccountType.md).
 
@@ -227,7 +227,7 @@ The transaction's sender [AccountType](../enumerations/AccountType.md).
 
 > `readonly` **serializedSize**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2419
+Defined in: @nimiq/core/types/wasm/web.d.ts:2423
 
 The transaction's byte size.
 
@@ -237,7 +237,7 @@ The transaction's byte size.
 
 > `readonly` **validityStartHeight**: `number`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2423
+Defined in: @nimiq/core/types/wasm/web.d.ts:2427
 
 The transaction's validity-start height. The transaction is valid for 2 hours after this block height.
 
@@ -247,7 +247,7 @@ The transaction's validity-start height. The transaction is valid for 2 hours af
 
 > `readonly` **value**: `bigint`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2427
+Defined in: @nimiq/core/types/wasm/web.d.ts:2431
 
 The transaction's value in luna (NIM's smallest unit).
 
@@ -369,7 +369,7 @@ Serializes the transaction's content to be used for creating its signature.
 
 > **sign**(`key_pair`, `inner_key_pair`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2346
+Defined in: @nimiq/core/types/wasm/web.d.ts:2350
 
 Signs the transaction with the provided key pair. Automatically determines the format
 of the signature proof required for the transaction.
@@ -378,6 +378,10 @@ For transactions to the staking contract (in-staking transactions), you can opti
 an inner key pair that represents the staker or validator. This way the staker/validator and sender
 of a transaction can be different key pairs (addresses). If no inner key pair is provided, the outer
 key pair is used for both signatures.
+
+Throws when the transaction's recipient data is not valid data for an incoming staking
+transaction, or when an incoming staking transaction is not sent from a basic account or
+a vesting contract.
 
 ### Limitations
 - HTLC redemption is not supported and will throw.
@@ -402,7 +406,7 @@ key pair is used for both signatures.
 
 > **toHex**(): `string`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2350
+Defined in: @nimiq/core/types/wasm/web.d.ts:2354
 
 Serializes the transaction into a HEX string.
 
@@ -416,7 +420,7 @@ Serializes the transaction into a HEX string.
 
 > **toPlain**(`genesis_block_number?`, `genesis_timestamp?`): [`PlainTransaction`](../interfaces/PlainTransaction.md)
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2354
+Defined in: @nimiq/core/types/wasm/web.d.ts:2358
 
 Creates a JSON-compatible plain object representing the transaction.
 
@@ -440,7 +444,7 @@ Creates a JSON-compatible plain object representing the transaction.
 
 > **verify**(`protocol_version`, `network_id?`): `void`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2365
+Defined in: @nimiq/core/types/wasm/web.d.ts:2369
 
 Verifies that a transaction has valid properties and a valid signature proof for the
 provided `protocol_version`.

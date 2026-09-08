@@ -2,7 +2,7 @@
 
 # Enumeration: TransactionFlag
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2579
+Defined in: @nimiq/core/types/wasm/web.d.ts:2583
 
 A transaction flag signals a special purpose of the transaction. `ContractCreation` must be set
 to create new vesting contracts or HTLCs. `Signaling` must be set to interact with the staking
@@ -14,7 +14,7 @@ contract for non-value transactions. All other transactions' flag is set to `Non
 
 > **ContractCreation**: `1`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2581
+Defined in: @nimiq/core/types/wasm/web.d.ts:2585
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2581
 
 > **None**: `0`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2580
+Defined in: @nimiq/core/types/wasm/web.d.ts:2584
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: @nimiq/core/types/wasm/web.d.ts:2580
 
 > **Signaling**: `2`
 
-Defined in: @nimiq/core/types/wasm/web.d.ts:2582
+Defined in: @nimiq/core/types/wasm/web.d.ts:2586
