@@ -1,10 +1,13 @@
 /**
  * docus 5.13.0 reads `AppConfig['seo']['schema']` in its own `useSeo` composable
- * (nuxt-content/docus#1433) but only declares that field in an `AppConfig`
- * augmentation that loses against the `AppConfig` Nuxt generates from the
- * resolved app.config values, so `nuxi typecheck` fails inside the layer.
- * Re-declare the shape on `CustomAppConfig`, which Nuxt merges in.
- * Drop this once docus ships `seo.schema` in its own app.config defaults.
+ * (nuxt-content/docus#1433), but the only place that field is declared is
+ * `docus/app/types/index.d.ts` — a module, so its `declare module 'nuxt/schema'`
+ * block is a module augmentation that never applies here, because nothing pulls
+ * that file into the program. `nuxi typecheck` therefore fails inside the layer.
+ * Re-declaring the shape on `CustomAppConfig`, which Nuxt does merge in, is
+ * enough to unblock it.
+ *
+ * Fixed upstream in nuxt-content/docus#1437 — drop this once that ships.
  */
 interface DocusSeoOrganization {
   name: string
