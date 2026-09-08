@@ -166,9 +166,12 @@ export default defineAppConfig({
       },
     },
 
+    // `lg:ps-0` restores the pre-@nuxt/ui-4.11 width: 4.11 added `lg:ms-0` to
+    // the ContentToc root, which drops the left bleed but keeps the inline
+    // padding, indenting the links 24px into their own grid column.
     contentToc: {
       slots: {
-        root: 'hidden lg:block lg:sticky top-(--docs-header-offset) z-10 lg:bg-[initial] overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
+        root: 'hidden lg:block lg:sticky top-(--docs-header-offset) z-10 lg:bg-[initial] lg:ps-0 overflow-y-auto max-h-[calc(100vh-var(--docs-header-offset))]',
       },
     },
 
@@ -178,6 +181,16 @@ export default defineAppConfig({
       slots: {
         link: 'rounded-lg font-medium transition-all duration-200 ease-[cubic-bezier(0.25,0,0,1)]',
         linkLeadingIcon: 'size-5 text-muted group-data-[active]:text-primary',
+      },
+    },
+
+    // ── ContentSurround ──
+    // docus renders `UContentSurround` on every docs page. It stayed empty on
+    // @nuxt/content 3.12, but 3.16 resolves the neighbouring pages, so prev/next
+    // cards showed up at the bottom of every page. The site doesn't use them.
+    contentSurround: {
+      slots: {
+        root: 'hidden',
       },
     },
 
