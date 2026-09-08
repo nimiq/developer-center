@@ -5,13 +5,13 @@ import theme from '#build/ui/prose/code-group'
 <script setup lang="ts">
 import { useAppConfig, useState } from '#imports'
 import UCodeIcon from '@nuxt/ui/components/prose/CodeIcon.vue'
-import { useComponentUI } from '@nuxt/ui/composables/useComponentUI'
+import { useComponentProps } from '@nuxt/ui/composables/useComponentProps'
 import { tv } from '@nuxt/ui/utils/tv'
 import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger } from 'reka-ui'
 import { computed, onBeforeUpdate, onMounted, ref, watch } from 'vue'
 import { labelLanguageIcon, languageIcon, languageLabel } from '~/utils/code-language'
 
-const props = defineProps({
+const _props = defineProps({
   defaultValue: { type: String, required: false, default: '0' },
   sync: { type: String, required: false },
   class: { type: null, required: false },
@@ -21,9 +21,10 @@ const props = defineProps({
 const slots = defineSlots()
 const model = defineModel({ type: String })
 
+const props = useComponentProps('prose.codeGroup', _props)
+
 const appConfig = useAppConfig() as any
-const uiProp = useComponentUI('prose.codeGroup', props)
-const ui = computed(() => tv({ extend: tv(theme), ...appConfig.ui?.prose?.codeGroup || {} })() as unknown as Record<keyof typeof theme.slots, (opts?: { class?: any }) => string>)
+const ui = computed(() => tv({ extend: theme, ...appConfig.ui?.prose?.codeGroup || {} })() as unknown as Record<keyof typeof theme.slots, (opts?: { class?: any }) => string>)
 
 const rerenderCount = ref(1)
 
@@ -85,26 +86,26 @@ onBeforeUpdate(() => rerenderCount.value++)
 <template>
   <TabsRoot
     v-model="model"
-    :default-value="defaultValue"
+    :default-value="props.defaultValue"
     :unmount-on-hide="false"
-    :class="ui.root({ class: [uiProp?.root, props.class] })"
+    :class="ui.root({ class: [props.ui?.root, props.class] })"
   >
-    <TabsList :class="ui.list({ class: uiProp?.list })">
-      <TabsIndicator :class="ui.indicator({ class: uiProp?.indicator })" />
+    <TabsList :class="ui.list({ class: props.ui?.list })">
+      <TabsIndicator :class="ui.indicator({ class: props.ui?.indicator })" />
 
       <TabsTrigger
         v-for="(item, index) of items"
         :key="index"
         :value="String(index)"
-        :class="ui.trigger({ class: uiProp?.trigger })"
+        :class="ui.trigger({ class: props.ui?.trigger })"
       >
         <UCodeIcon
           :icon="item.icon"
           :filename="item.label"
-          :class="ui.triggerIcon({ class: uiProp?.triggerIcon })"
+          :class="ui.triggerIcon({ class: props.ui?.triggerIcon })"
         />
 
-        <span :class="ui.triggerLabel({ class: uiProp?.triggerLabel })">{{ item.label }}</span>
+        <span :class="ui.triggerLabel({ class: props.ui?.triggerLabel })">{{ item.label }}</span>
       </TabsTrigger>
     </TabsList>
 
