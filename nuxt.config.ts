@@ -51,14 +51,16 @@ function contentFileToRoute(filePath: string) {
   }
 
   if (normalized.endsWith('/index')) {
-    return `/${normalized.slice(0, -'/index'.length)}/`
+    return `/${normalized.slice(0, -'/index'.length)}`
   }
 
   return `/${normalized}`
 }
 
+const nonPrerenderedPrefixes = ['/rpc', '/web-client/reference']
+
 function shouldPrerenderRoute(route: string) {
-  return !route.startsWith('/rpc/') && !route.startsWith('/web-client/reference/')
+  return !nonPrerenderedPrefixes.some(prefix => route === prefix || route.startsWith(`${prefix}/`))
 }
 
 const contentRoutes = getFiles(contentRoot)
@@ -140,6 +142,14 @@ export default defineNuxtConfig({
       crawlLinks: true,
       failOnError: false,
       autoSubfolderIndex: false,
+      // Never prerender the trailing-slash form of a route. It emits
+      // <route>/index.html next to <route>.html, and both share a single
+      // <route>/_payload.json whose entry is keyed by kebabCase(route.path) —
+      // '-mini-apps-' vs '-mini-apps'. Only the form that wrote the payload
+      // hydrates; the other renders correct HTML and then swaps itself for the
+      // not-found page. With only <route>.html present, Cloudflare's
+      // auto-trailing-slash handling redirects '/route/' to '/route' instead.
+      ignore: [(route: string) => route.length > 1 && route.endsWith('/')],
       routes: prerenderRoutes,
     },
     routeRules: {

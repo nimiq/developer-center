@@ -7,7 +7,7 @@ navigation:
 
 # Migration Guide for Web Developers
 
-With our shift from Proof-of-Work (PoW) to Proof-of-Stake (PoS), the [Nimiq Web Client](/web-client/) has undergone significant updates. This comparison page is meticulously crafted to guide you through the enhancements implemented in the new version. We'll highlight critical changes in configuration, client instantiation, wallet creation, transaction handling, and more.
+With our shift from Proof-of-Work (PoW) to Proof-of-Stake (PoS), the [Nimiq Web Client](/web-client) has undergone significant updates. This comparison page is meticulously crafted to guide you through the enhancements implemented in the new version. We'll highlight critical changes in configuration, client instantiation, wallet creation, transaction handling, and more.
 
 ## Nimiq.Wallet
 

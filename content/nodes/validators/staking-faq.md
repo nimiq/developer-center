@@ -107,7 +107,7 @@ Currently, exchanges that support NIM do not offer direct staking functionality.
 
 ### How does the Nimiq Proof of Stake protocol ensure that all validators follow the rules?
 
-There is a system of rewards and punishments for validators. Validators are rewarded for validating transactions and producing blocks according to the consensus protocol, incentivizing good behavior. If a validator fails to follow the rules, they may face a punishment such as losing rewards or being temporarily “jailed” for up to 4 days, during which they cannot participate or earn rewards. This combination of rewards and punishments motivates validators to follow the rules. If you would like to learn more about validators, rewards, and punishments, you can refer to the [protocol documentation](/protocol/).
+There is a system of rewards and punishments for validators. Validators are rewarded for validating transactions and producing blocks according to the consensus protocol, incentivizing good behavior. If a validator fails to follow the rules, they may face a punishment such as losing rewards or being temporarily “jailed” for up to 4 days, during which they cannot participate or earn rewards. This combination of rewards and punishments motivates validators to follow the rules. If you would like to learn more about validators, rewards, and punishments, you can refer to the [protocol documentation](/protocol).
 
 ### Can I lose my funds when staking?
 

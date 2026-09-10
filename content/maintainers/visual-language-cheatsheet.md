@@ -9,7 +9,7 @@ layout: docs
 
 Use this page when you need a fast map of where the current Developer Center visual language comes from and which files own which parts of it.
 
-For architecture and repo structure, see [Developer Center 101](/maintainers/).
+For architecture and repo structure, see [Developer Center 101](/maintainers).
 
 For workflow and validation steps, see [Maintenance Workflow](/maintainers/maintenance-workflow).
 

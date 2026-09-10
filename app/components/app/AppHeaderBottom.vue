@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DOC_MODULES } from '../../utils/modules'
+import { DOC_MODULES, isModuleActive } from '../../utils/modules'
 
 const route = useRoute()
 
@@ -7,7 +7,7 @@ const items = computed(() => {
   return DOC_MODULES.map(module => ({
     label: module.label,
     to: module.to,
-    active: route.path === module.to.slice(0, -1) || route.path.startsWith(module.to),
+    active: isModuleActive(route.path, module.to),
   }))
 })
 </script>

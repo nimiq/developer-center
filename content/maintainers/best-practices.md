@@ -9,7 +9,7 @@ layout: docs
 
 Use this page when you already know what you need to change and want the repo conventions and guardrails in one place.
 
-For architecture, file map, and migration context, start with [Developer Center 101](/maintainers/).
+For architecture, file map, and migration context, start with [Developer Center 101](/maintainers).
 
 For page front matter and `_dir.yml` metadata, see [Front Matter Cheatsheet](/maintainers/front-matter-cheatsheet).
 

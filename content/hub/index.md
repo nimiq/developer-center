@@ -185,7 +185,7 @@ description: Choose your integration path and start building.
 ::
 
 ::callout{icon="i-tabler:arrows-exchange"}
-**Need Lower-Level Control?** — For advanced use cases requiring direct blockchain access, consider using the [Web Client](/web-client/) or [RPC API](/rpc/).
+**Need Lower-Level Control?** — For advanced use cases requiring direct blockchain access, consider using the [Web Client](/web-client) or [RPC API](/rpc).
 ::
 
 ## Hub Capabilities

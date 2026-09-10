@@ -304,7 +304,7 @@ Use [Maintenance Workflow](/maintainers/maintenance-workflow) for the operationa
 
 If you are new to the repo, start here:
 
-1. [Developer Center 101](/maintainers/)
+1. [Developer Center 101](/maintainers)
 2. [Front Matter Cheatsheet](/maintainers/front-matter-cheatsheet)
 3. [Navigation Map](/maintainers/navigation-map)
 4. [Best Practices](/maintainers/best-practices)

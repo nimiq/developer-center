@@ -90,7 +90,7 @@ Always obtain a current block height from a node and pass it as `validityStartHe
 
 ### signStaking()
 Sign one or multiple NIM staking transactions. You must prepare the raw transaction bytes yourself (for example with
-[`@nimiq/core`](/web-client/)) and hand them to the Hub for signing.
+[`@nimiq/core`](/web-client)) and hand them to the Hub for signing.
 
 ```ts
 interface SignStakingRequest extends BasicRequest {

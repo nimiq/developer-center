@@ -57,7 +57,7 @@ A light client stores micro block **headers only** — no block bodies, no trans
 - Past account state at a specific block height — only the current state is queryable
 - Full transaction history from genesis — queries are bounded by `sinceBlockHeight`
 
-If your application needs full historical data or block bodies, use the [RPC interface](/rpc/) with a full node or history node instead. See [Web Client vs RPC](./web-client-vs-rpc) for a comparison.
+If your application needs full historical data or block bodies, use the [RPC interface](/rpc) with a full node or history node instead. See [Web Client vs RPC](./web-client-vs-rpc) for a comparison.
 
 ## How it connects to the network
 

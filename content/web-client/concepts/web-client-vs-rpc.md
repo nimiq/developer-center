@@ -16,13 +16,13 @@ The Web Client is a light node — it joins the peer-to-peer network directly an
 
 ## Web Client
 
-The [Web Client](/web-client/) is a JavaScript library compiled from Rust to WebAssembly. It runs in browsers and Node.js, connects directly to the blockchain network, and requires no server infrastructure.
+The [Web Client](/web-client) is a JavaScript library compiled from Rust to WebAssembly. It runs in browsers and Node.js, connects directly to the blockchain network, and requires no server infrastructure.
 
 It supports account queries, transaction creation and broadcasting, wallet management, and real-time event subscriptions. See the [guides](/web-client/guides/query-the-blockchain) for what you can build with it.
 
 ## RPC
 
-[RPC](/rpc/) exposes a Nimiq node's full functionality over HTTP using the JSON-RPC specification. It works from any programming language that can send HTTP requests.
+[RPC](/rpc) exposes a Nimiq node's full functionality over HTTP using the JSON-RPC specification. It works from any programming language that can send HTTP requests.
 
 RPC provides everything the Web Client does, plus full node control: managing accounts, configuring node settings, retrieving detailed blockchain state, and managing validator operations.
 

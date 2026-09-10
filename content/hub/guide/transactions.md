@@ -224,13 +224,13 @@ await client.sendRawTransaction(signedTx.serializedTx)
 
 ::
 
-> **Note:** This example uses the [Nimiq Web Client](/web-client/) (`@nimiq/core`) to broadcast the signed transaction.
+> **Note:** This example uses the [Nimiq Web Client](/web-client) (`@nimiq/core`) to broadcast the signed transaction.
 
 ## signStaking()
 
 `signStaking()` is a low-level helper: you prepare one or more staking transactions, the Hub has the user approve them,
 and the Keyguard returns signed transactions. The method does **not** build transactions for you — use
-[`@nimiq/core`](/web-client/)'s staking helpers or the [RPC client](/rpc/) to assemble the unsigned transactions first.
+[`@nimiq/core`](/web-client)'s staking helpers or the [RPC client](/rpc) to assemble the unsigned transactions first.
 
 ```ts
 interface SignStakingRequest extends BasicRequest {
@@ -241,11 +241,11 @@ interface SignStakingRequest extends BasicRequest {
 ```
 
 Workflow:
-1. Build the desired staking transaction(s) with [`@nimiq/core`](/web-client/) (for example by creating an
+1. Build the desired staking transaction(s) with [`@nimiq/core`](/web-client) (for example by creating an
    `Nimiq.ExtendedTransaction`).
 2. Serialize each transaction to a `Uint8Array` via `.serialize()`.
 3. Pass the bytes to `hubApi.signStaking({ appName, transaction })`.
-4. Submit every signed transaction returned by the Hub to the network using your [JSON-RPC client](/rpc/).
+4. Submit every signed transaction returned by the Hub to the network using your [JSON-RPC client](/rpc).
 
 ::code-group
 
@@ -321,7 +321,7 @@ The prefix `\x16Nimiq Signed Message:\n` (23 bytes) and message length ensure th
 
 ### Verifying Signatures
 
-To verify a signed message using the [Nimiq Web Client](/web-client/):
+To verify a signed message using the [Nimiq Web Client](/web-client):
 
 ::code-group
 

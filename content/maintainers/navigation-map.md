@@ -65,12 +65,14 @@ Example:
 
 ```ts
 export const DOC_MODULES = [
-  { label: 'RPC', icon: 'i-custom-nimiq-rpc', to: '/rpc/', segment: 'rpc' },
-  { label: 'Web Client', icon: 'i-custom-nimiq-web-client', to: '/web-client/', segment: 'web-client' },
+  { label: 'RPC', icon: 'i-custom-nimiq-rpc', to: '/rpc', segment: 'rpc' },
+  { label: 'Web Client', icon: 'i-custom-nimiq-web-client', to: '/web-client', segment: 'web-client' },
 ]
 ```
 
 In that example, `RPC` would appear before `Web Client`.
+
+Write `to` without a trailing slash. `/rpc` and `/rpc/` are distinct routes to Nuxt, and only the canonical (slash-less) form is prerendered.
 
 ## Landing Page
 
@@ -99,7 +101,7 @@ Example landing-page card block:
 title: RPC
 description: Build full-stack applications with the JSON-RPC API
 icon: i-lucide-terminal
-to: /rpc/
+to: /rpc
 variant: outline
 ---
 ::::

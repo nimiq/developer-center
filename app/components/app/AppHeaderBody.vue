@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
-import { DOC_MODULES } from '../../utils/modules'
+import { DOC_MODULES, isModuleActive } from '../../utils/modules'
 
 const route = useRoute()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
@@ -8,7 +8,7 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 const moduleItems = computed(() => DOC_MODULES.map(module => ({
   label: module.label,
   to: module.to,
-  active: route.path === module.to.slice(0, -1) || route.path.startsWith(module.to),
+  active: isModuleActive(route.path, module.to),
 })))
 
 const currentModuleNavigation = computed<ContentNavigationItem[]>(() => {

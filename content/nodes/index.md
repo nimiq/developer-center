@@ -50,4 +50,4 @@ This hub helps you choose between being a validator or hosting your own RPC endp
 
 - [Web Client vs RPC Client](/web-client/web-client-vs-rpc) — decide when a hosted node is necessary.
 - [JSON-RPC Methods](../rpc/methods/index.md) — integrate your applications once the endpoint is live.
-- [Protocol documentation](/protocol/) — understand how validators and staking fit into Albatross.
+- [Protocol documentation](/protocol) — understand how validators and staking fit into Albatross.

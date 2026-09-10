@@ -17,7 +17,7 @@ The actions, timing, and activation method vary per upgrade. Track upcoming and 
 | Upgrade | Status | Who acts | Activation | What's changing |
 | --- | --- | --- | --- | --- |
 | [v2.0.0 hard fork](./upgrades/v2-0-0) | Completed | Validators, node operators | Stake signaling, 80% threshold | Security-relevant protocol improvements |
-| [PoS migration](/migration/) | Completed | Validators, node operators | Fixed block | Proof-of-Work to Proof-of-Stake consensus |
+| [PoS migration](/migration) | Completed | Validators, node operators | Fixed block | Proof-of-Work to Proof-of-Stake consensus |
 
 Status is one of **Proposed** (published, no action yet), **In progress** (actions are live), or **Completed** (activated; the chain runs the upgraded rules). Each upgrade page carries its own detailed status and, where relevant, a live readiness dashboard.
 
@@ -28,6 +28,6 @@ Status is one of **Proposed** (published, no action yet), **In progress** (actio
 
 ## Further reading
 
-- [Run a node](/nodes/): set up and operate a Nimiq node.
+- [Run a node](/nodes): set up and operate a Nimiq node.
 - [Becoming a validator](/nodes/validators/becoming-a-validator): validator setup.
-- [Protocol](/protocol/): how the protocol works, including consensus and block production.
+- [Protocol](/protocol): how the protocol works, including consensus and block production.

@@ -54,7 +54,7 @@ The skill also includes local reference files with method signatures, supported 
 
 ## Reference
 
-- [Mini Apps Overview](/mini-apps/)
+- [Mini Apps Overview](/mini-apps)
 - [Build Your First Mini App](/mini-apps/tutorials/mini-app-tutorial)
 - [Using EVM Tokens](/mini-apps/features/evm-tokens)
 - [Nimiq Provider API](/mini-apps/api-reference/nimiq-provider)

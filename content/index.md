@@ -9,7 +9,7 @@ navigation: false
 id: mini-apps-launch
 color: success
 title: "Mini Apps Framework is live! Build inside Nimiq Pay"
-to: /mini-apps/
+to: /mini-apps
 ---
 ::
 
@@ -32,7 +32,7 @@ title: Choose your path
     title: Web Client
     description: Build web and mobile apps that interact with Nimiq directly in the browser. Fully decentralized — no server required
     icon: i-lucide-globe
-    to: /web-client/
+    to: /web-client
     variant: outline
     ---
     ::::
@@ -42,7 +42,7 @@ title: Choose your path
     title: Hub API
     description: Integrate wallet features into your app. Sign transactions, manage accounts, and access the Nimiq ecosystem
     icon: i-lucide-wallet
-    to: /hub/
+    to: /hub
     variant: outline
     ---
     ::::
@@ -52,7 +52,7 @@ title: Choose your path
     title: Mini Apps
     description: Build apps that run inside Nimiq Pay with Nimiq and Ethereum wallet access
     icon: i-lucide-layout-grid
-    to: /mini-apps/
+    to: /mini-apps
     variant: outline
     ---
     ::::
@@ -62,7 +62,7 @@ title: Choose your path
     title: RPC
     description: Build full-stack applications with the JSON-RPC API
     icon: i-lucide-terminal
-    to: /rpc/
+    to: /rpc
     variant: outline
     ---
     ::::
@@ -72,7 +72,7 @@ title: Choose your path
     title: Nodes & Validators
     description: Run a node, stake and contribute proofs
     icon: i-lucide-server
-    to: /nodes/
+    to: /nodes
     variant: outline
     ---
     ::::
@@ -82,7 +82,7 @@ title: Choose your path
     title: Protocol
     description: Learn about the Albatross protocol
     icon: i-lucide-book-open
-    to: /protocol/
+    to: /protocol
     variant: outline
     ---
     ::::
@@ -113,7 +113,7 @@ description: Start experimenting with Nimiq right away.
     title: RPC Quick Start
     description: Explore docs and run JSON-RPC from your environment
     icon: i-lucide-rocket
-    to: /rpc/
+    to: /rpc
     variant: outline
     spotlight: true
     ---
@@ -223,9 +223,9 @@ title: Everything you need to build with Nimiq
     icon: i-lucide-wrench
     variant: outline
     ---
-    - [Hub API](/hub/)
-    - [AI Integrations](/ai/)
-    - [Nimiq Utils](/nimiq-utils/)
+    - [Hub API](/hub)
+    - [AI Integrations](/ai)
+    - [Nimiq Utils](/nimiq-utils)
     - [Blockchain Explorers](/rpc/block-explorers)
     ::::
 
@@ -271,7 +271,7 @@ title: Everything you need to build with Nimiq
     icon: i-lucide-book-open
     variant: outline
     ---
-    - [Protocol Docs](/protocol/)
+    - [Protocol Docs](/protocol)
     - [Core Implementation](https://github.com/nimiq/core-rs-albatross)
     ::::
 
@@ -284,7 +284,7 @@ title: Everything you need to build with Nimiq
     - [Community Forum](https://forum.nimiq.community/)
     - [Telegram](https://t.me/nimiq)
     - [Awesome Nimiq](https://github.com/nimiq/awesome)
-    - [AI Integrations](/ai/)
+    - [AI Integrations](/ai)
     ::::
 
     ::::u-page-card
@@ -293,7 +293,7 @@ title: Everything you need to build with Nimiq
     icon: i-lucide-arrow-right-left
     variant: outline
     ---
-    - [Migration Overview](/migration/)
+    - [Migration Overview](/migration)
     - [For Integrators](/migration/migration-integrators)
     - [JSON-RPC Migration](/migration/migration-json-rpc)
     - [Technical Details](/migration/migration-technical-details)
