@@ -10,7 +10,7 @@ description: Subscribe to new blocks, track transactions for specific addresses,
 
 The web client can notify your application when things happen on the blockchain — new blocks, incoming transactions, peer changes, and consensus state transitions. All listeners are asynchronous and return a numeric handle you can use to unsubscribe later.
 
-The examples below assume you have a connected `client` instance. See [Getting Started](../getting-started) if you haven't set one up yet.
+The examples below assume you have a connected `client` instance. See [Getting Started](/web-client/getting-started) if you haven't set one up yet.
 
 ## Listen for new blocks
 
@@ -51,7 +51,7 @@ const handle = await client.addConsensusChangedListener((state) => {
 })
 ```
 
-See [How the Light Client Works](../concepts/how-the-light-client-works#consensus) for what "consensus established" means for a light client.
+See [How the Light Client Works](/web-client/concepts/how-the-light-client-works#consensus) for what "consensus established" means for a light client.
 
 ## Track peer changes
 
@@ -78,6 +78,6 @@ await client.removeListener(handle)
 
 ## Next steps
 
-- [Create and Manage Wallets](./wallets) — generate keys to start signing transactions
-- [Send Transactions](./send-transactions) — build and broadcast NIM transfers
-- [API Reference](../reference/) — full callback signatures and return types
+- [Create and Manage Wallets](/web-client/guides/wallets) — generate keys to start signing transactions
+- [Send Transactions](/web-client/guides/send-transactions) — build and broadcast NIM transfers
+- [API Reference](/web-client/reference) — full callback signatures and return types

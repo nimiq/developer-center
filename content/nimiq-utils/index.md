@@ -153,7 +153,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Address Book
-    to: ./address-book
+    to: /nimiq-utils/address-book
     variant: outline
     ---
     ::::
@@ -161,7 +161,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Albatross Policy
-    to: ./albatross-policy
+    to: /nimiq-utils/albatross-policy
     variant: outline
     ---
     ::::
@@ -169,7 +169,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Browser Detection
-    to: ./browser-detection
+    to: /nimiq-utils/browser-detection
     variant: outline
     ---
     ::::
@@ -177,7 +177,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Clipboard
-    to: ./clipboard
+    to: /nimiq-utils/clipboard
     variant: outline
     ---
     ::::
@@ -185,7 +185,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Cookie Utilities
-    to: ./cookie-utilities
+    to: /nimiq-utils/cookie-utilities
     variant: outline
     ---
     ::::
@@ -193,7 +193,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Currency Info
-    to: ./currency-info
+    to: /nimiq-utils/currency-info
     variant: outline
     ---
     ::::
@@ -201,7 +201,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Fiat API
-    to: ./fiat-api
+    to: /nimiq-utils/fiat-api
     variant: outline
     ---
     ::::
@@ -209,7 +209,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Formattable Number
-    to: ./formattable-number
+    to: /nimiq-utils/formattable-number
     variant: outline
     ---
     ::::
@@ -217,7 +217,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Installation
-    to: ./installation
+    to: /nimiq-utils/installation
     variant: outline
     ---
     ::::
@@ -225,7 +225,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Rate Limit Scheduler
-    to: ./rate-limit-scheduler
+    to: /nimiq-utils/rate-limit-scheduler
     variant: outline
     ---
     ::::
@@ -233,7 +233,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Request Link Encoding
-    to: ./request-link-encoding
+    to: /nimiq-utils/request-link-encoding
     variant: outline
     ---
     ::::
@@ -241,7 +241,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Staking Rewards Calculator
-    to: ./staking-rewards-calculator
+    to: /nimiq-utils/staking-rewards-calculator
     variant: outline
     ---
     ::::
@@ -249,7 +249,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Supply Calculator
-    to: ./supply-calculator
+    to: /nimiq-utils/supply-calculator
     variant: outline
     ---
     ::::
@@ -257,7 +257,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Tweenable
-    to: ./tweenable
+    to: /nimiq-utils/tweenable
     variant: outline
     ---
     ::::
@@ -265,7 +265,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: UTF-8 Tools
-    to: ./utf8-tools
+    to: /nimiq-utils/utf8-tools
     variant: outline
     ---
     ::::
@@ -273,7 +273,7 @@ description: Browse all available utility modules by category
     ::::u-page-card
     ---
     title: Validation Utils
-    to: ./validation-utils
+    to: /nimiq-utils/validation-utils
     variant: outline
     ---
     ::::

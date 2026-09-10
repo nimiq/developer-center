@@ -140,7 +140,7 @@ description: The Hub provides a unified interface for all Nimiq wallet operation
   :::
 ::
 
-::callout{icon="i-tabler:bulb" to="./guide/concepts"}
+::callout{icon="i-tabler:bulb" to="/hub/guide/concepts"}
 **How the Hub Architecture Works** — Learn about the Hub-Keyguard relationship, request behaviors, and security model.
 ::
 
@@ -157,7 +157,7 @@ description: Choose your integration path and start building.
     title: Getting Started Guide
     description: Install the Hub API and make your first request in 5 minutes
     icon: i-tabler:rocket
-    to: ./getting-started
+    to: /hub/getting-started
     variant: outline
     ---
     ::::
@@ -167,7 +167,7 @@ description: Choose your integration path and start building.
     title: API Reference
     description: Complete documentation for all Hub methods and types
     icon: i-tabler:book-2
-    to: ./api-reference
+    to: /hub/api-reference
     variant: outline
     ---
     ::::

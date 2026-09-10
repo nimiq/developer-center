@@ -13,7 +13,7 @@ Nimiq Pay injects the user's selected language into every mini app before any sc
 
 Outside Nimiq Pay (e.g. during local development in a browser), `window.nimiqPay` is `undefined`. Always use optional chaining when reading it.
 
-For the full API details, see the [User Language section](/mini-apps/#user-language) on the overview page.
+For the full API details, see the [User Language section](/mini-apps#user-language) on the overview page.
 
 ## Reading the value
 

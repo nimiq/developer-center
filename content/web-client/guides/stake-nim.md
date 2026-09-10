@@ -10,7 +10,7 @@ description: Create stakers, delegate to validators, add and remove stake, and m
 
 Nimiq uses Proof-of-Stake consensus. You can participate by staking your NIM — delegating it to a validator that produces blocks on your behalf. This guide covers creating a staker, managing stake, and changing delegation, all using the web client.
 
-You'll need a connected client with consensus and a funded keypair. See [Getting Started](../getting-started) and [Create and Manage Wallets](./wallets) if you don't have these.
+You'll need a connected client with consensus and a funded keypair. See [Getting Started](/web-client/getting-started) and [Create and Manage Wallets](/web-client/guides/wallets) if you don't have these.
 
 The examples below assume you have a connected `client`, a funded `keyPair`, and a `sender` address. All values and fees are in luna (1 NIM = 100,000 luna). Each example also uses `validityStartHeight` and `networkId` from the client.
 
@@ -143,6 +143,6 @@ console.log(validator.balance, validator.rewardAddress)
 
 ## Next steps
 
-- [Query the Blockchain](./query-the-blockchain) — check balances and staker data
-- [Listen for Events](./listen-for-events) — monitor transactions related to your staker
-- [API Reference](../reference/) — full TransactionBuilder staking method signatures
+- [Query the Blockchain](/web-client/guides/query-the-blockchain) — check balances and staker data
+- [Listen for Events](/web-client/guides/listen-for-events) — monitor transactions related to your staker
+- [API Reference](/web-client/reference) — full TransactionBuilder staking method signatures

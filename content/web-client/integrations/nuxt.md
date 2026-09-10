@@ -153,4 +153,4 @@ await client.waitForConsensusEstablished()
 
 ## Next steps
 
-Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Next.js](./NextJS), [ESM](./ESM), or [CommonJS](./CommonJS).
+Once your client is connected, see the [guides](/web-client/guides/query-the-blockchain) to start building. For other integration options, see [Vite](/web-client/integrations/vite), [Next.js](/web-client/integrations/nextjs), [ESM](/web-client/integrations/esm), or [CommonJS](/web-client/integrations/commonjs).

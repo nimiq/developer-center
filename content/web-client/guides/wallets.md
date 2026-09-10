@@ -136,6 +136,6 @@ const valid = keyPair.publicKey.verify(signature, data) // true
 
 ## Next steps
 
-- [Send Transactions](./send-transactions) — use your keypair to sign and broadcast NIM transfers
-- [Stake NIM](./stake-nim) — delegate your NIM to a validator
-- [API Reference](../reference/) — full class documentation for KeyPair, Address, MnemonicUtils, and more
+- [Send Transactions](/web-client/guides/send-transactions) — use your keypair to sign and broadcast NIM transfers
+- [Stake NIM](/web-client/guides/stake-nim) — delegate your NIM to a validator
+- [API Reference](/web-client/reference) — full class documentation for KeyPair, Address, MnemonicUtils, and more

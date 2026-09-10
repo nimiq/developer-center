@@ -1,12 +1,12 @@
 # Activation Guide
 
-This guide is part of the Nimiq PoW to PoS migration process and is intended for users who have already registered as validators during the Validator Registration Phase by **October 6th, 2024**. If you missed the registration deadline, you can still participate in the activation as an observer by following [this guide](node-operators).
+This guide is part of the Nimiq PoW to PoS migration process and is intended for users who have already registered as validators during the Validator Registration Phase by **October 6th, 2024**. If you missed the registration deadline, you can still participate in the activation as an observer by following [this guide](/archive/node-operators).
 
 ## Validator Activation Tool
 
 This guide covers **Phase 3: Validator Activation**, which starts on **November 19th**. The Validator Activation Tool facilitates the transition from the PoW chain to the PoS chain. We recommend running the tool before the activation window begins to allow time for database synchronization, as this process can take some time.
 
-The tool will also automatically send online transactions every hour, signaling which validators are ready for the transition. Team Nimiq will fund all registered validator addresses with 100 Lunas before the activation window to cover these transactions. For more detailed information, click [here](../migration/migration-technical-details#activation-phase).
+The tool will also automatically send online transactions every hour, signaling which validators are ready for the transition. Team Nimiq will fund all registered validator addresses with 100 Lunas before the activation window to cover these transactions. For more detailed information, click [here](/migration/migration-technical-details#activation-phase).
 
 | **Phase** | **Start Date** | **End Date** |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ The tool will also automatically send online transactions every hour, signaling 
 The steps outlined in this guide are only applicable for the **Validator Activation Phase**. However, you can prepare by following these steps before that date.
 
 ### Prerequisites
-- **Validator Registration**: You must have already [registered as a validator](validator-registration)
+- **Validator Registration**: You must have already [registered as a validator](/archive/validator-registration)
 - **PoW Full Node**: You need access to a fully synchronized Nimiq PoW full node with RPC access enabled. If you are not already running a full node, follow the instructions in the [core-js repository](https://github.com/nimiq/core-js) to set it up and sync with the main network
     - If you are running a PoW client, ensure it is fully synced and configured properly
     - Use this [sample configuration file](https://github.com/nimiq/core-js/blob/master/clients/nodejs/sample.conf) to enable RPC access on your PoW client
@@ -71,8 +71,8 @@ Ensure your PoS client is [properly configured](#step-1-add-validator-data-into-
 
     Where `pow-rpc` is the **PoW client RPC url**. For example: `http://127.0.0.1:8648`
 
-The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the activation tool will automatically start the PoS client. Read more about the activation process [here](../migration/migration-technical-details#activation-phase).
+The tool will monitor validator readiness by tracking readiness transactions sent by all the registered validators within 24 hour activation windows. Once 80% of the total stake has signaled readiness, the activation tool will automatically start the PoS client. Read more about the activation process [here](/migration/migration-technical-details#activation-phase).
 
 ### PoS Activation
 
-On **November 19**, the network will initiate the transition from PoW to PoS. Once 80% of the total stake signals their readiness, PoS chain starts with the [candidate block](../migration/migration-technical-details) as the genesis block. The transition block will be generated, and validators will officially start securing the PoS network. Ensure your validator is ready and synced before this date to avoid delays.
+On **November 19**, the network will initiate the transition from PoW to PoS. Once 80% of the total stake signals their readiness, PoS chain starts with the [candidate block](/migration/migration-technical-details) as the genesis block. The transition block will be generated, and validators will officially start securing the PoS network. Ensure your validator is ready and synced before this date to avoid delays.

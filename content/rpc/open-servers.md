@@ -19,7 +19,7 @@ Public Nimiq RPC servers available for testing, development, and prototyping.
 ::callout{icon="i-lucide-users" color="info"}
 **Share Your Node with the Community**
 
-Set up your own Nimiq node and consider making it available as an open RPC server to help other developers in the ecosystem. [Setup Guide](../nodes/validators/becoming-a-validator)
+Set up your own Nimiq node and consider making it available as an open RPC server to help other developers in the ecosystem. [Setup Guide](/nodes/validators/becoming-a-validator)
 ::
 
 ## General considerations for open servers

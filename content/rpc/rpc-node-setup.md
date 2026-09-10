@@ -101,7 +101,7 @@ A successful response looks like:
     curl http://127.0.0.1:8648 -u rpc-user:super-secret -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","method":"getPeerCount","params":[],"id":1}'
     ```
 
-- Repeat with other methods as desired. Browse the full list at [RPC Methods](./methods/index.md).
+- Repeat with other methods as desired. Browse the full list at [RPC Methods](/rpc/methods).
 
 ## Example RPC calls
 

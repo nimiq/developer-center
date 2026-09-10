@@ -11,12 +11,12 @@ Direct calls using curl, wget, or any HTTP client - no dependencies required.
 
 Perfect for quick testing, shell scripts, or integrating with any programming language that supports HTTP requests.
 
-For better UX, we recommend you to use [ARPL](./arpl.md), a tool to interact with Nimiq RPC servers from the command line.
+For better UX, we recommend you to use [ARPL](/rpc/integrations/arpl), a tool to interact with Nimiq RPC servers from the command line.
 
 ::callout{icon="i-tabler-info-circle" color="info"}
 **Using Open RPC Servers**
 
-The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](../open-servers).
+The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](/rpc/open-servers).
 ::
 
 ## Request

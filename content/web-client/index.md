@@ -18,7 +18,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   title: Query the Blockchain
   description: Fetch account balances, look up blocks, and check transaction status — all from the browser.
   icon: i-nimiq:nodes
-  to: ./guides/query-the-blockchain
+  to: /web-client/guides/query-the-blockchain
   variant: outline
   ---
   :::
@@ -28,7 +28,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   title: Listen for Events
   description: Subscribe to new blocks, track transactions for an address, and react to consensus changes in real time.
   icon: i-nimiq:bolt
-  to: ./guides/listen-for-events
+  to: /web-client/guides/listen-for-events
   variant: outline
   ---
   :::
@@ -38,7 +38,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   title: Create and Manage Wallets
   description: Generate keypairs, derive addresses from mnemonics, and manage HD wallets entirely client-side.
   icon: i-tabler:wallet
-  to: ./guides/wallets
+  to: /web-client/guides/wallets
   variant: outline
   ---
   :::
@@ -48,7 +48,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   title: Send Transactions
   description: Build, sign, and broadcast NIM transfers with optional data payloads.
   icon: i-tabler:send
-  to: ./guides/send-transactions
+  to: /web-client/guides/send-transactions
   variant: outline
   ---
   :::
@@ -58,7 +58,7 @@ The Nimiq Web Client is a WebAssembly-powered light client packaged as an npm mo
   title: Stake NIM
   description: Create stakers, delegate to validators, and manage your stake directly from your application.
   icon: i-nimiq:verified
-  to: ./guides/stake-nim
+  to: /web-client/guides/stake-nim
   variant: outline
   ---
   :::
@@ -115,18 +115,18 @@ await client.waitForConsensusEstablished()
 
 ## Where to go next
 
-::callout{icon="i-tabler:rocket" to="./getting-started"}
+::callout{icon="i-tabler:rocket" to="/web-client/getting-started"}
 **New to the Web Client?** — Set up your environment, pick a network, and get test funds in the Getting Started guide.
 ::
 
-::callout{icon="i-tabler:code" to="./integrations/vite"}
-**Using a framework?** — Follow the integration guide for [Vite](./integrations/vite), [Nuxt](./integrations/nuxt), [Next.js](./integrations/NextJS), or [plain ESM](./integrations/ESM).
+::callout{icon="i-tabler:code" to="/web-client/integrations/vite"}
+**Using a framework?** — Follow the integration guide for [Vite](/web-client/integrations/vite), [Nuxt](/web-client/integrations/nuxt), [Next.js](/web-client/integrations/nextjs), or [plain ESM](/web-client/integrations/esm).
 ::
 
-::callout{icon="i-tabler:book" to="./concepts/browser-vs-server"}
-**Want to understand the fundamentals?** — Learn how the light client works, or compare the [Web Client vs RPC](./concepts/web-client-vs-rpc) approach.
+::callout{icon="i-tabler:book" to="/web-client/concepts/browser-vs-server"}
+**Want to understand the fundamentals?** — Learn how the light client works, or compare the [Web Client vs RPC](/web-client/concepts/web-client-vs-rpc) approach.
 ::
 
-::callout{icon="i-tabler:file-search" to="./reference/"}
+::callout{icon="i-tabler:file-search" to="/web-client/reference"}
 **Looking for a specific method?** — Browse the full API Reference.
 ::

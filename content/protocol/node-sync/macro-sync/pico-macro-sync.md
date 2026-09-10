@@ -150,6 +150,6 @@ Pico Macro Sync emits structured events for different synchronization scenarios:
 
 ## Transition to Live Sync
 
-When the Pico Macro Sync emits `MacroSyncReturn::Good` for sufficient peers, the consensus layer initiates the transition to **Live Sync**. The node transitions to [Block Live Sync](../live-sync/block-live-sync) to follow new micro blocks in real time.
+When the Pico Macro Sync emits `MacroSyncReturn::Good` for sufficient peers, the consensus layer initiates the transition to **Live Sync**. The node transitions to [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync) to follow new micro blocks in real time.
 
 This two-phase approach (macro sync → live sync) ensures nodes can quickly reach consensus state then maintain real-time synchronization with minimal overhead.

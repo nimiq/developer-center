@@ -171,7 +171,7 @@ Built with Vue, viem, and wagmi, it demonstrates wallet connection via EIP-6963,
 
 ## Other chains and tokens
 
-The same pattern applies to any EVM-compatible chain in the [supported list](/mini-apps/#supported-networks) and any ERC-20 token on those chains. Swap the chain ID and contract address:
+The same pattern applies to any EVM-compatible chain in the [supported list](/mini-apps#supported-networks) and any ERC-20 token on those chains. Swap the chain ID and contract address:
 
 | Chain | Chain ID | USDT address |
 | --- | --- | --- |

@@ -28,7 +28,7 @@ We have the following node types:
 
 ### JSON-RPC Interface
 
-The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. The full specification is available here: [PoS JSON-RPC Specification](/rpc/methods/).
+The JSON-RPC interface provides methods for generating addresses, creating/sending transactions, retrieving balances and much more. The full specification is available here: [PoS JSON-RPC Specification](/rpc/methods).
 
 ### Key JSON-RPC Methods
 

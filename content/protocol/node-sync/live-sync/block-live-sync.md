@@ -14,7 +14,7 @@ Block Live Sync is used by:
 - **History nodes** – Download full block bodies (including transactions)
 - **Light and Pico nodes** – Download block headers only
 
-Full nodes do not use Block Live Sync. Instead, they transition to **[State Live Sync](state-live-sync)** to synchronize both blocks and complete account state simultaneously.
+Full nodes do not use Block Live Sync. Instead, they transition to **[State Live Sync](/protocol/node-sync/live-sync/state-live-sync)** to synchronize both blocks and complete account state simultaneously.
 
 ## **Key Characteristics**
 

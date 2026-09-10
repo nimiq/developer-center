@@ -227,8 +227,8 @@ mobile-friendly full-page flows and remember to call `hubApi.checkRedirectRespon
 
 ## Next Steps
 
-- [Getting Started](./getting-started)
-- [Integration Guide](./guide/integration)
-- [Transaction Methods](./guide/transactions)
-- [Cashlink and Advanced Features](./guide/advanced)
+- [Getting Started](/hub/getting-started)
+- [Integration Guide](/hub/guide/integration)
+- [Transaction Methods](/hub/guide/transactions)
+- [Cashlink and Advanced Features](/hub/guide/advanced)
 - Type definitions in `@nimiq/hub-api/types`

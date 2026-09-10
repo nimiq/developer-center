@@ -211,10 +211,10 @@ title: Everything you need to build with Nimiq
     variant: outline
     ---
     - [Getting Started](/web-client/getting-started)
-    - [Quick Install](/web-client/#start-with-4-lines-of-code)
+    - [Quick Install](/web-client#start-with-4-lines-of-code)
     - [Vite Integration](/web-client/integrations/vite)
     - [Interactive Tutorial](https://nimiq.guide)
-    - [Web Client vs RPC](/web-client/web-client-vs-rpc)
+    - [Web Client vs RPC](/web-client/concepts/web-client-vs-rpc)
     ::::
 
     ::::u-page-card
@@ -226,7 +226,7 @@ title: Everything you need to build with Nimiq
     - [Hub API](/hub)
     - [AI Integrations](/ai)
     - [Nimiq Utils](/nimiq-utils)
-    - [Blockchain Explorers](/rpc/block-explorers)
+    - [Blockchain Explorers](/rpc/blockchain-explorers)
     ::::
 
     ::::u-page-card
@@ -247,10 +247,10 @@ title: Everything you need to build with Nimiq
     icon: i-lucide-server
     variant: outline
     ---
-    - [RPC Methods](/rpc/methods/)
+    - [RPC Methods](/rpc/methods)
     - [TypeScript Client](/rpc/integrations/typescript)
     - [ARPL CLI Tool](https://github.com/sisou/arpl)
-    - [Blockchain Explorers](/rpc/block-explorers)
+    - [Blockchain Explorers](/rpc/blockchain-explorers)
     ::::
 
     ::::u-page-card

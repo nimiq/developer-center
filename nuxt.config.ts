@@ -140,7 +140,7 @@ export default defineNuxtConfig({
     preset: 'cloudflare_module',
     prerender: {
       crawlLinks: true,
-      failOnError: false,
+      failOnError: true,
       autoSubfolderIndex: false,
       // Never prerender the trailing-slash form of a route. It emits
       // <route>/index.html next to <route>.html, and both share a single

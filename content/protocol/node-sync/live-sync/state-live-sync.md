@@ -9,7 +9,7 @@ navigation:
 
 State Live Sync is a comprehensive real-time synchronization mechanism designed exclusively for full blockchain instances. The State Live Sync simultaneously maintains both the latest blockchain state and complete account data through parallel block and state synchronization.
 
-Every other node type does not use State Live Sync. Instead, they transition to **[Block Live Sync](block-live-sync)** to synchronize both blocks and complete account state simultaneously.
+Every other node type does not use State Live Sync. Instead, they transition to **[Block Live Sync](/protocol/node-sync/live-sync/block-live-sync)** to synchronize both blocks and complete account state simultaneously.
 
 ## Key Characteristics
 

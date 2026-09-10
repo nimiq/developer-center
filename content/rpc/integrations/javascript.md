@@ -14,7 +14,7 @@ Use standard JavaScript APIs for RPC calls without additional dependencies.
 ::callout{icon="i-tabler-info-circle" color="info"}
 **Using Open RPC Servers**
 
-The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](../open-servers).
+The examples below use `rpc.nimiqwatch.com`, an open RPC server for testing and development. [Learn more about available open servers and their limitations](/rpc/open-servers).
 ::
 
 ---

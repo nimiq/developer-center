@@ -141,7 +141,7 @@ A database where transactions are kept on hold until a validator includes them i
 
 ## Merkle Tree
 
-A tree data structure where each leaf node is a hash of a data block and each non-leaf node is a hash of its children. Merkle trees are used in Nimiq to efficiently verify data integrity and provide compact proofs that specific data is included in a larger dataset. Nimiq uses [Merkle Mountain Ranges](storage/merkle-trees#merkle-mountain-range) (MMRs) for transaction history and [Merkle Radix](storage/merkle-trees) tries for account state management.
+A tree data structure where each leaf node is a hash of a data block and each non-leaf node is a hash of its children. Merkle trees are used in Nimiq to efficiently verify data integrity and provide compact proofs that specific data is included in a larger dataset. Nimiq uses [Merkle Mountain Ranges](/protocol/storage/merkle-trees#merkle-mountain-range) (MMRs) for transaction history and [Merkle Radix](/protocol/storage/merkle-trees) tries for account state management.
 
 ## Micro Block
 

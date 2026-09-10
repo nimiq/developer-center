@@ -20,7 +20,7 @@ description: Start experimenting with the Nimiq RPC API.
     title: Browse RPC Methods
     description: Explore all available RPC methods and try them directly in the browser
     icon: i-tabler:book-2
-    to: ./methods/
+    to: /rpc/methods
     variant: outline
     ---
     ::::
@@ -30,7 +30,7 @@ description: Start experimenting with the Nimiq RPC API.
     title: Open RPC Servers
     description: Use public servers for testing and development
     icon: i-tabler:server
-    to: ./open-servers
+    to: /rpc/open-servers
     variant: outline
     ---
     ::::
@@ -129,7 +129,7 @@ description: Discover the full range of RPC methods available for interacting wi
 | **Validators** | `getValidators`, `getValidatorByAddress`, `getSlotAt` | Access validator and staking data |
 | **Network** | `getNetworkInfo`, `getEpochNumber` | Monitor network status and consensus |
 
-::u-button{to="./methods/" label="View All RPC Methods" trailing-icon="i-tabler:arrow-up-right" color="primary" class="rounded-full"}
+::u-button{to="/rpc/methods" label="View All RPC Methods" trailing-icon="i-tabler:arrow-up-right" color="primary" class="rounded-full"}
 ::
 
 ::

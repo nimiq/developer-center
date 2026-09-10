@@ -47,4 +47,4 @@ main()
 
 ## Next steps
 
-Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Nuxt](./nuxt), [Next.js](./NextJS), or [ESM](./ESM).
+Once your client is connected, see the [guides](/web-client/guides/query-the-blockchain) to start building. For other integration options, see [Vite](/web-client/integrations/vite), [Nuxt](/web-client/integrations/nuxt), [Next.js](/web-client/integrations/nextjs), or [ESM](/web-client/integrations/esm).

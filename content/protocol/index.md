@@ -15,7 +15,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
   title: Blockchain Structure
   description: Everything about micro and macro blocks
   icon: i-nimiq:cubes
-  to: ../protocol/consensus/block-format
+  to: /protocol/consensus/block-format
   variant: outline
   ---
   ::::
@@ -25,7 +25,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
   title: Staking Contract
   description: The repository of data for validators, stakers, and staking
   icon: i-tabler:settings
-  to: ../protocol/validators/staking-contract
+  to: /protocol/validators/staking-contract
   variant: outline
   ---
   ::::
@@ -35,7 +35,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
   title: Validators
   description: Explore the pillars of Albatross PoS
   icon: i-nimiq:verified
-  to: ../protocol/validators/validators
+  to: /protocol/validators/validators
   variant: outline
   ---
   ::::
@@ -45,7 +45,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
   title: Slots
   description: Learn how slots are assigned to validators
   icon: i-tabler:settings
-  to: ../protocol/validators/slots
+  to: /protocol/validators/slots
   variant: outline
   ---
   ::::
@@ -55,7 +55,7 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
   title: Stakers
   description: Learn about delegation and staking participation
   icon: i-lucide-users
-  to: ../protocol/validators/stakers
+  to: /protocol/validators/stakers
   variant: outline
   ---
   ::::
@@ -119,7 +119,7 @@ The Nimiq PoS blockchain is organized into [epochs and batches](/protocol/consen
 
 ### Micro Blocks
 
-Produced by selected validators, [micro blocks](/protocol/consensus/block-format#micro-blocks) contain user transactions. A [skip block](validators/skip-blocks) may replace a delayed micro block, signed by over two-thirds of validators in the current epoch.
+Produced by selected validators, [micro blocks](/protocol/consensus/block-format#micro-blocks) contain user transactions. A [skip block](/protocol/validators/skip-blocks) may replace a delayed micro block, signed by over two-thirds of validators in the current epoch.
 
 ### Macro Blocks
 
@@ -189,9 +189,9 @@ Ready to dive deeper into the Nimiq protocol? Explore these key areas:
 - **[Block Format](/protocol/consensus/block-format)**: Understand how blocks are structured
 - **[Validators](/protocol/validators/validators)**: Learn about becoming a validator
 - **[Staking Contract](/protocol/validators/staking-contract)**: The central hub for validator and staker data
-- **[Network Sync](/protocol/node-sync/)**: Learn about different synchronization methods
+- **[Network Sync](/protocol/node-sync)**: Learn about different synchronization methods
 
 ## Technical Resources
 
-- **[RPC](/rpc/index)**: Integrate with the blockchain
-- **[Web Client](/web-client/index)**: Build browser-based applications
+- **[RPC](/rpc)**: Integrate with the blockchain
+- **[Web Client](/web-client)**: Build browser-based applications

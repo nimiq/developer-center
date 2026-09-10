@@ -8,9 +8,9 @@ description: Fetch account balances, look up blocks, check transaction status, a
 
 # Query the Blockchain
 
-Once your client has [established consensus](../getting-started), you can query the blockchain for account data, blocks, and transactions. All operations in this guide are read-only — no keys or signing required.
+Once your client has [established consensus](/web-client/getting-started), you can query the blockchain for account data, blocks, and transactions. All operations in this guide are read-only — no keys or signing required.
 
-The examples below assume you have a connected `client` instance. See [Getting Started](../getting-started) if you haven't set one up yet.
+The examples below assume you have a connected `client` instance. See [Getting Started](/web-client/getting-started) if you haven't set one up yet.
 
 ## Fetch an account balance
 
@@ -52,7 +52,7 @@ const block = await client.getHeadBlock()
 console.log(block.height, block.hash, block.timestamp)
 ```
 
-You can also fetch a specific block by hash or height, but only if the client has it in local memory. Light clients do not store historical blocks — see [How the Light Client Works](../concepts/how-the-light-client-works) for details.
+You can also fetch a specific block by hash or height, but only if the client has it in local memory. Light clients do not store historical blocks — see [How the Light Client Works](/web-client/concepts/how-the-light-client-works) for details.
 
 ```js
 const block = await client.getBlockAt(12345) // throws if not available locally
@@ -116,6 +116,6 @@ const stakers = await client.getStakers([address1, address2])
 
 ## Next steps
 
-- [Listen for Events](./listen-for-events) — react to new blocks and transactions in real time
-- [Create and Manage Wallets](./wallets) — generate keys to start sending transactions
-- [API Reference](../reference/) — full method signatures and return types
+- [Listen for Events](/web-client/guides/listen-for-events) — react to new blocks and transactions in real time
+- [Create and Manage Wallets](/web-client/guides/wallets) — generate keys to start sending transactions
+- [API Reference](/web-client/reference) — full method signatures and return types

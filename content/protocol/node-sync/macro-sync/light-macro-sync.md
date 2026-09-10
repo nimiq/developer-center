@@ -7,7 +7,7 @@ navigation:
 
 # Light Macro Sync
 
-Light Macro Sync is the macro block synchronization mechanism for full and light nodes, and the trustless fallback for [Pico Macro Sync](pico-macro-sync). It brings a node to the current macro state by requesting and verifying the chain of election and checkpoint blocks, without the full block history. Macro block requests run through a bounded, ordered **`SyncQueue`**, which prevents a node that is many epochs behind from flooding its peers with requests.
+Light Macro Sync is the macro block synchronization mechanism for full and light nodes, and the trustless fallback for [Pico Macro Sync](/protocol/node-sync/macro-sync/pico-macro-sync). It brings a node to the current macro state by requesting and verifying the chain of election and checkpoint blocks, without the full block history. Macro block requests run through a bounded, ordered **`SyncQueue`**, which prevents a node that is many epochs behind from flooding its peers with requests.
 
 ## Key Characteristics
 
@@ -28,9 +28,9 @@ The `LightMacroSync` follows this request pattern:
 2. **RequestBlock** → Fetch the missing macro blocks by hash, through the `macro_block_queue`
 3. **RequestHistoryChunk** → Validate transaction history within the validity window (full nodes only)
 
-When Light Macro Sync runs as the [Pico Macro Sync](pico-macro-sync) fallback, it is given a [pinned election block](/protocol/glossary#pinned-election-block) to bootstrap from: instead of syncing the election chain from genesis, it seeds the chain to that block and verifies forward. Full and light nodes do not bootstrap this way. They sync the election chain from genesis and only verify the pinned election block against their own chain.
+When Light Macro Sync runs as the [Pico Macro Sync](/protocol/node-sync/macro-sync/pico-macro-sync) fallback, it is given a [pinned election block](/protocol/glossary#pinned-election-block) to bootstrap from: instead of syncing the election chain from genesis, it seeds the chain to that block and verifies forward. Full and light nodes do not bootstrap this way. They sync the election chain from genesis and only verify the pinned election block against their own chain.
 
-The complete message specifications are documented in the [Network Protocol](../network-protocol) document.
+The complete message specifications are documented in the [Network Protocol](/protocol/node-sync/network-protocol) document.
 
 ## Architecture Overview
 
@@ -185,6 +185,6 @@ Light Macro Sync emits structured events for different synchronization scenarios
 
 ## **Transition to Live Sync**
 
-When Light Macro Sync emits `MacroSyncReturn::Good` for sufficient peers, the consensus layer transitions the node to **Live Sync** for ongoing micro block synchronization and real-time state updates. Full nodes follow the [State Live Sync](../live-sync/state-live-sync.md) and light nodes follow the [Block Live Sync](../live-sync/block-live-sync.md).
+When Light Macro Sync emits `MacroSyncReturn::Good` for sufficient peers, the consensus layer transitions the node to **Live Sync** for ongoing micro block synchronization and real-time state updates. Full nodes follow the [State Live Sync](/protocol/node-sync/live-sync/state-live-sync) and light nodes follow the [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync).
 
 The node maintains synchronization through live micro block announcements and continuous state updates. This two-phase approach (macro sync → live sync) ensures nodes can quickly reach consensus state then maintain real-time synchronization with minimal overhead.

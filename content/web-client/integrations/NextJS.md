@@ -193,4 +193,4 @@ export default function Wallet() {
 
 ## Next steps
 
-Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Nuxt](./nuxt), [ESM](./ESM), or [CommonJS](./CommonJS).
+Once your client is connected, see the [guides](/web-client/guides/query-the-blockchain) to start building. For other integration options, see [Vite](/web-client/integrations/vite), [Nuxt](/web-client/integrations/nuxt), [ESM](/web-client/integrations/esm), or [CommonJS](/web-client/integrations/commonjs).

@@ -18,10 +18,10 @@ All nodes follow a **two-phase synchronization pattern**: **macro sync** followe
 |  | **History Node** | **Full Node** | **Light Node** | **Pico Node** |
 | --- | --- | --- | --- | --- |
 | **Verification** | Entire chain + full history | Full blocks and state | Election-header chain (validator BLS signatures) | Trust-based (peer-reported state) |
-| **Macro Sync Method** | [History Macro Sync](macro-sync/history-macro-sync) | [Light Macro Sync](macro-sync/light-macro-sync) | [Light Macro Sync](macro-sync/light-macro-sync) | [Pico Macro Sync](macro-sync/pico-macro-sync)* |
-| **Live Sync Method** | [Block Live Sync](live-sync/block-live-sync) | [State Live Sync](live-sync/state-live-sync) | [Block Live Sync](live-sync/block-live-sync) | [Block Live Sync](live-sync/block-live-sync) |
+| **Macro Sync Method** | [History Macro Sync](/protocol/node-sync/macro-sync/history-macro-sync) | [Light Macro Sync](/protocol/node-sync/macro-sync/light-macro-sync) | [Light Macro Sync](/protocol/node-sync/macro-sync/light-macro-sync) | [Pico Macro Sync](/protocol/node-sync/macro-sync/pico-macro-sync)* |
+| **Live Sync Method** | [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync) | [State Live Sync](/protocol/node-sync/live-sync/state-live-sync) | [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync) | [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync) |
 | **Consensus Level** | Fully verified | Verified | Verified | Trust-based |
-| **Fallback** | N/A | N/A | N/A | *Falls back to [Light Macro Sync](macro-sync/light-macro-sync) |
+| **Fallback** | N/A | N/A | N/A | *Falls back to [Light Macro Sync](/protocol/node-sync/macro-sync/light-macro-sync) |
 | **Sync Speed** | Slower, full chain from genesis | Efficient, grows with chain length | Fast, election headers only | Fastest, based on peer responses |
 | **Web Client** | Not supported | Not supported | Supported | Supported |
 
@@ -74,7 +74,7 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
   title: Architecture
   description: Core components, data flow, and design patterns that enable efficient sync coordination.
   icon: i-lucide-layout-dashboard
-  to: architecture
+  to: /protocol/node-sync/architecture
   variant: outline
   ---
   ::::
@@ -84,7 +84,7 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
   title: Traits & Abstractions
   description: Core traits, components, and architectural patterns in the sync system.
   icon: i-lucide-puzzle
-  to: traits-and-abstractions
+  to: /protocol/node-sync/traits-and-abstractions
   variant: outline
   ---
   ::::
@@ -94,7 +94,7 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
   title: Network Protocol
   description: Node requests and responses for syncing.
   icon: i-lucide-network
-  to: network-protocol
+  to: /protocol/node-sync/network-protocol
   variant: outline
   ---
   ::::
@@ -104,26 +104,26 @@ Produce blocks and participate in consensus. Any node with a minimum of 100'000 
 
 **Understanding the System**
 
-- [Architecture](architecture) - Core components, data flow, and design patterns
+- [Architecture](/protocol/node-sync/architecture) - Core components, data flow, and design patterns
 - [Node Sync System](#node-sync-system) - Node lifecycles and sync mode selection
 
 **Implementation Details**
 
-- [Traits and Abstractions](traits-and-abstractions) - System design and component coordination
-- [Network Protocol](network-protocol) - Message specifications and communication patterns
+- [Traits and Abstractions](/protocol/node-sync/traits-and-abstractions) - System design and component coordination
+- [Network Protocol](/protocol/node-sync/network-protocol) - Message specifications and communication patterns
 
 **Sync Strategy Deep Dives**
 
 *Macro Sync Strategies:*
 
-- [History Macro Sync](macro-sync/history-macro-sync) - Full chain download for history nodes
-- [Light Macro Sync](macro-sync/light-macro-sync) - Trustless macro sync for full and light nodes
-- [Pico Macro Sync](macro-sync/pico-macro-sync) - Optimistic sync with automatic fallback
+- [History Macro Sync](/protocol/node-sync/macro-sync/history-macro-sync) - Full chain download for history nodes
+- [Light Macro Sync](/protocol/node-sync/macro-sync/light-macro-sync) - Trustless macro sync for full and light nodes
+- [Pico Macro Sync](/protocol/node-sync/macro-sync/pico-macro-sync) - Optimistic sync with automatic fallback
 
 *Live Sync Strategies:*
 
-- [Block Live Sync](live-sync/block-live-sync) - Real-time block synchronization
-- [State Live Sync](live-sync/state-live-sync) - Complete state maintenance for full nodes
+- [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync) - Real-time block synchronization
+- [State Live Sync](/protocol/node-sync/live-sync/state-live-sync) - Complete state maintenance for full nodes
 
 ## Sync Lifecycle
 

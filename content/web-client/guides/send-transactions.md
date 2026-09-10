@@ -8,9 +8,9 @@ description: Build, sign, and broadcast NIM transfers — with and without data 
 
 # Send Transactions
 
-This guide walks through creating, signing, and broadcasting transactions using the web client. You'll need a connected client with consensus and a keypair with funds. If you don't have these yet, see [Getting Started](../getting-started) and [Create and Manage Wallets](./wallets).
+This guide walks through creating, signing, and broadcasting transactions using the web client. You'll need a connected client with consensus and a keypair with funds. If you don't have these yet, see [Getting Started](/web-client/getting-started) and [Create and Manage Wallets](/web-client/guides/wallets).
 
-The examples below assume you have a connected `client`, a funded `keyPair`, and a `sender` address derived from it. See [Getting Started](../getting-started) and [Create and Manage Wallets](./wallets) if you don't have these yet.
+The examples below assume you have a connected `client`, a funded `keyPair`, and a `sender` address derived from it. See [Getting Started](/web-client/getting-started) and [Create and Manage Wallets](/web-client/guides/wallets) if you don't have these yet.
 
 ## Send a basic transaction
 
@@ -69,7 +69,7 @@ const tx = await client.getTransaction(details.hash)
 console.log('State:', tx.state) // 'pending', 'included', etc.
 ```
 
-Or watch for it in real time with a [transaction listener](./listen-for-events#track-transactions-for-an-address):
+Or watch for it in real time with a [transaction listener](/web-client/guides/listen-for-events#track-transactions-for-an-address):
 
 ```js
 await client.addTransactionListener(
@@ -84,6 +84,6 @@ A fee of `0n` is valid for most transactions. Fees become relevant when the netw
 
 ## Next steps
 
-- [Stake NIM](./stake-nim) — use transactions to create stakers and delegate to validators
-- [Query the Blockchain](./query-the-blockchain) — check balances and transaction history
-- [API Reference](../reference/) — full TransactionBuilder and Client method signatures
+- [Stake NIM](/web-client/guides/stake-nim) — use transactions to create stakers and delegate to validators
+- [Query the Blockchain](/web-client/guides/query-the-blockchain) — check balances and transaction history
+- [API Reference](/web-client/reference) — full TransactionBuilder and Client method signatures

@@ -32,7 +32,7 @@ bun add @nimiq/core
 
 ::
 
-If you're using a framework like Vite, Nuxt, or Next.js, see the [integration guides](./integrations/vite) for bundler-specific configuration.
+If you're using a framework like Vite, Nuxt, or Next.js, see the [integration guides](/web-client/integrations/vite) for bundler-specific configuration.
 
 ## Pick a network
 
@@ -84,23 +84,23 @@ Once `waitForConsensusEstablished()` resolves, your client is synced and ready t
 
 ## Get test funds
 
-The [Nimiq Faucet](./faucet) dispenses free NIM on TestAlbatross for development and testing.
+The [Nimiq Faucet](/web-client/faucet) dispenses free NIM on TestAlbatross for development and testing.
 
-You can request funds through the interactive playground on the [Faucet page](./faucet), or programmatically:
+You can request funds through the interactive playground on the [Faucet page](/web-client/faucet), or programmatically:
 
 ```sh
 curl -X POST https://faucet.pos.nimiq-testnet.com/tapit \
      -d "address=NQ07 0000 0000 0000 0000 0000 0000 0000 0000"
 ```
 
-The faucet sends 10,000 NIM per request with no rate limit. See the [Faucet API reference](./faucet#api-reference) for details on parameters and response format.
+The faucet sends 10,000 NIM per request with no rate limit. See the [Faucet API reference](/web-client/faucet#api-reference) for details on parameters and response format.
 
 ## You're ready
 
 You have a synced client and test funds. Here's where to go next:
 
-- [Query the Blockchain](./guides/query-the-blockchain) — fetch balances, blocks, and transaction status
-- [Listen for Events](./guides/listen-for-events) — subscribe to blocks, transactions, and consensus changes
-- [Create and Manage Wallets](./guides/wallets) — generate keypairs and derive addresses
-- [Send Transactions](./guides/send-transactions) — build, sign, and broadcast NIM transfers
-- [Stake NIM](./guides/stake-nim) — delegate to validators and manage your stake
+- [Query the Blockchain](/web-client/guides/query-the-blockchain) — fetch balances, blocks, and transaction status
+- [Listen for Events](/web-client/guides/listen-for-events) — subscribe to blocks, transactions, and consensus changes
+- [Create and Manage Wallets](/web-client/guides/wallets) — generate keypairs and derive addresses
+- [Send Transactions](/web-client/guides/send-transactions) — build, sign, and broadcast NIM transfers
+- [Stake NIM](/web-client/guides/stake-nim) — delegate to validators and manage your stake

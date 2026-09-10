@@ -21,7 +21,7 @@ The client supports two sync modes. You choose one at configuration time via `Cl
 
 Both modes transition to [block live sync](/protocol/node-sync/live-sync/block-live-sync) once the initial sync is complete, following new blocks as they are produced.
 
-For a deeper look at the sync protocols, see the [node sync documentation](/protocol/node-sync/).
+For a deeper look at the sync protocols, see the [node sync documentation](/protocol/node-sync).
 
 ## Consensus
 
@@ -57,7 +57,7 @@ A light client stores micro block **headers only** — no block bodies, no trans
 - Past account state at a specific block height — only the current state is queryable
 - Full transaction history from genesis — queries are bounded by `sinceBlockHeight`
 
-If your application needs full historical data or block bodies, use the [RPC interface](/rpc) with a full node or history node instead. See [Web Client vs RPC](./web-client-vs-rpc) for a comparison.
+If your application needs full historical data or block bodies, use the [RPC interface](/rpc) with a full node or history node instead. See [Web Client vs RPC](/web-client/concepts/web-client-vs-rpc) for a comparison.
 
 ## How it connects to the network
 
@@ -79,7 +79,7 @@ You can configure peer behaviour through `ClientConfiguration`:
 
 ## Further reading
 
-- [Node sync architecture](/protocol/node-sync/) — the full sync protocol specification
+- [Node sync architecture](/protocol/node-sync) — the full sync protocol specification
 - [Light macro sync](/protocol/node-sync/macro-sync/light-macro-sync) — the trustless light macro sync protocol
 - [Pico macro sync](/protocol/node-sync/macro-sync/pico-macro-sync) — the trust-based fast sync protocol
-- [Browser vs Server](./browser-vs-server) — runtime-specific differences when using the client
+- [Browser vs Server](/web-client/concepts/browser-vs-server) — runtime-specific differences when using the client

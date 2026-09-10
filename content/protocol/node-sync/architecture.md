@@ -13,14 +13,14 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 
 **Macro Sync Phase**: Establishes current network state efficiently by downloading and verifying macro blocks (epoch and checkpoint blocks). Different strategies optimize for various resource constraints:
 
-- [History Macro Sync](macro-sync/history-macro-sync): Complete historical verification for history nodes
-- [Light Macro Sync](macro-sync/light-macro-sync): Signature-verified macro sync for full and light nodes
-- [Pico Macro Sync](macro-sync/pico-macro-sync): Trust-based approach with automatic security fallback
+- [History Macro Sync](/protocol/node-sync/macro-sync/history-macro-sync): Complete historical verification for history nodes
+- [Light Macro Sync](/protocol/node-sync/macro-sync/light-macro-sync): Signature-verified macro sync for full and light nodes
+- [Pico Macro Sync](/protocol/node-sync/macro-sync/pico-macro-sync): Trust-based approach with automatic security fallback
 
 **Live Sync Phase**: Maintains real-time synchronization with ongoing micro block production:
 
-- [State Live Sync](live-sync/state-live-sync): Complete state maintenance for full nodes
-- [Block Live Sync](live-sync/block-live-sync): Header-only sync for light clients
+- [State Live Sync](/protocol/node-sync/live-sync/state-live-sync): Complete state maintenance for full nodes
+- [Block Live Sync](/protocol/node-sync/live-sync/block-live-sync): Header-only sync for light clients
 
 ```
 ┌─────────────────┐     ┌─────────────────┐
@@ -74,7 +74,7 @@ Nimiq's consensus architecture centers on a **two-phase synchronization model** 
 
 ### Strategy Implementation Layer
 
-**Sync Strategies**: Implement `MacroSync` and `LiveSync` traits to enable different verification approaches and resource optimization patterns. See [Traits and Abstractions](traits-and-abstractions) for detailed interface specifications.
+**Sync Strategies**: Implement `MacroSync` and `LiveSync` traits to enable different verification approaches and resource optimization patterns. See [Traits and Abstractions](/protocol/node-sync/traits-and-abstractions) for detailed interface specifications.
 
 **Trait-Based Design**: The sync system is built around trait-based abstractions, such as `MacroSync`, `LiveSync`, and `LiveSyncQueue`. This approach allows for pluggable sync strategies, making it straightforward to extend or adapt the system for new node types or future requirements.
 

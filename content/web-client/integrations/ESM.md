@@ -10,7 +10,7 @@ navigation:
 
 Use this approach when you're serving JavaScript directly to the browser without a bundler — for example, from a plain HTML file, a CDN, or a static site. If you're using Vite, Nuxt, or Next.js, use their dedicated integration instead.
 
-The ESM build (`@nimiq/core/web`) requires a manual `init()` call to load the WebAssembly module. See [Browser vs Server](../concepts/browser-vs-server) for details on the different build targets.
+The ESM build (`@nimiq/core/web`) requires a manual `init()` call to load the WebAssembly module. See [Browser vs Server](/web-client/concepts/browser-vs-server) for details on the different build targets.
 
 ## Installation
 
@@ -53,4 +53,4 @@ await client.waitForConsensusEstablished()
 
 ## Next steps
 
-Once your client is connected, see the [guides](../guides/query-the-blockchain) to start building. For other integration options, see [Vite](./vite), [Nuxt](./nuxt), [Next.js](./NextJS), or [CommonJS](./CommonJS).
+Once your client is connected, see the [guides](/web-client/guides/query-the-blockchain) to start building. For other integration options, see [Vite](/web-client/integrations/vite), [Nuxt](/web-client/integrations/nuxt), [Next.js](/web-client/integrations/nextjs), or [CommonJS](/web-client/integrations/commonjs).

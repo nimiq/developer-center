@@ -60,7 +60,7 @@ RPC provides everything the Web Client does, plus full node control: managing ac
 
 title: Web Client
   icon: i-lucide-globe
-  to: ../web-client
+  to: /web-client
   variant: outline
   ---
 
@@ -71,7 +71,7 @@ title: Web Client
 
 title: Nimiq RPC
   icon: i-lucide-terminal
-  to: ../rpc
+  to: /rpc
   variant: outline
   ---
 
@@ -82,7 +82,7 @@ title: Nimiq RPC
 
 title: Validators
   icon: i-lucide-shield-check
-  to: ../nodes/validators/becoming-a-validator
+  to: /nodes/validators/becoming-a-validator
   variant: outline
   ---
 
@@ -91,5 +91,5 @@ title: Validators
 
 ## Further reading
 
-- [Nimiq Albatross protocol documentation](/protocol/index) — consensus algorithm, block structure, network protocol
-- [How the Light Client Works](./how-the-light-client-works) — what the Web Client can and cannot access
+- [Nimiq Albatross protocol documentation](/protocol) — consensus algorithm, block structure, network protocol
+- [How the Light Client Works](/web-client/concepts/how-the-light-client-works) — what the Web Client can and cannot access
