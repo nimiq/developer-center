@@ -37,8 +37,7 @@
     "nimiq-feedback-widget": "0.0.1-beta.5",
     "nimiq-rpc-client-ts": "1.0.0-beta.35",
     "reka-ui": "^2.6.0",
-    "vaul-vue": "^0.4.1",
-    "vue": "^3.5.22"
+    "vaul-vue": "^0.4.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
