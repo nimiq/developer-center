@@ -215,7 +215,7 @@ export default defineNuxtConfig({
       markdown: {
         contentHeading: false,
         highlight: {
-          langs: ['bash', 'diff', 'json', 'js', 'jsx', 'ts', 'tsx', 'html', 'css', 'vue', 'svelte', 'shell', 'sh', 'md', 'yaml', 'rust', 'toml', 'python'],
+          langs: ['bash', 'diff', 'json', 'js', 'jsx', 'ts', 'tsx', 'html', 'css', 'vue', 'svelte', 'shell', 'sh', 'md', 'yaml', 'rust', 'toml', 'python', 'solidity'],
         },
         remarkPlugins: { 'remark-math': {}, [join(cwd(), 'remark-extract-title.mjs')]: {} },
         rehypePlugins: { 'rehype-katex': {} },
