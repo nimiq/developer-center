@@ -83,7 +83,19 @@ You can claim free testnet NIM directly inside Nimiq Pay, which lets you test fl
 
 ### How do I handle errors and edge cases when calling the provider?
 
-Provider calls can fail in several ways: the user cancels the confirmation dialog, the request times out, no accounts are available, the network is unreachable, or the transaction itself is invalid. Each surfaces as a thrown error your code can inspect. For example, the Nimiq provider throws `PermissionDeniedError` on user rejection, and the Ethereum provider follows the EIP-1193 error codes (for example, `4902` for an unconfigured chain). Treat the cancellation case as a normal outcome, not a bug. Show clear messages to inform the user of the error rather than letting the UI freeze.
+In SDK `0.2.0`, Nimiq wallet methods called through the provider returned by `init()` reject with `NimiqProviderError`. Inspect the normalized error's `type`, `message`, and optional numeric `code`; see [wallet errors](/mini-apps/api-reference/nimiq-provider#wallet-errors) for an example. Status calls and external RPC queries keep their own error behavior. Ethereum uses EIP-1193 error codes, including `4001` for user rejection. Treat cancellation as a normal outcome and leave the user free to retry.
+
+### Can I choose which Nimiq address signs or pays?
+
+Nimiq Pay selects the account. The Nimiq API has no address parameter for signing or sender parameter for payments. See [accounts and signing](/mini-apps/api-reference/nimiq-provider#accounts-and-signing).
+
+### Does disconnecting revoke wallet access?
+
+`disconnect()` clears the provider's cached addresses and emits a local event. It does not revoke host permissions or log the user out of your backend. See [`disconnect()`](/mini-apps/api-reference/nimiq-provider#disconnect) for the distinction.
+
+### How do I check whether a NIM payment succeeded?
+
+A returned transaction hash alone does not confirm payment. Verify the payment on your backend before granting access, including its details, execution result, and finality. See the [RPC methods](/rpc/methods) for transaction queries.
 
 ### How do I keep API keys and secrets secure?
 
