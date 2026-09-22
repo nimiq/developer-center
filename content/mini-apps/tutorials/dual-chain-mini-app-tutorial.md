@@ -13,7 +13,7 @@ In this tutorial, you will build a mini app that uses both injected providers:
 - the Nimiq provider for Nimiq account and signing flows
 - the Ethereum provider for EIP-1193 account and signing flows
 
-You will implement methods that require user confirmations so you can test real wallet interactions end to end.
+You will request accounts and signatures through the wallet. The provider returned from `init()` throws Nimiq wallet errors, which the example handles in `catch`; see [wallet errors](/mini-apps/api-reference/nimiq-provider#wallet-errors).
 
 ## What you'll build
 
@@ -21,7 +21,7 @@ The mini app includes two action buttons:
 
 | Flow | Methods | User confirmation expected |
 | --- | --- | --- |
-| Nimiq | `listAccounts()` -> `sign()` | 2 prompts (account sharing, signing) |
+| Nimiq | `listAccounts()` -> `sign()` | Account sharing when needed, then signing |
 | Ethereum | `eth_requestAccounts` -> `personal_sign` | 2 prompts (account connection, signing) |
 
 ## Prerequisites
@@ -60,11 +60,27 @@ export default defineConfig({
 
 ## 3. Install the Nimiq Mini App SDK
 
-Install the published Nimiq Mini App SDK before editing `src/App.vue`.
+Install the latest release with your package manager. The [wallet error handling](/mini-apps/api-reference/nimiq-provider#wallet-errors) used in this tutorial requires SDK `0.2.0` or later:
 
-```bash
+::code-group
+
+```bash [pnpm]
+pnpm add @nimiq/mini-app-sdk
+```
+
+```bash [npm]
 npm install @nimiq/mini-app-sdk
 ```
+
+```bash [yarn]
+yarn add @nimiq/mini-app-sdk
+```
+
+```bash [bun]
+bun add @nimiq/mini-app-sdk
+```
+
+::
 
 ## 4. Add the dual-chain mini app
 
@@ -98,17 +114,6 @@ const nimiqAccounts = ref<string[] | null>(null)
 const nimiqSignature = ref<string | null>(null)
 const ethAccounts = ref<string[] | null>(null)
 const ethSignature = ref<string | null>(null)
-
-function getProviderErrorMessage(value: unknown): string | null {
-  if (typeof value !== 'object' || value === null || !('error' in value))
-    return null
-
-  const maybeError = (value as { error?: { message?: unknown } }).error
-  if (maybeError && typeof maybeError.message === 'string')
-    return maybeError.message
-
-  return 'Provider request failed.'
-}
 
 // Convert a UTF-8 string to hex for personal_sign.
 function toHexUtf8(input: string) {
@@ -151,25 +156,16 @@ async function runNimiqFlow() {
   try {
     const nimiq = await nimiqPromise
 
-    // Prompt 1: account sharing confirmation.
+    // Request account sharing if the provider has no cached accounts.
     status.value = 'Requesting Nimiq accounts...'
-    const accountsResult = await nimiq.listAccounts()
-    const accountsError = getProviderErrorMessage(accountsResult)
-    if (accountsError)
-      throw new Error(accountsError)
-
-    const accounts = accountsResult as string[]
+    const accounts = await nimiq.listAccounts()
     nimiqAccounts.value = accounts
     if (!accounts.length)
       throw new Error('No Nimiq accounts returned.')
 
-    // Prompt 2: signing confirmation.
+    // Request signing confirmation.
     status.value = 'Requesting Nimiq signing confirmation...'
     const signatureResult = await nimiq.sign('Nimiq Pay dual-chain tutorial')
-    const signatureError = getProviderErrorMessage(signatureResult)
-    if (signatureError)
-      throw new Error(signatureError)
-
     nimiqSignature.value = JSON.stringify(signatureResult, null, 2)
     status.value = 'Nimiq flow completed.'
   }
@@ -205,7 +201,7 @@ async function runEthereumFlow() {
     if (!accounts.length)
       throw new Error('No Ethereum accounts returned.')
 
-    // Prompt 2: signing confirmation.
+    // Request signing confirmation.
     const message = toHexUtf8('Nimiq Pay dual-chain tutorial')
     status.value = 'Requesting Ethereum signing confirmation...'
     const signature = await window.ethereum.request({
