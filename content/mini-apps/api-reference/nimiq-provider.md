@@ -48,6 +48,72 @@ Returns the user's Nimiq account addresses.
 const accounts = await nimiq.listAccounts()
 ```
 
+### `getBalance`
+
+Reads the on-chain balance of any valid Nimiq address through Nimiq Pay's client on its active network (mainnet or testnet). The address can belong to someone else. No account approval, ownership check, or transaction listener is required, and you do not need to call `listAccounts()` first.
+
+Use SDK `0.2.1` or later and a version of Nimiq Pay that exposes this method. Updating the SDK alone does not add it to older hosts. After `init()`, check `typeof nimiq.getBalance === 'function'` and ask the user to update Nimiq Pay if it is unavailable.
+
+**Parameters**
+
+- `address` (string, required): a valid Nimiq address. A missing, non-string, or malformed address is rejected.
+
+**Returns**
+
+- `Promise<number>` through the provider returned by `init()`. The value is in luna: 100,000 luna = 1 NIM.
+
+A result of `0` means the lookup succeeded and reported zero. Failed lookups reject; they do not return zero. This is the balance of the supplied address, not a wallet total. Contract balances, including HTLC and vesting balances, are not necessarily spendable: their spending conditions still apply.
+
+**Errors**
+
+The SDK provider rejects with `NimiqProviderError`. Use `NimiqProviderError.is(error)` to recognize it, then inspect `type`, `message`, and `code`.
+
+| Type | Code | Cause |
+| --- | --- | --- |
+| `INVALID_REQUEST` | `-32602` | The address is missing or invalid. |
+| `NETWORK_ERROR` | `-32000` | The client is unavailable, consensus is not established, or the lookup fails or exceeds the 30-second timeout. |
+
+**User confirmation**
+
+- no
+
+**Example**
+
+```ts
+import { init, NimiqProviderError } from '@nimiq/mini-app-sdk'
+
+const nimiq = await init()
+
+if (typeof nimiq.getBalance !== 'function') {
+  console.info('Update Nimiq Pay to look up balances.')
+}
+else {
+  try {
+    const balanceLuna = await nimiq.getBalance('NQ07 0000 0000 0000 0000 0000 0000 0000 0000')
+    console.log({ balanceLuna, balanceNim: balanceLuna / 100_000 })
+  }
+  catch (error) {
+    if (NimiqProviderError.is(error)) {
+      console.error(error.type, error.message, error.code)
+    }
+    else {
+      throw error
+    }
+  }
+}
+```
+
+Replace the example address with the address you want to query. On a supported host, the generic request form performs the same lookup:
+
+```ts
+const balanceLuna = await nimiq.request({
+  method: 'getBalance',
+  params: { address: 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000' },
+})
+```
+
+Both forms use the native bridge. They require no external RPC endpoint, and `setRPCUrl()` does not change the network used for this lookup.
+
 ### `sign`
 
 Signs a message with the user's Nimiq key.
