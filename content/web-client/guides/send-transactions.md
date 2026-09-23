@@ -31,11 +31,15 @@ const tx = Nimiq.TransactionBuilder.newBasic(
 tx.sign(keyPair)
 
 const details = await client.sendTransaction(tx)
-console.log('Transaction hash:', details.hash)
+console.log('Transaction hash:', details.transactionHash)
 console.log('State:', details.state)
 ```
 
 The `validityStartHeight` determines when the transaction becomes valid. Setting it to the current head height means it's valid immediately. Transactions expire after a protocol-defined window.
+
+`sendTransaction()` can return `state: 'new'` after broadcasting if no inclusion notification
+arrives before it stops waiting. This response has no execution result. It does not prove the
+transaction was not included.
 
 ## Send a transaction with data
 
@@ -57,23 +61,37 @@ const tx = Nimiq.TransactionBuilder.newBasicWithData(
 tx.sign(keyPair)
 
 const details = await client.sendTransaction(tx)
-console.log('Transaction hash:', details.hash)
+console.log('Transaction hash:', details.transactionHash)
 ```
 
 ## Check transaction status
 
-After broadcasting, you can check the transaction state:
+After the transaction is included, look it up by hash:
 
 ```js
-const tx = await client.getTransaction(details.hash)
-console.log('State:', tx.state) // 'pending', 'included', etc.
+const tx = await client.getTransaction(details.transactionHash)
+console.log('State:', tx.state)
+if (tx.executionResult === true) {
+  console.log('Execution succeeded')
+} else if (tx.executionResult === false) {
+  console.log('Execution failed')
+} else {
+  console.log('Execution result unavailable')
+}
 ```
 
-Or watch for it in real time with a [transaction listener](/web-client/guides/listen-for-events#track-transactions-for-an-address):
+`state` describes inclusion and finality. `included` means the transaction is in the blockchain;
+`confirmed` means it has been finalized. Either state can have `executionResult: false` if
+execution failed. Check `executionResult` separately: `true` means execution succeeded, `false`
+means it failed, and an unavailable result does not mean success. `getTransaction()` returns an
+execution result for every transaction it finds. It returns an error if no matching transaction is
+found or the lookup fails. An error alone does not prove the transaction was not included.
+
+Or watch for inclusion with a [transaction listener](/web-client/guides/listen-for-events#track-transactions-for-an-address):
 
 ```js
 await client.addTransactionListener(
-  (tx) => console.log('Confirmed:', tx.hash, tx.state),
+  (tx) => console.log('Transaction:', tx.transactionHash, tx.state, tx.executionResult),
   [sender],
 )
 ```
