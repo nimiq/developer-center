@@ -98,7 +98,7 @@ Nimiq Pay exposes the user's selected language at `window.nimiqPay.language`. Th
 
 ## Fullscreen
 
-If a Mini App needs fullscreen, offer a clear user control such as **Go Fullscreen** and call `window.nimiqPay.requestFullscreen()` when the user selects it. Nimiq Pay adds no approval prompt. Use `getFullscreen()` and `onFullscreenChange()` to track native exits, and `exitFullscreen()` for an in-app exit control. Check method availability and handle rejected calls.
+If a Mini App needs fullscreen, offer a clear user control such as **Go Fullscreen** and call `window.nimiqPay.requestFullscreen()` when the user selects it. `@nimiq/mini-app-sdk` 0.2.3 and later exports matching `requestFullscreen()`, `exitFullscreen()`, `getFullscreen()`, and `onFullscreenChange()` helpers. Nimiq Pay adds no approval prompt. Track native exits, check host availability, and handle rejected calls.
 
 ## External APIs and backends
 

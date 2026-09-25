@@ -87,7 +87,7 @@ Use this instead of `navigator.language`, which returns the device locale and ma
 
 ## Fullscreen
 
-A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` from that control; Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
+A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` or the `requestFullscreen()` helper from `@nimiq/mini-app-sdk` 0.2.3 or later. Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
 
 Use `getFullscreen()` and `onFullscreenChange()` to keep your UI in sync with native exits. See [Fullscreen in Mini Apps](/mini-apps/features/fullscreen) for the full API and error handling.
 

@@ -11,6 +11,14 @@ navigation:
 
 Nimiq Pay can show the current Mini App in immersive fullscreen without reloading its page. This controls the native WebView presentation; it is separate from the browser's HTML or video fullscreen APIs.
 
+`@nimiq/mini-app-sdk` 0.2.3 and later exports helpers for the same host methods:
+
+```ts
+import { exitFullscreen, getFullscreen, onFullscreenChange, requestFullscreen } from '@nimiq/mini-app-sdk'
+```
+
+The examples below use `window.nimiqPay` directly, so they also work without the SDK. The helpers call the matching injected methods.
+
 ## Enter fullscreen
 
 Give users a clear control such as **Go Fullscreen**, then call `window.nimiqPay.requestFullscreen()` when they use it. Your Mini App owns this request. Nimiq Pay does not show another approval prompt, and users can leave through the native exit button or Android Back.
