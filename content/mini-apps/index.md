@@ -85,6 +85,12 @@ const language = window.nimiqPay?.language // e.g. 'en'
 
 Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
 
+## Fullscreen
+
+A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` from that control; Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
+
+Use `getFullscreen()` and `onFullscreenChange()` to keep your UI in sync with native exits. See [Fullscreen in Mini Apps](/mini-apps/features/fullscreen) for the full API and error handling.
+
 ## Device Identifier
 
 Nimiq Pay can issue a pseudonymous per-device identifier to mini apps that need a stable handle, for example for leaderboards, anti-spam, or save slots. The identifier is a 64-character hex SHA-256 string scoped to your mini app's origin. It identifies the device, not the user: a shared device returns the same value to every user, and the same user on two devices receives two different identifiers.

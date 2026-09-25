@@ -96,6 +96,10 @@ Mini apps run inside Nimiq Pay on mobile devices. Every UI decision must account
 
 Nimiq Pay exposes the user's selected language at `window.nimiqPay.language`. The value is an ISO 639-1 two-letter code (e.g. `'en'`, `'de'`), injected before page scripts run, read-only, static per session. When building anything with localization or i18n, use this value to match the user's Nimiq Pay language setting.
 
+## Fullscreen
+
+If a Mini App needs fullscreen, offer a clear user control such as **Go Fullscreen** and call `window.nimiqPay.requestFullscreen()` when the user selects it. Nimiq Pay adds no approval prompt. Use `getFullscreen()` and `onFullscreenChange()` to track native exits, and `exitFullscreen()` for an in-app exit control. Check method availability and handle rejected calls.
+
 ## External APIs and backends
 
 Mini apps can and should call external APIs and use server-side backends. This makes mini apps richer. The only constraint is that wallet operations (payments, signing, account access) must go through the injected providers.
@@ -135,6 +139,7 @@ Documentation:
 - [Build a Dual-Chain Mini App](https://nimiq.dev/raw/mini-apps/tutorials/dual-chain-mini-app-tutorial.md)
 - [Load a Local Mini App](https://nimiq.dev/raw/mini-apps/development/load-local-mini-app.md)
 - [Using EVM Tokens in Mini Apps](https://nimiq.dev/raw/mini-apps/features/evm-tokens.md)
+- [Fullscreen in Mini Apps](https://nimiq.dev/raw/mini-apps/features/fullscreen.md)
 - [Nimiq Provider API](https://nimiq.dev/raw/mini-apps/api-reference/nimiq-provider.md)
 - [Ethereum Provider API](https://nimiq.dev/raw/mini-apps/api-reference/ethereum-provider.md)
 
