@@ -44,11 +44,27 @@ npm install
 
 ## 2. Install the Nimiq Mini App SDK
 
-Install the Nimiq Mini App SDK. For package details, see [`@nimiq/mini-app-sdk`](https://www.npmjs.com/package/@nimiq/mini-app-sdk).
+Install the latest release with your package manager. The [wallet error handling](/mini-apps/api-reference/nimiq-provider#wallet-errors) used in this tutorial requires SDK `0.2.0` or later:
 
-```bash
+::code-group
+
+```bash [pnpm]
+pnpm add @nimiq/mini-app-sdk
+```
+
+```bash [npm]
 npm install @nimiq/mini-app-sdk
 ```
+
+```bash [yarn]
+yarn add @nimiq/mini-app-sdk
+```
+
+```bash [bun]
+bun add @nimiq/mini-app-sdk
+```
+
+::
 
 ## 3. Configure the dev server
 
@@ -99,6 +115,8 @@ export default defineConfig({
 
 ## 4. Add mini app logic and UI
 
+The provider returned by `init()` throws wallet errors, which these examples handle in `catch`. See [wallet errors](/mini-apps/api-reference/nimiq-provider#wallet-errors) to inspect error types.
+
 Replace the main app component with the variant for your framework:
 
 ::code-group
@@ -115,17 +133,6 @@ const accounts = ref<string[] | null>(null)
 const consensus = ref<boolean | null>(null)
 const blockNumber = ref<number | null>(null)
 const errorMessage = ref<string | null>(null)
-
-function getProviderErrorMessage(value: unknown): string | null {
-  if (typeof value !== 'object' || value === null || !('error' in value))
-    return null
-
-  const maybeError = (value as { error?: { message?: unknown } }).error
-  if (maybeError && typeof maybeError.message === 'string')
-    return maybeError.message
-
-  return 'Provider request failed.'
-}
 
 onMounted(async () => {
   try {
@@ -155,11 +162,7 @@ async function runThreeRequests() {
       nimiq.getBlockNumber(),
     ])
 
-    const accountsError = getProviderErrorMessage(accountsResult)
-    if (accountsError)
-      throw new Error(accountsError)
-
-    accounts.value = accountsResult as string[]
+    accounts.value = accountsResult
     consensus.value = consensusResult
     blockNumber.value = blockResult
   }
@@ -199,17 +202,6 @@ async function runThreeRequests() {
 ```jsx [React + JSX (src/App.jsx)]
 import { init } from '@nimiq/mini-app-sdk'
 import { useEffect, useRef, useState } from 'react'
-
-function getProviderErrorMessage(value) {
-  if (typeof value !== 'object' || value === null || !('error' in value))
-    return null
-
-  const maybeError = value.error
-  if (maybeError && typeof maybeError.message === 'string')
-    return maybeError.message
-
-  return 'Provider request failed.'
-}
 
 function App() {
   const nimiqPromiseRef = useRef(null)
@@ -260,10 +252,6 @@ function App() {
         nimiq.isConsensusEstablished(),
         nimiq.getBlockNumber(),
       ])
-
-      const accountsError = getProviderErrorMessage(accountsResult)
-      if (accountsError)
-        throw new Error(accountsError)
 
       setAccounts(accountsResult)
       setConsensus(consensusResult)
@@ -330,17 +318,6 @@ export default App
   let blockNumber = null
   let errorMessage = null
 
-  function getProviderErrorMessage(value) {
-    if (typeof value !== 'object' || value === null || !('error' in value))
-      return null
-
-    const maybeError = value.error
-    if (maybeError && typeof maybeError.message === 'string')
-      return maybeError.message
-
-    return 'Provider request failed.'
-  }
-
   onMount(() => {
     let active = true
 
@@ -381,10 +358,6 @@ export default App
         nimiq.isConsensusEstablished(),
         nimiq.getBlockNumber(),
       ])
-
-      const accountsError = getProviderErrorMessage(accountsResult)
-      if (accountsError)
-        throw new Error(accountsError)
 
       accounts = accountsResult
       consensus = consensusResult
