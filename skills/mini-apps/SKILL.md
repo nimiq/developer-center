@@ -96,6 +96,10 @@ Mini apps run inside Nimiq Pay on mobile devices. Every UI decision must account
 
 Nimiq Pay exposes the user's selected language at `window.nimiqPay.language`. The value is an ISO 639-1 two-letter code (e.g. `'en'`, `'de'`), injected before page scripts run, read-only, static per session. When building anything with localization or i18n, use this value to match the user's Nimiq Pay language setting.
 
+## Nimiq network
+
+Nimiq Pay exposes the Nimiq network it runs on at `window.nimiqPay.network` (`'mainnet'` or `'testnet'`), also available as `getHostNetwork()` from `@nimiq/mini-app-sdk` 0.2.4+. Injected before page scripts run, read-only, static per session. It is `undefined` outside Nimiq Pay and on older Nimiq Pay versions, so fall back to `'mainnet'`. When the mini app uses network-specific endpoints, explorer links, or addresses, choose them from this value.
+
 ## External APIs and backends
 
 Mini apps can and should call external APIs and use server-side backends. This makes mini apps richer. The only constraint is that wallet operations (payments, signing, account access) must go through the injected providers.
