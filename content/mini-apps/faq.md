@@ -81,6 +81,10 @@ Run your dev server with network access enabled, then open Nimiq Pay on a phone 
 
 You can claim free testnet NIM directly inside Nimiq Pay, which lets you test flows that involve real transactions like payments, signing, and staking. Switch your account to [testnet](#how-do-i-test-my-mini-app-during-development), and the empty-state home screen will show a **Get free NIM** button. Tapping it credits your account with 110'000 testnet NIM per request. The same button is also available inside the **Top Up** modal.
 
+### Can I submit a mini app running on testnet?
+
+No. Testnet is for development: use it to test payment flows, signing, and how your mini app behaves. To qualify for the Mini Apps Competition, your mini app must be deployed and live on mainnet.
+
 ### Can I read the NIM balance of any address?
 
 Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval or a transaction listener. The result is in luna (100,000 luna = 1 NIM); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
