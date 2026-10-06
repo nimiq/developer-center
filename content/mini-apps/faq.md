@@ -85,6 +85,10 @@ You can claim free testnet NIM directly inside Nimiq Pay, which lets you test fl
 
 No. Testnet is for development: use it to test payment flows, signing, and how your mini app behaves. To qualify for the Mini Apps Competition, your mini app must be deployed and live on mainnet.
 
+### Can I read the NIM balance of any address?
+
+Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval or a transaction listener. The result is in luna (100,000 luna = 1 NIM); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
+
 ### How do I handle errors and edge cases when calling the provider?
 
 Provider calls can fail in several ways: the user cancels the confirmation dialog, the request times out, no accounts are available, the network is unreachable, or the transaction itself is invalid. Each surfaces as a thrown error your code can inspect. For example, the Nimiq provider throws `PermissionDeniedError` on user rejection, and the Ethereum provider follows the EIP-1193 error codes (for example, `4902` for an unconfigured chain). Treat the cancellation case as a normal outcome, not a bug. Show clear messages to inform the user of the error rather than letting the UI freeze.
