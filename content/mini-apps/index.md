@@ -85,6 +85,18 @@ const language = window.nimiqPay?.language // e.g. 'en'
 
 Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
 
+## Nimiq Network
+
+Nimiq Pay exposes the Nimiq network it runs on via `window.nimiqPay.network`. The value is `'mainnet'` or `'testnet'`. Like the language, it is injected before page scripts run and stays the same for the whole session. Use it to pick endpoints, explorer links, or contract addresses that match the network your users' NIM lives on.
+
+```ts
+import { getHostNetwork } from '@nimiq/mini-app-sdk'
+
+const network = getHostNetwork() ?? 'mainnet' // 'mainnet' | 'testnet'
+```
+
+`getHostNetwork()` returns `undefined` outside Nimiq Pay and on Nimiq Pay versions released before this field existed. Without the SDK, read `window.nimiqPay?.network` directly. The helper and the `Network` type are available in `@nimiq/mini-app-sdk` 0.2.4 and later.
+
 ## Device Identifier
 
 Nimiq Pay can issue a pseudonymous per-device identifier to mini apps that need a stable handle, for example for leaderboards, anti-spam, or save slots. The identifier is a 64-character hex SHA-256 string scoped to your mini app's origin. It identifies the device, not the user: a shared device returns the same value to every user, and the same user on two devices receives two different identifiers.
