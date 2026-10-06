@@ -65,8 +65,12 @@ If you know a transaction hash, you can fetch its details:
 ```js
 const tx = await client.getTransaction('abcdef1234567890...')
 
-console.log(tx.sender, tx.recipient, tx.value, tx.state)
+console.log(tx.sender, tx.recipient, tx.value, tx.state, tx.executionResult)
 ```
+
+`state: 'confirmed'` means the transaction is finalized, even if its execution failed. Check
+`executionResult` for `true` or `false` before reporting the outcome. See
+[Check transaction status](/web-client/guides/send-transactions#check-transaction-status) for details.
 
 ## Query transactions for an address
 
