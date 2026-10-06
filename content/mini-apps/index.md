@@ -73,6 +73,8 @@ The framework supports two blockchain ecosystems:
 
 ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/features/evm-tokens) for a worked example.
 
+Mini Apps can also request a [Bitcoin Lightning payment](/mini-apps/features/bitcoin-lightning-payments) through the Nimiq provider. Nimiq Pay lets the user pay the invoice with NIM or USDT and sends BTC to the merchant through an atomic swap.
+
 Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
 
 ## User Language

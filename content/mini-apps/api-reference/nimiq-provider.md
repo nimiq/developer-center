@@ -194,6 +194,39 @@ const txHash = await nimiq.sendBasicTransactionWithData({
 })
 ```
 
+### `payLightningInvoice`
+
+Starts a self-custodial swap that pays a Bitcoin Lightning invoice with NIM or USDT. Nimiq Pay lets the user choose the asset and approve the payment.
+
+**Parameters**
+
+- `invoice` (string, required): fixed-amount BOLT11 invoice or fixed-amount LNURL. It must match the wallet's active network.
+
+**Returns**
+
+- `{ hash: string, swapId: string }` — the submitted NIM or Polygon transaction hash and swap ID. This confirms submission, not Lightning settlement.
+
+**Errors**
+
+- `PERMISSION_DENIED` — the user declined payment-history access, asset selection, or payment approval.
+- `INVALID_REQUEST` or `INVALID_TRANSACTION` — the invoice or swap quote is invalid, expired, or otherwise unusable.
+- `DUPLICATE_PAYMENT` — the resolved invoice was already submitted or may still be pending.
+- `TRANSACTION_OUTCOME_UNKNOWN` — submission may have occurred. Do not retry the same invoice.
+
+For duplicate or uncertain payments, `NimiqProviderError.data` can contain `hash` and `swapId` when known. Duplicate payment identifiers are only disclosed to the same Mini App and wallet.
+
+**User confirmation**
+
+- yes. Nimiq Pay requests access to check this wallet's Lightning invoice history, lets the user choose NIM or USDT, and asks for payment approval.
+
+**Example**
+
+```ts
+const { hash, swapId } = await nimiq.payLightningInvoice({ invoice: merchantInvoice })
+```
+
+See [Bitcoin Lightning Payments](/mini-apps/features/bitcoin-lightning-payments) for the payment flow and retry guidance.
+
 ### `sendNewStakerTransaction`
 
 Creates a new staking transaction.
