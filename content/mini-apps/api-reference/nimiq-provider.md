@@ -56,7 +56,7 @@ The provider caches the addresses returned by `listAccounts()`. It has no docume
 
 ## Wallet errors
 
-With SDK `0.2.0` or later, the provider returned by `init()` rejects with `NimiqProviderError` for recognized wallet errors. This applies to `connect()`, `listAccounts()`, `sign()`, all `send*Transaction()` methods below, and `request()` calls for wallet methods, including `nim_requestAccounts`.
+With SDK `0.2.0` or later, the provider returned by `init()` rejects with `NimiqProviderError` for recognized wallet errors. This applies to `connect()`, `listAccounts()`, `sign()`, all `send*Transaction()` methods below, and `request()` calls for wallet methods, including `nim_requestAccounts`. `connect()` requests accounts like `listAccounts()` but resolves without returning them.
 
 Unrelated exceptions remain unchanged. `init()` throws an ordinary `Error` if provider injection times out. Status methods (`isConsensusEstablished()` and `getBlockNumber()`), external RPC queries, and direct calls to `window.nimiq` keep their original error behavior.
 
