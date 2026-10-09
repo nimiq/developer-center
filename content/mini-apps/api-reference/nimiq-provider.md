@@ -75,7 +75,7 @@ catch (error) {
     console.error(error)
   }
   else if (error.type === 'PERMISSION_DENIED') {
-    console.info('Request cancelled by the user.')
+    console.info('Request canceled by the user.')
   }
   else {
     console.error(error.type, error.message, error.code)
