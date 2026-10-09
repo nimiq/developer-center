@@ -20,11 +20,93 @@ import { init } from '@nimiq/mini-app-sdk'
 const nimiq = await init()
 ```
 
+### SDK version
+
+These examples require SDK `0.2.0` or later for normalized wallet errors and the `NimiqProviderError` export. Install the latest release with your package manager:
+
+::code-group
+
+```bash [pnpm]
+pnpm add @nimiq/mini-app-sdk
+```
+
+```bash [npm]
+npm install @nimiq/mini-app-sdk
+```
+
+```bash [yarn]
+yarn add @nimiq/mini-app-sdk
+```
+
+```bash [bun]
+bun add @nimiq/mini-app-sdk
+```
+
+::
+
+If you are upgrading from `0.1.0`, follow [Updating existing Mini Apps](#updating-existing-mini-apps) to replace legacy error handling.
+
+## Accounts and signing
+
+Nimiq Pay chooses the account used for signing and sending transactions. `sign()` has no address parameter, and the transaction methods have no sender parameter. Selecting an address in your mini app does not change the wallet's signer.
+
+`listAccounts()` shares addresses; it does not prove ownership. The API does not define their order as a signer-selection rule.
+
+The provider caches the addresses returned by `listAccounts()`. It has no documented `accountsChanged` event for Nimiq, so do not copy the Ethereum provider's account-change handling and assume it also works here.
+
+## Wallet errors
+
+With SDK `0.2.0` or later, the provider returned by `init()` rejects with `NimiqProviderError` for recognized wallet errors. This applies to `connect()`, `listAccounts()`, `sign()`, all `send*Transaction()` methods below, and `request()` calls for wallet methods, including `nim_requestAccounts`. `connect()` requests accounts like `listAccounts()` but resolves without returning them.
+
+Unrelated exceptions remain unchanged. `init()` throws an ordinary `Error` if provider injection times out. Status methods (`isConsensusEstablished()` and `getBlockNumber()`), external RPC queries, and direct calls to `window.nimiq` keep their original error behavior.
+
+Use `try`/`catch` and `NimiqProviderError.is(error)` to identify wallet errors across package and host bundle boundaries:
+
+```ts
+import { init, NimiqProviderError } from '@nimiq/mini-app-sdk'
+
+try {
+  const nimiq = await init()
+  const accounts = await nimiq.listAccounts()
+  console.log(accounts)
+}
+catch (error) {
+  if (!NimiqProviderError.is(error)) {
+    console.error(error)
+  }
+  else if (error.type === 'PERMISSION_DENIED') {
+    console.info('Request canceled by the user.')
+  }
+  else {
+    console.error(error.type, error.message, error.code)
+  }
+}
+```
+
+### Error fields and types
+
+`NimiqProviderError` extends `Error` with `name: 'NimiqProviderError'`, a string `type`, a `message`, and an optional numeric `code`. Handle unlisted types too: the SDK preserves any explicit host-supplied type and uses the following mapping only when the host supplies a numeric code and message without a type.
+
+| Type | Fallback RPC code | Suggested handling |
+| --- | --- | --- |
+| `PERMISSION_DENIED` | `4001` | Treat cancellation as a normal outcome; keep the screen usable. |
+| `UNKNOWN_REQUEST` | `4200` | Explain that the host does not support this request. |
+| `INVALID_TRANSACTION` | `-32602` | Show the error and check the parameters before resending. |
+| `NETWORK_ERROR` | `-32000` | Show the connection or submission error; follow the payment check below. |
+| `INTERNAL_ERROR` | `-32603` | Report that the wallet could not complete the request. |
+| `UNKNOWN_ERROR` | Any unmapped numeric code | Handle the failure without assuming its cause. |
+
+Keep error details for diagnosis. Check payment status before asking the user to resend after a timeout or submission error.
+
+### Updating existing Mini Apps
+
+Replace resolved `{ error }` checks with `try`/`catch`. The SDK also converts legacy `{ error: { type, message } }` responses to `NimiqProviderError`, which may have no `code`. Successful calls return their success value directly.
+
 ## Methods
 
 ### `listAccounts`
 
-Returns the user's Nimiq account addresses.
+Returns the user's shared Nimiq account addresses. After a successful call, subsequent calls return the cached list until `disconnect()` clears it.
 
 **Parameters**
 
@@ -36,11 +118,11 @@ Returns the user's Nimiq account addresses.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
-- yes
+- yes, when the list is not cached. Cached calls return without opening a dialog; `disconnect()` clears the cache.
 
 **Example**
 
@@ -50,7 +132,7 @@ const accounts = await nimiq.listAccounts()
 
 ### `sign`
 
-Signs a message with the user's Nimiq key.
+Signs a message with Nimiq Pay. The response includes `publicKey`; verify the signature before using it as proof of identity.
 
 **Parameters**
 
@@ -62,7 +144,7 @@ Signs a message with the user's Nimiq key.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -120,7 +202,7 @@ const height = await nimiq.getBlockNumber()
 
 ### `sendBasicTransaction`
 
-Sends a basic NIM payment.
+Sends a basic NIM payment. A returned hash identifies the transaction; it does not prove successful execution or finality.
 
 **Parameters**
 
@@ -135,8 +217,7 @@ Sends a basic NIM payment.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -157,7 +238,7 @@ const txHash = await nimiq.sendBasicTransaction({
 
 ### `sendBasicTransactionWithData`
 
-Sends a NIM payment with an attached text message.
+Sends a NIM payment with an attached text message. The message is public on-chain.
 
 **Parameters**
 
@@ -173,8 +254,7 @@ Sends a NIM payment with an attached text message.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -211,8 +291,7 @@ Creates a new staking transaction.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -247,8 +326,7 @@ Adds stake to an existing staker.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -282,8 +360,7 @@ Sets the active stake amount.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -318,8 +395,7 @@ Updates staker settings.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -354,8 +430,7 @@ Retires stake from a staker.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -389,8 +464,7 @@ Removes stake from a staker.
 
 **Errors**
 
-- `PermissionDeniedError` — user rejected the confirmation dialog.
-- `InvalidTransactionError` — transaction data malformed.
+See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
@@ -405,5 +479,80 @@ const txHash = await nimiq.sendRemoveStakeTransaction({
   fee: 1000,
   // Optional.
   validityStartHeight: 123456,
+})
+```
+
+### `disconnect`
+
+Clears the provider's cached account list and emits a `disconnect` event. The next `listAccounts()` call requests addresses from Nimiq Pay again, which may open an approval dialog. It does not revoke Nimiq Pay permissions or end your mini app's backend session.
+
+**Parameters**
+
+- none
+
+**Returns**
+
+- `void`
+
+**User confirmation**
+
+- no
+
+**Example**
+
+```ts
+nimiq.disconnect()
+```
+
+### `setRPCUrl`
+
+Sets the external Nimiq JSON-RPC endpoint that `request()` uses for blockchain queries with no dedicated provider method. It does not switch the Nimiq Pay network.
+
+**Parameters**
+
+- `rpcUrl` (string, required): HTTPS URL of a Nimiq JSON-RPC server on the same network as Nimiq Pay. The server must allow your mini app's origin through CORS. Keep private RPC
+credentials on your backend.
+
+**Returns**
+
+- `void`
+
+**User confirmation**
+
+- no
+
+**Example**
+
+```ts
+nimiq.setRPCUrl('https://your-nimiq-rpc.example')
+```
+
+### `request`
+
+Sends a JSON-RPC request. Wallet methods, `nim_requestAccounts`, and `nim_isConsensusEstablished` go to Nimiq Pay; all other methods go to the endpoint set with `setRPCUrl()`.
+
+**Parameters**
+
+- `args` (object, required): `{ method: string, params?: unknown[] | object }`. See the [RPC methods](/rpc/methods) for query parameters.
+
+**Returns**
+
+- `unknown` — the wallet method's result, or for RPC queries, the response's `result.data` without the JSON-RPC envelope. A TypeScript result type does not validate the response at
+runtime.
+
+**Errors**
+
+See [wallet errors](#wallet-errors).
+
+**User confirmation**
+
+- yes, for wallet methods. RPC queries do not open a dialog.
+
+**Example**
+
+```ts
+const result = await nimiq.request({
+  method: 'getTransactionByHash',
+  params: ['TRANSACTION_HASH'],
 })
 ```
