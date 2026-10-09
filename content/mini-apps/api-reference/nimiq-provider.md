@@ -122,7 +122,7 @@ See [wallet errors](#wallet-errors).
 
 **User confirmation**
 
-- Requested through the host when the list is not cached. Cached calls do not open another dialog.
+- yes, when the list is not cached. Cached calls return without opening a dialog; `disconnect()` clears the cache.
 
 **Example**
 
