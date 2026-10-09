@@ -44,7 +44,7 @@ npm install
 
 ## 2. Install the Nimiq Mini App SDK
 
-Install the latest release with your package manager. The [wallet error handling](/mini-apps/api-reference/nimiq-provider#wallet-errors) used in this tutorial requires SDK `0.2.0` or later:
+Install the latest release of [`@nimiq/mini-app-sdk`](https://www.npmjs.com/package/@nimiq/mini-app-sdk). The [wallet error handling](/mini-apps/api-reference/nimiq-provider#wallet-errors) used in this tutorial requires SDK `0.2.0` or later:
 
 ::code-group
 
