@@ -484,15 +484,25 @@ const txHash = await nimiq.sendRemoveStakeTransaction({
 
 ### `disconnect`
 
-Clears the provider's cached account list and emits a local `disconnect` event. `connected` then becomes `false`.
+Clears the provider's cached account list and emits a `disconnect` event. The next `listAccounts()` call requests addresses from Nimiq Pay again, which may open an approval dialog. It does not revoke Nimiq Pay permissions or end your mini app's backend session.
+
+**Parameters**
+
+- none
+
+**Returns**
+
+- `void`
+
+**User confirmation**
+
+- no
+
+**Example**
 
 ```ts
 nimiq.disconnect()
 ```
-
-This method sends no revocation request to Nimiq Pay. It does not change the host's signer or end your mini app's backend session. Clear your app's local state and invalidate its server session separately when the user logs out.
-
-Calling `listAccounts()` afterwards requests addresses from the host again. Whether that opens an approval dialog depends on the host's permissions. The provider has no host permission-state or revocation method.
 
 ### `setRPCUrl` and `request`
 
