@@ -504,22 +504,55 @@ Clears the provider's cached account list and emits a `disconnect` event. The ne
 nimiq.disconnect()
 ```
 
-### `setRPCUrl` and `request`
+### `setRPCUrl`
 
-Set an external Nimiq JSON-RPC endpoint to query blockchain data that has no dedicated provider method:
+Sets the external Nimiq JSON-RPC endpoint that `request()` uses for blockchain queries with no dedicated provider method. It does not switch the Nimiq Pay network.
+
+**Parameters**
+
+- `rpcUrl` (string, required): HTTPS URL of a Nimiq JSON-RPC server on the same network as Nimiq Pay. The server must allow your mini app's origin through CORS. Keep private RPC
+credentials on your backend.
+
+**Returns**
+
+- `void`
+
+**User confirmation**
+
+- no
+
+**Example**
 
 ```ts
 nimiq.setRPCUrl('https://your-nimiq-rpc.example')
+```
 
+### `request`
+
+Sends a JSON-RPC request. Wallet methods, `nim_requestAccounts`, and `nim_isConsensusEstablished` go to Nimiq Pay; all other methods go to the endpoint set with `setRPCUrl()`.
+
+**Parameters**
+
+- `args` (object, required): `{ method: string, params?: unknown[] | object }`. See the [RPC methods](/rpc/methods) for query parameters.
+
+**Returns**
+
+- `unknown` — the wallet method's result, or for RPC queries, the response's `result.data` without the JSON-RPC envelope. A TypeScript result type does not validate the response at
+runtime.
+
+**Errors**
+
+See [wallet errors](#wallet-errors).
+
+**User confirmation**
+
+- yes, for wallet methods. RPC queries do not open a dialog.
+
+**Example**
+
+```ts
 const result = await nimiq.request({
   method: 'getTransactionByHash',
   params: ['TRANSACTION_HASH'],
 })
-console.log(result)
 ```
-
-Replace the endpoint and hash with your own values. Use an endpoint for the same network as the payment. Browser requests require HTTPS and a server that allows your mini app's origin through CORS. Keep private RPC credentials on your backend.
-
-Wallet methods still go through Nimiq Pay. The `nim_isConsensusEstablished` alias also queries the host. Other `request()` calls go to the configured RPC endpoint and fail if none is configured. `setRPCUrl()` does not switch the wallet's network. The dedicated `getBlockNumber()` and `isConsensusEstablished()` methods continue to query the host.
-
-`request()` returns the RPC response's `result.data`, without the JSON-RPC envelope. A TypeScript result type does not validate the response at runtime. See the [RPC methods](/rpc/methods) for query parameters and response fields.
