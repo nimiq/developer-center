@@ -73,6 +73,8 @@ The SDK provider rejects with `NimiqProviderError`. Use `NimiqProviderError.is(e
 | `INVALID_REQUEST` | `-32602` | The address is missing or invalid. |
 | `NETWORK_ERROR` | `-32000` | The client is unavailable, consensus is not established, or the lookup fails or exceeds the 30-second timeout. |
 
+See [wallet errors](#wallet-errors).
+
 **User confirmation**
 
 - no
