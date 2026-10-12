@@ -5,7 +5,7 @@ Access via `init()` from `@nimiq/mini-app-sdk`.
 | Method | Parameters | Returns | User confirmation |
 | --- | --- | --- | --- |
 | `listAccounts()` | none | `string[]` | yes |
-| `getBalance(address)` | address: string (required) | `number` (luna) | no |
+| `getBalance(address)` | address: string (required) | `number` (Luna) | no |
 | `sign(message)` | `string \| { message: string, isHex?: boolean }` | `{ publicKey: string, signature: string }` | yes |
 | `isConsensusEstablished()` | none | `boolean` | no |
 | `getBlockNumber()` | none | `number` | no |
