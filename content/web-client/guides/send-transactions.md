@@ -78,12 +78,10 @@ if (tx.executionResult === true) {
 }
 ```
 
-`state` describes inclusion and finality. `included` means the transaction is in the blockchain;
-`confirmed` means it has been finalized. Either state can have `executionResult: false` if
-execution failed. Check `executionResult` separately: `true` means execution succeeded, `false`
-means it failed, and an unavailable result does not mean success. `getTransaction()` returns an
-execution result for every transaction it finds. It returns an error if no matching transaction is
-found or the lookup fails. An error alone does not prove the transaction was not included.
+`state` and `executionResult` describe different things:
+ - `state` describes inclusion and finality: `included` means the transaction is in the blockchain, and `confirmed` means it is finalized.
+ - `executionResult` describes the outcome: `true` means execution succeeded, and `false` means it failed.
+A transaction can be `included` or `confirmed` and still have `executionResult: false`. `getTransaction()` rejects if no matching transaction is found or the lookup fails; a rejection alone does not prove the transaction was not included.
 
 Or watch for inclusion with a [transaction listener](/web-client/guides/listen-for-events#track-transactions-for-an-address):
 
