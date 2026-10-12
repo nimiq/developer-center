@@ -37,9 +37,7 @@ console.log('State:', details.state)
 
 The `validityStartHeight` determines when the transaction becomes valid. Setting it to the current head height means it's valid immediately. Transactions expire after a protocol-defined window.
 
-`sendTransaction()` can return `state: 'new'` after broadcasting if no inclusion notification
-arrives before it stops waiting. This response has no execution result. It does not prove the
-transaction was not included.
+`sendTransaction()` can return `state: 'new'` if no inclusion notification arrives before it stops waiting. This response has no execution result, and the transaction may still have been included. Look it up with `getTransaction()` to check.
 
 ## Send a transaction with data
 
