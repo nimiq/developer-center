@@ -87,7 +87,7 @@ No. Testnet is for development: use it to test payment flows, signing, and how y
 
 ### Can I read the NIM balance of any address?
 
-Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval or a transaction listener. The result is in luna (100,000 luna = 1 NIM); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
+Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval. The result is in Luna (1 NIM = 100,000 Luna); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
 
 ### How do I handle errors and edge cases when calling the provider?
 
