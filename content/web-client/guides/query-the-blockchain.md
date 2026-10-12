@@ -68,9 +68,7 @@ const tx = await client.getTransaction('abcdef1234567890...')
 console.log(tx.sender, tx.recipient, tx.value, tx.state, tx.executionResult)
 ```
 
-`state: 'confirmed'` means the transaction is finalized, even if its execution failed. Check
-`executionResult` for `true` or `false` before reporting the outcome. See
-[Check transaction status](/web-client/guides/send-transactions#check-transaction-status) for details.
+`state: 'confirmed'` means the transaction is finalized, not that it succeeded. Check `executionResult` before reporting the outcome. See [Check transaction status](/web-client/guides/send-transactions#check-transaction-status).
 
 ## Query transactions for an address
 
