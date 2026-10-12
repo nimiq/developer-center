@@ -28,7 +28,7 @@ Nimiq Pay asks for access before checking this wallet's Lightning invoice histor
 
 ## Handle duplicate or uncertain payments
 
-The same resolved invoice cannot be submitted again while an earlier attempt is recorded. The SDK rejects with a `NimiqProviderError` whose `type` is `DUPLICATE_PAYMENT`. If the host cannot determine whether submission succeeded, the type is `TRANSACTION_OUTCOME_UNKNOWN`. In either case, check the merchant's payment status before asking for another invoice. Do not retry the same invoice automatically.
+An invoice cannot be submitted again while an earlier attempt is recorded, including an invoice resolved from the same LNURL. The SDK rejects with a `NimiqProviderError` whose `type` is `DUPLICATE_PAYMENT`. If the host cannot determine whether submission succeeded, the type is `TRANSACTION_OUTCOME_UNKNOWN`. In either case, check the merchant's payment status before asking for another invoice. Do not retry the same invoice automatically.
 
 `error.data` may contain a `hash` and `swapId` if Nimiq Pay knows them. For duplicate attempts, those identifiers are returned only to the same Mini App and wallet that made the earlier attempt.
 
