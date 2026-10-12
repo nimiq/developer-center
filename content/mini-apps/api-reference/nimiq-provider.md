@@ -60,7 +60,7 @@ Use SDK `0.2.1` or later and a version of Nimiq Pay that exposes this method. Up
 
 **Returns**
 
-- `Promise<number>` through the provider returned by `init()`. The value is in luna: 100,000 luna = 1 NIM.
+- `Promise<number>` through the provider returned by `init()`. The value is in Luna: 100,000 Luna = 1 NIM.
 
 A result of `0` means the lookup succeeded and reported zero. Failed lookups reject; they do not return zero. This is the balance of the supplied address, not a wallet total. Contract balances, including HTLC and vesting balances, are not necessarily spendable: their spending conditions still apply.
 
