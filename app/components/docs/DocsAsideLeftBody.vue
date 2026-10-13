@@ -79,7 +79,7 @@ const miniAppsNavigationRank = new Map<string, number>(
 const miniAppsChildOrder: Record<string, readonly string[]> = {
   'tutorials': ['mini-app-tutorial', 'dual-chain-mini-app-tutorial'],
   'development': ['load-local-mini-app', 'build-with-ai'],
-  'features': ['evm-tokens', 'localization', 'device-identifier'],
+  'features': ['evm-tokens', 'localization', 'device-identifier', 'fullscreen'],
   'api-reference': ['', 'nimiq-provider', 'ethereum-provider'],
 }
 

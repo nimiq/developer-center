@@ -97,6 +97,12 @@ const network = getHostNetwork() ?? 'mainnet' // 'mainnet' | 'testnet'
 
 `getHostNetwork()` returns `undefined` outside Nimiq Pay and on Nimiq Pay versions released before this field existed. Without the SDK, read `window.nimiqPay?.network` directly. The helper and the `Network` type are available in `@nimiq/mini-app-sdk` 0.2.4 and later.
 
+## Fullscreen
+
+A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` or the `requestFullscreen()` helper from `@nimiq/mini-app-sdk` 0.2.3 or later. Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
+
+Use `getFullscreen()` and `onFullscreenChange()` to keep your UI in sync with native exits. See [Fullscreen in Mini Apps](/mini-apps/features/fullscreen) for the full API and error handling.
+
 ## Device Identifier
 
 Nimiq Pay can issue a pseudonymous per-device identifier to mini apps that need a stable handle, for example for leaderboards, anti-spam, or save slots. The identifier is a 64-character hex SHA-256 string scoped to your mini app's origin. It identifies the device, not the user: a shared device returns the same value to every user, and the same user on two devices receives two different identifiers.

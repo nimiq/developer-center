@@ -177,14 +177,14 @@ export default defineNuxtConfig({
     },
   },
   site: {
-    url: 'https://nimiq.com',
+    url: 'https://nimiq.dev',
     name: 'Nimiq Developer Center',
   },
   robots: {
     robotsTxt: false,
   },
   llms: {
-    domain: 'https://nimiq.com/developers',
+    domain: 'https://nimiq.dev',
     title: 'Nimiq Developer Center',
     description: 'Guides, resources and tips on how to create with Nimiq. Start building the future now!',
     full: {
