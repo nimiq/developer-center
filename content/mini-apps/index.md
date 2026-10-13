@@ -85,6 +85,18 @@ const language = window.nimiqPay?.language // e.g. 'en'
 
 Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
 
+## Nimiq Network
+
+Nimiq Pay exposes the Nimiq network it runs on via `window.nimiqPay.network`. The value is `'mainnet'` or `'testnet'`. Like the language, it is injected before page scripts run and stays the same for the whole session. Use it to pick endpoints, explorer links, or contract addresses that match the network your users' NIM lives on.
+
+```ts
+import { getHostNetwork } from '@nimiq/mini-app-sdk'
+
+const network = getHostNetwork() ?? 'mainnet' // 'mainnet' | 'testnet'
+```
+
+`getHostNetwork()` returns `undefined` outside Nimiq Pay and on Nimiq Pay versions released before this field existed. Without the SDK, read `window.nimiqPay?.network` directly. The helper and the `Network` type are available in `@nimiq/mini-app-sdk` 0.2.4 and later.
+
 ## Fullscreen
 
 A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` or the `requestFullscreen()` helper from `@nimiq/mini-app-sdk` 0.2.3 or later. Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
