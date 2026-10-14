@@ -20,6 +20,17 @@ export default defineAppConfig({
 
   // Nuxt UI — colors overridden via CSS variables in main.css
   ui: {
+    // ── Prose ──
+    // Code block icons resolve from the filename, not the language: UCodeIcon
+    // looks up the full filename, then the extension, then falls back to
+    // `i-vscode-icons-file-type-<extension>`. `sol` is absent from the default
+    // map and the fallback name does not exist, so it needs mapping explicitly.
+    prose: {
+      codeIcon: {
+        sol: 'i-vscode-icons-file-type-solidity',
+      },
+    },
+
     // ── Button ──
     // nq-pill: rounded-full, bold, gradient bg, lift-on-hover
     // nq-pill-secondary: outline style
