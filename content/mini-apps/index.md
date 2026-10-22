@@ -73,6 +73,8 @@ The framework supports two blockchain ecosystems:
 
 ERC-20 tokens on any listed chain — including USDT on Polygon — are accessible through `window.ethereum` with no additional setup. See [Using EVM Tokens in Mini Apps](/mini-apps/features/evm-tokens) for a worked example.
 
+Mini Apps can also request a [Bitcoin Lightning payment](/mini-apps/features/bitcoin-lightning-payments) through the Nimiq provider. Nimiq Pay lets the user pay the invoice with NIM or USDT and sends BTC to the merchant through an atomic swap.
+
 Any EVM-compatible chain supported by our RPC provider can be added; the list above reflects what we currently expose in Nimiq Pay. Additional EVM networks can be added over time via configuration updates.
 
 ## User Language
@@ -84,6 +86,24 @@ const language = window.nimiqPay?.language // e.g. 'en'
 ```
 
 Use this instead of `navigator.language`, which returns the device locale and may not match the language the user selected in Nimiq Pay. For fallback patterns, translations setup, and framework examples, see [Localization in Mini Apps](/mini-apps/features/localization).
+
+## Nimiq Network
+
+Nimiq Pay exposes the Nimiq network it runs on via `window.nimiqPay.network`. The value is `'mainnet'` or `'testnet'`. Like the language, it is injected before page scripts run and stays the same for the whole session. Use it to pick endpoints, explorer links, or contract addresses that match the network your users' NIM lives on.
+
+```ts
+import { getHostNetwork } from '@nimiq/mini-app-sdk'
+
+const network = getHostNetwork() ?? 'mainnet' // 'mainnet' | 'testnet'
+```
+
+`getHostNetwork()` returns `undefined` outside Nimiq Pay and on Nimiq Pay versions released before this field existed. Without the SDK, read `window.nimiqPay?.network` directly. The helper and the `Network` type are available in `@nimiq/mini-app-sdk` 0.2.4 and later.
+
+## Fullscreen
+
+A Mini App can enter fullscreen from its own user control, such as a **Go Fullscreen** button. Call `window.nimiqPay.requestFullscreen()` or the `requestFullscreen()` helper from `@nimiq/mini-app-sdk` 0.2.3 or later. Nimiq Pay adds no separate approval prompt. Users can leave through the native exit button or Android Back.
+
+Use `getFullscreen()` and `onFullscreenChange()` to keep your UI in sync with native exits. See [Fullscreen in Mini Apps](/mini-apps/features/fullscreen) for the full API and error handling.
 
 ## Device Identifier
 

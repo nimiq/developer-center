@@ -81,9 +81,29 @@ Run your dev server with network access enabled, then open Nimiq Pay on a phone 
 
 You can claim free testnet NIM directly inside Nimiq Pay, which lets you test flows that involve real transactions like payments, signing, and staking. Switch your account to [testnet](#how-do-i-test-my-mini-app-during-development), and the empty-state home screen will show a **Get free NIM** button. Tapping it credits your account with 110'000 testnet NIM per request. The same button is also available inside the **Top Up** modal.
 
+### Can I submit a mini app running on testnet?
+
+No. Testnet is for development: use it to test payment flows, signing, and how your mini app behaves. To qualify for the Mini Apps Competition, your mini app must be deployed and live on mainnet.
+
+### Can I read the NIM balance of any address?
+
+Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval. The result is in Luna (1 NIM = 100,000 Luna); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
+
 ### How do I handle errors and edge cases when calling the provider?
 
-Provider calls can fail in several ways: the user cancels the confirmation dialog, the request times out, no accounts are available, the network is unreachable, or the transaction itself is invalid. Each surfaces as a thrown error your code can inspect. For example, the Nimiq provider throws `PermissionDeniedError` on user rejection, and the Ethereum provider follows the EIP-1193 error codes (for example, `4902` for an unconfigured chain). Treat the cancellation case as a normal outcome, not a bug. Show clear messages to inform the user of the error rather than letting the UI freeze.
+In SDK `0.2.0`, Nimiq wallet methods called through the provider returned by `init()` reject with `NimiqProviderError`. Inspect the normalized error's `type`, `message`, and optional numeric `code`; see [wallet errors](/mini-apps/api-reference/nimiq-provider#wallet-errors) for an example. Status calls and external RPC queries keep their own error behavior. Ethereum uses EIP-1193 error codes, including `4001` for user rejection. Treat cancellation as a normal outcome and leave the user free to retry.
+
+### Can I choose which Nimiq address signs or pays?
+
+Nimiq Pay selects the account. The Nimiq API has no address parameter for signing or sender parameter for payments. See [accounts and signing](/mini-apps/api-reference/nimiq-provider#accounts-and-signing).
+
+### Does disconnecting revoke wallet access?
+
+`disconnect()` clears the provider's cached addresses and emits a local event. It does not revoke host permissions or log the user out of your backend. See [`disconnect()`](/mini-apps/api-reference/nimiq-provider#disconnect) for the distinction.
+
+### How do I check whether a NIM payment succeeded?
+
+A returned transaction hash alone does not confirm payment. Verify the payment on your backend before granting access, including its details, execution result, and finality. See the [RPC methods](/rpc/methods) for transaction queries.
 
 ### How do I keep API keys and secrets secure?
 
