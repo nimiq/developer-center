@@ -10,7 +10,7 @@ Access via `init()` from `@nimiq/mini-app-sdk`.
 | `isConsensusEstablished()` | none | `boolean` | no |
 | `getBlockNumber()` | none | `number` | no |
 | `sendBasicTransaction({ recipient, value, fee?, validityStartHeight? })` | recipient: string, value: number (Luna), fee: number (Luna), validityStartHeight: number | `string` (tx hash) | yes |
-| `sendBasicTransactionWithData({ recipient, value, data, fee?, validityStartHeight? })` | same as above + data: string | `string` (tx hash) | yes |
+| `sendBasicTransactionWithData({ recipient, value, data, fee?, validityStartHeight? })` | same as above + data: string (max 64 UTF-8 bytes, else `INVALID_TRANSACTION`) | `string` (tx hash) | yes |
 | `sendNewStakerTransaction({ delegation, value, fee?, validityStartHeight? })` | delegation: string, value: number (Luna) | `string` (tx hash) | yes |
 | `sendStakeTransaction({ value, fee?, validityStartHeight? })` | value: number (Luna) | `string` (tx hash) | yes |
 | `sendSetActiveStakeTransaction({ newActiveBalance, fee?, validityStartHeight? })` | newActiveBalance: number (Luna) | `string` (tx hash) | yes |

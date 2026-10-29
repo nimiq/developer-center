@@ -313,7 +313,7 @@ Sends a NIM payment with an attached text message. The message is public on-chai
 - `recipient` (string, required): Nimiq user-friendly address.
 - `value` (number, required): amount in Luna (1 NIM = 100,000 Luna).
 - `fee` (number, optional): transaction fee in Luna.
-- `data` (string, required): text message to attach.
+- `data` (string, required): text message to attach, at most 64 bytes in UTF-8. That is 64 ASCII characters, or fewer when the text has multibyte characters such as `é` or emoji.
 - `validityStartHeight` (number, optional): block height from which the transaction becomes valid.
 
 **Returns**
@@ -321,6 +321,8 @@ Sends a NIM payment with an attached text message. The message is public on-chai
 - `string` — transaction hash.
 
 **Errors**
+
+- `INVALID_TRANSACTION` (`-32602`): `data` is longer than 64 bytes. Nimiq Pay rejects the request before showing the confirmation prompt.
 
 See [wallet errors](#wallet-errors).
 

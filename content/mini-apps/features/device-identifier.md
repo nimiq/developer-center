@@ -13,7 +13,7 @@ Nimiq Pay can issue a pseudonymous, per-device identifier to mini apps that need
 
 ## Requesting the identifier
 
-Call `requestDeviceIdentifier()` with a `reason` string. The reason is shown verbatim to the user in a consent prompt the first time your origin requests it. Subsequent calls from the same origin resolve silently.
+Call `requestDeviceIdentifier()` with a `reason` string. The reason is shown to the user in a consent prompt the first time your origin requests it. Subsequent calls from the same origin resolve silently. Keep the reason short: Nimiq Pay cuts reasons longer than 200 characters to the first 197 plus `...`.
 
 ```ts
 import { requestDeviceIdentifier } from '@nimiq/mini-app-sdk'
