@@ -122,7 +122,7 @@ Nimiq Pay has a hidden dev menu with a network switch. Long-press the settings b
 
 The testnet switch only affects Nimiq provider operations. EVM operations continue running against mainnet chains. For EVM testing, developers can add custom chains (e.g. Sepolia) using `wallet_addEthereumChain`.
 
-When suggesting test flows that involve payments or staking, recommend testnet to avoid using real funds.
+When suggesting test flows that involve payments or staking, recommend testnet to avoid using real funds. The exception is `payLightningInvoice()`, which doesn't work on testnet, so Lightning flows need a small mainnet invoice.
 
 On testnet, the "Get free NIM" button credits the account with 110'000 NIM per request. It appears on the home empty state and inside the Top Up modal.
 
