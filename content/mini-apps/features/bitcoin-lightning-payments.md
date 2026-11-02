@@ -11,6 +11,10 @@ navigation:
 
 Use `payLightningInvoice()` when a merchant gives your Mini App a Bitcoin Lightning payment request. The user spends NIM or USDT, and the merchant receives BTC through Lightning. Nimiq Pay handles the self-custodial atomic swap and asks the user to approve the payment.
 
+::callout{icon="i-tabler-alert-triangle" color="warning" title="Mainnet only"}
+Lightning payments don't work on testnet because the swap provider doesn't support Lightning there, so `payLightningInvoice()` fails with `Cannot create swap`. Test with a small mainnet invoice instead.
+::
+
 ## Send a payment
 
 Get a fixed-amount BOLT11 invoice or fixed-amount LNURL from the merchant, then pass it to the Nimiq provider. The payment request must match the network selected in Nimiq Pay. In this example, `merchantInvoice` is the string supplied by the merchant.

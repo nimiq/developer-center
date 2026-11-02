@@ -346,7 +346,7 @@ const txHash = await nimiq.sendBasicTransactionWithData({
 
 ### `payLightningInvoice`
 
-Starts a self-custodial swap that pays a Bitcoin Lightning invoice with NIM or USDT. Nimiq Pay lets the user choose the asset and approve the payment.
+Starts a self-custodial swap that pays a Bitcoin Lightning invoice with NIM or USDT. Nimiq Pay lets the user choose the asset and approve the payment. Mainnet only: the swap can't be created on testnet.
 
 **Parameters**
 
