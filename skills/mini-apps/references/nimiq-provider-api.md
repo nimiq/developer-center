@@ -24,4 +24,6 @@ Access via `init()` from `@nimiq/mini-app-sdk`.
 
 The SDK method returns `Promise<number>` in luna. Zero means a successful lookup; failures reject with `NimiqProviderError`: `INVALID_REQUEST` (`-32602`) for invalid addresses, or `NETWORK_ERROR` (`-32000`) for an unavailable client, missing consensus, lookup failure, or a 30-second timeout. Contract balances are not necessarily spendable.
 
+Nimiq Pay always holds a user's spendable NIM in an HTLC co-signed by the user and the Nimiq Pay cosigner, which gives payments instant settlement and finality. The wallet address only holds incoming NIM until it moves into the HTLC, so it usually reads `0`. `listAccounts()` returns the wallet address first, followed by the current HTLC address if the wallet has one. For the user's NIM balance, call `getBalance()` with the HTLC address and treat a missing one as `0`. The HTLC times out after 14 days, so Nimiq Pay replaces it at about 7 days and when topping up with newly received NIM. Each replacement has a new address. Nimiq Pay updates the list without another approval and the provider emits `accountsChanged`, so read the balance again when it fires. During a replacement the old HTLC address can read `0` for a moment while the user has funds.
+
 Full documentation: https://nimiq.dev/raw/mini-apps/api-reference/nimiq-provider.md
