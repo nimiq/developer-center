@@ -89,6 +89,10 @@ No. Testnet is for development: use it to test payment flows, signing, and how y
 
 Yes. With SDK `0.2.1` or later and a supported Nimiq Pay version, call [`getBalance(address)`](/mini-apps/api-reference/nimiq-provider#getbalance) on the provider returned by `init()`. It reads any valid address on Nimiq Pay's active network without account approval. The result is in Luna (1 NIM = 100,000 Luna); contract balances may have spending restrictions. Check method availability on older hosts, and handle lookup errors separately from a successful zero balance.
 
+### How do I show the user's NIM balance?
+
+Nimiq Pay always holds a user's spendable NIM in an HTLC, which gives payments instant settlement and finality, so call `getBalance()` with the HTLC address from `listAccounts()`, not the wallet address. See [wallet balance](/mini-apps/api-reference/nimiq-provider#wallet-balance).
+
 ### How do I handle errors and edge cases when calling the provider?
 
 In SDK `0.2.0`, Nimiq wallet methods called through the provider returned by `init()` reject with `NimiqProviderError`. Inspect the normalized error's `type`, `message`, and optional numeric `code`; see [wallet errors](/mini-apps/api-reference/nimiq-provider#wallet-errors) for an example. Status calls and external RPC queries keep their own error behavior. Ethereum uses EIP-1193 error codes, including `4001` for user rejection. Treat cancellation as a normal outcome and leave the user free to retry.
