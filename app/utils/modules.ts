@@ -8,6 +8,7 @@ export const DOC_MODULES = [
   { label: 'Nodes & Validators', icon: 'i-custom-nimiq-dev', to: '/nodes', segment: 'nodes' },
   { label: 'Network Upgrades', icon: 'i-tabler-git-fork', to: '/network-upgrades', segment: 'network-upgrades' },
   { label: 'Protocol', icon: 'i-custom-nimiq-albatross', to: '/protocol', segment: 'protocol' },
+  { label: 'Bridge', icon: 'i-tabler-building-bridge', to: '/bridge', segment: 'bridge' },
   { label: 'Migration', icon: 'i-tabler-git-merge', to: '/migration', segment: 'migration' },
 ] as const
 
