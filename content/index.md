@@ -227,6 +227,7 @@ title: Everything you need to build with Nimiq
     - [AI Integrations](/ai)
     - [Nimiq Utils](/nimiq-utils)
     - [Blockchain Explorers](/rpc/blockchain-explorers)
+    - [ChainTracer](https://chaintracer.app/)
     ::::
 
     ::::u-page-card

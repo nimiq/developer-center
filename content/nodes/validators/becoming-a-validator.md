@@ -363,6 +363,8 @@ It will tell your the public keys of your registered signing and voting keys, as
 If the command responds with an error, your validator creation transaction was likely not successfull. You can ask for support in our Telegram channels, in our Github, or in the community forum.
 ::
 
+On mainnet, you can also look up your validator address and its transactions in a blockchain explorer such as [ChainTracer](https://chaintracer.app/).
+
 ## Add stake to your validator
 
 A validator itself can only maintain the validator deposit as stake. To stake more than that, you need to _add stake_ to your validator as a staker.
