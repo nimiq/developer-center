@@ -15,6 +15,8 @@ The NIM stays locked on Nimiq for as long as that wNIM exists, and wNIM is creat
 
 The header feed runs continuously. The relayer submits every Nimiq macro block header to the oracle in order, whether or not anyone is bridging. A lock does not cause a submission. It waits for the next one that happens to cover it.
 
+If the relayer goes offline, locks are still accepted on Nimiq, but they cannot be minted until a macro block header covering them reaches the oracle. The oracle accepts only the next macro block header, so missed macro block headers cannot be skipped. When the relayer returns, it submits the missed macro block headers in order, several per transaction. Its Nimiq node must still hold them: after a longer outage, the oracle advances only with macro block headers from a node that kept them.
+
 [IMAGE PLACEHOLDER: bridge-lock-and-mint.png. The four steps in sequence, with the wait for finality as its own step and the header feed drawn as an ambient process that the user's path crosses rather than causes.]
 
 ## 1. Lock NIM on Nimiq
@@ -29,8 +31,6 @@ The user sends a NIM transaction to the bridge contract. The `value` is the amou
 | 36 to 55 | EVM bridge address | The 20-byte bridge contract that may mint this lock |
 
 The last two fields bind the lock to one bridge on one network. A lock made for one EVM network cannot be minted on another, and a lock made for one bridge cannot be minted by a second bridge serving the same network.
-
-`recipient_data` has to be **exactly** 56 bytes. Shorter, longer, or laid out differently all fail, and they fail on the EVM side rather than here.
 
 ::callout{icon="i-tabler-alert-triangle" color="warning"}
 Nimiq does not check `recipient_data` when the lock is made. A lock transaction is accepted whatever it contains, the NIM is locked, and the layout is only enforced when the mint is attempted. Data that cannot be parsed as a lock can never be minted, and the NIM behind it stays locked with no way to recover it.
@@ -72,7 +72,7 @@ The relayer submits Nimiq macro block headers to the oracle on the EVM network b
 
 What this means for a transfer is that the third step is usually already done, or about to be, without anything having asked for it. The lock needs a header from its own epoch, at or after the block the lock was in, and the feed produces one every batch.
 
-The oracle checks each header against the one before it and stores its block hash. See [Oracles](/bridge/how-it-works/oracles) for what those checks are and how the storage works. Writing is restricted to the oracle's owner, so this step is performed by whoever operates the bridge.
+The oracle checks each header against the one before it and stores its block hash. See [Oracles](/bridge/how-it-works/oracles) for what those checks are and how the storage works. Writing is restricted to the oracle's owner, so this step is performed by whoever operates the bridge but can be verified by anyone.
 
 ::callout{icon="i-tabler-info-circle" color="info"}
 A header commits the history of its own epoch up to its own block. A lock can be proved against any header from its epoch at or after the lock's block, so a proof can be rebuilt against a later one. Headers from a different epoch do not cover it. The oracle stores every macro header, so no lock is left without one to prove against.
@@ -100,7 +100,7 @@ The destination does not have to be an ordinary account. A contract wallet can c
 
 **The relayer does not perform this step.** It submits headers and commits records, and it never sends a bridge transaction of any kind, so no transfer completes on the user's behalf by default. Whoever submits the mint pays the gas for it, which means the destination needs the EVM network's own gas token in order to call `mint`.
 
-That is what the signature path exists for. A **sponsor**, meaning a service that pays gas for somebody else, can submit a mint the destination has authorized without the destination holding any gas at all. The contract function is in place and the design reserves room for this, but the sponsor service itself is not built yet.
+That is what the signature path exists for. It enables gas abstraction: a sponsor can submit a mint the destination has authorized, so the destination does not need to hold any gas. The contract function is in place and the design reserves room for this, but the sponsor service itself is not built yet.
 
 ::callout{icon="i-tabler-alert-triangle" color="warning"}
 Never sign a mint authorization for a lock made by somebody else. An attacker can lock a trivial amount naming the destination and its next nonce, then ask for an authorization covering that lock. Signing it spends the nonce on the attacker's lock, and the destination's own pending lock can never be minted. An authorization covers one specific lock and has no expiry, so authorize only locks there is a record of creating, and check the lock's transaction and amount before signing.

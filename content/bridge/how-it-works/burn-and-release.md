@@ -55,7 +55,7 @@ The risk it manages is specific: if a burn were relayed and the NIM released, an
 
 In the other direction, the relayer forwards macro block headers that Nimiq produces itself, continuously, whether or not anyone is bridging. Nothing equivalent exists here. An EVM network publishes no structure that Nimiq can verify a single burn against, so **the relayer builds one**: it collects `DataForwarded` events, arranges them into a Merkle tree of its own construction, and commits that tree's root to the oracle on Nimiq.
 
-What goes into the tree is the **record**, which is the forwarding contract's address followed by the forwarded bytes. For a burn that is 20 bytes of source plus 136 bytes of burn data, 156 bytes in total. Each leaf is the record hashed twice with Blake2b rather than once. The second hash is not redundant: a single hash would let anyone forward a 64-byte record whose second half was the hash of a record they invented, and that invented record would then prove through it as though it were a leaf of the tree.
+What goes into the tree is the **record**, which is the forwarding contract's address followed by the forwarded bytes. Each leaf is the record hashed twice with Blake2b rather than once. The second hash is not redundant: a single hash would let anyone forward a 64-byte record whose second half was the hash of a record they invented, and that invented record would then prove through it as though it were a leaf of the tree.
 
 Leaves are ordered by block and then by log index within the block, and the tree is built over every record the relayer has ever seen rather than only the new ones. Each root therefore re-commits all the earlier records, which is what keeps a fresh proof available for an old burn.
 
@@ -65,7 +65,7 @@ The forwarder is permissionless. Any contract can call `forward`, and the relaye
 
 And because the committed root is constructed rather than published, the proof needed to spend it is not something a Nimiq node can produce. It comes either from the relayer, which exposes the proofs it builds, or from reconstructing the same tree independently by observing the `DataForwarded` events. The [integration guide](/bridge/integration/burn-and-release) covers both.
 
-Writing to the oracle is restricted to its owner, exactly as in the other direction.
+Writing to the oracle is restricted to its owner, exactly as in the other direction. This is the point of trust in the architecture. The oracle cannot check that a root reflects real burns, so the bridge relies on the owner to commit honest ones. Everything after that is enforced by consensus rules, and anyone can rebuild the tree from the `DataForwarded` events and compare its root with the one committed. See [Security and trust model](/bridge/security-and-trust).
 
 ## 4. Release the NIM on Nimiq
 
@@ -81,7 +81,7 @@ What stays open is submission. The signed release is an ordinary transaction and
 
 ### The fee comes out of the burned amount
 
-The target does not need to hold any NIM to receive a release. There is nothing to fund, and an address that has never been used on Nimiq can receive one.
+The target does not need to hold any NIM to receive a release, which is an advantage of this bridge architecture. There is nothing to fund, and an address that has never been used on Nimiq can receive one.
 
 That works because the fee is subtracted from the burned amount rather than added on top of it. The target chooses the split when signing: the amount it receives plus the fee it pays must equal the burned amount exactly. The release must pay out something, so the fee is always strictly less than the amount burned.
 
