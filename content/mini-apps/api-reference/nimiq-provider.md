@@ -56,7 +56,7 @@ The provider caches the addresses returned by `listAccounts()`. Nimiq Pay keeps 
 
 ### Wallet balance
 
-Nimiq Pay always holds a user's spendable NIM in an HTLC shared with the Nimiq Pay cosigner. Every payment needs a signature from both the user and the cosigner, which is what gives Nimiq Pay payments instant settlement and finality. The wallet address only holds incoming NIM until Nimiq Pay moves it into the HTLC, so it usually reads `0`.
+Nimiq Pay always holds a user's spendable NIM in an [HTLC](/protocol/accounts#htlc) shared with the Nimiq Pay cosigner. Every payment needs a signature from both the user and the cosigner, which is what gives Nimiq Pay payments instant settlement and finality. The wallet address only holds incoming NIM until Nimiq Pay moves it into the HTLC, so it usually reads `0`.
 
 `listAccounts()` returns the wallet address first, followed by the address of the current HTLC if the wallet has one. A wallet without an HTLC, such as one that has never been funded, returns only the wallet address.
 
