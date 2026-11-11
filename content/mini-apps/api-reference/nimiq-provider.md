@@ -52,7 +52,30 @@ Nimiq Pay chooses the account used for signing and sending transactions. `sign()
 
 `listAccounts()` shares addresses; it does not prove ownership. The API does not define their order as a signer-selection rule.
 
-The provider caches the addresses returned by `listAccounts()`. It has no documented `accountsChanged` event for Nimiq, so do not copy the Ethereum provider's account-change handling and assume it also works here.
+The provider caches the addresses returned by `listAccounts()`. Nimiq Pay keeps that list current after the user approves it, and the provider emits `accountsChanged` when the list changes.
+
+### Wallet balance
+
+Nimiq Pay always holds a user's spendable NIM in an [HTLC](/protocol/accounts#htlc) shared with the Nimiq Pay cosigner. Every payment needs a signature from both the user and the cosigner, which is what gives Nimiq Pay payments instant settlement and finality. The wallet address only holds incoming NIM until Nimiq Pay moves it into the HTLC, so it usually reads `0`.
+
+`listAccounts()` returns the wallet address first, followed by the address of the current HTLC if the wallet has one. A wallet without an HTLC, such as one that has never been funded, returns only the wallet address.
+
+```ts
+const [walletAddress, htlcAddress] = await nimiq.listAccounts()
+const balanceLuna = htlcAddress ? await nimiq.getBalance(htlcAddress) : 0
+```
+
+This is the NIM balance Nimiq Pay shows on its home screen. Nimiq Pay shows NIM at the wallet address separately as pending. A non-zero balance does not guarantee that a transaction will succeed.
+
+The HTLC times out after 14 days, so Nimiq Pay replaces it once it is about 7 days old. It also replaces it when topping up the balance with newly received NIM. Each replacement has a new address. Nimiq Pay updates the list without another approval, so `listAccounts()` returns the current addresses and the provider emits `accountsChanged` with the new list. Read the balance again when it fires:
+
+```ts
+nimiq.on('accountsChanged', async ([walletAddress, htlcAddress]) => {
+  const balanceLuna = htlcAddress ? await nimiq.getBalance(htlcAddress) : 0
+})
+```
+
+During a replacement the old HTLC address can read `0` for a moment while the user still has funds, so do not refuse a payment based on that result alone.
 
 ## Wallet errors
 
@@ -106,7 +129,7 @@ Replace resolved `{ error }` checks with `try`/`catch`. The SDK also converts le
 
 ### `listAccounts`
 
-Returns the user's shared Nimiq account addresses. After a successful call, subsequent calls return the cached list until `disconnect()` clears it.
+Returns the user's shared Nimiq account addresses. After a successful call, subsequent calls return the cached list until `disconnect()` clears it. Nimiq Pay updates that list when the user's HTLC address changes.
 
 **Parameters**
 
@@ -144,7 +167,7 @@ Use SDK `0.2.1` or later and a version of Nimiq Pay that exposes this method. Up
 
 - `Promise<number>` through the provider returned by `init()`. The value is in Luna: 100,000 Luna = 1 NIM.
 
-A result of `0` means the lookup succeeded and reported zero. Failed lookups reject; they do not return zero. This is the balance of the supplied address, not a wallet total. Contract balances, including HTLC and vesting balances, are not necessarily spendable: their spending conditions still apply.
+A result of `0` means the lookup succeeded and reported zero. Failed lookups reject; they do not return zero. This is the balance of the supplied address, not a wallet total; see [wallet balance](#wallet-balance) to read the user's NIM balance. Contract balances, including HTLC and vesting balances, are not necessarily spendable: their spending conditions still apply.
 
 **Errors**
 
