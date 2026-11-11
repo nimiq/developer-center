@@ -21,7 +21,7 @@ The user calls `burn` with three arguments: the 20-byte Nimiq address that shoul
 
 The address receiving the NIM is the **target**. The nonce belongs to the target, not to the caller and not to the burn, and this is the first place the two directions come apart. On the EVM side it is carried rather than checked: `burn` does not validate it, because the counter it has to match lives on Nimiq and the EVM network cannot read it. The check happens when the release is processed.
 
-The contract destroys the caller's own tokens, so no approval or ownership check is involved beyond the caller holding the balance. Two rules are enforced before anything is burned. The amount must be greater than zero, and it must be a whole number of luna: wNIM carries 18 decimals while NIM resolves only to luna, so anything finer could be destroyed on the EVM network and never released on Nimiq. See [Units](/bridge/how-it-works/lock-and-mint#units) for the conversion.
+The contract destroys the caller's own tokens, so no approval or ownership check is involved beyond the caller holding the balance. The amount must be greater than zero.
 
 A burn emits three events. Destroying the tokens emits the standard ERC-20 `Transfer` to the zero address, which is what marks the burn itself. The other two are the bridge's own, and the difference between them matters to anyone building on it.
 

@@ -134,7 +134,7 @@ Before anything is minted, the contract runs a fixed sequence of checks. Each on
 | The nonce is exactly one higher than the last minted for that destination | Replaying a lock, and minting locks for an address out of order |
 | The caller is the destination, or carries its authorization | Minting to an address without its consent |
 
-Only then is the amount converted and the wNIM minted to the destination, and a `Minted` event emitted.
+Only then is the lock's value minted to the destination as wNIM, and a `Minted` event emitted.
 
 ### Locks are read by protocol version
 
@@ -144,8 +144,4 @@ A Nimiq upgrade that changes the record or transaction encoding therefore needs 
 
 ## Units
 
-The two sides count in different units, and the conversion is fixed in the contract.
-
-NIM has five decimal places: 1 NIM is 100,000 luna, and a Nimiq transaction value is expressed in luna. wNIM uses the 18 decimals conventional for ERC-20 tokens. One luna is therefore 10^13 of wNIM's smallest unit, and a locked amount in luna is multiplied by that factor when minted.
-
-The conversion is exact in this direction, since every luna maps to a whole number of those units. It is not exact in the other direction, which is why [Burn and release](/bridge/how-it-works/burn-and-release) rejects amounts that are not a whole number of luna.
+Both sides count in luna. NIM has five decimal places: 1 NIM is 100,000 luna, and a Nimiq transaction value is expressed in luna. wNIM has the same five decimals, so its smallest unit is one luna and 1 wNIM corresponds to 1 NIM. A lock mints exactly its value, and a burn releases exactly its amount, with no conversion in either direction.
