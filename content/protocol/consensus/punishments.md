@@ -11,7 +11,7 @@ Validators are responsible for ensuring the security and stability of a blockcha
 
 The blockchain deals with misbehavior based on the nature of the offense:
 
-- A delay in block production constitutes a minor offense. In such cases, the associated slot is deactivated, and the rewards are burned.
+- A delay in block production constitutes a minor offense. In such cases, the rewards of the late slot are burned, and the validator is deactivated unless it reactivates.
 - For more severe offenses like forking, double voting, or double proposals, the validator is jailed. All validator slots are deactivated for a set period, and rewards for these slots are burned.
 
 ::callout{icon="i-tabler-info-circle" color="info"}
@@ -22,9 +22,9 @@ Burned rewards are sent to the burned address: `NQ07 0000 0000 0000 0000 0000 00
 
 A delay in block production is categorized as a minor offense. Such delays can occur due to intentional or unintentional circumstances, such as unexpected internet connectivity issues. Determining the intent behind the delay can be challenging.
 
-Validators hold multiple slots and produce micro blocks with one slot at a time. As a consequence of delaying the block production, rewards for the corresponding slot are burned. The slot is added to the `punished_slots` set, which remains for the current batch and the next one, to account for reward distribution at the next batch. This set ensures accurate reward distribution during the upcoming batch.
+Validators hold multiple slots and produce micro blocks with one slot at a time. As a consequence of delaying the block production, rewards for the corresponding slot are burned for the batch. The slot is added to the `punished_slots` set, which remains for the current batch and the next one, to account for reward distribution at the next batch. A punished slot cannot produce blocks in the next batch.
 
-The misbehaving slot gets deactivated but can reactivate itself one block after committing the offense. While delaying block production is not considered a severe misbehavior due to replacing the missing block with a skip block, the rewards for the misbehaving slot are burned regardless as a penalty.
+The penalty also deactivates the validator, starting at the next election block. To keep participating, the validator must send a [reactivate](/protocol/validators/validators#reactivate) transaction, or have `automatic_reactivate` enabled. While delaying block production is not considered a severe misbehavior due to replacing the missing block with a skip block, the rewards for the late slot are burned regardless as a penalty.
 
 ## Jail
 
@@ -52,7 +52,9 @@ If a validator wants to withdraw its deposit after being released, it can do so 
 
 ### Reporting window
 
-There is a reporting window for when validators can submit such proofs. From the block after the offense up to the end of the epoch after the next election block. The reporting window corresponds to the period a validator must be in the inactive state to be able to delete its account and withdraw its funds.
+There is a reporting window for when validators can submit such proofs: from the block after the offense up to 7'200 blocks (120 batches, about 2 hours) after it. The window is bounded by the transaction validity window.
+
+The reporting window is shorter than the lock-up period, which is the time a deactivated validator must stay inactive before it can delete its account and withdraw its funds. The lock-up period lasts one epoch, counted from the election block at which the validator becomes inactive. This ensures that funds are still locked while an offense can be reported.
 
 ### Impact on stakers
 

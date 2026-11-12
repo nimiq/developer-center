@@ -11,7 +11,7 @@ An equivocation refers to malicious behavior by a validator that contradicts the
 
 An equivocation proof proves that a validator misbehaved. The offending validator is automatically jailed as soon as the equivocation proof is added to the blockchain. Validators enter an 8-epoch jail, lose their rewards, and the ability to produce blocks during the jail period. Honest validators refrain from any misbehavior, as it is not in their interest to lose rewards or be restrained from block production.
 
-Validators can submit proofs attesting to malicious behavior. While submitting these proofs is considered good practice, it is optional for validators. They can submit any proof from the moment they witness an offense up to the last micro block at the end of the next epoch. The reporting window, spanning almost two epochs, provides sufficient time for validators to identify, address, and submit proofs of malicious behavior to be included in the blockchain.
+Validators can submit proofs attesting to malicious behavior. While submitting these proofs is considered good practice, it is optional for validators. They can submit any proof from the moment they witness an offense up to 7'200 blocks (120 batches, about 2 hours) after the block of the offense. For details, see the [reporting window](/protocol/consensus/punishments#reporting-window).
 
 Validators can misbehave in three ways:
 
@@ -25,7 +25,7 @@ A fork occurs when a malicious validator generates two micro blocks at the same 
 
 The fork concludes once an honest validator is chosen as the subsequent block producer. Block production then resumes according to the consensus (one micro block per block height), and any validator can submit a fork proof attesting to the malicious behavior of the previous validator.
 
-Forks may also end if the next block is a macro block. Although a malicious validator may attempt to propose 2 blocks at the same block height (refer to the double proposal proof below), the consensus requirement dictates that more than 2/3 of validators must agree on a block proposal before it is added to the blockchain; thus, there is no way to continue a fork.
+Forks may also end if the next block is a macro block. Although a malicious validator may attempt to propose 2 blocks at the same block height (refer to the double proposal proof below), the consensus requirement dictates that 2*f*+1 slots must agree on a block proposal before it is added to the blockchain; thus, there is no way to continue a fork.
 
 ```rust
 pub struct ForkProof {

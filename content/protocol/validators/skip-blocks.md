@@ -33,7 +33,7 @@ Skip blocks are a special type of micro block, but because they do not hold tran
 
 A skip block is an agreement among validators to confirm they did not see a micro block in the expected timeframe. The block’s justification consists of the aggregated signatures from the validators. The process goes as follows:
 
-1. The elected validator fails to produce a micro block within the expected timeframe
+1. The elected validator fails to produce a micro block within the producer timeout, which is at least 4 seconds
 2. Upon noticing the missing block, any validator can create a skip block locally
 3. Validators each create and sign their skip block, then share their signatures with peers
 4. When at least 2*f*+1 signatures are collected, they are aggregated into the skip block proof
@@ -46,4 +46,4 @@ A skip block is an agreement among validators to confirm they did not see a micr
 
 ### Validator Penalty for Misbehavior
 
-A delay in block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also results in the deactivation of the validator slot, although it can reactivate itself after one block. For more information on this misbehavior, see the [punishments](/protocol/consensus/punishments#block-production-delay) document.
+A delay in block production is considered a minor offense. When a validator fails to produce a micro block in time, the associated slot is marked to not receive rewards, which are burned as a penalty. This delay also deactivates the validator, starting at the next election block, unless it reactivates. For more information on this misbehavior, see the [punishments](/protocol/consensus/punishments#block-production-delay) document.

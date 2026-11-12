@@ -100,9 +100,9 @@ The following table outlines each transaction involved and the conditions under 
 
 | **Transaction** | **Description** | **Effective Timing** | **Notes** |
 | --- | --- | --- | --- |
-| **Deactivate** | Marks the validator as inactive. | Takes effect at the start of the next epoch. | Validator cannot be elected in the next epoch. Triggers the reporting window, which lasts until the end of the next epoch (current + 1). |
-| **Retire** | Marks the validator as retired. Required before deletion. | Can be submitted after the reporting window ends. | **Irreversible.** Once retired, validator cannot return to active state. |
-| **Delete** | Deletes the validator and returns the 100'000 NIM deposit. | After retirement and once all funds are withdrawn. | Only allowed after the reporting window ends. If stake remains, a tombstone record manages withdrawals. |
+| **Deactivate** | Marks the validator as inactive. | Takes effect at the start of the next epoch. | Validator cannot be elected in the next epoch. Triggers the lock-up period, which lasts until the end of the next epoch (current + 1). |
+| **Retire** | Marks the validator as retired. Required before deletion. | Can be submitted at any time. If the validator is still active, it becomes inactive at the next election block. | **Irreversible.** Once retired, validator cannot return to active state. |
+| **Delete** | Deletes the validator and returns the 100'000 NIM deposit. | After retirement and once all funds are withdrawn. | Only allowed after the lock-up period ends. If stake remains, a tombstone record manages withdrawals. |
 
 ::callout{icon="i-tabler-info-circle" color="info"}
 **Note**

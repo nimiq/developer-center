@@ -63,13 +63,13 @@ Welcome to the Nimiq Proof-of-Stake documentation! This section introduces our c
 
 ## What is Albatross?
 
-Albatross is Nimiq's innovative Proof-of-Stake consensus algorithm designed for speed, security, and efficiency. Unlike traditional PoS systems, Albatross combines the best of Byzantine Fault Tolerance (BFT) protocols with probabilistic finality, achieving thousands of transactions per second while maintaining robust security guarantees.
+Albatross is Nimiq's Proof-of-Stake consensus algorithm. It combines single-producer micro blocks, which have probabilistic finality, with macro blocks agreed through Tendermint, a Byzantine fault tolerant (BFT) protocol, which have deterministic finality.
 
 :::u-page-grid
   ::::u-page-card
   ---
-  title: High Throughput
-  description: Achieve 1000+ TPS with lightning-fast 1-second block separation for optimal performance
+  title: 1-Second Blocks
+  description: Micro blocks are produced with a target separation of 1 second
   icon: i-nimiq:bolt
   variant: outline
   ---
@@ -119,7 +119,7 @@ The Nimiq PoS blockchain is organized into [epochs and batches](/protocol/consen
 
 ### Micro Blocks
 
-Produced by selected validators, [micro blocks](/protocol/consensus/block-format#micro-blocks) contain user transactions. A [skip block](/protocol/validators/skip-blocks) may replace a delayed micro block, signed by over two-thirds of validators in the current epoch.
+Produced by selected validators, [micro blocks](/protocol/consensus/block-format#micro-blocks) contain user transactions. A [skip block](/protocol/validators/skip-blocks) may replace a delayed micro block, signed by 2*f*+1 slots in the current epoch.
 
 ### Macro Blocks
 
@@ -134,7 +134,9 @@ Albatross uses Tendermint for macro block consensus, ensuring Byzantine fault to
 1. **Proposal Phase**: A leader validator proposes a macro block
 2. **Pre-vote Phase**: Validators vote on the proposal
 3. **Pre-commit Phase**: Validators commit to the final decision
-4. **Finality**: 2f+1 validators must agree for consensus out of a maximum of 512 available slots
+4. **Finality**: 2*f*+1 of the 512 slots must agree for consensus
+
+If a round does not reach agreement, Tendermint starts a new round. The first round has a timeout of 4 seconds, and each following round adds 1 second, giving validators more time to agree.
 
 ### Skip Block Protocol
 
@@ -142,13 +144,13 @@ When a validator fails to produce a micro block on time, any validator can produ
 
 ## Dealing with Malicious Behavior
 
-Validators earn rewards for contributions and face [punishments](/protocol/consensus/punishments) for consensus violations, with severity varying by offense type. Minor offenses lead to deactivation of the responsible slot and burned rewards. Severe offenses result in a [jail](/protocol/consensus/punishments#jail) state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
+Validators earn rewards for contributions and face [punishments](/protocol/consensus/punishments) for consensus violations, with severity varying by offense type. Minor offenses lead to burned rewards for the late slot and deactivation of the validator. Severe offenses result in a [jail](/protocol/consensus/punishments#jail) state, where the validator, including all slots, is locked for an extended period, with burned rewards and an inability to be re-elected. The jailing period also affects stakers, as their stake is locked for the duration of the jailing period.
 
 ### Punishment Types
 
 | Offense Type | Consequence | Duration | Validator Status |
 |----------------|-------------|----------|------------------|
-| **Block Delay** | Slot deactivation + reward burning | Temporary | Slot suspended |
+| **Block Delay** | Slot rewards burned + validator deactivated | Until reactivation | Inactive |
 | **Equivocation** | Jail state + all rewards burned | 8 epochs | Fully locked |
 
 ## Network Security
