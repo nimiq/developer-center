@@ -50,13 +50,13 @@ Only one of these fields is used at a time as justification, depending on whethe
 
 ### Skip Blocks
 
-When a micro block is not produced within the expected timeframe, the remaining elected validators step in and create a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by over two-thirds of the validators of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks](/protocol/validators/skip-blocks) documentation.
+When a micro block is not produced within the expected timeframe, the remaining elected validators step in and create a skip block in the expected micro block’s place. Unlike a regular micro block, a skip block does not include transactions and is agreed and signed by 2*f*+1 slots of the current epoch. This block replaces the micro block, thus ‘skipping’ past it. For detailed information, refer to the [skip blocks](/protocol/validators/skip-blocks) documentation.
 
 ## Macro Blocks
 
 There are two types of macro blocks: **election** and **checkpoint**, each serving a specific role. Election macro blocks update the validator list, defining which validators will participate in the next epoch; these blocks also close epochs. Checkpoint macro blocks finalize transactions and close batches but do not change the validator list.
 
-Macro blocks need consensus of 2/3 of the validator [slots](/protocol/validators/slots) to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
+Macro blocks need the consensus of 2*f*+1 of the validator [slots](/protocol/validators/slots) to be confirmed, ensuring finality and cementing the state of the blockchain at regular intervals. The structure of a macro block is divided into three parts: **header**, **body**, and **justification**.
 
 ### Macro Header
 
@@ -110,7 +110,7 @@ All blocks are sequentially linked by the parent hash, forming a continuous chai
 The Nimiq blockchain is structured into several subsets of blocks called epochs and batches.
 
 - **Batches**: A batch consists of 59 **micro blocks** produced one after another. Each batch ends with a **checkpoint** macro block, which finalizes the transactions included in the preceding micro blocks. Since the micro blocks are supposed to be spaced 1 second apart, a batch is expected to take 1 minute.
-- **Epochs**: An epoch is a set of 1440 batches. Each epoch ends with an **election** macro block, which not only finalizes the transactions in the preceding batch but also updates the validator list of the entire epoch. Since a batch is expected to take about 1 minute, 1440 batches are expected to take 12 hours.
+- **Epochs**: An epoch is a set of 720 batches (43'200 blocks). Each epoch ends with an **election** macro block, which not only finalizes the transactions in the preceding batch but also updates the validator list of the entire epoch. Since a batch is expected to take about 1 minute, 720 batches are expected to take 12 hours.
 
 <img class="object-contain max-h-[max(300px)]" src="/assets/images/protocol/block-struct-3.png" alt="blockchain structure" />
 

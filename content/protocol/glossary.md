@@ -205,7 +205,7 @@ A special contract that deals with functions regarding validators, stakers, and 
 
 ## Supermajority
 
-Supermajority means that at least 2/3 of the total validator voting power must agree on a decision for it to be considered final and valid.
+Supermajority means that at least 2*f*+1 of the 512 slots must agree on a decision for it to be considered final and valid.
 
 ## Supply
 
