@@ -85,7 +85,7 @@ Minting is a call to `mint` with five arguments. Three of them describe the lock
 | **Argument** | **What it is** |
 | --- | --- |
 | `historicTx` | The lock, serialized exactly as it appears as a leaf of Nimiq's history tree |
-| `mmrProof` | The [history tree proof](/protocol/storage/merkle-trees) that this leaf is covered by the header's history root |
+| `mmrProof` | The [history tree proof](/protocol/storage/merkle-trees#merkle-mountain-range) that this leaf is covered by the header's history root |
 | `header` | The content serialization of a macro header from the lock's epoch, at or after the lock's block |
 | `index` | The oracle index that header's block hash was written at |
 | `ring` | The oracle slot's value before that index, then every block hash written to the slot since |

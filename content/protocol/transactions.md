@@ -11,12 +11,14 @@ Transactions modify the state of the Nimiq blockchain according to protocol rule
 
 ## Types of Accounts
 
-Nimiq supports four types of accounts, each designed for different purposes:
+Nimiq supports six types of accounts, each designed for different purposes:
 
 - **Basic Account**: The most commonly used account for standard transactions between individuals or entities
 - **Hashed Time-Locked Contract (HTLC)**: Handles conditional transfers, such as atomic swaps, based on cryptographic conditions and time constraints
 - **Vesting Contract**: Manages funds released gradually over time, often used to lock funds with a defined release schedule
 - **Staking Contract**: Enables validators to lock their NIM, participate in network consensus, and earn rewards
+- **Bridge Contract**: Holds NIM locked for use on another network and releases it against a proof of a matching burn there
+- **Oracle Contract**: Stores commitments to the state of another network, written by its owner, that bridge contracts check proofs against
 
 Each account type processes transactions differently to meet its specific use case. For more details, refer to the [accounts](/protocol/accounts) documentation.
 
@@ -24,7 +26,7 @@ Each account type processes transactions differently to meet its specific use ca
 
 Transactions are first placed in the mempool, waiting for validation. Nimiq has two mempools:
 
-- **Regular Mempool**: For basic, HTLC, and vesting transactions
+- **Regular Mempool**: For basic, HTLC, vesting, bridge, and oracle transactions
 - **Control Mempool**: For staking transactions, which are prioritized
 
 Once selected by a validator, transactions are validated and included in a block if they meet the protocol’s requirements. For more details on how the mempool operates, refer to the [mempool](/protocol/storage/mempool) documentation.

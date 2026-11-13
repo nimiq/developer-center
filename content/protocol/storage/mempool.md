@@ -20,7 +20,7 @@ Users are encouraged to offer higher fees to accelerate the addition of their tr
 The blockchain mempool is divided into two groups that hold different types of transactions:
 
 - Transactions from the [staking contract](/protocol/validators/staking-contract) are added to a **control mempool**
-- Transactions from basic, HTLC, and vesting [accounts](/protocol/accounts) are added to a **regular mempool**
+- Transactions from basic, HTLC, vesting, bridge, and oracle [accounts](/protocol/accounts) are added to a **regular mempool**
 
 Control transactions have priority over regular transactions, so they are first added to the block, followed by regular transactions.
 
