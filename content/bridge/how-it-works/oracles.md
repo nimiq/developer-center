@@ -76,7 +76,7 @@ pub struct OracleContract {
 }
 ```
 
-The number of slots is `hash_count`, fixed when the contract is created, never changed afterward, and not permitted to be zero. It also determines the deposit the contract requires.
+The number of slots is `hash_count`, fixed when the contract is created, never changed afterward, and not permitted to be zero.
 
 `hash_algorithm` is fixed at creation as well, and for the same kind of reason the capacity is: a contract that depends on this oracle, such as a bridge, can check which hash function it uses before a single value has been written to it. Every value an update carries has to match it.
 
