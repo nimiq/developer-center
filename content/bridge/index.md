@@ -50,7 +50,7 @@ The oracle on the EVM network has a second job as well, carrying messages in the
 
 **The bridge** is the whole system, while **the bridge contract** is one specific contract inside it.
 
-Carrying information across the gap is the job of a third piece, the **relayer**. It is an off-chain process that watches both networks and writes into the oracle contracts. It holds no funds and cannot move any. [The round trip](/bridge/how-it-works/the-round-trip) covers how all of this is wired together.
+Carrying information across the gap is the job of a third piece, the **relayer**. It is an off-chain process that watches both networks and writes into the oracle contracts. It holds no funds and [cannot move any](/bridge/security-and-trust#trusted-roles). [The round trip](/bridge/how-it-works/the-round-trip) covers how all of this is wired together.
 
 ## Lock, mint, burn, release
 
