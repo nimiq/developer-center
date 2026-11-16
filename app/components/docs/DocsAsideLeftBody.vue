@@ -274,7 +274,7 @@ function sortBridgeNavigation(items: SidebarNavigationItem[]) {
     })
 }
 
-function sortBridgeChildren(items: SidebarNavigationItem[], parentKey: string) {
+function sortBridgeChildren(items: SidebarNavigationItem[], parentKey: string): SidebarNavigationItem[] {
   const order = bridgeChildOrder[parentKey] ?? []
   const rank = new Map<string, number>(order.map((segment, index) => [segment, index]))
   // Path segment index of the children: 0 is 'bridge', then one per level of parentKey.
