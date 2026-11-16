@@ -3,8 +3,8 @@ title: Bridge contract (EVM)
 description: Functions, events, and behavior of the bridge contract on the EVM side.
 icon: i-tabler-file-code
 navigation:
-  title: EVM Bridge Contract
-  order: 3
+  title: Bridge contract
+  order: 1
 ---
 
 # Bridge contract (EVM)

@@ -86,10 +86,10 @@ const miniAppsChildOrder: Record<string, readonly string[]> = {
 const bridgeNavigationOrder = [
   '',
   'how-it-works',
+  'security-and-trust',
   'integration',
   'reference',
   'operating',
-  'security-and-trust',
 ] as const
 
 const bridgeNavigationRank = new Map<string, number>(
@@ -97,10 +97,13 @@ const bridgeNavigationRank = new Map<string, number>(
 )
 
 // Within-folder order for bridge sections, same reason as mini-apps above.
+// Nested folders are keyed by their path below /bridge, e.g. 'reference/nimiq'.
 const bridgeChildOrder: Record<string, readonly string[]> = {
   'how-it-works': ['the-round-trip', 'oracles', 'lock-and-mint', 'burn-and-release'],
   'integration': ['before-you-start', 'lock-and-mint', 'burn-and-release', 'errors-and-recovery'],
-  'reference': ['bridge-contract', 'oracle-contract', 'evm-bridge', 'evm-oracle', 'chain-config', 'relayer', 'rpc'],
+  'reference': ['nimiq', 'evm', 'relayer', 'rpc'],
+  'reference/nimiq': ['bridge-contract', 'oracle-contract', 'chain-config'],
+  'reference/evm': ['bridge-contract', 'oracle-contract'],
   'operating': ['deploy-a-bridge', 'run-a-relayer'],
 }
 
@@ -271,20 +274,30 @@ function sortBridgeNavigation(items: SidebarNavigationItem[]) {
     })
 }
 
-function sortBridgeChildren(items: SidebarNavigationItem[], parentSegment: string) {
-  const order = bridgeChildOrder[parentSegment] ?? []
+function sortBridgeChildren(items: SidebarNavigationItem[], parentKey: string) {
+  const order = bridgeChildOrder[parentKey] ?? []
   const rank = new Map<string, number>(order.map((segment, index) => [segment, index]))
+  // Path segment index of the children: 0 is 'bridge', then one per level of parentKey.
+  const depth = parentKey.split('/').length + 1
 
-  return [...items].sort((a, b) => {
-    const rankA = rank.get(getBridgeChildSegment(a)) ?? Number.MAX_SAFE_INTEGER
-    const rankB = rank.get(getBridgeChildSegment(b)) ?? Number.MAX_SAFE_INTEGER
+  return [...items]
+    .sort((a, b) => {
+      const rankA = rank.get(getBridgeChildSegment(a, depth)) ?? Number.MAX_SAFE_INTEGER
+      const rankB = rank.get(getBridgeChildSegment(b, depth)) ?? Number.MAX_SAFE_INTEGER
 
-    if (rankA !== rankB) {
-      return rankA - rankB
-    }
+      if (rankA !== rankB) {
+        return rankA - rankB
+      }
 
-    return (a.title || '').localeCompare(b.title || '')
-  })
+      return (a.title || '').localeCompare(b.title || '')
+    })
+    .map((item) => {
+      const childKey = `${parentKey}/${getBridgeChildSegment(item, depth)}`
+      if (item.children?.length && bridgeChildOrder[childKey]) {
+        return { ...item, children: sortBridgeChildren(item.children, childKey) }
+      }
+      return item
+    })
 }
 
 function getBridgeSegment(item: SidebarNavigationItem) {
@@ -308,10 +321,10 @@ function getBridgeNavigationRank(item: SidebarNavigationItem) {
   return bridgeNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
 }
 
-function getBridgeChildSegment(item: SidebarNavigationItem) {
-  const candidatePath = item.path || ''
+function getBridgeChildSegment(item: SidebarNavigationItem, depth: number) {
+  const candidatePath = item.path || item.children?.[0]?.path || ''
   const segments = normalizePath(candidatePath).split('/').filter(Boolean)
-  return segments[2] || ''
+  return segments[depth] || ''
 }
 </script>
 

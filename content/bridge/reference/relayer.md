@@ -4,7 +4,7 @@ description: What the relayer does, what it holds, and what it exposes.
 icon: i-tabler-transfer
 navigation:
   title: Relayer
-  order: 6
+  order: 3
 ---
 
 # Relayer

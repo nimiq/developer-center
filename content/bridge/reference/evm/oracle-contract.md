@@ -3,8 +3,8 @@ title: Oracle contract (EVM)
 description: Functions, views, and behavior of the oracle contract on the EVM side.
 icon: i-tabler-file-code
 navigation:
-  title: EVM Oracle Contract
-  order: 4
+  title: Oracle contract
+  order: 2
 ---
 
 # Oracle contract (EVM)

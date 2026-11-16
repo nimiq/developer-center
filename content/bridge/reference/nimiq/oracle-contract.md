@@ -3,7 +3,7 @@ title: Oracle contract (Nimiq)
 description: Fields, transaction data, and behavior of the oracle contract on Nimiq.
 icon: i-tabler-file-code
 navigation:
-  title: Nimiq Oracle Contract
+  title: Oracle contract
   order: 2
 ---
 

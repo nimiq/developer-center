@@ -4,7 +4,7 @@ description: Node methods for reading oracle state and obtaining proofs.
 icon: i-tabler-api
 navigation:
   title: RPC Methods
-  order: 7
+  order: 4
 ---
 
 # RPC methods
