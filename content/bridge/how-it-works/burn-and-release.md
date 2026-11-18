@@ -19,7 +19,7 @@ This is the same shape as [Lock and mint](/bridge/how-it-works/lock-and-mint) re
 
 The user calls `burn` with three arguments: the 20-byte Nimiq address that should receive the NIM, the nonce that address will use on Nimiq, and the amount to destroy.
 
-The address receiving the NIM is the **target**. The nonce belongs to the target, not to the caller and not to the burn, and this is the first place the two directions come apart. On the EVM side it is carried rather than checked: `burn` does not validate it, because the counter it has to match lives on Nimiq and the EVM network cannot read it. The check happens when the release is processed.
+The address receiving the NIM is the **target**. The nonce belongs to the target, not to the caller and not to the burn, and this is the first place the two directions come apart. On the EVM side it is carried rather than checked: `burn` does not check whether it is the target's next nonce, because the counter it has to match lives on Nimiq and the EVM network cannot read it. The check happens when the release is processed.
 
 The contract destroys the caller's own tokens, so no approval or ownership check is involved beyond the caller holding the balance. The amount must be greater than zero.
 
@@ -101,7 +101,7 @@ The contract checks the following, and rejects the transaction if any of them fa
 | The nonce is exactly one higher than the last one released to that target | Replaying a burn, and releasing burns for an address out of order |
 | The proof is no deeper than the configured maximum, counting the record tree and the rotation levels together | Forcing unbounded verification work with an artificially deep proof |
 | The proof reconstructs the current value of the oracle slot the root was written to | Releasing against a burn the oracle never committed to |
-| The contract holds enough balance | Releasing more than the bridge has locked |
+| The contract still holds its creation deposit after the release | Releasing more than the bridge has locked |
 
 Only then is the balance reduced by the whole burned amount, the nonce recorded against the target, and the release logged.
 

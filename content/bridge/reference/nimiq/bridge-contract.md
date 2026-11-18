@@ -28,7 +28,7 @@ pub struct BridgeContract {
 | --- | --- | --- |
 | `owner` | `Address` | Set at creation. Gives no authority over the contract. No check reads it and no transaction changes it |
 | `oracle_address` | `Address` | The oracle contract every release proof is checked against. Fixed at creation |
-| `balance` | `Coin` | The NIM the contract holds, made up of the creation deposit and every lock, minus every release |
+| `balance` | `Coin` | The NIM the contract holds, made up of the creation deposit and every lock, minus every release. A release cannot take it below the creation deposit |
 | `source_chain_id` | `u32` | The chain id of the other network. Every record a release carries must name it |
 | `chain_config` | `ChainConfig` | How the contract reads the other network's records. See [Chain configuration](/bridge/reference/nimiq/chain-config) |
 | `transaction_count` | `u64` | Starts at 0 and increases by one with every lock and every release. No check reads it |
@@ -57,6 +57,8 @@ pub struct CreationTransactionData {
 ```
 
 The transaction is rejected unless it passes the [creation checks](/bridge/reference/nimiq/chain-config#creation-checks). Everything it sets is permanent. No transaction changes a bridge contract's oracle, source chain id or chain configuration afterward.
+
+The creation deposit stays in the contract for good. No transaction can withdraw it, and a bridge contract is never removed from the accounts tree.
 
 `createNewBridgeTransaction` and `sendNewBridgeTransaction` build this transaction on a node, signed by a wallet unlocked on that node. They take the chain configuration as a hex-encoded serialized `ChainConfig`.
 
