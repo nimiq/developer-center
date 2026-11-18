@@ -17,7 +17,7 @@ The guarantees below hold as long as the following are true:
 
 - **The oracle owners attest honestly.** Each oracle is written by its owner, and the oracle cannot fully check what it is given.
 - **Nimiq macro blocks are final.** A lock is only provable once a [macro block](/protocol/consensus/block-format) has made it irreversible.
-- **The EVM network does not reorganize deeper than the confirmation depth.** A burn is relayed once it is a set number of blocks deep, 128 by default, because an EVM network has [no point at which a burn becomes final](/bridge/how-it-works/burn-and-release#2-wait-for-confirmations).
+- **The EVM network does not reorganize deeper than the confirmation depth.** A burn is relayed once it is a set number of blocks deep, 128 by default, because an EVM network has [no point at which a burn becomes final](/bridge/how-it-works/burn-and-release#_2-wait-for-confirmations).
 - **The cryptography holds.** Every bridge commitment, in both directions, relies on the collision resistance of Blake2b-256. Signatures rely on Ed25519 on Nimiq and secp256k1 on the EVM network.
 
 ## Guarantees
@@ -107,7 +107,7 @@ The bridge contract still accepts locks after its oracle is deleted, because a l
 
 Every attestation can be recomputed from public data. None of these checks needs a key or any permission.
 
-- **Every header in the EVM oracle.** Each stored value has to equal the hash of the Nimiq block at that height. A Nimiq node can confirm this for every entry.
+- **Every header in the EVM oracle.** For every header it stores, the oracle emits a `Submitted` event with the header's block hash, which has to equal the hash of the Nimiq block at that height. A Nimiq node can confirm this for every entry.
 - **Every root in the Nimiq oracle.** The record tree can be rebuilt by replaying the `DataForwarded` events emitted on the EVM network, in order, and its root compared with the one committed.
 - **Every header format.** The format on record for each protocol version can be compared with the header layout defined in the Nimiq node software.
 - **The backing.** wNIM in circulation can be compared with the NIM held by the bridge contract on Nimiq, and every mint can be matched to the lock it names.
