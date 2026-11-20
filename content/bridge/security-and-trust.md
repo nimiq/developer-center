@@ -18,7 +18,6 @@ The guarantees below hold as long as the following are true:
 - **The oracle owners attest honestly.** Each oracle is written by its owner, and the oracle cannot fully check what it is given.
 - **Nimiq macro blocks are final.** A lock is only provable once a [macro block](/protocol/consensus/block-format) has made it irreversible.
 - **The EVM network does not reorganize deeper than the confirmation depth.** A burn is relayed once it is a set number of blocks deep, 128 by default, because an EVM network has [no point at which a burn becomes final](/bridge/how-it-works/burn-and-release#_2-wait-for-confirmations).
-- **The cryptography holds.** Every bridge commitment, in both directions, relies on the collision resistance of Blake2b-256. Signatures rely on Ed25519 on Nimiq and secp256k1 on the EVM network.
 
 ## Guarantees
 
