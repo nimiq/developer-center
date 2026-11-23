@@ -82,7 +82,9 @@ The number of slots is `hash_count`, fixed when the contract is created, never c
 
 Before the first write the contract holds no hashes and `latest_index` is `None`. The first write resizes the buffer to `hash_count` zero hashes and starts the index at 0.
 
-`latest_index` is **the index of the last value written**, so it is itself a valid index that can be read. `earliest_index` reports the oldest index whose slot has not been written again.
+`latest_index` is **the index of the last value written**, so it is itself a valid index that can be read.
+
+Callers also need the oldest index whose slot still holds the value written at it. It marks where the window starts, and a release proof for any older index needs one more step for each time its slot has been written since. The contract works it out from the two fields above as `latest_index - hash_count + 1`, or 0 while some slots have never been written. `getEarliestIndex` returns it.
 
 Reading a slot with `getEntry` returns the current value of the slot an index was written to. It gives back a value for **any** index that has been written, inside the window or not, and nothing at all only for an index that has not been reached yet. The same lookup inside consensus is what a release proof is checked against.
 
