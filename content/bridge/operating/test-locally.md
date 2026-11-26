@@ -32,7 +32,7 @@ The private keys on this page belong to public test accounts that anyone can use
 
 The commands are for bash or zsh on macOS or Linux. On Windows, run them in WSL.
 
-Make sure [Docker](https://docs.docker.com/get-started/get-docker/), [Rust](https://rustup.rs), [Node.js](https://nodejs.org/en/download) with npm, [Foundry](https://book.getfoundry.sh/getting-started/installation), [jq](https://jqlang.org/download/), [Python](https://www.python.org/downloads/) 3.10 or later, and [Git](https://git-scm.com/downloads) are installed and up to date. For Rust, `rustup update` installs the latest stable version. Docker must be running.
+Make sure [Docker](https://docs.docker.com/get-started/get-docker/), [Rust](https://rustup.rs), [Node.js](https://nodejs.org/en/download) with npm, [Foundry](https://book.getfoundry.sh/getting-started/installation), [jq](https://jqlang.org/download/), [Python](https://www.python.org/downloads/) 3.10 or later, and [Git](https://git-scm.com/downloads) are installed and up to date. For Rust, `rustup update` installs the latest stable version. For Node.js, use the latest LTS version. Docker must be running.
 
 The guide uses three terminals. Each step names the terminal it runs in.
 

@@ -13,10 +13,6 @@ A bridge is five contracts and one relayer. Three contracts live on the EVM netw
 
 This guide creates all five on the Nimiq testnet and Polygon Amoy, and links them to each other. Some contracts need another contract's address, which sets the order of the steps. [Run a relayer](/bridge/operating/run-a-relayer) then starts the relayer and sends a test transfer. To try all of it on your own machine first, without testnet access, follow [test a bridge locally](/bridge/operating/test-locally).
 
-::callout{icon="i-tabler-info-circle" color="info"}
-A tool that builds the chain configuration is in development. Until it is available, step 5 builds it with a short shell command.
-::
-
 ## Before you start
 
 Everything in this section is done once. Steps 1 to 7 are done once per bridge.
@@ -25,7 +21,7 @@ Everything in this section is done once. Steps 1 to 7 are done once per bridge.
 
 The commands are for bash or zsh on macOS or Linux. On Windows, run them in WSL.
 
-Make sure [Rust](https://rustup.rs), [Node.js](https://nodejs.org/en/download) with npm, [Foundry](https://book.getfoundry.sh/getting-started/installation), [jq](https://jqlang.org/download/) and [Git](https://git-scm.com/downloads) are installed and up to date. For Rust, `rustup update` installs the latest stable version.
+Make sure [Rust](https://rustup.rs), [Node.js](https://nodejs.org/en/download) with npm, [Foundry](https://book.getfoundry.sh/getting-started/installation), [jq](https://jqlang.org/download/) and [Git](https://git-scm.com/downloads) are installed and up to date. For Rust, `rustup update` installs the latest stable version. For Node.js, use the latest LTS version.
 
 ### Terminals
 
@@ -188,8 +184,8 @@ Check that `source ~/nimiq-bridge/bridge.env && echo "$NIMIQ_OPERATOR"` prints y
 
 ### Fund the keys
 
-- **The Nimiq operator key** pays both creation deposits and the fees, 10.01 NIM with the amounts in this guide. Request testnet NIM for its `NQ` address from the [faucet](/web-client/faucet).
-- **Both EVM keys** pay gas in POL on Amoy. Request testnet POL for both addresses in the [Polygon support Discord](https://discord.gg/polygon-support-635865020172861441). The relayer key keeps paying for as long as the relayer runs, because it submits every Nimiq macro block header to the EVM oracle.
+- **The Nimiq operator key** pays both creation deposits and the fees, 10.01 NIM with the amounts in this guide, plus 1 NIM for the test transfer in [run a relayer](/bridge/operating/run-a-relayer). Request testnet NIM for its `NQ` address from the [faucet](/web-client/faucet).
+- **Both EVM keys** pay gas in POL on Amoy. Request testnet POL for both addresses in the [Polygon support Discord](https://discord.gg/polygon-support-635865020172861441). About 1 POL each covers the deployment and a short test. The relayer key needs more the longer the relayer runs, because it submits every Nimiq macro block header to the EVM oracle.
 
 ### Import the operator key
 
@@ -249,7 +245,7 @@ cast send --rpc-url "$EVM_RPC_URL" --private-key "$EVM_RELAYER_KEY" --json \
 Add it to `bridge.env`, for example `export EVM_ORACLE=0x5fbdb2315678afecb367f032d93f642f64180aa3`.
 
 ::callout{icon="i-tabler-alert-triangle" color="warning"}
-From here, the relayer has to start before the node drops the macro blocks after the anchor. The relayer submits every macro block header from the anchor on, and the node keeps them for `max_epochs_stored` epochs, about two days with this configuration. If the relayer starts later, it exits with an error naming the missing block, and the EVM oracle has to be deployed again on a newer anchor.
+From here, the relayer has to start before the node drops the macro blocks after the anchor. The relayer submits every macro block header from the anchor on, and the node keeps them for `max_epochs_stored` epochs, about two days with this configuration. If the relayer starts later, it exits with an error naming the missing block, and the bridge needs a new EVM oracle on a newer anchor, as in [recover a relayer that stopped for too long](/bridge/operating/operator-actions#recover-a-relayer-that-stopped-for-too-long).
 ::
 
 The constructor takes the anchor header, the [header format](/bridge/reference/evm/oracle-contract#header-formats), the batch and epoch lengths, and the network id. The header format gives the header length and the byte offsets of the block number, timestamp, parent election hash, state root and history root, for the header layout from protocol version 2 on. The constructor rejects a header whose network id or length does not match. All its checks are on the [EVM oracle reference](/bridge/reference/evm/oracle-contract#deploying).
@@ -431,7 +427,7 @@ The lines print, in order:
 4. Your `LOCK_PARSER`
 5. `5`
 6. The relayer key's address, which `cast wallet address "$EVM_RELAYER_KEY"` prints
-7. Your `ANCHOR_BLOCK`
+7. Your `ANCHOR_BLOCK`, for example `3464010 [3.464e6]`. `cast` adds the same number in scientific notation in brackets.
 
 `cast` prints addresses in mixed case, so compare them without regard to case. The Nimiq contracts were checked in steps 4 and 5.
 
