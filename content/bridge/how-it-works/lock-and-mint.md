@@ -15,7 +15,7 @@ The NIM stays locked on Nimiq for as long as that wNIM exists, and wNIM is creat
 
 The header feed runs continuously. The relayer submits every Nimiq macro block header to the oracle in order, whether or not anyone is bridging. A lock does not cause a submission. It waits for the next one that happens to cover it.
 
-If the relayer goes offline, locks are still accepted on Nimiq, but they cannot be minted until a macro block header covering them reaches the oracle. The oracle accepts only the next macro block header, so missed macro block headers cannot be skipped. When the relayer returns, it submits the missed macro block headers in order, several per transaction. Its Nimiq node must still hold them: after a longer outage, the oracle advances only with macro block headers from a node that kept them.
+If the relayer goes offline, locks are still accepted on Nimiq, but they cannot be minted until a macro block header covering them reaches the oracle. The oracle accepts only the next macro block header, so missed macro block headers cannot be skipped. When the relayer returns, it submits the missed macro block headers in order, several per transaction. Its Nimiq node must still hold them. After a longer outage, the oracle advances only with macro block headers from a node that kept them.
 
 [IMAGE PLACEHOLDER: bridge-lock-and-mint.png. The four steps in sequence, with the wait for finality as its own step and the header feed drawn as an ambient process that the user's path crosses rather than causes.]
 
@@ -36,7 +36,7 @@ The last two fields bind the lock to one bridge on one network. A lock made for 
 Nimiq does not check `recipient_data` when the lock is made. A lock transaction is accepted whatever it contains, the NIM is locked, and the layout is only enforced when the mint is attempted. Data that cannot be parsed as a lock can never be minted, and the NIM behind it stays locked with no way to recover it.
 ::
 
-The bridge contract does very little at this point. It adds the transaction value to its balance, increments its transaction counter, and records the deposit in the transaction log. There is nothing to verify, because no claim is being made yet: this is a transfer into a contract, and the proof obligation falls on the other network later.
+The bridge contract does very little at this point. It adds the transaction value to its balance, increments its transaction counter, and records the deposit in the transaction log. There is nothing to verify, because no claim is being made yet. This is a transfer into a contract, and the proof obligation falls on the other network later.
 
 The contract balance is the total NIM locked by every user of that bridge, not a per-user record. What ties a particular deposit to a particular mint is the transaction itself, not the balance.
 
@@ -54,11 +54,11 @@ Two locks to the same destination must not carry the same nonce. The count advan
 For the same reason, a lock that needs retrying has to be resent as the **same signed bytes**. Nimiq only treats byte-identical transactions as duplicates, so rebuilding the lock produces a second lock carrying the same nonce.
 ::
 
-This is not the account nonce an EVM network uses to order an account's own transactions, and Nimiq has no equivalent of its own: ordinary Nimiq transactions are protected from replay by the [validity window](/protocol/storage/history-store#validity-store-and-validity-window) instead.
+This is not the account nonce an EVM network uses to order an account's own transactions, and Nimiq has no equivalent of its own. Ordinary Nimiq transactions are protected from replay by the [validity window](/protocol/storage/history-store#validity-store-and-validity-window) instead.
 
 ### The destination must be an address the user controls
 
-Minting requires the destination's own consent, so the destination has to be an address whose owner is able to give it. An exchange deposit address cannot: the exchange has no reason to authorize a mint for an incoming bridge transfer, and generally no mechanism to. A lock naming one leaves the NIM locked on Nimiq and the wNIM unmintable, and neither is recoverable.
+Minting requires the destination's own consent, so the destination has to be an address whose owner is able to give it. An exchange deposit address cannot, because the exchange has no reason to authorize a mint for an incoming bridge transfer, and generally no mechanism to. A lock naming one leaves the NIM locked on Nimiq and the wNIM unmintable, and neither is recoverable.
 
 ## 2. Wait for the next macro block
 
@@ -72,7 +72,7 @@ The relayer submits Nimiq macro block headers to the oracle on the EVM network b
 
 What this means for a transfer is that the third step is usually already done, or about to be, without anything having asked for it. The lock needs a header from its own epoch, at or after the block the lock was in, and the feed produces one every batch.
 
-The oracle checks each header against the one before it and stores its block hash. See [Oracles](/bridge/how-it-works/oracles) for what those checks are and how the storage works. Writing is restricted to the oracle's owner, so this step is performed by whoever operates the bridge but can be verified by anyone.
+The oracle [checks each header against the one before it](/bridge/how-it-works/oracles#what-it-stores-and-what-it-checks) and stores its block hash. Writing is restricted to the oracle's owner, so this step is performed by whoever operates the bridge but can be verified by anyone.
 
 ::callout{icon="i-tabler-info-circle" color="info"}
 A header commits the history of its own epoch up to its own block. A lock can be proved against any header from its epoch at or after the lock's block, so a proof can be rebuilt against a later one. Headers from a different epoch do not cover it. The oracle stores every macro header, so no lock is left without one to prove against.
@@ -100,7 +100,7 @@ The destination does not have to be an ordinary account. A contract wallet can c
 
 **The relayer does not perform this step.** It submits headers and commits records, and it never sends a bridge transaction of any kind, so no transfer completes on the user's behalf by default. Whoever submits the mint pays the gas for it, which means the destination needs the EVM network's own gas token in order to call `mint`.
 
-That is what the signature path exists for. It enables gas abstraction: a sponsor can submit a mint the destination has authorized, so the destination does not need to hold any gas. The contract function is in place and the design reserves room for this, but the sponsor service itself is not built yet.
+That is what the signature path exists for. It enables gas abstraction. A sponsor can submit a mint the destination has authorized, so the destination does not need to hold any gas. The contract function is in place and the design reserves room for this, but the sponsor service itself is not built yet.
 
 ::callout{icon="i-tabler-alert-triangle" color="warning"}
 Never sign a mint authorization for a lock made by somebody else. An attacker can lock a trivial amount naming the destination and its next nonce, then ask for an authorization covering that lock. Signing it spends the nonce on the attacker's lock, and the destination's own pending lock can never be minted. An authorization covers one specific lock and has no expiry, so authorize only locks there is a record of creating, and check the lock's transaction and amount before signing.
@@ -140,7 +140,7 @@ Only then is the lock's value minted to the destination as wNIM, and a `Minted` 
 
 The parsing in that fourth check depends on how Nimiq serializes a history record, and that can change with a protocol version. Rather than fixing one layout in the bridge contract, the owner registers a parser per protocol version with `setLockParser`, and the contract selects one with `lockParserFor` based on the version of the header the lock was proved against.
 
-A Nimiq upgrade that changes the record or transaction encoding therefore needs a new parser registered, not a new bridge deployed. Locks made under older versions stay mintable, because their parsers stay registered.
+Every Nimiq upgrade therefore needs a parser registered for its version, not a new bridge deployed. An upgrade that keeps the record and transaction encoding registers the same parser again, and one that changes it registers a new one. Locks made under older versions stay mintable, because their parsers stay registered.
 
 ## Units
 

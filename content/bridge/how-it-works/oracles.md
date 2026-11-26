@@ -31,7 +31,7 @@ A slot therefore commits to every value ever written to it, not only the most re
 
 ### Proofs grow, and nothing is discarded
 
-Because a slot keeps a commitment to its whole history, a proof against an old write still resolves. It has to account for what came after it: the proof ends at the value the slot holds now, so it carries one additional node for each time the slot was written since.
+Because a slot keeps a commitment to its whole history, a proof against an old write still resolves. It has to account for what came after it. The proof ends at the value the slot holds now, so it carries one additional node for each time the slot was written since.
 
 Nothing is ever thrown away, so no amount of delay can make a transfer unprovable. A fixed number of slots usually means eviction, where old entries are dropped and a proof built against one becomes worthless.
 
@@ -57,7 +57,7 @@ So the window describes how much can be read back directly, not how long a proof
 
 ## The Nimiq oracle
 
-`OracleContract` is an account type on Nimiq, alongside the basic, HTLC, vesting and staking types. Its own code describes it as "essentially a hash storage", and that is the whole of it: it stores values the relayer gives it and does not interpret them.
+`OracleContract` is an account type on Nimiq, alongside the basic, HTLC, vesting and staking types. Its own code describes it as "essentially a hash storage", and that is the whole of it. It stores values the relayer gives it and does not interpret them.
 
 ```rust
 pub struct OracleContract {
@@ -78,7 +78,7 @@ pub struct OracleContract {
 
 The number of slots is `hash_count`, fixed when the contract is created, never changed afterward, and not permitted to be zero.
 
-`hash_algorithm` is fixed at creation as well, and for the same kind of reason the capacity is: a contract that depends on this oracle, such as a bridge, can check which hash function it uses before a single value has been written to it. Every value an update carries has to match it.
+`hash_algorithm` is fixed at creation as well, and for the same kind of reason the capacity is. A contract that depends on this oracle, such as a bridge, can check which hash function it uses before a single value has been written to it. Every value an update carries has to match it.
 
 Before the first write the contract holds no hashes and `latest_index` is `None`. The first write resizes the buffer to `hash_count` zero hashes and starts the index at 0.
 
@@ -124,21 +124,21 @@ Before storing anything it checks that the header follows from the one before it
 
 The chain is rooted at an **anchor** election block, fixed when the contract is deployed. The anchor is not stored as a header; the first header's parent election hash has to be the anchor's hash. A deployment has to choose an anchor at or before the creation of the Nimiq bridge account it serves, because a lock in a block before the anchor can never be proved.
 
-These checks catch a relayer that is broken, out of order or pointed at the wrong network. They do not verify the validators' signatures on a header, so a submission is not proof that a block exists. See [Security and trust model](/bridge/security-and-trust).
+These checks catch a relayer that is broken, out of order or pointed at the wrong network. They do not verify the validators' signatures on a header, so a submission is [not proof that a block exists](/bridge/security-and-trust#oracle-owners).
 
 ### Header formats are per protocol version
 
 A Nimiq macro header's layout can change with a protocol version, and the oracle has to read fields out of it by byte offset. So the layout of each version is on record in the contract, as a `HeaderFormat` giving the total length and the offset of each field the contract or its consumers read.
 
-The owner sets the next version's format before that version activates on Nimiq. Once the oracle has stored a header of a given version, the fields it checked itself are fixed and cannot be changed. The two roots it never reads, the state root and the history root, stay correctable, because a consumer reads those and the oracle has no stake in them.
+The owner sets the next version's format before that version activates on Nimiq, even when the layout does not change, because the oracle rejects a header of a version without a format. Once the oracle has stored a header of a given version, the fields it checked itself are fixed and cannot be changed. The two roots it never reads, the state root and the history root, stay correctable, because a consumer reads those and the oracle has no stake in them.
 
 `versionStart` reports the height of the first stored header of a version, which is how a consumer knows which format applies to a given block.
 
 ### Writing and reading
 
-**Writing** is done with `submit(bytes header)`, which carries an `onlyOwner` modifier and takes one header at a time. `submitMany` takes several consecutive headers in one call, for a backlog after an outage, and is atomic: if any header in the batch is rejected, none of them is stored.
+**Writing** is done with `submit(bytes header)`, which carries an `onlyOwner` modifier and takes one header at a time. `submitMany` takes several consecutive headers in one call, for a backlog after an outage, and is atomic. If any header in the batch is rejected, none of them is stored.
 
-Ownership transfer is deliberately two steps: the current owner nominates a successor with `transferOwnership`, and the successor must call `acceptOwnership` to take over. A single-step transfer to an address that could not act would leave the contract unable to accept new headers.
+Ownership transfer deliberately takes two steps. The current owner nominates a successor with `transferOwnership`, and the successor must call `acceptOwnership` to take over. A single-step transfer to an address that could not act would leave the contract unable to accept new headers.
 
 The number of slots is `WINDOW_SIZE`, a constant of 1024, rather than chosen at creation as on Nimiq.
 
@@ -160,7 +160,7 @@ The number of slots is `WINDOW_SIZE`, a constant of 1024, rather than chosen at 
 
 The difference between `getEntry` and `entryAt` matters when building a proof. `getEntry` is bounded to the window and reverts with `EvmOracle: index too old` below it. `entryAt` reverts only for an index that has not been written yet, which makes it the one a mint proof resolves against.
 
-One function sits outside the interface: `getDataForHeight` returns the index and slot value for a given Nimiq height. Because submissions are strictly one batch apart, the index is computed from the height rather than searched for.
+One function sits outside the interface. `getDataForHeight` returns the index and slot value for a given Nimiq height. Because submissions are strictly one batch apart, the index is computed from the height rather than searched for.
 
 ### The outbound forwarder
 
