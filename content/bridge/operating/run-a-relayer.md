@@ -31,7 +31,7 @@ cargo build --release
 
 ## 2. Write the configuration
 
-The relayer reads one TOML file. In the relayer terminal, load `bridge.env` and write the file from it:
+The relayer reads [one TOML file](/bridge/reference/relayer#configuration). In the relayer terminal, load `bridge.env` and write the file from it:
 
 ```bash
 source ~/nimiq-bridge/bridge.env
@@ -70,12 +70,12 @@ The last command shows the file. Every value must be filled in. An empty `""` me
 | `evm_rpc_url`, `nimiq_rpc_url` | The Amoy RPC URL, and the Nimiq node's WebSocket endpoint |
 | `evm_bridge_address` | `PolygonBridge`, from step 2 of the deployment |
 | `nimiq_oracle_address` | The Nimiq oracle, from step 4, in the `NQ` form the relayer requires |
-| `api_bind_address`, `api_port` | Where the relayer serves its [API](#the-api) |
+| `api_bind_address`, `api_port` | Where the relayer serves its [API](/bridge/reference/relayer#api) |
 | `[polygon_to_nimiq]` | The burn direction. `nimiq_oracle_private_key` signs every update to the Nimiq oracle and must be the oracle's owner. `start_block` is the Amoy block the relayer starts reading at on its first run |
 | `[nimiq_to_evm]` | The header direction. `evm_private_key` signs every header submission and must be the EVM oracle's owner |
 | `[oracle_verifier]` | `nimiq_bridge_address` is read by the oracle verifier, a separate auditing tool. The relayer itself does not use it |
 
-The burn direction waits `confirmation_blocks` Amoy blocks, 128 by default, before it treats a burn as final and publishes its root. This guards against an Amoy reorganization removing a burn after the NIM were already released. A higher value is safer and makes releases slower.
+The burn direction waits `confirmation_blocks` Amoy blocks, 128 by default, before it publishes a burn's root.
 
 ## 3. Start the relayer
 
@@ -87,7 +87,7 @@ cargo run --release --bin polygon-bridge-monitor -- --config ~/nimiq-bridge/rela
 
 On startup it checks that the EVM oracle stores headers of the node's network, with the node's batch and epoch lengths, and exits on a mismatch. Once running, it logs each header submission, for example `Submitted Nimiq macro headers to the EVM oracle headers=1 submitted_height=...`.
 
-If it exits with an error that the node no longer has a macro block, the node has already dropped the headers after the anchor. The EVM oracle then has to be deployed again on a newer anchor, as in step 1 of [deploy a bridge](/bridge/operating/deploy-a-bridge#_1-deploy-the-evm-oracle), and `PolygonBridge` pointed at it with `setOracle`.
+If it exits with an error that the node no longer has a macro block, the node has already dropped the headers after the anchor. The bridge then needs a new EVM oracle on a newer anchor, as in [recover a relayer that stopped for too long](/bridge/operating/operator-actions#recover-a-relayer-that-stopped-for-too-long).
 
 ## 4. Check the relay
 
@@ -105,7 +105,7 @@ curl -s http://127.0.0.1:8080/relay-status
 
 ## 5. Send a test transfer
 
-The test transfer crosses both ways. It locks 1 NIM on Nimiq and mints it as NIM on Polygon, then burns 0.5 NIM of it on Polygon and releases them on Nimiq. The burn takes back only half to show that any amount can cross back, so 0.5 NIM stay on Polygon at the end. No fee is taken along the way: `nimiq-rpc` sends every transaction with a fee of 0 unless `--fee` is set.
+The test transfer crosses both ways. It locks 1 NIM on Nimiq and mints it as NIM on Polygon, then burns 0.5 NIM of it on Polygon and releases them on Nimiq. The burn takes back only half to show that any amount can cross back, so 0.5 NIM stay on Polygon at the end. No fee is taken along the way, because `nimiq-rpc` sends every transaction with a fee of 0 unless `--fee` is set.
 
 It uses the operator key on Nimiq, which already holds NIM, and a new EVM key on Polygon. All its commands run in the commands terminal, in `~/nimiq-bridge/core-rs-albatross`.
 
@@ -117,7 +117,7 @@ The EVM key receives the minted NIM and calls `mint` and `burn` itself, so it ne
 cast wallet new
 ```
 
-Add both to `bridge.env` as `EVM_DESTINATION` and `EVM_DESTINATION_KEY`, in the same form as the other keys, and request POL for the address as in the deployment.
+Add both to `bridge.env` as `EVM_DESTINATION` and `EVM_DESTINATION_KEY`, in the same form as the other keys, and request POL for the address as in the deployment. 0.1 POL is more than enough for the test's mint and burn.
 
 ### Lock
 
@@ -223,10 +223,6 @@ source ~/nimiq-bridge/bridge.env
 until curl -sf "http://127.0.0.1:8080/proof/$BURN_TX" > ~/nimiq-bridge/burn-proof.json; do sleep 10; done
 ```
 
-::callout{icon="i-tabler-info-circle" color="info"}
-A tool that encodes the release proof is in development. Until it is available, the next command builds it from the relayer's JSON.
-::
-
 Wait for the prompt to come back before you continue. Then check the proof file. This must print a number, the Nimiq oracle index the release is proven against. If it prints `null` or an error, the proof is not there yet:
 
 ```bash
@@ -272,18 +268,4 @@ Each item lists the command that checks it. A few seconds after the release, run
 
 ## Restarts
 
-The relayer keeps its progress in its database, so a stopped relayer can be started again with the same command. It resumes where it stopped, and `start_block` is ignored once the database holds a cursor. Deleting the database makes it start again from `start_block`.
-
-While the relayer is stopped, nothing is lost, but nothing moves. Locks wait for their headers, and burns wait for their roots. After a restart, the relayer submits the headers it missed, in batches of up to `max_headers_per_submit`, 32 by default. That only works while the node still holds them, within `max_epochs_stored` epochs.
-
-## The API
-
-The relayer serves a small HTTP API at `api_bind_address` and `api_port`.
-
-| Endpoint | Returns |
-| --- | --- |
-| `GET /relay-status` | The header relay's progress, as in [step 4](#_4-check-the-relay) |
-| `GET /root` | The current root of the burn records |
-| `GET /proof/:tx_hash` | The proof a release needs for the burn in that EVM transaction |
-
-To expose the API beyond the local machine, set `api_username` and `api_password` to require Basic Authentication, and `api_cors_origins` to the origins allowed to call it.
+The relayer keeps its progress in its [database](/bridge/reference/relayer#state), so a stopped relayer can be started again with the same command. It resumes where it stopped and submits the headers it missed. A relayer stopped for longer than the node keeps macro blocks needs the [recovery in operator actions](/bridge/operating/operator-actions#recover-a-relayer-that-stopped-for-too-long).
