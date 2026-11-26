@@ -59,10 +59,20 @@ title: Choose your path
 
     ::::u-page-card
     ---
-    title: RPC
-    description: Build full-stack applications with the JSON-RPC API
-    icon: i-lucide-terminal
-    to: /rpc
+    title: Protocol
+    description: Learn about the Albatross protocol
+    icon: i-lucide-book-open
+    to: /protocol
+    variant: outline
+    ---
+    ::::
+
+    ::::u-page-card
+    ---
+    title: Bridge
+    description: Move NIM between Nimiq and EVM-compatible networks, backed one to one
+    icon: i-tabler-building-bridge
+    to: /bridge
     variant: outline
     ---
     ::::
@@ -79,10 +89,30 @@ title: Choose your path
 
     ::::u-page-card
     ---
-    title: Protocol
-    description: Learn about the Albatross protocol
-    icon: i-lucide-book-open
-    to: /protocol
+    title: RPC
+    description: Build full-stack applications with the JSON-RPC API
+    icon: i-lucide-terminal
+    to: /rpc
+    variant: outline
+    ---
+    ::::
+
+    ::::u-page-card
+    ---
+    title: Network Upgrades
+    description: Protocol upgrades and what node operators do for each
+    icon: i-lucide-git-fork
+    to: /network-upgrades
+    variant: outline
+    ---
+    ::::
+
+    ::::u-page-card
+    ---
+    title: Nimiq Utils
+    description: JavaScript utilities for address validation, request links, fiat prices and more
+    icon: i-lucide-wrench
+    to: /nimiq-utils
     variant: outline
     ---
     ::::
@@ -273,6 +303,7 @@ title: Everything you need to build with Nimiq
     variant: outline
     ---
     - [Protocol Docs](/protocol)
+    - [Bridge Docs](/bridge)
     - [Core Implementation](https://github.com/nimiq/core-rs-albatross)
     ::::
 

@@ -83,6 +83,30 @@ const miniAppsChildOrder: Record<string, readonly string[]> = {
   'api-reference': ['', 'nimiq-provider', 'ethereum-provider'],
 }
 
+const bridgeNavigationOrder = [
+  '',
+  'how-it-works',
+  'security-and-trust',
+  'integration',
+  'reference',
+  'operating',
+] as const
+
+const bridgeNavigationRank = new Map<string, number>(
+  bridgeNavigationOrder.map((segment, index) => [segment, index]),
+)
+
+// Within-folder order for bridge sections, same reason as mini-apps above.
+// Nested folders are keyed by their path below /bridge, e.g. 'reference/nimiq'.
+const bridgeChildOrder: Record<string, readonly string[]> = {
+  'how-it-works': ['the-round-trip', 'oracles', 'lock-and-mint', 'burn-and-release'],
+  'integration': ['before-you-start', 'lock-and-mint', 'burn-and-release', 'errors-and-recovery'],
+  'reference': ['nimiq', 'evm', 'relayer', 'rpc'],
+  'reference/nimiq': ['bridge-contract', 'oracle-contract', 'chain-config'],
+  'reference/evm': ['bridge-contract', 'oracle-contract'],
+  'operating': ['deploy-a-bridge', 'run-a-relayer'],
+}
+
 const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
   if (!isRpcMethodsPage.value) {
     if (currentModule.value === 'protocol') {
@@ -91,6 +115,10 @@ const sidebarNavigation = computed<SidebarNavigationItem[]>(() => {
 
     if (currentModule.value === 'mini-apps') {
       return sortMiniAppsNavigation(filteredNavigation.value)
+    }
+
+    if (currentModule.value === 'bridge') {
+      return sortBridgeNavigation(filteredNavigation.value)
     }
 
     return filteredNavigation.value
@@ -223,6 +251,80 @@ function getMiniAppsChildSegment(item: SidebarNavigationItem) {
   const candidatePath = item.path || ''
   const segments = normalizePath(candidatePath).split('/').filter(Boolean)
   return segments[2] || ''
+}
+
+function sortBridgeNavigation(items: SidebarNavigationItem[]) {
+  return [...items]
+    .sort((a, b) => {
+      const rankA = getBridgeNavigationRank(a)
+      const rankB = getBridgeNavigationRank(b)
+
+      if (rankA !== rankB) {
+        return rankA - rankB
+      }
+
+      return (a.title || '').localeCompare(b.title || '')
+    })
+    .map((item) => {
+      const segment = getBridgeSegment(item)
+      if (segment && item.children?.length && bridgeChildOrder[segment]) {
+        return { ...item, children: sortBridgeChildren(item.children, segment) }
+      }
+      return item
+    })
+}
+
+function sortBridgeChildren(items: SidebarNavigationItem[], parentKey: string): SidebarNavigationItem[] {
+  const order = bridgeChildOrder[parentKey] ?? []
+  const rank = new Map<string, number>(order.map((segment, index) => [segment, index]))
+  // Path segment index of the children: 0 is 'bridge', then one per level of parentKey.
+  const depth = parentKey.split('/').length + 1
+
+  return [...items]
+    .sort((a, b) => {
+      const rankA = rank.get(getBridgeChildSegment(a, depth)) ?? Number.MAX_SAFE_INTEGER
+      const rankB = rank.get(getBridgeChildSegment(b, depth)) ?? Number.MAX_SAFE_INTEGER
+
+      if (rankA !== rankB) {
+        return rankA - rankB
+      }
+
+      return (a.title || '').localeCompare(b.title || '')
+    })
+    .map((item) => {
+      const childKey = `${parentKey}/${getBridgeChildSegment(item, depth)}`
+      if (item.children?.length && bridgeChildOrder[childKey]) {
+        return { ...item, children: sortBridgeChildren(item.children, childKey) }
+      }
+      return item
+    })
+}
+
+function getBridgeSegment(item: SidebarNavigationItem) {
+  const candidatePath = item.path || item.children?.[0]?.path || ''
+  const segments = normalizePath(candidatePath).split('/').filter(Boolean)
+
+  if (segments[0] !== 'bridge') {
+    return null
+  }
+
+  return segments[1] || ''
+}
+
+function getBridgeNavigationRank(item: SidebarNavigationItem) {
+  const segment = getBridgeSegment(item)
+
+  if (segment === null) {
+    return Number.MAX_SAFE_INTEGER
+  }
+
+  return bridgeNavigationRank.get(segment) ?? Number.MAX_SAFE_INTEGER
+}
+
+function getBridgeChildSegment(item: SidebarNavigationItem, depth: number) {
+  const candidatePath = item.path || item.children?.[0]?.path || ''
+  const segments = normalizePath(candidatePath).split('/').filter(Boolean)
+  return segments[depth] || ''
 }
 </script>
 

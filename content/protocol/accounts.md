@@ -7,12 +7,14 @@ navigation:
 
 # Accounts
 
-Nimiq has four account types, each with unique features and purposes. Each account has an individual address assigned, enabling users to interact with the blockchain.
+Nimiq has six account types, each with unique features and purposes. Each account has an individual address assigned, enabling users to interact with the blockchain.
 
 - Basic account
 - HTLC (Hashed Timelock Contract)
 - Vesting Contract
 - Staking Contract
+- Bridge Contract
+- Oracle Contract
 
 ## Basic Account
 
@@ -60,3 +62,11 @@ The contract owner can interact with the contract whenever, but can only withdra
 ## Staking Contract
 
 The staking contract is a specific type of contract designed to track and manage functions regarding validators, stakers, and staking activities. For a detailed explanation about the staking contract, follow this [link](/protocol/validators/staking-contract).
+
+## Bridge Contract
+
+The bridge contract holds NIM that is locked for use on another network, and releases it against a proof that the matching tokens were burned there. For details, see the [bridge documentation](/bridge).
+
+## Oracle Contract
+
+The oracle contract stores, on Nimiq, commitments to what happened on another network. Only its owner can write to it. Bridge contracts check proofs against it. For details, see [Oracles](/bridge/how-it-works/oracles).
