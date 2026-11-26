@@ -9,7 +9,7 @@ navigation:
 
 # Security and trust model
 
-The bridge never trusts the party that moves value. Every redemption is checked on the network that pays it out: by consensus rules on Nimiq, and by contract code on the EVM network. What the bridge does trust is the attestations written into its oracles, the record each network holds of what happened on the other. The design keeps that trust as small as it can be made, but does not remove it.
+The bridge never trusts the party that moves value. Every redemption is checked on the network that pays it out, by consensus rules on Nimiq and by contract code on the EVM network. What the bridge does trust is the attestations written into its oracles, the record each network holds of what happened on the other. The design keeps that trust as small as it can be made, but does not remove it.
 
 ## Assumptions
 
@@ -23,13 +23,13 @@ The guarantees below hold as long as the following are true:
 
 These hold without trusting anyone, the bridge operator included.
 
-**Verification is enforced by each network.** The checks on a Nimiq release are consensus rules at the account layer: validators cannot skip them, and a block that contains a release failing any of them is invalid. The checks on an EVM mint are contract code, enforced the same way for every caller.
+**Verification is enforced by each network.** The checks on a Nimiq release are consensus rules at the account layer. Validators cannot skip them, and a block that contains a release failing any of them is invalid. The checks on an EVM mint are contract code, enforced the same way for every caller.
 
-**Nobody redeems a transfer without the recipient's consent.** A mint needs the destination's own call or its signed authorization, and a release needs the target's signature. Neither the relayer nor the oracle owners can give that consent. Submission is open, though: a redemption the recipient has signed can be submitted by anyone.
+**Nobody redeems a transfer without the recipient's consent.** A mint needs the destination's own call or its signed authorization, and a release needs the target's signature. Neither the relayer nor the oracle owners can give that consent. Submission is open, though. A redemption the recipient has signed can be submitted by anyone.
 
 **Redemption does not depend on the operator.** Mint and release check proofs against public data. A recipient can rebuild any proof from the oracles' public histories without the relayer's help. What does depend on an oracle owner is getting new state attested in the first place.
 
-**Value is conserved.** A release debits the bridge contract on Nimiq by exactly the burned amount, and the total released can never exceed the total burned. A mint requires proof of a finalized lock addressed to the Nimiq bridge contract. As a result, wNIM in circulation never exceeds the NIM locked behind it. The two are not always equal: while a transfer is in flight, NIM can be locked before its wNIM is minted, and wNIM burned before its NIM is released.
+**Value is conserved.** A release debits the bridge contract on Nimiq by exactly the burned amount, and the total released can never exceed the total burned. A mint requires proof of a finalized lock addressed to the Nimiq bridge contract. As a result, wNIM in circulation never exceeds the NIM locked behind it. The two are not always equal. While a transfer is in flight, NIM can be locked before its wNIM is minted, and wNIM burned before its NIM is released.
 
 **A release succeeds or is invalid.** A release that fails any check is never [included as a failed transaction](/bridge/how-it-works/burn-and-release#a-release-either-succeeds-or-is-invalid), so the bridge contract is never debited for a failure and nobody pays a fee for one.
 
@@ -80,7 +80,7 @@ No role can release NIM or mint wNIM directly. Every redemption goes through the
 
 ## If an owner attests falsely
 
-A dishonest or compromised owner is a **safety** failure: value can be taken. The exposure is different on each side.
+A dishonest or compromised owner is a **safety** failure. Value can be taken, and the exposure is different on each side.
 
 **On Nimiq, the loss is bounded.** A Nimiq oracle owner who commits a fabricated root can have NIM released against burns that never happened. Every other check still applies, including the nonce and the format of the record, and the most that can be released is what the bridge contract holds.
 
@@ -90,9 +90,9 @@ A fabricated header is detectable at once. Its hash is not the hash of any Nimiq
 
 ## If the relayer or an owner stops
 
-An oracle owner or relayer that stops working is a **liveness** failure: transfers stall, but nothing is lost.
+An oracle owner or relayer that stops working is a **liveness** failure. Transfers stall, but nothing is lost.
 
-The EVM oracle accepts headers only in order, so none can be skipped: when the relayer resumes, it submits the headers it missed. The Nimiq oracle needs no backlog, because the next root the relayer commits covers every burn it has seen. Transfers made during the outage complete once the relayer catches up.
+The EVM oracle accepts headers only in order, so none can be skipped. When the relayer resumes, it submits the headers it missed. The Nimiq oracle needs no backlog, because the next root the relayer commits covers every burn it has seen. Transfers made during the outage complete once the relayer catches up.
 
 A proof that has already been obtained [does not expire](/bridge/how-it-works/oracles#proofs-grow-and-nothing-is-discarded) while the bridge waits. A signed release does expire, after the Nimiq transaction validity window of about two hours, and is then signed again against a fresh proof.
 
@@ -113,7 +113,7 @@ Every attestation can be recomputed from public data. None of these checks needs
 
 ### Oracle verifier
 
-`oracle-verifier` is a program that runs these checks continuously. It recomputes every value the oracle owners attest, and it pairs every mint with the lock behind it, so it raises an alarm for a mint that no lock backs even when the bridge still holds enough NIM to cover it. It reads only public data, so anyone can run it, not only the bridge operator, and independent parties are encouraged to.
+[`oracle-verifier`](/bridge/operating/oracle-verifier) is a program that runs these checks, once or repeatedly at a set interval. It recomputes every value the oracle owners attest, and it pairs every mint with the lock behind it, so it raises an alarm for a mint that no lock backs even when the bridge still holds enough NIM to cover it. It reads only public data, so anyone can run it, not only the bridge operator, and independent parties are encouraged to.
 
 ## What the user is responsible for
 
